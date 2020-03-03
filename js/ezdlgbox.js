@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.3
+// ** ModalBox 2.4
 // ** Created by: keejelo, 2020.
-// ** GitHub: https://github.com/keejelo/easydialogbox
+// ** GitHub: https://github.com/keejelo/modalbox
 //-----------------------------------------------------------------------------------------------------------------
 
 
@@ -88,7 +88,6 @@ var EasyDialogBox =
 		{
 			btns[i].addEventListener('click', function(event)
 			{
-				//ShowModal(this.getAttribute('rel'));
 				EasyDialogBox.show(this.getAttribute('rel'));
 				event.preventDefault(); // if used in an anchor-link with href="#" we prevent scrolling to top of page
 				this.blur(); // remove focus from button
@@ -342,7 +341,6 @@ var EasyDialogBox =
 				var xCloseFunc = xCloseModal.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					//CloseModal(boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					EasyDialogBox.destroy(boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					
 					// ** Remove eventlistener
@@ -358,7 +356,6 @@ var EasyDialogBox =
 					}
 					
 					// ** Return code 0 (false), since user clicked X (close)
-					//ShowModal_CALLBACK(0);
 					EasyDialogBox.callback(0);
 				});
 			}
@@ -378,7 +375,6 @@ var EasyDialogBox =
 					btnCloseFunc = null;
 					
 					// ** Return code 0 , since we user clicked Close
-					//ShowModal_CALLBACK(0);
 					EasyDialogBox.callback(0);
 				});
 			}
@@ -398,7 +394,6 @@ var EasyDialogBox =
 					winCloseFunc = null;
 					
 					// ** Return code 0 (false), since we just want to exit
-					//ShowModal_CALLBACK(0);
 					EasyDialogBox.callback(0);
 				}			
 			});
@@ -425,7 +420,6 @@ var EasyDialogBox =
 						btnYesFunc = null;
 						
 						// ** Return code 1 , since user clicked YES
-						//ShowModal_CALLBACK(1);
 						EasyDialogBox.callback(1);
 					});
 				}
@@ -444,7 +438,6 @@ var EasyDialogBox =
 						btnNoFunc = null;
 						
 						// ** Return code 2 , since user clicked NO
-						//ShowModal_CALLBACK(2);
 						EasyDialogBox.callback(2);
 					});
 				}			
@@ -472,7 +465,6 @@ var EasyDialogBox =
 						btnOkFunc = null;
 
 						// ** Return code 3 , since user clicked OK
-						//ShowModal_CALLBACK(3);
 						EasyDialogBox.callback(3);
 					});
 				}
@@ -499,7 +491,6 @@ var EasyDialogBox =
 						}
 
 						// ** Return code 4 , since user clicked Cancel
-						//ShowModal_CALLBACK(4);
 						EasyDialogBox.callback(4);
 					});
 				}
