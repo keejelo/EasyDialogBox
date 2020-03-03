@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+<title>Testing dialog boxes</title>
+<style type="text/css">
+body
+{
+	padding-bottom:200px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+code
+{
+	font-size:18px;
+	font-weight:bold;
+	color:#0000ff;
+}
+textarea
+{
+	white-space:pre;
+	overflow-wrap:normal;
+	overflow:scroll;
+	background-color:#eff0f1;
+	color:#0000ff;
+	font-size:14px;
+	font-family:monospace;
+}
+i
+{
+	font-style:normal;
+}
+.ital
+{
+	font-style:italic;
+}
+.tag
+{
+	color:#0000ff;
+}
+.att
+{
+	color:#cc0000;
+}
+.val
+{
+	color:#cccc00;
+}
+</style>
+<link type="text/css" media="screen" rel="stylesheet" href="css/modal.css" />
+<script src="js/modal.js"></script>
+</head>
+<body>
+
+	<div id="myBox" class="modal" title="Title of a default dialog box">
+		<p>This is a message</p>
+	</div>
+	
+	<div id="myBoxYesNo" class="modal-yes-no" title="Title of Yes and No dialog box">
+		<p>This is a message</p>
+	</div>
+	
+	<div id="myBoxOkCancel" class="modal-ok-cancel" title="Title of OK and Cancel dialog box">
+		<p>This is a message</p>
+	</div>	
+	
+	<div id="myPromptBox" class="modal-prompt" title="Title of prompt dialog box">
+		<p>This is a message</p>
+	</div>	
+	
+	<h1>modalbox</h1>
+	<p>Easy to use html-css-javascript modal box, dialog box, messagebox.</p>
+	<p>Lightweight. Responsive. Plain vanilla Javascript, no libraries used.</p>
+	<p>Can be an alternative to the native Javascript boxes: alert, confirm, prompt.</p>	
+	
+	<p>&nbsp;</p>
+	
+	<h3>HOW TO ?</h3>
+	
+	<h3>Include CSS and Javascript files between <code>&lt;head&gt; &lt;/head&gt;</code></h3>
+	<textarea rows="5" cols="126" readonly="readonly">
+	
+&lt;link type="text/css" media="screen" rel="stylesheet" href="css/modal.css" /&gt;
+
+&lt;script src="js/modal.js"&gt;&lt;/script&gt;
+	</textarea>
+	
+	<h3>Then it can be used like the examples below.</h3>
+	
+	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>The default box, with 'Close' button (<code>class="modal"</code> or <code>class="modal-close"</code>)</h3>
+	<p class="ital">Return value: 'Close' = 0</p>
+	<p><button rel="myBox" class="modal-opener">Open dialog box</button></p>
+	<textarea rows="10" cols="126" readonly="readonly">
+	
+&lt;div id="myBox" class="modal" title="Title of a default dialog box"&gt;
+
+	&lt;p&gt;This is a message&lt;/p&gt;
+	
+&lt;/div&gt;
+	
+&lt;button rel="myBox" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+	</textarea>
+	
+	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>A box with 'Yes' and 'No' buttons (<code>class="modal-yes-no"</code>)</h3>
+	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
+	<p><button rel="myBoxYesNo" class="modal-opener">Open dialog box</button></p>
+	<textarea rows="10" cols="126" readonly="readonly">
+	
+&lt;div id="myBoxYesNo" class="modal-yes-no" title="Title of Yes and No dialog box"&gt;
+
+	&lt;p&gt;This is a message&lt;/p&gt;
+	
+&lt;/div&gt;
+
+&lt;button rel="myBoxYesNo" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+	</textarea>
+	
+	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="modal-ok-cancel"</code>)</h3>
+	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
+	<p><button rel="myBoxOkCancel" class="modal-opener">Open dialog box</button></p>
+	<textarea rows="10" cols="126" readonly="readonly">
+	
+&lt;div id="myBoxOkCancel" class="modal-ok-cancel" title="Title of OK and Cancel dialog box"&gt;
+
+	&lt;p&gt;This is a message&lt;/p&gt;
+	
+&lt;/div&gt;	
+
+&lt;button rel="myBoxOkCancel" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+	</textarea>
+	
+	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="modal-prompt"</code>)</h3>
+	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
+	<p><button rel="myPromptBox" class="modal-opener">Open dialog box</button></p>
+	<textarea rows="10" cols="126" readonly="readonly">
+	
+&lt;div id="myPromptBox" class="modal-prompt" title="Title of prompt dialog box"&gt;
+
+	&lt;p&gt;This is a message&lt;/p&gt;
+	
+&lt;/div&gt;	
+
+&lt;button rel="myPromptBox" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+	</textarea>	
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<hr />
+	
+	<div>
+		<h3>Attribute values for <code>&lt;button&gt;</code> (or other opening element):</h3>
+		<p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
+		<p>Add <code>class="modal-opener"</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+	</div>
+	
+</body>
+</html>
