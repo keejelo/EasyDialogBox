@@ -6,7 +6,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------
-// ** CALLBACK_EasyDialogBox (return values sent from buttons and input in box, us them for further processing)
+// ** CALLBACK_EasyDialogBox (return values sent from buttons and input in box, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
 function CALLBACK_EasyDialogBox(retVal, strPromptBox)
 {
