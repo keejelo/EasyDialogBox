@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.7
+// ** EasyDialogBox 2.8
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -54,6 +54,8 @@ function CALLBACK_EasyDialogBox(retVal, strPromptBox)
 	// ..do stuff here..blah..blah..
 	
 	// CustomFunctionHere();
+	
+	// ..blah..
 	
 	
 };
