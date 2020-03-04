@@ -46,8 +46,8 @@
 	margin:0;
 	padding:10px;
 	height:30px;
-	background-color:#347ab6;
-	color:#fff;
+	background-color:#347ab6; /* background color, change it as you wish */
+	color:#fff; /* text color, change it as you wish */
 	white-space:nowrap;
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -72,7 +72,7 @@
 	margin-top:-8px;
 	margin-right:0;
 	padding:5px;
-	color:#fff;
+	color:inherit; /*fff*/
 	font-size:2.0em;
 	background-color:inherit;
 }
@@ -80,7 +80,7 @@
 .dlg-close-x:hover,
 .dlg-close-x:focus
 {
-	color:#000;	
+	color:#000;
 	text-decoration:none;
 	cursor:pointer;
 }
