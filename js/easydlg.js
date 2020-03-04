@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.6
+// ** EasyDialogBox 2.5
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ var EasyDialogBox =
 		var d = new Date();
 		var n = d.getTime();
 		
-		// ** Create unique id for modalbox
+		// ** Create unique id for dialogbox
 		var boxId = 'boxId' + n;
 			
 		// ** Get the dlg element
@@ -121,13 +121,13 @@ var EasyDialogBox =
 		{	
 			// ** Get title and store it
 			var orgTitleText = dlg.getAttribute('title');
-			dlg.setAttribute('title',''); // temporary remove title value, or else it will show up on hovering all over modalbox
+			dlg.setAttribute('title',''); // temporary remove title value, or else it will show up on hovering all over dialogbox
 			
 			// ** Get message content and store it
 			var orgMessage = dlg.innerHTML;
 			dlg.innerHTML = ''; // temporary remove html 
 			
-			// ** Create modalbox
+			// ** Create dialogbox
 			var box = document.createElement('div');
 			box.setAttribute('id', boxId);
 			box.setAttribute('class','dlg-box dlg-center-vert');
@@ -277,19 +277,19 @@ var EasyDialogBox =
 				dlg.getElementsByClassName('dlg-input-field')[0].focus();
 			}		
 
-			// ** Get height of inner modalbox
-			var modalBox = dlg.getElementsByClassName('dlg-box')[0];
-			var height = window.getComputedStyle(modalBox, null).getPropertyValue('height');
+			// ** Get height of inner dialogbox
+			var dialogbox = dlg.getElementsByClassName('dlg-box')[0];
+			var height = window.getComputedStyle(dialogbox, null).getPropertyValue('height');
 			
 			// ** If height is larger or equal to window height, disable vertical alignment,
 			// ** just position at top. Prevents out of view.
 			if(parseInt(height) >= window.innerHeight)
 			{
-				modalBox.classList.remove('dlg-center-vert');
+				dialogbox.classList.remove('dlg-center-vert');
 			}
 			else
 			{
-				modalBox.classList.add('dlg-center-vert');
+				dialogbox.classList.add('dlg-center-vert');
 			}
 			
 			// ** Get body element
@@ -304,7 +304,7 @@ var EasyDialogBox =
 			// ** Get width of body before removing scrollbar
 			var w1 = body.offsetWidth;
 
-			// ** Stop scrolling of background content (body) when modalbox is in view, removes scrollbar
+			// ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
 			body.classList.add('dlg-stop-scrolling');
 
 			// ** Get width of body after removing scrollbar
@@ -334,7 +334,7 @@ var EasyDialogBox =
 			// ** Create click-handlers
 			//---------------------------------------------------------------------
 			
-			// ** When the user clicks the X button, close the modalbox
+			// ** When the user clicks the X button, close the dialogbox
 			var xCloseModal = dlg.getElementsByClassName('dlg-close-x')[0];
 			if(xCloseModal)
 			{
@@ -361,7 +361,7 @@ var EasyDialogBox =
 			}
 			// ** END: X button click handlers
 			
-			// ** When the user clicks the CLOSE button, close the modalbox
+			// ** When the user clicks the CLOSE button, close the dialogbox
 			var btnCloseModal = dlg.getElementsByClassName('dlg-close-btn')[0];
 			if(btnCloseModal)
 			{
@@ -381,7 +381,7 @@ var EasyDialogBox =
 			// ** END: CLOSE button click handler
 			
 			
-			// ** When the user clicks anywhere outside of the modalbox, close it
+			// ** When the user clicks anywhere outside of the dialogbox, close it
 			var winCloseFunc = window.addEventListener('click', function(event)
 			{
 				if (event.target == dlg)
