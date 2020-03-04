@@ -47,29 +47,29 @@ i
 	color:#cccc00;
 }
 </style>
-<link type="text/css" media="screen" rel="stylesheet" href="css/ezdlg.css" />
-<script src="js/ezdlg.js"></script>
+<link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
+<script src="js/easydlg.js"></script>
 </head>
 <body>
 
-	<div id="myBox" class="modal" title="Title of a default dialog box">
+	<div id="myBox" class="easydlg" title="Title of a default dialog box">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxYesNo" class="modal-yes-no" title="Title of Yes and No dialog box">
+	<div id="myBoxYesNo" class="easydlg-yes-no" title="Title of Yes and No dialog box">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxOkCancel" class="modal-ok-cancel" title="Title of OK and Cancel dialog box">
+	<div id="myBoxOkCancel" class="easydlg-ok-cancel" title="Title of OK and Cancel dialog box">
 		<p>This is a message</p>
 	</div>	
 	
-	<div id="myPromptBox" class="modal-prompt" title="Title of prompt dialog box">
+	<div id="myPromptBox" class="easydlg-prompt" title="Title of prompt dialog box">
 		<p>This is a message</p>
 	</div>	
 	
 	<h1>EasyDialogBox</h1>
-	<p>Easy to use html-css-javascript modal box, dialog box, messagebox.</p>
+	<p>Easy to use html-css-javascript dialog box, messagebox.</p>
 	<p>Lightweight. Responsive. Plain vanilla Javascript, no libraries used.</p>
 	<p>Can be an alternative to the native Javascript boxes: alert, confirm, prompt.</p>	
 	
@@ -80,9 +80,9 @@ i
 	<h3>Include CSS and Javascript files between <code>&lt;head&gt; &lt;/head&gt;</code></h3>
 	<textarea rows="5" cols="126" readonly="readonly">
 	
-&lt;link type="text/css" media="screen" rel="stylesheet" href="css/ezdlg.css" /&gt;
+&lt;link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" /&gt;
 
-&lt;script src="js/ezdlg.js"&gt;&lt;/script&gt;
+&lt;script src="js/easydlg.js"&gt;&lt;/script&gt;
 	</textarea>
 	
 	<h3>Then it can be used like the examples below.</h3>
@@ -90,69 +90,69 @@ i
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>The default box, with 'Close' button (<code>class="modal"</code> or <code>class="modal-close"</code>)</h3>
+	<h3>The default box, with 'Close' button (<code>class="easydlg"</code> or <code>class="easydlg-close"</code>)</h3>
 	<p class="ital">Return value: 'Close' = 0</p>
-	<p><button rel="myBox" class="modal-opener">Open dialog box</button></p>
+	<p><button rel="myBox" class="easydlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBox" class="modal" title="Title of a default dialog box"&gt;
+&lt;div id="myBox" class="easydlg" title="Title of a default dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;
 	
-&lt;button rel="myBox" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBox" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'Yes' and 'No' buttons (<code>class="modal-yes-no"</code>)</h3>
+	<h3>A box with 'Yes' and 'No' buttons (<code>class="easydlg-yes-no"</code>)</h3>
 	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
-	<p><button rel="myBoxYesNo" class="modal-opener">Open dialog box</button></p>
+	<p><button rel="myBoxYesNo" class="easydlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBoxYesNo" class="modal-yes-no" title="Title of Yes and No dialog box"&gt;
+&lt;div id="myBoxYesNo" class="easydlg-yes-no" title="Title of Yes and No dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;
 
-&lt;button rel="myBoxYesNo" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBoxYesNo" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="modal-ok-cancel"</code>)</h3>
+	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="easydlg-ok-cancel"</code>)</h3>
 	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
-	<p><button rel="myBoxOkCancel" class="modal-opener">Open dialog box</button></p>
+	<p><button rel="myBoxOkCancel" class="easydlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBoxOkCancel" class="modal-ok-cancel" title="Title of OK and Cancel dialog box"&gt;
+&lt;div id="myBoxOkCancel" class="easydlg-ok-cancel" title="Title of OK and Cancel dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;	
 
-&lt;button rel="myBoxOkCancel" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBoxOkCancel" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="modal-prompt"</code>)</h3>
+	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="easydlg-prompt"</code>)</h3>
 	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
-	<p><button rel="myPromptBox" class="modal-opener">Open dialog box</button></p>
+	<p><button rel="myPromptBox" class="easydlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myPromptBox" class="modal-prompt" title="Title of prompt dialog box"&gt;
+&lt;div id="myPromptBox" class="easydlg-prompt" title="Title of prompt dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;	
 
-&lt;button rel="myPromptBox" class="modal-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myPromptBox" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>	
 	
 	<p>&nbsp;</p>
@@ -162,7 +162,7 @@ i
 	<div>
 		<h3>Attribute values for <code>&lt;button&gt;</code> (or other opening element):</h3>
 		<p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
-		<p>Add <code>class="modal-opener"</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+		<p>Add <code>class="easydlg-opener"</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
 	</div>
 	
 </body>
