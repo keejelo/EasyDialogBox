@@ -147,19 +147,7 @@ var EasyDialogBox =
 			
 			// ** Create title
 			var titleText = document.createTextNode(orgTitleText);
-			heading.appendChild(titleText);	
-			/* This works better, apply text directly into heading <div>, 
-			prevents small screen titletext overflow and CloseX layering
-			(z-index)-problems where click didnt register */
-			
-			/*
-			// ** Create title - Not used right now, use above instead
-			var title = document.createElement('span');
-			title.setAttribute('class','dlg-title');
-			var titleText = document.createTextNode(orgTitleText);
-			title.appendChild(titleText);
-			heading.appendChild(title);
-			*/
+			heading.appendChild(titleText);
 
 			// ** Create message
 			var message = document.createElement('div');
