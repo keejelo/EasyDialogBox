@@ -146,7 +146,7 @@
 	margin-left:10px;
 }
 
-/* Stop scrolling, used to stop scrolling of background page content (body) when modalbox is in view */
+/* Stop scrolling, used to stop scrolling of background page content (body) when dialogbox is in view */
 .dlg-stop-scrolling
 {
 	height:100%;
