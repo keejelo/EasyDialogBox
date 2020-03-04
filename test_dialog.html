@@ -48,26 +48,25 @@ textarea
 </head>
 <body>
 
-	<div id="myBox" class="easydlg" title="Title of a default dialog box">
+	<div id="myBox" class="dlg" title="Title of a default dialog box">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxYesNo" class="easydlg-yes-no" title="Title of Yes and No dialog box">
+	<div id="myBoxYesNo" class="dlg-yes-no" title="Title of Yes and No dialog box">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxOkCancel" class="easydlg-ok-cancel" title="Title of OK and Cancel dialog box">
+	<div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title of OK and Cancel dialog box">
 		<p>This is a message</p>
 	</div>	
 	
-	<div id="myPromptBox" class="easydlg-prompt" title="Title of prompt dialog box">
+	<div id="myPromptBox" class="dlg-prompt" title="Title of prompt dialog box">
 		<p>This is a message</p>
 	</div>	
 	
 	<h1>EasyDialogBox</h1>
 	<p>Easy to use html-css-javascript dialog box, messagebox.</p>
 	<p>Lightweight. Responsive. Plain vanilla Javascript.</p>
-	<p>Can be an alternative to the native Javascript boxes: alert, confirm, prompt.</p>	
 	
 	<p>&nbsp;</p>
 	
@@ -86,69 +85,69 @@ textarea
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>The default box, with 'Close' button (<code>class="easydlg"</code> or <code>class="easydlg-close"</code>)</h3>
+	<h3>The default box, with 'Close' button (<code>class="dlg"</code> or <code>class="dlg-close"</code>)</h3>
 	<p class="ital">Return value: 'Close' = 0</p>
-	<p><button rel="myBox" class="easydlg-opener">Open dialog box</button></p>
+	<p><button rel="myBox" class="dlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBox" class="easydlg" title="Title of a default dialog box"&gt;
+&lt;div id="myBox" class="dlg" title="Title of a default dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;
 	
-&lt;button rel="myBox" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBox" class="dlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'Yes' and 'No' buttons (<code>class="easydlg-yes-no"</code>)</h3>
+	<h3>A box with 'Yes' and 'No' buttons (<code>class="dlg-yes-no"</code>)</h3>
 	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
-	<p><button rel="myBoxYesNo" class="easydlg-opener">Open dialog box</button></p>
+	<p><button rel="myBoxYesNo" class="dlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBoxYesNo" class="easydlg-yes-no" title="Title of Yes and No dialog box"&gt;
+&lt;div id="myBoxYesNo" class="dlg-yes-no" title="Title of Yes and No dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;
 
-&lt;button rel="myBoxYesNo" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBoxYesNo" class="dlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="easydlg-ok-cancel"</code>)</h3>
+	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="dlg-ok-cancel"</code>)</h3>
 	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
-	<p><button rel="myBoxOkCancel" class="easydlg-opener">Open dialog box</button></p>
+	<p><button rel="myBoxOkCancel" class="dlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myBoxOkCancel" class="easydlg-ok-cancel" title="Title of OK and Cancel dialog box"&gt;
+&lt;div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title of OK and Cancel dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;	
 
-&lt;button rel="myBoxOkCancel" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myBoxOkCancel" class="dlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>
 	
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="easydlg-prompt"</code>)</h3>
+	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="dlg-prompt"</code>)</h3>
 	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
-	<p><button rel="myPromptBox" class="easydlg-opener">Open dialog box</button></p>
+	<p><button rel="myPromptBox" class="dlg-opener">Open dialog box</button></p>
 	<textarea rows="10" cols="126" readonly="readonly">
 	
-&lt;div id="myPromptBox" class="easydlg-prompt" title="Title of prompt dialog box"&gt;
+&lt;div id="myPromptBox" class="dlg-prompt" title="Title of prompt dialog box"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
 &lt;/div&gt;	
 
-&lt;button rel="myPromptBox" class="easydlg-opener"&gt;Open dialog box&lt;/button&gt;
+&lt;button rel="myPromptBox" class="dlg-opener"&gt;Open dialog box&lt;/button&gt;
 	</textarea>	
 	
 	<p>&nbsp;</p>
@@ -158,7 +157,7 @@ textarea
 	<div>
 		<h3>Attribute values for <code>&lt;button&gt;</code> (or other opening element):</h3>
 		<p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
-		<p>Add <code>class="easydlg-opener"</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+		<p>Add <code>class="dlg-opener"</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
 	</div>
 	
 </body>
