@@ -31,12 +31,10 @@
 	overflow:auto; /* Enable scroll if needed */
 	width:98%; /*96%*/
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:0.9em;
-	background-color:#fefefe;
-	/*
-	border-radius:6px; /* rounded corners */
-	border:1px solid #666;
-	*/
+	font-size:0.9em;	
+	background-color:#fefefe;	
+	/* border-radius:6px; /* rounded corners */
+	/* border:1px solid #666; */
 }
 
 /* Dialog heading */
