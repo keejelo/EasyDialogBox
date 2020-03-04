@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.4
+// ** EasyDialogBox 2.5
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -80,8 +80,8 @@ var EasyDialogBox =
 	// ** Initialize
 	init : function()
 	{
-		// ** Get all elements with classname 'modal-opener'
-		var btns = document.getElementsByClassName('modal-opener');
+		// ** Get all elements with classname 'easydlg-opener'
+		var btns = document.getElementsByClassName('easydlg-opener');
 
 		// ** Create click handler for each element that contain above class
 		for(var i = 0; i < btns.length; i++)
@@ -113,34 +113,34 @@ var EasyDialogBox =
 		// ** Create unique id for modalbox
 		var boxId = 'boxId' + n;
 			
-		// ** Get the modal element
-		var modal = document.getElementById(id);
+		// ** Get the easydlg element
+		var easydlg = document.getElementById(id);
 		
 		// ** Check if element exist
-		if(modal)
+		if(easydlg)
 		{	
 			// ** Get title and store it
-			var orgTitleText = modal.getAttribute('title');
-			modal.setAttribute('title',''); // temporary remove title value, or else it will show up on hovering all over modalbox
+			var orgTitleText = easydlg.getAttribute('title');
+			easydlg.setAttribute('title',''); // temporary remove title value, or else it will show up on hovering all over modalbox
 			
 			// ** Get message content and store it
-			var orgMessage = modal.innerHTML;
-			modal.innerHTML = ''; // temporary remove html 
+			var orgMessage = easydlg.innerHTML;
+			easydlg.innerHTML = ''; // temporary remove html 
 			
 			// ** Create modalbox
 			var box = document.createElement('div');
 			box.setAttribute('id', boxId);
-			box.setAttribute('class','modal-box modal-center-vert');
-			modal.appendChild(box);
+			box.setAttribute('class','easydlg-box easydlg-center-vert');
+			easydlg.appendChild(box);
 			
 			// ** Create heading
 			var heading = document.createElement('div');
-			heading.setAttribute('class','modal-heading');
+			heading.setAttribute('class','easydlg-heading');
 			box.appendChild(heading);
 			
 			// ** Create "CloseX"
 			var closeX = document.createElement('span');
-			closeX.setAttribute('class','modal-close-x');
+			closeX.setAttribute('class','easydlg-close-x');
 			var closeText = document.createTextNode(' \u00d7 ');
 			closeX.appendChild(closeText);
 			heading.appendChild(closeX);
@@ -155,7 +155,7 @@ var EasyDialogBox =
 			/*
 			// ** Create title - Not used right now, use above instead
 			var title = document.createElement('span');
-			title.setAttribute('class','modal-title');
+			title.setAttribute('class','easydlg-title');
 			var titleText = document.createTextNode(orgTitleText);
 			title.appendChild(titleText);
 			heading.appendChild(title);
@@ -163,19 +163,19 @@ var EasyDialogBox =
 
 			// ** Create message
 			var message = document.createElement('div');
-			message.setAttribute('class','modal-message');
+			message.setAttribute('class','easydlg-message');
 			message.innerHTML = orgMessage;
 			box.appendChild(message);
 			
 			// ** Create prompt box (input + OK + Cancel)
-			if(modal.classList.contains('modal-prompt'))
+			if(easydlg.classList.contains('easydlg-prompt'))
 			{
 				var div = document.createElement('div');
-				div.setAttribute('class', 'modal-input');
+				div.setAttribute('class', 'easydlg-input');
 				message.appendChild(div);
 				
 				var input = document.createElement('input');
-				input.setAttribute('class', 'modal-input-field');
+				input.setAttribute('class', 'easydlg-input-field');
 				input.setAttribute('type', 'text');
 				input.setAttribute('value', '');
 				div.appendChild(input);
@@ -184,81 +184,81 @@ var EasyDialogBox =
 				this.promptBoxInputValue = null;
 
 				// ** Add buttons if not already stated in class
-				modal.classList.add('modal-ok-cancel');
+				easydlg.classList.add('easydlg-ok-cancel');
 			}
 
 			// ** Create footer and buttons
 			// ** If "no-footer" is specified in class then do not create footer or any buttons
-			if(!modal.classList.contains('no-footer'))
+			if(!easydlg.classList.contains('no-footer'))
 			{
 				// ** Create footer
 				var footer = document.createElement('div');
-				footer.setAttribute('class','modal-footer');
+				footer.setAttribute('class','easydlg-footer');
 				box.appendChild(footer);
 				
 				// ** If "no-btns" is specified in class then do not make buttons. 
-				if(!modal.classList.contains('no-btns'))
+				if(!easydlg.classList.contains('no-btns'))
 				{
 					// ** If "Yes" button is specified in class
-					if(modal.classList.contains('modal-yes') || modal.classList.contains('modal-yes-no'))
+					if(easydlg.classList.contains('easydlg-yes') || easydlg.classList.contains('easydlg-yes-no'))
 					{
 						// ** Create button
 						var yesBtn = document.createElement('button');
-						yesBtn.setAttribute('class','modal-yes-btn');
+						yesBtn.setAttribute('class','easydlg-yes-btn');
 						var yesBtnText = document.createTextNode(this.yesButtonText);
 						yesBtn.appendChild(yesBtnText);
 						footer.appendChild(yesBtn);
 					}
 					
 					// ** If "No" button is specified in class
-					if(modal.classList.contains('modal-no') || modal.classList.contains('modal-yes-no'))
+					if(easydlg.classList.contains('easydlg-no') || easydlg.classList.contains('easydlg-yes-no'))
 					{
 						// ** Create button
 						var noBtn = document.createElement('button');
-						noBtn.setAttribute('class','modal-no-btn');
+						noBtn.setAttribute('class','easydlg-no-btn');
 						var noBtnText = document.createTextNode(this.noButtonText);
 						noBtn.appendChild(noBtnText);
 						footer.appendChild(noBtn);
 					}
 					
 					// ** If "OK" button is specified in class
-					if(modal.classList.contains('modal-ok') || modal.classList.contains('modal-ok-cancel'))
+					if(easydlg.classList.contains('easydlg-ok') || easydlg.classList.contains('easydlg-ok-cancel'))
 					{
 						// ** Create button
 						var okBtn = document.createElement('button');
-						okBtn.setAttribute('class','modal-ok-btn');
+						okBtn.setAttribute('class','easydlg-ok-btn');
 						var okBtnText = document.createTextNode(this.okButtonText);
 						okBtn.appendChild(okBtnText);
 						footer.appendChild(okBtn);
 					}
 					
 					// ** If "Cancel" button is specified in class
-					if(modal.classList.contains('modal-cancel') || modal.classList.contains('modal-ok-cancel'))
+					if(easydlg.classList.contains('easydlg-cancel') || easydlg.classList.contains('easydlg-ok-cancel'))
 					{
 						// ** Create button
 						var cancelBtn = document.createElement('button');
-						cancelBtn.setAttribute('class','modal-cancel-btn');
+						cancelBtn.setAttribute('class','easydlg-cancel-btn');
 						var cancelBtnText = document.createTextNode(this.cancelButtonText);
 						cancelBtn.appendChild(cancelBtnText);
 						footer.appendChild(cancelBtn);
 					}				
 		
 					// ** If no special button-rules is specified in class, then just create a "Close" button
-					if(!modal.classList.contains('modal-yes') 
-					&& !modal.classList.contains('modal-no')
-					&& !modal.classList.contains('modal-yes-no') 
-					&& !modal.classList.contains('modal-ok') 
-					&& !modal.classList.contains('modal-cancel')
-					&& !modal.classList.contains('modal-ok-cancel')
+					if(!easydlg.classList.contains('easydlg-yes') 
+					&& !easydlg.classList.contains('easydlg-no')
+					&& !easydlg.classList.contains('easydlg-yes-no') 
+					&& !easydlg.classList.contains('easydlg-ok') 
+					&& !easydlg.classList.contains('easydlg-cancel')
+					&& !easydlg.classList.contains('easydlg-ok-cancel')
 					)
 					{
-						if(modal.classList.contains('modal') 
-						|| modal.classList.contains('modal-close')
+						if(easydlg.classList.contains('easydlg') 
+						|| easydlg.classList.contains('easydlg-close')
 						)
 						{
 							// ** Create button
 							var closeBtn = document.createElement('button');
-							closeBtn.setAttribute('class','modal-close-btn');
+							closeBtn.setAttribute('class','easydlg-close-btn');
 							var closeBtnText = document.createTextNode(this.closeButtonText);
 							closeBtn.appendChild(closeBtnText);
 							footer.appendChild(closeBtn);
@@ -268,28 +268,28 @@ var EasyDialogBox =
 			}
 			// ** END: Create footer and buttons
 			
-			// ** Show modal overlay and dialogbox
-			modal.style.display = 'block';
+			// ** Show easydlg overlay and dialogbox
+			easydlg.style.display = 'block';
 			
 			// ** Set focus to input field if promptbox
-			if(modal.classList.contains('modal-prompt'))
+			if(easydlg.classList.contains('easydlg-prompt'))
 			{
-				modal.getElementsByClassName('modal-input-field')[0].focus();
+				easydlg.getElementsByClassName('easydlg-input-field')[0].focus();
 			}		
 
 			// ** Get height of inner modalbox
-			var modalBox = modal.getElementsByClassName('modal-box')[0];
+			var modalBox = easydlg.getElementsByClassName('easydlg-box')[0];
 			var height = window.getComputedStyle(modalBox, null).getPropertyValue('height');
 			
 			// ** If height is larger or equal to window height, disable vertical alignment,
 			// ** just position at top. Prevents out of view.
 			if(parseInt(height) >= window.innerHeight)
 			{
-				modalBox.classList.remove('modal-center-vert');
+				modalBox.classList.remove('easydlg-center-vert');
 			}
 			else
 			{
-				modalBox.classList.add('modal-center-vert');
+				modalBox.classList.add('easydlg-center-vert');
 			}
 			
 			// ** Get body element
@@ -305,7 +305,7 @@ var EasyDialogBox =
 			var w1 = body.offsetWidth;
 
 			// ** Stop scrolling of background content (body) when modalbox is in view, removes scrollbar
-			body.classList.add('modal-stop-scrolling');
+			body.classList.add('easydlg-stop-scrolling');
 
 			// ** Get width of body after removing scrollbar
 			var w2 = body.offsetWidth;
@@ -335,7 +335,7 @@ var EasyDialogBox =
 			//---------------------------------------------------------------------
 			
 			// ** When the user clicks the X button, close the modalbox
-			var xCloseModal = modal.getElementsByClassName('modal-close-x')[0];
+			var xCloseModal = easydlg.getElementsByClassName('easydlg-close-x')[0];
 			if(xCloseModal)
 			{
 				var xCloseFunc = xCloseModal.addEventListener('click', function()
@@ -348,7 +348,7 @@ var EasyDialogBox =
 					xCloseFunc = null;
 					
 					// ** If promptbox was created
-					var pBox = modal.getElementsByClassName('modal-input-field')[0];
+					var pBox = easydlg.getElementsByClassName('easydlg-input-field')[0];
 					if(pBox)
 					{
 						// ** Since user clicked Cancel, delete inputted text value, set to: null
@@ -362,7 +362,7 @@ var EasyDialogBox =
 			// ** END: X button click handlers
 			
 			// ** When the user clicks the CLOSE button, close the modalbox
-			var btnCloseModal = modal.getElementsByClassName('modal-close-btn')[0];
+			var btnCloseModal = easydlg.getElementsByClassName('easydlg-close-btn')[0];
 			if(btnCloseModal)
 			{
 				var btnCloseFunc = btnCloseModal.addEventListener('click', function()
@@ -384,7 +384,7 @@ var EasyDialogBox =
 			// ** When the user clicks anywhere outside of the modalbox, close it
 			var winCloseFunc = window.addEventListener('click', function(event)
 			{
-				if (event.target == modal)
+				if (event.target == easydlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
 					EasyDialogBox.destroy(boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
@@ -401,13 +401,13 @@ var EasyDialogBox =
 
 			
 			// ** If YES-NO messagebox, create click handler for YES and NO buttons
-			if(modal.classList.contains('modal-yes-no')
-			|| modal.classList.contains('modal-yes')
-			|| modal.classList.contains('modal-no')
+			if(easydlg.classList.contains('easydlg-yes-no')
+			|| easydlg.classList.contains('easydlg-yes')
+			|| easydlg.classList.contains('easydlg-no')
 			)
 			{
 				// ** When the user clicks the YES button
-				var btnYesModal = modal.getElementsByClassName('modal-yes-btn')[0];
+				var btnYesModal = easydlg.getElementsByClassName('easydlg-yes-btn')[0];
 				if(btnYesModal)
 				{
 					var btnYesFunc = btnYesModal.addEventListener('click', function()
@@ -425,7 +425,7 @@ var EasyDialogBox =
 				}
 				
 				// ** When the user clicks the NO button
-				var btnNoModal = modal.getElementsByClassName('modal-no-btn')[0];
+				var btnNoModal = easydlg.getElementsByClassName('easydlg-no-btn')[0];
 				if(btnNoModal)
 				{
 					var btnNoFunc = btnNoModal.addEventListener('click', function()
@@ -446,13 +446,13 @@ var EasyDialogBox =
 			
 			
 			// ** If OK-CANCEL messagebox, create click handler for OK and CANCEL buttons
-			if(modal.classList.contains('modal-ok-cancel')
-			|| modal.classList.contains('modal-ok')
-			|| modal.classList.contains('modal-cancel')
+			if(easydlg.classList.contains('easydlg-ok-cancel')
+			|| easydlg.classList.contains('easydlg-ok')
+			|| easydlg.classList.contains('easydlg-cancel')
 			)
 			{		
 				// ** When the user clicks the OK button
-				var btnOkModal = modal.getElementsByClassName('modal-ok-btn')[0];
+				var btnOkModal = easydlg.getElementsByClassName('easydlg-ok-btn')[0];
 				if(btnOkModal)
 				{
 					var btnOkFunc = btnOkModal.addEventListener('click', function()
@@ -470,7 +470,7 @@ var EasyDialogBox =
 				}
 				
 				// ** When the user clicks the Cancel button
-				var btnCancelModal = modal.getElementsByClassName('modal-cancel-btn')[0];
+				var btnCancelModal = easydlg.getElementsByClassName('easydlg-cancel-btn')[0];
 				if(btnCancelModal)
 				{
 					var btnCancelFunc = btnCancelModal.addEventListener('click', function()
@@ -483,7 +483,7 @@ var EasyDialogBox =
 						btnCancelFunc = null;
 						
 						// ** If promptbox was created
-						var pBox = modal.getElementsByClassName('modal-input-field')[0];
+						var pBox = easydlg.getElementsByClassName('easydlg-input-field')[0];
 						if(pBox)
 						{
 							// ** Since user clicked Cancel, delete inputted text value, set to: null
@@ -499,7 +499,7 @@ var EasyDialogBox =
 			
 			
 			// ** When the user types in promptbox, update variable "promptBoxInputValue"
-			var pBox = modal.getElementsByClassName('modal-input-field')[0];
+			var pBox = easydlg.getElementsByClassName('easydlg-input-field')[0];
 			if(pBox)
 			{
 				pBoxKeyupFunc = pBox.addEventListener('keyup', function()
@@ -521,7 +521,7 @@ var EasyDialogBox =
 		}
 		else
 		{
-			console.log('Error, element id \'' + id + '\' do not exist!\nReturned value = ' + modal);
+			console.log('Error, element id \'' + id + '\' do not exist!\nReturned value = ' + easydlg);
 		}		
 	},
 	
@@ -536,19 +536,19 @@ var EasyDialogBox =
 			el.parentNode.removeChild(el);
 		}
 		
-		// ** Get the modal element, close dialogbox, reset values
-		var modal = document.getElementById(id);
-		modal.style.display = 'none';
-		modal.setAttribute('title', orgTitleText);
-		modal.innerHTML = orgMessage;
+		// ** Get the easydlg element, close dialogbox, reset values
+		var easydlg = document.getElementById(id);
+		easydlg.style.display = 'none';
+		easydlg.setAttribute('title', orgTitleText);
+		easydlg.innerHTML = orgMessage;
 
 		// ** Get body element, reset values, restore scrolling
 		var body = document.getElementsByTagName('body')[0];	
-		body.classList.remove('modal-stop-scrolling');
+		body.classList.remove('easydlg-stop-scrolling');
 		body.setAttribute('style', 'padding-right:' + parseInt(orgBodyPaddingRight) + 'px;');
 
 		// ** If promptbox was created, remove eventlisteners
-		var pBox = modal.getElementsByClassName('modal-input-field')[0];
+		var pBox = easydlg.getElementsByClassName('easydlg-input-field')[0];
 		if(pBox)
 		{
 			pBox.removeEventListener('keyup', pBoxKeyupFunc);
