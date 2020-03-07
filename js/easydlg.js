@@ -510,7 +510,7 @@ let EasyDialogBox =
 		}
 		else if(dlg_exist)
 		{
-			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo element was created.');
+			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo element created.');
 		}				
 		else if(!dlg)
 		{
