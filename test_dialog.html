@@ -30,6 +30,10 @@ textarea
 {
 	font-style:italic;
 }
+.bold
+{
+	font-weight:bold;
+}
 .tag
 {
 	color:#0000ff;
@@ -48,21 +52,25 @@ textarea
 </head>
 <body>
 
-	<div id="myBox" class="dlg" title="Title of dialog box">
+	<div id="myBox" class="dlg" title="Title text">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxYesNo" class="dlg-yes-no" title="Title of dialog box">
+	<div id="myBoxYesNo" class="dlg-yes-no" title="Title text">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title of dialog box">
+	<div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title text">
 		<p>This is a message</p>
 	</div>	
 	
-	<div id="myPromptBox" class="dlg-prompt" title="Title of dialog box">
+	<div id="myPromptBox" class="dlg-prompt" title="Title text">
 		<p>This is a message</p>
 	</div>	
+	
+	<div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel" title="Title text">
+		<p>This is a message</p>
+	</div>		
 	
 	<h1>EasyDialogBox</h1>
 	<p>Easy to use html-css-javascript dialog box, messagebox, alert, confirm, prompt.</p>
@@ -85,11 +93,11 @@ textarea
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>The default box, with 'Close' button (<code>class="dlg"</code> or <code>class="dlg-close"</code>)</h3>
+	<h3>The default box, with 'Close' button, <code>class="dlg"</code> or <code>class="dlg-close"</code></h3>
 	<p class="ital">Return value: 'Close' = 0</p>
 	<textarea rows="10" cols="95" readonly="readonly">
 	
-&lt;div id="myBox" class="dlg" title="Title of dialog box"&gt;
+&lt;div id="myBox" class="dlg" title="Title text"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
@@ -102,11 +110,11 @@ textarea
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'Yes' and 'No' buttons (<code>class="dlg-yes-no"</code>)</h3>
+	<h3>A box with 'Yes' and 'No' buttons, <code>class="dlg-yes-no"</code></h3>
 	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
 	<textarea rows="10" cols="95" readonly="readonly">
 	
-&lt;div id="myBoxYesNo" class="dlg-yes-no" title="Title of dialog box"&gt;
+&lt;div id="myBoxYesNo" class="dlg-yes-no" title="Title text"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
@@ -119,11 +127,11 @@ textarea
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A box with 'OK' and 'Cancel' buttons (<code>class="dlg-ok-cancel"</code>)</h3>
+	<h3>A box with 'OK' and 'Cancel' buttons, <code>class="dlg-ok-cancel"</code></h3>
 	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
 	<textarea rows="10" cols="95" readonly="readonly">
 	
-&lt;div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title of dialog box"&gt;
+&lt;div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title text"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
@@ -136,11 +144,11 @@ textarea
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>A promptbox with 'OK' and 'Cancel' buttons (<code>class="dlg-prompt"</code>)</h3>
+	<h3>A promptbox with 'OK' and 'Cancel' buttons, <code>class="dlg-prompt"</code></h3>
 	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
 	<textarea rows="10" cols="95" readonly="readonly">
 	
-&lt;div id="myPromptBox" class="dlg-prompt" title="Title of dialog box"&gt;
+&lt;div id="myPromptBox" class="dlg-prompt" title="Title text"&gt;
 
 	&lt;p&gt;This is a message&lt;/p&gt;
 	
@@ -149,6 +157,24 @@ textarea
 &lt;button rel="myPromptBox" class="dlg-opener"&gt;Open&lt;/button&gt;
 	</textarea>
 	<p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
+
+	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>Crazy but possible, you can have it all at the same time if you want! Mix and match as you like!</h3>
+	<p><code>class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</code></p>
+	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4</p>
+	<textarea rows="10" cols="95" readonly="readonly">
+	
+&lt;div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel" title="Title text"&gt;
+
+	&lt;p&gt;This is a message&lt;/p&gt;
+	
+&lt;/div&gt;	
+
+&lt;button rel="myCrazyBox" class="dlg-opener"&gt;Open&lt;/button&gt;
+	</textarea>
+	<p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
