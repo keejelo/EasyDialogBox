@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.9
+// ** EasyDialogBox 2.91
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ let EasyDialogBox =
 			
 			// ** Create dialogbox
 			let box = document.createElement('div');
-			box.setAttribute('id', EasyDialogBox.boxId);
+			box.setAttribute('id', this.boxId);
 			box.setAttribute('class','dlg-box dlg-center-vert');
 			dlg.appendChild(box);
 			
@@ -335,7 +335,7 @@ let EasyDialogBox =
 				let xCloseFunc = xCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					
 					// ** Remove eventlistener
 					xCloseDialog.removeEventListener('click', xCloseFunc);
@@ -346,7 +346,7 @@ let EasyDialogBox =
 					if(pBox)
 					{
 						// ** Since user clicked Cancel, delete inputted text value, set to: undefined
-						EasyDialogBox.promptBoxInputValue = undefined;
+						this.promptBoxInputValue = undefined;
 					}
 					
 					// ** Return code 0 (false), since user clicked X (close)
@@ -362,7 +362,7 @@ let EasyDialogBox =
 				let btnCloseFunc = btnCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);				
+					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);				
 
 					// ** Remove eventlistener
 					btnCloseDialog.removeEventListener('click', btnCloseFunc);
@@ -380,7 +380,7 @@ let EasyDialogBox =
 				if (event.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					
 					// ** Remove eventlistener
 					window.removeEventListener('click', winCloseFunc);
@@ -405,7 +405,7 @@ let EasyDialogBox =
 					let btnYesFunc = btnYesDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnYesDialog.removeEventListener('click', btnYesFunc);
@@ -423,7 +423,7 @@ let EasyDialogBox =
 					let btnNoFunc = btnNoDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnNoDialog.removeEventListener('click', btnNoFunc);
@@ -449,7 +449,7 @@ let EasyDialogBox =
 					let btnOkFunc = btnOkDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnOkDialog.removeEventListener('click', btnOkFunc);
@@ -467,7 +467,7 @@ let EasyDialogBox =
 					let btnCancelFunc = btnCancelDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnCancelDialog.removeEventListener('click', btnCancelFunc);
@@ -478,7 +478,7 @@ let EasyDialogBox =
 						if(pBox)
 						{
 							// ** Since user clicked Cancel, delete inputted text value, set to: undefined
-							EasyDialogBox.promptBoxInputValue = undefined;
+							this.promptBoxInputValue = undefined;
 						}
 
 						// ** Return code 4 , since user clicked Cancel
@@ -522,10 +522,10 @@ let EasyDialogBox =
 	destroy : function(boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc)
 	{
 		// ** Remove the newly created box element from DOM
-		if(document.getElementById(EasyDialogBox.boxId))
+		if(document.getElementById(this.boxId))
 		{
-			//document.getElementById(EasyDialogBox.boxId).remove(); // not supported in old browsers, using legacy instead
-			let el = document.getElementById(EasyDialogBox.boxId);
+			//document.getElementById(this.boxId).remove(); // not supported in old browsers, using legacy instead
+			let el = document.getElementById(this.boxId);
 			el.parentNode.removeChild(el);
 		}
 		
@@ -556,7 +556,7 @@ let EasyDialogBox =
 	callback : function(retVal)
 	{
 		// ** Pass values along to outside function so they can be used.
-		CALLBACK_EasyDialogBox(retVal, EasyDialogBox.promptBoxInputValue);
+		CALLBACK_EasyDialogBox(retVal, this.promptBoxInputValue);
 	}	
 };
 //-----------------------------------------------------------------------------------------------------------------
