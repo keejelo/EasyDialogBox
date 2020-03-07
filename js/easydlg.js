@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.81
+// ** EasyDialogBox 2.83
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -190,7 +190,9 @@ let EasyDialogBox =
 				if(!dlg.classList.contains('no-btns'))
 				{
 					// ** If "Yes" button is specified in class
-					if(dlg.classList.contains('dlg-yes') || dlg.classList.contains('dlg-yes-no'))
+					if(dlg.classList.contains('dlg-yes') 
+					|| dlg.classList.contains('dlg-yes-no')
+					)
 					{
 						// ** Create button
 						let yesBtn = document.createElement('button');
@@ -201,7 +203,9 @@ let EasyDialogBox =
 					}
 					
 					// ** If "No" button is specified in class
-					if(dlg.classList.contains('dlg-no') || dlg.classList.contains('dlg-yes-no'))
+					if(dlg.classList.contains('dlg-no')
+					|| dlg.classList.contains('dlg-yes-no')
+					)
 					{
 						// ** Create button
 						let noBtn = document.createElement('button');
@@ -212,7 +216,9 @@ let EasyDialogBox =
 					}
 					
 					// ** If "OK" button is specified in class
-					if(dlg.classList.contains('dlg-ok') || dlg.classList.contains('dlg-ok-cancel'))
+					if(dlg.classList.contains('dlg-ok')
+					|| dlg.classList.contains('dlg-ok-cancel')
+					)
 					{
 						// ** Create button
 						let okBtn = document.createElement('button');
@@ -223,7 +229,9 @@ let EasyDialogBox =
 					}
 					
 					// ** If "Cancel" button is specified in class
-					if(dlg.classList.contains('dlg-cancel') || dlg.classList.contains('dlg-ok-cancel'))
+					if(dlg.classList.contains('dlg-cancel')
+					|| dlg.classList.contains('dlg-ok-cancel')
+					)
 					{
 						// ** Create button
 						let cancelBtn = document.createElement('button');
@@ -233,27 +241,18 @@ let EasyDialogBox =
 						footer.appendChild(cancelBtn);
 					}				
 		
-					// ** If no special button-rules is specified in class, then just create a "Close" button
-					if(!dlg.classList.contains('dlg-yes') 
-					&& !dlg.classList.contains('dlg-no')
-					&& !dlg.classList.contains('dlg-yes-no') 
-					&& !dlg.classList.contains('dlg-ok') 
-					&& !dlg.classList.contains('dlg-cancel')
-					&& !dlg.classList.contains('dlg-ok-cancel')
+					// ** If "dlg" or "Close" button is specified in class
+					if(dlg.classList.contains('dlg') 
+					|| dlg.classList.contains('dlg-close')
 					)
 					{
-						if(dlg.classList.contains('dlg') 
-						|| dlg.classList.contains('dlg-close')
-						)
-						{
-							// ** Create button
-							let closeBtn = document.createElement('button');
-							closeBtn.setAttribute('class','dlg-close-btn');
-							let closeBtnText = document.createTextNode(this.closeButtonText);
-							closeBtn.appendChild(closeBtnText);
-							footer.appendChild(closeBtn);
-						}
-					}				
+						// ** Create button
+						let closeBtn = document.createElement('button');
+						closeBtn.setAttribute('class','dlg-close-btn');
+						let closeBtnText = document.createTextNode(this.closeButtonText);
+						closeBtn.appendChild(closeBtnText);
+						footer.appendChild(closeBtn);
+					}
 				}
 			}
 			// ** END: Create footer and buttons
