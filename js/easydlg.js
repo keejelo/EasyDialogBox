@@ -121,7 +121,8 @@ let EasyDialogBox =
 		let orgBodyPaddingRight = undefined; 
 		
 		// ** Check if a dialogbox is already created, we dont want more than one at once
-		let dlg_exist = document.getElementById(EasyDialogBox.boxId);
+		//let dlg_exist = document.getElementById(EasyDialogBox.boxId);
+		let dlg_exist = document.getElementById(this.boxId);
 
 		// ** Get the id from function parameter, we want to create a dialog from the element containing this id
 		let dlg = document.getElementById(id);
@@ -507,7 +508,11 @@ let EasyDialogBox =
 			// ** END: Create click-handlers
 			//---------------------------------------------------------------------
 		}
-		else
+		else if(dlg_exist)
+		{
+			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo element was created.');
+		}				
+		else if(!dlg)
 		{
 			console.log('Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
 		}		
@@ -566,4 +571,3 @@ window.addEventListener('load', EasyDialogBox.init);
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Load-handler
 //-----------------------------------------------------------------------------------------------------------------
-
