@@ -124,8 +124,9 @@ let EasyDialogBox =
 		{	
 			// ** Get title and store it
 			let orgTitleText = dlg.getAttribute('title');
-			dlg.setAttribute('title',''); // temporary remove title value, or else it will show up on hovering all over dialogbox
-			
+			dlg.setAttribute('title',''); // temporary remove title value, or else it will
+			                              // show up on hovering all over dialogbox
+
 			// ** Get message content and store it
 			let orgMessage = dlg.innerHTML;
 			dlg.innerHTML = ''; // temporary remove html 
