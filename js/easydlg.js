@@ -88,7 +88,8 @@ let EasyDialogBox =
 	// ** Variable that stores current input text in promptbox, default = undefined
 	promptBoxInputValue : undefined, 
 	
-	// ** Create id for dialogbox, hopefully it wont clash with any other html elements id
+	// ** Create id for dialogbox, hopefully it wont clash with any other html elements id.
+	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
 
 	// ** Initialize
@@ -119,14 +120,6 @@ let EasyDialogBox =
 		// ** Variable that stores the original padding-right value of body element
 		let orgBodyPaddingRight = undefined; 
 		
-		/*
-		// ** If we wanted to create an unique id for each dialogbox we could use this:
-		// ** Get time, create timestamp
-		let d = new Date();
-		let n = d.getTime();
-		let boxId = 'EasyDialogBoxID_' + n;
-		*/
-
 		// ** Check if a dialogbox is already created, we dont want more than one at once
 		let dlg_exist = document.getElementById(EasyDialogBox.boxId);
 
