@@ -123,7 +123,7 @@ let EasyDialogBox =
 		// ** Check if a dialogbox is already created, we dont want more than one at once
 		let dlg_exist = document.getElementById(EasyDialogBox.boxId);
 
-		// ** Get the id from function parameter, we want to create a dialog with the element containing this id
+		// ** Get the id from function parameter, we want to create a dialog from the element containing this id
 		let dlg = document.getElementById(id);
 		
 		// ** Check if element with the id exist, and that no other dialog exist at this moment
