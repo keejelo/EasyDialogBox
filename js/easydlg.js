@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.83
+// ** EasyDialogBox 2.84
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -36,14 +36,23 @@ function CALLBACK_EasyDialogBox(retVal, strPromptBox)
 		{
 			console.log('User clicked "OK" button. Return value = ' + retVal);
 			
-			if(strPromptBox !== null)
+			/*
+			// ** Check if any text was typed into input
+			if(typeof strPromptBox !== 'undefined')
 			{
 				console.log('Promptbox input value = ' + strPromptBox);
 			}
+			*/
 		}
 		else if(retVal === 4)
 		{
 			console.log('User clicked "Cancel" button. Return value = ' + retVal);
+		}
+		
+		// ** Check if any text was typed into input
+		if(typeof strPromptBox !== 'undefined')
+		{
+			console.log('Promptbox input value = ' + strPromptBox);
 		}		
 	}
 	
@@ -76,8 +85,8 @@ let EasyDialogBox =
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
 	
-	// ** Variable that stores current input text in promptbox
-	promptBoxInputValue : null, 
+	// ** Variable that stores current input text in promptbox, default = undefined
+	promptBoxInputValue : undefined, 
 
 	// ** Initialize
 	init : function()
@@ -124,8 +133,7 @@ let EasyDialogBox =
 		{	
 			// ** Get title and store it
 			let orgTitleText = dlg.getAttribute('title');
-			dlg.setAttribute('title',''); // temporary remove title value, or else it will
-			                              // show up on hovering all over dialogbox
+			dlg.setAttribute('title',''); // temporary remove title value, prevents showing up on hovering over dialogbox
 
 			// ** Get message content and store it
 			let orgMessage = dlg.innerHTML;
@@ -172,8 +180,8 @@ let EasyDialogBox =
 				input.setAttribute('value', '');
 				div.appendChild(input);
 				
-				// ** Remove earlier entered text 
-				this.promptBoxInputValue = null;
+				// ** Remove earlier entered text, set to: undefined
+				this.promptBoxInputValue = undefined;
 
 				// ** Add buttons if not already stated in class
 				dlg.classList.add('dlg-ok-cancel');
@@ -283,13 +291,16 @@ let EasyDialogBox =
 				dialogbox.classList.add('dlg-center-vert');
 			}
 			
+			//---------------------------------------------------------------------
+			// ** Creating subtitute for scrollbar
+			//---------------------------------------------------------------------
 			// ** Get body element
 			let body = document.getElementsByTagName('body')[0];
 
 			// ** Store the original padding-right value
 			orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 			
-			// ** Convert from string to integer (remove 'px' postfix return value as integer)
+			// ** Convert from string to integer (remove 'px' postfix and return value as integer)
 			orgBodyPaddingRight = parseInt(orgBodyPaddingRight);
 			
 			// ** Get width of body before removing scrollbar
@@ -307,9 +318,12 @@ let EasyDialogBox =
 			// ** Add both padding-right values, if conditions are true
 			if(orgBodyPaddingRight !== null
 			|| orgBodyPaddingRight !== undefined
-			|| orgBodyPaddingRight !== 0
-			|| orgBodyPaddingRight !== false
 			|| orgBodyPaddingRight !== NaN
+			|| typeof orgBodyPaddingRight !== 'null'
+			|| typeof orgBodyPaddingRight !== 'undefined'
+			|| typeof orgBodyPaddingRight !== 'NaN'
+			|| orgBodyPaddingRight !== 0
+			|| orgBodyPaddingRight !== false			
 			|| orgBodyPaddingRight !== ''
 			)
 			{
@@ -319,7 +333,9 @@ let EasyDialogBox =
 			// ** Apply width-difference as padding-right to body, subtitute for scrollbar,
 			// ** can prevent contentshift if content is centered when scrollbar disappears.
 			body.setAttribute('style','padding-right:' + w3 + 'px;');		
-			
+			//---------------------------------------------------------------------
+			// ** END: Creating subtitute for scrollbar
+			//---------------------------------------------------------------------
 			
 			//---------------------------------------------------------------------
 			// ** Create click-handlers
@@ -342,8 +358,8 @@ let EasyDialogBox =
 					let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 					if(pBox)
 					{
-						// ** Since user clicked Cancel, delete inputted text value, set to: null
-						EasyDialogBox.promptBoxInputValue = null;
+						// ** Since user clicked Cancel, delete inputted text value, set to: undefined
+						EasyDialogBox.promptBoxInputValue = undefined;
 					}
 					
 					// ** Return code 0 (false), since user clicked X (close)
@@ -477,8 +493,8 @@ let EasyDialogBox =
 						let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 						if(pBox)
 						{
-							// ** Since user clicked Cancel, delete inputted text value, set to: null
-							EasyDialogBox.promptBoxInputValue = null;
+							// ** Since user clicked Cancel, delete inputted text value, set to: undefined
+							EasyDialogBox.promptBoxInputValue = undefined;
 						}
 
 						// ** Return code 4 , since user clicked Cancel
