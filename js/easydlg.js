@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.91
+// ** EasyDialogBox 2.93
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ let EasyDialogBox =
 	// ** Variable that stores current input text in promptbox, default = undefined
 	promptBoxInputValue : undefined, 
 	
-	// ** Create id for dialogbox, hopefully it wont clash with any other html elements id.
+	// ** Create id for dialogbox, hopefully it won't clash with any other html elements id.
 	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
 
