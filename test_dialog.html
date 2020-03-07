@@ -16,15 +16,28 @@ code
 	font-weight:bold;
 	color:#0000ff;
 }
-textarea
+pre
 {
-	white-space:pre;
-	overflow-wrap:normal;
+	max-width:940px;	
+}
+.codeview
+{
+	font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace,sans-serif !important;
+	line-height:normal;
+	font-size:15px;
+	display:inline-block;	
+	background-color:#fafafa; /* eff0f1 d5e4ff fafafa ffffe1 f4f4f4 d9e2ff f1f5ff d0e7ff e1f0ff eff7ff f1f8ff deeefb  ebf5fb e6f4fd ebf5fb eff0f1 e9fbe9 */				
+	border:1px #51a451 solid; /* 337ab7 aaa dfefff c7e3ff aac6db d0e1eb 52a6ea ffeb3b 4caf50 51a451 52e052 */
+	border-left-width:6px;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:0;
+	margin-bottom:10px;
+		
+	width:100%;
 	overflow:scroll;
-	background-color:#eff0f1;
-	color:#800000;
-	font-size:14px;
-	font-family:monospace;
 }
 .ital
 {
@@ -34,17 +47,42 @@ textarea
 {
 	font-weight:bold;
 }
+b
+{
+	font-weight:normal;
+}
 .tag
 {
 	color:#0000ff;
 }
 .att
 {
-	color:#cc0000;
+	color:#dd0000;
 }
 .val
 {
-	color:#cccc00;
+	color:#9901e0;
+	font-weight:bold;
+}
+.green
+{
+	color:#008000;
+}
+.blue
+{
+	color:#0000ff;
+}
+.purple
+{
+	color:#9901e0;
+}
+.red
+{
+	color:#ff0000;
+}
+.pink
+{
+	color:#ff00ff;
 }
 </style>
 <link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
@@ -81,12 +119,14 @@ textarea
 	<h3>HOW TO ?</h3>
 	
 	<h3>Include CSS and Javascript files between <code>&lt;head&gt; &lt;/head&gt;</code></h3>
-	<textarea rows="5" cols="95" readonly="readonly">
+	<div>
+		<pre class="codeview">
 	
-&lt;link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" /&gt;
+<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">"text/css"</b> <b class="att">media</b>=<b class="val">"screen"</b> <b class="att">rel</b>=<b class="val">"stylesheet"</b> <b class="att">href</b>=<b class="val">"css/easydlg.css"</b> <b class="tag">/&gt;</b>
 
-&lt;script src="js/easydlg.js"&gt;&lt;/script&gt;
-	</textarea>
+<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
+		</pre>
+	</div>
 	
 	<h3>Then it can be used like the examples below.</h3>
 	
@@ -95,16 +135,18 @@ textarea
 	
 	<h3>The default box, with 'Close' button, <code>class="dlg"</code> or <code>class="dlg-close"</code></h3>
 	<p class="ital">Return value: 'Close' = 0</p>
-	<textarea rows="10" cols="95" readonly="readonly">
+	<div>
+		<pre class="codeview">
 	
-&lt;div id="myBox" class="dlg" title="Title text"&gt;
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
-	&lt;p&gt;This is a message&lt;/p&gt;
+	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
-&lt;/div&gt;
+<b class="tag">&lt;/div&gt;</b>
 	
-&lt;button rel="myBox" class="dlg-opener"&gt;Open&lt;/button&gt;
-	</textarea>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+		</pre>
+	</div>
 	<p><button rel="myBox" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
@@ -112,16 +154,18 @@ textarea
 	
 	<h3>A box with 'Yes' and 'No' buttons, <code>class="dlg-yes-no"</code></h3>
 	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
-	<textarea rows="10" cols="95" readonly="readonly">
-	
-&lt;div id="myBoxYesNo" class="dlg-yes-no" title="Title text"&gt;
+	<div>
+		<pre class="codeview">
 
-	&lt;p&gt;This is a message&lt;/p&gt;
-	
-&lt;/div&gt;
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
-&lt;button rel="myBoxYesNo" class="dlg-opener"&gt;Open&lt;/button&gt;
-	</textarea>
+	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+	
+<b class="tag">&lt;/div&gt;</b>
+	
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+		</pre>
+	</div>
 	<p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
@@ -129,16 +173,18 @@ textarea
 	
 	<h3>A box with 'OK' and 'Cancel' buttons, <code>class="dlg-ok-cancel"</code></h3>
 	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
-	<textarea rows="10" cols="95" readonly="readonly">
-	
-&lt;div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title text"&gt;
+	<div>
+		<pre class="codeview">
+		
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
-	&lt;p&gt;This is a message&lt;/p&gt;
+	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
-&lt;/div&gt;	
-
-&lt;button rel="myBoxOkCancel" class="dlg-opener"&gt;Open&lt;/button&gt;
-	</textarea>
+<b class="tag">&lt;/div&gt;</b>
+	
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+		</pre>
+	</div>
 	<p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
@@ -146,16 +192,18 @@ textarea
 	
 	<h3>A promptbox with 'OK' and 'Cancel' buttons, <code>class="dlg-prompt"</code></h3>
 	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
-	<textarea rows="10" cols="95" readonly="readonly">
-	
-&lt;div id="myPromptBox" class="dlg-prompt" title="Title text"&gt;
+	<div>
+		<pre class="codeview">
 
-	&lt;p&gt;This is a message&lt;/p&gt;
-	
-&lt;/div&gt;	
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
-&lt;button rel="myPromptBox" class="dlg-opener"&gt;Open&lt;/button&gt;
-	</textarea>
+	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+	
+<b class="tag">&lt;/div&gt;</b>
+	
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+		</pre>
+	</div>
 	<p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
 
 	<p>&nbsp;</p>
@@ -164,16 +212,18 @@ textarea
 	<h3>Crazy but possible, you can have it all at the same time if you want! Mix and match as you like!</h3>
 	<p><code>class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</code></p>
 	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4</p>
-	<textarea rows="10" cols="95" readonly="readonly">
-	
-&lt;div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel" title="Title text"&gt;
+	<div>
+		<pre class="codeview">
 
-	&lt;p&gt;This is a message&lt;/p&gt;
-	
-&lt;/div&gt;	
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
-&lt;button rel="myCrazyBox" class="dlg-opener"&gt;Open&lt;/button&gt;
-	</textarea>
+	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+	
+<b class="tag">&lt;/div&gt;</b>
+	
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+		</pre>
+	</div>
 	<p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
