@@ -93,7 +93,8 @@ let EasyDialogBox =
 				EasyDialogBox.show(this.getAttribute('rel'));
 				event.preventDefault(); // if used in an anchor-link with href="#" we prevent scrolling to top of page
 				this.blur(); // remove focus from button
-				this.tabIndex = -1; // remove from tabindex, prevents opening more boxes if user tabs to element and presses spacebar or enter. Not ideal solution, breaks accessibility.
+				this.tabIndex = -1; // remove from tabindex, prevents opening more boxes if user tabs to element and
+				                    // presses spacebar or enter. Not ideal solution, breaks accessibility.
 			});
 		}	
 	},
