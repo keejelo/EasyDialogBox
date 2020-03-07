@@ -6,7 +6,7 @@ Lightweight. Responsive. Plain vanilla Javascript.
 
 Test a live example: https://keejelo.github.io/EasyDialogBox/test_dialog.html
 
-
+--------------------------------------------------------------------------------
 
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
 
