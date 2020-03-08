@@ -8,8 +8,8 @@
 .dlg-ok-cancel,
 .dlg-prompt
 {
-	padding:0; /* Location of the box */
 	margin:0;
+	padding:0; /* Location of the box */
 	display:none; /* Hidden by default */
 	position:fixed; /* Stay in place */
 	left:0;
@@ -29,12 +29,12 @@
 	/*padding:1px;*/
 	max-width:600px;
 	overflow:auto; /* Enable scroll if needed */
-	width:98%; /*96%*/
+	width:98%; /* 96% */
+	background-color:#fefefe;
+	/* border:1px solid #666; /* border */
+	/* border-radius:6px; /* rounded corners */	
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:0.9em;	
-	background-color:#fefefe;	
-	/* border-radius:6px; /* rounded corners */
-	/* border:1px solid #666; */
+	font-size:0.9em;
 }
 
 /* Dialog heading */
@@ -50,8 +50,6 @@
 	overflow:hidden;
 	text-overflow:ellipsis;
 	line-height:30px;
-	border-top-left-radius:inherit;
-	border-top-right-radius:inherit;
 }
 
 /* Dialog title */
@@ -119,6 +117,8 @@
 	background-color:#f2f2f2;
 	border-top:1px solid #e6e6e6;
 	text-align:right;
+	border-bottom-left-radius:inherit;
+	border-bottom-right-radius:inherit;	
 }
 
 /* The Close Button */
@@ -162,4 +162,5 @@
 	-ms-transform:translate(-50%, -50%);
 	transform:translate(-50%, -50%);
 }
+
 
