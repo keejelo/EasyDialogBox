@@ -26,15 +26,15 @@
 .dlg-box
 {	
 	margin:0 auto;
-	/*padding:1px;*/
+	padding:0;
 	max-width:600px;
 	overflow:auto; /* Enable scroll if needed */
 	width:98%; /* 96% */
 	background-color:#fefefe;
-	/* border:1px solid #666; /* border */
-	/* border-radius:6px; /* rounded corners */	
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:0.9em;
+	/* border-radius:6px; /* rounded corners */
+	/*border:1px solid #666; /* border */
 }
 
 /* Dialog heading */
@@ -50,6 +50,7 @@
 	overflow:hidden;
 	text-overflow:ellipsis;
 	line-height:30px;
+	border:none;
 }
 
 /* Dialog title */
