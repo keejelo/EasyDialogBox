@@ -36,6 +36,7 @@ button
 	max-width:940px;
 	padding:10px;
 	overflow:scroll;
+	white-space:pre;
 	font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace,sans-serif !important;
 	font-size:inherit;
 	line-height:normal;
@@ -103,13 +104,10 @@ b
 	<h3>HOW TO ?</h3>
 	
 	<h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
-	<div>
-		<pre class="codeview">
-	
+	<div class="codeview">
 <b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">"text/css"</b> <b class="att">media</b>=<b class="val">"screen"</b> <b class="att">rel</b>=<b class="val">"stylesheet"</b> <b class="att">href</b>=<b class="val">"css/easydlg.css"</b> <b class="tag">/&gt;</b>
 
 <b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
-		</pre>
 	</div>
 	
 	<h3>Then it can be used like the examples below.</h3>
@@ -119,9 +117,7 @@ b
 	
 	<h3>The default box, with 'Close' button, <code class="val">dlg</code> or <code class="val">dlg-close</code></h3>
 	<p class="ital">Return value: 'Close' = 0</p>
-	<div>
-		<pre class="codeview">
-	
+	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
@@ -129,7 +125,6 @@ b
 <b class="tag">&lt;/div&gt;</b>
 	
 <b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-		</pre>
 	</div>
 	<p><button rel="myBox" class="dlg-opener">Open</button></p>
 	
@@ -138,9 +133,7 @@ b
 	
 	<h3>A box with 'Yes' and 'No' buttons, <code class="val">dlg-yes-no</code></h3>
 	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
-	<div>
-		<pre class="codeview">
-
+	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
@@ -148,7 +141,6 @@ b
 <b class="tag">&lt;/div&gt;</b>
 	
 <b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-		</pre>
 	</div>
 	<p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
 	
@@ -157,9 +149,7 @@ b
 	
 	<h3>A box with 'OK' and 'Cancel' buttons, <code class="val">dlg-ok-cancel</code></h3>
 	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
-	<div>
-		<pre class="codeview">
-		
+	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
@@ -167,7 +157,6 @@ b
 <b class="tag">&lt;/div&gt;</b>
 	
 <b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-		</pre>
 	</div>
 	<p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
 	
@@ -176,9 +165,7 @@ b
 	
 	<h3>A promptbox with 'OK' and 'Cancel' buttons, <code class="val">dlg-prompt</code></h3>
 	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
-	<div>
-		<pre class="codeview">
-
+	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
@@ -186,7 +173,6 @@ b
 <b class="tag">&lt;/div&gt;</b>
 	
 <b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-		</pre>
 	</div>
 	<p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
 
@@ -196,9 +182,7 @@ b
 	<h3>Crazy but possible! You can have it all at the same time if you want! Mix and match as you like!</h3>
 	<p><code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel</code></p>
 	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4</p>
-	<div>
-		<pre class="codeview">
-
+	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
@@ -206,7 +190,6 @@ b
 <b class="tag">&lt;/div&gt;</b>
 	
 <b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-		</pre>
 	</div>
 	<p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
 	
