@@ -89,7 +89,7 @@ let EasyDialogBox =
 	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
 	
-	// ** Name of box, can be used to indicate custom action in CALLBACK function
+	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
 	strAction : undefined,
 
 	// ** Initialize
