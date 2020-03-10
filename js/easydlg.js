@@ -6,7 +6,7 @@
 
 
 //-----------------------------------------------------------------------------------------------------------------
-// ** CALLBACK_EasyDialogBox (return values sent from buttons and input in box, use them for further processing)
+// ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
 function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 {
@@ -19,7 +19,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	
 	// ** Variable "strPromptBox" = value from input
 	
-	// ** Variable "strAction" = value from name value (can be used to indicate custom action to execute)	
+	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
 	// ** Example
 	if(strAction === 'myCustomActionInCallbackFunc')
 	{
@@ -28,7 +28,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	}
 	
 
-	// ** Check returned value
+	// ** Check returned value from button click
 	if(typeof retVal === 'number')
 	{
 		if(retVal === 0)
