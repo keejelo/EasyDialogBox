@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.93
+// ** EasyDialogBox 2.94
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** CALLBACK_EasyDialogBox (return values sent from buttons and input in box, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
-function CALLBACK_EasyDialogBox(retVal, strPromptBox)
+function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 {
 	// ** Variable "retVal" values:
 	//  0 = "CloseX", "Close" button or outside box was clicked
@@ -16,6 +16,17 @@ function CALLBACK_EasyDialogBox(retVal, strPromptBox)
 	//  2 = "No" button was clicked
 	//  3 = "OK" button was clicked
 	//  4 = "Cancel" was button clicked
+	
+	// ** Variable "strPromptBox" = value from input
+	
+	// ** Variable "strAction" = value from name value (can be used to indicate custom action to execute)	
+	// ** Example
+	if(strAction === 'myCustomActionInCallbackFunc')
+	{
+		// do something ..
+		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
+	}
+	
 
 	// ** Check returned value
 	if(typeof retVal === 'number')
@@ -78,6 +89,8 @@ function CALLBACK_EasyDialogBox(retVal, strPromptBox)
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox =
 {
+	that : this,
+	
 	// ** (Optional) Custom your own text for the buttons.
 	closeButtonText  : 'Close',   // Close
 	yesButtonText    : 'Yes',     // Yes
@@ -86,11 +99,14 @@ let EasyDialogBox =
 	cancelButtonText : 'Cancel',  // Cancel
 	
 	// ** Variable that stores current input text in promptbox, default = undefined
-	promptBoxInputValue : undefined, 
+	promptBoxInputValue : undefined,
 	
 	// ** Create id for dialogbox, hopefully it won't clash with any other html elements id.
 	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
+	
+	// ** Name of box, can be used to indicate custom action in CALLBACK function
+	strAction : undefined,
 
 	// ** Initialize
 	init : function()
@@ -130,6 +146,10 @@ let EasyDialogBox =
 		// ** Check if element with the id exist, and that no other dialog exist at this moment
 		if(dlg && !dlg_exist)
 		{	
+			// ** Get value from name attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
+			this.strAction = dlg.getAttribute('name');
+			//console.log(this.strAction);
+		
 			// ** Get title and store it
 			let orgTitleText = dlg.getAttribute('title');
 			dlg.setAttribute('title',''); // temporary remove title value, prevents showing up on hovering over dialogbox
@@ -335,7 +355,7 @@ let EasyDialogBox =
 				let xCloseFunc = xCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					
 					// ** Remove eventlistener
 					xCloseDialog.removeEventListener('click', xCloseFunc);
@@ -348,9 +368,9 @@ let EasyDialogBox =
 						// ** Since user clicked Cancel, delete inputted text value, set to: undefined
 						this.promptBoxInputValue = undefined;
 					}
-					
+										
 					// ** Return code 0 (false), since user clicked X (close)
-					EasyDialogBox.callback(0);
+					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				});
 			}
 			// ** END: X button click handlers
@@ -362,14 +382,14 @@ let EasyDialogBox =
 				let btnCloseFunc = btnCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);				
+					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);				
 
 					// ** Remove eventlistener
 					btnCloseDialog.removeEventListener('click', btnCloseFunc);
 					btnCloseFunc = null;
 					
 					// ** Return code 0 , since we user clicked Close
-					EasyDialogBox.callback(0);
+					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				});
 			}
 			// ** END: CLOSE button click handler
@@ -380,14 +400,14 @@ let EasyDialogBox =
 				if (event.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 					
 					// ** Remove eventlistener
 					window.removeEventListener('click', winCloseFunc);
 					winCloseFunc = null;
 					
 					// ** Return code 0 (false), since we just want to exit
-					EasyDialogBox.callback(0);
+					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				}			
 			});
 			// ** END: window click outside box click handler		
@@ -405,14 +425,14 @@ let EasyDialogBox =
 					let btnYesFunc = btnYesDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnYesDialog.removeEventListener('click', btnYesFunc);
 						btnYesFunc = null;
 						
 						// ** Return code 1 , since user clicked YES
-						EasyDialogBox.callback(1);
+						EasyDialogBox.callback(1, EasyDialogBox.strAction);
 					});
 				}
 				
@@ -423,14 +443,14 @@ let EasyDialogBox =
 					let btnNoFunc = btnNoDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnNoDialog.removeEventListener('click', btnNoFunc);
 						btnNoFunc = null;
 						
 						// ** Return code 2 , since user clicked NO
-						EasyDialogBox.callback(2);
+						EasyDialogBox.callback(2, EasyDialogBox.strAction);
 					});
 				}			
 			}
@@ -449,14 +469,14 @@ let EasyDialogBox =
 					let btnOkFunc = btnOkDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnOkDialog.removeEventListener('click', btnOkFunc);
 						btnOkFunc = null;
 
 						// ** Return code 3 , since user clicked OK
-						EasyDialogBox.callback(3);
+						EasyDialogBox.callback(3, EasyDialogBox.strAction);
 					});
 				}
 				
@@ -467,7 +487,7 @@ let EasyDialogBox =
 					let btnCancelFunc = btnCancelDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(this.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(EasyDialogBox.boxId, id, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
 						
 						// ** Remove eventlistener
 						btnCancelDialog.removeEventListener('click', btnCancelFunc);
@@ -482,7 +502,7 @@ let EasyDialogBox =
 						}
 
 						// ** Return code 4 , since user clicked Cancel
-						EasyDialogBox.callback(4);
+						EasyDialogBox.callback(4, EasyDialogBox.strAction);
 					});
 				}
 			}
@@ -500,7 +520,7 @@ let EasyDialogBox =
 				pBoxChangeFunc = pBox.addEventListener('change', function()
 				{
 					EasyDialogBox.promptBoxInputValue = pBox.value.trim();
-				});			
+				});
 			}
 			// ** END: When the user types in promptbox
 			
@@ -553,10 +573,10 @@ let EasyDialogBox =
 	},
 	
 	// ** Callback function to pass along return values 
-	callback : function(retVal)
+	callback : function(retVal, strAction)
 	{
 		// ** Pass values along to outside function so they can be used.
-		CALLBACK_EasyDialogBox(retVal, this.promptBoxInputValue);
+		CALLBACK_EasyDialogBox(retVal, strAction, this.promptBoxInputValue);
 	}	
 };
 //-----------------------------------------------------------------------------------------------------------------
