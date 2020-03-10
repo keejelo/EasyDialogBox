@@ -110,7 +110,7 @@ let EasyDialogBox =
 		}	
 	},
 	
-	// ** Create dialog from scratch, creates a new dialogbox directly without pre-created HTML
+	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, can be used in javascript to create a dialog on the fly.
 	create : function(strTitle, strMessage, boxType, strAction)
 	{
 		
