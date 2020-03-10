@@ -19,6 +19,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	
 	// ** Variable "strPromptBox" = value from input
 	
+	
 	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
 	// ** Example (use it in combination with "retVal" values to execute custom functions etc.)
 	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
