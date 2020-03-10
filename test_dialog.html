@@ -75,23 +75,23 @@ b
 </head>
 <body>
 
-	<div id="myBox" class="dlg" title="Title text">
+	<div id="myBox" class="dlg" title="Title text" name="myCustomActionInCallbackFunc">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxYesNo" class="dlg-yes-no" title="Title text">
+	<div id="myBoxYesNo" class="dlg-yes-no" title="Title text" name="">
 		<p>This is a message</p>
 	</div>
 	
-	<div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title text">
+	<div id="myBoxOkCancel" class="dlg-ok-cancel" title="Title text" name="">
 		<p>This is a message</p>
 	</div>	
 	
-	<div id="myPromptBox" class="dlg-prompt" title="Title text">
+	<div id="myPromptBox" class="dlg-prompt" title="Title text" name="">
 		<p>This is a message</p>
 	</div>	
 	
-	<div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel" title="Title text">
+	<div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel" title="Title text" name="">
 		<p>This is a message</p>
 	</div>		
 	
@@ -116,9 +116,9 @@ b
 	<hr />
 	
 	<h3>The default box, with 'Close' button, <code class="val">dlg</code> or <code class="val">dlg-close</code></h3>
-	<p class="ital">Return value: 'Close' = 0</p>
+	<p class="ital">Return value: 'Close' = 0 [, name = string]</p>
 	<div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;myCustomActionInCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
@@ -132,9 +132,9 @@ b
 	<hr />
 	
 	<h3>A box with 'Yes' and 'No' buttons, <code class="val">dlg-yes-no</code></h3>
-	<p class="ital">Return value: 'Yes' = 1, 'No' = 2</p>
+	<p class="ital">Return value: 'Yes' = 1, 'No' = 2 [, name = string]</p>
 	<div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;&quot;</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
@@ -148,9 +148,9 @@ b
 	<hr />
 	
 	<h3>A box with 'OK' and 'Cancel' buttons, <code class="val">dlg-ok-cancel</code></h3>
-	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4</p>
+	<p class="ital">Return value: 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
 	<div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;&quot;</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
@@ -164,9 +164,9 @@ b
 	<hr />
 	
 	<h3>A promptbox with 'OK' and 'Cancel' buttons, <code class="val">dlg-prompt</code></h3>
-	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4</p>
+	<p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
 	<div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;&quot;</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
@@ -181,9 +181,9 @@ b
 	
 	<h3>Crazy but possible! You can have it all at the same time if you want! Mix and match as you like!</h3>
 	<p><code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel</code></p>
-	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4</p>
+	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
 	<div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;&quot;</b><b class="tag">&gt;</b>
 
 	<b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
 	
@@ -196,11 +196,25 @@ b
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<hr />
-	
+		
 	<div>
 		<h3>Attribute values for the opening elements, such as a <code class="tag">&lt;button&gt;</code></h3>
 		<p>The <code class="att">rel</code> attribute value must contain the <code class="att">id</code> of the box that the <code class="tag">&lt;button&gt;</code> is going to open.</p>
 		<p>Add class <code class="val">dlg-opener</code> to make the <code class="tag">&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+	</div>
+	
+	<p>&nbsp;</p>
+	
+	<div>
+		<h3>Return values</h3>
+		<p>These values are passed on to the CALLBACK function, and can be used there for further processing.</p>
+	</div>
+	
+	<p>&nbsp;</p>
+	
+	<div>
+		<h3>Optional attribute: 'name'</h3>
+		<p>Returns this value to use in CALLBACK function, can be used to indicate custom action in function.</p>	
 	</div>
 	
 </body>
