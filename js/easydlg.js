@@ -110,6 +110,12 @@ let EasyDialogBox =
 		}	
 	},
 	
+	// ** Create dialog from scratch, creates a new dialogbox directly without pre-created HTML
+	create : function(strTitle, strMessage, boxType, strAction)
+	{
+		
+	},
+	
 	// ** Show the dialog box
 	show : function(id)
 	{
