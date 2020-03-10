@@ -60,7 +60,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	}
 	
 	
-	// ** Combine all of the above to do your custom stuff ..
+	// ..combine all of the above to do your custom stuff..
 	
 	// ..blah..
 	
