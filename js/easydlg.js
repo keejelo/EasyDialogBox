@@ -56,7 +56,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	// ** Example
 	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
 	{
-		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
+		console.log('string "myCustomActionInCallbackFunc" recieved in CALLBACK function');
 	}
 	
 	
