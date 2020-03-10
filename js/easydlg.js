@@ -89,8 +89,6 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox =
 {
-	that : this,
-	
 	// ** (Optional) Custom your own text for the buttons.
 	closeButtonText  : 'Close',   // Close
 	yesButtonText    : 'Yes',     // Yes
