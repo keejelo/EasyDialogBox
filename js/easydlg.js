@@ -59,7 +59,8 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
 	}
 	
-	// ..do stuff here..blah..blah..
+	
+	// ** Combine all of the above to do your custom stuff ..
 	
 	// ..blah..
 	
