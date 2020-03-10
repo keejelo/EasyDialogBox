@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.94
+// ** EasyDialogBox 2.941
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	
 	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
 	// ** Example
-	if(strAction === 'myCustomActionInCallbackFunc')
+	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
 	{
 		// do something ..
 		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
