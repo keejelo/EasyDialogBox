@@ -16,21 +16,9 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	//  2 = "No" button was clicked
 	//  3 = "OK" button was clicked
 	//  4 = "Cancel" was button clicked
-	
-	// ** Variable "strPromptBox" = value from input
-	
-	
-	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
-	// ** Example (use it in combination with "retVal" values to execute custom functions etc.)
-	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
-	{
-		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
-		
-		// do something ..		
-	}
-	
 
 	// ** Check returned value from button click
+	// ** Example
 	if(typeof retVal === 'number')
 	{
 		if(retVal === 0)
@@ -48,37 +36,35 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 		else if(retVal === 3)
 		{
 			console.log('User clicked "OK" button. Return value = ' + retVal);
-			
-			/*
-			// ** Check if any text was typed into input
-			if(typeof strPromptBox !== 'undefined')
-			{
-				console.log('Promptbox input value = ' + strPromptBox);
-			}
-			*/
 		}
 		else if(retVal === 4)
 		{
 			console.log('User clicked "Cancel" button. Return value = ' + retVal);
 		}
-		
-		// ** Check if any text was typed into input
-		if(typeof strPromptBox !== 'undefined')
-		{
-			console.log('Promptbox input value = ' + strPromptBox);
-		}		
 	}
 	
 	
-	// ** Run your custom function(s) here using the return value "retVal" 
-	// ** and the variable "strPromptBox"
+	// ** Variable "strPromptBox" = value from input
+	// ** Example
+	if(typeof strPromptBox !== 'undefined') // Check if any text was typed into input
+	{
+		console.log('Promptbox input value = ' + strPromptBox);
+	}			
+	
+	
+	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
+	// ** Example (use it in combination with "retVal" values to execute custom functions etc.)
+	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
+	{
+		console.log('"myCustomActionInCallbackFunc" recieved in CALLBACK function');
+	}
+	
+	
+	// ** Run your custom function(s) here using the return values "retVal", "strPromptBox" and the "strAction" to do stuff ..
 	
 	// ..do stuff here..blah..blah..
 	
-	// CustomFunctionHere();
-	
 	// ..blah..
-	
 	
 };
 //-----------------------------------------------------------------------------------------------------------------
