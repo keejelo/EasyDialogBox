@@ -62,6 +62,8 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	
 	// ..combine all of the above to do your custom stuff..
 	
+	// ..if for example strAction is "Delete" and button click is "Ok" then do "delete stuff" .. 
+	
 	// ..blah..
 	
 };
