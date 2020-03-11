@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.02
+// ** EasyDialogBox 3.03
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -557,8 +557,10 @@ let EasyDialogBox =
 		let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 		if(pBox)
 		{
-			pBox.removeEventListener('keyup', arguments.callee);
-			pBox.removeEventListener('change', arguments.callee);
+			//pBox.removeEventListener('keyup', arguments.callee);
+			//pBox.removeEventListener('change', arguments.callee);
+			pBox.onkeyup = null;
+			pBox.onchange = null;
 		}
 		
 		// ** Remove the newly created box element from DOM
