@@ -356,7 +356,7 @@ let EasyDialogBox =
 			
 			
 			//---------------------------------------------------------------------
-			// ** Create click-handlers
+			// ** Create event-listeners
 			//---------------------------------------------------------------------
 			
 			// ** When the user clicks the X button, close the dialogbox
@@ -383,7 +383,7 @@ let EasyDialogBox =
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				});
 			}
-			// ** END: X button click handlers
+			// ** END: X button click handler
 			
 			// ** When the user clicks the CLOSE button, close the dialogbox
 			let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
@@ -529,7 +529,7 @@ let EasyDialogBox =
 			// ** END: When the user types in promptbox
 			
 			//---------------------------------------------------------------------
-			// ** END: Create click-handlers
+			// ** END: Create event-listeners
 			//---------------------------------------------------------------------
 		}
 		else if(dlg_exist)
