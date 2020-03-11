@@ -71,7 +71,7 @@ b
 }
 .comment 
 {
-	color:#c1dc93;
+	color:#d2eba7;
 }
 .obj
 {
@@ -84,6 +84,10 @@ b
 .param
 {
 	color:#dba6fc;
+}
+.typ
+{
+	color:#ff8490;
 }
 </style>
 <link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
@@ -240,14 +244,14 @@ b
 	<hr />
 	
 	<h3>On the fly dialogbox</h3>	
-	<p>Can be used in Javascript code to create and show a new dialogbox. No pre-written HTML needed.</p>
+	<p>Can be used in Javascript code to create a new dialogbox. No pre-written HTML needed.</p>
 	<p>Syntax: <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
 	<div class="codeview">
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
-<b class="comment">// ** Create a new dialog on the fly, and show it</b>
-<b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>, <b class="param">'doNothing'</b>);
-
+<b class="comment">// ** Create a new dialog on the fly, and then show it</b>
+<b class="typ">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>, <b class="param">'doNothing'</b>);
+<b class="obj">EasyDialogBox</b><b class="func">.show</b>(<b class="param">myBox</b>);
 
 <b class="comment">// ..some other code..bla blah..</b>
 	</div>
