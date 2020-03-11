@@ -33,6 +33,13 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 			EasyDialogBox.show(myBox);
 			
+			/*
+			// ** Remove it after 3 seconds
+			setTimeout(function()
+				{
+					EasyDialogBox.destroy(myBox)
+				}, 3000);
+			*/
 			
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
 		}
