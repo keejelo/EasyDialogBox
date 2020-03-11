@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.97
+// ** EasyDialogBox 2.98
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -98,6 +98,9 @@ let EasyDialogBox =
 	
 	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
 	strAction : undefined,
+	
+	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
+	onTheFly : false,
 
 	// ** Initialize
 	init : function()
@@ -132,8 +135,8 @@ let EasyDialogBox =
 		dlg.innerHTML = strMessage;
 		body.appendChild(dlg);
 		
-		// ** Show the newly created box
-		//this.show(dlg.getAttribute('id'));
+		// ** Set flag to true
+		this.onTheFly = true;
 		
 		return dlg.getAttribute('id');
 	},
@@ -566,9 +569,9 @@ let EasyDialogBox =
 		dlg.style.display = 'none';
 		dlg.setAttribute('title', orgTitleText);
 		dlg.innerHTML = orgMessage;
-
+		
 		// ** Get body element, reset values, restore scrolling
-		let body = document.getElementsByTagName('body')[0];	
+		let body = document.getElementsByTagName('body')[0];
 		body.classList.remove('dlg-stop-scrolling');
 		body.setAttribute('style', 'padding-right:' + parseInt(orgBodyPaddingRight) + 'px;');
 
@@ -581,7 +584,16 @@ let EasyDialogBox =
 			
 			pBox.removeEventListener('change', pBoxChangeFunc);
 			pBoxChangeFunc = null;
-		}		
+		}
+		
+		// ** If 'onTheFly' box was created, remove it
+		if(this.onTheFly && dlg)
+		{
+			dlg.parentNode.removeChild(dlg);
+			
+			// ** Reset flag to default state
+			this.onTheFly = false;
+		}
 	},
 	
 	// ** Callback function to pass along return values 
