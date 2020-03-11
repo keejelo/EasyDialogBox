@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.98
+// ** EasyDialogBox 2.99
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -566,9 +566,12 @@ let EasyDialogBox =
 		
 		// ** Get the dlg element, close dialogbox, reset values
 		let dlg = document.getElementById(id);
-		dlg.style.display = 'none';
-		dlg.setAttribute('title', orgTitleText);
-		dlg.innerHTML = orgMessage;
+		if(dlg)
+		{
+			dlg.style.display = 'none';
+			dlg.setAttribute('title', orgTitleText);
+			dlg.innerHTML = orgMessage;
+		}
 		
 		// ** Get body element, reset values, restore scrolling
 		let body = document.getElementsByTagName('body')[0];
@@ -586,10 +589,13 @@ let EasyDialogBox =
 			pBoxChangeFunc = null;
 		}
 		
-		// ** If 'onTheFly' box was created, remove it
-		if(this.onTheFly && dlg)
+		// ** If 'onTheFly' box was created, remove it, and reset flag
+		if(this.onTheFly)
 		{
-			dlg.parentNode.removeChild(dlg);
+			if(dlg)
+			{
+				dlg.parentNode.removeChild(dlg);
+			}
 			
 			// ** Reset flag to default state
 			this.onTheFly = false;
