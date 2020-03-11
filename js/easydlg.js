@@ -557,8 +557,6 @@ let EasyDialogBox =
 		let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 		if(pBox)
 		{
-			//pBox.removeEventListener('keyup', arguments.callee);
-			//pBox.removeEventListener('change', arguments.callee);
 			pBox.onkeyup = null;
 			pBox.onchange = null;
 		}
