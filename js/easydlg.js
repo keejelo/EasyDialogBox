@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 2.943
+// ** EasyDialogBox 2.95
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -28,6 +28,10 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 		else if(retVal === 1)
 		{
 			console.log('User clicked "Yes" button. Return value = ' + retVal);
+			
+			// ** Create a dialog on the fly!
+			EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>');
+			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
 		}
 		else if(retVal === 2)
 		{
@@ -110,10 +114,23 @@ let EasyDialogBox =
 		}	
 	},
 	
-	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, can be used in javascript to create a dialog on the fly.
-	create : function(strTitle, strMessage, boxType, strAction)
+	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
+	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
+		// ** Create parent reference
+		let body = document.getElementsByTagName('body')[0];
 		
+		// ** Create box
+		let dlg = document.createElement('div');
+		dlg.setAttribute('id', 'EasyDialogBoxOnTheFly');
+		dlg.setAttribute('class', strBoxTypeClass);
+		dlg.setAttribute('title', strTitle);
+		dlg.setAttribute('name', strAction);
+		dlg.innerHTML = strMessage;
+		body.appendChild(dlg);
+		
+		// ** Show the newly created box
+		this.show(dlg.getAttribute('id'));
 	},
 	
 	// ** Show the dialog box
