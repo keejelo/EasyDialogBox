@@ -30,7 +30,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			console.log('User clicked "Yes" button. Return value = ' + retVal);
 			
 			// ** Create a dialog on the fly!
-			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>');
+			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 			EasyDialogBox.show(myBox);
 			
 			
