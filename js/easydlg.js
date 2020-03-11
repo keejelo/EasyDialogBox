@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.00
+// ** EasyDialogBox 3.01
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -99,6 +99,9 @@ let EasyDialogBox =
 	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
 	strAction : undefined,
 	
+	// ** Variable that stores the original padding-right value of body element
+	orgBodyPaddingRight : undefined, 
+	
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
 
@@ -143,14 +146,7 @@ let EasyDialogBox =
 	
 	// ** Show the dialog box
 	show : function(id)
-	{
-		// ** Variables that reference eventlisteners
-		let pBoxKeyupFunc = null;
-		let pBoxChangeFunc = null;
-		
-		// ** Variable that stores the original padding-right value of body element
-		let orgBodyPaddingRight = undefined; 
-		
+	{			
 		// ** Check if a dialogbox is already created, we dont want more than one at once
 		//let dlg_exist = document.getElementById(EasyDialogBox.boxId);
 		let dlg_exist = document.getElementById(this.boxId);
@@ -330,10 +326,10 @@ let EasyDialogBox =
 			let body = document.getElementsByTagName('body')[0];
 
 			// ** Store the original padding-right value
-			orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+			this.orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 			
 			// ** Convert from string to integer (remove 'px' postfix and return value as integer)
-			orgBodyPaddingRight = parseInt(orgBodyPaddingRight);
+			this.orgBodyPaddingRight = parseInt(this.orgBodyPaddingRight);
 			
 			// ** Get width of body before removing scrollbar
 			let w1 = body.offsetWidth;
@@ -348,9 +344,9 @@ let EasyDialogBox =
 			let w3 = w2 - w1;
 			
 			// ** Add both padding-right values, if conditions are true
-			if(typeof orgBodyPaddingRight === 'number' && orgBodyPaddingRight !== 0)
+			if(typeof this.orgBodyPaddingRight === 'number' && this.orgBodyPaddingRight !== 0)
 			{
-				w3 += parseInt(orgBodyPaddingRight);
+				w3 += parseInt(this.orgBodyPaddingRight);
 			}
 			
 			// ** Apply width-difference as padding-right to body, subtitute for scrollbar,
@@ -367,14 +363,13 @@ let EasyDialogBox =
 			let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
 			if(xCloseDialog)
 			{
-				let xCloseFunc = xCloseDialog.addEventListener('click', function()
+				xCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
-					xCloseDialog.removeEventListener('click', xCloseFunc);
-					xCloseFunc = null;
+					xCloseDialog.removeEventListener('click', arguments.callee);
 					
 					// ** If promptbox was created
 					let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
@@ -383,7 +378,7 @@ let EasyDialogBox =
 						// ** Since user clicked Cancel, delete inputted text value, set to: undefined
 						this.promptBoxInputValue = undefined;
 					}
-										
+
 					// ** Return code 0 (false), since user clicked X (close)
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				});
@@ -394,14 +389,13 @@ let EasyDialogBox =
 			let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
 			if(btnCloseDialog)
 			{
-				let btnCloseFunc = btnCloseDialog.addEventListener('click', function()
+				btnCloseDialog.addEventListener('click', function()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 
 					// ** Remove eventlistener
-					btnCloseDialog.removeEventListener('click', btnCloseFunc);
-					btnCloseFunc = null;
+					btnCloseDialog.removeEventListener('click', arguments.callee);
 					
 					// ** Return code 0 , since we user clicked Close
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
@@ -410,16 +404,15 @@ let EasyDialogBox =
 			// ** END: CLOSE button click handler
 			
 			// ** When the user clicks anywhere outside of the dialogbox, close it
-			let winCloseFunc = window.addEventListener('click', function(event)
+			window.addEventListener('click', function(event)
 			{
 				if (event.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
-					window.removeEventListener('click', winCloseFunc);
-					winCloseFunc = null;
+					window.removeEventListener('click', arguments.callee);
 					
 					// ** Return code 0 (false), since we just want to exit
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
@@ -437,14 +430,13 @@ let EasyDialogBox =
 				let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
 				if(btnYesDialog)
 				{
-					let btnYesFunc = btnYesDialog.addEventListener('click', function()
+					btnYesDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnYesDialog.removeEventListener('click', btnYesFunc);
-						btnYesFunc = null;
+						btnYesDialog.removeEventListener('click', arguments.callee);
 						
 						// ** Return code 1 , since user clicked YES
 						EasyDialogBox.callback(1, EasyDialogBox.strAction);
@@ -455,14 +447,13 @@ let EasyDialogBox =
 				let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
 				if(btnNoDialog)
 				{
-					let btnNoFunc = btnNoDialog.addEventListener('click', function()
+					btnNoDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnNoDialog.removeEventListener('click', btnNoFunc);
-						btnNoFunc = null;
+						btnNoDialog.removeEventListener('click', arguments.callee);
 						
 						// ** Return code 2 , since user clicked NO
 						EasyDialogBox.callback(2, EasyDialogBox.strAction);
@@ -481,14 +472,13 @@ let EasyDialogBox =
 				let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
 				if(btnOkDialog)
 				{
-					let btnOkFunc = btnOkDialog.addEventListener('click', function()
+					btnOkDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnOkDialog.removeEventListener('click', btnOkFunc);
-						btnOkFunc = null;
+						btnOkDialog.removeEventListener('click', arguments.callee);
 
 						// ** Return code 3 , since user clicked OK
 						EasyDialogBox.callback(3, EasyDialogBox.strAction);
@@ -499,14 +489,13 @@ let EasyDialogBox =
 				let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
 				if(btnCancelDialog)
 				{
-					let btnCancelFunc = btnCancelDialog.addEventListener('click', function()
+					btnCancelDialog.addEventListener('click', function()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc);
+						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnCancelDialog.removeEventListener('click', btnCancelFunc);
-						btnCancelFunc = null;
+						btnCancelDialog.removeEventListener('click', arguments.callee);
 						
 						// ** If promptbox was created
 						let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
@@ -527,12 +516,12 @@ let EasyDialogBox =
 			let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 			if(pBox)
 			{
-				pBoxKeyupFunc = pBox.addEventListener('keyup', function()
+				pBox.addEventListener('keyup', function()
 				{
 					EasyDialogBox.promptBoxInputValue = pBox.value.trim();
 				});
 				
-				pBoxChangeFunc = pBox.addEventListener('change', function()
+				pBox.addEventListener('change', function()
 				{
 					EasyDialogBox.promptBoxInputValue = pBox.value.trim();
 				});
@@ -554,41 +543,40 @@ let EasyDialogBox =
 	},
 	
 	// ** Close and destroy the dialog box
-	destroy : function(id, boxId, orgTitleText, orgMessage, orgBodyPaddingRight, pBoxKeyupFunc, pBoxChangeFunc)
+	destroy : function(id, boxId, orgTitleText, orgMessage)
 	{
+		// ** Get body element, reset values, restore scrolling
+		let body = document.getElementsByTagName('body')[0];
+		body.classList.remove('dlg-stop-scrolling');
+		body.setAttribute('style', 'padding-right:' + parseInt(this.orgBodyPaddingRight) + 'px;');
+		
+		// ** Get the dlg element
+		let dlg = document.getElementById(id);		
+		
+		// ** If promptbox was created, remove eventlisteners
+		let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+		if(pBox)
+		{
+			pBox.removeEventListener('keyup', arguments.callee);
+
+			pBox.removeEventListener('change', arguments.callee);
+		}
+		
 		// ** Remove the newly created box element from DOM
 		if(document.getElementById(this.boxId))
 		{
-			//document.getElementById(this.boxId).remove(); // not supported in old browsers, using legacy instead
 			let el = document.getElementById(this.boxId);
 			el.parentNode.removeChild(el);
 		}
 		
-		// ** Get the dlg element, close dialogbox, reset values
-		let dlg = document.getElementById(id);
+		// ** Close dialogbox, reset values
 		if(dlg)
 		{
 			dlg.style.display = 'none';
 			dlg.setAttribute('title', orgTitleText);
 			dlg.innerHTML = orgMessage;
 		}
-		
-		// ** Get body element, reset values, restore scrolling
-		let body = document.getElementsByTagName('body')[0];
-		body.classList.remove('dlg-stop-scrolling');
-		body.setAttribute('style', 'padding-right:' + parseInt(orgBodyPaddingRight) + 'px;');
 
-		// ** If promptbox was created, remove eventlisteners
-		let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-		if(pBox)
-		{
-			pBox.removeEventListener('keyup', pBoxKeyupFunc);
-			pBoxKeyupFunc = null;
-			
-			pBox.removeEventListener('change', pBoxChangeFunc);
-			pBoxChangeFunc = null;
-		}
-		
 		// ** If 'onTheFly' box was created, remove it, and reset flag
 		if(this.onTheFly)
 		{
