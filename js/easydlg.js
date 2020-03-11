@@ -31,6 +31,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			
 			// ** Create a dialog on the fly!
 			EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>');
+			
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
 		}
 		else if(retVal === 2)
