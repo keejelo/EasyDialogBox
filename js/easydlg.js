@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.01
+// ** EasyDialogBox 3.02
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -363,13 +363,13 @@ let EasyDialogBox =
 			let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
 			if(xCloseDialog)
 			{
-				xCloseDialog.addEventListener('click', function()
+				xCloseDialog.addEventListener('click', function xCloseFunc()
 				{
 					// ** Close dialogbox, reset values, clean up
 					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
-					xCloseDialog.removeEventListener('click', arguments.callee);
+					xCloseDialog.removeEventListener('click', xCloseFunc);
 					
 					// ** If promptbox was created
 					let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
@@ -389,13 +389,13 @@ let EasyDialogBox =
 			let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
 			if(btnCloseDialog)
 			{
-				btnCloseDialog.addEventListener('click', function()
+				btnCloseDialog.addEventListener('click', function btnCloseFunc()
 				{
 					// ** Close dialogbox, reset values, clean up
 					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 
 					// ** Remove eventlistener
-					btnCloseDialog.removeEventListener('click', arguments.callee);
+					btnCloseDialog.removeEventListener('click', btnCloseFunc);
 					
 					// ** Return code 0 , since we user clicked Close
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
@@ -404,7 +404,7 @@ let EasyDialogBox =
 			// ** END: CLOSE button click handler
 			
 			// ** When the user clicks anywhere outside of the dialogbox, close it
-			window.addEventListener('click', function(event)
+			window.addEventListener('click', function winCloseFunc(event)
 			{
 				if (event.target == dlg)
 				{	
@@ -412,7 +412,7 @@ let EasyDialogBox =
 					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
-					window.removeEventListener('click', arguments.callee);
+					window.removeEventListener('click', winCloseFunc);
 					
 					// ** Return code 0 (false), since we just want to exit
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
@@ -430,13 +430,13 @@ let EasyDialogBox =
 				let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
 				if(btnYesDialog)
 				{
-					btnYesDialog.addEventListener('click', function()
+					btnYesDialog.addEventListener('click', function btnYesFunc()
 					{
 						// ** Close dialogbox, reset values, clean up
 						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnYesDialog.removeEventListener('click', arguments.callee);
+						btnYesDialog.removeEventListener('click', btnYesFunc);
 						
 						// ** Return code 1 , since user clicked YES
 						EasyDialogBox.callback(1, EasyDialogBox.strAction);
@@ -447,13 +447,13 @@ let EasyDialogBox =
 				let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
 				if(btnNoDialog)
 				{
-					btnNoDialog.addEventListener('click', function()
+					btnNoDialog.addEventListener('click', function btnNoFunc()
 					{
 						// ** Close dialogbox, reset values, clean up
 						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnNoDialog.removeEventListener('click', arguments.callee);
+						btnNoDialog.removeEventListener('click', btnNoFunc);
 						
 						// ** Return code 2 , since user clicked NO
 						EasyDialogBox.callback(2, EasyDialogBox.strAction);
@@ -472,13 +472,13 @@ let EasyDialogBox =
 				let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
 				if(btnOkDialog)
 				{
-					btnOkDialog.addEventListener('click', function()
+					btnOkDialog.addEventListener('click', function btnOkFunc()
 					{
 						// ** Close dialogbox, reset values, clean up
 						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnOkDialog.removeEventListener('click', arguments.callee);
+						btnOkDialog.removeEventListener('click', btnOkFunc);
 
 						// ** Return code 3 , since user clicked OK
 						EasyDialogBox.callback(3, EasyDialogBox.strAction);
@@ -489,13 +489,13 @@ let EasyDialogBox =
 				let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
 				if(btnCancelDialog)
 				{
-					btnCancelDialog.addEventListener('click', function()
+					btnCancelDialog.addEventListener('click', function btnCancelFunc()
 					{
 						// ** Close dialogbox, reset values, clean up
 						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
-						btnCancelDialog.removeEventListener('click', arguments.callee);
+						btnCancelDialog.removeEventListener('click', btnCancelFunc);
 						
 						// ** If promptbox was created
 						let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
@@ -558,7 +558,6 @@ let EasyDialogBox =
 		if(pBox)
 		{
 			pBox.removeEventListener('keyup', arguments.callee);
-
 			pBox.removeEventListener('change', arguments.callee);
 		}
 		
