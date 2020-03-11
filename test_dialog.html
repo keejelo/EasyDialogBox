@@ -49,17 +49,21 @@ b
 {
 	font-weight:normal; /* abuse this tag for syntax coloring */
 }
-.tag
+.tag,.obj
 {
 	color:#9ecaf8; /* 0000ff a8742b 00ccff */
 }
-.att
+.att,.func
 {
 	color:#dddd00; /* dd0000 e1ca72 */
 }
-.val
+.val,.param
 {
 	color:#99f1e0; /* 9901e0 74a25d */
+}
+.comment 
+{
+	color:#c1dc93;
 }
 .ital
 {
@@ -194,6 +198,22 @@ b
 	<p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
 	
 	<p>&nbsp;</p>
+	<hr />
+	
+	<h3>On the fly dialogbox</h3>	
+	<p>Can be used in Javascript code to create and show a new dialogbox. No pre-written HTML needed.</p>
+	<p>Syntax: <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
+	<div class="codeview">
+<b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
+
+<b class="comment">// ** Create a new dialog on the fly</b>
+<b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>, <b class="param">'doNothing'</b>);
+
+
+<b class="comment">// ..some other code..bla blah..</b>
+	</div>
+	
+	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	<hr />
 		
@@ -214,7 +234,7 @@ b
 	
 	<div>
 		<h3>Optional attribute <code class="att">name</code></h3>
-		<p>Returns this value to use in CALLBACK function, can be used to indicate custom action in function.</p>	
+		<p>Returns this value to use in CALLBACK function, can be used to indicate custom ACTION in function.</p>	
 	</div>
 	
 </body>
