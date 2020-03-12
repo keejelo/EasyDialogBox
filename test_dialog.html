@@ -245,8 +245,13 @@ b
 	
 	<h3>On the fly dialogbox</h3>	
 	<p>Can be used in Javascript code to create a new dialogbox. No pre-written HTML needed.</p>
-	<p>Syntax: <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
+	<p>Create dialog: <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
 	<p class="ital">Return value = <code>id</code> of the created box</p>
+	<hr />
+	<p>Show dialog: <code>EasyDialogBox.show(id);</code></p>
+	<hr />
+	<p>Destroy dialog: <code>EasyDialogBox.destroy(id);</code></p>
+	<hr />
 	<div class="codeview">
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
@@ -259,7 +264,7 @@ b
 <b class="comment">// ** To programatically destroy the box, you can do</b>
 <b class="obj">EasyDialogBox</b><b class="func">.destroy</b>(myBox);
 
-<b class="comment">// (..but it will be destroyed automatically when you click the buttons etc. in the box by itself)</b>
+<b class="comment">// (..but the box will be destroyed automatically when you click the buttons etc. in the box by itself)</b>
 
 
 <b class="comment">// ..some other code..bla blah..</b>
