@@ -250,11 +250,13 @@ b
 	<div class="codeview">
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
-<b class="comment">// ** Create a new dialog on the fly, and then show it</b>
+<b class="comment">// ** Create a new dialog on the fly</b>
 <b class="typ">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>, <b class="param">'doNothing'</b>);
+
+<b class="comment">// ** Show the newly created box</b>
 <b class="obj">EasyDialogBox</b><b class="func">.show</b>(myBox);
 
-<b class="comment">// ** To programatically destroy the box, you can do: </b>
+<b class="comment">// ** To programatically destroy the box, you can do</b>
 <b class="obj">EasyDialogBox</b><b class="func">.destroy</b>(myBox);
 
 <b class="comment">// (..but it will be destroyed automatically when you click the buttons etc. in the box by itself)</b>
@@ -264,5 +266,6 @@ b
 	</div>
 	
 	<p>&nbsp;</p>
+
 </body>
 </html>
