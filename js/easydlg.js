@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.06
+// ** EasyDialogBox 3.07
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -114,21 +114,21 @@ let EasyDialogBox =
 	
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-	
+
 	// ** Initialize
 	init : function()
 	{	
-		// ** Get all elements with classname 'dlg-opener'
+		// ** Get all elements with class containing 'dlg-opener'
 		let btns = document.getElementsByClassName('dlg-opener');
 		
 		// ** Create click handler for each element that contain above class
 		for(let i = 0; i < btns.length; i++)
 		{
-			btns[i].addEventListener('click', function CLICK(event)
+			btns[i].addEventListener('click', function DlgOpenerClick(event)
 			{
-				EasyDialogBox.show(this.getAttribute('rel'));
+				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with id referenced in rel attribute
 				event.preventDefault(); // if used in an anchor-link with href="#" we prevent scrolling to top of page
-				this.blur(); // remove focus from button
+				this.blur(); // remove focus from button or other opening element
 			});
 		}
 	},
@@ -150,12 +150,12 @@ let EasyDialogBox =
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
 		// ** Check if type is valid
-		if(this.contains(this.strBoxTypeList))
+		if(this.contains(this.strBoxTypeList, strBoxTypeClass) > -1)
 		{
 			// ** Create parent reference
 			let body = document.getElementsByTagName('body')[0];
 			
-			// ** Create box
+			// ** Create box and insert into parent element
 			let dlg = document.createElement('div');
 			dlg.setAttribute('id', 'EasyDialogBoxOnTheFly');
 			dlg.setAttribute('class', strBoxTypeClass);
@@ -167,11 +167,12 @@ let EasyDialogBox =
 			// ** Set flag to true
 			this.onTheFly = true;
 			
+			// ** Return the 'id' value
 			return dlg.getAttribute('id');
 		}
 		else
 		{
-			console.log('box type not defined or not a valid type: ' + strBoxTypeClass);
+			console.log('Dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
 		}
 	},
 	
@@ -189,7 +190,6 @@ let EasyDialogBox =
 		{	
 			// ** Get value from name attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
 			this.strAction = dlg.getAttribute('name');
-			//console.log(this.strAction);
 		
 			// ** Get title and store it
 			let orgTitleText = dlg.getAttribute('title');
