@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.13
+// ** EasyDialogBox 3.14
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -149,8 +149,8 @@ let EasyDialogBox =
 	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Check if type is valid (>=0)
-		if(this.contains(this.strBoxTypeList, strBoxTypeClass) >=0)
+		// ** Check if type is valid (>= 0)
+		if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
 		{
 			// ** Create parent reference
 			let body = document.getElementsByTagName('body')[0];
