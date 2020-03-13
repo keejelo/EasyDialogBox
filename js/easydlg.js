@@ -96,7 +96,7 @@ let EasyDialogBox =
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
 	
-	// ** Dialogbox types, can be used separate or combined
+	// ** Dialogbox types, can be used separately or in combination
 	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','no-footer','no-btns'],
 
 	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
