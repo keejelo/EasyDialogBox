@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.017
+// ** EasyDialogBox 3.018
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -126,7 +126,7 @@ let EasyDialogBox =
 		{
 			btns[i].addEventListener('click', function dlgOpenerClick(event)
 			{
-				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with 'id' referenced in 'rel' attribute
+				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
 				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 				this.blur(); // remove focus from button or other opening element
 			});
