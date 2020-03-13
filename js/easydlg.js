@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.015
+// ** EasyDialogBox 3.016
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -351,7 +351,7 @@ let EasyDialogBox =
 				dlgBox.classList.add('dlg-center-vert');
 			}
 			
-			// ** Creating subtitute for scrollbar			
+			// ** Creating substitute for scrollbar			
 			// ** Get body element
 			let body = document.getElementsByTagName('body')[0];
 
@@ -379,10 +379,10 @@ let EasyDialogBox =
 				w3 += parseInt(this.orgBodyPaddingRight);
 			}
 			
-			// ** Apply width-difference as padding-right to body, subtitute for scrollbar,
+			// ** Apply width-difference as padding-right to body, substitute for scrollbar,
 			// ** can prevent contentshift if content is centered when scrollbar disappears.
 			body.setAttribute('style','padding-right:' + w3 + 'px;');		
-			// ** END: Creating subtitute for scrollbar
+			// ** END: Creating substitute for scrollbar
 			
 			
 			//---------------------------------------------------------------------
