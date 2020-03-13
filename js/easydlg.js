@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.05
+// ** EasyDialogBox 3.06
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ let EasyDialogBox =
 		}
 	},
 	
-	// ** Helper function check if array contains value
+	// ** Check if array contains value, helper function 
 	contains : function(arr, val)
 	{
 		for(let i = 0; i < arr.length; i++ )
