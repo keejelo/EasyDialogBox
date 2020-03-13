@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.12
+// ** EasyDialogBox 3.13
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -97,8 +97,9 @@ let EasyDialogBox =
 	cancelButtonText : 'Cancel',  // Cancel
 	
 	// ** Dialogbox types, can be used separate or combined
-	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes', 'dlg-no', 'dlg-yes-no', 'dlg-ok', 'dlg-cancel', 'dlg-ok-cancel', 'no-footer', 'no-btns'],
-	
+	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes', 'dlg-no', 'dlg-yes-no', 'dlg-ok', 
+					'dlg-cancel', 'dlg-ok-cancel', 'no-footer', 'no-btns'],
+
 	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
 	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
