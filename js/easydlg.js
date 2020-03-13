@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.10
+// ** EasyDialogBox 3.11
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -427,7 +427,7 @@ let EasyDialogBox =
 					// ** Remove eventlistener
 					btnCloseDialog.removeEventListener('click', btnCloseFunc);
 					
-					// ** Return code 0 , since we user clicked Close
+					// ** Return code 0 , since user clicked Close
 					EasyDialogBox.callback(0, EasyDialogBox.strAction);
 				});
 			}
