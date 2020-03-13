@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.018
+// ** EasyDialogBox 3.019
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -33,6 +33,8 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 			EasyDialogBox.show(myBox);
 			
+			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
+			
 			/*
 			// ** Remove it after 3 seconds :)
 			setTimeout(function()
@@ -40,8 +42,6 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 				EasyDialogBox.destroy(myBox)
 			}, 3000);
 			*/
-			
-			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
 		}
 		else if(retVal === 2)
 		{
