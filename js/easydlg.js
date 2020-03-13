@@ -96,15 +96,15 @@ let EasyDialogBox =
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
 	
-	// ** Type of dialogbox
+	// ** Dialogbox types
 	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes-no', 'dlg-ok-cancel'],
-	
-	// ** Variable that stores current input text in promptbox, default = undefined
-	promptBoxInputValue : undefined,
 	
 	// ** Create id for dialogbox, hopefully it won't clash with any other html elements id.
 	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
 	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
+	
+	// ** Variable that stores current input text in promptbox, default = undefined
+	promptBoxInputValue : undefined,
 	
 	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
 	strAction : undefined,
@@ -118,16 +118,16 @@ let EasyDialogBox =
 	// ** Initialize
 	init : function()
 	{	
-		// ** Get all elements with class containing 'dlg-opener'
+		// ** Get all elements with 'class' containing 'dlg-opener'
 		let btns = document.getElementsByClassName('dlg-opener');
 		
-		// ** Create click handler for each element that contain above class
+		// ** Create click handler for each element that contain above 'class'
 		for(let i = 0; i < btns.length; i++)
 		{
 			btns[i].addEventListener('click', function DlgOpenerClick(event)
 			{
-				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with id referenced in rel attribute
-				event.preventDefault(); // if used in an anchor-link with href="#" we prevent scrolling to top of page
+				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with 'id' referenced in 'rel' attribute
+				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 				this.blur(); // remove focus from button or other opening element
 			});
 		}
@@ -149,7 +149,7 @@ let EasyDialogBox =
 	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Check if type is valid
+		// ** Check if type is valid ( > -1 = true)
 		if(this.contains(this.strBoxTypeList, strBoxTypeClass) > -1)
 		{
 			// ** Create parent reference
@@ -167,7 +167,7 @@ let EasyDialogBox =
 			// ** Set flag to true
 			this.onTheFly = true;
 			
-			// ** Return the 'id' value
+			// ** Return the 'id' value of the newly created element
 			return dlg.getAttribute('id');
 		}
 		else
@@ -182,18 +182,18 @@ let EasyDialogBox =
 		// ** Check if a dialogbox is already created, we dont want more than one at once
 		let dlg_exist = document.getElementById(this.boxId); // we want it to be: null
 
-		// ** Get the id from function parameter, we want to create a dialog from the element containing this id
+		// ** Get the 'id' from function parameter, we want to create a dialog from the element containing this 'id'
 		let dlg = document.getElementById(id);
 		
-		// ** Check if element with the id exist, and that no other dialog exist at this moment
+		// ** Check if element with the 'id' exist, and that no other dialog exist at this moment
 		if(dlg && !dlg_exist)
 		{	
-			// ** Get value from name attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
+			// ** Get value from 'name' attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
 			this.strAction = dlg.getAttribute('name');
 		
-			// ** Get title and store it
+			// ** Get current 'title' value and store it
 			let orgTitleText = dlg.getAttribute('title');
-			dlg.setAttribute('title',''); // temporary remove title value, prevents showing up on hovering over dialogbox
+			dlg.setAttribute('title',''); // temporary remove 'title' value, prevents showing up on hovering over dialogbox
 
 			// ** Get message content and store it
 			let orgMessage = dlg.innerHTML;
@@ -243,7 +243,7 @@ let EasyDialogBox =
 				// ** Remove earlier entered text, set to: undefined
 				this.promptBoxInputValue = undefined;
 
-				// ** Add buttons if not already stated in class
+				// ** Add buttons if not already stated in 'class'
 				dlg.classList.add('dlg-ok-cancel');
 			}
 
