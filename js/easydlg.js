@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.08
+// ** EasyDialogBox 3.09
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -96,8 +96,8 @@ let EasyDialogBox =
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
 	
-	// ** Dialogbox types
-	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes-no', 'dlg-ok-cancel'],
+	// ** Dialogbox types, can be used separate or combined
+	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes', 'dlg-no', 'dlg-yes-no', 'dlg-ok', 'dlg-cancel', 'dlg-ok-cancel', 'no-footer', 'no-btns'],
 	
 	// ** Create id for dialogbox, hopefully it won't clash with any other html elements id.
 	// ** If we wanted to create an unique id for each dialogbox we could've used a timestamp.
@@ -136,9 +136,9 @@ let EasyDialogBox =
 	// ** Check if array contains value, helper function 
 	contains : function(arr, val)
 	{
-		for(let i = 0; i < arr.length; i++ )
+		for(let i = 0; i < arr.length; i++)
 		{
-			if( arr[i] === val )
+			if(arr[i] === val)
 			{
 				return i;
 			}
@@ -149,8 +149,8 @@ let EasyDialogBox =
 	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Check if type is valid ( > -1 = true)
-		if(this.contains(this.strBoxTypeList, strBoxTypeClass) > -1)
+		// ** Check if type is valid (>=0)
+		if(this.contains(this.strBoxTypeList, strBoxTypeClass) >=0)
 		{
 			// ** Create parent reference
 			let body = document.getElementsByTagName('body')[0];
@@ -185,7 +185,7 @@ let EasyDialogBox =
 		// ** Get the 'id' from function parameter, we want to create a dialog from the element containing this 'id'
 		let dlg = document.getElementById(id);
 		
-		// ** Check if element with the 'id' exist, and that no other dialog exist at this moment
+		// ** Check if element with the 'id' exist in DOM, and that no other dialog exist at this moment
 		if(dlg && !dlg_exist)
 		{	
 			// ** Get value from 'name' attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
