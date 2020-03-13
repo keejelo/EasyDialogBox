@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.03
+// ** EasyDialogBox 3.04
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -95,6 +95,15 @@ let EasyDialogBox =
 	noButtonText     : 'No',      // No
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
+
+	// ** Make a reference to object itself
+	getSelf : function()
+	{
+		return this;
+	},
+	
+	// ** Type of dialogbox
+	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes-no', 'dlg-ok-cancel'],
 	
 	// ** Variable that stores current input text in promptbox, default = undefined
 	promptBoxInputValue : undefined,
@@ -111,52 +120,72 @@ let EasyDialogBox =
 	
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-
+	
 	// ** Initialize
 	init : function()
-	{
+	{	
 		// ** Get all elements with classname 'dlg-opener'
 		let btns = document.getElementsByClassName('dlg-opener');
-
+		
 		// ** Create click handler for each element that contain above class
 		for(let i = 0; i < btns.length; i++)
 		{
-			btns[i].addEventListener('click', function(event)
+			btns[i].addEventListener('click', function CLICK(event)
 			{
 				EasyDialogBox.show(this.getAttribute('rel'));
 				event.preventDefault(); // if used in an anchor-link with href="#" we prevent scrolling to top of page
 				this.blur(); // remove focus from button
 			});
-		}	
+		}
+	},
+	
+	// ** Helper function check if array contains value
+	contains : function(arr, val)
+	{
+		for(let i = 0; i < arr.length; i++ )
+		{
+			if( arr[i] === val )
+			{
+				return i;
+			}
+		}
+		return -1;		
 	},
 	
 	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Create parent reference
-		let body = document.getElementsByTagName('body')[0];
-		
-		// ** Create box
-		let dlg = document.createElement('div');
-		dlg.setAttribute('id', 'EasyDialogBoxOnTheFly');
-		dlg.setAttribute('class', strBoxTypeClass);
-		dlg.setAttribute('title', strTitle);
-		dlg.setAttribute('name', strAction);
-		dlg.innerHTML = strMessage;
-		body.appendChild(dlg);
-		
-		// ** Set flag to true
-		this.onTheFly = true;
-		
-		return dlg.getAttribute('id');
+		// ** Check if type is valid
+		if(this.contains(this.strBoxTypeList))
+		{
+			// ** Create parent reference
+			let body = document.getElementsByTagName('body')[0];
+			
+			// ** Create box
+			let dlg = document.createElement('div');
+			dlg.setAttribute('id', 'EasyDialogBoxOnTheFly');
+			dlg.setAttribute('class', strBoxTypeClass);
+			dlg.setAttribute('title', strTitle);
+			dlg.setAttribute('name', strAction);
+			dlg.innerHTML = strMessage;
+			body.appendChild(dlg);
+			
+			// ** Set flag to true
+			this.onTheFly = true;
+			
+			return dlg.getAttribute('id');
+		}
+		else
+		{
+			console.log('box type not defined or not a valid type: ' + strBoxTypeClass);
+		}
 	},
 	
 	// ** Show the dialog box
 	show : function(id)
 	{			
 		// ** Check if a dialogbox is already created, we dont want more than one at once
-		//let dlg_exist = document.getElementById(EasyDialogBox.boxId);
-		let dlg_exist = document.getElementById(this.boxId);
+		let dlg_exist = document.getElementById(this.boxId); // we want it to be: null
 
 		// ** Get the id from function parameter, we want to create a dialog from the element containing this id
 		let dlg = document.getElementById(id);
