@@ -95,12 +95,6 @@ let EasyDialogBox =
 	noButtonText     : 'No',      // No
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
-
-	// ** Make a reference to object itself
-	getSelf : function()
-	{
-		return this;
-	},
 	
 	// ** Type of dialogbox
 	strBoxTypeList : ['dlg', 'dlg-close', 'dlg-prompt', 'dlg-yes-no', 'dlg-ok-cancel'],
