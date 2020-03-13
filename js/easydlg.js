@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 3.014
+// ** EasyDialogBox 3.015
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -337,18 +337,18 @@ let EasyDialogBox =
 			}		
 
 			// ** Get height of inner dialogbox
-			let dialogbox = dlg.getElementsByClassName('dlg-box')[0];
-			let height = window.getComputedStyle(dialogbox, null).getPropertyValue('height');
+			let dlgBox = dlg.getElementsByClassName('dlg-box')[0];
+			let height = window.getComputedStyle(dlgBox, null).getPropertyValue('height');
 			
 			// ** If height is larger or equal to window height, disable vertical alignment,
 			// ** just position at top. Prevents out of view.
 			if(parseInt(height) >= window.innerHeight)
 			{
-				dialogbox.classList.remove('dlg-center-vert');
+				dlgBox.classList.remove('dlg-center-vert');
 			}
 			else
 			{
-				dialogbox.classList.add('dlg-center-vert');
+				dlgBox.classList.add('dlg-center-vert');
 			}
 			
 			// ** Creating subtitute for scrollbar			
