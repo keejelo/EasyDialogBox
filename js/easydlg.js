@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.322
+// ** EasyDialogBox 1.323
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -88,7 +88,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 // ** EasyDialogBox Object
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox =
-{
+{	
 	// ** (Optional) Custom your own text for the buttons.
 	closeButtonText  : 'Close',   // Close
 	yesButtonText    : 'Yes',     // Yes
