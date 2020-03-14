@@ -650,5 +650,5 @@ let myDlgBox = Object.create(EasyDialogBox);
 window.addEventListener('load', myDlgBox.init);
 */
 //-----------------------------------------------------------------------------------------------------------------
-// ** END: Alternatively, create a new object ..
+// ** END: Alternatively, you can create a new object and activate it instead ..
 //-----------------------------------------------------------------------------------------------------------------
