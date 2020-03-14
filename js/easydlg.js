@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.319
+// ** EasyDialogBox 1.322
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	
 	// ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)	
 	// ** Example
-	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox' name attribute, located in HTML example.
+	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
 	{
 		console.log('string "myCustomActionInCallbackFunc" from "name" attribute recieved in CALLBACK function');
 	}
@@ -114,7 +114,7 @@ let EasyDialogBox =
 	
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-
+	
 	// ** Initialize
 	init : function()
 	{	
@@ -127,8 +127,9 @@ let EasyDialogBox =
 			btns[i].addEventListener('click', function dlgOpenerClick(event)
 			{
 				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
-				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 				this.blur(); // remove focus from button or other opening element
+				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
+				event.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
 			});
 		}
 	},
@@ -564,7 +565,7 @@ let EasyDialogBox =
 		}
 		else if(dlg_exist)
 		{
-			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo element created.');
+			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo new element created.');
 		}				
 		else if(!dlg)
 		{
@@ -624,7 +625,7 @@ let EasyDialogBox =
 	{
 		// ** Pass values along to outside function so they can be used.
 		CALLBACK_EasyDialogBox(retVal, strAction, this.promptBoxInputValue);
-	}	
+	}
 };
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: EasyDialogBox Object
