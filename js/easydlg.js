@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.328
+// ** EasyDialogBox 1.329
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -610,6 +610,7 @@ let EasyDialogBox =
 		// ** If 'onTheFly' box was created, remove it, and reset flag
 		if(this.onTheFly)
 		{
+			// ** If exist, remove it
 			if(dlg)
 			{
 				dlg.parentNode.removeChild(dlg);
