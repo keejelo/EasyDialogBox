@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.338
+// ** EasyDialogBox 1.339
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -99,10 +99,6 @@ var EasyDialogBox =
 	// ** Dialogbox types, can be used separately or in combination
 	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','no-footer','no-btns'],
 
-	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
-	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
-	boxId : 'EasyDialogBoxID_de82cd512cb22112aa6813dd5182ef37',
-	
 	// ** Variable that stores current input text in promptbox, default = undefined
 	promptBoxInputValue : undefined,
 	
@@ -111,9 +107,13 @@ var EasyDialogBox =
 	
 	// ** Variable that stores the original padding-right value of body element
 	orgBodyPaddingRight : undefined, 
-		
+
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
+	
+	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
+	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
+	boxId : 'de82cd512cb22112aa6813dd5182ef37',	
 
 	// ** Register self awareness
 	that : null,
@@ -165,7 +165,7 @@ var EasyDialogBox =
 			
 			// ** Create box and insert into parent element
 			let dlg = document.createElement('div');
-			dlg.setAttribute('id', 'OnTheFly_' + this.boxId);
+			dlg.setAttribute('id', this.boxId + '_OnTheFly');
 			dlg.setAttribute('class', strBoxTypeClass);
 			dlg.setAttribute('title', strTitle);
 			dlg.setAttribute('name', strAction);
