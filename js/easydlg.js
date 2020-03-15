@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.343
+// ** EasyDialogBox 1.344
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			console.log('User clicked "Yes" button. Return value = ' + retVal);
 			
 			// ** Create a dialog on the fly!
-			let myBox = EasyDialogBox.create('dlg-close','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 			EasyDialogBox.show(myBox);
 			
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
