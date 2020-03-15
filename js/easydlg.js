@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.329
+// ** EasyDialogBox 1.330
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox Object
 //-----------------------------------------------------------------------------------------------------------------
-let EasyDialogBox = 
+var EasyDialogBox = 
 {
 	// ** (Optional) Custom your own text for the buttons.
 	closeButtonText  : 'Close',   // Close
@@ -114,7 +114,7 @@ let EasyDialogBox =
 	
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-	
+
 	// ** Initialize
 	init : function()
 	{	
@@ -338,18 +338,18 @@ let EasyDialogBox =
 			}		
 
 			// ** Get height of inner dialogbox
-			let dlgBox = dlg.getElementsByClassName('dlg-box')[0];
-			let height = window.getComputedStyle(dlgBox, null).getPropertyValue('height');
+			let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
+			let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
 			
 			// ** If height is larger or equal to window height, disable vertical alignment,
 			// ** just position at top. Prevents out of view.
 			if(parseInt(height) >= window.innerHeight)
 			{
-				dlgBox.classList.remove('dlg-center-vert');
+				inDlgBox.classList.remove('dlg-center-vert');
 			}
 			else
 			{
-				dlgBox.classList.add('dlg-center-vert');
+				inDlgBox.classList.add('dlg-center-vert');
 			}
 			
 			// ** Creating substitute for scrollbar			
