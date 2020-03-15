@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.342
+// ** EasyDialogBox 1.343
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			console.log('User clicked "Yes" button. Return value = ' + retVal);
 			
 			// ** Create a dialog on the fly!
-			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+			let myBox = EasyDialogBox.create('dlg-close','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 			EasyDialogBox.show(myBox);
 			
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
@@ -97,7 +97,7 @@ var EasyDialogBox =
 	cancelButtonText : 'Cancel',  // Cancel
 	
 	// ** Dialogbox types, can be used separately or in combination
-	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','no-footer','no-btns'],
+	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'],
 
 	// ** Variable that stores current input text in promptbox, default = undefined
 	promptBoxInputValue : undefined,
@@ -265,16 +265,16 @@ var EasyDialogBox =
 			}
 
 			// ** Create footer and buttons
-			// ** If "no-footer" is specified in class then do not create footer or any buttons
-			if(!dlg.classList.contains('no-footer'))
+			// ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
+			if(!dlg.classList.contains('dlg-no-footer'))
 			{
 				// ** Create footer
 				let footer = document.createElement('div');
 				footer.setAttribute('class','dlg-footer');
 				box.appendChild(footer);
 				
-				// ** If "no-btns" is specified in class then do not make buttons. 
-				if(!dlg.classList.contains('no-btns'))
+				// ** If "dlg-no-btns" is specified in class then do not make buttons. 
+				if(!dlg.classList.contains('dlg-no-btns'))
 				{					
 					// ** If "Yes" button is specified in class
 					if(dlg.classList.contains('dlg-yes')
