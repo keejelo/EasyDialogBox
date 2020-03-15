@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.341
+// ** EasyDialogBox 1.342
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -278,7 +278,7 @@ var EasyDialogBox =
 				{					
 					// ** If "Yes" button is specified in class
 					if(dlg.classList.contains('dlg-yes')
-					//|| dlg.classList.contains('dlg-yes-no')
+					|| dlg.classList.contains('dlg-yes-no')
 					)
 					{
 						// ** Create button
@@ -290,8 +290,8 @@ var EasyDialogBox =
 					}
 					
 					// ** If "No" button is specified in class
-					else if(dlg.classList.contains('dlg-no')
-					//|| dlg.classList.contains('dlg-yes-no')
+					if(dlg.classList.contains('dlg-no')
+					|| dlg.classList.contains('dlg-yes-no')
 					)
 					{
 						// ** Create button
@@ -301,25 +301,7 @@ var EasyDialogBox =
 						noBtn.appendChild(noBtnText);
 						footer.appendChild(noBtn);
 					}
-					
-					// ** If both buttons is specified in class
-					else if(dlg.classList.contains('dlg-yes-no'))
-					{
-						// ** Create button
-						let yesBtn = document.createElement('button');
-						yesBtn.setAttribute('class','dlg-yes-btn');
-						let yesBtnText = document.createTextNode(this.yesButtonText);
-						yesBtn.appendChild(yesBtnText);
-						footer.appendChild(yesBtn);
-						
-						// ** Create button
-						let noBtn = document.createElement('button');
-						noBtn.setAttribute('class','dlg-no-btn');
-						let noBtnText = document.createTextNode(this.noButtonText);
-						noBtn.appendChild(noBtnText);
-						footer.appendChild(noBtn);
-					}					
-					
+
 					// ** If "OK" button is specified in class
 					if(dlg.classList.contains('dlg-ok')
 					|| dlg.classList.contains('dlg-ok-cancel')
