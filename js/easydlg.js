@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.334
+// ** EasyDialogBox 1.336
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -115,6 +115,13 @@ var EasyDialogBox =
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
 
+	// ** Register self awareness
+	that : null,
+	register : function()
+	{
+		that = this;
+	},
+
 	// ** Initialize
 	init : function()
 	{	
@@ -126,7 +133,7 @@ var EasyDialogBox =
 		{
 			btns[i].addEventListener('click', function dlgOpenerClick(event)
 			{
-				EasyDialogBox.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
+				that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
 				this.blur(); // remove focus from button or other opening element
 				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 				event.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
@@ -397,7 +404,7 @@ var EasyDialogBox =
 				xCloseDialog.addEventListener('click', function xCloseClick()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+					that.destroy(id, that.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
 					xCloseDialog.removeEventListener('click', xCloseClick);
@@ -411,7 +418,7 @@ var EasyDialogBox =
 					}
 
 					// ** Return code 0 (false), since user clicked X (close)
-					EasyDialogBox.callback(0, EasyDialogBox.strAction);
+					that.callback(0, that.strAction);
 				});
 			}
 			// ** END: X button click handler
@@ -423,13 +430,13 @@ var EasyDialogBox =
 				btnCloseDialog.addEventListener('click', function btnCloseClick()
 				{
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+					that.destroy(id, that.boxId, orgTitleText, orgMessage);
 
 					// ** Remove eventlistener
 					btnCloseDialog.removeEventListener('click', btnCloseClick);
 					
 					// ** Return code 0 , since user clicked Close
-					EasyDialogBox.callback(0, EasyDialogBox.strAction);
+					that.callback(0, that.strAction);
 				});
 			}
 			// ** END: CLOSE button click handler
@@ -440,13 +447,13 @@ var EasyDialogBox =
 				if (event.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
-					EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+					that.destroy(id, that.boxId, orgTitleText, orgMessage);
 					
 					// ** Remove eventlistener
 					window.removeEventListener('click', winCloseClick);
 					
 					// ** Return code 0 (false), since we just want to exit
-					EasyDialogBox.callback(0, EasyDialogBox.strAction);
+					that.callback(0, that.strAction);
 				}			
 			});
 			// ** END: window click outside box click handler		
@@ -464,13 +471,13 @@ var EasyDialogBox =
 					btnYesDialog.addEventListener('click', function btnYesClick()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+						that.destroy(id, that.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
 						btnYesDialog.removeEventListener('click', btnYesClick);
 						
 						// ** Return code 1 , since user clicked YES
-						EasyDialogBox.callback(1, EasyDialogBox.strAction);
+						that.callback(1, that.strAction);
 					});
 				}
 				
@@ -481,13 +488,13 @@ var EasyDialogBox =
 					btnNoDialog.addEventListener('click', function btnNoClick()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+						that.destroy(id, that.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
 						btnNoDialog.removeEventListener('click', btnNoClick);
 						
 						// ** Return code 2 , since user clicked NO
-						EasyDialogBox.callback(2, EasyDialogBox.strAction);
+						that.callback(2, that.strAction);
 					});
 				}			
 			}
@@ -506,13 +513,13 @@ var EasyDialogBox =
 					btnOkDialog.addEventListener('click', function btnOkClick()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+						that.destroy(id, that.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
 						btnOkDialog.removeEventListener('click', btnOkClick);
 
 						// ** Return code 3 , since user clicked OK
-						EasyDialogBox.callback(3, EasyDialogBox.strAction);
+						that.callback(3, that.strAction);
 					});
 				}
 				
@@ -523,7 +530,7 @@ var EasyDialogBox =
 					btnCancelDialog.addEventListener('click', function btnCancelClick()
 					{
 						// ** Close dialogbox, reset values, clean up
-						EasyDialogBox.destroy(id, EasyDialogBox.boxId, orgTitleText, orgMessage);
+						that.destroy(id, that.boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
 						btnCancelDialog.removeEventListener('click', btnCancelClick);
@@ -537,7 +544,7 @@ var EasyDialogBox =
 						}
 
 						// ** Return code 4 , since user clicked Cancel
-						EasyDialogBox.callback(4, EasyDialogBox.strAction);
+						that.callback(4, that.strAction);
 					});
 				}
 			}
@@ -549,12 +556,12 @@ var EasyDialogBox =
 			{
 				pBox.addEventListener('keyup', function promptBoxKeyUp()
 				{
-					EasyDialogBox.promptBoxInputValue = pBox.value.trim();
+					that.promptBoxInputValue = pBox.value.trim();
 				});
 				
 				pBox.addEventListener('change', function promptBoxChange()
 				{
-					EasyDialogBox.promptBoxInputValue = pBox.value.trim();
+					that.promptBoxInputValue = pBox.value.trim();
 				});
 			}
 			// ** END: When the user types in promptbox
@@ -634,9 +641,10 @@ var EasyDialogBox =
 
 
 //-----------------------------------------------------------------------------------------------------------------
-// ** Load-handler, activate
+// ** Activate and start
 //-----------------------------------------------------------------------------------------------------------------
+EasyDialogBox.register();
 window.addEventListener('load', EasyDialogBox.init);
 //-----------------------------------------------------------------------------------------------------------------
-// ** END: Load-handler
+// ** END: Activate and start
 //-----------------------------------------------------------------------------------------------------------------
