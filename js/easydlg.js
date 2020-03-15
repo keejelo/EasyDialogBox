@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.339
+// ** EasyDialogBox 1.340
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ var EasyDialogBox =
 
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-	
+		
 	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
 	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
 	boxId : 'de82cd512cb22112aa6813dd5182ef37',	
@@ -157,30 +157,38 @@ var EasyDialogBox =
 	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Check if type is valid (>= 0)
-		if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
+		// ** Check if box is already created, we only want one box at once
+		if(this.onTheFly === false)
 		{
-			// ** Create parent reference
-			let body = document.getElementsByTagName('body')[0];
-			
-			// ** Create box and insert into parent element
-			let dlg = document.createElement('div');
-			dlg.setAttribute('id', this.boxId + '_OnTheFly');
-			dlg.setAttribute('class', strBoxTypeClass);
-			dlg.setAttribute('title', strTitle);
-			dlg.setAttribute('name', strAction);
-			dlg.innerHTML = strMessage;
-			body.appendChild(dlg);
-			
-			// ** Set flag to true
-			this.onTheFly = true;
-			
-			// ** Return the 'id' value of the newly created element
-			return dlg.getAttribute('id');
+			// ** Check if type is valid (>= 0)
+			if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
+			{
+				// ** Create parent reference
+				let body = document.getElementsByTagName('body')[0];
+				
+				// ** Create box and insert into parent element
+				let dlg = document.createElement('div');
+				dlg.setAttribute('id', this.boxId + '_OnTheFly');
+				dlg.setAttribute('class', strBoxTypeClass);
+				dlg.setAttribute('title', strTitle);
+				dlg.setAttribute('name', strAction);
+				dlg.innerHTML = strMessage;
+				body.appendChild(dlg);
+				
+				// ** Set flag to true
+				this.onTheFly = true;
+
+				// ** Return the 'id' value of the newly created element
+				return dlg.getAttribute('id');
+			}
+			else
+			{
+				console.log('Dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+			}
 		}
 		else
 		{
-			console.log('Dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+			console.log('Dialogbox already exist, no new box was created!');
 		}
 	},
 	
