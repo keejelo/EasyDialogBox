@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.336
+// ** EasyDialogBox 1.337
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ var EasyDialogBox =
 	
 	// ** Variable that stores the original padding-right value of body element
 	orgBodyPaddingRight : undefined, 
-	
+		
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
 
@@ -187,7 +187,7 @@ var EasyDialogBox =
 	// ** Show the dialog box
 	show : function(id)
 	{			
-		// ** Check if a dialogbox is already created, we dont want more than one at once
+		// ** Check if a dialogbox is already created, we dont want more than one box at once
 		let dlg_exist = document.getElementById(this.boxId); // we want it to be: null
 
 		// ** Get the 'id' from function parameter, we want to create a dialog from the element containing this 'id'
