@@ -4,13 +4,16 @@
 
 /* Dialog box types, (controls background and overlay) hidden by default */
 .dlg,
+.dlg-close,
 .dlg-yes,
 .dlg-no,
 .dlg-yes-no,
 .dlg-ok,
 .dlg-cancel,
 .dlg-ok-cancel,
-.dlg-prompt
+.dlg-prompt,
+.dlg-no-footer,
+.dlg-no-btns
 {
 	margin:0;
 	padding:0; /* Location of the box */
