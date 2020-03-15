@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.340
+// ** EasyDialogBox 1.341
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ var EasyDialogBox =
 
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
-		
+
 	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
 	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
 	boxId : 'de82cd512cb22112aa6813dd5182ef37',	
@@ -150,6 +150,7 @@ var EasyDialogBox =
 			{
 				return i;
 			}
+			console.log(val);
 		}
 		return -1;		
 	},
@@ -168,7 +169,7 @@ var EasyDialogBox =
 				
 				// ** Create box and insert into parent element
 				let dlg = document.createElement('div');
-				dlg.setAttribute('id', this.boxId + '_OnTheFly');
+				dlg.setAttribute('id', 'OnTheFly_' + this.boxId);
 				dlg.setAttribute('class', strBoxTypeClass);
 				dlg.setAttribute('title', strTitle);
 				dlg.setAttribute('name', strAction);
@@ -274,10 +275,10 @@ var EasyDialogBox =
 				
 				// ** If "no-btns" is specified in class then do not make buttons. 
 				if(!dlg.classList.contains('no-btns'))
-				{
+				{					
 					// ** If "Yes" button is specified in class
-					if(dlg.classList.contains('dlg-yes') 
-					|| dlg.classList.contains('dlg-yes-no')
+					if(dlg.classList.contains('dlg-yes')
+					//|| dlg.classList.contains('dlg-yes-no')
 					)
 					{
 						// ** Create button
@@ -289,8 +290,8 @@ var EasyDialogBox =
 					}
 					
 					// ** If "No" button is specified in class
-					if(dlg.classList.contains('dlg-no')
-					|| dlg.classList.contains('dlg-yes-no')
+					else if(dlg.classList.contains('dlg-no')
+					//|| dlg.classList.contains('dlg-yes-no')
 					)
 					{
 						// ** Create button
@@ -300,6 +301,24 @@ var EasyDialogBox =
 						noBtn.appendChild(noBtnText);
 						footer.appendChild(noBtn);
 					}
+					
+					// ** If both buttons is specified in class
+					else if(dlg.classList.contains('dlg-yes-no'))
+					{
+						// ** Create button
+						let yesBtn = document.createElement('button');
+						yesBtn.setAttribute('class','dlg-yes-btn');
+						let yesBtnText = document.createTextNode(this.yesButtonText);
+						yesBtn.appendChild(yesBtnText);
+						footer.appendChild(yesBtn);
+						
+						// ** Create button
+						let noBtn = document.createElement('button');
+						noBtn.setAttribute('class','dlg-no-btn');
+						let noBtnText = document.createTextNode(this.noButtonText);
+						noBtn.appendChild(noBtnText);
+						footer.appendChild(noBtn);
+					}					
 					
 					// ** If "OK" button is specified in class
 					if(dlg.classList.contains('dlg-ok')
@@ -623,7 +642,7 @@ var EasyDialogBox =
 		}
 
 		// ** If 'onTheFly' box was created, remove it, and reset flag
-		if(this.onTheFly)
+		if(this.onTheFly === true)
 		{
 			// ** If exist, remove it
 			if(dlg)
