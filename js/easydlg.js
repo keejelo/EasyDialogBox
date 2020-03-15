@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.333
+// ** EasyDialogBox 1.334
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
 			
 			/*
-			// ** Remove it after 3 seconds :)
+			// ** TEST: Remove it after 3 seconds :)
 			setTimeout(function()
 			{
 				EasyDialogBox.destroy(myBox)
