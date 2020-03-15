@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.337
+// ** EasyDialogBox 1.338
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -165,7 +165,7 @@ var EasyDialogBox =
 			
 			// ** Create box and insert into parent element
 			let dlg = document.createElement('div');
-			dlg.setAttribute('id', 'OnTheFly' + this.boxId);
+			dlg.setAttribute('id', 'OnTheFly_' + this.boxId);
 			dlg.setAttribute('class', strBoxTypeClass);
 			dlg.setAttribute('title', strTitle);
 			dlg.setAttribute('name', strAction);
