@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.347
+// ** EasyDialogBox 1.348
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -34,6 +34,12 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			EasyDialogBox.show(myBox);
 			
 			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
+			
+			// ** Create a dialog on the fly!
+			let myBox2 = EasyDialogBox.create('dlg','Testing on the fly dialog2','<p>Hello on the fly2!</p>','doNothing');
+			EasyDialogBox.show(myBox2);
+			
+			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');			
 			
 			/*
 			// ** TEST: Remove it after 3 seconds :)
@@ -110,6 +116,9 @@ var EasyDialogBox =
 
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
 	onTheFly : false,
+	
+	// ** Keep track of how many boxes that's been created
+	boxCount : 0,
 
 	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
 	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
@@ -158,7 +167,7 @@ var EasyDialogBox =
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
 		// ** Check if box is already created, we only want one box at once
-		if(this.onTheFly === false)
+		//if(this.onTheFly === false)
 		{
 			// ** Check if type is valid (>= 0)
 			if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
@@ -168,8 +177,9 @@ var EasyDialogBox =
 				
 				// ** Create box and insert into parent element
 				let dlg = document.createElement('div');
-				dlg.setAttribute('id', 'OnTheFly_' + this.boxId);
+				dlg.setAttribute('id', 'OnTheFly_' + this.boxId + '_' + this.boxCount);
 				dlg.setAttribute('class', strBoxTypeClass);
+				dlg.classList.add('on-the-fly');
 				dlg.setAttribute('title', strTitle);
 				dlg.setAttribute('name', strAction);
 				dlg.innerHTML = strMessage;
@@ -177,6 +187,8 @@ var EasyDialogBox =
 				
 				// ** Set flag to true
 				this.onTheFly = true;
+				
+				this.boxCount++;
 
 				// ** Return the 'id' value of the newly created element
 				return dlg.getAttribute('id');
@@ -186,9 +198,9 @@ var EasyDialogBox =
 				console.log('Dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
 			}
 		}
-		else
+		//else
 		{
-			console.log('Dialogbox already exist, no new box was created!');
+			//console.log('Dialogbox already exist, no new box was created!');
 		}
 	},
 	
@@ -217,7 +229,14 @@ var EasyDialogBox =
 			
 			// ** Create dialogbox
 			let box = document.createElement('div');
-			box.setAttribute('id', this.boxId);
+			if(dlg.classList.contains('on-the-fly'))
+			{
+				box.setAttribute('id', this.boxId + '_' + this.boxCount);
+			}
+			else
+			{
+				box.setAttribute('id', this.boxId);
+			}
 			box.setAttribute('class','dlg-box dlg-center-vert');
 			dlg.appendChild(box);
 			
@@ -623,7 +642,8 @@ var EasyDialogBox =
 		}
 
 		// ** If 'onTheFly' box was created, remove it, and reset flag
-		if(this.onTheFly === true)
+		//if(this.onTheFly === true)
+		if(dlg.classList.contains('on-the-fly'))
 		{
 			// ** If exist, remove it
 			if(dlg)
