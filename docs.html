@@ -89,6 +89,10 @@ b
 {
 	color:#ff8490;
 }
+#paramList
+{
+	list-style-type:square;
+}
 </style>
 <link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
 <script src="js/easydlg.js"></script>
@@ -247,6 +251,26 @@ b
 	<p>Can be used in Javascript code to create a new dialogbox. No pre-written HTML needed.</p>
 	<p>Create dialog: <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
 	<p class="ital">Return value = <code>id</code> of the created box</p>
+	<h3>Parameters</h3>
+	<p>
+		<code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space:
+		<ul id="paramList">
+			<li>dlg</li>
+			<li>dlg-close</li>
+			<li>dlg-prompt</li>
+			<li>dlg-yes</li>
+			<li>dlg-no</li>
+			<li>dlg-yes-no</li>
+			<li>dlg-ok</li>
+			<li>dlg-cancel</li>
+			<li>dlg-ok-cancel</li>
+			<li>dlg-no-footer</li>
+			<li>dlg-no-btns</li>
+		</ul>
+	</p>
+	<p><code>strTitle</code> = title text of the box.</p>
+	<p><code>strMessage</code> = message, can be html or just plain text.</p>
+	<p><code>strAction</code> = a custom string that is recieved in CALLBACK function that can be used to execute custom action.</p>
 	<hr />
 	<p>Show dialog: <code>EasyDialogBox.show(id);</code></p>
 	<hr />
