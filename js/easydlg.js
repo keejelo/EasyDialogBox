@@ -115,7 +115,7 @@ var EasyDialogBox =
 	orgBodyPaddingRight : undefined, 
 
 	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
-	onTheFly : false,
+	//onTheFly : false,
 	
 	// ** Keep track of how many boxes that's been created
 	boxCount : 0,
@@ -652,7 +652,7 @@ var EasyDialogBox =
 			}
 			
 			// ** Reset flag to default state
-			this.onTheFly = false;
+			//this.onTheFly = false;
 		}
 	},
 	
