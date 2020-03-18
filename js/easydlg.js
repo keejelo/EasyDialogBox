@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.347
+// ** EasyDialogBox 1.357
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -23,37 +23,53 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	{
 		if(retVal === 0)
 		{
-			console.log('User clicked "CloseX", "Close" button or outside box. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + retVal);
 		}
 		else if(retVal === 1)
 		{
-			console.log('User clicked "Yes" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "Yes" button. Return value = ' + retVal);
 			
-			// ** Create a dialog on the fly!
+			// ** Example: Create a dialog on the fly!
 			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
-			EasyDialogBox.show(myBox);
 			
-			console.log('Created a new dialog on the fly since the user clicked "Yes" button.');
-			
-			/*
+			// ** Check if box was created successfully
+			if(myBox) 
+			{
+				// ** Show the new box
+				let bRet = EasyDialogBox.show(myBox);
+				
+				// ** Check if box was shown successfully
+				if(bRet)
+				{
+					console.log('CALLBACK: Showing a new dialog on the fly since the user clicked "Yes" button. (Example in CALLBACK function)');
+				}
+				else
+				{
+					console.log('CALLBACK: Error, could not show dialog: ' + myBox);
+				}
+			}
+
 			// ** TEST: Remove it after 3 seconds :)
+			/*
 			setTimeout(function()
 			{
-				EasyDialogBox.destroy(myBox)
+				EasyDialogBox.destroy(myBox);
+				console.log('CALLBACK: Destroyed the dialogbox after 3 seconds. (Example in CALLBACK function)')
 			}, 3000);
 			*/
+			// ** END: Example: Create a dialog on the fly!
 		}
 		else if(retVal === 2)
 		{
-			console.log('User clicked "No" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "No" button. Return value = ' + retVal);
 		}
 		else if(retVal === 3)
 		{
-			console.log('User clicked "OK" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "OK" button. Return value = ' + retVal);
 		}
 		else if(retVal === 4)
 		{
-			console.log('User clicked "Cancel" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + retVal);
 		}
 	}
 	
@@ -62,7 +78,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	// ** Example
 	if(typeof strPromptBox !== 'undefined') // Check if any text was typed into input
 	{
-		console.log('Promptbox input value = ' + strPromptBox);
+		console.log('CALLBACK: Promptbox input value = ' + strPromptBox);
 	}			
 	
 	
@@ -70,7 +86,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	// ** Example
 	if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
 	{
-		console.log('string "myCustomActionInCallbackFunc" from "name" attribute recieved in CALLBACK function');
+		console.log('CALLBACK: string "myCustomActionInCallbackFunc" from "name" attribute recieved in CALLBACK function');
 	}
 	
 	
@@ -108,12 +124,11 @@ var EasyDialogBox =
 	// ** Variable that stores the original padding-right value of body element
 	orgBodyPaddingRight : undefined, 
 
-	// ** False by default, set to true when onTheFly box is created, signals to destroy func to remove it.
-	onTheFly : false,
-
-	// ** Create 'id' for dialogbox, hopefully it won't clash with any other html elements 'id'
-	// ** If we wanted to create an unique 'id' for each dialogbox we could've used a timestamp.
-	boxId : 'de82cd512cb22112aa6813dd5182ef37',	
+	// ** Indicate that a box is current in view (is shown)
+	isActive : false,
+	
+	// ** Dialogbox 'id' default: null
+	boxId : null, 
 
 	// ** Register self awareness
 	that : null,
@@ -141,7 +156,7 @@ var EasyDialogBox =
 		}
 	},
 	
-	// ** Check if array contains value, helper function 
+	// ** Check if array contains/matches value (helper function)
 	contains : function(arr, val)
 	{
 		for(let i = 0; i < arr.length; i++)
@@ -154,57 +169,52 @@ var EasyDialogBox =
 		return -1;		
 	},
 	
-	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create a dialog on the fly.
+	// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
 	create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 	{
-		// ** Check if box is already created, we only want one box at once
-		if(this.onTheFly === false)
+		// ** Check if type is valid (>= 0)
+		if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
 		{
-			// ** Check if type is valid (>= 0)
-			if(this.contains(this.strBoxTypeList, strBoxTypeClass) >= 0)
-			{
-				// ** Create parent reference
-				let body = document.getElementsByTagName('body')[0];
-				
-				// ** Create box and insert into parent element
-				let dlg = document.createElement('div');
-				dlg.setAttribute('id', 'OnTheFly_' + this.boxId);
-				dlg.setAttribute('class', strBoxTypeClass);
-				dlg.setAttribute('title', strTitle);
-				dlg.setAttribute('name', strAction);
-				dlg.innerHTML = strMessage;
-				body.appendChild(dlg);
-				
-				// ** Set flag to true
-				this.onTheFly = true;
+			// ** Create parent reference
+			let body = document.getElementsByTagName('body')[0];
+			
+			// ** Create a random timestamp for the 'id'
+			let d = new Date();
+			let n = d.getTime();
+			
+			// ** Create box and insert into parent element
+			let dlg = document.createElement('div');
+			dlg.setAttribute('id', 'OnTheFly_' + n);
+			dlg.setAttribute('class', strBoxTypeClass);
+			dlg.classList.add('on-the-fly');
+			dlg.setAttribute('title', strTitle);
+			dlg.setAttribute('name', strAction);
+			dlg.innerHTML = strMessage;
+			body.appendChild(dlg);
 
-				// ** Return the 'id' value of the newly created element
-				return dlg.getAttribute('id');
-			}
-			else
-			{
-				console.log('Dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
-			}
+			// ** Return the 'id' value of the newly created element
+			return dlg.getAttribute('id');
 		}
 		else
 		{
-			console.log('Dialogbox already exist, no new box was created!');
+			console.log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
 		}
+		return null;
 	},
 	
 	// ** Show the dialog box
 	show : function(id)
-	{			
-		// ** Check if a dialogbox is already created, we dont want more than one box at once
-		let dlg_exist = document.getElementById(this.boxId); // we want it to be: null
-
-		// ** Get the 'id' from function parameter, we want to create a dialog from the element containing this 'id'
+	{
+		// ** Get the 'id' from function parameter, we want to show the dialog that have this 'id'
 		let dlg = document.getElementById(id);
 		
-		// ** Check if element with the 'id' exist in DOM, and that no other dialog exist at this moment
-		if(dlg && !dlg_exist)
+		// ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
+		if(dlg && (this.isActive === false))
 		{	
-			// ** Get value from 'name' attribute, pass it on to CALLBACK function, can be used to excute custom action in CALLBACK function
+			// ** Create a temp 'id' for the showing dialogbox
+			this.boxId = id + '_1';
+			
+			// ** Get value from 'name' attribute, passed on to CALLBACK function, can be used to excute custom action in CALLBACK function
 			this.strAction = dlg.getAttribute('name');
 		
 			// ** Get current 'title' value and store it
@@ -215,7 +225,7 @@ var EasyDialogBox =
 			let orgMessage = dlg.innerHTML;
 			dlg.innerHTML = ''; // temporary remove html 
 			
-			// ** Create dialogbox
+			// ** Create outer box
 			let box = document.createElement('div');
 			box.setAttribute('id', this.boxId);
 			box.setAttribute('class','dlg-box dlg-center-vert');
@@ -345,7 +355,7 @@ var EasyDialogBox =
 			
 			// ** Show dlg overlay and dialogbox
 			dlg.style.display = 'block';
-			
+
 			// ** Set focus to input field if promptbox
 			if(dlg.classList.contains('dlg-prompt'))
 			{
@@ -399,7 +409,7 @@ var EasyDialogBox =
 			// ** can prevent contentshift if content is centered when scrollbar disappears.
 			body.setAttribute('style','padding-right:' + w3 + 'px;');		
 			// ** END: Creating substitute for scrollbar
-			
+
 			
 			//---------------------------------------------------------------------
 			// ** Create event-listeners
@@ -577,15 +587,24 @@ var EasyDialogBox =
 			//---------------------------------------------------------------------
 			// ** END: Create event-listeners
 			//---------------------------------------------------------------------
+			
+			// ** Set flag to indicate box is active and is shown
+			this.isActive = true;
+			
+			// ** Return success
+			return true;
 		}
-		else if(dlg_exist)
+		else if(this.isActive)
 		{
-			console.log('An element with id \'' + this.boxId + '\' already exist!\nNo new element created.');
-		}				
+			console.log('show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+		}						
 		else if(!dlg)
 		{
-			console.log('Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
-		}		
+			console.log('show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
+		}
+
+		// ** Return error
+		return false;
 	},
 	
 	// ** Close and destroy the dialog box
@@ -622,18 +641,18 @@ var EasyDialogBox =
 			dlg.innerHTML = orgMessage;
 		}
 
-		// ** If 'onTheFly' box was created, remove it, and reset flag
-		if(this.onTheFly === true)
+		// ** If 'OnTheFly' box was created, remove all of it
+		if(dlg.classList.contains('on-the-fly'))
 		{
 			// ** If exist, remove it
 			if(dlg)
 			{
 				dlg.parentNode.removeChild(dlg);
 			}
-			
-			// ** Reset flag to default state
-			this.onTheFly = false;
 		}
+		
+		// ** Reset flag 
+		this.isActive = false;
 	},
 	
 	// ** Callback function to pass along return values 
