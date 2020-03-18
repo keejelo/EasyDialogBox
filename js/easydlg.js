@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.357
+// ** EasyDialogBox 1.358
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ var EasyDialogBox =
 	// ** Dialogbox 'id' default: null
 	boxId : null, 
 
-	// ** Register self awareness
+	// ** Register self awareness, variable used in event-listeners to point to this object
 	that : null,
 	register : function()
 	{
@@ -210,7 +210,7 @@ var EasyDialogBox =
 		
 		// ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
 		if(dlg && (this.isActive === false))
-		{	
+		{
 			// ** Create a temp 'id' for the showing dialogbox
 			this.boxId = id + '_1';
 			
