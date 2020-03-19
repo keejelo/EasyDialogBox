@@ -260,13 +260,16 @@ b
 	<p>&nbsp;</p>
 	<p>&nbsp;</p>
 	
-	<hr />	
-	<h3>On the fly dialogbox</h3>	
-	<p>Can be used in Javascript code to create a new dialogbox. No pre-written HTML needed.</p>
+	<hr />
+	<h2>'On the fly' dialogbox</h2>
+	<p>Can be used in Javascript code to create a new dialogbox on the go. No pre-written HTML needed.</p>
 	<hr />
 	<h3>Methods (functions)</h3>
 	<hr />
-	<p><span class="bold">Create dialog:</span> <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
+	<p>
+		<span class="bold">Create dialog:</span><br />
+		<code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code>
+	</p>
 	<p class="ital">Return values = <code>id</code> of the created box, <code>null</code> if could not be created.</p>
 	<p>&nbsp;</p>
 	<p class="bold">Parameters</p>
@@ -291,11 +294,15 @@ b
 	<p><code>strMessage</code> = message, can be html or just plain text.</p>
 	<p><code>strAction</code> = a custom string that is recieved in CALLBACK function that can be used to execute a custom action.</p>
 	<hr />
-	<p><span class="bold">Show dialog:</span> <code>EasyDialogBox.show(id);</code></p>
+	<p>
+		<span class="bold">Show dialog:</span> <code>EasyDialogBox.show(id);</code>
+	</p>
 	<p class="ital">Return value = <code>true</code> if the box could be shown, <code>false</code> if not.</p>
 	<p><span class="bold">Parameter:</span> <code>id</code> of an existing dialog.</p>
 	<hr />
-	<p><span class="bold">Destroy dialog:</span> <code>EasyDialogBox.destroy(id);</code></p>
+	<p>
+		<span class="bold">Destroy dialog:</span> <code>EasyDialogBox.destroy(id);</code>
+	</p>
 	<p class="ital">Return value = none (does not return any value).</p>
 	<p><span class="bold">Parameter:</span> <code>id</code> of an existing dialog.</p>
 	<hr />
