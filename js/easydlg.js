@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.359
+// ** EasyDialogBox 1.362
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ var EasyDialogBox =
 	okButtonText     : 'OK',      // OK
 	cancelButtonText : 'Cancel',  // Cancel
 	
-	// ** Dialogbox types, can be used separately or in combination
+	// ** Dialogbox types, can be used separately or in combination separated by a space
 	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'],
 
 	// ** Variable that stores current input text in promptbox, default = undefined
@@ -150,7 +150,7 @@ var EasyDialogBox =
 			{
 				that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
 				this.blur(); // remove focus from button or other opening element
-				event.preventDefault(); // if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
+				event.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 				event.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
 			});
 		}
@@ -178,7 +178,7 @@ var EasyDialogBox =
 			// ** Create parent reference
 			let body = document.getElementsByTagName('body')[0];
 			
-			// ** Create a random timestamp for the 'id'
+			// ** Create a unique timestamp for the 'id'
 			let d = new Date();
 			let n = d.getTime();
 			
@@ -399,8 +399,8 @@ var EasyDialogBox =
 			// ** Get width-difference
 			let w3 = w2 - w1;
 			
-			// ** Add both padding-right values, if conditions are true
-			if(typeof this.orgBodyPaddingRight === 'number' && this.orgBodyPaddingRight !== 0)
+			// ** If conditions are true: add both padding-right values, 
+			if(typeof this.orgBodyPaddingRight === 'number' && this.orgBodyPaddingRight > 0)
 			{
 				w3 += parseInt(this.orgBodyPaddingRight);
 			}
@@ -603,7 +603,7 @@ var EasyDialogBox =
 			console.log('show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
 		}
 
-		// ** Return error
+		// ** Return failure
 		return false;
 	},
 	
@@ -637,20 +637,20 @@ var EasyDialogBox =
 		if(dlg)
 		{
 			dlg.style.display = 'none';
-			dlg.setAttribute('title', orgTitleText);
-			dlg.innerHTML = orgMessage;
-		}
-
-		// ** If 'OnTheFly' box was created, remove all of it
-		if(dlg.classList.contains('on-the-fly'))
-		{
-			// ** If exist, remove it
-			if(dlg)
+		
+			// ** If 'OnTheFly' box was created, remove all
+			if(dlg.classList.contains('on-the-fly'))
 			{
 				dlg.parentNode.removeChild(dlg);
 			}
+			// ** If not, just reset values back to original
+			else
+			{			
+				dlg.setAttribute('title', orgTitleText);
+				dlg.innerHTML = orgMessage;
+			}
 		}
-		
+
 		// ** Reset flag 
 		this.isActive = false;
 	},
