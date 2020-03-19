@@ -10,7 +10,7 @@ body
 	padding-bottom:200px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:16px;
-	background-color:#e0e0e0;
+	background-color:#f0f0f0;
 }
 .ital
 {
@@ -89,11 +89,23 @@ b
 {
 	color:#ff8490;
 }
-#paramList
+#paramTable
 {
-	list-style-type:none;
+	border-collapse:collapse;
+	background-color:#fff;
+}
+#paramTable td
+{
 	font-weight:bold;
-	padding-left:10px;
+	border:1px #000 solid;
+	padding:6px;
+	color:#444;
+}
+#paramTable td+td
+{
+	font-weight:normal;
+	border:1px #000 solid;
+	color:inherit;
 }
 </style>
 <link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
@@ -256,23 +268,25 @@ b
 	<hr />
 	<p><span class="bold">Create dialog:</span> <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code></p>
 	<p class="ital">Return values = <code>id</code> of the created box, <code>null</code> if could not be created.</p>
-	<p class="bold">Parameters:</p>
+	<p>&nbsp;</p>
+	<p class="bold">Parameters</p>
 	<p>
-		<code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space:
-		<ul id="paramList">
-			<li>dlg</li>
-			<li>dlg-close</li>
-			<li>dlg-prompt</li>
-			<li>dlg-yes</li>
-			<li>dlg-no</li>
-			<li>dlg-yes-no</li>
-			<li>dlg-ok</li>
-			<li>dlg-cancel</li>
-			<li>dlg-ok-cancel</li>
-			<li>dlg-no-footer</li>
-			<li>dlg-no-btns</li>
-		</ul>
+		<code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
+		<table id="paramTable">
+			<tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
+			<tr><td>dlg-close</td><td>Dialog with Close button, or add Close button to dialog.</td></tr>
+			<tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
+			<tr><td>dlg-yes</td><td>Dialog with Yes button, or add Yes button to dialog.</td></tr>
+			<tr><td>dlg-no</td><td>Dialog with No button, or add No button to dialog.</td></tr>
+			<tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, or add Yes + No buttons to dialog.</td></tr>
+			<tr><td>dlg-ok</td><td>Dialog with OK button, or add OK button to dialog.</td></tr>
+			<tr><td>dlg-cancel</td><td>Dialog with Cancel button, or add Cancel button to dialog.</td></tr>
+			<tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, or add OK + Cancel buttons to dialog.</td></tr>
+			<tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
+			<tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
+		</table>
 	</p>
+	<p>&nbsp;</p>
 	<p><code>strTitle</code> = title text of the box, should be plain text only.</p>
 	<p><code>strMessage</code> = message, can be html or just plain text.</p>
 	<p><code>strAction</code> = a custom string that is recieved in CALLBACK function that can be used to execute a custom action.</p>
