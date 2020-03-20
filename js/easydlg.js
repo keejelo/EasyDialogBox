@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.365
+// ** EasyDialogBox 1.366
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -106,11 +106,11 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 let EasyDialogBox =
 {
 	// ** (Optional) Custom your own text for the buttons.
-	btnCloseText  : 'Close',   // Close
-	btnYesText    : 'Yes',     // Yes
-	btnNoText     : 'No',      // No
-	btnOkText     : 'OK',      // OK
-	btnCancelText : 'Cancel',  // Cancel
+	btnTextClose  : 'Close',   // Close
+	btnTextYes    : 'Yes',     // Yes
+	btnTextNo     : 'No',      // No
+	btnTextOk     : 'OK',      // OK
+	btnTextCancel : 'Cancel',  // Cancel
 	
 	// ** Dialogbox types, can be used separately or in combination separated by a space
 	strBoxTypeList : ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'],
@@ -293,7 +293,7 @@ let EasyDialogBox =
 						// ** Create button
 						let yesBtn = document.createElement('button');
 						yesBtn.setAttribute('class','dlg-yes-btn');
-						let yesBtnText = document.createTextNode(this.btnYesText);
+						let yesBtnText = document.createTextNode(this.btnTextYes);
 						yesBtn.appendChild(yesBtnText);
 						footer.appendChild(yesBtn);
 					}
@@ -306,7 +306,7 @@ let EasyDialogBox =
 						// ** Create button
 						let noBtn = document.createElement('button');
 						noBtn.setAttribute('class','dlg-no-btn');
-						let noBtnText = document.createTextNode(this.btnNoText);
+						let noBtnText = document.createTextNode(this.btnTextNo);
 						noBtn.appendChild(noBtnText);
 						footer.appendChild(noBtn);
 					}
@@ -319,7 +319,7 @@ let EasyDialogBox =
 						// ** Create button
 						let okBtn = document.createElement('button');
 						okBtn.setAttribute('class','dlg-ok-btn');
-						let okBtnText = document.createTextNode(this.btnOkText);
+						let okBtnText = document.createTextNode(this.btnTextOk);
 						okBtn.appendChild(okBtnText);
 						footer.appendChild(okBtn);
 					}
@@ -332,7 +332,7 @@ let EasyDialogBox =
 						// ** Create button
 						let cancelBtn = document.createElement('button');
 						cancelBtn.setAttribute('class','dlg-cancel-btn');
-						let cancelBtnText = document.createTextNode(this.btnCancelText);
+						let cancelBtnText = document.createTextNode(this.btnTextCancel);
 						cancelBtn.appendChild(cancelBtnText);
 						footer.appendChild(cancelBtn);
 					}				
@@ -345,7 +345,7 @@ let EasyDialogBox =
 						// ** Create button
 						let closeBtn = document.createElement('button');
 						closeBtn.setAttribute('class','dlg-close-btn');
-						let closeBtnText = document.createTextNode(this.btnCloseText);
+						let closeBtnText = document.createTextNode(this.btnTextClose);
 						closeBtn.appendChild(closeBtnText);
 						footer.appendChild(closeBtn);
 					}
