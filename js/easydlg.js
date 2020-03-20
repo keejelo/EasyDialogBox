@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.366
+// ** EasyDialogBox 1.367
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -146,12 +146,13 @@ let EasyDialogBox =
 		// ** Create click handler for each element that contain above 'class'
 		for(let i = 0; i < btns.length; i++)
 		{
-			btns[i].addEventListener('click', function DlgOpenerClick(event)
+			btns[i].addEventListener('click', function DlgOpenerClick(e)
 			{
+				e = e ? e : window.event;
 				that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
 				this.blur(); // remove focus from button or other opening element
-				event.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
-				event.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
+				e.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
+				e.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
 			});
 		}
 	},
@@ -460,9 +461,10 @@ let EasyDialogBox =
 			// ** END: CLOSE button click handler
 			
 			// ** When the user clicks anywhere outside of the dialogbox, close it
-			window.addEventListener('click', function WinCloseClick(event)
+			window.addEventListener('click', function WinCloseClick(e)
 			{
-				if (event.target == dlg)
+				e = e ? e : window.event;
+				if (e.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
 					that.destroy(id, that.boxId, orgTitleText, orgMessage);
