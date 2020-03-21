@@ -107,6 +107,12 @@ b
 	border:1px #000 solid;
 	color:inherit;
 }
+a
+{
+	color:#000;
+	text-decoration:none;
+	border-bottom:1px dotted #000;
+}
 </style>
 <link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
 <script src="js/easydlg.js"></script>
@@ -217,8 +223,8 @@ b
 	<p>&nbsp;</p>
 	<hr />
 	
-	<h3>Crazy but possible! You can have it all at the same time if you want! Mix and match as you like!</h3>
-	<p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel</code></p>
+	<h3>Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
+	<p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel</code> (<a href="#otf">read more on classes</a>)</p>
 	<p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
 	<div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel"</b> <b class="att">title</b>=<b class="val">"Title text"</b> <b class="att">name</b>=<b class="val">&quot;myCustomActionInCallbackFunc&quot;</b><b class="tag">&gt;</b>
@@ -261,14 +267,13 @@ b
 	<p>&nbsp;</p>
 	
 	<hr />
-	<h2>'On the fly' dialogbox</h2>
+	<h2 id="otf">'On the fly' dialogbox</h2>
 	<p>Can be used in Javascript code to create a new dialogbox on the go. No pre-written HTML needed.</p>
 	<hr />
 	<h3>Methods (functions)</h3>
 	<hr />
 	<p>
-		<span class="bold">Create dialog:</span><br />
-		<code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code>
+		<span class="bold">Create dialog:</span> <code>EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, strAction);</code>
 	</p>
 	<p class="ital">Return values = <code>id</code> of the created box, <code>null</code> if could not be created.</p>
 	<p>&nbsp;</p>
