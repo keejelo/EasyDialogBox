@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.379
+// ** EasyDialogBox 1.380
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -591,12 +591,12 @@ let EasyDialogBox = (function()
 				{
 					pBox.addEventListener('keyup', function PromptBoxKeyUp()
 					{
-						_that._promptBoxInputValue = pBox.value.trim();
+						_promptBoxInputValue = pBox.value.trim();
 					});
 					
 					pBox.addEventListener('change', function PromptBoxChange()
 					{
-						_that._promptBoxInputValue = pBox.value.trim();
+						_promptBoxInputValue = pBox.value.trim();
 					});
 				}
 				// ** END: When the user types in promptbox
