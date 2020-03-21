@@ -9,7 +9,7 @@
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
 function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
-{'use strict';
+{	'use strict';
 	
 	// ** Variable "retVal" values:
 	//  0 = "CloseX", "Close" button or outside box was clicked
@@ -105,7 +105,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 // ** EasyDialogBox Object
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox = (function()
-{'use strict';
+{	'use strict';
 	
 	// ** (Optional) Custom your own text for the buttons.
 	let btnTextClose  = 'Close';   // Close
