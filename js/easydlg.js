@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.393
+// ** EasyDialogBox 1.394
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -136,14 +136,14 @@ let EasyDialogBox = (function()
 	let _boxId = null;
 	
 	// ** Callback function to pass along return values 
-	function _callback(nRet)
+	let _callback = function(nRet)
 	{
 		// ** Pass values along to outside function so they can be used easier.
 		CALLBACK_EasyDialogBox(nRet, _strAction, _promptBoxInputValue);
 	};
 
 	// ** Check if array contains/matches value (helper function)
-	function _contains(arr, val)
+	let _contains = function(arr, val)
 	{
 		for(let i = 0; i < arr.length; i++)
 		{
