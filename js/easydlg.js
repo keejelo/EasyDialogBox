@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.394
+// ** EasyDialogBox 1.395
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
-function CALLBACK_EasyDialogBox(nRet, strAction, strPromptBox)
+let CALLBACK_EasyDialogBox = function(nRet, strAction, strPromptBox)
 {	'use strict';
 	
 	// ** Variable "nRet" values:
