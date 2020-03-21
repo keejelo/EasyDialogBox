@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.381
+// ** EasyDialogBox 1.382
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -284,7 +284,7 @@ let EasyDialogBox = (function()
 					div.appendChild(input);
 					
 					// ** Remove earlier entered text, set to: undefined
-					this._promptBoxInputValue = undefined;
+					_promptBoxInputValue = undefined;
 
 					// ** Add buttons if not already stated in 'class'
 					dlg.classList.add('dlg-ok-cancel');
@@ -575,7 +575,7 @@ let EasyDialogBox = (function()
 							if(pBox)
 							{
 								// ** Since user clicked Cancel, delete inputted text value, set to: undefined
-								this._promptBoxInputValue = undefined;
+								_promptBoxInputValue = undefined;
 							}
 
 							// ** Return code 4 , since user clicked Cancel
