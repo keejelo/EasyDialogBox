@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.377
+// ** EasyDialogBox 1.379
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -132,6 +132,13 @@ let EasyDialogBox = (function()
 	// ** Dialogbox 'id' default: null
 	let _boxId = null;
 	
+	// ** Callback function to pass along return values 
+	let _callback = function(retVal, _strAction)
+	{
+		// ** Pass values along to outside function so they can be used easier.
+		CALLBACK_EasyDialogBox(retVal, _strAction, _promptBoxInputValue);
+	};
+
 	// ** Check if array contains/matches value (helper function)
 	let _contains = function(arr, val)
 	{
@@ -446,7 +453,7 @@ let EasyDialogBox = (function()
 						}
 
 						// ** Return code 0 (false), since user clicked X (close)
-						_that.callback(0, _that._strAction);
+						_callback(0, _that._strAction);
 					});
 				}
 				// ** END: X button click handler
@@ -464,7 +471,7 @@ let EasyDialogBox = (function()
 						btnCloseDialog.removeEventListener('click', BtnCloseClick);
 						
 						// ** Return code 0 , since user clicked Close
-						_that.callback(0, _that._strAction);
+						_callback(0, _that._strAction);
 					});
 				}
 				// ** END: CLOSE button click handler
@@ -481,7 +488,7 @@ let EasyDialogBox = (function()
 						window.removeEventListener('click', WinCloseClick);
 						
 						// ** Return code 0 (false), since we just want to exit
-						_that.callback(0, _that._strAction);
+						_callback(0, _that._strAction);
 					}			
 				});
 				// ** END: window click outside box click handler		
@@ -505,7 +512,7 @@ let EasyDialogBox = (function()
 							btnYesDialog.removeEventListener('click', BtnYesClick);
 							
 							// ** Return code 1 , since user clicked YES
-							_that.callback(1, _that._strAction);
+							_callback(1, _that._strAction);
 						});
 					}
 					
@@ -522,7 +529,7 @@ let EasyDialogBox = (function()
 							btnNoDialog.removeEventListener('click', BtnNoClick);
 							
 							// ** Return code 2 , since user clicked NO
-							_that.callback(2, _that._strAction);
+							_callback(2, _that._strAction);
 						});
 					}			
 				}
@@ -547,7 +554,7 @@ let EasyDialogBox = (function()
 							btnOkDialog.removeEventListener('click', BtnOkClick);
 
 							// ** Return code 3 , since user clicked OK
-							_that.callback(3, _that._strAction);
+							_callback(3, _that._strAction);
 						});
 					}
 					
@@ -572,7 +579,7 @@ let EasyDialogBox = (function()
 							}
 
 							// ** Return code 4 , since user clicked Cancel
-							_that.callback(4, _that._strAction);
+							_callback(4, _that._strAction);
 						});
 					}
 				}
@@ -667,13 +674,6 @@ let EasyDialogBox = (function()
 
 			// ** Reset flag 
 			_isActive = false;
-		},
-		
-		// ** Callback function to pass along return values 
-		callback : function(retVal, _strAction)
-		{
-			// ** Pass values along to outside function so they can be used easier.
-			CALLBACK_EasyDialogBox(retVal, _strAction, this._promptBoxInputValue);
 		}
 	}
 })();
