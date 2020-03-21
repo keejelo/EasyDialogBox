@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.384
+// ** EasyDialogBox 1.385
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -133,7 +133,7 @@ let EasyDialogBox = (function()
 	let _boxId = null;
 	
 	// ** Callback function to pass along return values 
-	let _callback = function(retVal, _strAction)
+	let _callback = function(retVal)
 	{
 		// ** Pass values along to outside function so they can be used easier.
 		CALLBACK_EasyDialogBox(retVal, _strAction, _promptBoxInputValue);
@@ -189,7 +189,7 @@ let EasyDialogBox = (function()
 		},
 
 		// ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
-		create : function(strBoxTypeClass, strTitle, strMessage, _strAction)
+		create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 		{
 			// ** Check if type is valid (>= 0)
 			if(_contains(_strBoxTypeList, strBoxTypeClass) >= 0)
@@ -207,7 +207,7 @@ let EasyDialogBox = (function()
 				dlg.setAttribute('class', strBoxTypeClass);
 				dlg.classList.add('on-the-fly');
 				dlg.setAttribute('title', strTitle);
-				dlg.setAttribute('name', _strAction);
+				dlg.setAttribute('name', strAction);
 				dlg.innerHTML = strMessage;
 				body.appendChild(dlg);
 
@@ -235,7 +235,7 @@ let EasyDialogBox = (function()
 				
 				// ** Get value from 'name' attribute, passed on to CALLBACK function, can be used to excute custom action in CALLBACK function
 				_strAction = dlg.getAttribute('name');
-			
+				
 				// ** Get current 'title' value and store it
 				let orgTitleText = dlg.getAttribute('title');
 				dlg.setAttribute('title',''); // temporary remove 'title' value, prevents showing up on hovering over dialogbox
@@ -455,7 +455,7 @@ let EasyDialogBox = (function()
 						_that.destroy(id, _that._boxId, orgTitleText, orgMessage);						
 
 						// ** Return code 0 (false), since user clicked X (close)
-						_callback(0, _that._strAction);
+						_callback(0);
 					});
 				}
 				// ** END: X button click handler
@@ -473,7 +473,7 @@ let EasyDialogBox = (function()
 						btnCloseDialog.removeEventListener('click', BtnCloseClick);
 						
 						// ** Return code 0 , since user clicked Close
-						_callback(0, _that._strAction);
+						_callback(0);
 					});
 				}
 				// ** END: CLOSE button click handler
@@ -490,7 +490,7 @@ let EasyDialogBox = (function()
 						window.removeEventListener('click', WinCloseClick);
 						
 						// ** Return code 0 (false), since we just want to exit
-						_callback(0, _that._strAction);
+						_callback(0);
 					}			
 				});
 				// ** END: window click outside box click handler		
@@ -514,7 +514,7 @@ let EasyDialogBox = (function()
 							btnYesDialog.removeEventListener('click', BtnYesClick);
 							
 							// ** Return code 1 , since user clicked YES
-							_callback(1, _that._strAction);
+							_callback(1);
 						});
 					}
 					
@@ -531,7 +531,7 @@ let EasyDialogBox = (function()
 							btnNoDialog.removeEventListener('click', BtnNoClick);
 							
 							// ** Return code 2 , since user clicked NO
-							_callback(2, _that._strAction);
+							_callback(2);
 						});
 					}			
 				}
@@ -556,7 +556,7 @@ let EasyDialogBox = (function()
 							btnOkDialog.removeEventListener('click', BtnOkClick);
 
 							// ** Return code 3 , since user clicked OK
-							_callback(3, _that._strAction);
+							_callback(3);
 						});
 					}
 					
@@ -581,7 +581,7 @@ let EasyDialogBox = (function()
 							}
 
 							// ** Return code 4 , since user clicked Cancel
-							_callback(4, _that._strAction);
+							_callback(4);
 						});
 					}
 				}
