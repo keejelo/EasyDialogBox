@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.367
+// ** EasyDialogBox 1.370
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -140,21 +140,23 @@ let EasyDialogBox =
 	// ** Initialize
 	init : function()
 	{	
-		// ** Get all elements with 'class' containing 'dlg-opener'
-		let btns = document.getElementsByClassName('dlg-opener');
-		
-		// ** Create click handler for each element that contain above 'class'
-		for(let i = 0; i < btns.length; i++)
+		window.addEventListener('load', function winLoad()
 		{
-			btns[i].addEventListener('click', function DlgOpenerClick(e)
+			// ** Get all elements with 'class' containing 'dlg-opener'
+			let btns = document.getElementsByClassName('dlg-opener');
+			
+			// ** Create click handler for each element that contain above 'class'
+			for(let i = 0; i < btns.length; i++)
 			{
-				e = e ? e : window.event;
-				that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
-				this.blur(); // remove focus from button or other opening element
-				e.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
-				e.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
-			});
-		}
+				btns[i].addEventListener('click', function DlgOpenerClick(evt)
+				{
+					that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
+					this.blur(); // remove focus from button or other opening element
+					evt.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
+					evt.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
+				});
+			}
+		});
 	},
 	
 	// ** Check if array contains/matches value (helper function)
@@ -461,10 +463,9 @@ let EasyDialogBox =
 			// ** END: CLOSE button click handler
 			
 			// ** When the user clicks anywhere outside of the dialogbox, close it
-			window.addEventListener('click', function WinCloseClick(e)
+			window.addEventListener('click', function WinCloseClick(evt)
 			{
-				e = e ? e : window.event;
-				if (e.target == dlg)
+				if(evt.target == dlg)
 				{	
 					// ** Close dialogbox, reset values, clean up
 					that.destroy(id, that.boxId, orgTitleText, orgMessage);
@@ -675,7 +676,7 @@ let EasyDialogBox =
 (function()
 {
 	EasyDialogBox.register();
-	window.addEventListener('load', EasyDialogBox.init);
+	EasyDialogBox.init();
 }
 )();
 //-----------------------------------------------------------------------------------------------------------------
