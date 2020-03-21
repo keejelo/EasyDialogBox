@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.370
+// ** EasyDialogBox 1.371
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			{
 				// ** Show the new box
 				let bRet = EasyDialogBox.show(myBox);
-				
+
 				// ** Check if box was shown successfully
 				if(bRet)
 				{
@@ -130,8 +130,10 @@ let EasyDialogBox =
 	// ** Dialogbox 'id' default: null
 	boxId : null,
 
-	// ** Register self awareness, variable used in event-listeners to point to this object
+	// ** Reference to this object itself (after register() has run)
 	that : null,
+	
+	// ** Register self awareness, variable used in event-listeners to point to this object	
 	register : function()
 	{
 		that = this;
@@ -661,7 +663,7 @@ let EasyDialogBox =
 	// ** Callback function to pass along return values 
 	callback : function(retVal, strAction)
 	{
-		// ** Pass values along to outside function so they can be used.
+		// ** Pass values along to outside function so they can be used easier.
 		CALLBACK_EasyDialogBox(retVal, strAction, this.promptBoxInputValue);
 	}
 };
