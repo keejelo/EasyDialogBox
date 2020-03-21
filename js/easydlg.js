@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.390
+// ** EasyDialogBox 1.391
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -8,10 +8,10 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
-function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
+function CALLBACK_EasyDialogBox(nRet, strAction, strPromptBox)
 {	'use strict';
 	
-	// ** Variable "retVal" values:
+	// ** Variable "nRet" values:
 	//  0 = "CloseX", "Close" button or outside box was clicked
 	//  1 = "Yes" button was clicked
 	//  2 = "No" button was clicked
@@ -20,15 +20,15 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 
 	// ** Check returned value from button click
 	// ** Example
-	if(typeof retVal === 'number')
+	if(typeof nRet === 'number')
 	{
-		if(retVal === 0)
+		if(nRet === 0)
 		{
-			console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + nRet);
 		}
-		else if(retVal === 1)
+		else if(nRet === 1)
 		{
-			console.log('CALLBACK: User clicked "Yes" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRet);
 			
 			// ** Example: Create a dialog on the fly!
 			let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
@@ -60,17 +60,17 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 			*/
 			// ** END: Example: Create a dialog on the fly!
 		}
-		else if(retVal === 2)
+		else if(nRet === 2)
 		{
-			console.log('CALLBACK: User clicked "No" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "No" button. Return value = ' + nRet);
 		}
-		else if(retVal === 3)
+		else if(nRet === 3)
 		{
-			console.log('CALLBACK: User clicked "OK" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "OK" button. Return value = ' + nRet);
 		}
-		else if(retVal === 4)
+		else if(nRet === 4)
 		{
-			console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + retVal);
+			console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + nRet);
 		}
 	}
 	
@@ -120,11 +120,11 @@ let EasyDialogBox = (function()
 	// ** Dialogbox types, can be used separately or in combination separated by a space
 	let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'];
 
-	// ** Variable that stores current input text in promptbox, default = undefined
-	let _promptBoxInputValue = undefined;
-	
 	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
 	let _strAction = undefined;
+	
+	// ** Variable that stores current input text in promptbox, default = undefined
+	let _promptBoxInputValue = undefined;	
 	
 	// ** Variable that stores the original padding-right value of body element
 	let _orgBodyPaddingRight = undefined;
@@ -136,10 +136,10 @@ let EasyDialogBox = (function()
 	let _boxId = null;
 	
 	// ** Callback function to pass along return values 
-	let _callback = function(retVal)
+	let _callback = function(nRet)
 	{
 		// ** Pass values along to outside function so they can be used easier.
-		CALLBACK_EasyDialogBox(retVal, _strAction, _promptBoxInputValue);
+		CALLBACK_EasyDialogBox(nRet, _strAction, _promptBoxInputValue);
 	};
 
 	// ** Check if array contains/matches value (helper function)
