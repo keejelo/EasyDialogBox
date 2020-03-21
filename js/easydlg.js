@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.385
+// ** EasyDialogBox 1.386
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -89,7 +89,10 @@ function CALLBACK_EasyDialogBox(retVal, strAction, strPromptBox)
 	{
 		console.log('CALLBACK: string "myCustomActionInCallbackFunc" from "name" attribute recieved in CALLBACK function');
 	}
-	
+	else if(strAction === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
+	{
+		console.log('CALLBACK: string "doNothing" from "name" attribute recieved in CALLBACK function');
+	}	
 	
 	// ..combine all of the above to do your custom stuff..
 	
