@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.398
+// ** EasyDialogBox 1.399
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -447,7 +447,7 @@ let EasyDialogBox = (function()
                         let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                         if(pBox)
                         {                            
-                            // ** Since user clicked Cancel, delete inputted text value, set to: undefined
+                            // ** Since user clicked Cancel, delete inputted text value
                             _promptBoxInputValue = '';
                         }
                     
@@ -469,11 +469,19 @@ let EasyDialogBox = (function()
                 {
                     btnCloseDialog.addEventListener('click', function BtnCloseClick()
                     {
-                        // ** Close dialogbox, reset values, clean up
-                        _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
+                        // ** If promptbox was created
+                        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                        if(pBox)
+                        {
+                            // ** Since user clicked Cancel, delete inputted text value
+                            _promptBoxInputValue = '';
+                        }
+                        
                         // ** Remove eventlistener
                         btnCloseDialog.removeEventListener('click', BtnCloseClick);
+                        
+                        // ** Close dialogbox, reset values, clean up
+                        _that.destroy(id, _that._boxId, orgTitleText, orgMessage);                        
                         
                         // ** Return code 0 , since user clicked Close
                         _callback(0);
@@ -486,11 +494,19 @@ let EasyDialogBox = (function()
                 {
                     if(evt.target == dlg)
                     {    
-                        // ** Close dialogbox, reset values, clean up
-                        _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+                        // ** If promptbox was created
+                        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                        if(pBox)
+                        {
+                            // ** Since user clicked Cancel, delete inputted text value
+                            _promptBoxInputValue = '';
+                        }
                         
                         // ** Remove eventlistener
                         window.removeEventListener('click', WinCloseClick);
+                        
+                        // ** Close dialogbox, reset values, clean up
+                        _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
                         
                         // ** Return code 0 (false), since we just want to exit
                         _callback(0);
@@ -579,7 +595,7 @@ let EasyDialogBox = (function()
                             let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                             if(pBox)
                             {
-                                // ** Since user clicked Cancel, delete inputted text value, set to: undefined
+                                // ** Since user clicked Cancel, delete inputted text value
                                 _promptBoxInputValue = '';
                             }
 
