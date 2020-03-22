@@ -585,12 +585,6 @@ let EasyDialogBox = (function()
                     {
                         btnCancelDialog.addEventListener('click', function BtnCancelClick()
                         {
-                            // ** Close dialogbox, reset values, clean up
-                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                            
-                            // ** Remove eventlistener
-                            btnCancelDialog.removeEventListener('click', BtnCancelClick);
-                            
                             // ** If promptbox was created
                             let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                             if(pBox)
@@ -599,6 +593,12 @@ let EasyDialogBox = (function()
                                 _promptBoxInputValue = '';
                             }
 
+                            // ** Remove eventlistener
+                            btnCancelDialog.removeEventListener('click', BtnCancelClick);
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+                            
                             // ** Return code 4 , since user clicked Cancel
                             _callback(4);
                         });
