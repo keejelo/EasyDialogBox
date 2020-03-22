@@ -447,7 +447,7 @@ let EasyDialogBox = (function()
                         let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                         if(pBox)
                         {                            
-                            // ** Since user clicked Cancel, delete inputted text value
+                            // ** Since user clicked X button, delete inputted text value
                             _promptBoxInputValue = '';
                         }
                     
@@ -473,7 +473,7 @@ let EasyDialogBox = (function()
                         let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                         if(pBox)
                         {
-                            // ** Since user clicked Cancel, delete inputted text value
+                            // ** Since user clicked Close, delete inputted text value
                             _promptBoxInputValue = '';
                         }
                         
