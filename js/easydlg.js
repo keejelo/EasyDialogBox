@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.402
+// ** EasyDialogBox 1.403
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ let EasyDialogBox = (function()
     let _that = null;
 
     //---------------------------------------------------------------------
-    // ** Public
+    // ** Public methods
     //---------------------------------------------------------------------
     return { //<-- bracket need to be on same line, else it just returns undefined
 
@@ -287,13 +287,13 @@ let EasyDialogBox = (function()
                     input.setAttribute('type', 'text');
                     input.setAttribute('value', '');
                     div.appendChild(input);
-                    
-                    // ** Remove earlier entered text, set to: undefined
-                    _promptBoxInputValue = '';
 
                     // ** Add buttons if not already stated in 'class'
                     dlg.classList.add('dlg-ok-cancel');
                 }
+                
+                // ** Remove earlier entered text
+                _promptBoxInputValue = '';                
 
                 // ** Create footer and buttons
                 // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
@@ -442,15 +442,7 @@ let EasyDialogBox = (function()
                 if(xCloseDialog)
                 {
                     xCloseDialog.addEventListener('click', function XCloseClick()
-                    {                        
-                        // ** If promptbox was created
-                        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-                        if(pBox)
-                        {                            
-                            // ** Since user clicked X button, delete inputted text value
-                            _promptBoxInputValue = '';
-                        }
-                    
+                    {                    
                         // ** Remove eventlistener
                         xCloseDialog.removeEventListener('click', XCloseClick);
                     
@@ -469,14 +461,6 @@ let EasyDialogBox = (function()
                 {
                     btnCloseDialog.addEventListener('click', function BtnCloseClick()
                     {
-                        // ** If promptbox was created
-                        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-                        if(pBox)
-                        {
-                            // ** Since user clicked Close, delete inputted text value
-                            _promptBoxInputValue = '';
-                        }
-                        
                         // ** Remove eventlistener
                         btnCloseDialog.removeEventListener('click', BtnCloseClick);
                         
@@ -493,15 +477,7 @@ let EasyDialogBox = (function()
                 window.addEventListener('click', function WinCloseClick(evt)
                 {
                     if(evt.target == dlg)
-                    {    
-                        // ** If promptbox was created
-                        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-                        if(pBox)
-                        {
-                            // ** Since user clicked outside, delete inputted text value
-                            _promptBoxInputValue = '';
-                        }
-                        
+                    {                        
                         // ** Remove eventlistener
                         window.removeEventListener('click', WinCloseClick);
                         
@@ -585,14 +561,6 @@ let EasyDialogBox = (function()
                     {
                         btnCancelDialog.addEventListener('click', function BtnCancelClick()
                         {
-                            // ** If promptbox was created
-                            let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-                            if(pBox)
-                            {
-                                // ** Since user clicked Cancel, delete inputted text value
-                                _promptBoxInputValue = '';
-                            }
-
                             // ** Remove eventlistener
                             btnCancelDialog.removeEventListener('click', BtnCancelClick);
                             
