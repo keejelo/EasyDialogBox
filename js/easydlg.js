@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.406
+// ** EasyDialogBox 1.407
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
     else if(strActionParam === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
     {
         console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
-    }    
+    }
 
     // ..combine all of the above to do your custom stuff..
 
@@ -345,7 +345,7 @@ let EasyDialogBox = (function()
                             okBtn.appendChild(okBtnText);
                             footer.appendChild(okBtn);
                         }
-                        
+
                         // ** If "Cancel" button is specified in class
                         if(dlg.classList.contains('dlg-cancel')
                         || dlg.classList.contains('dlg-ok-cancel')
@@ -616,7 +616,7 @@ let EasyDialogBox = (function()
             // ** Return failure
             return false;
         },
-        
+
         // ** Close and destroy the dialog box
         destroy : function(id, boxId, orgTitleText, orgMessage)
         {
