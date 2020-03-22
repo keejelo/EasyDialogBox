@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.395
+// ** EasyDialogBox 1.396
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -111,39 +111,39 @@ let EasyDialogBox = (function()
 {	'use strict';
 
 	// ** (Optional) Custom your own text for the buttons.
-	let _btnTextClose  = 'Close';   // Close
-	let _btnTextYes    = 'Yes';     // Yes
-	let _btnTextNo     = 'No';      // No
-	let _btnTextOk     = 'OK';      // OK
-	let _btnTextCancel = 'Cancel';  // Cancel
+	let __btnTextClose  = 'Close';   // Close
+	let __btnTextYes    = 'Yes';     // Yes
+	let __btnTextNo     = 'No';      // No
+	let __btnTextOk     = 'OK';      // OK
+	let __btnTextCancel = 'Cancel';  // Cancel
 	
 	// ** Dialogbox types, can be used separately or in combination separated by a space
-	let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'];
+	let __strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'];
 
 	// ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
-	let _strAction = undefined;
+	let __strAction = undefined;
 	
 	// ** Variable that stores current input text in promptbox, default = undefined
-	let _promptBoxInputValue = undefined;	
+	let __promptBoxInputValue = undefined;	
 	
 	// ** Variable that stores the original padding-right value of body element
-	let _orgBodyPaddingRight = undefined;
+	let __orgBodyPaddingRight = undefined;
 
 	// ** Indicate that a box is current in view (is shown)
-	let _isActive = false;
+	let __isActive = false;
 	
 	// ** Dialogbox 'id' default: null
-	let _boxId = null;
+	let __boxId = null;
 	
 	// ** Callback function to pass along return values 
-	let _callback = function(nRet)
+	let __callback = function(nRet)
 	{
 		// ** Pass values along to outside function so they can be used easier.
-		CALLBACK_EasyDialogBox(nRet, _strAction, _promptBoxInputValue);
+		CALLBACK_EasyDialogBox(nRet, __strAction, __promptBoxInputValue);
 	};
 
 	// ** Check if array contains/matches value (helper function)
-	let _contains = function(arr, val)
+	let __contains = function(arr, val)
 	{
 		for(let i = 0; i < arr.length; i++)
 		{
@@ -156,7 +156,7 @@ let EasyDialogBox = (function()
 	};
 
 	// ** Reference to this object itself (after register() has run)
-	let _that = null;
+	let __that = null;
 
 	//---------------------------------------------------------------------
 	// ** Public
@@ -166,7 +166,7 @@ let EasyDialogBox = (function()
 		// ** Register self awareness, variable used in event-listeners to point to this object	
 		register : function()
 		{
-			_that = this;
+			__that = this;
 		},
 
 		// ** Initialize
@@ -182,7 +182,7 @@ let EasyDialogBox = (function()
 				{
 					btns[i].addEventListener('click', function DlgOpenerClick(evt)
 					{
-						_that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
+						__that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
 						this.blur(); // remove focus from button or other opening element
 						evt.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
 						evt.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
@@ -195,7 +195,7 @@ let EasyDialogBox = (function()
 		create : function(strBoxTypeClass, strTitle, strMessage, strAction)
 		{
 			// ** Check if type is valid (>= 0)
-			if(_contains(_strBoxTypeList, strBoxTypeClass) >= 0)
+			if(__contains(__strBoxTypeList, strBoxTypeClass) >= 0)
 			{
 				// ** Create parent reference
 				let body = document.getElementsByTagName('body')[0];
@@ -231,13 +231,13 @@ let EasyDialogBox = (function()
 			let dlg = document.getElementById(id);
 			
 			// ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
-			if(dlg && (_isActive === false))
+			if(dlg && (__isActive === false))
 			{
 				// ** Create a temp 'id' for the showing dialogbox				
-				_boxId = id + '_1';
+				__boxId = id + '_1';
 				
 				// ** Get value from 'name' attribute, passed on to CALLBACK function, can be used to excute custom action in CALLBACK function
-				_strAction = dlg.getAttribute('name');
+				__strAction = dlg.getAttribute('name');
 				
 				// ** Get current 'title' value and store it
 				let orgTitleText = dlg.getAttribute('title');
@@ -249,7 +249,7 @@ let EasyDialogBox = (function()
 				
 				// ** Create outer box
 				let box = document.createElement('div');
-				box.setAttribute('id', _boxId);
+				box.setAttribute('id', __boxId);
 				box.setAttribute('class','dlg-box dlg-center-vert');
 				dlg.appendChild(box);
 				
@@ -289,7 +289,7 @@ let EasyDialogBox = (function()
 					div.appendChild(input);
 					
 					// ** Remove earlier entered text, set to: undefined
-					_promptBoxInputValue = undefined;
+					__promptBoxInputValue = undefined;
 
 					// ** Add buttons if not already stated in 'class'
 					dlg.classList.add('dlg-ok-cancel');
@@ -315,7 +315,7 @@ let EasyDialogBox = (function()
 							// ** Create button
 							let yesBtn = document.createElement('button');
 							yesBtn.setAttribute('class','dlg-yes-btn');
-							let yesBtnText = document.createTextNode(_btnTextYes);
+							let yesBtnText = document.createTextNode(__btnTextYes);
 							yesBtn.appendChild(yesBtnText);
 							footer.appendChild(yesBtn);
 						}
@@ -328,7 +328,7 @@ let EasyDialogBox = (function()
 							// ** Create button
 							let noBtn = document.createElement('button');
 							noBtn.setAttribute('class','dlg-no-btn');
-							let noBtnText = document.createTextNode(_btnTextNo);
+							let noBtnText = document.createTextNode(__btnTextNo);
 							noBtn.appendChild(noBtnText);
 							footer.appendChild(noBtn);
 						}
@@ -341,7 +341,7 @@ let EasyDialogBox = (function()
 							// ** Create button
 							let okBtn = document.createElement('button');
 							okBtn.setAttribute('class','dlg-ok-btn');
-							let okBtnText = document.createTextNode(_btnTextOk);
+							let okBtnText = document.createTextNode(__btnTextOk);
 							okBtn.appendChild(okBtnText);
 							footer.appendChild(okBtn);
 						}
@@ -354,7 +354,7 @@ let EasyDialogBox = (function()
 							// ** Create button
 							let cancelBtn = document.createElement('button');
 							cancelBtn.setAttribute('class','dlg-cancel-btn');
-							let cancelBtnText = document.createTextNode(_btnTextCancel);
+							let cancelBtnText = document.createTextNode(__btnTextCancel);
 							cancelBtn.appendChild(cancelBtnText);
 							footer.appendChild(cancelBtn);
 						}				
@@ -367,7 +367,7 @@ let EasyDialogBox = (function()
 							// ** Create button
 							let closeBtn = document.createElement('button');
 							closeBtn.setAttribute('class','dlg-close-btn');
-							let closeBtnText = document.createTextNode(_btnTextClose);
+							let closeBtnText = document.createTextNode(__btnTextClose);
 							closeBtn.appendChild(closeBtnText);
 							footer.appendChild(closeBtn);
 						}
@@ -404,10 +404,10 @@ let EasyDialogBox = (function()
 				let body = document.getElementsByTagName('body')[0];
 
 				// ** Store the original padding-right value
-				_orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+				__orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 				
 				// ** Convert from string to integer (remove 'px' postfix and return value as integer)
-				_orgBodyPaddingRight = parseInt(_orgBodyPaddingRight);
+				__orgBodyPaddingRight = parseInt(__orgBodyPaddingRight);
 				
 				// ** Get width of body before removing scrollbar
 				let w1 = body.offsetWidth;
@@ -422,9 +422,9 @@ let EasyDialogBox = (function()
 				let w3 = w2 - w1;
 				
 				// ** If conditions are true: add both padding-right values, 
-				if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+				if(typeof __orgBodyPaddingRight === 'number' && __orgBodyPaddingRight > 0)
 				{
-					w3 += parseInt(_orgBodyPaddingRight);
+					w3 += parseInt(__orgBodyPaddingRight);
 				}
 				
 				// ** Apply width-difference as padding-right to body, substitute for scrollbar,
@@ -448,17 +448,17 @@ let EasyDialogBox = (function()
 						if(pBox)
 						{							
 							// ** Since user clicked Cancel, delete inputted text value, set to: undefined
-							_promptBoxInputValue = undefined;
+							__promptBoxInputValue = undefined;
 						}
 					
 						// ** Remove eventlistener
 						xCloseDialog.removeEventListener('click', XCloseClick);
 					
 						// ** Close dialogbox, reset values, clean up
-						_that.destroy(id, _that._boxId, orgTitleText, orgMessage);						
+						__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);						
 
 						// ** Return code 0 (false), since user clicked X (close)
-						_callback(0);
+						__callback(0);
 					});
 				}
 				// ** END: X button click handler
@@ -470,13 +470,13 @@ let EasyDialogBox = (function()
 					btnCloseDialog.addEventListener('click', function BtnCloseClick()
 					{
 						// ** Close dialogbox, reset values, clean up
-						_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+						__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 
 						// ** Remove eventlistener
 						btnCloseDialog.removeEventListener('click', BtnCloseClick);
 						
 						// ** Return code 0 , since user clicked Close
-						_callback(0);
+						__callback(0);
 					});
 				}
 				// ** END: CLOSE button click handler
@@ -487,13 +487,13 @@ let EasyDialogBox = (function()
 					if(evt.target == dlg)
 					{	
 						// ** Close dialogbox, reset values, clean up
-						_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+						__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 						
 						// ** Remove eventlistener
 						window.removeEventListener('click', WinCloseClick);
 						
 						// ** Return code 0 (false), since we just want to exit
-						_callback(0);
+						__callback(0);
 					}			
 				});
 				// ** END: window click outside box click handler		
@@ -511,13 +511,13 @@ let EasyDialogBox = (function()
 						btnYesDialog.addEventListener('click', function BtnYesClick()
 						{
 							// ** Close dialogbox, reset values, clean up
-							_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+							__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 							
 							// ** Remove eventlistener
 							btnYesDialog.removeEventListener('click', BtnYesClick);
 							
 							// ** Return code 1 , since user clicked YES
-							_callback(1);
+							__callback(1);
 						});
 					}
 					
@@ -528,13 +528,13 @@ let EasyDialogBox = (function()
 						btnNoDialog.addEventListener('click', function BtnNoClick()
 						{
 							// ** Close dialogbox, reset values, clean up
-							_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+							__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 							
 							// ** Remove eventlistener
 							btnNoDialog.removeEventListener('click', BtnNoClick);
 							
 							// ** Return code 2 , since user clicked NO
-							_callback(2);
+							__callback(2);
 						});
 					}			
 				}
@@ -553,13 +553,13 @@ let EasyDialogBox = (function()
 						btnOkDialog.addEventListener('click', function BtnOkClick()
 						{
 							// ** Close dialogbox, reset values, clean up
-							_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+							__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 							
 							// ** Remove eventlistener
 							btnOkDialog.removeEventListener('click', BtnOkClick);
 
 							// ** Return code 3 , since user clicked OK
-							_callback(3);
+							__callback(3);
 						});
 					}
 					
@@ -570,7 +570,7 @@ let EasyDialogBox = (function()
 						btnCancelDialog.addEventListener('click', function BtnCancelClick()
 						{
 							// ** Close dialogbox, reset values, clean up
-							_that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+							__that.destroy(id, __that.__boxId, orgTitleText, orgMessage);
 							
 							// ** Remove eventlistener
 							btnCancelDialog.removeEventListener('click', BtnCancelClick);
@@ -580,28 +580,28 @@ let EasyDialogBox = (function()
 							if(pBox)
 							{
 								// ** Since user clicked Cancel, delete inputted text value, set to: undefined
-								_promptBoxInputValue = undefined;
+								__promptBoxInputValue = undefined;
 							}
 
 							// ** Return code 4 , since user clicked Cancel
-							_callback(4);
+							__callback(4);
 						});
 					}
 				}
 				// ** END: OK-CANCEL button click handlers
 				
-				// ** When the user types in promptbox, update variable "_promptBoxInputValue"
+				// ** When the user types in promptbox, update variable "__promptBoxInputValue"
 				let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
 				if(pBox)
 				{
 					pBox.addEventListener('keyup', function PromptBoxKeyUp()
 					{
-						_promptBoxInputValue = pBox.value.trim();
+						__promptBoxInputValue = pBox.value.trim();
 					});
 					
 					pBox.addEventListener('change', function PromptBoxChange()
 					{
-						_promptBoxInputValue = pBox.value.trim();
+						__promptBoxInputValue = pBox.value.trim();
 					});
 				}
 				// ** END: When the user types in promptbox
@@ -611,12 +611,12 @@ let EasyDialogBox = (function()
 				//---------------------------------------------------------------------
 				
 				// ** Set flag to indicate box is active and is shown				
-				_isActive = true;
+				__isActive = true;
 				
 				// ** Return success
 				return true;
 			}
-			else if(_isActive)
+			else if(__isActive)
 			{
 				console.log('show(): Error, a box is already in view! Can only show one dialogbox at a time!');
 			}						
@@ -639,7 +639,7 @@ let EasyDialogBox = (function()
 			// ** Get body element, reset values, restore scrolling
 			let body = document.getElementsByTagName('body')[0];
 			body.classList.remove('dlg-stop-scrolling');
-			body.setAttribute('style', 'padding-right:' + parseInt(_orgBodyPaddingRight) + 'px;');
+			body.setAttribute('style', 'padding-right:' + parseInt(__orgBodyPaddingRight) + 'px;');
 			
 			// ** Get the dlg element
 			let dlg = document.getElementById(id);		
@@ -678,7 +678,7 @@ let EasyDialogBox = (function()
 			}
 
 			// ** Reset flag 
-			_isActive = false;
+			__isActive = false;
 		}
 	}
 	//----------------------------------------------------------
