@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.399
+// ** EasyDialogBox 1.400
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -498,7 +498,7 @@ let EasyDialogBox = (function()
                         let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                         if(pBox)
                         {
-                            // ** Since user clicked Cancel, delete inputted text value
+                            // ** Since user clicked outside, delete inputted text value
                             _promptBoxInputValue = '';
                         }
                         
@@ -526,12 +526,12 @@ let EasyDialogBox = (function()
                     {
                         btnYesDialog.addEventListener('click', function BtnYesClick()
                         {
-                            // ** Close dialogbox, reset values, clean up
-                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                            
                             // ** Remove eventlistener
                             btnYesDialog.removeEventListener('click', BtnYesClick);
                             
+                            // ** Close dialogbox, reset values, clean up
+                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+
                             // ** Return code 1 , since user clicked YES
                             _callback(1);
                         });
@@ -542,13 +542,13 @@ let EasyDialogBox = (function()
                     if(btnNoDialog)
                     {
                         btnNoDialog.addEventListener('click', function BtnNoClick()
-                        {
-                            // ** Close dialogbox, reset values, clean up
-                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                            
+                        {                            
                             // ** Remove eventlistener
                             btnNoDialog.removeEventListener('click', BtnNoClick);
                             
+                            // ** Close dialogbox, reset values, clean up
+                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
+
                             // ** Return code 2 , since user clicked NO
                             _callback(2);
                         });
@@ -568,11 +568,11 @@ let EasyDialogBox = (function()
                     {
                         btnOkDialog.addEventListener('click', function BtnOkClick()
                         {
-                            // ** Close dialogbox, reset values, clean up
-                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                            
                             // ** Remove eventlistener
                             btnOkDialog.removeEventListener('click', BtnOkClick);
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            _that.destroy(id, _that._boxId, orgTitleText, orgMessage);                            
 
                             // ** Return code 3 , since user clicked OK
                             _callback(3);
