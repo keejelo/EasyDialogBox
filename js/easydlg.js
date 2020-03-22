@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.396
+// ** EasyDialogBox 1.397
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
-let CALLBACK_EasyDialogBox = function(nRet, strAction, strPromptBox)
+let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
 {   'use strict';
     
     // ** Variable "nRet" values:
@@ -83,15 +83,15 @@ let CALLBACK_EasyDialogBox = function(nRet, strAction, strPromptBox)
     }            
     
     
-    // ** Variable "strAction" = value from 'name' attribute (can be used to indicate custom action to execute)    
+    // ** Variable "strActionName" = value from 'name' attribute (can be used to indicate custom action to execute)    
     // ** Example
-    if(strAction === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
+    if(strActionName === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
     {
-        console.log('CALLBACK: string "' + strAction + '" from "name" attribute recieved in CALLBACK function');
+        console.log('CALLBACK: string "' + strActionName + '" from "name" attribute recieved in CALLBACK function');
     }
-    else if(strAction === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
+    else if(strActionName === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
     {
-        console.log('CALLBACK: string "' + strAction + '" from "name" attribute recieved in CALLBACK function');
+        console.log('CALLBACK: string "' + strActionName + '" from "name" attribute recieved in CALLBACK function');
     }    
     
     // ..combine all of the above to do your custom stuff..
@@ -136,10 +136,10 @@ let EasyDialogBox = (function()
     let _boxId = null;
     
     // ** Callback function to pass along return values 
-    let _callback = function(nRet)
+    let _callback = function(nRetCode)
     {
         // ** Pass values along to outside function so they can be used easier.
-        CALLBACK_EasyDialogBox(nRet, _strAction, _promptBoxInputValue);
+        CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
 
     // ** Check if array contains/matches value (helper function)
