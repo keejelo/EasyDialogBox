@@ -9,7 +9,7 @@
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
 let CALLBACK_EasyDialogBox = function(nRet, strAction, strPromptBox)
-{    'use strict';
+{   'use strict';
     
     // ** Variable "nRet" values:
     //  0 = "CloseX", "Close" button or outside box was clicked
@@ -108,7 +108,7 @@ let CALLBACK_EasyDialogBox = function(nRet, strAction, strPromptBox)
 // ** EasyDialogBox Object (module)
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox = (function()
-{    'use strict';
+{   'use strict';
 
     // ** (Optional) Custom your own text for the buttons.
     let _btnTextClose  = 'Close';   // Close
