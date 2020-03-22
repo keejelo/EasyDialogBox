@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.400
+// ** EasyDialogBox 1.402
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -8,10 +8,10 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
 //-----------------------------------------------------------------------------------------------------------------
-let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
+let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxParam)
 {   'use strict';
     
-    // ** Variable "nRet" values:
+    // ** Variable "nRetParam" values:
     //  0 = "CloseX", "Close" button or outside box was clicked
     //  1 = "Yes" button was clicked
     //  2 = "No" button was clicked
@@ -20,15 +20,15 @@ let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
 
     // ** Check returned value from button click
     // ** Example
-    if(typeof nRet === 'number')
+    if(typeof nRetParam === 'number')
     {
-        if(nRet === 0)
+        if(nRetParam === 0)
         {
-            console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + nRet);
+            console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + nRetParam);
         }
-        else if(nRet === 1)
+        else if(nRetParam === 1)
         {
-            console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRet);
+            console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
             
             // ** Example: Create a dialog on the fly!
             let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
@@ -36,7 +36,7 @@ let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
             // ** Check if box was created successfully
             if(myBox) 
             {
-                // ** Show the new box
+                // ** Show the new box (returns true if box can be shown)
                 let bRet = EasyDialogBox.show(myBox);
 
                 // ** Check if box was shown successfully
@@ -60,38 +60,38 @@ let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
             */
             // ** END: Example: Create a dialog on the fly!
         }
-        else if(nRet === 2)
+        else if(nRetParam === 2)
         {
-            console.log('CALLBACK: User clicked "No" button. Return value = ' + nRet);
+            console.log('CALLBACK: User clicked "No" button. Return value = ' + nRetParam);
         }
-        else if(nRet === 3)
+        else if(nRetParam === 3)
         {
-            console.log('CALLBACK: User clicked "OK" button. Return value = ' + nRet);
+            console.log('CALLBACK: User clicked "OK" button. Return value = ' + nRetParam);
         }
-        else if(nRet === 4)
+        else if(nRetParam === 4)
         {
-            console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + nRet);
+            console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + nRetParam);
         }
     }
     
     
-    // ** Variable "strPromptBox" = value from input
+    // ** Variable "strPromptBoxParam" = value from input
     // ** Example
-    if(strPromptBox !== '') // Check if any text was typed into input
+    if(strPromptBoxParam !== '') // Check if any text was typed into input
     {
-        console.log('CALLBACK: Promptbox input value = ' + strPromptBox);
+        console.log('CALLBACK: Promptbox input value = ' + strPromptBoxParam);
     }            
     
     
-    // ** Variable "strActionName" = value from 'name' attribute (can be used to indicate custom action to execute)    
+    // ** Variable "strActionParam" = value from 'name' attribute (can be used to indicate custom action to execute)    
     // ** Example
-    if(strActionName === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
+    if(strActionParam === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
     {
-        console.log('CALLBACK: string "' + strActionName + '" from "name" attribute recieved in CALLBACK function');
+        console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
     }
-    else if(strActionName === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
+    else if(strActionParam === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
     {
-        console.log('CALLBACK: string "' + strActionName + '" from "name" attribute recieved in CALLBACK function');
+        console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
     }    
     
     // ..combine all of the above to do your custom stuff..
