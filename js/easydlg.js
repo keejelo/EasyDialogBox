@@ -110,7 +110,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
 let EasyDialogBox = (function()
 {   'use strict';
 
-    // ** (Optional) Custom your own text for the buttons.
+    // ** Buttontext
     let _btnTextClose  = 'Close';   // Close
     let _btnTextYes    = 'Yes';     // Yes
     let _btnTextNo     = 'No';      // No
