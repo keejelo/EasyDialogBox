@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.397
+// ** EasyDialogBox 1.398
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ let CALLBACK_EasyDialogBox = function(nRet, strActionName, strPromptBox)
     
     // ** Variable "strPromptBox" = value from input
     // ** Example
-    if(typeof strPromptBox !== 'undefined') // Check if any text was typed into input
+    if(strPromptBox !== '') // Check if any text was typed into input
     {
         console.log('CALLBACK: Promptbox input value = ' + strPromptBox);
     }            
@@ -121,13 +121,13 @@ let EasyDialogBox = (function()
     let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
-    let _strAction = undefined;
+    let _strAction = '';
     
-    // ** Variable that stores current input text in promptbox, default = undefined
-    let _promptBoxInputValue = undefined;    
+    // ** Variable that stores current input text in promptbox
+    let _promptBoxInputValue = '';
     
     // ** Variable that stores the original padding-right value of body element
-    let _orgBodyPaddingRight = undefined;
+    let _orgBodyPaddingRight = 0;
 
     // ** Indicate that a box is current in view (is shown)
     let _isActive = false;
@@ -289,7 +289,7 @@ let EasyDialogBox = (function()
                     div.appendChild(input);
                     
                     // ** Remove earlier entered text, set to: undefined
-                    _promptBoxInputValue = undefined;
+                    _promptBoxInputValue = '';
 
                     // ** Add buttons if not already stated in 'class'
                     dlg.classList.add('dlg-ok-cancel');
@@ -448,7 +448,7 @@ let EasyDialogBox = (function()
                         if(pBox)
                         {                            
                             // ** Since user clicked Cancel, delete inputted text value, set to: undefined
-                            _promptBoxInputValue = undefined;
+                            _promptBoxInputValue = '';
                         }
                     
                         // ** Remove eventlistener
@@ -580,7 +580,7 @@ let EasyDialogBox = (function()
                             if(pBox)
                             {
                                 // ** Since user clicked Cancel, delete inputted text value, set to: undefined
-                                _promptBoxInputValue = undefined;
+                                _promptBoxInputValue = '';
                             }
 
                             // ** Return code 4 , since user clicked Cancel
