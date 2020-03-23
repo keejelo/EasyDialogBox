@@ -41,7 +41,7 @@
     font-family:Arial, Helvetica, sans-serif;
     font-size:0.9em;
     /* border-radius:6px; /* rounded corners */
-    /* border:1px solid #333; /* border */
+     border:1px solid #3d6da8; /* border */
 }
 
 /* Dialog heading */
@@ -50,13 +50,15 @@
     display:block;
     margin:0;
     padding:10px;
-    height:30px;
-    background-color:#496070; /* background color */
+    height:25px;
+    /*background-color:#496070; /* background color */
+    /*background-color:#0078d7; /* background color */
+    background-color:#3d6da8; /* background color */
     color:#fff; /* text color, change it as you wish */
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    line-height:30px;
+    line-height:25px;
     border:none;
 }
 
@@ -78,6 +80,7 @@
     padding:5px;
     color:inherit; /*fff*/
     font-size:2.0em;
+    font-weight:normal;
     background-color:inherit;
 }
 
@@ -122,8 +125,8 @@
     margin-top:10px;
     padding:10px;
     height:30px;
-    background-color:#f2f2f2;
-    border-top:1px solid #e6e6e6;
+    background-color:#f0f0f0;
+    border-top:1px solid #e5e5e5;
     text-align:right;
     border-bottom-left-radius:inherit;
     border-bottom-right-radius:inherit;    
