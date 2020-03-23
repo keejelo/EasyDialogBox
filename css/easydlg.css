@@ -50,7 +50,7 @@
     display:block;
     margin:0;
     padding:10px;
-    height:25px;
+    height:20px;
     /*background-color:#496070; /* background color */
     /*background-color:#0078d7; /* background color */
     background-color:#3d6da8; /* background color */
@@ -58,7 +58,7 @@
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-    line-height:25px;
+    line-height:20px;
     border:none;
 }
 
