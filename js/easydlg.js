@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.408
+// ** EasyDialogBox 1.409
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
     {
         if(nRetParam === 0)
         {
-            console.log('CALLBACK: User clicked "CloseX", "Close" button or outside box. Return value = ' + nRetParam);
+            console.log('CALLBACK: User clicked "CloseX", "Close" button or out side box. Return value = ' + nRetParam);
         }
         else if(nRetParam === 1)
         {
