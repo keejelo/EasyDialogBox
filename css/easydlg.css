@@ -42,6 +42,7 @@
     font-size:0.9em;
     /* border-radius:6px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
+    border-top:none;
 }
 
 /* Dialog heading */
