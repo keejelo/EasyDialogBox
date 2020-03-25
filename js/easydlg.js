@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.414
+// ** EasyDialogBox 1.415
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -118,7 +118,8 @@ let EasyDialogBox = (function()
     let _btnTextCancel = 'Cancel';  // Cancel
 
     // ** Dialogbox types, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
+    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
+                            'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
     let _strAction = '';
@@ -241,9 +242,12 @@ let EasyDialogBox = (function()
             
             // ** Get classes, string
             let strBoxTypeClass = dlg.getAttribute('class');
+            
+            // ** Check if values match
+            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true, ' ');
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
-            if( dlg && (_isActive === false) && (_contains(_strBoxTypeList, strBoxTypeClass, true, ' ') >= 0) )
+            if( dlg && (_isActive === false) && (bMatch >= 0) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
                 _boxId = id + '_1';
