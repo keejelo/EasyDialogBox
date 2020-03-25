@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.412
+// ** EasyDialogBox 1.413
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -204,8 +204,6 @@ let EasyDialogBox = (function()
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
             // ** Check if type is valid (>= 0)
-            
-            
             if(_contains(_strBoxTypeList, strBoxTypeClass, true, ' ') >= 0)
             {
                 // ** Create parent reference
@@ -240,9 +238,12 @@ let EasyDialogBox = (function()
         {
             // ** Get the 'id' from function parameter, we want to show the dialog that have this 'id'
             let dlg = document.getElementById(id);
+            
+            // ** Get classes, string
+            let strBoxTypeClass = dlg.getAttribute('class');
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
-            if(dlg && (_isActive === false))
+            if( dlg && (_isActive === false) && (_contains(_strBoxTypeList, strBoxTypeClass, true, ' ') >= 0) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
                 _boxId = id + '_1';
