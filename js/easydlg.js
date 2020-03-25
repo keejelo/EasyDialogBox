@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.413
+// ** EasyDialogBox 1.414
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ let EasyDialogBox = (function()
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
         
-    // ** Check if array contains/matches value, string or other array (separator used when string needs to be split)
+    // ** Check if array contains/matches value, string or other array item value (separator used when string needs to be split)
     let _contains = function(arr, str, bSplit, separator)
     {
         let val = str;
@@ -698,4 +698,3 @@ let EasyDialogBox = (function()
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Activate and start
 //-----------------------------------------------------------------------------------------------------------------
-
