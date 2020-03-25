@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.409
+// ** EasyDialogBox 1.410
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
             console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
 
             // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+            let myBox = EasyDialogBox.create('dlg dlg-no-overlay','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 
             // ** Check if box was created successfully
             if(myBox)
@@ -118,7 +118,7 @@ let EasyDialogBox = (function()
     let _btnTextCancel = 'Cancel';  // Cancel
 
     // ** Dialogbox types, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns'];
+    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
     let _strAction = '';
@@ -141,20 +141,29 @@ let EasyDialogBox = (function()
         // ** Pass values along to outside function so they can be used easier.
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
-
-    // ** Check if array contains/matches value (helper function)
-    let _contains = function(arr, val)
+        
+    // ** Check if array contains/matches value, string or other array (separator used when string needs to be split)
+    let _contains = function(arr, str, bSplit, separator)
     {
-        for(let i = 0; i < arr.length; i++)
+        let val = str;
+        if(bSplit === true)
         {
-            if(arr[i] === val)
-            {
-                return i;
-            }
+            val = str.split(separator);
         }
-        return -1;
+        
+        for(let i = 0; i < val.length; i++)
+        {
+            for(let j = 0; j < arr.length; j++)
+            {
+                if(arr[j] === val[i])
+                {
+                    return j;
+                }
+            }
+            return -1;
+        }
     };
-
+    
     // ** Reference to this object itself (after register() has run)
     let _that = null;
 
@@ -195,7 +204,9 @@ let EasyDialogBox = (function()
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
             // ** Check if type is valid (>= 0)
-            if(_contains(_strBoxTypeList, strBoxTypeClass) >= 0)
+            
+            
+            if(_contains(_strBoxTypeList, strBoxTypeClass, true, ' ') >= 0)
             {
                 // ** Create parent reference
                 let body = document.getElementsByTagName('body')[0];
