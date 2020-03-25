@@ -178,7 +178,7 @@ let EasyDialogBox = (function()
             //return -1; // we could use this if we wanted to accept 1 right
         }
         
-        // ** Check if all values matches
+        // ** Check if ALL values matches
         if(val.length === pass)
         {
             return 1;
