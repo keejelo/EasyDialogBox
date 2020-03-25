@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.427
+// ** EasyDialogBox 1.428
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ let EasyDialogBox = (function()
 
     // ** Debug on/off
     let debug = true;
-    
+
     // ** Buttontext (custom your own text if you want)
     let _btnTextClose  = 'Close';   // Close
     let _btnTextYes    = 'Yes';     // Yes
@@ -138,7 +138,7 @@ let EasyDialogBox = (function()
 
     // ** Dialogbox 'id' default: null
     let _boxId = null;
-        
+
     // ** Debug-logger
     let log = function(str)
     {
@@ -151,7 +151,7 @@ let EasyDialogBox = (function()
         // ** Pass values along to outside function so they can be used easier.
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
-        
+
     // ** Check if array contains/matches ALL values in string or other array item values
     let _contains = function(arr, str, bSplit, sep)
     {
@@ -159,10 +159,10 @@ let EasyDialogBox = (function()
         // @ arr = array that holds the values we want to match against
         // @ str = string, value or other array that we want to match with the above array
         // @ bSplit = boolean value: true (split string into array, using separator). false or omitted = do not split
-        // @ sep = character that we want to use as a string splitter, for instance ' ' or ','  or other 
-        
+        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
+
         let val = str;
-        
+
         if(bSplit === true)
         {
             if(typeof sep === 'undefined')
@@ -171,9 +171,9 @@ let EasyDialogBox = (function()
             }
             val = str.split(sep);
         }
-        
+
         let pass = 0;
-        
+
         for(let i = 0; i < val.length; i++)
         {
             for(let j = 0; j < arr.length; j++)
@@ -186,7 +186,7 @@ let EasyDialogBox = (function()
             }
             //return -1; // we could use this if we wanted to accept 1 right
         }
-        
+
         // ** Ensure that ALL values matched, else return failure
         // ** (Check if numbers tested equals the numbers of items that passed)
         if(val.length === pass)
@@ -198,7 +198,7 @@ let EasyDialogBox = (function()
             return -1;
         }
     };
-    
+
     // ** Reference to this object itself (after register() has run)
     let _that = null;
 
@@ -239,7 +239,7 @@ let EasyDialogBox = (function()
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
             let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
-            
+
             // ** Check if type is valid (>= 0)
             if(bMatch >= 0)
             {
@@ -275,10 +275,10 @@ let EasyDialogBox = (function()
         {
             // ** Get the 'id' from function parameter, we want to show the dialog that have this 'id'
             let dlg = document.getElementById(id);
-            
+
             // ** Get classes, string
             let strBoxTypeClass = dlg.getAttribute('class');
-            
+
             // ** Check if values match
             let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
 
