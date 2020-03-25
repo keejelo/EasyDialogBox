@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.422
+// ** EasyDialogBox 1.423
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ let EasyDialogBox = (function()
         }
         
         // ** Ensure that ALL values matched, else return failure
-        // ** Check if numbers tested equals the numbers of items that passed
+        // ** (Check if numbers tested equals the numbers of items that passed)
         if(val.length === pass)
         {
             return 1;
