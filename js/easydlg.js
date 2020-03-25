@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.423
+// ** EasyDialogBox 1.425
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
             console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
 
             // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+            let myBox = EasyDialogBox.create('dlg sdf','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 
             // ** Check if box was created successfully
             if(myBox)
@@ -110,7 +110,10 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
 let EasyDialogBox = (function()
 {   'use strict';
 
-    // ** Buttontext
+    // ** Debug on/off
+    let debug = true;
+    
+    // ** Buttontext (custom your own text if you want)
     let _btnTextClose  = 'Close';   // Close
     let _btnTextYes    = 'Yes';     // Yes
     let _btnTextNo     = 'No';      // No
@@ -118,7 +121,7 @@ let EasyDialogBox = (function()
     let _btnTextCancel = 'Cancel';  // Cancel
 
     // ** Dialogbox types, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['dlg','on-the-fly','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
+    let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
                             'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
@@ -135,6 +138,12 @@ let EasyDialogBox = (function()
 
     // ** Dialogbox 'id' default: null
     let _boxId = null;
+        
+    // ** Debug-logger
+    let log = function(str)
+    {
+        if(debug) return console.log(str);
+    }
 
     // ** Callback function to pass along return values
     let _callback = function(nRetCode)
@@ -256,7 +265,7 @@ let EasyDialogBox = (function()
             }
             else
             {
-                console.log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             return null;
         },
@@ -645,19 +654,19 @@ let EasyDialogBox = (function()
             }
             else if(bMatch < 0)
             {
-                console.log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             else if(_isActive)
             {
-                console.log('show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+                log('show(): Error, a box is already in view! Can only show one dialogbox at a time!');
             }
             else if(!dlg)
             {
-                console.log('show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
+                log('show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
             }
             else
             {
-                console.log('show(): unknown error');
+                log('show(): unknown error');
             }
 
             // ** Return failure
