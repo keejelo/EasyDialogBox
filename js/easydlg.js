@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.416
+// ** EasyDialogBox 1.419
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
             console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
 
             // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+            let myBox = EasyDialogBox.create('dlg dlg-no-overlay','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 
             // ** Check if box was created successfully
             if(myBox)
@@ -143,13 +143,23 @@ let EasyDialogBox = (function()
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
         
-    // ** Check if array contains/matches value, string or other array item value (separator used when string needs to be split)
-    let _contains = function(arr, str, bSplit, separator)
+    // ** Check if array contains/matches value, string or other array item value
+    let _contains = function(arr, str, bSplit, sep)
     {
+        // ** Params
+        // @ arr = array that holds the values we want to match against
+        // @ str = string, value or other array that we want to match with the above array
+        // @ bSplit = boolean value: true (split string into array, using separator). false or omitted = do not split
+        // @ sep = character that we want to use as a string splitter, for instance ' ' or ','  or other 
+        
         let val = str;
         if(bSplit === true)
         {
-            val = str.split(separator);
+            if(typeof sep === 'undefined')
+            {
+                sep = ' '; // default: space
+            }
+            val = str.split(sep);
         }
         
         for(let i = 0; i < val.length; i++)
@@ -205,7 +215,7 @@ let EasyDialogBox = (function()
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
             // ** Check if type is valid (>= 0)
-            if(_contains(_strBoxTypeList, strBoxTypeClass, true, ' ') >= 0)
+            if(_contains(_strBoxTypeList, strBoxTypeClass, true) >= 0)
             {
                 // ** Create parent reference
                 let body = document.getElementsByTagName('body')[0];
