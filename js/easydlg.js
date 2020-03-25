@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.425
+// ** EasyDialogBox 1.426
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -161,8 +161,6 @@ let EasyDialogBox = (function()
         // @ bSplit = boolean value: true (split string into array, using separator). false or omitted = do not split
         // @ sep = character that we want to use as a string splitter, for instance ' ' or ','  or other 
         
-        let pass = 0;
-        
         let val = str;
         
         if(bSplit === true)
@@ -173,6 +171,8 @@ let EasyDialogBox = (function()
             }
             val = str.split(sep);
         }
+        
+        let pass = 0;
         
         for(let i = 0; i < val.length; i++)
         {
