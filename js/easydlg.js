@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.428
+// ** EasyDialogBox 1.429
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -152,7 +152,7 @@ let EasyDialogBox = (function()
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
 
-    // ** Check if array contains/matches ALL values in string or other array item values
+    // ** Check if array contains/matches ALL test-values in supplied string or other array item value
     let _contains = function(arr, str, bSplit, sep)
     {
         // ** Params
@@ -180,11 +180,11 @@ let EasyDialogBox = (function()
             {
                 if(arr[j] === val[i])
                 {
-                    //return j;  // we could use this if we wanted to accept 1 right
+                    //return j;  // we could use this if we wanted to accept that some matched but not all
                     pass++; // instead we use this and add up matches
                 }
             }
-            //return -1; // we could use this if we wanted to accept 1 right
+            //return -1; // we could use this if we wanted to accept that some matched but not all
         }
 
         // ** Ensure that ALL values matched, else return failure
