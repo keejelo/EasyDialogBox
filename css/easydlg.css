@@ -176,4 +176,8 @@
     transform:translate(-50%, -50%);
 }
 
-
+/* Disable translucent background, background overlay */
+.dlg-no-overlay
+{
+    background-color:transparent;
+}
