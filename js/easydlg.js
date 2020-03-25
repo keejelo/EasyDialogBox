@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.429
+// ** EasyDialogBox 1.430
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
 let EasyDialogBox = (function()
 {   'use strict';
 
-    // ** Debug on/off
+    // ** Debug on/off (outputs error messages to console if any)
     let debug = true;
 
     // ** Buttontext (custom your own text if you want)
