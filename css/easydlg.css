@@ -113,6 +113,7 @@
 /* Dialog input-field */
 .dlg-input-field
 {
+    margin-top:3px;
     padding:5px;
     width:100%;
     font-family:inherit;
@@ -181,3 +182,4 @@
 {
     background-color:transparent;
 }
+
