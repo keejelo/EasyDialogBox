@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.419
+// ** EasyDialogBox 1.420
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
             console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
 
             // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+            let myBox = EasyDialogBox.create('dlg dlg-no','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 
             // ** Check if box was created successfully
             if(myBox)
@@ -118,7 +118,7 @@ let EasyDialogBox = (function()
     let _btnTextCancel = 'Cancel';  // Cancel
 
     // ** Dialogbox types, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
+    let _strBoxTypeList = ['dlg','on-the-fly','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
                             'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
@@ -143,7 +143,7 @@ let EasyDialogBox = (function()
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
     };
         
-    // ** Check if array contains/matches value, string or other array item value
+    // ** Check if array contains/matches ALL values in string or other array item values
     let _contains = function(arr, str, bSplit, sep)
     {
         // ** Params
@@ -152,7 +152,10 @@ let EasyDialogBox = (function()
         // @ bSplit = boolean value: true (split string into array, using separator). false or omitted = do not split
         // @ sep = character that we want to use as a string splitter, for instance ' ' or ','  or other 
         
+        let pass = 0;
+        
         let val = str;
+        
         if(bSplit === true)
         {
             if(typeof sep === 'undefined')
@@ -168,9 +171,20 @@ let EasyDialogBox = (function()
             {
                 if(arr[j] === val[i])
                 {
-                    return j;
+                    //return j;  // we could use this if we wanted to accept 1 right
+                    pass++; // instead we use this and add up matches
                 }
             }
+            //return -1; // we could use this if we wanted to accept 1 right
+        }
+        
+        // ** Check if all values matches
+        if(val.length === pass)
+        {
+            return 1;
+        }
+        else
+        {
             return -1;
         }
     };
@@ -214,8 +228,10 @@ let EasyDialogBox = (function()
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
+            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
+            
             // ** Check if type is valid (>= 0)
-            if(_contains(_strBoxTypeList, strBoxTypeClass, true) >= 0)
+            if(bMatch >= 0)
             {
                 // ** Create parent reference
                 let body = document.getElementsByTagName('body')[0];
@@ -254,7 +270,7 @@ let EasyDialogBox = (function()
             let strBoxTypeClass = dlg.getAttribute('class');
             
             // ** Check if values match
-            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true, ' ');
+            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type.
             if( dlg && (_isActive === false) && (bMatch >= 0) )
@@ -625,6 +641,10 @@ let EasyDialogBox = (function()
 
                 // ** Return success
                 return true;
+            }
+            else if(bMatch < 0)
+            {
+                console.log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             else if(_isActive)
             {
