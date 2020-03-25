@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.415
+// ** EasyDialogBox 1.416
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -246,7 +246,7 @@ let EasyDialogBox = (function()
             // ** Check if values match
             let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true, ' ');
 
-            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active at this moment
+            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type.
             if( dlg && (_isActive === false) && (bMatch >= 0) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
