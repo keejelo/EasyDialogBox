@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.444
+// ** EasyDialogBox 1.445
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -248,7 +248,7 @@ let EasyDialogBox = (function()
         {
             let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
-            // ** Check if valid type(s)
+            // ** Check if valid types
             if(bMatch === true)
             {
                 // ** Create parent reference
@@ -290,7 +290,7 @@ let EasyDialogBox = (function()
             // ** Check if values match
             let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
-            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type(s)
+            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
             if( dlg && (_isActive === false) && (bMatch === true) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
