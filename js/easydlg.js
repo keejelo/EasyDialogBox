@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.437
+// ** EasyDialogBox 1.438
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -11,14 +11,14 @@
 let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxParam)
 {   'use strict';
 
-    //-------------------------------------------------------------
+    //---------------------------------------------------------------------
     // ** Parameter: "nRetParam" values
     //  0 = "CloseX", "Close" button or outside box was clicked
     //  1 = "Yes" button was clicked
     //  2 = "No" button was clicked
     //  3 = "OK" button was clicked
     //  4 = "Cancel" was button clicked
-    //-------------------------------------------------------------
+    //---------------------------------------------------------------------
 
     // ** Check returned value from button click
     // ** Example
@@ -76,9 +76,9 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
         }
     }
 
-    //-------------------------------------------------------------
+    //---------------------------------------------------------------------
     // ** Parameter: "strPromptBoxParam" = value from input
-    //-------------------------------------------------------------
+    //---------------------------------------------------------------------
     
     // ** Example
     if(strPromptBoxParam !== '') // Check if any text was typed into input
@@ -86,9 +86,10 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
         console.log('CALLBACK: Promptbox input value = ' + strPromptBoxParam);
     }
 
-    //-------------------------------------------------------------
-    // ** Parameter: "strActionParam" = value from 'name' attribute (can be used to indicate custom action to execute)
-    //-------------------------------------------------------------
+    //---------------------------------------------------------------------
+    // ** Parameter: "strActionParam" = value from 'name' attribute,
+    //    can be used to indicate custom action to execute.
+    //---------------------------------------------------------------------
     
     // ** Example
     if(strActionParam === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
