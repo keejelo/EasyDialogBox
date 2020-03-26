@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.442
+// ** EasyDialogBox 1.443
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -165,16 +165,16 @@ let EasyDialogBox = (function()
         return parseInt(str, 10);
     };
 
-    // ** Check if array matches ALL test-values in supplied string or other array item value
+    // ** Check if array matches ALL test-values in supplied string/array
     let _match = function(arr, str, exp, sep)
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
         // @ str = string, value or other array that we want to match with the above array
-        // @ exp = boolean value: true (split string into array, using separator). false or omitted = do not split
+        // @ exp = boolean value: true = split string into array, using separator. false (or omitted) = do not split, treat string as one value.
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
-        let val = str;        
+        let val = str;
 
         if(exp === true)
         {
