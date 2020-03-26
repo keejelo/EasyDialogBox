@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.432
+// ** EasyDialogBox 1.433
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -153,17 +153,17 @@ let EasyDialogBox = (function()
     };
 
     // ** Check if array contains/matches ALL test-values in supplied string or other array item value
-    let _contains = function(arr, str, bSplit, sep)
+    let _contains = function(arr, str, exp, sep)
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
         // @ str = string, value or other array that we want to match with the above array
-        // @ bSplit = boolean value: true (split string into array, using separator). false or omitted = do not split
+        // @ exp = boolean value: true (split string into array, using separator). false or omitted = do not split
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
         let val = str;
 
-        if(bSplit === true)
+        if(exp === true)
         {
             if(typeof sep === 'undefined')
             {
@@ -172,16 +172,16 @@ let EasyDialogBox = (function()
             val = str.split(sep);
         }
 
-        let pass = 0;
-
+        let passed = 0;
+        
         for(let i = 0; i < val.length; i++)
         {
             for(let j = 0; j < arr.length; j++)
             {
                 if(arr[j] === val[i])
                 {
-                    //return j;  // we could use this if we wanted to accept that some matched but not all
-                    pass++; // instead we use this and add up matches
+                    //return j;  // we could use this if we wanted to check  matched but not all
+                    passed++; // instead we use this and add up matches
                 }
             }
             //return -1; // we could use this if we wanted to accept that some matched but not all
@@ -189,7 +189,7 @@ let EasyDialogBox = (function()
 
         // ** Ensure that ALL values matched, else return failure
         // ** (Check if numbers tested equals the numbers of items that passed)
-        if(val.length === pass)
+        if(val.length === passed)
         {
             return 1;
         }
