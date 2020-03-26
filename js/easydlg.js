@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.434
+// ** EasyDialogBox 1.435
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -180,11 +180,11 @@ let EasyDialogBox = (function()
             {
                 if(arr[j] === val[i])
                 {
-                    //return j;  // use this to accept 1 match as success
+                    //return j;  // use this to accept first match as success
                     passed++; // instead we use this and add up matches
                 }
             }
-            //return -1; // we could use this if we wanted to accept that some matched but not all
+            //return -1; // use this to accept first match as success
         }
 
         // ** Ensure that ALL values matched, else return failure
