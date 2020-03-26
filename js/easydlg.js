@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.443
+// ** EasyDialogBox 1.444
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -170,8 +170,8 @@ let EasyDialogBox = (function()
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
-        // @ str = string, value or other array that we want to match with the above array
-        // @ exp = boolean value: true = split string into array, using separator. false (or omitted) = do not split, treat string as one value.
+        // @ str = string/array that we want to match with the above array
+        // @ exp = (boolean) true = split string into array, using separator. false (or omitted) = do not split, treat string as one value.
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
         let val = str;
@@ -201,12 +201,10 @@ let EasyDialogBox = (function()
         // ** Ensure that ALL values matched, else return failure. Check if numbers tested equals the numbers of items that passed.
         if(val.length === passed)
         {
-            return 1;
+            return true;
         }
-        else
-        {
-            return -1;
-        }
+
+        return false;
     };
 
     // ** Reference to this object itself (after register() has run)
@@ -250,8 +248,8 @@ let EasyDialogBox = (function()
         {
             let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
-            // ** Check if type is valid (>= 0)
-            if(bMatch >= 0)
+            // ** Check if valid type(s)
+            if(bMatch === true)
             {
                 // ** Create parent reference
                 let body = document.getElementsByTagName('body')[0];
@@ -292,8 +290,8 @@ let EasyDialogBox = (function()
             // ** Check if values match
             let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
-            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type.
-            if( dlg && (_isActive === false) && (bMatch >= 0) )
+            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type(s)
+            if( dlg && (_isActive === false) && (bMatch === true) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
                 _boxId = id + '_1';
