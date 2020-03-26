@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.435
+// ** EasyDialogBox 1.436
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -205,7 +205,7 @@ let EasyDialogBox = (function()
     //---------------------------------------------------------------------
     // ** Public methods
     //---------------------------------------------------------------------
-    return { //<-- bracket need to be on same line, else it just returns undefined
+    return { //<-- bracket need to be on same line, else it just returns: undefined
 
         // ** Register self awareness, variable used in event-listeners to point to this object
         register : function()
