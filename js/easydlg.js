@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.431
+// ** EasyDialogBox 1.432
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@
 let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxParam)
 {   'use strict';
 
-    // ** Variable "nRetParam" values:
+    // ** Parameter: "nRetParam" values
     //  0 = "CloseX", "Close" button or outside box was clicked
     //  1 = "Yes" button was clicked
     //  2 = "No" button was clicked
@@ -75,7 +75,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
     }
 
 
-    // ** Variable "strPromptBoxParam" = value from input
+    // ** Parameter: "strPromptBoxParam" = value from input
     // ** Example
     if(strPromptBoxParam !== '') // Check if any text was typed into input
     {
@@ -83,7 +83,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
     }
 
 
-    // ** Variable "strActionParam" = value from 'name' attribute (can be used to indicate custom action to execute)
+    // ** Parameter: "strActionParam" = value from 'name' attribute (can be used to indicate custom action to execute)
     // ** Example
     if(strActionParam === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
     {
