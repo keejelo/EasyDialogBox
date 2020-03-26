@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.438
+// ** EasyDialogBox 1.440
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -157,6 +157,12 @@ let EasyDialogBox = (function()
     {
         // ** Pass values along to outside function so they can be used easier.
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
+    };
+    
+    // ** Convert string to decimal
+    let _str2dec = function(str)
+    {
+        return parseInt(str, 10);
     };
 
     // ** Check if array contains/matches ALL test-values in supplied string or other array item value
@@ -449,7 +455,7 @@ let EasyDialogBox = (function()
 
                 // ** If height is larger or equal to window height, disable vertical alignment,
                 // ** just position at top. Prevents out of view.
-                if(parseInt(height) >= window.innerHeight)
+                if(_str2dec(height) >= window.innerHeight)
                 {
                     inDlgBox.classList.remove('dlg-center-vert');
                 }
@@ -466,7 +472,7 @@ let EasyDialogBox = (function()
                 _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 
                 // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-                _orgBodyPaddingRight = parseInt(_orgBodyPaddingRight);
+                _orgBodyPaddingRight = _str2dec(_orgBodyPaddingRight);
 
                 // ** Get width of body before removing scrollbar
                 let w1 = body.offsetWidth;
@@ -483,7 +489,7 @@ let EasyDialogBox = (function()
                 // ** If conditions are true: add both padding-right values, 
                 if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
                 {
-                    w3 += parseInt(_orgBodyPaddingRight);
+                    w3 += _str2dec(_orgBodyPaddingRight);
                 }
 
                 // ** Apply width-difference as padding-right to body, substitute for scrollbar,
@@ -686,7 +692,7 @@ let EasyDialogBox = (function()
             // ** Get body element, reset values, restore scrolling
             let body = document.getElementsByTagName('body')[0];
             body.classList.remove('dlg-stop-scrolling');
-            body.setAttribute('style', 'padding-right:' + parseInt(_orgBodyPaddingRight) + 'px;');
+            body.setAttribute('style', 'padding-right:' + _str2dec(_orgBodyPaddingRight) + 'px;');
 
             // ** Get the dlg element
             let dlg = document.getElementById(id);
