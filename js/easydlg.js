@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.441
+// ** EasyDialogBox 1.442
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -165,8 +165,8 @@ let EasyDialogBox = (function()
         return parseInt(str, 10);
     };
 
-    // ** Check if array contains/matches ALL test-values in supplied string or other array item value
-    let _contains = function(arr, str, exp, sep)
+    // ** Check if array matches ALL test-values in supplied string or other array item value
+    let _match = function(arr, str, exp, sep)
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
@@ -248,7 +248,7 @@ let EasyDialogBox = (function()
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
-            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
+            let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
             // ** Check if type is valid (>= 0)
             if(bMatch >= 0)
@@ -290,7 +290,7 @@ let EasyDialogBox = (function()
             let strBoxTypeClass = dlg.getAttribute('class');
 
             // ** Check if values match
-            let bMatch = _contains(_strBoxTypeList, strBoxTypeClass, true);
+            let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg type.
             if( dlg && (_isActive === false) && (bMatch >= 0) )
