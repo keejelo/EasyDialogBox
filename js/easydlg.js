@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.433
+// ** EasyDialogBox 1.434
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -161,7 +161,7 @@ let EasyDialogBox = (function()
         // @ exp = boolean value: true (split string into array, using separator). false or omitted = do not split
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
-        let val = str;
+        let val = str;        
 
         if(exp === true)
         {
@@ -173,14 +173,14 @@ let EasyDialogBox = (function()
         }
 
         let passed = 0;
-        
+
         for(let i = 0; i < val.length; i++)
         {
             for(let j = 0; j < arr.length; j++)
             {
                 if(arr[j] === val[i])
                 {
-                    //return j;  // we could use this if we wanted to check  matched but not all
+                    //return j;  // use this to accept 1 match as success
                     passed++; // instead we use this and add up matches
                 }
             }
