@@ -183,3 +183,97 @@
     background-color:transparent;
 }
 
+/* Flex boxes */
+.dlg-flex-container
+{
+    display:flex;
+}
+
+.dlg-flexbox-left,
+.dlg-flexbox-right
+{
+    box-sizing:border-box;
+}
+.dlg-flexbox-left
+{
+    width:55px;
+    margin:0;
+    padding-top:5px;
+    /*border:1px solid #f00;*/ /*debug*/
+}
+.dlg-flexbox-right
+{
+    width:100%;
+    margin:0;
+    padding:0;
+    /*border:1px solid #00f;*/ /*debug*/
+}
+
+/* Dialog icons */
+.dlg-symbol
+{
+    font-size:24px;
+    font-family:"Courier new", Courier, monospace;
+    border-radius:50%;
+    padding:0;
+    font-weight:bold;
+    color:#fff;
+	height:35px;
+	width:35px;
+	display:inline-block;
+	text-align:center;
+	line-height:34px;
+}
+
+.dlg-icon-info,
+.dlg-icon-question
+{
+    background-color:#3d6da8;
+    line-height:37px;
+}
+.dlg-icon-error 
+{ 
+    background:#e64943;
+    font-family:Consolas, monospace;
+    line-height:37px;
+}
+.dlg-icon-success
+{
+    background:#67b66e;
+    font-size:17px;
+    line-height:37px;
+}
+.dlg-icon-excl
+{ 
+    color:#000;
+    border-radius:0;
+    width:0;
+    height:0;
+    border-left:16px solid transparent;
+    border-right:16px solid transparent;
+    border-bottom:30px solid #ffd54b;
+    line-height:37px;    
+}
+.dlg-icon-info:before
+{
+    content:'i';
+}
+.dlg-icon-question:before
+{
+    content:'?';
+    margin-left:-1px;
+}
+.dlg-icon-error:before
+{
+    content:'\002716';
+}
+.dlg-icon-success:before
+{
+    content:'\002713';
+}
+.dlg-icon-excl:before
+{
+    content:'!';
+    margin-left:-7px;
+}
+
