@@ -281,7 +281,12 @@
 .dlg-icon-error:before,
 .dlg-icon-error::before
 {
-    content:'\002716';
+    /* light */
+    content:'\002715';
+    
+    /*heavy*/
+    /*content:'\002716';*/
+
 }
 
 .dlg-icon-success:before,
