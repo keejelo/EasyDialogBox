@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.447
+// ** EasyDialogBox 1.448
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -333,6 +333,10 @@ let EasyDialogBox = (function()
                 // ** Create message
                 let message = document.createElement('div');
                 
+                // ** Prepare reference to inner boxes if needed
+                let leftbox = null;
+                let rightbox = null;
+                
                 // ** Check if icon should be displayed
                 if(dlg.classList.contains('dlg-info')
                 || dlg.classList.contains('dlg-question')
@@ -343,27 +347,27 @@ let EasyDialogBox = (function()
                 {                    
                     message.setAttribute('class','dlg-message dlg-flex-container');
                     
-                    let iconbox = document.createElement('div');
-                    iconbox.setAttribute('class','dlg-flexbox-left');
+                    leftbox = document.createElement('div');
+                    leftbox.setAttribute('class','dlg-flexbox-left');
 
                     // ** Check which icon to display
                     if(dlg.classList.contains('dlg-info'))
-                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
                     else if(dlg.classList.contains('dlg-question'))
-                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
                     else if(dlg.classList.contains('dlg-error'))
-                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
                     else if(dlg.classList.contains('dlg-success'))
-                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
                     else if(dlg.classList.contains('dlg-exclamation'))
-                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+
+                    message.appendChild(leftbox);
                     
-                    message.appendChild(iconbox);
-                    
-                    let msgbox = document.createElement('div');
-                    msgbox.setAttribute('class','dlg-flexbox-right');
-                    msgbox.innerHTML = orgMessage;
-                    message.appendChild(msgbox);
+                    rightbox = document.createElement('div');
+                    rightbox.setAttribute('class','dlg-flexbox-right');
+                    rightbox.innerHTML = orgMessage;
+                    message.appendChild(rightbox);
                 }
                 else
                 {
@@ -375,15 +379,23 @@ let EasyDialogBox = (function()
                 // ** Create prompt box (input + OK + Cancel)
                 if(dlg.classList.contains('dlg-prompt'))
                 {
-                    let div = document.createElement('div');
-                    div.setAttribute('class', 'dlg-input');
-                    message.appendChild(div);
-
+                    let inputbox = document.createElement('div');
+                    inputbox.setAttribute('class', 'dlg-input');
+                    
+                    if(message.classList.contains('dlg-flex-container'))
+                    {
+                        rightbox.appendChild(inputbox);
+                    }
+                    else
+                    {
+                        message.appendChild(inputbox);
+                    }
+                    
                     let input = document.createElement('input');
                     input.setAttribute('class', 'dlg-input-field');
                     input.setAttribute('type', 'text');
                     input.setAttribute('value', '');
-                    div.appendChild(input);
+                    inputbox.appendChild(input);
 
                     // ** Add buttons if not already stated in 'class'
                     dlg.classList.add('dlg-ok-cancel');
