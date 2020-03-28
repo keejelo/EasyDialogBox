@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.449
+// ** EasyDialogBox 1.450
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -347,6 +347,7 @@ let EasyDialogBox = (function()
                 {                    
                     message.setAttribute('class','dlg-message dlg-flex-container');
                     
+                    // ** Create left box
                     leftbox = document.createElement('div');
                     leftbox.setAttribute('class','dlg-flexbox-left');
 
@@ -362,11 +363,15 @@ let EasyDialogBox = (function()
                     else if(dlg.classList.contains('dlg-exclamation'))
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
 
+                    // ** Insert it into parent div
                     message.appendChild(leftbox);
                     
+                    // ** Create right box
                     rightbox = document.createElement('div');
                     rightbox.setAttribute('class','dlg-flexbox-right');
                     rightbox.innerHTML = orgMessage;
+                    
+                    // ** Insert it into parent div
                     message.appendChild(rightbox);
                 }
                 else
