@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.445
+// ** EasyDialogBox 1.446
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
             console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
 
             // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
+            let myBox = EasyDialogBox.create('dlg dlg-exclamation','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
 
             // ** Check if box was created successfully
             if(myBox)
@@ -129,7 +129,8 @@ let EasyDialogBox = (function()
 
     // ** Dialogbox types, can be used separately or in combination separated by a space
     let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
-                            'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay'];
+                            'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
+                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
     let _strAction = '';
@@ -331,8 +332,44 @@ let EasyDialogBox = (function()
 
                 // ** Create message
                 let message = document.createElement('div');
-                message.setAttribute('class','dlg-message');
-                message.innerHTML = orgMessage;
+                
+                // ** Check if icon should be displayed
+                if(dlg.classList.contains('dlg-info')
+                || dlg.classList.contains('dlg-question')
+                || dlg.classList.contains('dlg-error')
+                || dlg.classList.contains('dlg-success')
+                || dlg.classList.contains('dlg-exclamation')
+                )
+                {                    
+                    message.setAttribute('class','dlg-message dlg-flex-container');
+                    
+                    let iconbox = document.createElement('div');
+                    iconbox.setAttribute('class','dlg-flexbox-left');
+
+                    // ** Check which icon to display
+                    if(dlg.classList.contains('dlg-info'))
+                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
+                    else if(dlg.classList.contains('dlg-question'))
+                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
+                    else if(dlg.classList.contains('dlg-error'))
+                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
+                    else if(dlg.classList.contains('dlg-success'))
+                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
+                    else if(dlg.classList.contains('dlg-exclamation'))
+                        iconbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+                    
+                    message.appendChild(iconbox);
+                    
+                    let msgbox = document.createElement('div');
+                    msgbox.setAttribute('class','dlg-flexbox-right');
+                    msgbox.innerHTML = orgMessage;
+                    message.appendChild(msgbox);
+                }
+                else
+                {
+                    message.setAttribute('class','dlg-message');
+                    message.innerHTML = orgMessage;
+                }
                 box.appendChild(message);
 
                 // ** Create prompt box (input + OK + Cancel)
