@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.450
+// ** EasyDialogBox 1.451
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ let EasyDialogBox = (function()
     let _btnTextOk     = 'OK';      // OK
     let _btnTextCancel = 'Cancel';  // Cancel
 
-    // ** Dialogbox types, can be used separately or in combination separated by a space
+    // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
                             'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
                             'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
