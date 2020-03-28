@@ -102,6 +102,34 @@
     padding:15px;
 }
 
+/* Flex boxes */
+.dlg-flex-container
+{
+    display:flex;
+}
+
+.dlg-flexbox-left,
+.dlg-flexbox-right
+{
+    box-sizing:border-box;
+}
+
+.dlg-flexbox-left
+{
+    width:55px;
+    margin:0;
+    padding-top:5px;
+    /*border:1px solid #f00;*/ /*debug*/
+}
+
+.dlg-flexbox-right
+{
+    width:100%;
+    margin:0;
+    padding:0;
+    /*border:1px solid #00f;*/ /*debug*/
+}
+
 /* Dialog input */
 .dlg-input
 {
@@ -181,34 +209,6 @@
 .dlg-no-overlay
 {
     background-color:transparent;
-}
-
-/* Flex boxes */
-.dlg-flex-container
-{
-    display:flex;
-}
-
-.dlg-flexbox-left,
-.dlg-flexbox-right
-{
-    box-sizing:border-box;
-}
-
-.dlg-flexbox-left
-{
-    width:55px;
-    margin:0;
-    padding-top:5px;
-    /*border:1px solid #f00;*/ /*debug*/
-}
-
-.dlg-flexbox-right
-{
-    width:100%;
-    margin:0;
-    padding:0;
-    /*border:1px solid #00f;*/ /*debug*/
 }
 
 /* Dialog icons, pure css, could be changed to use images instead using the same classes */
