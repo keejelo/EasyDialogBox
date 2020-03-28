@@ -211,7 +211,7 @@
     /*border:1px solid #00f;*/ /*debug*/
 }
 
-/* Dialog icons */
+/* Dialog icons, pure css, could be changed to use images instead using the same classes */
 .dlg-symbol
 {
     font-size:24px;
@@ -227,7 +227,12 @@
 	line-height:34px;
 }
 
-.dlg-icon-info,
+.dlg-icon-info
+{
+    background-color:#3d6da8;
+    line-height:37px;
+}
+
 .dlg-icon-question
 {
     background-color:#3d6da8;
@@ -257,31 +262,36 @@
     border-left:16px solid transparent;
     border-right:16px solid transparent;
     border-bottom:30px solid #ffd54b;
-    line-height:37px;    
+    line-height:37px;
 }
 
-.dlg-icon-info:before
+.dlg-icon-info:before,
+.dlg-icon-info::before
 {
     content:'i';
 }
 
-.dlg-icon-question:before
+.dlg-icon-question:before,
+.dlg-icon-question::before
 {
     content:'?';
     margin-left:-1px;
 }
 
-.dlg-icon-error:before
+.dlg-icon-error:before,
+.dlg-icon-error::before
 {
     content:'\002716';
 }
 
-.dlg-icon-success:before
+.dlg-icon-success:before,
+.dlg-icon-success::before
 {
     content:'\002713';
 }
 
-.dlg-icon-excl:before
+.dlg-icon-excl:before,
+.dlg-icon-excl::before
 {
     content:'!';
     margin-left:-7px;
