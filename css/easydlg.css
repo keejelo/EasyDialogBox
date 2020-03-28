@@ -194,6 +194,7 @@
 {
     box-sizing:border-box;
 }
+
 .dlg-flexbox-left
 {
     width:55px;
@@ -201,6 +202,7 @@
     padding-top:5px;
     /*border:1px solid #f00;*/ /*debug*/
 }
+
 .dlg-flexbox-right
 {
     width:100%;
@@ -231,18 +233,21 @@
     background-color:#3d6da8;
     line-height:37px;
 }
+
 .dlg-icon-error 
 { 
     background:#e64943;
     font-family:Consolas, monospace;
     line-height:37px;
 }
+
 .dlg-icon-success
 {
     background:#67b66e;
     font-size:17px;
     line-height:37px;
 }
+
 .dlg-icon-excl
 { 
     color:#000;
@@ -254,26 +259,30 @@
     border-bottom:30px solid #ffd54b;
     line-height:37px;    
 }
+
 .dlg-icon-info:before
 {
     content:'i';
 }
+
 .dlg-icon-question:before
 {
     content:'?';
     margin-left:-1px;
 }
+
 .dlg-icon-error:before
 {
     content:'\002716';
 }
+
 .dlg-icon-success:before
 {
     content:'\002713';
 }
+
 .dlg-icon-excl:before
 {
     content:'!';
     margin-left:-7px;
 }
-
