@@ -51,8 +51,6 @@
     display:block;
     margin:0;
     padding:10px;
-    /*background-color:#496070; /* background color */
-    /*background-color:#0078d7; /* background color */
     background-color:#3d6da8; /* background color */
     color:#fff; /* text color, change it as you wish */
     white-space:nowrap;
@@ -166,7 +164,6 @@
 /* The Close Button */
 .dlg-close-btn
 {
-    /*float:right;*/
     padding:5px 15px;
     margin-left:10px;
 }
@@ -175,7 +172,7 @@
 .dlg-yes-btn,
 .dlg-ok-btn
 {
-    /*float:right;*/
+
     padding:5px 15px;
     margin-left:10px;
 }
@@ -263,11 +260,9 @@
     border-right:16px solid transparent;
     border-bottom:30px solid #ffd54b;
     line-height:37px;
-    
-    /**/
     border-left:18px solid transparent;
     border-right:18px solid transparent;
-    border-bottom:32px solid #000; /* ffd54b */    
+    border-bottom:32px solid #000;
 }
 
 .dlg-icon-info:before,
