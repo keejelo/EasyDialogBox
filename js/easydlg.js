@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.470
+// ** EasyDialogBox 1.472
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -777,30 +777,11 @@ let EasyDialogBox = (function()
             _isActive = false;
         },
         
-        // ** CALLBACK
-        callback_processor : function(oRef, param1, param2)
-        {            
-            let obj = _getObjFromId(_boxObj, oRef.id);
-
-            if(obj < 0)
-            {
-                let el = document.getElementById(oRef);
-                
-                if(el !== null)
-                {
-                    let obj = _getObjFromId(_boxObj, el.id);
-                    obj.callback_processor(param1, param2);
-                }
-                else
-                {
-                    let obj = _getObjFromId(_boxObj, oRef);
-                    obj.callback_processor(param1, param2);
-                }
-            }
-            else
-            {            
-                obj.callback_processor(param1, param2);
-            }
+        // ** Callback processor
+        callback_processor : function(idRef, param1, param2)
+        {
+            let obj = _getObjFromId(_boxObj, idRef);
+            obj.callback_processor(param1, param2);
         }
     }
     //----------------------------------------------------------
