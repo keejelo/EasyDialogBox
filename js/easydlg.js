@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.472
+// ** EasyDialogBox 1.474
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -198,7 +198,7 @@ let EasyDialogBox = (function()
 
                 // ** Create box and insert into parent element
                 let dlg = document.createElement('div');
-                dlg.setAttribute('id', 'OnTheFly_' + n);
+                dlg.setAttribute('id', 'OTF_' + n);
                 dlg.setAttribute('class', strBoxTypeClass);
                 dlg.classList.add('on-the-fly');
                 dlg.setAttribute('title', strTitle);
@@ -567,7 +567,7 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         window.removeEventListener('click', WinCloseClick);
-                                                
+
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
                         
@@ -838,7 +838,7 @@ let EasyDialogBox = (function()
 window.addEventListener('load', function()
 {   'use strict';
     
-    // ** Many examples here, maybe seem crazy, but at least it illustrates how to create callbacks :-)
+    // ** Many examples here, it may seem crazy, but at least it illustrates how to create callbacks :-)
     
     
     // ** Example 1: Getting an existing HTML element box and creating a callback for it
