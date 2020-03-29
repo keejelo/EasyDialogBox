@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.459
+// ** EasyDialogBox 1.461
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -76,7 +76,6 @@ let EasyDialogBox = (function()
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
         let val = str;
-
         if(exp === true)
         {
             if(typeof sep === 'undefined')
@@ -87,7 +86,6 @@ let EasyDialogBox = (function()
         }
 
         let passed = 0;
-
         for(let i = 0; i < val.length; i++)
         {
             for(let j = 0; j < arr.length; j++)
@@ -157,10 +155,8 @@ let EasyDialogBox = (function()
                     let obj =
                     {
                         id : btns[i].getAttribute('rel'),
-                        
                         strInput : null,                        
                         nRetCode : -1,
-                        
                         callback_processor : function(p1, p2)
                         {
                             this.nRetCode = p1;
@@ -170,27 +166,21 @@ let EasyDialogBox = (function()
                             {
                                 this.callback();
                             }
-                            
-                            //console.log('callback hello from: ' + this.id);
                         },
-                        
                         show : function()
                         {
                             return _that.show(this.id);
                         },
-                        
                         destroy : function()
                         {
                             return _that.destroy(this.id);
                         }
                     }
-                    
-                    // ** Add to array
                     _boxObj.push(obj);
                 }
             });
         },
-                
+
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
@@ -220,10 +210,8 @@ let EasyDialogBox = (function()
                 let obj =
                 {
                     id : dlg.getAttribute('id'),
-                    
                     strInput : null,                        
                     nRetCode : -1,
-
                     callback_processor : function(p1, p2)
                     {
                         this.nRetCode = p1;
@@ -233,25 +221,17 @@ let EasyDialogBox = (function()
                         {
                             this.callback();
                         }
-
-                        //console.log('callback processor fired');
                     },
-                    
                     show : function()
                     {
                         return _that.show(this.id);
                     },
-                    
                     destroy : function()
                     {
                         return _that.destroy(this.id);
                     }
                 }
-                
-                // ** Add to array
                 _boxObj.push(obj);
-                
-                // ** Return object
                 return obj;
             }
             else
@@ -573,9 +553,6 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                        // ** Return code 0 , since user clicked Close
-                        //_callback(0);
                         
                         // ** Return code 0 , since user clicked Close
                         _that.callback_processor(id, 0, _promptBoxInputValue);
@@ -593,9 +570,6 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                        // ** Return code 0 (false), since we just want to exit
-                        //_callback(0);
                         
                         // ** Return code 0 (false), since we just want to exit
                         _that.callback_processor(id, 0, _promptBoxInputValue);
@@ -620,9 +594,6 @@ let EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                            // ** Return code 1 , since user clicked YES
-                            //_callback(1);
                             
                             // ** Return code 1 , since user clicked YES
                             _that.callback_processor(id, 1, _promptBoxInputValue);
@@ -640,9 +611,6 @@ let EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                            // ** Return code 2 , since user clicked NO
-                            //_callback(2);
                             
                             // ** Return code 2 , since user clicked NO
                             _that.callback_processor(id, 2, _promptBoxInputValue);
@@ -668,9 +636,6 @@ let EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                            // ** Return code 3 , since user clicked OK
-                            //_callback(3);
                             
                             // ** Return code 3 , since user clicked OK
                             _that.callback_processor(id, 3, _promptBoxInputValue);
@@ -688,9 +653,6 @@ let EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
-                            // ** Return code 4 , since user clicked Cancel
-                            //_callback(4);
                             
                             // ** Return code 4 , since user clicked Cancel
                             _that.callback_processor(id, 4, _promptBoxInputValue);
@@ -761,7 +723,6 @@ let EasyDialogBox = (function()
             {
                 let o = id;
                 let obj = _getObjFromId(_boxObj, o.id);
-                //console.log(obj);
                 dlg = document.getElementById(obj.id);
             }            
 
@@ -863,13 +824,19 @@ let EasyDialogBox = (function()
 //
 //
 //---------------------------------------------------------------------
-// ** EasyDialogBox object return code values "nRetCode"
+// ** EasyDialogBox object return code values: object.nRetCode
+//
 //  0 = "CloseX", "Close" button or outside box was clicked
 //  1 = "Yes" button was clicked
 //  2 = "No" button was clicked
 //  3 = "OK" button was clicked
 //  4 = "Cancel" was button clicked
+//
+//
+//  Can also return value of: object.strInput
+//
 //---------------------------------------------------------------------
+
 
 //----------------------------------------------------------
 // ** Wait until page loading has finished
