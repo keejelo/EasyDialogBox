@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.461
+// ** EasyDialogBox 1.462
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -184,10 +184,10 @@ let EasyDialogBox = (function()
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
-            let bMatch = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
+            let match = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
 
             // ** Check if valid types
-            if(bMatch === true)
+            if(match === true)
             {
                 // ** Create parent reference
                 let body = document.getElementsByTagName('body')[0];
@@ -256,7 +256,7 @@ let EasyDialogBox = (function()
             }
 
             let strBoxTypeClass = null;
-            let bMatch = null;
+            let match = null;
             
             if(dlg)
             {
@@ -264,11 +264,11 @@ let EasyDialogBox = (function()
                 strBoxTypeClass = dlg.getAttribute('class');
 
                 // ** Check if values match
-                bMatch = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
+                match = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
             }
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
-            if( dlg && (_isActive === false) && (bMatch === true) )
+            if( dlg && (_isActive === false) && (match === true) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
                 _boxId = id + '_1';
@@ -687,7 +687,7 @@ let EasyDialogBox = (function()
                 // ** Return success
                 return true;
             }
-            else if(bMatch < 0)
+            else if(!match)
             {
                 log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
