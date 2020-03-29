@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.454
+// ** EasyDialogBox 1.455
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -113,11 +113,11 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
 
     // ..combine all of the above to do your custom stuff..    
     /*
-        if(nRetParam === 1 && strActionParam === 'myCustomActionInCallbackFunc')
+        if(nRetParam === 1 && strActionParam === 'createNewUser' && strPromptBoxParam === 'John')
         {
             // ..do something or run a function..
             
-            myCustomFunc();
+            myCustomFunc(strPromptBoxParam);
         }
     */
 
