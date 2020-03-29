@@ -1,132 +1,9 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.455
+// ** EasyDialogBox 1.457
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
 
-
-//-----------------------------------------------------------------------------------------------------------------
-// ** CALLBACK_EasyDialogBox (return values sent from dialog, use them for further processing)
-//-----------------------------------------------------------------------------------------------------------------
-let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxParam)
-{   'use strict';
-
-    /* TODO: object oriented approach ?
-        Create a separate callback for each created box object?
-        obj.callback(params)
-        
-        When creating new box, return an object instead of only the id,
-        When using do: .show(obj) and .destroy(obj) or obj.show(omitted) and obj.destroy(omitted)
-        if omitted () use obj.id as default
-    */
-
-    //---------------------------------------------------------------------
-    // ** Parameter: "nRetParam" values
-    //  0 = "CloseX", "Close" button or outside box was clicked
-    //  1 = "Yes" button was clicked
-    //  2 = "No" button was clicked
-    //  3 = "OK" button was clicked
-    //  4 = "Cancel" was button clicked
-    //---------------------------------------------------------------------
-
-    // ** Check returned value from button click
-    // ** Example
-    if(typeof nRetParam === 'number')
-    {
-        if(nRetParam === 0)
-        {
-            console.log('CALLBACK: User clicked "CloseX", "Close" button or out side box. Return value = ' + nRetParam);
-        }
-        else if(nRetParam === 1)
-        {
-            console.log('CALLBACK: User clicked "Yes" button. Return value = ' + nRetParam);
-
-            // ** Example: Create a dialog on the fly!
-            let myBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>','doNothing');
-
-            // ** Check if box was created successfully
-            if(myBox)
-            {
-                // ** Show the new box (returns true if box can be shown)
-                let bRet = EasyDialogBox.show(myBox);
-
-                // ** Check if box was shown successfully
-                if(bRet)
-                {
-                    console.log('CALLBACK: Showing a new dialog on the fly since the user clicked "Yes" button. (Example in CALLBACK function)');
-                }
-                else
-                {
-                    console.log('CALLBACK: Error, could not show dialog: ' + myBox);
-                }
-            }
-
-            // ** TEST: Remove it after 3 seconds :)
-            /*
-            setTimeout(function()
-            {
-                EasyDialogBox.destroy(myBox);
-                console.log('CALLBACK: Destroyed the dialogbox after 3 seconds. (Example in CALLBACK function)')
-            }, 3000);
-            */
-            // ** END: Example: Create a dialog on the fly!
-        }
-        else if(nRetParam === 2)
-        {
-            console.log('CALLBACK: User clicked "No" button. Return value = ' + nRetParam);
-        }
-        else if(nRetParam === 3)
-        {
-            console.log('CALLBACK: User clicked "OK" button. Return value = ' + nRetParam);
-        }
-        else if(nRetParam === 4)
-        {
-            console.log('CALLBACK: User clicked "Cancel" button. Return value = ' + nRetParam);
-        }
-    }
-
-    //---------------------------------------------------------------------
-    // ** Parameter: "strPromptBoxParam" = value from input
-    //---------------------------------------------------------------------
-    
-    // ** Example
-    if(strPromptBoxParam !== '') // Check if any text was typed into input
-    {
-        console.log('CALLBACK: Promptbox input value = ' + strPromptBoxParam);
-    }
-
-    //---------------------------------------------------------------------
-    // ** Parameter: "strActionParam" = value from 'name' attribute,
-    //    can be used to indicate custom action to execute.
-    //---------------------------------------------------------------------
-    
-    // ** Example
-    if(strActionParam === 'myCustomActionInCallbackFunc') // <-- this value is taken from the dialogbox 'name' attribute, located in HTML example.
-    {
-        console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
-    }
-    else if(strActionParam === 'doNothing') // <-- this value is taken from the dialogbox 'name' attribute of the OnTheFly dialog.
-    {
-        console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
-    }
-
-
-    // ..combine all of the above to do your custom stuff..    
-    /*
-        if(nRetParam === 1 && strActionParam === 'createNewUser' && strPromptBoxParam === 'John')
-        {
-            // ..do something or run a function..
-            
-            myCustomFunc(strPromptBoxParam);
-        }
-    */
-
-    // ..blah..
-
-};
-//-----------------------------------------------------------------------------------------------------------------
-// ** END: CALLBACK_EasyDialogBox
-//-----------------------------------------------------------------------------------------------------------------
 
 
 //-----------------------------------------------------------------------------------------------------------------
@@ -150,9 +27,9 @@ let EasyDialogBox = (function()
                             'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
                             'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
-    // ** "Action"-name of box, can be used to indicate custom action in CALLBACK function
-    let _strAction = '';
-
+    // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
+    let _boxObj = [];
+    
     // ** Variable that stores current input text in promptbox
     let _promptBoxInputValue = '';
 
@@ -170,22 +47,6 @@ let EasyDialogBox = (function()
     {
         if(debug) return console.log(str);
     }
-
-    // ** Callback function to pass along return values
-    let _callback = function(nRetCode)
-    {
-        // ** Pass values along to outside function so they can be used easier.
-        CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
-        
-        /* TODO: object oriented approach ?
-            Create a separate callback for each created box object?
-            obj.callback(params)
-            
-            When creating new box, return an object instead of only the id,
-            When using do: .show(obj) and .destroy(obj) or obj.show(omitted) and obj.destroy(omitted)
-            if omitted () use obj.id as default
-        */
-    };
     
     // ** Convert string to decimal
     let _str2dec = function(str)
@@ -193,8 +54,21 @@ let EasyDialogBox = (function()
         return parseInt(str, 10);
     };
 
+    // ** Get object from array id
+    let _getObjFromId = function(arr, strId)
+    {
+        for(let i = 0; i < arr.length; i++)
+        {
+            if(arr[i].id === strId)
+            {
+                return arr[i];
+            }
+        }
+        return -1;
+    };
+    
     // ** Check if array matches ALL test-values in supplied string/array
-    let _match = function(arr, str, exp, sep)
+    let _matchAll = function(arr, str, exp, sep)
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
@@ -248,7 +122,19 @@ let EasyDialogBox = (function()
         {
             _that = this;
         },
-
+        
+        // ** Get all objects
+        getAllObj : function()
+        {
+            return _boxObj;
+        },
+        
+        // ** Get object from id
+        get : function(id)
+        {
+            return _getObjFromId(_boxObj, id);
+        },
+        
         // ** Initialize
         init : function()
         {
@@ -268,17 +154,38 @@ let EasyDialogBox = (function()
                         evt.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
                     });
                     
-                    /* TODO: object oriented approach ?
-                        Create a new javascript object for each box ?
-                    */
+                    // ** Create a new javascript object for each box, to handle callbacks etc.
+                    let obj =
+                    {
+                        id : btns[i].getAttribute('rel'),
+                        
+                        strInput : null,                        
+                        nRetCode : -1,
+                        
+                        callback_processor : function(p1, p2)
+                        {
+                            this.nRetCode = p1;
+                            this.strInput = p2;
+                            
+                            if(this.callback)
+                            {
+                                this.callback();
+                            }
+                            
+                            //console.log('callback hello from: ' + this.id);
+                        }, 
+                    }
+                    
+                    // ** Add to array
+                    _boxObj.push(obj);
                 }
             });
         },
-
+                
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
         create : function(strBoxTypeClass, strTitle, strMessage, strAction)
         {
-            let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
+            let bMatch = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
 
             // ** Check if valid types
             if(bMatch === true)
@@ -300,24 +207,33 @@ let EasyDialogBox = (function()
                 dlg.innerHTML = strMessage;
                 body.appendChild(dlg);
 
-                // ** Return the 'id' value of the newly created element
-                return dlg.getAttribute('id');
-                
-                /* TODO: object oriented approach ? 
-                         Create object and return that instead of only id ?
-
-                    let OTF_obj =
-                    {
-                        id : 'OnTheFly_' + n,
-                        
-                        callback : function(params)
-                        {
-                            // .....
-                        },
-                    }
+                // ** Create object and return it
+                let obj =
+                {
+                    id : dlg.getAttribute('id'),
                     
-                    return OTF_obj;
-                */
+                    strInput : null,                        
+                    nRetCode : -1,
+                        
+                    callback_processor : function(p1, p2)
+                    {
+                        this.nRetCode = p1;
+                        this.strInput = p2;
+                        
+                        if(this.callback)
+                        {
+                            this.callback();
+                        }
+
+                        //console.log('callback processor fired');
+                    }
+                }
+                
+                // ** Add to array
+                _boxObj.push(obj);
+                
+                // ** Return object
+                return obj;
             }
             else
             {
@@ -331,21 +247,32 @@ let EasyDialogBox = (function()
         {
             // ** Get the 'id' from function parameter, we want to show the dialog that have this 'id'
             let dlg = document.getElementById(id);
+            
+            // ** If dlg returns false, try to get id from object
+            if(!dlg)
+            {
+                let o = id;
+                let obj = _getObjFromId(_boxObj, o.id);
+                dlg = document.getElementById(obj.id);
+            }
 
-            // ** Get classes, string
-            let strBoxTypeClass = dlg.getAttribute('class');
+            let strBoxTypeClass = null;
+            let bMatch = null;
+            
+            if(dlg)
+            {
+                // ** Get classes, string
+                strBoxTypeClass = dlg.getAttribute('class');
 
-            // ** Check if values match
-            let bMatch = _match(_strBoxTypeList, strBoxTypeClass, true);
+                // ** Check if values match
+                bMatch = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
+            }
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
             if( dlg && (_isActive === false) && (bMatch === true) )
             {
                 // ** Create a temp 'id' for the showing dialogbox                
                 _boxId = id + '_1';
-
-                // ** Get value from 'name' attribute, passed on to CALLBACK function, can be used to excute custom action in CALLBACK function
-                _strAction = dlg.getAttribute('name');
 
                 // ** Get current 'title' value and store it
                 let orgTitleText = dlg.getAttribute('title');
@@ -609,9 +536,9 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-
+                        
                         // ** Return code 0 (false), since user clicked X (close)
-                        _callback(0);
+                        _that.callback_processor(id, 0, _promptBoxInputValue);
                     });
                 }
                 // ** END: X button click handler
@@ -629,7 +556,10 @@ let EasyDialogBox = (function()
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                         // ** Return code 0 , since user clicked Close
-                        _callback(0);
+                        //_callback(0);
+                        
+                        // ** Return code 0 , since user clicked Close
+                        _that.callback_processor(id, 0, _promptBoxInputValue);
                     });
                 }
                 // ** END: CLOSE button click handler
@@ -646,7 +576,10 @@ let EasyDialogBox = (function()
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                         // ** Return code 0 (false), since we just want to exit
-                        _callback(0);
+                        //_callback(0);
+                        
+                        // ** Return code 0 (false), since we just want to exit
+                        _that.callback_processor(id, 0, _promptBoxInputValue);
                     }
                 });
                 // ** END: window click outside box click handler
@@ -670,7 +603,10 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                             // ** Return code 1 , since user clicked YES
-                            _callback(1);
+                            //_callback(1);
+                            
+                            // ** Return code 1 , since user clicked YES
+                            _that.callback_processor(id, 1, _promptBoxInputValue);
                         });
                     }
 
@@ -687,7 +623,10 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                             // ** Return code 2 , since user clicked NO
-                            _callback(2);
+                            //_callback(2);
+                            
+                            // ** Return code 2 , since user clicked NO
+                            _that.callback_processor(id, 2, _promptBoxInputValue);
                         });
                     }
                 }
@@ -712,7 +651,10 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                             // ** Return code 3 , since user clicked OK
-                            _callback(3);
+                            //_callback(3);
+                            
+                            // ** Return code 3 , since user clicked OK
+                            _that.callback_processor(id, 3, _promptBoxInputValue);
                         });
                     }
 
@@ -729,7 +671,10 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
 
                             // ** Return code 4 , since user clicked Cancel
-                            _callback(4);
+                            //_callback(4);
+                            
+                            // ** Return code 4 , since user clicked Cancel
+                            _that.callback_processor(id, 4, _promptBoxInputValue);
                         });
                     }
                 }
@@ -792,9 +737,17 @@ let EasyDialogBox = (function()
 
             // ** Get the dlg element
             let dlg = document.getElementById(id);
+            
+            if(!dlg)
+            {
+                let o = id;
+                let obj = _getObjFromId(_boxObj, o.id);
+                //console.log(obj);
+                dlg = document.getElementById(obj.id);
+            }            
 
             // ** If promptbox was created, remove eventlisteners
-            let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+            let pBox = dlg.getElementsByClassName('dlg-input-field')[0];            
             if(pBox)
             {
                 pBox.onkeyup = null;
@@ -813,6 +766,7 @@ let EasyDialogBox = (function()
             {
                 dlg.style.display = 'none';
 
+                
                 // ** If 'OnTheFly' box was created, remove all
                 if(dlg.classList.contains('on-the-fly'))
                 {
@@ -828,6 +782,24 @@ let EasyDialogBox = (function()
 
             // ** Reset flag 
             _isActive = false;
+        },
+        
+        // ** CALLBACK
+        callback_processor : function(oRef, param1, param2)
+        {            
+            let obj = _getObjFromId(_boxObj, oRef.id);
+
+            if(obj < 0)
+            {
+                let el = document.getElementById(oRef);
+                let obj = _getObjFromId(_boxObj, el.id);
+                
+                obj.callback_processor(param1, param2);
+            }
+            else
+            {            
+                obj.callback_processor(param1, param2);
+            }
         }
     }
     //----------------------------------------------------------
@@ -850,4 +822,109 @@ let EasyDialogBox = (function()
 )();
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Activate and start
+//-----------------------------------------------------------------------------------------------------------------
+
+
+
+//-----------------------------------------------------------------------------------------------------------------
+// ** Callback Examples
+//-----------------------------------------------------------------------------------------------------------------
+// 
+// IMPORTANT ! 
+//
+// Must be created after EasyDialogBox "Activate and start"
+//
+//
+//---------------------------------------------------------------------
+// ** EasyDialogBox object return code values "nRetCode"
+//  0 = "CloseX", "Close" button or outside box was clicked
+//  1 = "Yes" button was clicked
+//  2 = "No" button was clicked
+//  3 = "OK" button was clicked
+//  4 = "Cancel" was button clicked
+//---------------------------------------------------------------------
+
+//----------------------------------------------------------
+// ** Wait until page loading has finished
+//----------------------------------------------------------
+window.addEventListener('load', function()
+{
+ 
+    // ** Example 1: Getting an existing HTML element box and creating a callback for it
+    let box1 = EasyDialogBox.get('myBox');
+    if(box1)
+    {
+        box1.callback = function()
+        {
+            if(box1.nRetCode === 0)
+            {
+                console.log('CALLBACK: User clicked "CloseX", "Close" button or out side box: ' + box1.id + ', return value: ' + box1.nRetCode);
+            }
+        }
+    }
+ 
+    // ** Example 2: Getting an existing HTML element box and creating a callback for it. And then creating a new box on the fly!
+    let box2 = EasyDialogBox.get('myBoxYesNo');
+    if(box2)
+    {
+        box2.callback = function()
+        {
+            if(box2.nRetCode === 1)
+            {
+                console.log('CALLBACK: User clicked YES in box: ' + box2.id + ', return value: ' +  box2.nRetCode);
+                
+                // ** Example: Create a dialog on the fly!
+                let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>');
+                
+                myFlyBox.callback = function()
+                {
+                    console.log('CALLBACK: Hello from on the fly box');
+                }
+                
+                // ** Check if box was created successfully
+                if(myFlyBox)
+                {
+                    // ** Show the new box (returns true if box can be shown)
+                    let bRet = EasyDialogBox.show(myFlyBox);
+
+                    // ** Check if box was shown successfully
+                    if(bRet)
+                    {
+                        console.log('CALLBACK: Showing a new dialog on the fly since the user clicked YES button.');
+                    }
+                    else
+                    {
+                        console.log('CALLBACK: Error, could not show dialog: ' + myFlyBox);
+                    }
+                }
+            }
+            else if(box2.nRetCode === 2)
+            {
+                console.log('Callback: User clicked NO in box: ' + box2.id + ', return value: ' +  box2.nRetCode);
+            }
+        }
+    }
+    
+    // ** Example 3: Getting an existing HTML element box and creating a callback for it
+    let box3 = EasyDialogBox.get('myPromptBox');
+    if(box3)
+    {
+        box3.callback = function()
+        {
+            if(box3.nRetCode === 3)
+            {
+                console.log('CALLBACK: User clicked OK in box: ' + box3.id + ', return value: ' +  box3.nRetCode);
+                console.log('CALLBACK: value from input field: ' + box3.strInput);
+            }
+            else if(box3.nRetCode === 4)
+            {
+                console.log('CALLBACK: User clicked CANCEL in box: ' + box3.id + ', return value: ' +  box3.nRetCode);
+            }
+        }
+    }
+    
+ 
+});
+//-----------------------------------------------------------------------------------------------------------------
+// ** END: Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
