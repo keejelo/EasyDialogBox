@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.465
+// ** EasyDialogBox 1.467
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -914,7 +914,7 @@ window.addEventListener('load', function()
     }
     
     // ** Example 3: Getting an existing HTML element box and creating a callback for it
-    let box3 = EasyDialogBox.get('myPromptBox');
+    let box3 = EasyDialogBox.get('myBoxOkCancel');
     if(box3)
     {
         box3.callback = function()
@@ -934,6 +934,83 @@ window.addEventListener('load', function()
             }
         }
     }
+
+    // ** Example 4: Getting an existing HTML element box and creating a callback for it
+    let box4 = EasyDialogBox.get('myPromptBox');
+    if(box4)
+    {
+        box4.callback = function()
+        {
+            if(box4.nRetCode === 3)
+            {
+                console.log('CALLBACK: User clicked OK in box: ' + box4.id + ', return value: ' +  box4.nRetCode);
+            }
+            else if(box4.nRetCode === 4)
+            {
+                console.log('CALLBACK: User clicked CANCEL in box: ' + box4.id + ', return value: ' +  box4.nRetCode);
+            }
+        }
+    }
+    
+    // ** Example 5: Getting an existing HTML element box and creating a callback for it
+    let box5 = EasyDialogBox.get('myCrazyBox');
+    if(box5)
+    {
+        box5.callback = function()
+        {
+            if(box5.nRetCode === 0)
+            {
+                console.log('CALLBACK: User clicked "CloseX", "Close" button or out side box: ' + box5.id + ', return value: ' + box5.nRetCode);
+            }
+            else if(box5.nRetCode === 1)
+            {
+                console.log('CALLBACK: User clicked YES in box: ' + box5.id + ', return value: ' +  box5.nRetCode);
+                
+                // ** Example: Create a dialog on the fly!
+                let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>');
+                
+                // ** Create a callback for it
+                myFlyBox.callback = function()
+                {
+                    console.log('CALLBACK: Hello from on the fly box');
+                }
+                
+                // ** Check if box was created successfully
+                if(myFlyBox)
+                {
+                    // ** Show the new box (returns true if box can be shown)
+                    let bRet = myFlyBox.show();
+
+                    // ** Check if box was shown successfully
+                    if(bRet)
+                    {
+                        console.log('CALLBACK: Showing a new dialog on the fly since the user clicked YES button.');
+                    }
+                    else
+                    {
+                        console.log('CALLBACK: Error, could not show dialog: ' + myFlyBox);
+                    }
+                }
+            }
+            else if(box5.nRetCode === 2)
+            {
+                console.log('Callback: User clicked NO in box: ' + box5.id + ', return value: ' +  box5.nRetCode);
+            }            
+            else if(box5.nRetCode === 3)
+            {
+                console.log('CALLBACK: User clicked OK in box: ' + box5.id + ', return value: ' +  box5.nRetCode);
+            }
+            else if(box5.nRetCode === 4)
+            {
+                console.log('CALLBACK: User clicked CANCEL in box: ' + box5.id + ', return value: ' +  box5.nRetCode);
+            }
+            
+            if(box5.strInput !== '')
+            {
+                console.log('CALLBACK: value from input field: ' + box5.strInput);
+            }
+        }
+    }    
 
 });
 //-----------------------------------------------------------------------------------------------------------------
