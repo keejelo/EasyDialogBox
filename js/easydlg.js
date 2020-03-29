@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.453
+// ** EasyDialogBox 1.454
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,16 @@ let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxPar
         console.log('CALLBACK: string "' + strActionParam + '" from "name" attribute recieved in CALLBACK function');
     }
 
-    // ..combine all of the above to do your custom stuff..
+
+    // ..combine all of the above to do your custom stuff..    
+    /*
+        if(nRetParam === 1 && strActionParam === 'myCustomActionInCallbackFunc')
+        {
+            // ..do something or run a function..
+            
+            myCustomFunc();
+        }
+    */
 
     // ..blah..
 
