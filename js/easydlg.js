@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.467
+// ** EasyDialogBox 1.468
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -833,7 +833,7 @@ let EasyDialogBox = (function()
 // 
 // IMPORTANT ! 
 //
-// Must be created after EasyDialogBox "Activate and start"
+// Must be created after "EasyDialogBox.register()" and "EasyDialogBox.init()"
 //
 //
 //---------------------------------------------------------------------
@@ -855,8 +855,8 @@ let EasyDialogBox = (function()
 // ** Wait until page loading has finished
 //----------------------------------------------------------
 window.addEventListener('load', function()
-{
- 
+{   'use strict';
+    
     // ** Example 1: Getting an existing HTML element box and creating a callback for it
     let box1 = EasyDialogBox.get('myBox');
     if(box1)
