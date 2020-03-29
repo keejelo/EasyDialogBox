@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.457
+// ** EasyDialogBox 1.458
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -172,7 +172,17 @@ let EasyDialogBox = (function()
                             }
                             
                             //console.log('callback hello from: ' + this.id);
-                        }, 
+                        },
+                        
+                        show : function()
+                        {
+                            return _that.show(this.id);
+                        },
+                        
+                        destroy : function()
+                        {
+                            return _that.destroy(this.id);
+                        }
                     }
                     
                     // ** Add to array
@@ -213,7 +223,7 @@ let EasyDialogBox = (function()
                     
                     strInput : null,                        
                     nRetCode : -1,
-                        
+
                     callback_processor : function(p1, p2)
                     {
                         this.nRetCode = p1;
@@ -225,6 +235,16 @@ let EasyDialogBox = (function()
                         }
 
                         //console.log('callback processor fired');
+                    },
+                    
+                    show : function()
+                    {
+                        return _that.show(this.id);
+                    },
+                    
+                    destroy : function()
+                    {
+                        return _that.destroy(this.id);
                     }
                 }
                 
@@ -791,9 +811,17 @@ let EasyDialogBox = (function()
             if(obj < 0)
             {
                 let el = document.getElementById(oRef);
-                let obj = _getObjFromId(_boxObj, el.id);
                 
-                obj.callback_processor(param1, param2);
+                if(el !== null)
+                {
+                    let obj = _getObjFromId(_boxObj, el.id);
+                    obj.callback_processor(param1, param2);
+                }
+                else
+                {
+                    let obj = _getObjFromId(_boxObj, oRef);
+                    obj.callback_processor(param1, param2);
+                }
             }
             else
             {            
@@ -875,6 +903,7 @@ window.addEventListener('load', function()
                 // ** Example: Create a dialog on the fly!
                 let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>');
                 
+                // ** Create a callback for it
                 myFlyBox.callback = function()
                 {
                     console.log('CALLBACK: Hello from on the fly box');
@@ -884,7 +913,7 @@ window.addEventListener('load', function()
                 if(myFlyBox)
                 {
                     // ** Show the new box (returns true if box can be shown)
-                    let bRet = EasyDialogBox.show(myFlyBox);
+                    let bRet = myFlyBox.show();
 
                     // ** Check if box was shown successfully
                     if(bRet)
@@ -922,7 +951,9 @@ window.addEventListener('load', function()
         }
     }
     
-    
+
+
+
 });
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Callback Examples
