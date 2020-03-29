@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.452
+// ** EasyDialogBox 1.453
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -294,8 +294,9 @@ let EasyDialogBox = (function()
                 // ** Return the 'id' value of the newly created element
                 return dlg.getAttribute('id');
                 
-                /* TODO: create object and return that instead of only id
-                    
+                /* TODO: object oriented approach ? 
+                         Create object and return that instead of only id ?
+
                     let OTF_obj =
                     {
                         id : 'OnTheFly_' + n,
@@ -307,8 +308,6 @@ let EasyDialogBox = (function()
                     }
                     
                     return OTF_obj;
-                   
-                    
                 */
             }
             else
