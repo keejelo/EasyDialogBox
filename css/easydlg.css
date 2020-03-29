@@ -227,12 +227,14 @@
 {
     background-color:#3d6da8;
     line-height:37px;
+    box-shadow:0 0 0 1px #254164;
 }
 
 .dlg-icon-question
 {
     background-color:#3d6da8;
     line-height:37px;
+    box-shadow:0 0 0 1px #254164;
 }
 
 .dlg-icon-error 
@@ -240,6 +242,7 @@
     background:#e64943;
     font-family:Consolas, monospace;
     line-height:37px;
+    box-shadow:0 0 0 1px #852622;
 }
 
 .dlg-icon-success
@@ -247,6 +250,7 @@
     background:#67b66e;
     font-size:17px;
     line-height:37px;
+    box-shadow:0 0 0 1px #407145;
 }
 
 .dlg-icon-excl
@@ -255,9 +259,6 @@
     border-radius:0;
     width:0;
     height:0;
-    border-left:16px solid transparent;
-    border-right:16px solid transparent;
-    border-bottom:30px solid #ffd54b;
     line-height:37px;
     border-left:18px solid transparent;
     border-right:18px solid transparent;
