@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.451
+// ** EasyDialogBox 1.452
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -10,6 +10,15 @@
 //-----------------------------------------------------------------------------------------------------------------
 let CALLBACK_EasyDialogBox = function(nRetParam, strActionParam, strPromptBoxParam)
 {   'use strict';
+
+    /* TODO: object oriented approach ?
+        Create a separate callback for each created box object?
+        obj.callback(params)
+        
+        When creating new box, return an object instead of only the id,
+        When using do: .show(obj) and .destroy(obj) or obj.show(omitted) and obj.destroy(omitted)
+        if omitted () use obj.id as default
+    */
 
     //---------------------------------------------------------------------
     // ** Parameter: "nRetParam" values
@@ -158,6 +167,15 @@ let EasyDialogBox = (function()
     {
         // ** Pass values along to outside function so they can be used easier.
         CALLBACK_EasyDialogBox(nRetCode, _strAction, _promptBoxInputValue);
+        
+        /* TODO: object oriented approach ?
+            Create a separate callback for each created box object?
+            obj.callback(params)
+            
+            When creating new box, return an object instead of only the id,
+            When using do: .show(obj) and .destroy(obj) or obj.show(omitted) and obj.destroy(omitted)
+            if omitted () use obj.id as default
+        */
     };
     
     // ** Convert string to decimal
@@ -240,6 +258,10 @@ let EasyDialogBox = (function()
                         evt.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
                         evt.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
                     });
+                    
+                    /* TODO: object oriented approach ?
+                        Create a new javascript object for each box ?
+                    */
                 }
             });
         },
@@ -271,6 +293,23 @@ let EasyDialogBox = (function()
 
                 // ** Return the 'id' value of the newly created element
                 return dlg.getAttribute('id');
+                
+                /* TODO: create object and return that instead of only id
+                    
+                    let OTF_obj =
+                    {
+                        id : 'OnTheFly_' + n,
+                        
+                        callback : function(params)
+                        {
+                            // .....
+                        },
+                    }
+                    
+                    return OTF_obj;
+                   
+                    
+                */
             }
             else
             {
