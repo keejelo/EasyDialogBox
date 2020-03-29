@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.464
+// ** EasyDialogBox 1.465
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -535,7 +535,7 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                        
+
                         // ** Return code 0 (false), since user clicked X (close)
                         _that.callback_processor(id, 0, _promptBoxInputValue);
                     });
@@ -553,9 +553,9 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
-                        
+
                         // ** Return code 0 , since user clicked Close
-                        _that.callback_processor(id, 0, _promptBoxInputValue);
+                        _that.callback_processor(id, 0, _promptBoxInputValue);                        
                     });
                 }
                 // ** END: CLOSE button click handler
@@ -567,12 +567,12 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         window.removeEventListener('click', WinCloseClick);
-
+                                                
                         // ** Close dialogbox, reset values, clean up
                         _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
                         
                         // ** Return code 0 (false), since we just want to exit
-                        _that.callback_processor(id, 0, _promptBoxInputValue);
+                        _that.callback_processor(id, 0, _promptBoxInputValue);                        
                     }
                 });
                 // ** END: window click outside box click handler
@@ -638,7 +638,7 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
                             
                             // ** Return code 3 , since user clicked OK
-                            _that.callback_processor(id, 3, _promptBoxInputValue);
+                            _that.callback_processor(id, 3, _promptBoxInputValue);                            
                         });
                     }
 
@@ -655,7 +655,7 @@ let EasyDialogBox = (function()
                             _that.destroy(id, _that._boxId, orgTitleText, orgMessage);
                             
                             // ** Return code 4 , since user clicked Cancel
-                            _that.callback_processor(id, 4, _promptBoxInputValue);
+                            _that.callback_processor(id, 4, _promptBoxInputValue);                            
                         });
                     }
                 }
@@ -746,11 +746,24 @@ let EasyDialogBox = (function()
             {
                 dlg.style.display = 'none';
 
-                
                 // ** If 'OnTheFly' box was created, remove all
                 if(dlg.classList.contains('on-the-fly'))
                 {
                     dlg.parentNode.removeChild(dlg);
+                    
+                    // ** Remove object from array
+                    let obj = _getObjFromId(_boxObj, id);
+                    let index = _boxObj.indexOf(obj);
+                    if (index > -1)
+                    {
+                        // ** Give it some time or else we get error 
+                        // ** from running callback on a non-existing object
+                        setTimeout(function()
+                        {
+                            _boxObj.splice(index, 1);
+                        },
+                        1000);
+                    }
                 }
                 // ** If not, just reset values back to original
                 else
