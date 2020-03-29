@@ -40,7 +40,7 @@
     background-color:#fefefe;
     font-family:Arial, Helvetica, sans-serif;
     font-size:0.9em;
-    /* border-radius:6px; /* rounded corners */
+    /*border-radius:2px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
     border-top:none;
 }
@@ -184,30 +184,7 @@
     margin-left:10px;
 }
 
-/* Stop scrolling, used to stop scrolling of background page content (body) when dialogbox is in view */
-.dlg-stop-scrolling
-{
-    height:100%;
-    overflow:hidden;
-}
-
-/* Center dialog box vertical */
-.dlg-center-vert
-{
-    position:absolute;
-    top:50%;
-    left:50%;
-    -ms-transform:translate(-50%, -50%);
-    transform:translate(-50%, -50%);
-}
-
-/* Disable translucent background, background overlay */
-.dlg-no-overlay
-{
-    background-color:transparent;
-}
-
-/* Dialog icons, pure css, could be changed to use images instead using the same classes */
+/* Dialog icons, pure css, no images, but could be changed to use images instead by using the same classes etc. */
 .dlg-symbol
 {
     font-size:24px;
@@ -320,3 +297,28 @@
     top:2px;
     line-height:37px;
 }
+
+/* Stop scrolling, used to stop scrolling of background page content (body) when dialogbox is in view */
+.dlg-stop-scrolling
+{
+    height:100%;
+    overflow:hidden;
+}
+
+/* Center dialog box vertical */
+.dlg-center-vert
+{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -ms-transform:translate(-50%, -50%);
+    transform:translate(-50%, -50%);
+}
+
+/* Disable translucent background, background overlay */
+.dlg-no-overlay
+{
+    background-color:transparent;
+}
+
+
