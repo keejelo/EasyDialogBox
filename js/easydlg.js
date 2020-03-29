@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.458
+// ** EasyDialogBox 1.459
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -942,7 +942,11 @@ window.addEventListener('load', function()
             if(box3.nRetCode === 3)
             {
                 console.log('CALLBACK: User clicked OK in box: ' + box3.id + ', return value: ' +  box3.nRetCode);
-                console.log('CALLBACK: value from input field: ' + box3.strInput);
+                
+                if(box3.strInput !== '')
+                {
+                    console.log('CALLBACK: value from input field: ' + box3.strInput);
+                }
             }
             else if(box3.nRetCode === 4)
             {
@@ -950,7 +954,7 @@ window.addEventListener('load', function()
             }
         }
     }
-    
+
 });
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Callback Examples
