@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.468
+// ** EasyDialogBox 1.469
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -857,6 +857,9 @@ let EasyDialogBox = (function()
 window.addEventListener('load', function()
 {   'use strict';
     
+    // ** Many examples here, maybe seem crazy, but at least it illustrates how to create callbacks :-)
+    
+    
     // ** Example 1: Getting an existing HTML element box and creating a callback for it
     let box1 = EasyDialogBox.get('myBox');
     if(box1)
@@ -967,12 +970,23 @@ window.addEventListener('load', function()
                 console.log('CALLBACK: User clicked YES in box: ' + box5.id + ', return value: ' +  box5.nRetCode);
                 
                 // ** Example: Create a dialog on the fly!
-                let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>');
+                let myFlyBox = EasyDialogBox.create('dlg-yes-no dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>');
                 
                 // ** Create a callback for it
                 myFlyBox.callback = function()
                 {
-                    console.log('CALLBACK: Hello from on the fly box');
+                    if(myFlyBox.nRetCode === 1)
+                    {
+                        console.log('CALLBACK: Hello from "on the fly box", you clicked YES button!');
+                    }
+                    else if(myFlyBox.nRetCode === 2)
+                    {
+                        console.log('CALLBACK: Hello from "on the fly box", you clicked NO button!');
+                    }
+                    else
+                    {
+                        console.log('CALLBACK: Hello from "on the fly box", you clicked outside of box or [X] !!!');
+                    }
                 }
                 
                 // ** Check if box was created successfully
