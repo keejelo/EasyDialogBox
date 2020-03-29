@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.462
+// ** EasyDialogBox 1.463
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -689,7 +689,7 @@ let EasyDialogBox = (function()
             }
             else if(!match)
             {
-                log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                log('show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             else if(_isActive)
             {
