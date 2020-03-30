@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.475
+// ** EasyDialogBox 1.476
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -207,6 +207,12 @@ let EasyDialogBox = (function()
                 dlg.innerHTML = strMessage;
                 body.appendChild(dlg);
 
+                // ** Check if flag is set
+                if(typeof bKeepAlive === 'undefined')
+                {
+                    bKeepAlive = false;
+                }
+                
                 // ** Create object and return it
                 let obj =
                 {
