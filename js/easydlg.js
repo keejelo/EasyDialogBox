@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.477
+// ** EasyDialogBox 1.478
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ let EasyDialogBox = (function()
                     let obj =
                     {
                         id : btns[i].getAttribute('rel'),
-                        //bKeepAlive : true, // not used for these objects
+                        //bKeepAlive : true, // not used for this object, only on create() objects
                         strInput : null,                        
                         nRetCode : -1,
                         callback_processor : function(p1, p2)
@@ -203,7 +203,6 @@ let EasyDialogBox = (function()
                 dlg.setAttribute('class', strBoxTypeClass);
                 dlg.classList.add('on-the-fly');
                 dlg.setAttribute('title', strTitle);
-                //dlg.setAttribute('name', strAction);
                 dlg.innerHTML = strMessage;
                 body.appendChild(dlg);
 
