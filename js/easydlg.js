@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.482
+// ** EasyDialogBox 1.483
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -773,9 +773,12 @@ let EasyDialogBox = (function()
                             _boxObj.splice(index, 1);
                         },
                         1000);
-                    }
-                    
-                    log('"on the fly" box was deleted from DOM and array');
+                    }                    
+                    log('destroy(): "on the fly" box deleted from DOM and array.\nobj.bKeepAlive = false');
+                }
+                else if(dlg.classList.contains('on-the-fly') && obj.bKeepAlive)
+                {
+                    log('destroy(): "on the fly" box was NOT deleted from DOM and array.\nobj.bKeepAlive = true');
                 }
                 // ** If not, just reset values back to original
                 else if(dlg.classList.contains('on-the-fly') === false)
