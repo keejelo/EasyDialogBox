@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.490
+// ** EasyDialogBox 1.495
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -43,7 +43,7 @@ let EasyDialogBox = (function()
     let _boxId = null;
 
     // ** Debug-logger
-    let log = function(str)
+    let _log = function(str)
     {
         if(debug) return console.log(str);
     }
@@ -156,7 +156,7 @@ let EasyDialogBox = (function()
                     let obj =
                     {
                         id : btns[i].getAttribute('rel'),
-                        //bKeepAlive : true, // not used for this object, only on create() objects
+                        //bKeepAlive : true, // not used for pre-written HTML objects, only on "create()" objects
                         strInput : null,                        
                         nRetCode : -1,
                         callback_processor : function(p1, p2)
@@ -244,7 +244,7 @@ let EasyDialogBox = (function()
             }
             else
             {
-                log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             return null;
         },
@@ -697,19 +697,19 @@ let EasyDialogBox = (function()
             }
             else if(!match)
             {
-                log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             else if(_isActive)
             {
-                log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+                _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
             }
             else if(!dlg)
             {
-                log('DEBUG: show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
+                _log('DEBUG: show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
             }
             else
             {
-                log('DEBUG: show(): unknown error');
+                _log('DEBUG: show(): unknown error');
             }
 
             // ** Return failure
@@ -719,6 +719,8 @@ let EasyDialogBox = (function()
         // ** Close and destroy the dialog box
         destroy : function(id, boxId, orgTitleText, orgMessage)
         {
+            let success = false;
+            
             // ** Get body element, reset values, restore scrolling
             let body = document.getElementsByTagName('body')[0];
             body.classList.remove('dlg-stop-scrolling');
@@ -732,7 +734,13 @@ let EasyDialogBox = (function()
                 let o = id;
                 let obj = _getObjFromId(_boxObj, o.id);
                 dlg = document.getElementById(obj.id);
-            }            
+            }
+
+            if(dlg)
+            {
+                // ** Hide the box
+                dlg.style.display = 'none';
+            }
 
             // ** If promptbox was created, remove eventlisteners
             let pBox = dlg.getElementsByClassName('dlg-input-field')[0];            
@@ -749,21 +757,18 @@ let EasyDialogBox = (function()
                 el.parentNode.removeChild(el);
             }
 
-            // ** Close dialogbox, reset values
+            // ** Remove dialogbox, reset values
             if(dlg)
             {
-                dlg.style.display = 'none';
-
                 // ** Get object
                 let obj = _getObjFromId(_boxObj, id);
                 
-                // ** If 'OnTheFly' box was created, remove all
+                // ** If 'OnTheFly' box was created, remove all, unless "obj.bKeepAlive = true"
                 if(dlg.classList.contains('on-the-fly') && !obj.bKeepAlive)
                 {
                     dlg.parentNode.removeChild(dlg);
                     
                     // ** Remove object from array
-                    //let obj = _getObjFromId(_boxObj, id);
                     let index = _boxObj.indexOf(obj);
                     if (index > -1)
                     {
@@ -774,23 +779,29 @@ let EasyDialogBox = (function()
                             _boxObj.splice(index, 1);
                         },
                         1000);
-                    }                    
-                    log('DEBUG: destroy(): "on the fly" box deleted from DOM and array | obj.bKeepAlive = false');
+                    }
+                    _log('DEBUG: destroy(): "on the fly" box deleted from DOM and array | obj.bKeepAlive = false');
+                    success true;
                 }
                 else if(dlg.classList.contains('on-the-fly') && obj.bKeepAlive)
                 {
-                    log('DEBUG: destroy(): "on the fly" box was NOT deleted from DOM and array | obj.bKeepAlive = true');
+                    _log('DEBUG: destroy(): "on the fly" box was NOT deleted from DOM and array | obj.bKeepAlive = true');
+                    success false;
                 }
                 // ** If not, just reset values back to original
                 else if(dlg.classList.contains('on-the-fly') === false)
                 {
                     dlg.setAttribute('title', orgTitleText);
                     dlg.innerHTML = orgMessage;
+                    success true;
                 }
             }
-
+            
             // ** Reset flag 
             _isActive = false;
+
+            // ** Return result
+            return success;
         },
         
         // ** Callback processor
