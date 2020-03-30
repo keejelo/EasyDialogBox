@@ -316,9 +316,10 @@
     transform:translate(-50%, -50%);
 }
 
-/* Disable translucent background, background overlay */
+/* Disable translucent background, background overlay (no modal) */
 .dlg-no-overlay
 {
     background-color:transparent;
 }
+
 
