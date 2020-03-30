@@ -1,6 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.484
-// ** Created by: keejelo, 2020.
+// ** EasyDialogBox 1.485
+// ** Created by: keejelo
+// ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
 
@@ -243,7 +244,7 @@ let EasyDialogBox = (function()
             }
             else
             {
-                log('create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             return null;
         },
@@ -696,19 +697,19 @@ let EasyDialogBox = (function()
             }
             else if(!match)
             {
-                log('show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             else if(_isActive)
             {
-                log('show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+                log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
             }
             else if(!dlg)
             {
-                log('show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
+                log('DEBUG: show(): Error, element id \'' + id + '\' do not exist!\nReturned value = ' + dlg);
             }
             else
             {
-                log('show(): unknown error');
+                log('DEBUG: show(): unknown error');
             }
 
             // ** Return failure
@@ -774,11 +775,11 @@ let EasyDialogBox = (function()
                         },
                         1000);
                     }                    
-                    log('destroy(): "on the fly" box deleted from DOM and array | obj.bKeepAlive = false');
+                    log('DEBUG: destroy(): "on the fly" box deleted from DOM and array | obj.bKeepAlive = false');
                 }
                 else if(dlg.classList.contains('on-the-fly') && obj.bKeepAlive)
                 {
-                    log('destroy(): "on the fly" box was NOT deleted from DOM and array | obj.bKeepAlive = true');
+                    log('DEBUG: destroy(): "on the fly" box was NOT deleted from DOM and array | obj.bKeepAlive = true');
                 }
                 // ** If not, just reset values back to original
                 else if(dlg.classList.contains('on-the-fly') === false)
