@@ -12,8 +12,9 @@ body
     padding:10px;
     padding-bottom:200px;
     font-family:Arial, Helvetica, sans-serif;
-    font-size:16px;
+    font-size:17px;
     background-color:#ddd;
+    line-height:26px;
 }
 #page 
 {
@@ -28,6 +29,14 @@ hr
     border-left:none;
     border-right:none;    
     border-bottom:none;
+    display:none;
+}
+.headings
+{
+    margin-top:50px;
+    padding:15px;
+    background-color:#fff;    
+    border:1px solid #000;
 }
 .ital
 {
@@ -44,7 +53,7 @@ code
     font-weight:normal;
     /*color:#0000ff;*/
     color:#fff;
-    background-color:#3a3e4c; /* fafafa 1d1e22 */
+    background-color:#3a3e4c; /* fafafa 1d1e22 3a3e4c*/
     padding:2px 5px;
 }
 button
@@ -144,7 +153,7 @@ a
         <hr />
         <p>&nbsp;</p>
         
-        <h3>HOW TO ?</h3>
+        <h3 class="headings">HOW TO ?</h3>
         
         <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
         <div class="codeview">
@@ -153,12 +162,12 @@ a
 <b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
         </div>
 
-        <h3>Then it can be used like the examples below; HTML based or create boxes &quot;<a href="#otf">on the fly</a>&quot; directly in Javascript code.</h3>
+        <h3>Then it can be used like the HTML examples below, or <a href="#otf" title="boxes can be created dynamically 'on the fly' directly in Javascript code">boxes can be created dynamically 'on the fly' directly in Javascript code.</a></h3>
         
         <p>&nbsp;</p>
         <hr />
         
-        <h3>The default box, with 'Close' button.</h3>
+        <h3 class="headings">The default box, with 'Close' button</h3>
         <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
         <p>Return value: 'Close' = <span class="ital">0</span></p>
         <div class="codeview">
@@ -175,7 +184,7 @@ a
         <p>&nbsp;</p>
         <hr />
 
-        <h3>A default &quot;error box&quot;.</h3>
+        <h3 class="headings">A default &quot;error box&quot;</h3>
         <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
         <p>Return value: 'Close' = <span class="ital">0</span></p>
         <div class="codeview">
@@ -192,7 +201,7 @@ a
         <p>&nbsp;</p>
         <hr />
         
-        <h3>A box with 'Yes' and 'No' buttons.</h3>
+        <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
         <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
         <p>Return value: 'Yes' = <span class="ital">1</span>, 'No' = <span class="ital">2</span></p>
         <div class="codeview">
@@ -209,7 +218,7 @@ a
         <p>&nbsp;</p>
         <hr />
         
-        <h3>A box with 'OK' and 'Cancel' buttons.</h3>
+        <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
         <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
         <p>Return value: 'OK' = <span class="ital">3</span>, 'Cancel' = <span class="ital">4</span></p>
         <div class="codeview">
@@ -226,7 +235,7 @@ a
         <p>&nbsp;</p>        
         <hr />
         
-        <h3>A default promptbox with 'OK' and 'Cancel' buttons.</h3>
+        <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
         <p>Class <code class="val">dlg-prompt</code></p>
         <p>Return value: input = <span class="ital">string</span>, 'OK' = <span class="ital">3</span>, 'Cancel' = <span class="ital">4</span></p>
         <div class="codeview">
@@ -244,9 +253,10 @@ a
         
         <hr />
         
-        <h3>Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
+        <h3 class="headings">Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
         <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
-        <p>Return value:
+        <p>
+            Return value:
             input = <span class="ital">string</span>, 
             'Close' = <span class="ital">0</span>, 
             'Yes' = <span class="ital">1</span>,
@@ -271,7 +281,7 @@ a
         <hr />
             
         <div>
-            <h3>Attribute values for opening elements, such as <code class="tag">&lt;button&gt;</code> (or any other element you want to use).</h3>
+            <h3 class="headings">Attribute values for opening elements, such as <code class="tag">&lt;button&gt;</code> (or any other element you want to use).</h3>
             <p>The <code class="att">rel</code> attribute value must contain the <code class="att">id</code> of the box that the <code class="tag">&lt;button&gt;</code> is going to open.</p>
             <p>Add class <code class="val">dlg-opener</code> to make the <code class="tag">&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
         </div>
@@ -279,7 +289,7 @@ a
         <p>&nbsp;</p>
         
         <div>
-            <h3>Return values</h3>
+            <h3 class="headings">Return values</h3>
             <p>These values are passed on to the <code>object</code>.</p>
             <p>Each <code>object</code> has 2 private variables: <code>nRetCode</code> and <code>strInput</code>,
             <p>which are intended to be used in the <code>object.callback()</code> function for further processing.</p>
@@ -289,24 +299,23 @@ a
         
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        
-        <hr />
-        
-        <h2 id="otf">&quot;On the fly&quot;</h2>
+
+        <h2 id="otf" class="headings">Create dialog box objects 'on the fly' with code</h2>
         <p>Can be used in Javascript code to create a new dialogbox on the go. No pre-written HTML needed.</p>
-        
-        <hr />
-        
-        <h3>Methods (functions)</h3>
-        
-        <hr />
-        
-        <p>
-            <span class="bold">Create dialog:</span> <code>let myObject = EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, bKeepAlive);</code>
+
+        <p class="headings">
+            <span class="bold">Create dialog (function)</span>
         </p>
+        <p>
+            <code>let myObject = EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, bKeepAlive);</code>
+        </p>
+        
         <p>Return value = <span class="ital">object</span> or <span class="ital">null</span> if could not be created.</p>
+        
         <p>&nbsp;</p>
+        
         <p class="bold">Parameters</p>
+
         <p>
             <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
             <table id="paramTable">
@@ -335,20 +344,24 @@ a
         <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital">true</span> then it will NOT get destroyed in <code>destroy()</code> function. If it's not used then it's automatically set to <span class="ital">false</span></p>
         <p>To delete it you need to manually set the flag to <span class="ital">false</span> with <code>myObject.bKeepAlive = false;</code></p>
         <p>And then you can delete it with <code>myObject.destroy();</code></p>
-        <hr />
+        
+        <p class="headings">
+            <span class="bold">Show dialog (function)</span>
+        </p>
         <p>
-            <span class="bold">Show dialog:</span> <code>myObject.show();</code>
+            <code>myObject.show();</code>
         </p>
         <p>Return value = <span class="ital">true</span> if the box could be shown, <span class="ital">false</span> if not.</p>
-        <hr />
-        <p>
-            <span class="bold">Destroy dialog:</span> <code>myObject.destroy();</code>
+
+        <p class="headings">
+            <span class="bold">Destroy dialog (function)</span>
         </p>
-        <p>Return value = <span class="ital">none</span> (does not return any value).</p>
+        <p>
+            <code>myObject.destroy();</code>
+        </p>
+        <p>Return value = <span class="ital">true</span> if object was deleted or removed, if not then <span class="ital">false</span></p>
         
-        <hr />
-        
-        <h3>Example</h3>
+        <h3 class="headings">Example</h3>
         <div class="codeview">
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
