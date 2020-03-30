@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.480
+// ** EasyDialogBox 1.481
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -826,9 +826,13 @@ let EasyDialogBox = (function()
 // 
 // IMPORTANT ! 
 //
-// Must be created after "EasyDialogBox.register()" and "EasyDialogBox.init()"
+// Callbacks must be created after these two functions has finished executing:
 //
+// EasyDialogBox.register();
+// EasyDialogBox.init();
 //
+
+
 //---------------------------------------------------------------------
 // ** EasyDialogBox object return code values: object.nRetCode
 //
