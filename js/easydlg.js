@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.481
+// ** EasyDialogBox 1.482
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ let EasyDialogBox = (function()
                 dlg.innerHTML = strMessage;
                 body.appendChild(dlg);
 
-                // ** Check if flag is set
+                // ** Check if flag is set, if not set it to: false
                 if(typeof bKeepAlive === 'undefined')
                 {
                     bKeepAlive = false;
