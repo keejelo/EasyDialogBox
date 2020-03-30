@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.474
+// ** EasyDialogBox 1.475
 // ** Created by: keejelo, 2020.
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -155,6 +155,7 @@ let EasyDialogBox = (function()
                     let obj =
                     {
                         id : btns[i].getAttribute('rel'),
+                        //bKeepAlive : true, // not used for these objects
                         strInput : null,                        
                         nRetCode : -1,
                         callback_processor : function(p1, p2)
@@ -182,7 +183,7 @@ let EasyDialogBox = (function()
         },
 
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
-        create : function(strBoxTypeClass, strTitle, strMessage, strAction)
+        create : function(strBoxTypeClass, strTitle, strMessage, bKeepAlive)
         {
             let match = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
 
@@ -202,7 +203,7 @@ let EasyDialogBox = (function()
                 dlg.setAttribute('class', strBoxTypeClass);
                 dlg.classList.add('on-the-fly');
                 dlg.setAttribute('title', strTitle);
-                dlg.setAttribute('name', strAction);
+                //dlg.setAttribute('name', strAction);
                 dlg.innerHTML = strMessage;
                 body.appendChild(dlg);
 
@@ -210,6 +211,7 @@ let EasyDialogBox = (function()
                 let obj =
                 {
                     id : dlg.getAttribute('id'),
+                    bKeepAlive : bKeepAlive,
                     strInput : null,                        
                     nRetCode : -1,
                     callback_processor : function(p1, p2)
@@ -746,13 +748,16 @@ let EasyDialogBox = (function()
             {
                 dlg.style.display = 'none';
 
+                // ** Get object
+                let obj = _getObjFromId(_boxObj, id);
+                
                 // ** If 'OnTheFly' box was created, remove all
-                if(dlg.classList.contains('on-the-fly'))
+                if(dlg.classList.contains('on-the-fly') && !obj.bKeepAlive)
                 {
                     dlg.parentNode.removeChild(dlg);
                     
                     // ** Remove object from array
-                    let obj = _getObjFromId(_boxObj, id);
+                    //let obj = _getObjFromId(_boxObj, id);
                     let index = _boxObj.indexOf(obj);
                     if (index > -1)
                     {
@@ -764,9 +769,11 @@ let EasyDialogBox = (function()
                         },
                         1000);
                     }
+                    
+                    log('"on the fly" box was deleted from DOM and array');
                 }
                 // ** If not, just reset values back to original
-                else
+                else if(dlg.classList.contains('on-the-fly') === false)
                 {
                     dlg.setAttribute('title', orgTitleText);
                     dlg.innerHTML = orgMessage;
