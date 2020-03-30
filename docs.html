@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<!-- Sorry for the "franken"-all-in-one-html-page, but it's just to contain it all in one file -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
@@ -134,8 +135,251 @@ a
 <script src="js/easydlg.js"></script>
 </head>
 <body>
-
     <div id="page">
+        <h1>EasyDialogBox</h1>
+        <hr />
+        <p>Easy to use html-css-javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
+        <p>Lightweight. Responsive. Plain vanilla Javascript, no libraries.</p>
+        
+        <hr />
+        <p>&nbsp;</p>
+        
+        <h3>HOW TO ?</h3>
+        
+        <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
+        <div class="codeview">
+<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">"text/css"</b> <b class="att">media</b>=<b class="val">"screen"</b> <b class="att">rel</b>=<b class="val">"stylesheet"</b> <b class="att">href</b>=<b class="val">"css/easydlg.css"</b> <b class="tag">/&gt;</b>
+
+<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
+        </div>
+
+        <h3>Then it can be used like the examples below; HTML based or &quot;<a href="#otf">on the fly</a>&quot; directly in code.</h3>
+        
+        <p>&nbsp;</p>
+        <hr />
+        
+        <h3>The default box, with 'Close' button.</h3>
+        <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
+        <p>Return value: 'Close' = <span class="ital">0</span></p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myBox" class="dlg-opener">Open</button></p>
+        
+        <p>&nbsp;</p>
+        <hr />
+
+        <h3>A default &quot;error box&quot;.</h3>
+        <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
+        <p>Return value: 'Close' = <span class="ital">0</span></p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg dlg-error"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
+        
+        <p>&nbsp;</p>
+        <hr />
+        
+        <h3>A box with 'Yes' and 'No' buttons.</h3>
+        <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
+        <p>Return value: 'Yes' = <span class="ital">1</span>, 'No' = <span class="ital">2</span></p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no dlg-question"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
+        
+        <p>&nbsp;</p>
+        <hr />
+        
+        <h3>A box with 'OK' and 'Cancel' buttons.</h3>
+        <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
+        <p>Return value: 'OK' = <span class="ital">3</span>, 'Cancel' = <span class="ital">4</span></p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel dlg-exclamation"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
+        
+        <p>&nbsp;</p>        
+        <hr />
+        
+        <h3>A default promptbox with 'OK' and 'Cancel' buttons.</h3>
+        <p>Class <code class="val">dlg-prompt</code></p>
+        <p>Return value: input = <span class="ital">string</span>, 'OK' = <span class="ital">3</span>, 'Cancel' = <span class="ital">4</span></p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
+
+        <p>&nbsp;</p>
+        
+        <hr />
+        
+        <h3>Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
+        <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
+        <p>Return value:
+            input = <span class="ital">string</span>, 
+            'Close' = <span class="ital">0</span>, 
+            'Yes' = <span class="ital">1</span>,
+            'No' = <span class="ital">2</span>, 
+            'OK' = <span class="ital">3</span>,
+            'Cancel' = <span class="ital">4</span>
+        </p>
+        <div class="codeview">
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+
+    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
+    
+<b class="tag">&lt;/div&gt;</b>
+    
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+        </div>
+        <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
+            
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <hr />
+            
+        <div>
+            <h3>Attribute values for opening elements, such as <code class="tag">&lt;button&gt;</code> (or any other element you want to use).</h3>
+            <p>The <code class="att">rel</code> attribute value must contain the <code class="att">id</code> of the box that the <code class="tag">&lt;button&gt;</code> is going to open.</p>
+            <p>Add class <code class="val">dlg-opener</code> to make the <code class="tag">&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+        </div>
+        
+        <p>&nbsp;</p>
+        
+        <div>
+            <h3>Return values</h3>
+            <p>These values are passed on to the <code>object</code>.</p>
+            <p>Each <code>object</code> has 2 private variables: <code>nRetCode</code> and <code>strInput</code>,
+            <p>which are intended to be used in the <code>object.callback()</code> function for further processing.</p>
+            <p>See the examples and sourcecode for more information on how to use them.</p>
+            <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
+        </div>
+        
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        
+        <hr />
+        
+        <h2 id="otf">&quot;On the fly&quot;</h2>
+        <p>Can be used in Javascript code to create a new dialogbox on the go. No pre-written HTML needed.</p>
+        
+        <hr />
+        
+        <h3>Methods (functions)</h3>
+        
+        <hr />
+        
+        <p>
+            <span class="bold">Create dialog:</span> <code>let myObject = EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage [, bKeepAlive]);</code>
+        </p>
+        <p>Return value = <span class="ital">object</span> or <span class="ital">null</span> if could not be created.</p>
+        <p>&nbsp;</p>
+        <p class="bold">Parameters</p>
+        <p>
+            <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
+            <table id="paramTable">
+                <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
+                <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
+                <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
+                <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
+                <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
+                <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
+                <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
+                <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
+                <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
+                <tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
+                <tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
+                <tr><td>dlg-no-overlay</td><td>Disable background color/translucent overlay.</td></tr>
+                <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
+                <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
+                <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
+                <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
+                <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
+            </table>
+        </p>
+        <p>&nbsp;</p>
+        <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
+        <p><code>strMessage</code> = message, can be html or just plain text.</p>
+        <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital">true</span> then it will NOT get destroyed in <code>destroy()</code> function.</p>
+        <p>To delete it you need to manually set the flag to <span class="ital">false</span> with <code>myObject.bKeepAlive = false;</code></p>
+        <p>And then you can delete it with <code>myObject.destroy();</code></p>
+        <hr />
+        <p>
+            <span class="bold">Show dialog:</span> <code>myObject.show();</code>
+        </p>
+        <p>Return value = <span class="ital">true</span> if the box could be shown, <span class="ital">false</span> if not.</p>
+        <hr />
+        <p>
+            <span class="bold">Destroy dialog:</span> <code>myObject.destroy();</code>
+        </p>
+        <p>Return value = <span class="ital">none</span> (does not return any value).</p>
+        
+        <hr />
+        
+        <h3>Example</h3>
+        <div class="codeview">
+<b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
+
+<b class="comment">// ** Create a new dialog on the fly</b>
+<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg dlg-success'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>);
+
+<b class="comment">// ** Create a callback function for the newly created box</b>
+myBox<b class="func">.callback</b> = <b class="keyword">function()</b>
+<b class="keyword">{</b>
+    <b class="comment">// .....</b>
+<b class="keyword">}</b>;
+
+
+<b class="comment">// ** Show the newly created box</b>
+myBox<b class="func">.show()</b>;
+
+<b class="comment">// ** To programatically destroy the box, you can do</b>
+myBox<b class="func">.destroy()</b>;
+
+<b class="comment">// ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box</b>
+<b class="comment">// ..unless the object got variable: bKeepAlive = true </b>
+<b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b>
+<b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
+
+
+<b class="comment">// ..some other code..bla blah..</b>
+        </div>
+        <p>&nbsp;</p>
+    </div>
+    
+    <!-- HTML pre-written dialog boxes -->
     
     <div id="myBox" class="dlg" title="Title text">
         <p>This is a message</p>
@@ -161,225 +405,6 @@ a
         <p>This is a message</p>
     </div>        
     
-    <h1>EasyDialogBox</h1>
-    <hr />
-    <p>Easy to use html-css-javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
-    <p>Lightweight. Responsive. Plain vanilla Javascript, no libraries.</p>    
-    <hr />
-    <p>&nbsp;</p>
-    
-    <h3>HOW TO ?</h3>
-    
-    <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
-    <div class="codeview">
-<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">"text/css"</b> <b class="att">media</b>=<b class="val">"screen"</b> <b class="att">rel</b>=<b class="val">"stylesheet"</b> <b class="att">href</b>=<b class="val">"css/easydlg.css"</b> <b class="tag">/&gt;</b>
-
-<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
-    </div>
-    
-    <h3>Then it can be used like the examples below; HTML based or &quot;<a href="#otf">on the fly</a>&quot; directly in code.</h3>
-    
-    <p>&nbsp;</p>
-    <hr />
-    
-    <h3>The default box, with 'Close' button.</h3>
-    <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
-    <p class="ital">Return value: 'Close' = 0 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myBox" class="dlg-opener">Open</button></p>
-    
-    <p>&nbsp;</p>
-    <hr />
-
-    <h3>A default &quot;error box&quot;.</h3>
-    <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
-    <p class="ital">Return value: 'Close' = 0 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg dlg-error"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
-    
-    <p>&nbsp;</p>
-    <hr />
-    
-    <h3>A box with 'Yes' and 'No' buttons.</h3>
-    <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
-    <p class="ital">Return value: 'Yes' = 1, 'No' = 2 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no dlg-question"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
-    
-    <p>&nbsp;</p>
-    <hr />
-    
-    <h3>A box with 'OK' and 'Cancel' buttons.</h3>
-    <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
-    <p class="ital">Return value: 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel dlg-exclamation"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
-    
-    <p>&nbsp;</p>
-    <hr />
-    
-    <h3>A default promptbox with 'OK' and 'Cancel' buttons.</h3>
-    <p>Class <code class="val">dlg-prompt</code></p>
-    <p class="ital">Return value: input = string, 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
-
-    <p>&nbsp;</p>
-    <hr />
-    
-    <h3>Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
-    <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
-    <p class="ital">Return value: input = string, 'Close' = 0, 'Yes' = 1, 'No' = 2, 'OK' = 3, 'Cancel' = 4 [, name = string]</p>
-    <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-    </div>
-    <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
-        
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <hr />
-        
-    <div>
-        <h3>Attribute values for opening elements, such as <code class="tag">&lt;button&gt;</code> (or any other element you want to use).</h3>
-        <p>The <code class="att">rel</code> attribute value must contain the <code class="att">id</code> of the box that the <code class="tag">&lt;button&gt;</code> is going to open.</p>
-        <p>Add class <code class="val">dlg-opener</code> to make the <code class="tag">&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
-    </div>
-    
-    <p>&nbsp;</p>
-    
-    <div>
-        <h3>Return values</h3>
-        <p>These values are passed on to the <code>object</code>.</p>
-        <p>Each <code>object</code> has 2 private variables: <code>nRetCode</code> and <code>strInput</code>,
-        <p>which are intended to be used in the <code>object.callback()</code> function for further processing.</p>
-        <p>See the examples and sourcecode for more information on how to use them.</p>
-        <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
-    </div>
-    
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-    
-    <hr />
-    <h2 id="otf">&quot;On the fly&quot;</h2>
-    <p>Can be used in Javascript code to create a new dialogbox on the go. No pre-written HTML needed.</p>
-    <hr />
-    <h3>Methods (functions)</h3>
-    <hr />
-    <p>
-        <span class="bold">Create dialog:</span> <code>let myObject = EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage);</code>
-    </p>
-    <p class="ital">Return value = <code>object</code> or <code>null</code> if could not be created.</p>
-    <p>&nbsp;</p>
-    <p class="bold">Parameters</p>
-    <p>
-        <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
-        <table id="paramTable">
-            <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
-            <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
-            <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
-            <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
-            <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
-            <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
-            <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
-            <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
-            <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-            <tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
-            <tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
-            <tr><td>dlg-no-overlay</td><td>Disable background color/translucent overlay.</td></tr>
-            <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
-            <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
-            <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
-            <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
-            <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
-        </table>
-    </p>
-    <p>&nbsp;</p>
-    <p><code>strTitle</code> = title text of the box, should be plain text only.</p>
-    <p><code>strMessage</code> = message, can be html or just plain text.</p>
-    <hr />
-    <p>
-        <span class="bold">Show dialog:</span> <code>myObject.show();</code>
-    </p>
-    <p class="ital">Return value = <code>true</code> if the box could be shown, <code>false</code> if not.</p>
-    <hr />
-    <p>
-        <span class="bold">Destroy dialog:</span> <code>myObject.show();</code>
-    </p>
-    <p class="ital">Return value = none (does not return any value).</p>
-    <hr />
-    <h3>Example</h3>
-    <div class="codeview">
-<b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
-
-<b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg dlg-success'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>);
-
-<b class="comment">// ** Create a callback function for the newly created box</b>
-myBox<b class="func">.callback</b> = <b class="keyword">function()</b>
-<b class="keyword">{</b>
-    <b class="comment">// .....</b>
-<b class="keyword">}</b>;
-
-
-<b class="comment">// ** Show the newly created box</b>
-myBox<b class="func">.show()</b>;
-
-<b class="comment">// ** To programatically destroy the box, you can do</b>
-myBox<b class="func">.destroy()</b>;
-
-<b class="comment">// (..but the box will be destroyed automatically by itself when you click the buttons etc. in the box)</b>
-
-
-<b class="comment">// ..some other code..bla blah..</b>
-    </div>
-    
-    <p>&nbsp;</p>
-    </div>
+    <!-- END: HTML pre-written dialog boxes -->
 </body>
 </html>
