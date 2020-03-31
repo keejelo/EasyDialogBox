@@ -39,7 +39,7 @@
     width:98%; /* 96% */
     background-color:#fefefe;
     font-family:Arial, Helvetica, sans-serif;
-    font-size:0.9em;
+    font-size:0.8em; /*0.9em*/
     /*border-radius:2px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
     border-top:none;
@@ -97,7 +97,8 @@
 {
     display:block;
     margin:0;
-    padding:0 0 0 15px;
+    margin-bottom:25px;
+    padding:0 15px 0 15px;
 }
 
 /* Flex boxes */
@@ -133,18 +134,25 @@
 .dlg-input
 {
     margin:0;
-    margin-top:10px;
-    padding-right:15px;
+    /*margin-top:10px;
+    /*padding-top:10px;
+    /*padding-right:15px;*/
+    /*border:1px solid #f00;*/ /*debug*/
 }
 
 /* Dialog input-field */
 .dlg-input-field
 {
-    margin-top:3px;
+    margin:0;
+    margin-top:5px;
     padding:5px;
     width:98%;
     font-family:inherit;
-    font-size:inherit;    
+    font-size:inherit;
+    
+    /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
+    border:1px solid #aaa;
+    /* END: Chrome fix */
 }
 
 /* Dialog footer */
