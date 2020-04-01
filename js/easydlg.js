@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 0.490 (beta)
+// ** EasyDialogBox 0.491 (beta)
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -871,7 +871,7 @@ let EasyDialogBox = (function()
 //---------------------------------------------------------------------
 
 
-function test()
+function myTestCallback()
 {
     console.log('test callback');
 };
@@ -909,15 +909,8 @@ window.addEventListener('load', function()
                 console.log('CALLBACK: User clicked YES in box: ' + box2.id + ', return value: ' +  box2.nRetCode);
                 
                 // ** Example: Create a dialog on the fly!
-                let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>',test);
-                
-                /*
-                // ** Create a callback for it
-                myFlyBox.callback = function()
-                {
-                    console.log('CALLBACK: Hello from on the fly box');
-                }*/
-                
+                let myFlyBox = EasyDialogBox.create('dlg dlg-success','Testing on the fly dialog','<p>Hello on the fly!</p>',myTestCallback);
+                                
                 // ** Check if box was created successfully
                 if(myFlyBox)
                 {
