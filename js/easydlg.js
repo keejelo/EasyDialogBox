@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.512
+// ** EasyDialogBox 1.513
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -168,11 +168,11 @@ let EasyDialogBox = (function()
                     
                     // ** Create object
                     let success = _that.create(btns[i].getAttribute('rel'),
-                                                  dlg.getAttribute('class'), 
-                                                  dlg.getAttribute('title'),
-                                                  dlg.innerHTML,
-                                                  dlg.getAttribute('name'),
-                                                  true);
+                                               dlg.getAttribute('class'), 
+                                               dlg.getAttribute('title'),
+                                               dlg.innerHTML,
+                                               dlg.getAttribute('name'),
+                                               true);
                 }
             });
         },
