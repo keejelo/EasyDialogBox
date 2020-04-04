@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<!-- All-in-one "franken"-html-page, just to keep it all in one DEMO file -->
+<!-- Sorry for the all-in-one-"franken"-html-page, but it's just to keep it all in one DEMO file -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <head>
@@ -191,7 +191,7 @@ var myCallbackFunc = function (nRetCode, strInput)
         console.log('CALLBACK: User clicked Yes button, returncode = ' + nRetCode);
         
         // ** Example: Create a dialog on the fly!
-        let myFlyBox = EasyDialogBox.createNew(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
+        let myFlyBox = EasyDialogBox.create(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
         if(myFlyBox)
         {
             // ** Override the initial callback function that was set 
@@ -268,7 +268,7 @@ var myOtherCallbackFunc = function()
                 <span class="bold">Create dialog (method, function)</span>
             </p>
             <p>
-                <code>let myObject = EasyDialogBox.createNew(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
+                <code>let myObject = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
             </p>
             
             <p>Return value = <span class="ital">object</span>, or <span class="ital">null</span> if could not be created.</p>
@@ -328,7 +328,7 @@ var myOtherCallbackFunc = function()
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
 <b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.createNew</b>(<b class="param_def">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'My title'</b>, <b class="param">'Hello on the fly!'</b>, <b class="param_def">myCallbackFunc</b>);
+<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param_def">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'My title'</b>, <b class="param">'Hello on the fly!'</b>, <b class="param_def">myCallbackFunc</b>);
 
 <b class="comment">// ** Show the newly created box</b>
 myBox<b class="func">.show()</b>;
