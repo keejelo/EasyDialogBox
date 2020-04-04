@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.499
+// ** EasyDialogBox 1.501
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -200,7 +200,6 @@ let EasyDialogBox = (function()
                 {
                     fnCallback = false;
                 }
-                
                 
                 // ** Check if flag is set, if not set it to: false
                 if(typeof bKeepAlive === 'undefined')
