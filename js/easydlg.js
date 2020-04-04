@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.496
+// ** EasyDialogBox 1.497
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -201,6 +201,7 @@ let EasyDialogBox = (function()
                     fnCallback = false;
                 }
                 
+                
                 // ** Check if flag is set, if not set it to: false
                 if(typeof bKeepAlive === 'undefined')
                 {
@@ -216,7 +217,7 @@ let EasyDialogBox = (function()
                     title : strTitle,
                     message : strMessage,
                     bKeepAlive : bKeepAlive,
-                    strInput : null,                        
+                    strInput : '',
                     nRetCode : -1,
 
                     // ** Callback 
@@ -224,19 +225,24 @@ let EasyDialogBox = (function()
                     {
                         try
                         {
-                            let param1 = this.nRetCode;
-                            let param2 = this.strInput;
+                            let p1 = this.nRetCode;
+                            let p2 = this.strInput;
 
                             // ** Check which kind of box and if it has a callback function
                             if(typeof window[fnCallback] === 'function')
                             {
                                 // ** Execute function (pre-written HTML boxes)
-                                window[fnCallback](param1,param2);
+                                window[fnCallback](p1,p2);
                             }
                             else if(typeof fnCallback === 'function')
                             {
                                 // ** Execute function (script-created boxes)
-                                fnCallback(param1,param2);
+                                fnCallback(p1,p2);
+                            }
+                            else
+                            {
+                                _log('typeof fnCallback = ' + typeof fnCallback + ' and not function');
+                                _log('Possible solution can be to use "hoisting".\nTry to use "var callbackFuncName = function(){}" instead of "let callbackFuncName = function(){}"');
                             }
                         }
                         catch(err)
@@ -775,10 +781,13 @@ let EasyDialogBox = (function()
                     // ** Remove object from array
                     let index = _boxObj.indexOf(obj);
                     if(index > -1)
-                    {                        
-                        _boxObj.splice(index, 1);
-                        _log('DEBUG: destroy(): Object deleted from array | obj.bKeepAlive = false');
-                        success = true;                        
+                    {
+                        setTimeout(function()
+                        {
+                            _boxObj.splice(index, 1);
+                            _log('DEBUG: destroy(): Object deleted from array | obj.bKeepAlive = false');
+                            success = true;
+                        },1);
                     }
                     else
                     {
