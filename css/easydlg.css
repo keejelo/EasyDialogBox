@@ -141,12 +141,6 @@
 .dlg-input
 {
     margin:0;
-    /*margin-top:10px;
-    /*padding-top:10px;
-    /*padding-right:15px;*/
-    /*border:1px solid #f00;*/ /*debug*/
-    font-family:inherit;
-    font-size:1.4em;
 }
 
 /* Dialog input-field */
@@ -157,7 +151,7 @@
     padding:5px;
     width:98%;
     font-family:inherit;
-    font-size:inherit;
+    font-size:1em;
     
     /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
     border:1px solid #aaa;
@@ -340,4 +334,3 @@
 {
     background-color:transparent;
 }
-
