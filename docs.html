@@ -117,9 +117,9 @@ b
 {
     color:#dba6fc;
 }
-.param_null
+.param_def
 {
-    color:#00ffff;
+    color:#99ffff;
 }
 .keyword
 {
@@ -328,14 +328,7 @@ function myOtherCallbackFunc()
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
 <b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.createNew</b>(<b class="param_null">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>);
-
-<b class="comment">// ** Create a callback function for the newly created box</b>
-myBox<b class="func">.callback</b> = <b class="keyword">function()</b>
-<b class="keyword">{</b>
-    <b class="comment">// .....</b>
-<b class="keyword">}</b>;
-
+<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.createNew</b>(<b class="param_def">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'My title'</b>, <b class="param">'Hello on the fly!'</b>, <b class="param_def">myCallbackFunc</b>);
 
 <b class="comment">// ** Show the newly created box</b>
 myBox<b class="func">.show()</b>;
