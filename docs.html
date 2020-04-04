@@ -117,6 +117,10 @@ b
 {
     color:#dba6fc;
 }
+.param_null
+{
+    color:#00ffff;
+}
 .keyword
 {
     color:#ff8490;
@@ -155,6 +159,82 @@ a
 
 <!-- END: Including the necessary files here -->
 
+
+<script type="text/javascript">
+//-----------------------------------------------------------------------------------------------------------------
+// ** Callback Examples
+//-----------------------------------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------
+// ** EasyDialogBox object return code values: object.nRetCode
+//
+//  0 = "X", "Close" button or outside box clicked
+//  1 = "Yes" button clicked
+//  2 = "No" button clicked
+//  3 = "OK" button clicked
+//  4 = "Cancel" button clicked
+//
+//
+//  Can also return value of: object.strInput
+//
+//---------------------------------------------------------------------
+
+// ** One example of a callback function
+function myCallbackFunc(nRetCode, strInput)
+{
+    if(nRetCode === 0)
+    {
+        console.log('CALLBACK: User clicked Close button, outside box or X, returncode = ' + nRetCode);
+    }    
+    else if(nRetCode === 1)
+    {
+        console.log('CALLBACK: User clicked Yes button, returncode = ' + nRetCode);
+        
+        // ** Example: Create a dialog on the fly!
+        let myFlyBox = EasyDialogBox.createNew(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
+        if(myFlyBox)
+        {
+            // ** Override the initial callback function that was set 
+            
+            /*myFlyBox.callback = function()
+            {
+                console.log('Hello this is a callback override! :-)');
+            }*/
+            
+            // ** Show the new box
+            myFlyBox.show();
+        }        
+    }
+    else if(nRetCode === 2)
+    {
+        console.log('CALLBACK: User clicked No button, returncode = ' + nRetCode);
+    }
+    else if(nRetCode === 3)
+    {
+        console.log('CALLBACK: User clicked OK button, returncode = ' + nRetCode);
+    }
+    else if(nRetCode === 4)
+    {
+        console.log('CALLBACK: User clicked Cancel button, returncode = ' + nRetCode);
+    }
+    
+    // ** Check if any text was typed in input
+    if(strInput)
+    {
+        console.log('CALLBACK: User typed in inputfield, returnvalue = ' + strInput);
+    }
+    
+};
+
+// ** Regular function used as callback
+function myOtherCallbackFunc()
+{
+	console.log('Hello from: myOtherCallbackFunc()');
+};
+//-----------------------------------------------------------------------------------------------------------------
+// ** END: Callback Examples
+//-----------------------------------------------------------------------------------------------------------------
+</script>
 </head>
 <body>
     <div id="page">
@@ -171,9 +251,9 @@ a
         </div>
         
         <div class="codeview">
-<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">"text/css"</b> <b class="att">media</b>=<b class="val">"screen"</b> <b class="att">rel</b>=<b class="val">"stylesheet"</b> <b class="att">href</b>=<b class="val">"css/easydlg.css"</b> <b class="tag">/&gt;</b>
+<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">&quot;text/css&quot;</b> <b class="att">media</b>=<b class="val">&quot;screen&quot;</b> <b class="att">rel</b>=<b class="val">&quot;stylesheet&quot;</b> <b class="att">href</b>=<b class="val">&quot;css/easydlg.css&quot;</b> <b class="tag">/&gt;</b>
 
-<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">"js/easydlg.js"</b><b class="tag">&gt;&lt;/script&gt;</b>
+<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">&quot;js/easydlg.js&quot;</b><b class="tag">&gt;&lt;/script&gt;</b>
         </div>
 
         <div>
@@ -188,12 +268,14 @@ a
                 <span class="bold">Create dialog (function)</span>
             </p>
             <p>
-                <code>let myObject = EasyDialogBox.create(strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
+                <code>let myObject = EasyDialogBox.createNew(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
             </p>
             
             <p>Return value = <span class="ital">object</span> or <span class="ital">null</span> if could not be created.</p>
             
             <p class="bold">Parameters:</p>
+            
+            <p><code>id</code> = custom id 'string', if not used then set it to: null (or 0 (zero))</p>
 
             <p>
                 <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
@@ -246,7 +328,7 @@ a
 <b class="comment">// Javascript file with some code.. bla bla bla blah..</b>
 
 <b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="param">'dlg dlg-success'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>);
+<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.createNew</b>(<b class="param_null">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'Testing on the fly dialog'</b>, <b class="param">'&lt;p&gt;Hello on the fly!&lt;/p&gt;'</b>);
 
 <b class="comment">// ** Create a callback function for the newly created box</b>
 myBox<b class="func">.callback</b> = <b class="keyword">function()</b>
@@ -273,7 +355,7 @@ myBox<b class="func">.destroy()</b>;
         
         <div id="html_info_heading">
             <h2 id="html_box" class="headings">Create dialog box with pre-written HTML</h2>
-            <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callbacks()</code> for button clicks etc.</p>
+            <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
         
             <div>
                 <h3 class="headings">The default box, with 'Close' button</h3>
@@ -281,14 +363,14 @@ myBox<b class="func">.destroy()</b>;
                 <p>Return value: Close = <span class="ital">0</span></p>
             
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>This is a message, line one<b class="tag">&lt;br /&gt;</b>
        this is line two.<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myBox" class="dlg-opener">Open</button></p>
             </div>
@@ -298,13 +380,13 @@ myBox<b class="func">.destroy()</b>;
                 <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital">0</span></p>
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg dlg-error"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxError"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
             </div>
@@ -314,13 +396,13 @@ myBox<b class="func">.destroy()</b>;
                 <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
                 <p>Return value: Yes = <span class="ital">1</span>, No = <span class="ital">2</span></p>
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-yes-no dlg-question"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxYesNo"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
             </div>
@@ -330,13 +412,13 @@ myBox<b class="func">.destroy()</b>;
                 <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital">3</span>, Cancel = <span class="ital">4</span></p>
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-ok-cancel dlg-exclamation"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myBoxOkCancel"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
             </div>
@@ -346,13 +428,13 @@ myBox<b class="func">.destroy()</b>;
                 <p>Class <code class="val">dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital">string</span>, OK = <span class="ital">3</span>, Cancel = <span class="ital">4</span></p>
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myPromptBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
             </div>
@@ -370,13 +452,13 @@ myBox<b class="func">.destroy()</b>;
                     Cancel = <span class="ital">4</span>
                 </p>
                 <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info"</b> <b class="att">title</b>=<b class="val">"Title text"</b><b class="tag">&gt;</b>
+<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
 
     <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
     
 <b class="tag">&lt;/div&gt;</b>
     
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">"myCrazyBox"</b> <b class="att">class</b>=<b class="val">"dlg-opener"</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
+<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
                 </div>
                 <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
             </div>            
@@ -405,28 +487,28 @@ myBox<b class="func">.destroy()</b>;
     
     <!-- HTML pre-written dialog boxes -->
     
-    <div id="myBox" class="dlg" title="Title text">
+    <div id="myBox" class="dlg" title="Title text" name="myCallbackFunc">
         <p>This is a message, line one<br />
         this is line two.</p>
     </div>
 
-    <div id="myBoxError" class="dlg dlg-error" title="Title text">
+    <div id="myBoxError" class="dlg dlg-error" title="Title text" name="myCallbackFunc">
         <p>This is a message</p>
     </div>
     
-    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text">
+    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" name="myCallbackFunc">
         <p>Create a new dialogbox on the fly ?</p>
     </div>
     
-    <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text">
+    <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" name="myCallbackFunc">
         <p>This is a message</p>
     </div>    
     
-    <div id="myPromptBox" class="dlg-prompt" title="Title text">
+    <div id="myPromptBox" class="dlg-prompt" title="Title text" name="myCallbackFunc">
         <p>This is a message</p>
     </div>    
     
-    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text">
+    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" name="myCallbackFunc">
         <p>This is a message</p>
     </div>        
     
