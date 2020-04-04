@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.511
+// ** EasyDialogBox 1.512
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -29,7 +29,7 @@
 let EasyDialogBox = (function()
 {   'use strict';
 
-    // ** Debug on/off (outputs debug-messages to console)
+    // ** Debug: true/false (outputs debug-messages to console)
     let DEBUG = true;
 
     // ** Buttontext (custom your own text if you want)
