@@ -271,12 +271,9 @@ var myOtherCallbackFunc = function()
         </div>
                 
         <div id="code_info_heading">
-            <h2 id="otf" class="headings">Create dialog box objects</h2>
+            <h2 id="otf" class="headings">Dialog box objects</h2>
             <h3>Create dialogboxes on the go directly in javascript code.</h3>
-
-            <p class="headings">
-                <span class="bold">Create dialog (method, function)</span>
-            </p>
+            <h3 class="headings">Create dialog</h3>
             <p>
                 <code>let myObject = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
             </p>
@@ -317,17 +314,14 @@ var myOtherCallbackFunc = function()
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObject.destroy();</code></p>
             
-            <p class="headings">
-                <span class="bold">Show dialog (method, function)</span>
-            </p>
+            <h3 class="headings">Show dialog</h3>
             <p>
                 <code>myObject.show();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
 
-            <p class="headings">
-                <span class="bold">Destroy dialog (method, function)</span>
-            </p>
+
+            <h3 class="headings">Destroy dialog</h3>
             <p>
                 <code>myObject.destroy();</code>
             </p>
