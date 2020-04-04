@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.504
+// ** EasyDialogBox 1.505
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -167,7 +167,7 @@ let EasyDialogBox = (function()
                     let dlg = document.getElementById(btns[i].getAttribute('rel'));
                     
                     // ** Create object
-                    let success = _that.createNew(btns[i].getAttribute('rel'),
+                    let success = _that.create(btns[i].getAttribute('rel'),
                                                   dlg.getAttribute('class'), 
                                                   dlg.getAttribute('title'),
                                                   dlg.innerHTML,
@@ -178,7 +178,7 @@ let EasyDialogBox = (function()
         },
 
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
-        createNew : function(strId, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+        create : function(strId, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
         {
             let match = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
 
@@ -267,7 +267,7 @@ let EasyDialogBox = (function()
             }
             else
             {
-                _log('DEBUG: createNew(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
             return null;
         },
