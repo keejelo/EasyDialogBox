@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.505
+// ** EasyDialogBox 1.506
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -30,7 +30,7 @@ let EasyDialogBox = (function()
 {   'use strict';
 
     // ** Debug on/off (outputs debug-messages to console)
-    let debug = true;
+    let DEBUG = true;
 
     // ** Buttontext (custom your own text if you want)
     let _btnTextClose  = 'Close';   // Close
@@ -56,7 +56,7 @@ let EasyDialogBox = (function()
     // ** Debug-logger
     let _log = function(str)
     {
-        if(debug) return console.log(str);
+        if(DEBUG) return console.log(str);
     }
     
     // ** Convert string to decimal
