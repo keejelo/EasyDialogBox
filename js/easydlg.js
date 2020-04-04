@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.502
+// ** EasyDialogBox 1.503
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -349,15 +349,25 @@ let EasyDialogBox = (function()
 
                     // ** Check which icon to display
                     if(dlg.classList.contains('dlg-info'))
-                        {leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';}
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
+                    }
                     else if(dlg.classList.contains('dlg-question'))
-                        {leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';}
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
+                    }
                     else if(dlg.classList.contains('dlg-error'))
-                        {leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';}
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
+                    }
                     else if(dlg.classList.contains('dlg-success'))
-                        {leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';}
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
+                    }
                     else if(dlg.classList.contains('dlg-exclamation'))
-                        {leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';}
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+                    }
 
                     // ** Insert it into parent div
                     message.appendChild(leftbox);
