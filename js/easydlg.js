@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.508
+// ** EasyDialogBox 1.509
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -242,7 +242,7 @@ let EasyDialogBox = (function()
                             {
                                 _log('typeof fnCallback = ' + typeof fnCallback + ' and not function');
                                 _log('Possible solution can be to use "hoisting".\nTry to use "var callbackFuncName = function(){}" instead of "let callbackFuncName = function(){}"');
-                                _log('..or declare the callback function before EasyDialogBox is initialized');
+                                _log('..or declare the callback function before the module "EasyDialogBox" is initialized');
                             }
                         }
                         catch(err)
