@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.503
+// ** EasyDialogBox 1.504
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -751,7 +751,7 @@ let EasyDialogBox = (function()
         // ** Close and destroy the dialog box
         destroy : function(objId)
         {
-            let success = false;
+            let success = false; // default
             
             // ** Get body element, reset values, restore scrolling
             let body = document.getElementsByTagName('body')[0];
@@ -794,20 +794,20 @@ let EasyDialogBox = (function()
                         setTimeout(function()
                         {
                             _boxObj.splice(index, 1);
-                            _log('DEBUG: destroy(): Object deleted from array | obj.bKeepAlive = false');
+                            _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
                             success = true;
                         },1);
                     }
                     else
                     {
-                        _log('DEBUG: destroy(): Error, object not in array!');
+                        _log('DEBUG: destroy(): Error, object not found in array!');
                         success = false;
                     }
                 }
                 // ** If bKeepAlive is true, then do not remove object
                 else if(obj.bKeepAlive)
                 {
-                    _log('DEBUG: destroy(): Object was NOT deleted from array | obj.bKeepAlive = true');
+                    _log('DEBUG: destroy(): obj.bKeepAlive = true | Object was NOT deleted from array');
                     success = false;
                 }
             }
