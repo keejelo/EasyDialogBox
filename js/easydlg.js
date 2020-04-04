@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.515
+// ** EasyDialogBox 1.516
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -60,7 +60,7 @@ let EasyDialogBox = (function()
         {
             return console.log(str);
         }
-    }
+    };
     
     // ** Convert string to decimal
     let _str2dec = function(str)
