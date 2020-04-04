@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.506
+// ** EasyDialogBox 1.507
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -189,13 +189,13 @@ let EasyDialogBox = (function()
                 if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
                 {
                     // ** Create a unique string for the 'id'
-                    strId = Math.random().toString(36).substr(2, 9);
+                    strId = Math.random().toString(36).substr(2,9);
                 }
                 
                 // ** Add token to object id (so we dont mix up id's)
                 strId += '_0';
                 
-                // ** Check if flag is set, if not set it to: false
+                // ** Check if value is set, if not set it to: false
                 if(typeof fnCallback === 'undefined')
                 {
                     fnCallback = false;
@@ -262,14 +262,14 @@ let EasyDialogBox = (function()
                         return _that.destroy(this.id);
                     }
                 }
-                _boxObj.push(obj);
-                return obj;
+                _boxObj.push(obj); // add object to array
+                return obj; // return object
             }
             else
             {
                 _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
             }
-            return null;
+            return null; // return failure
         },
 
         // ** Show the dialog box
@@ -412,7 +412,7 @@ let EasyDialogBox = (function()
                     dlg.classList.add('dlg-ok-cancel');
                 }
 
-                // ** Remove earlier entered text in input field
+                // ** Remove earlier entered text from input field
                 obj.strInput = '';
 
                 // ** Create footer and buttons
@@ -571,6 +571,8 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
+                        
+                        // ** Callback
                         obj.callback();
                     });
                 }
@@ -590,6 +592,8 @@ let EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
+                        
+                        // ** Callback
                         obj.callback();                        
                     });
                 }
@@ -608,6 +612,8 @@ let EasyDialogBox = (function()
                         
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
+                        
+                        // ** Callback
                         obj.callback();
                     }
                 });
@@ -633,6 +639,8 @@ let EasyDialogBox = (function()
                             
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
+                            
+                            // ** Callback
                             obj.callback();
                         });
                     }
@@ -651,6 +659,8 @@ let EasyDialogBox = (function()
                             
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
+                            
+                            // ** Callback
                             obj.callback();
                         });
                     }
@@ -677,6 +687,8 @@ let EasyDialogBox = (function()
                             
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
+                            
+                            // ** Callback
                             obj.callback();                            
                         });
                     }
@@ -695,6 +707,8 @@ let EasyDialogBox = (function()
                             
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
+                            
+                            // ** Callback
                             obj.callback();
                         });
                     }
@@ -796,7 +810,7 @@ let EasyDialogBox = (function()
                             _boxObj.splice(index, 1);
                             _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
                             success = true;
-                        },1);
+                        }, 1);
                     }
                     else
                     {
