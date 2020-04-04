@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.498
+// ** EasyDialogBox 1.499
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -41,8 +41,8 @@ let EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
-                            'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
-                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
+                           'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
+                           'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
     let _boxObj = [];
