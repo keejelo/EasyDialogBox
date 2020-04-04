@@ -222,27 +222,27 @@ let EasyDialogBox = (function()
                     // ** Callback 
                     callback : function()
                     {
-						try
-						{
-							let param1 = this.nRetCode;
-							let param2 = this.strInput;
-							
-							// ** Check which kind of box and if it has a callback function
-							if(typeof window[fnCallback] === 'function')
-							{
-								// ** Execute function (pre-written HTML boxes)
-								window[fnCallback](param1,param2);
-							}
-							else if(typeof fnCallback === 'function')
-							{
-								// ** Execute function (script-created boxes)
-								fnCallback(param1,param2);
-							}
-						}
-						catch(err)
-						{
-							_log('CALLBACK: Error! ' + err);
-						}
+                        try
+                        {
+                            let param1 = this.nRetCode;
+                            let param2 = this.strInput;
+
+                            // ** Check which kind of box and if it has a callback function
+                            if(typeof window[fnCallback] === 'function')
+                            {
+                                // ** Execute function (pre-written HTML boxes)
+                                window[fnCallback](param1,param2);
+                            }
+                            else if(typeof fnCallback === 'function')
+                            {
+                                // ** Execute function (script-created boxes)
+                                fnCallback(param1,param2);
+                            }
+                        }
+                        catch(err)
+                        {
+                            _log('CALLBACK: Error! ' + err);
+                        }
                     },
                     
                     // ** Show
