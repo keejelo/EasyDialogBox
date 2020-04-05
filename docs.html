@@ -100,25 +100,25 @@ button
     border:1px #666b7a solid; /* 51a451 666b7a */
     border-left-width:6px;
 }
-#paramTable, .returnTable
+#paramTable, .returnTable, #objTable
 {
     border-collapse:collapse;
     background-color:#fafafa;
 }
-#paramTable th, .returnTable th
+#paramTable th, .returnTable th, #objTable th
 {
     background-color:#fff;
     border:1px #000 solid;
     padding:5px;
 }
-#paramTable td, .returnTable td
+#paramTable td, .returnTable td, #objTable td
 {
     /*font-weight:bold;*/
     border:1px #000 solid;
     padding:6px;
     /*color:#444;*/
 }
-#paramTable td+td, .returnTable td+td
+#paramTable td+td, .returnTable td+td, #objTable td+td
 {
     font-weight:normal;
     border:1px #000 solid;
@@ -370,6 +370,24 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObject.destroy();</code></p>
+
+            <p>&nbsp;</p>
+            
+            <table id="objTable">
+                <thead>
+                    <tr><th colspan="2">All object properties, readable/writable</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>id</td><td>string, number or null</td></tr>
+                    <tr><td>strTypeClass</td><td>string</td></tr>
+                    <tr><td>strTitle</td><td>string</td></tr>
+                    <tr><td>strMessage</td><td>string</td></tr>
+                    <tr><td>bKeepAlive</td><td>boolean</td></tr>
+                    <tr><td>strInput</td><td>string</td></tr>
+                    <tr><td>nRetCode</td><td>number</td></tr>
+                </tbody>
+            </table>
+            
             
             <p>&nbsp;</p>
             
