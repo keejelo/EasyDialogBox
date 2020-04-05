@@ -371,9 +371,22 @@ myBox<b class="func">.destroy()</b>;
 <b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b>
 <b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
 
+<b class="comment">// ** Example of a callback function</b>
 <b class="keyword">var</b> myCallbackFunc = <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
 <b class="func">{</b>
-    <b class="comment">// ..some code to handle callback..</b>
+    <b class="comment">// ..some code to handle callback..
+    
+    /*
+    if(nRetCode === 1)
+    {
+        // ... user clicked &quot;Yes&quot; button
+    }
+    
+    if(strInput !== '')
+    {
+        // ... user typed something in the input field of promptbox
+    }
+    */</b>
 <b class="func">}</b>;
 
 <b class="comment">// ...</b>
@@ -381,8 +394,8 @@ myBox<b class="func">.destroy()</b>;
             
             <div>
                 <h3 class="headings">Return values</h3>
-                <p>Each created <code>object</code> has 2 public variables: <code>nRetCode</code> and <code>strInput</code>,
-                <p>which are intended to be used in the <code>object.callback()</code> function for further processing.</p>
+                <p>Each created <code>object</code> has 2 public variables that can be accessed: <code>nRetCode</code> and <code>strInput</code>
+                <p>These are intended to be used in the <code>object.callback()</code> function for further processing.</p>
                 <table class="returnTable">
                     <thead>
                         <tr><th colspan="2"><code>object.nRetCode</code> &nbsp;&nbsp;&nbsp; ( typeof = 'number' )</th></tr>
