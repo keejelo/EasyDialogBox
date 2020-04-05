@@ -100,52 +100,6 @@ button
     border:1px #666b7a solid; /* 51a451 666b7a */
     border-left-width:6px;
 }
-b
-{
-    font-weight:normal; /* abuse this tag for syntax coloring */
-}
-.tag
-{
-    color:#9ecaf8; /* 0000ff a8742b 00ccff */
-}
-.att
-{
-    color:#dba6fc; /* dd0000 e1ca72 dddd00 */
-}
-.val
-{
-    color:#99f1e0; /* 9901e0 74a25d */
-}
-.val a
-{
-    color:#99f1e0;
-    text-decoration:none;
-    border-bottom:1px dotted #99f1e0;
-}
-.comment 
-{
-    color:#d2eba7;
-}
-.obj
-{
-    color:#e99449;
-}
-.func
-{
-    color:#f8e981;
-}
-.param
-{
-    color:#dba6fc;
-}
-.param_def
-{
-    color:#99ffff;
-}
-.keyword
-{
-    color:#99ffff; /* ff8490 */
-}
 #paramTable, .returnTable
 {
     border-collapse:collapse;
@@ -192,6 +146,64 @@ a
     text-decoration:none;
     border-bottom:1px dotted #000;
 }
+b
+{
+    font-weight:normal; /* abuse this tag for syntax coloring */
+}
+
+/* syntax coloring */
+.tag
+{
+    color:#9ecaf8; /* 0000ff a8742b 00ccff */
+}
+.att
+{
+    color:#dba6fc; /* dd0000 e1ca72 dddd00 */
+}
+.val
+{
+    color:#99f1e0; /* 9901e0 74a25d */
+}
+.val a
+{
+    color:#99f1e0;
+    text-decoration:none;
+    border-bottom:1px dotted #99f1e0;
+}
+.comment 
+{
+    color:#d2eba7;
+}
+.obj
+{
+    color:#e99449;
+}
+.func
+{
+    color:#f8e981;
+}
+.param
+{
+    color:#dba6fc;
+}
+.param_def
+{
+    color:#99ffff;
+}
+.keyword
+{
+    color:#99ffff; /* ff8490 */
+}
+.num
+{
+    color:#ff8490;
+}
+.equal
+{
+    color:#aaddff;
+}
+/* END: syntax coloring */
+
 </style>
 
 <!-- Including the necessary files here -->
@@ -375,7 +387,7 @@ var myOtherCallbackFunc = function()
 <b class="comment">// Javascript ...</b>
 
 <b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'Hello on the fly!'</b><b class="func">,</b> myCallbackFunc<b class="func">)</b>;
+<b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'Hello on the fly!'</b><b class="func">,</b> myCallbackFunc<b class="func">)</b>;
 
 <b class="comment">// ** Show the newly created box</b>
 myBox<b class="func">.show()</b>;
@@ -389,21 +401,19 @@ myBox<b class="func">.destroy()</b>;
 <b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
 
 <b class="comment">// ** Example of a callback function (using &quot;var&quot; for &quot;hoisting&quot;)</b>
-<b class="keyword">var</b> myCallbackFunc = <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
+<b class="keyword">var</b> myCallbackFunc <b class="equal">=</b> <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
 <b class="func">{</b>
-<b class="comment">    /*
-    // Example of some code to handle callback
+    <b class="comment">// Example of some code to handle callback</b>
     
-    if(nRetCode === 1)
-    {
-        // ... user clicked &quot;Yes&quot; button
-    }
+    <b class="keyword">if</b><b class="func">(</b>nRetCode <b class="equal">===</b> <b class="num">1</b><b class="func">)</b>
+    <b class="func">{</b>
+        <b class="comment">// ... user clicked &quot;Yes&quot; button</b>
+    <b class="func">}</b>
     
-    if(strInput !== '')
-    {
-        // ... user typed something in the input field of promptbox
-    }
-    */</b>
+    <b class="keyword">if</b><b class="func">(</b>strInput <b class="equal">!==</b> <b class="param">''</b><b class="func">)</b>
+    <b class="func">{</b>
+        <b class="comment">// ... user typed something in the input field of promptbox</b>
+    <b class="func">}</b>
 <b class="func">}</b>;
 
 <b class="comment">// ...</b>
