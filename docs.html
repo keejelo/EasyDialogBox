@@ -44,6 +44,10 @@ hr
     background-color:#fff;    
     border:1px solid #000;
 }
+.section
+{
+    margin-top:100px;
+}
 .ital
 {
     font-style:italic;
@@ -275,9 +279,9 @@ var myOtherCallbackFunc = function()
         <div>
             <h3>Then it can be used like the example below, or <a href="#html_box" title="Read more..">boxes can be created with pre-written HTML.</a></h3>
         </div>
-                
-        <div id="code_info_heading">
-            <h2 id="otf" class="headings">Dialog box objects</h2>
+
+        <div id="code_info_heading" class="section">
+            <h2  class="headings">Dialog box objects</h2>
             <h3>Create dialogboxes on the go directly in javascript code.</h3>
             <h3 class="headings">Create dialog</h3>
             <p>
@@ -380,7 +384,7 @@ myBox<b class="func">.destroy()</b>;
             </div>
         </div>
         
-        <div id="html_info_heading">
+        <div id="html_info_heading" class="section">
             <h2 id="html_box" class="headings">Create dialog box with pre-written HTML</h2>
             <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
             <p>If you just want to display a simple messagebox with some info, then you only have to write HTML.</p>
