@@ -21,28 +21,35 @@ body
     margin:0 auto;
     max-width:1200px;
     padding:20px;
-    background-color:#f6f6f6;
+    background-color:#fff;
 }
-hr
+h1
 {
-    border-top:1px solid #666;
-    border-left:none;
-    border-right:none;    
-    border-bottom:none;
-    display:none;
+    font-size:42px;
 }
+h2
+{
+    font-size:32px;
+}
+h1, h2, h3, h4, h5, h6
+{
+    font-family:"Segoe UI",Arial,sans-serif;
+    font-weight:400;
+    margin-left:0;
+    padding-left:0;
+}    
 #main_heading
 {
     padding:15px;
     background-color:#fff;    
     border:1px solid #000;
 }
-.headings
+.examples
 {
     margin-top:50px;
     padding:15px;
-    background-color:#fff;    
-    border:1px solid #000;
+    background-color:#f1f1f1;
+    /*border:1px solid #000;*/
 }
 .section
 {
@@ -142,7 +149,7 @@ b
 #paramTable, .returnTable
 {
     border-collapse:collapse;
-    background-color:#fff;
+    background-color:#fafafa;
 }
 #paramTable th, .returnTable th
 {
@@ -152,10 +159,10 @@ b
 }
 #paramTable td, .returnTable td
 {
-    font-weight:bold;
+    /*font-weight:bold;*/
     border:1px #000 solid;
     padding:6px;
-    color:#444;
+    /*color:#444;*/
 }
 #paramTable td+td, .returnTable td+td
 {
@@ -281,8 +288,10 @@ var myOtherCallbackFunc = function()
             <p>Lightweight. Responsive. Plain vanilla Javascript, no libraries.</p>
         </div>
         
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
         <div>
-            <h3 class="headings">HOW TO ?</h3>
+            <h2>HOW TO ?</h2>
             <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
         </div>
         
@@ -297,9 +306,12 @@ var myOtherCallbackFunc = function()
         </div>
 
         <div id="code_info_heading" class="section">
-            <h2  class="headings">Dialog box objects</h2>
+            <h2>Dialog box objects</h2>
             <h3>Create dialogboxes on the go directly in javascript code.</h3>
-            <h3 class="headings">Create dialog</h3>
+            
+            <p>&nbsp;</p>
+            
+            <h2>Create dialog</h2>
             <p>
                 <code>let myObject = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
             </p>
@@ -340,20 +352,25 @@ var myOtherCallbackFunc = function()
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObject.destroy();</code></p>
             
-            <h3 class="headings">Show dialog</h3>
+            <p>&nbsp;</p>
+            
+            <h2>Show dialog</h2>
             <p>
                 <code>myObject.show();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
 
-
-            <h3 class="headings">Destroy dialog</h3>
+            <p>&nbsp;</p>
+            
+            <h2>Destroy dialog</h2>
             <p>
                 <code>myObject.destroy();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if object was deleted or reset, if not then <span class="ital word">false</span></p>
+       
+            <p>&nbsp;</p>
             
-            <h3 class="headings">Example</h3>
+            <h2>Example</h2>
             <div class="codeview">
 <b class="comment">// Javascript ...</b>
 
@@ -393,7 +410,7 @@ myBox<b class="func">.destroy()</b>;
             </div>
             
             <div>
-                <h3 class="headings">Return values</h3>
+                <h2>Return values</h2>
                 <p>Each created <code>object</code> has 2 public variables that can be accessed: <code>nRetCode</code> and <code>strInput</code>
                 <p>These are intended to be used in the <code>object.callback()</code> function for further processing.</p>
                 <table class="returnTable">
@@ -425,18 +442,24 @@ myBox<b class="func">.destroy()</b>;
         </div>
         
         <div id="html_info_heading" class="section">
-            <h2 id="html_box" class="headings">Create dialog box with pre-written HTML</h2>
+            <h2 id="html_box">Create dialog box with pre-written HTML</h2>
             <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
             <p>If you just want to display a simple messagebox with some info, then you only have to write HTML.</p>
             
+            <p>&nbsp;</p>
+            
             <div>
-                <h3 class="headings">Attribute values for opening elements, such as <code class="tag">&lt;button&gt;</code> or any other element</h3>
-                <p>The <code class="att">rel</code> attribute value must contain the <code class="att">id</code> of the box that the <code class="tag">&lt;button&gt;</code> is going to open.</p>
-                <p>Add class <code class="val">dlg-opener</code> to make the <code class="tag">&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
+                <h2>Attribute values</h2>
+                <p>The <code>rel</code> attribute value must contain the <cod>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
+                <p>Don't have to be a <code>&lt;button&gt;</code>, it can be any element you want to use as an opener.</p>
+                <p>Add class <code>dlg-opener</code> to make the <code>&lt;button&gt;</code> open a box, a click-event-handler will automatically be created for it.</p>
             </div>
         
-            <h3 class="headings">Examples</h3>
-            <div>
+            <p>&nbsp;</p>
+            
+            <h2>Examples</h2>
+            
+            <div class="examples">    
                 <h3 class="headings">The default box, with 'Close' button</h3>
                 <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
@@ -454,7 +477,7 @@ myBox<b class="func">.destroy()</b>;
                 <p><button rel="myBox" class="dlg-opener">Open</button></p>
             </div>
             
-            <div>
+            <div class="examples">
                 <h3 class="headings">A default &quot;error box&quot;</h3>
                 <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
@@ -470,7 +493,7 @@ myBox<b class="func">.destroy()</b>;
                 <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
             </div>
             
-            <div>
+            <div class="examples">
                 <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
                 <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
@@ -486,7 +509,7 @@ myBox<b class="func">.destroy()</b>;
                 <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
             </div>
             
-            <div>
+            <div class="examples">
                 <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
                 <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
@@ -502,7 +525,7 @@ myBox<b class="func">.destroy()</b>;
                 <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
             </div>
             
-            <div>
+            <div class="examples">
                 <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
                 <p>Class <code class="val">dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
@@ -518,7 +541,7 @@ myBox<b class="func">.destroy()</b>;
                 <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
             </div>
 
-            <div>
+            <div class="examples">
                 <h3 class="headings">Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
                 <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
                 <p>
