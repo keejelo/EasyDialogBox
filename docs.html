@@ -1,678 +1,862 @@
-<!DOCTYPE html>
-<html>
-<!-- Sorry for the all-in-one-"franken"-html-page, but it's just to keep it all in one DEMO file -->
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<head>
-<title>EasyDialogBox examples and documentation</title>
-<style type="text/css">
-body
-{
-    margin:0;
-    padding:10px;
-    padding-bottom:200px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:16px;
-    background-color:#ddd;
-    line-height:26px;
-}
-#page 
-{
-    margin:0 auto;
-    max-width:1200px;
-    padding:20px;
-    background-color:#fff;
-}
-h1
-{
-    font-size:42px;
-}
-h2
-{
-    font-size:32px;
-}
-h1, h2, h3, h4, h5, h6
-{
-    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
-    font-weight:400;
-    margin-left:0;
-    padding-left:0;
-}    
-#main_heading
-{
-    padding:15px;
-    background-color:#fff;    
-    border:1px solid #000;
-}
-.examples
-{
-    margin-top:50px;
-    padding:15px;
-    background-color:#f1f1f1;
-    /*border:1px solid #000;*/
-}
-.section
-{
-    margin-top:100px;
-}
-.ital
-{
-    font-style:italic;
-}
-.bold
-{
-    font-weight:bold;
-}
-.word 
-{
-    color:#0366d6;
-}
-code
-{
-    font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace;
-    font-size:inherit;
-    font-weight:normal;
-    /*color:#0000ff;*/
-    color:#fff;
-    background-color:#3a3e4c; /* fafafa 1d1e22 3a3e4c*/
-    padding:2px 5px;
-}
-button
-{
-    font-family:inherit;
-    font-size:inherit;
-}
-.codeview
-{
-    display:inline-block;
-    margin:0;
-    margin-bottom:10px;
-    width:98%;
-    /*max-width:940px;*/
-    padding:10px;
-    overflow:scroll;
-    white-space:pre;
-    font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace;
-    font-size:inherit;
-    line-height:normal;
-    background-color:#3a3e4c; /* fafafa 1d1e22 */
-    color:#fff;
-    border:1px #666b7a solid; /* 51a451 666b7a */
-    border-left-width:6px;
-}
-#paramTable, .returnTable, #objTable
-{
-    border-collapse:collapse;
-    background-color:#fafafa;
-}
-#paramTable th, .returnTable th, #objTable th
-{
-    background-color:#fff;
-    border:1px #000 solid;
-    padding:5px;
-}
-#paramTable td, .returnTable td, #objTable td
-{
-    /*font-weight:bold;*/
-    border:1px #000 solid;
-    padding:6px;
-    /*color:#444;*/
-}
-#paramTable td+td, .returnTable td+td, #objTable td+td
-{
-    font-weight:normal;
-    border:1px #000 solid;
-    color:inherit;
-}
-.returnTable thead th
-{
-    text-align:left;
-}
-.returnTable thead th+th
-{
-    
-}
-.returnTable tbody td
-{
-    text-align:center;
-}
-.returnTable tbody td+td
-{
-    text-align:left;
-}
-a
-{
-    color:#000;
-    text-decoration:none;
-    border-bottom:1px dotted #000;
-}
-hr
-{
-    border:none;
-    border-top:1px solid #000;
-}
-
-/* syntax coloring */
-b
-{
-    font-weight:normal; /* abuse this tag for syntax coloring */
-}
-.tag
-{
-    color:#9ecaf8; /* 0000ff a8742b 00ccff */
-}
-.att
-{
-    color:#dba6fc; /* dd0000 e1ca72 dddd00 */
-}
-.val
-{
-    color:#99f1e0; /* 9901e0 74a25d */
-}
-.val a
-{
-    color:#99f1e0;
-    text-decoration:none;
-    border-bottom:1px dotted #99f1e0;
-}
-.comment 
-{
-    color:#d2eba7;
-}
-.obj
-{
-    color:#e99449;
-}
-.func
-{
-    color:#f8e981;
-}
-.param
-{
-    color:#dba6fc;
-}
-.param_def
-{
-    color:#99ffff;
-}
-.keyword
-{
-    color:#99ffff; /* ff8490 */
-}
-.num
-{
-    color:#ff8490;
-}
-.equal
-{
-    color:#aaddff;
-}
-/* END: syntax coloring */
-
-</style>
-
-<!-- Including the necessary files here -->
-
-<link type="text/css" media="screen" rel="stylesheet" href="css/easydlg.css" />
-
-<script src="js/easydlg.js"></script>
-
-<!-- END: Including the necessary files here -->
-
-
-<script type="text/javascript">
 //-----------------------------------------------------------------------------------------------------------------
-// ** Callback Examples
+// ** EasyDialogBox 1.528
+// ** Created by: keejelo
+// ** Year: 2020
+// ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
+
 
 //---------------------------------------------------------------------
-// ** EasyDialogBox object return code values: object.nRetCode
+// ** EasyDialogBox object return values
+//---------------------------------------------------------------------
 //
-//  0 = "X", "Close" button or outside box clicked
+// object.nRetCode:
+//
+//  0 = "Close" button, outside box or [X] clicked
 //  1 = "Yes" button clicked
 //  2 = "No" button clicked
 //  3 = "OK" button clicked
 //  4 = "Cancel" button clicked
 //
-//
-//  Can also return value of: object.strInput
+//  object.strInput = string
 //
 //---------------------------------------------------------------------
 
-// ** One example of a callback function
-var myCallbackFunc = function(nRetCode, strInput)
-{
-    if(nRetCode === 0)
+
+//-----------------------------------------------------------------------------------------------------------------
+// ** EasyDialogBox Object (module)
+//-----------------------------------------------------------------------------------------------------------------
+let EasyDialogBox = (function()
+{   'use strict';
+
+    // ** Debug: true/false (outputs debug-messages to console)
+    let DEBUG = true;
+
+    // ** Buttontext (custom your own text if you want)
+    let _btnTextClose  = 'Close';   // Close
+    let _btnTextYes    = 'Yes';     // Yes
+    let _btnTextNo     = 'No';      // No
+    let _btnTextOk     = 'OK';      // OK
+    let _btnTextCancel = 'Cancel';  // Cancel
+
+    // ** Dialogbox types and flags, can be used separately or in combination separated by a space
+    let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
+                           'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
+                           'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
+
+    // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
+    let _boxObj = [];
+    
+    // ** Variable that stores the original padding-right value of body element
+    let _orgBodyPaddingRight = 0;
+
+    // ** Indicate that a box is current in view (is shown)
+    let _isActive = false;
+
+    // ** Debug-logger
+    let _log = function(str)
     {
-        console.log('CALLBACK: User clicked "Close" button, outside box or [X], returncode = ' + nRetCode);
-    }    
-    else if(nRetCode === 1)
-    {
-        console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
-        
-        // ** Example: Create a dialog on the fly!
-        let myFlyBox = EasyDialogBox.create(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
-        if(myFlyBox)
+        if(DEBUG)
         {
-            // ** Override the initial callback function that was set 
-            
-            /*myFlyBox.callback = function()
+            return console.log(str);
+        }
+    };
+    
+    // ** Convert string to decimal
+    let _str2dec = function(str)
+    {
+        return parseInt(str, 10);
+    };
+
+    // ** Get object from array id
+    let _getObjFromId = function(arr, strId)
+    {
+        for(let i = 0; i < arr.length; i++)
+        {
+            if(arr[i].id === strId)
             {
-                console.log('Hello this is a callback override! :-)');
-            }*/
-            
-            // ** Show the new box
-            myFlyBox.show();
-        }        
-    }
-    else if(nRetCode === 2)
-    {
-        console.log('CALLBACK: User clicked "No" button, returncode = ' + nRetCode);
-    }
-    else if(nRetCode === 3)
-    {
-        console.log('CALLBACK: User clicked "OK" button, returncode = ' + nRetCode);
-    }
-    else if(nRetCode === 4)
-    {
-        console.log('CALLBACK: User clicked "Cancel" button, returncode = ' + nRetCode);
-    }
+                return arr[i];
+            }
+        }
+        return null; // if no object found
+    };
     
-    // ** Check if any text was typed in input
-    if(strInput)
+    // ** Check if array matches ALL test-values in supplied string/array
+    let _matchAll = function(arr, str, exp, sep)
     {
-        console.log('CALLBACK: User typed in inputfield, returnvalue = ' + strInput);
-    }
-    
-};
+        // ** Params
+        // @ arr = array that holds the values we want to match against
+        // @ str = string/array that we want to match with the above array
+        // @ exp = (boolean) true = split string into array, using separator. false (or omitted) = do not split, treat string as one value.
+        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
 
-// ** Another regular function used as callback
-var myOtherCallbackFunc = function(nRetCode, strInput)
+        let val = str;
+        if(exp === true)
+        {
+            if(typeof sep === 'undefined')
+            {
+                sep = ' '; // default: space
+            }
+            val = str.split(sep);
+        }
+
+        let passed = 0;
+        for(let i = 0; i < val.length; i++)
+        {
+            for(let j = 0; j < arr.length; j++)
+            {
+                if(arr[j] === val[i])
+                {
+                    passed++;
+                }
+            }
+        }
+
+        // ** Ensure that ALL values matched, else return failure. Check if numbers tested equals the numbers of items that passed.
+        if(val.length === passed)
+        {
+            return true;
+        }
+
+        return false;
+    };
+
+    // ** Object self
+    let _that = null;
+
+    //---------------------------------------------------------------------
+    // ** Public methods
+    //---------------------------------------------------------------------
+    return { //<-- bracket need to be on same line, else it just returns: undefined
+        
+        // ** Get all objects
+        getAll : function()
+        {
+            return _boxObj;
+        },
+        
+        // ** Get object from id, can be used to get object from a pre-written HTML box by searching for its 'id' in the array of objects
+        getById : function(id)
+        {
+            return _getObjFromId(_boxObj, id);
+        },
+        
+        // ** Initialize
+        init : function()
+        {
+            // ** Set reference to object
+            _that = this;
+            
+            // ** Window load event
+            window.addEventListener('load', function windowLoad()
+            {
+                // ** Get all elements with class containing 'dlg-opener'
+                let btns = document.getElementsByClassName('dlg-opener');
+
+                // ** Create objects and click handler for each element that contain class 'dlg-opener'
+                for(let i = 0; i < btns.length; i++)
+                {                    
+                    // ** Get element from DOM
+                    let dlg = document.getElementById(btns[i].getAttribute('rel'));
+                    
+                    // ** Create object from DOM element
+                    let obj = _that.create(dlg.getAttribute('id'),      // id
+                                           dlg.getAttribute('class'),   // type
+                                           dlg.getAttribute('title'),   // title
+                                           dlg.innerHTML,               // message
+                                           dlg.getAttribute('name'),    // callback function
+                                           true);                       // do not delete on closing
+
+                    // ** Create click handler for each element
+                    btns[i].addEventListener('click', function DlgOpenerClick(evt)
+                    {
+                        obj.show();             // show the dialogbox with the 'id' referenced in 'rel' attribute
+                        this.blur();            // remove focus from button or other opening element
+                        evt.preventDefault();   // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
+                        evt.stopPropagation();  // prevent bubbling up to parent elements or capturing down to child elements
+                    });
+                }
+            });
+        },
+
+        // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
+        create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+        {
+            let match = _matchAll(_strBoxTypeList, strTypeClass, true);
+
+            // ** Check if valid types
+            if(match === true)
+            {
+                // ** Check if id is set, if not create a new
+                if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
+                {
+                    // ** Create a unique string for the 'id'
+                    strId = Math.random().toString(36).substr(2,9);
+                }
+                
+                // ** Add token to object id (so we dont mix up id's)
+                strId += '_0';
+                
+                // ** Check if value is set, if not set it to: false
+                if(typeof fnCallback === 'undefined')
+                {
+                    fnCallback = false;
+                }
+                
+                // ** Check if flag is set, if not set it to: false
+                if(typeof bKeepAlive === 'undefined')
+                {
+                    bKeepAlive = false;
+                }
+                
+                // ** Create object
+                let obj =
+                {
+                    // ** Properties
+                    id : strId,
+                    strTypeClass : strTypeClass,
+                    strTitle : strTitle,
+                    strMessage : strMessage,
+                    bKeepAlive : bKeepAlive,
+                    strInput : '',
+                    nRetCode : -1,
+
+                    // ** Callback 
+                    callback : function()
+                    {
+                        try
+                        {
+                            let a = this.nRetCode;
+                            let b = this.strInput;
+
+                            // ** Check which kind of box and if it has a callback function
+                            if(typeof window[fnCallback] === 'function')
+                            {
+                                // ** Execute function (pre-written HTML boxes)
+                                window[fnCallback](a,b);
+                            }
+                            else if(typeof fnCallback === 'function')
+                            {
+                                // ** Execute function (script-created boxes)
+                                fnCallback(a,b);
+                            }
+                            else if(fnCallback === false || fnCallback === 0)
+                            {
+                                return false;
+                            }
+                            else
+                            {
+                                _log('typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
+                                _log('Scope? Possible solution can be to use "hoisting".\nTry to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
+                                _log('..or declare the callback function before the module "EasyDialogBox" is initialized');
+                            }
+                        }
+                        catch(err)
+                        {
+                            _log('CALLBACK: Error! ' + err);
+                        }
+                    },
+                    
+                    // ** Show
+                    show : function()
+                    {
+                        return _that.show(this.id);
+                    },
+                    
+                    // ** Destroy
+                    destroy : function()
+                    {
+                        return _that.destroy(this.id);
+                    }
+                }
+                _boxObj.push(obj); // add object to array
+                return obj; // return object
+            }
+            else
+            {
+                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strTypeClass);
+            }
+            return null; // return failure
+        },
+
+        // ** Show the dialog box
+        show : function(objId)
+        {                        
+            // ** Get object from id
+            let obj = _getObjFromId(_boxObj, objId);
+
+            // ** Fix for pre-written HTML boxes, need to add '_0' to id before getting object
+            if(obj === null)
+            {
+                objId += '_0';
+                obj = _getObjFromId(_boxObj, objId);
+            }
+
+            // ** Create parent reference
+            let body = document.getElementsByTagName('body')[0];
+            
+            // ** Create box and insert into parent element
+            let dlg = document.createElement('div');
+            dlg.setAttribute('id', obj.id);
+            dlg.setAttribute('class', obj.strTypeClass);
+            body.appendChild(dlg);
+            
+            let strTypeClass = obj.strTypeClass;
+            let match = null;
+            
+            if(dlg)
+            {
+                match = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
+            }
+
+            // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
+            if( dlg && (_isActive === false) && (match === true) )
+            {
+                // ** Create outer box
+                let box = document.createElement('div');
+                box.setAttribute('class','dlg-box dlg-center-vert');
+                dlg.appendChild(box);
+
+                // ** Create heading
+                let heading = document.createElement('div');
+                heading.setAttribute('class','dlg-heading');
+                box.appendChild(heading);
+
+                // ** Create "CloseX"
+                let closeX = document.createElement('span');
+                closeX.setAttribute('class','dlg-close-x');
+                let closeText = document.createTextNode(' \u00d7 ');
+                closeX.appendChild(closeText);
+                heading.appendChild(closeX);
+
+                // ** Create title
+                let titleText = document.createTextNode(obj.strTitle);
+                heading.appendChild(titleText);
+
+                // ** Create message
+                let message = document.createElement('div');
+                
+                // ** Prepare reference to inner boxes if needed
+                let leftbox = null;
+                let rightbox = null;
+                
+                // ** Check if icon should be displayed
+                if(dlg.classList.contains('dlg-info')
+                || dlg.classList.contains('dlg-question')
+                || dlg.classList.contains('dlg-error')
+                || dlg.classList.contains('dlg-success')
+                || dlg.classList.contains('dlg-exclamation')
+                )
+                {                    
+                    message.setAttribute('class','dlg-message dlg-flex-container');
+                    
+                    // ** Create left box
+                    leftbox = document.createElement('div');
+                    leftbox.setAttribute('class','dlg-flexbox-left');
+
+                    // ** Check which icon to display
+                    if(dlg.classList.contains('dlg-info'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-question'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-error'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-success'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-exclamation'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+                    }
+
+                    // ** Insert it into parent div
+                    message.appendChild(leftbox);
+                    
+                    // ** Create right box
+                    rightbox = document.createElement('div');
+                    rightbox.setAttribute('class','dlg-flexbox-right');
+                    rightbox.innerHTML = obj.strMessage;
+                    
+                    // ** Insert it into parent div
+                    message.appendChild(rightbox);
+                }
+                else
+                {
+                    message.setAttribute('class','dlg-message');
+                    message.innerHTML = obj.strMessage;
+                }
+                box.appendChild(message);
+
+                // ** Create prompt box (input + OK + Cancel)
+                if(dlg.classList.contains('dlg-prompt'))
+                {
+                    let inputbox = document.createElement('div');
+                    inputbox.setAttribute('class', 'dlg-input');
+                    
+                    if(message.classList.contains('dlg-flex-container'))
+                    {
+                        rightbox.appendChild(inputbox);
+                    }
+                    else
+                    {
+                        message.appendChild(inputbox);
+                    }
+                    
+                    let input = document.createElement('input');
+                    input.setAttribute('class', 'dlg-input-field');
+                    input.setAttribute('type', 'text');
+                    input.setAttribute('value', '');
+                    inputbox.appendChild(input);
+
+                    // ** Add buttons if not already stated in 'class'
+                    dlg.classList.add('dlg-ok-cancel');
+                }
+
+                // ** Remove earlier entered text from input field
+                obj.strInput = '';
+
+                // ** Create footer and buttons
+                // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
+                if(!dlg.classList.contains('dlg-no-footer'))
+                {
+                    // ** Create footer
+                    let footer = document.createElement('div');
+                    footer.setAttribute('class','dlg-footer');
+                    box.appendChild(footer);
+
+                    // ** If "dlg-no-btns" is specified in class then do not make buttons.
+                    if(!dlg.classList.contains('dlg-no-btns'))
+                    {
+                        // ** If "Yes" button is specified in class
+                        if(dlg.classList.contains('dlg-yes')
+                        || dlg.classList.contains('dlg-yes-no')
+                        )
+                        {
+                            // ** Create button
+                            let yesBtn = document.createElement('button');
+                            yesBtn.setAttribute('class','dlg-yes-btn');
+                            let yesBtnText = document.createTextNode(_btnTextYes);
+                            yesBtn.appendChild(yesBtnText);
+                            footer.appendChild(yesBtn);
+                        }
+
+                        // ** If "No" button is specified in class
+                        if(dlg.classList.contains('dlg-no')
+                        || dlg.classList.contains('dlg-yes-no')
+                        )
+                        {
+                            // ** Create button
+                            let noBtn = document.createElement('button');
+                            noBtn.setAttribute('class','dlg-no-btn');
+                            let noBtnText = document.createTextNode(_btnTextNo);
+                            noBtn.appendChild(noBtnText);
+                            footer.appendChild(noBtn);
+                        }
+
+                        // ** If "OK" button is specified in class
+                        if(dlg.classList.contains('dlg-ok')
+                        || dlg.classList.contains('dlg-ok-cancel')
+                        )
+                        {
+                            // ** Create button
+                            let okBtn = document.createElement('button');
+                            okBtn.setAttribute('class','dlg-ok-btn');
+                            let okBtnText = document.createTextNode(_btnTextOk);
+                            okBtn.appendChild(okBtnText);
+                            footer.appendChild(okBtn);
+                        }
+
+                        // ** If "Cancel" button is specified in class
+                        if(dlg.classList.contains('dlg-cancel')
+                        || dlg.classList.contains('dlg-ok-cancel')
+                        )
+                        {
+                            // ** Create button
+                            let cancelBtn = document.createElement('button');
+                            cancelBtn.setAttribute('class','dlg-cancel-btn');
+                            let cancelBtnText = document.createTextNode(_btnTextCancel);
+                            cancelBtn.appendChild(cancelBtnText);
+                            footer.appendChild(cancelBtn);
+                        }
+
+                        // ** If "dlg" or "Close" button is specified in class
+                        if(dlg.classList.contains('dlg')
+                        || dlg.classList.contains('dlg-close')
+                        )
+                        {
+                            // ** Create button
+                            let closeBtn = document.createElement('button');
+                            closeBtn.setAttribute('class','dlg-close-btn');
+                            let closeBtnText = document.createTextNode(_btnTextClose);
+                            closeBtn.appendChild(closeBtnText);
+                            footer.appendChild(closeBtn);
+                        }
+                    }
+                }
+                // ** END: Create footer and buttons
+
+                // ** Show dlg overlay and dialogbox
+                dlg.style.display = 'block';
+
+                // ** Set focus to input field if promptbox
+                if(dlg.classList.contains('dlg-prompt'))
+                {
+                    dlg.getElementsByClassName('dlg-input-field')[0].focus();
+                }
+
+                // ** Get height of inner dialogbox
+                let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
+                let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
+
+                // ** If height is larger or equal to window height, disable vertical alignment,
+                // ** just position at top. Prevents out of view.
+                if(_str2dec(height) >= window.innerHeight)
+                {
+                    inDlgBox.classList.remove('dlg-center-vert');
+                }
+                else
+                {
+                    inDlgBox.classList.add('dlg-center-vert');
+                }
+
+                // ** Creating substitute for scrollbar
+                // ** Get body element
+                let body = document.getElementsByTagName('body')[0];
+
+                // ** Store the original padding-right value
+                _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+
+                // ** Convert from string to integer (remove 'px' postfix and return value as integer)
+                _orgBodyPaddingRight = _str2dec(_orgBodyPaddingRight);
+
+                // ** Get width of body before removing scrollbar
+                let w1 = body.offsetWidth;
+
+                // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
+                body.classList.add('dlg-stop-scrolling');
+
+                // ** Get width of body after removing scrollbar
+                let w2 = body.offsetWidth;
+
+                // ** Get width-difference
+                let w3 = w2 - w1;
+
+                // ** If conditions are true: add both padding-right values, 
+                if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+                {
+                    w3 += _str2dec(_orgBodyPaddingRight);
+                }
+
+                // ** Apply width-difference as padding-right to body, substitute for scrollbar,
+                // ** can prevent contentshift if content is centered when scrollbar disappears.
+                body.setAttribute('style','padding-right:' + w3 + 'px;');
+                // ** END: Creating substitute for scrollbar
+
+
+                //---------------------------------------------------------------------
+                // ** Create event-listeners
+                //---------------------------------------------------------------------
+                
+                // ** When the user clicks the X button, close the dialogbox
+                let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
+                if(xCloseDialog)
+                {
+                    xCloseDialog.addEventListener('click', function XCloseClick()
+                    {
+                        // ** Remove eventlistener
+                        xCloseDialog.removeEventListener('click', XCloseClick);
+
+                        // ** Return code 0, since user clicked X (close)
+                        obj.nRetCode = 0;
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+                        
+                        // ** Callback
+                        obj.callback();
+                    });
+                }
+                // ** END: X button click handler
+
+                // ** When the user clicks the CLOSE button, close the dialogbox
+                let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
+                if(btnCloseDialog)
+                {
+                    btnCloseDialog.addEventListener('click', function BtnCloseClick()
+                    {
+                        // ** Remove eventlistener
+                        btnCloseDialog.removeEventListener('click', BtnCloseClick);
+
+                        // ** Return code 0, since user clicked Close
+                        obj.nRetCode = 0;
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+                        
+                        // ** Callback
+                        obj.callback();                        
+                    });
+                }
+                // ** END: CLOSE button click handler
+
+                // ** When the user clicks anywhere outside of the dialogbox, close it
+                window.addEventListener('click', function WinCloseClick(evt)
+                {
+                    if(evt.target == dlg)
+                    {
+                        // ** Remove eventlistener
+                        window.removeEventListener('click', WinCloseClick);
+                        
+                        // ** Return code 0, since user clicked outside box
+                        obj.nRetCode = 0;
+                        
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+                        
+                        // ** Callback
+                        obj.callback();
+                    }
+                });
+                // ** END: window click outside box click handler
+
+                // ** If YES-NO messagebox, create click handler for YES and NO buttons
+                if(dlg.classList.contains('dlg-yes-no')
+                || dlg.classList.contains('dlg-yes')
+                || dlg.classList.contains('dlg-no')
+                )
+                {
+                    // ** When the user clicks the YES button
+                    let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
+                    if(btnYesDialog)
+                    {
+                        btnYesDialog.addEventListener('click', function BtnYesClick()
+                        {
+                            // ** Remove eventlistener
+                            btnYesDialog.removeEventListener('click', BtnYesClick);
+                            
+                            // ** Return code 1, since user clicked YES
+                            obj.nRetCode = 1;
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+                            
+                            // ** Callback
+                            obj.callback();
+                        });
+                    }
+
+                    // ** When the user clicks the NO button
+                    let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
+                    if(btnNoDialog)
+                    {
+                        btnNoDialog.addEventListener('click', function BtnNoClick()
+                        {
+                            // ** Remove eventlistener
+                            btnNoDialog.removeEventListener('click', BtnNoClick);
+                            
+                            // ** Return code 2, since user clicked NO
+                            obj.nRetCode = 2;
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+                            
+                            // ** Callback
+                            obj.callback();
+                        });
+                    }
+                }
+                // ** END: YES-NO button click handlers
+
+                // ** If OK-CANCEL messagebox, create click handler for OK and CANCEL buttons
+                if(dlg.classList.contains('dlg-ok-cancel')
+                || dlg.classList.contains('dlg-ok')
+                || dlg.classList.contains('dlg-cancel')
+                )
+                {
+                    // ** When the user clicks the OK button
+                    let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
+                    if(btnOkDialog)
+                    {
+                        btnOkDialog.addEventListener('click', function BtnOkClick()
+                        {
+                            // ** Remove eventlistener
+                            btnOkDialog.removeEventListener('click', BtnOkClick);
+                            
+                            // ** Return code 3, since user clicked OK
+                            obj.nRetCode = 3;
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+                            
+                            // ** Callback
+                            obj.callback();                            
+                        });
+                    }
+
+                    // ** When the user clicks the Cancel button
+                    let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
+                    if(btnCancelDialog)
+                    {
+                        btnCancelDialog.addEventListener('click', function BtnCancelClick()
+                        {
+                            // ** Remove eventlistener
+                            btnCancelDialog.removeEventListener('click', BtnCancelClick);
+                            
+                            // ** Return code 4, since user clicked Cancel
+                            obj.nRetCode = 4;
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+                            
+                            // ** Callback
+                            obj.callback();
+                        });
+                    }
+                }
+                // ** END: OK-CANCEL button click handlers
+
+                // ** When the user types in promptbox, update variable obj.strInput
+                let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                if(pBox)
+                {
+                    pBox.addEventListener('keyup', function PromptBoxKeyUp()
+                    {
+                        obj.strInput = pBox.value.trim();
+                    });
+
+                    pBox.addEventListener('change', function PromptBoxChange()
+                    {
+                        obj.strInput = pBox.value.trim();
+                    });
+                }
+                // ** END: When the user types in promptbox
+
+                //---------------------------------------------------------------------
+                // ** END: Create event-listeners
+                //---------------------------------------------------------------------
+
+                // ** Set flag to indicate box is active and is shown
+                _isActive = true;
+
+                // ** Return success
+                return true;
+            }
+            else if(!match)
+            {
+                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strTypeClass);
+            }
+            else if(_isActive)
+            {
+                _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+            }
+            else if(!dlg)
+            {
+                _log('DEBUG: show(): Error, element id \'' + objId + '\' do not exist!\nReturned value = ' + dlg);
+            }
+            else
+            {
+                _log('DEBUG: show(): Unknown error!');
+            }
+
+            // ** Return failure
+            return false;
+        },
+
+        // ** Close and destroy the dialog box
+        destroy : function(objId)
+        {
+            let success = false; // default
+            
+            // ** Get body element, reset values, restore scrolling
+            let body = document.getElementsByTagName('body')[0];
+            body.classList.remove('dlg-stop-scrolling');
+            body.setAttribute('style', 'padding-right:' + _str2dec(_orgBodyPaddingRight) + 'px;');
+
+            // ** Get the dlg element
+            let dlg = document.getElementById(objId);
+            
+            // ** Hide the box
+            if(dlg)
+            {
+                dlg.style.display = 'none';
+            }
+
+            // ** If promptbox was created, remove eventlisteners
+            let pBox = dlg.getElementsByClassName('dlg-input-field')[0];            
+            if(pBox)
+            {
+                pBox.onkeyup = null;
+                pBox.onchange = null;
+            }
+
+            // ** Remove dialogbox, reset values
+            if(dlg)
+            {
+                // ** Remove box from DOM
+                dlg.parentNode.removeChild(dlg);
+                
+                // ** Get object
+                let obj = _getObjFromId(_boxObj, objId);
+
+                // ** If box was created, remove it from array, unless "obj.bKeepAlive = true"
+                if(!obj.bKeepAlive)
+                {
+                    // ** Remove object from array
+                    let index = _boxObj.indexOf(obj);
+                    if(index > -1)
+                    {
+                        setTimeout(function()
+                        {
+                            _boxObj.splice(index, 1);
+                            _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
+                            success = true;
+                        }, 1);
+                    }
+                    else
+                    {
+                        _log('DEBUG: destroy(): Error, object not found in array!');
+                        success = false;
+                    }
+                }
+                // ** If bKeepAlive is true, then do not remove object
+                else if(obj.bKeepAlive)
+                {
+                    _log('DEBUG: destroy(): obj.bKeepAlive = true | Object not deleted from array');
+                    success = false;
+                }
+            }
+
+            // ** Reset flag 
+            _isActive = false;
+
+            // ** Return result
+            return success;
+        }
+    }
+    //----------------------------------------------------------
+    // ** END: Public methods
+    //----------------------------------------------------------
+})();
+//-----------------------------------------------------------------------------------------------------------------
+// ** END: EasyDialogBox Object (module)
+//-----------------------------------------------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------------------------------------------
+// ** Initialize
+//-----------------------------------------------------------------------------------------------------------------
+(function()
 {
-    console.log('Hello from myOtherCallbackFunc');
-    console.log('myOtherCallbackFunc(): nRetCode = ' + nRetCode);
-    console.log('myOtherCallbackFunc(): strInput = ' + strInput);
-};
+    EasyDialogBox.init();
+}
+)();
 //-----------------------------------------------------------------------------------------------------------------
-// ** END: Callback Examples
+// ** END: Initialize
 //-----------------------------------------------------------------------------------------------------------------
-</script>
-</head>
-<body>
-    <div id="page">
-    
-        <div id="main_heading">
-            <h1>EasyDialogBox</h1>
-            <p>Easy to use html-css-javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
-            <p>Lightweight. Responsive. Plain vanilla Javascript, no libraries.</p>
-        </div>
-        
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <div>
-            <h2>HOW TO ?</h2>
-            <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
-        </div>
-        
-        <div class="codeview">
-<b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">&quot;text/css&quot;</b> <b class="att">media</b>=<b class="val">&quot;screen&quot;</b> <b class="att">rel</b>=<b class="val">&quot;stylesheet&quot;</b> <b class="att">href</b>=<b class="val">&quot;<a href="css/easydlg.css">css/easydlg.css</a>&quot;</b> <b class="tag">/&gt;</b>
-
-<b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">&quot;<a href="js/easydlg.js">js/easydlg.js</a>&quot;</b><b class="tag">&gt;&lt;/script&gt;</b>
-        </div>
-
-        <div>
-            <h3>Then it can be used like the example below, or <a href="#html_box" title="Read more..">boxes can be created with pre-written HTML.</a></h3>
-        </div>
-
-        <div id="code_info_heading" class="section">
-            <h2>Dialog box objects</h2>
-            <h3>Create dialogboxes on the go directly in Javascript code.</h3>
-            
-            <p>&nbsp;</p>
-            
-            <h2>Create dialog</h2>
-            <p>
-                <code>let myObject = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
-            </p>
-            
-            <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
-            
-            <p class="bold">Parameters:</p>
-            
-            <p><code>id</code> = custom id 'string', if not used then you must set it to <code>null</code> or <code>0</code> (zero)</p>
-
-            <p>
-                <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
-                <table id="paramTable">
-                    <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
-                    <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
-                    <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
-                    <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
-                    <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
-                    <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
-                    <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
-                    <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
-                    <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-                    <tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
-                    <tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
-                    <tr><td>dlg-no-overlay</td><td>Disable background color/translucent overlay.</td></tr>
-                    <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
-                </table>
-            </p>
-            <p>&nbsp;</p>
-            <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
-            <p><code>strMessage</code> = message, can be html or just plain text.</p>
-            <p>Optional: <code>fnCallback</code> = callback function that executes when box closes.</p>
-            <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
-            <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
-            <p>And then you can delete it with <code>myObject.destroy();</code></p>
-
-            <p>&nbsp;</p>
-            
-            <table id="objTable">
-                <thead>
-                    <tr><th colspan="2">All object properties, readable/writable</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>id</td><td>string, number or null</td></tr>
-                    <tr><td>strTypeClass</td><td>string</td></tr>
-                    <tr><td>strTitle</td><td>string</td></tr>
-                    <tr><td>strMessage</td><td>string</td></tr>
-                    <tr><td>bKeepAlive</td><td>boolean</td></tr>
-                    <tr><td>strInput</td><td>string</td></tr>
-                    <tr><td>nRetCode</td><td>number</td></tr>
-                </tbody>
-            </table>
-            
-            <p>&nbsp;</p>
-            
-            <h2>Show dialog</h2>
-            <p>
-                <code>myObject.show();</code>
-            </p>
-            <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
-
-            <p>&nbsp;</p>
-            
-            <h2>Destroy dialog</h2>
-            <p>
-                <code>myObject.destroy();</code>
-            </p>
-            <p>Return value = <span class="ital word">true</span> if object was deleted or reset, if not then <span class="ital word">false</span></p>
-       
-            <p>&nbsp;</p>
-            
-            <h2>Example</h2>
-            <div class="codeview">
-<b class="comment">// Javascript ...</b>
-
-<b class="comment">// ** Create a new dialogbox object</b>
-<b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'Hello there!'</b><b class="func">,</b> myCallbackFunc<b class="func">)</b>;
-
-<b class="comment">// ** Show the newly created box</b>
-myBox<b class="func">.show()</b>;
-
-<b class="comment">// ** To programatically destroy the box, you can do</b>
-myBox<b class="func">.destroy()</b>;
-
-<b class="comment">// ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box</b>
-<b class="comment">// ..unless the object got variable: bKeepAlive = true </b>
-<b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b>
-<b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
-
-<b class="comment">// ** Example of a callback function (using &quot;var&quot; for &quot;hoisting&quot;)</b>
-<b class="keyword">var</b> myCallbackFunc <b class="equal">=</b> <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
-<b class="func">{</b>
-    <b class="comment">// Example of some code to handle callback</b>
-    
-    <b class="keyword">if</b><b class="func">(</b>nRetCode <b class="equal">===</b> <b class="num">1</b><b class="func">)</b>
-    <b class="func">{</b>
-        <b class="comment">// ... user clicked &quot;Yes&quot; button</b>
-    <b class="func">}</b>
-    
-    <b class="keyword">if</b><b class="func">(</b>strInput <b class="equal">!==</b> <b class="param">''</b><b class="func">)</b>
-    <b class="func">{</b>
-        <b class="comment">// ... user typed something in the input field of promptbox</b>
-    <b class="func">}</b>
-<b class="func">}</b>;
-
-<b class="comment">// ...</b>
-            </div>
-            
-            <div>
-                <h2>Return values</h2>
-                <p>Each created <code>object</code> has 2 public variables that can be accessed: <code>nRetCode</code> and <code>strInput</code>
-                <p>These are intended to be used in the <code>object.callback()</code> function for further processing.</p>
-                <table class="returnTable">
-                    <thead>
-                        <tr><th colspan="2"><code>object.nRetCode</code> &nbsp;&nbsp;&nbsp; ( typeof = 'number' )</th></tr>
-                        <tr><th>Value</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>0</td><td>&quot;Close&quot; button, outside box or [X] clicked</td></tr>
-                        <tr><td>1</td><td>&quot;Yes&quot; button clicked</td></tr>
-                        <tr><td>2</td><td>&quot;No&quot; button clicked</td></tr>
-                        <tr><td>3</td><td>&quot;OK&quot; button clicked</td></tr>
-                        <tr><td>4</td><td>&quot;Cancel&quot; button clicked</td></tr>
-                    </tbody>
-                </table>
-                
-                <p>&nbsp;</p>
-                
-                <table class="returnTable">
-                    <thead>
-                        <tr><th colspan="2"><code>object.strInput</code> &nbsp;&nbsp;&nbsp; ( typeof = 'string' )</th></tr>
-                        <tr><th>Value</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>string</td><td>just a string of text</td></tr>
-                    </tbody>
-                </table>
-                <p>See the examples in sourcecode for more information on how to use them.</p>
-                <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
-            </div>
-            
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            
-            <div>
-                <h2>Two extra public functions that also can be used:</h2>
-            </div>
-            
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            
-            <div>
-                <h2>Get dialog object based on its id</h2>
-                <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
-                <p>
-                    <code>let myObject = EasyDialogBox.getById(id);</code>
-                </p>
-                <p>Return value = <span class="ital word">object</span> or <span class="ital word">null</span> if could not be found.</p>
-            </div>
-
-            <p>&nbsp;</p>
-            
-            <div>
-                <h2>Get all dialog objects</h2>
-                <p>Get all dialogbox objects that is currently stored in the object-array.</p>
-                <p>
-                    <code>let myArray = EasyDialogBox.getAll();</code>
-                </p>
-                <p>Return value = <span class="ital word">array</span></p>
-            </div>
-            
-        </div>
-        
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <hr />
-        
-        <div id="html_info_heading" class="section">
-            <h2 id="html_box">Create dialog box with pre-written HTML</h2>
-            <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
-            <p>If you just want to display a simple messagebox with some info, then you only have to write HTML.</p>
-            
-            <p>&nbsp;</p>
-            
-            <div>
-                <h2>Attribute values</h2>
-                <p>The <code>rel</code> attribute value must contain the <cod>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
-                <p>( Don't have to be a <code>&lt;button&gt;</code>, it can be any element you want to use as an opener. )</p>
-                <p>Add class <code>dlg-opener</code> to the opening element, in this case a <code>&lt;button&gt;</code>, to make it open a box, a click-event-handler will automatically be created for it.</p>
-            </div>
-        
-            <p>&nbsp;</p>
-            
-            <h2>Examples</h2>
-            
-            <div class="examples">    
-                <h3 class="headings">The default box, with 'Close' button</h3>
-                <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
-                <p>Return value: Close = <span class="ital word">0</span></p>
-            
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message, line one<b class="tag">&lt;br /&gt;</b>
-       this is line two.<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myBox" class="dlg-opener">Open</button></p>
-            </div>
-            
-            <div class="examples">
-                <h3 class="headings">A default &quot;error box&quot;</h3>
-                <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
-                <p>Return value: Close = <span class="ital word">0</span></p>
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
-            </div>
-            
-            <div class="examples">
-                <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
-                <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
-                <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
-            </div>
-            
-            <div class="examples">
-                <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
-                <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
-            </div>
-            
-            <div class="examples">
-                <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code class="val">dlg-prompt</code></p>
-                <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
-            </div>
-
-            <div class="examples">
-                <h3 class="headings">Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
-                <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
-                <p>
-                    Return value:
-                    input = <span class="ital word">string</span>, 
-                    Close = <span class="ital word">0</span>, 
-                    Yes = <span class="ital word">1</span>,
-                    No = <span class="ital word">2</span>, 
-                    OK = <span class="ital word">3</span>,
-                    Cancel = <span class="ital word">4</span>
-                </p>
-                <div class="codeview">
-<b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
-
-    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b>
-    
-<b class="tag">&lt;/div&gt;</b>
-    
-<b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b>
-                </div>
-                <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
-            </div>
-        </div>        
-        
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        
-        <div>
-            <h2>Have fun! :-)</h2>
-        </div>
-    </div>
-    
-    <!-- HTML pre-written dialog boxes -->
-    
-    <div id="myBox" class="dlg" title="Title text" name="myCallbackFunc">
-        <p>This is a message, line one<br />
-        this is line two.</p>
-    </div>
-
-    <div id="myBoxError" class="dlg dlg-error" title="Title text" name="myCallbackFunc">
-        <p>This is a message</p>
-    </div>
-    
-    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" name="myCallbackFunc">
-        <p>Create a new dialogbox on the fly ?</p>
-    </div>
-    
-    <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" name="myCallbackFunc">
-        <p>This is a message</p>
-    </div>    
-    
-    <div id="myPromptBox" class="dlg-prompt" title="Title text" name="myCallbackFunc">
-        <p>This is a message</p>
-    </div>    
-    
-    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" name="myCallbackFunc">
-        <p>This is a message</p>
-    </div>        
-    
-    <!-- END: HTML pre-written dialog boxes -->
-    
-</body>
-</html>
