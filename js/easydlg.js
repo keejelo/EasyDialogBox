@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.520
+// ** EasyDialogBox 1.521
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -136,13 +136,13 @@ let EasyDialogBox = (function()
         },
         
         // ** Get all objects
-        getAllObj : function()
+        getAll : function()
         {
             return _boxObj;
         },
         
         // ** Get object from id, can be used to get object from a pre-written HTML box by searching for its 'id' in the array of objects
-        getObjById : function(id)
+        getById : function(id)
         {
             return _getObjFromId(_boxObj, id);
         },
