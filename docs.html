@@ -163,6 +163,22 @@ b
     border:1px #000 solid;
     color:inherit;
 }
+.returnTable thead th
+{
+    text-align:left;
+}
+.returnTable thead th+th
+{
+    text-align:center;
+}
+.returnTable tbody td
+{
+    text-align:center;
+}
+.returnTable tbody td+td
+{
+    text-align:left;
+}
 a
 {
     color:#000;
@@ -368,20 +384,27 @@ myBox<b class="func">.destroy()</b>;
                 <p>Each created <code>object</code> has 2 public variables: <code>nRetCode</code> and <code>strInput</code>,
                 <p>which are intended to be used in the <code>object.callback()</code> function for further processing.</p>
                 <table class="returnTable">
-                    <tr><td colspan="2"><code>object.nRetCode</code></td></tr>
-                    <tr><th>Value</th><th>Description</th></tr>
-                    <tr><td>0</td><td>"X", "Close" button or outside box clicked</td></tr>
-                    <tr><td>1</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
-                    <tr><td>2</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
-                    <tr><td>3</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
-                    <tr><td>4</td><td>Dialog with No button, add No button to dialog.</td></tr>
-                    <tr><td></td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
+                    <thead>
+                        <tr><th colspan="2"><code>object.nRetCode</code></th></tr>
+                        <tr><th>Value</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>[X], Close button or outside box clicked</td></tr>
+                        <tr><td>1</td><td>Yes button clicked</td></tr>
+                        <tr><td>2</td><td>No button clicked</td></tr>
+                        <tr><td>3</td><td>OK button clicked</td></tr>
+                        <tr><td>4</td><td>Cancel button clicked</td></tr>
+                    </tbody>
                 </table>
                 <p>&nbsp;</p>
                 <table class="returnTable">
-                    <tr><td colspan="2"><code>object.strInput</code></tr>
-                    <tr><th>Value</th><th>Description</th></tr>
-                    <tr><td>string</td><td>just a string of text</td></tr>
+                    <thead>
+                        <tr><th colspan="2"><code>object.strInput</code></th></tr>
+                        <tr><th>Value</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>string</td><td>just a string of text</td></tr>
+                    </tbody>
                 </table>
                 <p>See the examples in sourcecode for more information on how to use them.</p>
                 <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
