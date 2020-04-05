@@ -100,25 +100,37 @@ button
     border:1px #666b7a solid; /* 51a451 666b7a */
     border-left-width:6px;
 }
-#paramTable, .returnTable, #objTable
+#paramTable,
+.returnTable,
+#objTable
 {
     border-collapse:collapse;
     background-color:#fafafa;
 }
-#paramTable th, .returnTable th, #objTable th
+#paramTable th,
+.returnTable th,
+#objTable th
 {
     background-color:#fff;
     border:1px #000 solid;
     padding:5px;
 }
-#paramTable td, .returnTable td, #objTable td
+#paramTable td,
+.returnTable td,
+#objTable td
 {
-    /*font-weight:bold;*/
     border:1px #000 solid;
     padding:6px;
-    /*color:#444;*/
 }
-#paramTable td+td, .returnTable td+td, #objTable td+td
+#paramTable td:first-child,
+.returnTable td:first-child,
+#objTable td:first-child
+{
+    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
+}
+#paramTable td+td,
+.returnTable td+td,
+#objTable td+td
 {
     font-weight:normal;
     border:1px #000 solid;
@@ -127,10 +139,6 @@ button
 .returnTable thead th
 {
     text-align:left;
-}
-.returnTable thead th+th
-{
-    
 }
 .returnTable tbody td
 {
@@ -470,7 +478,7 @@ myBox<b class="func">.destroy()</b>;
                         <tr><th>Value</th><th>Description</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>string</td><td>just a string of text</td></tr>
+                        <tr><td>string</td><td>A string of text</td></tr>
                     </tbody>
                 </table>
                 <p>See the examples in sourcecode for more information on how to use them.</p>
