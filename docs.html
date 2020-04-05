@@ -69,13 +69,13 @@ h1, h2, h3, h4, h5, h6
 }
 code
 {
-    font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace;
+    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
     font-size:inherit;
     font-weight:normal;
-    /*color:#0000ff;*/
-    color:#fff;
-    background-color:#3a3e4c; /* fafafa 1d1e22 3a3e4c*/
+    color:#000;
+    background-color:#f2f2f2;
     padding:2px 5px;
+    border:1px solid #ccc;
 }
 button
 {
@@ -92,7 +92,7 @@ button
     padding:10px;
     overflow:scroll;
     white-space:pre;
-    font-family:Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace;
+    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
     font-size:inherit;
     line-height:normal;
     background-color:#3a3e4c; /* fafafa 1d1e22 */
@@ -312,7 +312,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
         <p>&nbsp;</p>
         <div>
             <h2>HOW TO ?</h2>
-            <h3>Include CSS and Javascript files between <code class="tag">&lt;head&gt; &lt;/head&gt;</code></h3>
+            <h3>Include CSS and Javascript files between <code>&lt;head&gt; &lt;/head&gt;</code></h3>
         </div>
         
         <div class="codeview">
@@ -533,7 +533,7 @@ myBox<b class="func">.destroy()</b>;
             
             <div class="examples">    
                 <h3 class="headings">The default box, with 'Close' button</h3>
-                <p>Class <code class="val">dlg</code> or <code class="val">dlg-close</code></p>
+                <p>Class <code>dlg</code> or <code>dlg-close</code></p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
             
                 <div class="codeview">
@@ -551,7 +551,7 @@ myBox<b class="func">.destroy()</b>;
             
             <div class="examples">
                 <h3 class="headings">A default &quot;error box&quot;</h3>
-                <p>Class <code class="val">dlg</code> and <code class="val">dlg-error</code> to display icon.</p>
+                <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
                 <div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
@@ -567,7 +567,7 @@ myBox<b class="func">.destroy()</b>;
             
             <div class="examples">
                 <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
-                <p>Class <code class="val">dlg-yes-no</code> and <code class="val">dlg-question</code> to display icon.</p>
+                <p>Class <code>dlg-yes-no</code> and <code>dlg-question</code> to display icon.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
                 <div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
@@ -583,7 +583,7 @@ myBox<b class="func">.destroy()</b>;
             
             <div class="examples">
                 <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code class="val">dlg-ok-cancel</code> and <code class="val">dlg-exclamation</code> to display icon.</p>
+                <p>Class <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
@@ -599,7 +599,7 @@ myBox<b class="func">.destroy()</b>;
             
             <div class="examples">
                 <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code class="val">dlg-prompt</code></p>
+                <p>Class <code>dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview">
 <b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b>
@@ -615,7 +615,7 @@ myBox<b class="func">.destroy()</b>;
 
             <div class="examples">
                 <h3 class="headings">Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
-                <p>Class <code class="val">dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
+                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#otf">read more on classes</a>)</p>
                 <p>
                     Return value:
                     input = <span class="ital word">string</span>, 
