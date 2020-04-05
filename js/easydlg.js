@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.532
+// ** EasyDialogBox 1.533
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -28,9 +28,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox = (function()
 {   'use strict';
-
-    // Fix null bug, use NULL instead
-    const NULL = 0;
     
     // ** Debug: true/false (outputs debug-messages to console)
     let DEBUG = true;
