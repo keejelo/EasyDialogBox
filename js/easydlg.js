@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.518
+// ** EasyDialogBox 1.519
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -12,7 +12,7 @@
 //
 // object.nRetCode:
 //
-//  0 = "X", "Close" button or outside box clicked
+//  0 = "Close" button, outside box or [X] clicked
 //  1 = "Yes" button clicked
 //  2 = "No" button clicked
 //  3 = "OK" button clicked
