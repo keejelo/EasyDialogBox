@@ -240,7 +240,7 @@ b
 //---------------------------------------------------------------------
 
 // ** One example of a callback function
-var myCallbackFunc = function (nRetCode, strInput)
+var myCallbackFunc = function(nRetCode, strInput)
 {
     if(nRetCode === 0)
     {
@@ -286,10 +286,12 @@ var myCallbackFunc = function (nRetCode, strInput)
     
 };
 
-// ** Regular function used as callback
-var myOtherCallbackFunc = function()
+// ** Another regular function used as callback
+var myOtherCallbackFunc = function(nRetCode, strInput)
 {
 	console.log('Hello from: myOtherCallbackFunc()');
+    console.log('myOtherCallbackFunc(): nRetCode = ' + nRetCode);
+    console.log('myOtherCallbackFunc(): strInput = ' + strInput);
 };
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Callback Examples
