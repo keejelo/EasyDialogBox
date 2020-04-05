@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.519
+// ** EasyDialogBox 1.520
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -826,7 +826,7 @@ let EasyDialogBox = (function()
                 // ** If bKeepAlive is true, then do not remove object
                 else if(obj.bKeepAlive)
                 {
-                    _log('DEBUG: destroy(): obj.bKeepAlive = true | Object was NOT deleted from array');
+                    _log('DEBUG: destroy(): obj.bKeepAlive = true | Object not deleted from array');
                     success = false;
                 }
             }
