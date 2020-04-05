@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.526
+// ** EasyDialogBox 1.528
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -121,19 +121,13 @@ let EasyDialogBox = (function()
         return false;
     };
 
-    // ** Reference to this object itself (after register() has run)
+    // ** Object self
     let _that = null;
 
     //---------------------------------------------------------------------
     // ** Public methods
     //---------------------------------------------------------------------
     return { //<-- bracket need to be on same line, else it just returns: undefined
-
-        // ** Register self awareness, variable used in event-listeners to point to this object
-        register : function()
-        {
-            _that = this;
-        },
         
         // ** Get all objects
         getAll : function()
@@ -150,6 +144,10 @@ let EasyDialogBox = (function()
         // ** Initialize
         init : function()
         {
+            // ** Set reference to object
+            _that = this;
+            
+            // ** Window load event
             window.addEventListener('load', function windowLoad()
             {
                 // ** Get all elements with class containing 'dlg-opener'
@@ -852,14 +850,13 @@ let EasyDialogBox = (function()
 
 
 //-----------------------------------------------------------------------------------------------------------------
-// ** Activate and start
+// ** Initialize
 //-----------------------------------------------------------------------------------------------------------------
 (function()
 {
-    EasyDialogBox.register();
     EasyDialogBox.init();
 }
 )();
 //-----------------------------------------------------------------------------------------------------------------
-// ** END: Activate and start
+// ** END: Initialize
 //-----------------------------------------------------------------------------------------------------------------
