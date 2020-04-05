@@ -244,11 +244,11 @@ var myCallbackFunc = function(nRetCode, strInput)
 {
     if(nRetCode === 0)
     {
-        console.log('CALLBACK: User clicked Close button, outside box or X, returncode = ' + nRetCode);
+        console.log('CALLBACK: User clicked "Close" button, outside box or [X], returncode = ' + nRetCode);
     }    
     else if(nRetCode === 1)
     {
-        console.log('CALLBACK: User clicked Yes button, returncode = ' + nRetCode);
+        console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
         
         // ** Example: Create a dialog on the fly!
         let myFlyBox = EasyDialogBox.create(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
@@ -267,15 +267,15 @@ var myCallbackFunc = function(nRetCode, strInput)
     }
     else if(nRetCode === 2)
     {
-        console.log('CALLBACK: User clicked No button, returncode = ' + nRetCode);
+        console.log('CALLBACK: User clicked "No" button, returncode = ' + nRetCode);
     }
     else if(nRetCode === 3)
     {
-        console.log('CALLBACK: User clicked OK button, returncode = ' + nRetCode);
+        console.log('CALLBACK: User clicked "OK" button, returncode = ' + nRetCode);
     }
     else if(nRetCode === 4)
     {
-        console.log('CALLBACK: User clicked Cancel button, returncode = ' + nRetCode);
+        console.log('CALLBACK: User clicked "Cancel" button, returncode = ' + nRetCode);
     }
     
     // ** Check if any text was typed in input
