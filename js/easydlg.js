@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.523
+// ** EasyDialogBox 1.524
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -162,12 +162,12 @@ let EasyDialogBox = (function()
                     let dlg = document.getElementById(btns[i].getAttribute('rel'));
                     
                     // ** Create object from DOM element
-                    let obj = _that.create(dlg.getAttribute('id'),
-                                           dlg.getAttribute('class'), 
-                                           dlg.getAttribute('title'),
-                                           dlg.innerHTML,
-                                           dlg.getAttribute('name'),
-                                           true);
+                    let obj = _that.create(dlg.getAttribute('id'),      // id
+                                           dlg.getAttribute('class'),   // type
+                                           dlg.getAttribute('title'),   // title
+                                           dlg.innerHTML,               // message
+                                           dlg.getAttribute('name'),    // callback function
+                                           true);                       // do not delete on closing
 
                     // ** Create click handler for each element
                     btns[i].addEventListener('click', function DlgOpenerClick(evt)
