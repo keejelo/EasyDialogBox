@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.516
+// ** EasyDialogBox 1.517
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -152,30 +152,31 @@ let EasyDialogBox = (function()
         {
             window.addEventListener('load', function windowLoad()
             {
-                // ** Get all elements with 'class' containing 'dlg-opener'
+                // ** Get all elements with class containing 'dlg-opener'
                 let btns = document.getElementsByClassName('dlg-opener');
 
-                // ** Create click handler for each element that contain above 'class'
+                // ** Create objects and click handler for each element that contain class 'dlg-opener'
                 for(let i = 0; i < btns.length; i++)
-                {
+                {                    
+                    // ** Get element from DOM
+                    let dlg = document.getElementById(btns[i].getAttribute('rel'));
+                    
+                    // ** Create object from DOM element
+                    let obj = _that.create(dlg.getAttribute('id'),
+                                           dlg.getAttribute('class'), 
+                                           dlg.getAttribute('title'),
+                                           dlg.innerHTML,
+                                           dlg.getAttribute('name'),
+                                           true);
+
+                    // ** Create click handler for each element
                     btns[i].addEventListener('click', function DlgOpenerClick(evt)
                     {
-                        _that.show(this.getAttribute('rel')); // show the dialogbox with the 'id' referenced in 'rel' attribute
+                        obj.show(); // show the dialogbox with the 'id' referenced in 'rel' attribute
                         this.blur(); // remove focus from button or other opening element
                         evt.preventDefault(); // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
                         evt.stopPropagation(); // prevent bubbling up to parent elements or capturing down to child elements
                     });
-                    
-                    // ** Get dlg element
-                    let dlg = document.getElementById(btns[i].getAttribute('rel'));
-                    
-                    // ** Create object
-                    let success = _that.create(btns[i].getAttribute('rel'),
-                                               dlg.getAttribute('class'), 
-                                               dlg.getAttribute('title'),
-                                               dlg.innerHTML,
-                                               dlg.getAttribute('name'),
-                                               true);
                 }
             });
         },
