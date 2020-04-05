@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.521
+// ** EasyDialogBox 1.522
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -182,9 +182,9 @@ let EasyDialogBox = (function()
         },
 
         // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
-        create : function(strId, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+        create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
         {
-            let match = _matchAll(_strBoxTypeList, strBoxTypeClass, true);
+            let match = _matchAll(_strBoxTypeList, strTypeClass, true);
 
             // ** Check if valid types
             if(match === true)
@@ -216,9 +216,9 @@ let EasyDialogBox = (function()
                 {
                     // ** Variables
                     id : strId,
-                    typeClass : strBoxTypeClass,
-                    title : strTitle,
-                    message : strMessage,
+                    strTypeClass : strTypeClass,
+                    strTitle : strTitle,
+                    strMessage : strMessage,
                     bKeepAlive : bKeepAlive,
                     strInput : '',
                     nRetCode : -1,
@@ -272,7 +272,7 @@ let EasyDialogBox = (function()
             }
             else
             {
-                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strTypeClass);
             }
             return null; // return failure
         },
@@ -296,15 +296,15 @@ let EasyDialogBox = (function()
             // ** Create box and insert into parent element
             let dlg = document.createElement('div');
             dlg.setAttribute('id', obj.id);
-            dlg.setAttribute('class', obj.typeClass);
+            dlg.setAttribute('class', obj.strTypeClass);
             body.appendChild(dlg);
             
-            let strBoxTypeClass = obj.typeClass;
+            let strTypeClass = obj.strTypeClass;
             let match = null;
             
             if(dlg)
             {
-                match = _matchAll(_strBoxTypeList, obj.typeClass, true);
+                match = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
             }
 
             // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
@@ -328,7 +328,7 @@ let EasyDialogBox = (function()
                 heading.appendChild(closeX);
 
                 // ** Create title
-                let titleText = document.createTextNode(obj.title);
+                let titleText = document.createTextNode(obj.strTitle);
                 heading.appendChild(titleText);
 
                 // ** Create message
@@ -380,7 +380,7 @@ let EasyDialogBox = (function()
                     // ** Create right box
                     rightbox = document.createElement('div');
                     rightbox.setAttribute('class','dlg-flexbox-right');
-                    rightbox.innerHTML = obj.message;
+                    rightbox.innerHTML = obj.strMessage;
                     
                     // ** Insert it into parent div
                     message.appendChild(rightbox);
@@ -388,7 +388,7 @@ let EasyDialogBox = (function()
                 else
                 {
                     message.setAttribute('class','dlg-message');
-                    message.innerHTML = obj.message;
+                    message.innerHTML = obj.strMessage;
                 }
                 box.appendChild(message);
 
@@ -748,7 +748,7 @@ let EasyDialogBox = (function()
             }
             else if(!match)
             {
-                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strBoxTypeClass);
+                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + strTypeClass);
             }
             else if(_isActive)
             {
