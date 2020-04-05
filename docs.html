@@ -342,7 +342,7 @@ var myOtherCallbackFunc = function()
 <b class="comment">// Javascript ...</b>
 
 <b class="comment">// ** Create a new dialog on the fly</b>
-<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b>(<b class="keyword">null</b>, <b class="param">'dlg dlg-success'</b>, <b class="param">'My title'</b>, <b class="param">'Hello on the fly!'</b>, myCallbackFunc);
+<b class="keyword">let</b> myBox = <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'Hello on the fly!'</b><b class="func">,</b> myCallbackFunc<b class="func">)</b>;
 
 <b class="comment">// ** Show the newly created box</b>
 myBox<b class="func">.show()</b>;
@@ -355,6 +355,10 @@ myBox<b class="func">.destroy()</b>;
 <b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b>
 <b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
 
+<b class="keyword">var</b> myCallbackFunc = <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
+<b class="func">{</b>
+    <b class="comment">// ..some code to handle callback..</b>
+<b class="func">}</b>;
 
 <b class="comment">// ..some other code..bla blah..</b>
             </div>
