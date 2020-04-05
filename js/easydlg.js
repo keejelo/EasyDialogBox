@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox 1.528
+// ** EasyDialogBox 1.529
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -144,7 +144,7 @@ let EasyDialogBox = (function()
         // ** Initialize
         init : function()
         {
-            // ** Set reference to object
+            // ** Set reference to object self
             _that = this;
             
             // ** Window load event
