@@ -340,7 +340,25 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <h2>Dialog box objects</h2>
             <h3>Create dialogboxes on the go directly in Javascript code.</h3>
             
-            <p>&nbsp;</p>
+            <table id="objTable">
+                <thead>
+                    <tr><th colspan="2">All object properties, readable/writable</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>id</td><td>string, null or 0 (zero)</td></tr>
+                    <tr><td>strTypeClass</td><td>string</td></tr>
+                    <tr><td>strTitle</td><td>string</td></tr>
+                    <tr><td>strMessage</td><td>string</td></tr>
+                    <tr><td>strInput</td><td>string</td></tr>
+                    <tr><td>nRetCode</td><td>number</td></tr>
+                    <tr><td>bKeepAlive</td><td>boolean</td></tr>
+                    <tr><td>callback</td><td>function</td></tr>
+                    <tr><td>show</td><td>function (do not overwrite)</td></tr>
+                    <tr><td>destroy</td><td>function (do not overwrite)</td></tr>
+                </tbody>
+            </table>
+            
+            <p>&nbsp;</p>            
             
             <h2>Create dialog</h2>
             <p>
@@ -375,7 +393,9 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
                     <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
                 </table>
             </p>
+            
             <p>&nbsp;</p>
+            
             <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
             <p><code>strMessage</code> = message, can be html or just plain text.</p>
             <p>Optional: <code>fnCallback</code> = callback function that executes when box closes.</p>
@@ -383,26 +403,6 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObject.destroy();</code></p>
 
-            <p>&nbsp;</p>
-            
-            <table id="objTable">
-                <thead>
-                    <tr><th colspan="2">All object properties, readable/writable</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>id</td><td>string, null or 0 (zero)</td></tr>
-                    <tr><td>strTypeClass</td><td>string</td></tr>
-                    <tr><td>strTitle</td><td>string</td></tr>
-                    <tr><td>strMessage</td><td>string</td></tr>
-                    <tr><td>strInput</td><td>string</td></tr>
-                    <tr><td>nRetCode</td><td>number</td></tr>
-                    <tr><td>bKeepAlive</td><td>boolean</td></tr>
-                    <tr><td>callback</td><td>function</td></tr>
-                    <tr><td>show</td><td>function (do not overwrite)</td></tr>
-                    <tr><td>destroy</td><td>function (do not overwrite)</td></tr>
-                </tbody>
-            </table>
-            
             <p>&nbsp;</p>
             
             <h2>Show dialog</h2>
