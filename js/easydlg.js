@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.541
+// ** Version: 1.542
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -849,7 +849,7 @@ let EasyDialogBox = (function()
         {
             return _getObjFromId(_boxObj, id);
         },
-       
+        
         // Init module
         init : function()
         {
