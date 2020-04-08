@@ -11,7 +11,7 @@ body
     margin:0;
     padding:10px;
     padding-bottom:200px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
     font-size:16px;
     background-color:#ddd;
     line-height:26px;
@@ -72,11 +72,11 @@ h1, h2, h3, h4, h5, h6
 }
 code
 {
-    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
+    font-family:Consolas, "Courier New", Courier, monospace;
     font-size:inherit;
     font-weight:normal;
     color:#24292e;
-    background-color:#f2f2f2;
+    background-color:#fafafa;/*f2f2f2*/
     padding:2px 5px;
     border:1px solid #ccc;
 }
@@ -95,7 +95,7 @@ button
     padding:10px;
     overflow:scroll;
     white-space:pre;
-    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
+    font-family:Consolas, "Courier New", Courier, monospace;
     font-size:inherit;
     line-height:normal;
     background-color:#3a3e4c; /* fafafa 1d1e22 */
@@ -129,7 +129,7 @@ button
 .returnTable td:first-child,
 #objTable td:first-child
 {
-    font-family:Consolas,"Lucida Console","Courier New",Courier,monospace;
+    font-family:Consolas, "Courier New", Courier, monospace;
 }
 #paramTable td+td,
 .returnTable td+td,
@@ -333,7 +333,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
         </div>
 
         <div>
-            <p>Then it can be used like the example below, or <a href="#html_box" title="Read more..">boxes can be created with pre-written HTML.</a></p>
+            <p>Then it can be used like the example below. Boxes can also be created with <a href="#html_box">pre-written HTML.</a></p>
         </div>
 
         <div id="code_info_heading" class="section">
@@ -341,6 +341,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p>
                 <code>EasyDialogBox</code>
             </p>
+            <p>The module is initialized when page loads if script is included as above. After that the public functions are available.</p>
 
             <p>&nbsp;</p>
             
@@ -427,7 +428,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p>
                 <code>myObject.destroy();</code>
             </p>
-            <p>Return value = <span class="ital word">true</span> if object was deleted or reset, if not then <span class="ital word">false</span></p>
+            <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
        
             <p>&nbsp;</p>
             
@@ -633,7 +634,7 @@ myBox<b class="func">.destroy()</b>;
             </div>
 
             <div class="examples">
-                <h3 class="headings">Crazy but possible! You can have more than one at the same time if you want! Mix and match as you like!</h3>
+                <h3 class="headings">You can have several types at the same time if you want! Mix and match as you like! Crazy but possible!</h3>
                 <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info</code> (<a href="#paramTable">read more on classes</a>)</p>
                 <p>
                     Return value:
