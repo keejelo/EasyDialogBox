@@ -353,7 +353,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
                         
             <h2>Create dialog</h2>
             <p>
-                <code>let myObject = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
+                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
             </p>
 
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
@@ -391,8 +391,8 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p><code>strMessage</code> = message, can be html or just plain text.</p>
             <p>Optional: <code>fnCallback</code> = callback function that executes when box closes.</p>
             <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
-            <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObject.bKeepAlive = false;</code></p>
-            <p>And then you can delete it with <code>myObject.destroy();</code></p>
+            <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObj.bKeepAlive = false;</code></p>
+            <p>And then you can delete it with <code>myObj.destroy();</code></p>
 
             <p>&nbsp;</p>
             
@@ -418,7 +418,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             
             <h2>Show dialog</h2>
             <p>
-                <code>myObject.show();</code>
+                <code>myObj.show();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
 
@@ -426,7 +426,7 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             
             <h2>Destroy dialog</h2>
             <p>
-                <code>myObject.destroy();</code>
+                <code>myObj.destroy();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
        
@@ -509,7 +509,7 @@ myBox<b class="func">.destroy()</b>;
                 <h2>Get dialog object based on its id</h2>
                 <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
                 <p>
-                    <code>let myObject = EasyDialogBox.getById(id);</code>
+                    <code>let myObj = EasyDialogBox.getById(id);</code>
                 </p>
                 <p>Return value = <span class="ital word">object</span> or <span class="ital word">null</span> if could not be found.</p>
             </div>
