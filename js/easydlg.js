@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.542
+// ** Version: 1.543
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -691,7 +691,7 @@ let EasyDialogBox = (function()
         return success;
     };
     
-    // ** Create dialog from scratch, creates a new dialog directly without pre-created HTML, use it to create dialogs on the fly.
+    // ** Create dialog
     let _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
     {
         let match = _matchAll(_strBoxTypeList, strTypeClass, true);
