@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.539
+// ** Version: 1.540
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -837,13 +837,7 @@ let EasyDialogBox = (function()
         {
             return _create(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);
         },
-        
-        // ** Destroy dialog
-        destroy : function()
-        {
-            return _destroy();
-        },
-        
+                
         // ** Get all objects
         getAll : function()
         {
@@ -860,12 +854,6 @@ let EasyDialogBox = (function()
         init : function()
         {
             return _init();
-        },
-        
-        // ** Show dialog
-        show : function()
-        {
-            return _show();
         }
     }
     //----------------------------------------------------------
