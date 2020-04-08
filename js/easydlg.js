@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.543
+// ** Version: 1.544
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -830,7 +830,7 @@ let EasyDialogBox = (function()
     //---------------------------------------------------------------------
     // ** Public methods
     //---------------------------------------------------------------------
-    return { //<-- bracket need to be on same line, else it just returns: undefined
+    return { /*<-- bracket need to be on same line, else it just returns: undefined*/
 
         // ** Create dialog
         create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
