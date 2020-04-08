@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.536
+// ** Version: 1.538
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -656,9 +656,18 @@ let EasyDialogBox = (function()
                 {
                     setTimeout(function()
                     {
-                        _boxObj.splice(index, 1);
-                        _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
-                        success = true;
+                        let wasDeleted = _boxObj.splice(index, 1);
+                        
+                        if(wasDeleted.length === 1)
+                        {
+                            success = true;
+                            _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
+                        }
+                        else
+                        {
+                            success = false;
+                            _log('DEBUG: destroy(): Error! obj.bKeepAlive = false | But object NOT deleted from array!');
+                        }
                     }, 1);
                 }
                 else
@@ -750,7 +759,8 @@ let EasyDialogBox = (function()
                         else
                         {
                             _log('typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
-                            _log('Scope? Possible solution can be to use "hoisting".\nTry to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
+                            _log('Scope? Possible solution can be to use "hoisting".');
+                            _log('Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
                             _log('..or declare the callback function before the module "EasyDialogBox" is initialized');
                         }
                     }
