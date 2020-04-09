@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.545
+// ** Version: 1.548
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -42,7 +42,7 @@ let EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
-                           'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay',
+                           'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
@@ -161,6 +161,7 @@ let EasyDialogBox = (function()
 
             // ** Create heading
             let heading = document.createElement('div');
+            heading.setAttribute('id', obj.id + '_heading');
             heading.setAttribute('class','dlg-heading');
             box.appendChild(heading);
 
@@ -343,10 +344,7 @@ let EasyDialogBox = (function()
                 }
             }
             // ** END: Create footer and buttons
-
-            // ** Show dlg overlay and dialogbox
-            dlg.style.display = 'block';
-
+                        
             // ** Set focus to input field if promptbox
             if(dlg.classList.contains('dlg-prompt'))
             {
@@ -587,6 +585,15 @@ let EasyDialogBox = (function()
             // ** Set flag to indicate box is active and is shown
             _isActive = true;
 
+            // ** Make it draggable, unless flag is set
+            if(!dlg.classList.contains('dlg-no-drag'))
+            {
+                _drag.init(obj.id + '_heading');
+            }
+            
+            // ** Show the dialogbox
+            dlg.style.display = 'block';
+            
             // ** Return success
             return true;
         }
@@ -796,7 +803,7 @@ let EasyDialogBox = (function()
     let _init = function()
     {        
         // ** Window load event
-        window.addEventListener('load', function windowLoad()
+        window.addEventListener('load', function LoadWindow()
         {
             // ** Get all elements with class containing 'dlg-opener'
             let btns = document.getElementsByClassName('dlg-opener');
@@ -809,11 +816,11 @@ let EasyDialogBox = (function()
                 
                 // ** Create object from DOM element
                 let obj = _create(dlg.getAttribute('id'),      // id
-                                       dlg.getAttribute('class'),   // type
-                                       dlg.getAttribute('title'),   // title
-                                       dlg.innerHTML,               // message
-                                       dlg.getAttribute('name'),    // callback function
-                                       true);                       // do not delete on closing
+                                  dlg.getAttribute('class'),   // type
+                                  dlg.getAttribute('title'),   // title
+                                  dlg.innerHTML,               // message
+                                  dlg.getAttribute('name'),    // callback function
+                                  true);                       // do not delete on closing
 
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
@@ -825,6 +832,60 @@ let EasyDialogBox = (function()
                 });
             }
         });
+    };
+    
+    // ** Drag'n'drop variables
+    let _elGrabber = null;
+    let _elParent = null;
+    
+    // ** Drag'n'drop object with functions
+    let _drag = 
+    {
+        dragging : false,
+
+        init : function(id)
+        {         
+            _elGrabber = document.getElementById(id);
+            _elGrabber.addEventListener('mousedown', this.start);
+            _elGrabber.addEventListener('mousemove', this.move);
+            _elGrabber.addEventListener('mouseup', this.stop);
+            _elGrabber.addEventListener('mouseout', this.stop);
+            _elParent = document.getElementById(id).parentElement;
+            _elParent.style.position = 'absolute';            
+        },
+        
+        start : function(evt)
+        {
+            // ** Left mouse button triggers moving
+            if (evt.button === 0)
+            {
+                this.dragging = true;
+                _elGrabber.style.cursor = 'move';
+                _elParent.posX2 = evt.clientX;
+                _elParent.posY2 = evt.clientY;
+                evt.preventDefault();
+            }
+        },
+        
+        stop : function()
+        {
+            this.dragging = false;
+            _elGrabber.style.cursor = '';
+        },
+        
+        move : function(evt)
+        {
+            if(this.dragging)
+            {
+                _elParent.posX = _elParent.posX2 - evt.clientX;
+                _elParent.posY = _elParent.posY2 - evt.clientY;
+                _elParent.posX2 = evt.clientX;
+                _elParent.posY2 = evt.clientY;
+                _elParent.style.top = parseInt((_elParent.offsetTop) - (_elParent.posY)) + 'px';
+                _elParent.style.left = parseInt((_elParent.offsetLeft) - (_elParent.posX)) + 'px';
+                evt.preventDefault();
+            }
+        }
     };
 
     //---------------------------------------------------------------------
