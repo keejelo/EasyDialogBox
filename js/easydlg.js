@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.549
+// ** Version: 1.551
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -128,7 +128,7 @@ let EasyDialogBox = (function()
         // ** Get object from id
         let obj = _getObjFromId(_boxObj, objId);
 
-        // ** Fix for pre-written HTML boxes, need to add '_0' to id before getting object
+        // ** Fix for pre-written HTML boxes, add '_0' to id before getting object
         if(obj === null)
         {
             objId += '_0';
@@ -835,8 +835,8 @@ let EasyDialogBox = (function()
     };
     
     // ** Drag'n'drop variables
-    let _elGrabber = null;
-    let _elParent = null;
+    let _elDragDropGrabber = null;
+    let _elDragDropGrabberParent = null;
     
     // ** Drag'n'drop object with functions
     let _drag = 
@@ -845,13 +845,13 @@ let EasyDialogBox = (function()
 
         init : function(id)
         {         
-            _elGrabber = document.getElementById(id);
-            _elGrabber.addEventListener('mousedown', this.start);
-            _elGrabber.addEventListener('mousemove', this.move);
-            _elGrabber.addEventListener('mouseup', this.stop);
-            _elGrabber.addEventListener('mouseout', this.stop);
-            _elParent = document.getElementById(id).parentElement;
-            _elParent.style.position = 'absolute';            
+            _elDragDropGrabber = document.getElementById(id);
+            _elDragDropGrabber.addEventListener('mousedown', this.start);
+            _elDragDropGrabber.addEventListener('mousemove', this.move);
+            _elDragDropGrabber.addEventListener('mouseup', this.stop);
+            _elDragDropGrabber.addEventListener('mouseout', this.stop);
+            _elDragDropGrabberParent = document.getElementById(id).parentElement;
+            _elDragDropGrabberParent.style.position = 'absolute';            
         },
         
         start : function(evt)
@@ -860,9 +860,9 @@ let EasyDialogBox = (function()
             if (evt.button === 0)
             {
                 this.dragging = true;
-                _elGrabber.style.cursor = 'move';
-                _elParent.posX2 = evt.clientX;
-                _elParent.posY2 = evt.clientY;
+                _elDragDropGrabber.style.cursor = 'move';
+                _elDragDropGrabberParent.posX2 = evt.clientX;
+                _elDragDropGrabberParent.posY2 = evt.clientY;
                 evt.preventDefault();
             }
         },
@@ -870,19 +870,19 @@ let EasyDialogBox = (function()
         stop : function()
         {
             this.dragging = false;
-            _elGrabber.style.cursor = '';
+            _elDragDropGrabber.style.cursor = '';
         },
         
         move : function(evt)
         {
             if(this.dragging)
             {
-                _elParent.posX = _elParent.posX2 - evt.clientX;
-                _elParent.posY = _elParent.posY2 - evt.clientY;
-                _elParent.posX2 = evt.clientX;
-                _elParent.posY2 = evt.clientY;
-                _elParent.style.top = parseInt((_elParent.offsetTop) - (_elParent.posY)) + 'px';
-                _elParent.style.left = parseInt((_elParent.offsetLeft) - (_elParent.posX)) + 'px';
+                _elDragDropGrabberParent.posX = _elDragDropGrabberParent.posX2 - evt.clientX;
+                _elDragDropGrabberParent.posY = _elDragDropGrabberParent.posY2 - evt.clientY;
+                _elDragDropGrabberParent.posX2 = evt.clientX;
+                _elDragDropGrabberParent.posY2 = evt.clientY;
+                _elDragDropGrabberParent.style.top = parseInt((_elDragDropGrabberParent.offsetTop) - (_elDragDropGrabberParent.posY)) + 'px';
+                _elDragDropGrabberParent.style.left = parseInt((_elDragDropGrabberParent.offsetLeft) - (_elDragDropGrabberParent.posX)) + 'px';
                 evt.preventDefault();
             }
         }
