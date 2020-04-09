@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.555
+// ** Version: 1.556
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -860,7 +860,7 @@ let EasyDialogBox = (function()
             if (evt.button === 0)
             {
                 this.dragging = true;
-                _elDragDropGrabber.style.cursor = 'move';
+                //_elDragDropGrabber.style.cursor = 'move';
                 _elDragDropGrabberParent.posX2 = evt.clientX;
                 _elDragDropGrabberParent.posY2 = evt.clientY;
                 evt.preventDefault();
@@ -870,7 +870,7 @@ let EasyDialogBox = (function()
         stop : function()
         {
             this.dragging = false;
-            _elDragDropGrabber.style.cursor = '';
+            //_elDragDropGrabber.style.cursor = '';
         },
         
         move : function(evt)
