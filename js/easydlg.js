@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.553
+// ** Version: 1.554
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -51,7 +51,7 @@ let EasyDialogBox = (function()
     // ** Variable that stores the original padding-right value of body element
     let _orgBodyPaddingRight = 0;
 
-    // ** Indicate that a box is current in view (is shown)
+    // ** Flag that indicates if a box is currently in view (is displayed)
     let _isActive = false;
 
     // ** Debug-logger
