@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.554
+// ** Version: 1.555
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -582,7 +582,7 @@ let EasyDialogBox = (function()
             // ** END: Create event-listeners
             //---------------------------------------------------------------------
 
-            // ** Set flag to indicate box is active and is shown
+            // ** Set flag to indicate that box is active and is displayed
             _isActive = true;
 
             // ** Make it draggable, unless flag is set
