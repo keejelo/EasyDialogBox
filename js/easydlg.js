@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.558
+// ** Version: 1.560
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -29,7 +29,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 let EasyDialogBox = (function()
 {   'use strict';
-    
+
     // ** Debug: true/false (outputs debug-messages to console)
     let DEBUG = true;
 
@@ -47,7 +47,7 @@ let EasyDialogBox = (function()
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
     let _boxObj = [];
-    
+
     // ** Variable that stores the original padding-right value of body element
     let _orgBodyPaddingRight = 0;
 
@@ -62,7 +62,7 @@ let EasyDialogBox = (function()
             return console.log(str);
         }
     };
-    
+
     // ** Convert string to decimal
     let _str2dec = function(str)
     {
@@ -81,7 +81,7 @@ let EasyDialogBox = (function()
         }
         return null; // if no object found
     };
-    
+
     // ** Check if array matches ALL test-values in supplied string/array
     let _matchAll = function(arr, str, exp, sep)
     {
@@ -121,7 +121,7 @@ let EasyDialogBox = (function()
 
         return false;
     };
-    
+
     // ** Show the dialog box
     let _show = function(objId)
     {                        
@@ -137,15 +137,15 @@ let EasyDialogBox = (function()
 
         // ** Create parent reference
         let body = document.getElementsByTagName('body')[0];
-        
+
         // ** Create box and insert into parent element
         let dlg = document.createElement('div');
         dlg.setAttribute('id', obj.id);
         dlg.setAttribute('class', obj.strTypeClass);
         body.appendChild(dlg);
-        
+
         let match = null;
-        
+
         if(dlg)
         {
             match = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
@@ -178,11 +178,11 @@ let EasyDialogBox = (function()
 
             // ** Create message
             let message = document.createElement('div');
-            
+
             // ** Prepare reference to inner boxes if needed
             let leftbox = null;
             let rightbox = null;
-            
+
             // ** Check if icon should be displayed
             if(dlg.classList.contains('dlg-info')
             || dlg.classList.contains('dlg-question')
@@ -190,9 +190,9 @@ let EasyDialogBox = (function()
             || dlg.classList.contains('dlg-success')
             || dlg.classList.contains('dlg-exclamation')
             )
-            {                    
+            {
                 message.setAttribute('class','dlg-message dlg-flex-container');
-                
+
                 // ** Create left box
                 leftbox = document.createElement('div');
                 leftbox.setAttribute('class','dlg-flexbox-left');
@@ -221,12 +221,12 @@ let EasyDialogBox = (function()
 
                 // ** Insert it into parent div
                 message.appendChild(leftbox);
-                
+
                 // ** Create right box
                 rightbox = document.createElement('div');
                 rightbox.setAttribute('class','dlg-flexbox-right');
                 rightbox.innerHTML = obj.strMessage;
-                
+
                 // ** Insert it into parent div
                 message.appendChild(rightbox);
             }
@@ -242,7 +242,7 @@ let EasyDialogBox = (function()
             {
                 let inputbox = document.createElement('div');
                 inputbox.setAttribute('class', 'dlg-input');
-                
+
                 if(message.classList.contains('dlg-flex-container'))
                 {
                     rightbox.appendChild(inputbox);
@@ -251,7 +251,7 @@ let EasyDialogBox = (function()
                 {
                     message.appendChild(inputbox);
                 }
-                
+
                 let input = document.createElement('input');
                 input.setAttribute('class', 'dlg-input-field');
                 input.setAttribute('type', 'text');
@@ -345,12 +345,6 @@ let EasyDialogBox = (function()
             }
             // ** END: Create footer and buttons
 
-            // ** Set focus to input field if promptbox
-            if(dlg.classList.contains('dlg-prompt'))
-            {
-                dlg.getElementsByClassName('dlg-input-field')[0].focus();
-            }
-
             // ** Get height of inner dialogbox
             let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
             let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
@@ -403,7 +397,7 @@ let EasyDialogBox = (function()
             //---------------------------------------------------------------------
             // ** Create event-listeners
             //---------------------------------------------------------------------
-            
+
             // ** When the user clicks the X button, close the dialogbox
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
@@ -418,7 +412,7 @@ let EasyDialogBox = (function()
 
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
-                    
+
                     // ** Callback
                     obj.callback();
                 });
@@ -439,7 +433,7 @@ let EasyDialogBox = (function()
 
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
-                    
+
                     // ** Callback
                     obj.callback();                        
                 });
@@ -453,13 +447,13 @@ let EasyDialogBox = (function()
                 {
                     // ** Remove eventlistener
                     window.removeEventListener('click', WinCloseClick);
-                    
+
                     // ** Return code 0, since user clicked outside box
                     obj.nRetCode = 0;
-                    
+
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
-                    
+
                     // ** Callback
                     obj.callback();
                 }
@@ -480,13 +474,13 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         btnYesDialog.removeEventListener('click', BtnYesClick);
-                        
+
                         // ** Return code 1, since user clicked YES
                         obj.nRetCode = 1;
-                        
+
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
-                        
+
                         // ** Callback
                         obj.callback();
                     });
@@ -500,13 +494,13 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         btnNoDialog.removeEventListener('click', BtnNoClick);
-                        
+
                         // ** Return code 2, since user clicked NO
                         obj.nRetCode = 2;
-                        
+
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
-                        
+
                         // ** Callback
                         obj.callback();
                     });
@@ -528,13 +522,13 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         btnOkDialog.removeEventListener('click', BtnOkClick);
-                        
+
                         // ** Return code 3, since user clicked OK
                         obj.nRetCode = 3;
-                        
+
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
-                        
+
                         // ** Callback
                         obj.callback();                            
                     });
@@ -548,13 +542,13 @@ let EasyDialogBox = (function()
                     {
                         // ** Remove eventlistener
                         btnCancelDialog.removeEventListener('click', BtnCancelClick);
-                        
+
                         // ** Return code 4, since user clicked Cancel
                         obj.nRetCode = 4;
-                        
+
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
-                        
+
                         // ** Callback
                         obj.callback();
                     });
@@ -590,10 +584,16 @@ let EasyDialogBox = (function()
             {
                 _drag.init(obj.id + '_heading');
             }
-            
+
             // ** Show the dialogbox
             dlg.style.display = 'block';
             
+            // ** Set focus to input field if promptbox
+            if(dlg.classList.contains('dlg-prompt'))
+            {
+                dlg.getElementsByClassName('dlg-input-field')[0].focus();
+            }            
+
             // ** Return success
             return true;
         }
@@ -622,7 +622,7 @@ let EasyDialogBox = (function()
     let _destroy = function(objId)
     {
         let success = false; // default
-        
+
         // ** Get body element, reset values, restore scrolling
         let body = document.getElementsByTagName('body')[0];
         body.classList.remove('dlg-stop-scrolling');
@@ -630,7 +630,7 @@ let EasyDialogBox = (function()
 
         // ** Get the dlg element
         let dlg = document.getElementById(objId);
-        
+
         // ** Hide the box
         if(dlg)
         {
@@ -650,7 +650,7 @@ let EasyDialogBox = (function()
         {
             // ** Remove box from DOM
             dlg.parentNode.removeChild(dlg);
-            
+
             // ** Get object
             let obj = _getObjFromId(_boxObj, objId);
 
@@ -664,7 +664,7 @@ let EasyDialogBox = (function()
                     setTimeout(function()
                     {
                         let wasDeleted = _boxObj.splice(index, 1);
-                        
+
                         if(wasDeleted.length === 1)
                         {
                             success = true;
@@ -690,14 +690,14 @@ let EasyDialogBox = (function()
                 success = false;
             }
         }
-        
+
         // ** Reset flag 
         _isActive = false;
 
         // ** Return result
         return success;
     };
-    
+
     // ** Create dialog
     let _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
     {
@@ -712,22 +712,22 @@ let EasyDialogBox = (function()
                 // ** Create a unique string for the 'id'
                 strId = Math.random().toString(36).substr(2,9);
             }
-            
+
             // ** Add token to object id (so we dont mix up id's)
             strId += '_0';
-            
+
             // ** Check if value is set, if not set it to: false
             if(typeof fnCallback === 'undefined')
             {
                 fnCallback = false;
             }
-            
+
             // ** Check if flag is set, if not set it to: false
             if(typeof bKeepAlive === 'undefined')
             {
                 bKeepAlive = false;
             }
-            
+
             // ** Create object
             let obj =
             {
@@ -776,13 +776,13 @@ let EasyDialogBox = (function()
                         _log('CALLBACK: Error! ' + err);
                     }
                 },
-                
+
                 // ** Show
                 show : function()
                 {
                     return _show(this.id);
                 },
-                
+
                 // ** Destroy
                 destroy : function()
                 {
@@ -813,7 +813,7 @@ let EasyDialogBox = (function()
             {                    
                 // ** Get element from DOM
                 let dlg = document.getElementById(btns[i].getAttribute('rel'));
-                
+
                 // ** Create object from DOM element
                 let obj = _create(dlg.getAttribute('id'),      // id
                                   dlg.getAttribute('class'),   // type
@@ -833,16 +833,16 @@ let EasyDialogBox = (function()
             }
         });
     };
-    
+
     // ** Drag'n'drop variables
     let _elDragDropGrabber = null;
     let _elDragDropGrabberParent = null;
-    
+
     // ** Drag'n'drop object with functions
     let _drag = 
     {
         dragging : false,
-        
+
         init : function(id)
         {         
             _elDragDropGrabber = document.getElementById(id);
@@ -853,7 +853,7 @@ let EasyDialogBox = (function()
             _elDragDropGrabberParent = document.getElementById(id).parentElement;
             _elDragDropGrabberParent.style.position = 'absolute';
         },
-        
+
         start : function(evt)
         {
             // ** Left mouse button triggers moving
@@ -866,13 +866,13 @@ let EasyDialogBox = (function()
                 evt.preventDefault();
             }
         },
-        
+
         stop : function()
         {
             this.dragging = false;
             _elDragDropGrabber.style.cursor = '';
         },
-        
+
         move : function(evt)
         {
             if(this.dragging)
@@ -898,19 +898,19 @@ let EasyDialogBox = (function()
         {
             return _create(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);
         },
-        
+
         // ** Get all objects
         getAll : function()
         {
             return _boxObj;
         },
-        
+
         // ** Get object from id
         getById : function(id)
         {
             return _getObjFromId(_boxObj, id);
         },
-        
+
         // Init module
         init : function()
         {
