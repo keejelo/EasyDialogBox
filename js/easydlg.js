@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.552
+// ** Version: 1.553
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -344,7 +344,7 @@ let EasyDialogBox = (function()
                 }
             }
             // ** END: Create footer and buttons
-                        
+
             // ** Set focus to input field if promptbox
             if(dlg.classList.contains('dlg-prompt'))
             {
