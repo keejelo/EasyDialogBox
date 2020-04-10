@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.563
+// ** Version: 1.564
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -239,7 +239,7 @@ let EasyDialogBox = (function()
 
             // ** Create prompt box (input + OK + Cancel)
             if(dlg.classList.contains('dlg-prompt'))
-            {
+            {                
                 let inputbox = document.createElement('div');
                 inputbox.setAttribute('class', 'dlg-input');
 
@@ -251,19 +251,17 @@ let EasyDialogBox = (function()
                 {
                     message.appendChild(inputbox);
                 }
-
+                
                 let input = document.createElement('input');
                 input.setAttribute('class', 'dlg-input-field');
                 input.setAttribute('type', 'text');
-                input.setAttribute('value', '');
+                //obj.strInput = ''; // Remove earlier entered text from input field (optional)
+                input.setAttribute('value', obj.strInput);
                 inputbox.appendChild(input);
 
                 // ** Add buttons if not already stated in 'class'
                 dlg.classList.add('dlg-ok-cancel');
             }
-
-            // ** Remove earlier entered text from input field
-            obj.strInput = '';
 
             // ** Create footer and buttons
             // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
@@ -407,14 +405,11 @@ let EasyDialogBox = (function()
                     // ** Remove eventlistener
                     xCloseDialog.removeEventListener('click', XCloseClick);
 
-                    // ** Return code 0, since user clicked X (close)
-                    obj.nRetCode = 0;
-
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback
-                    obj.callback();
+                    // ** Callback, return code 0, since user clicked [X] (close)
+                    obj.callback(0);
                 });
             }
             // ** END: X button click handler
@@ -428,14 +423,11 @@ let EasyDialogBox = (function()
                     // ** Remove eventlistener
                     btnCloseDialog.removeEventListener('click', BtnCloseClick);
 
-                    // ** Return code 0, since user clicked Close
-                    obj.nRetCode = 0;
-
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback
-                    obj.callback();                        
+                    // ** Callback, return code 0, since user clicked Close
+                    obj.callback(0);                        
                 });
             }
             // ** END: CLOSE button click handler
@@ -448,14 +440,11 @@ let EasyDialogBox = (function()
                     // ** Remove eventlistener
                     window.removeEventListener('click', WinCloseClick);
 
-                    // ** Return code 0, since user clicked outside box
-                    obj.nRetCode = 0;
-
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback
-                    obj.callback();
+                    // ** Callback, return code 0, since user clicked outside box
+                    obj.callback(0);
                 }
             });
             // ** END: window click outside box click handler
@@ -475,14 +464,11 @@ let EasyDialogBox = (function()
                         // ** Remove eventlistener
                         btnYesDialog.removeEventListener('click', BtnYesClick);
 
-                        // ** Return code 1, since user clicked YES
-                        obj.nRetCode = 1;
-
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback
-                        obj.callback();
+                        // ** Callback, return code 1, since user clicked YES
+                        obj.callback(1);
                     });
                 }
 
@@ -495,14 +481,11 @@ let EasyDialogBox = (function()
                         // ** Remove eventlistener
                         btnNoDialog.removeEventListener('click', BtnNoClick);
 
-                        // ** Return code 2, since user clicked NO
-                        obj.nRetCode = 2;
-
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback
-                        obj.callback();
+                        // ** Callback, return code 2, since user clicked NO
+                        obj.callback(2);
                     });
                 }
             }
@@ -523,14 +506,11 @@ let EasyDialogBox = (function()
                         // ** Remove eventlistener
                         btnOkDialog.removeEventListener('click', BtnOkClick);
 
-                        // ** Return code 3, since user clicked OK
-                        obj.nRetCode = 3;
-
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback
-                        obj.callback();                            
+                        // ** Callback, return code 3, since user clicked OK
+                        obj.callback(3);                            
                     });
                 }
 
@@ -543,14 +523,11 @@ let EasyDialogBox = (function()
                         // ** Remove eventlistener
                         btnCancelDialog.removeEventListener('click', BtnCancelClick);
 
-                        // ** Return code 4, since user clicked Cancel
-                        obj.nRetCode = 4;
-
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback
-                        obj.callback();
+                        // ** Callback, return code 4, since user clicked Cancel
+                        obj.callback(4);
                     });
                 }
             }
@@ -741,12 +718,19 @@ let EasyDialogBox = (function()
                 nRetCode : -1,
 
                 // ** Callback 
-                callback : function()
+                callback : function(a,b)
                 {
                     try
-                    {
-                        let a = this.nRetCode;
-                        let b = this.strInput;
+                    {   
+                        if(typeof a === 'undefined')
+                        {
+                            a = this.nRetCode;
+                        }
+                        
+                        if(typeof b === 'undefined')
+                        {
+                            b = this.strInput;
+                        }
 
                         // ** Check which kind of box and if it has a callback function
                         if(typeof window[fnCallback] === 'function')
