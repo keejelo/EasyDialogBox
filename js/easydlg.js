@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.567
+// ** Version: 1.568
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -40,7 +40,7 @@ let EasyDialogBox = (function()
     let _btnTextOk     = 'OK';      // OK
     let _btnTextCancel = 'Cancel';  // Cancel
 
-    // ** Button constants
+    // ** Constants 
     const CLOSE  = 0;
     const YES    = 1;
     const NO     = 2;
