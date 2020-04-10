@@ -26,7 +26,7 @@
     height:100%;
     overflow:auto; /* Enable scroll if needed */
     background-color:#000; /* Fallback */
-    background-color:rgba(0,0,0,0.4); /* Translucent overlay */
+    background-color:rgba(0,0,0,0.2); /* Translucent overlay */
 }
 
 /* Dialog box */
