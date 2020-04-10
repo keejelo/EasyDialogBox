@@ -316,6 +316,49 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------------------------
+// ** Window load event-listener
+//-----------------------------------------------------------------------------------------------------------------
+window.addEventListener('load', function()
+{
+    // ** Run example from page when button is clicked
+    document.getElementById('jsExampleRunBtn').addEventListener('click', function()
+    {
+        // ** Create a new dialogbox object
+        let myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
+
+        // ** Show the newly created box
+        myBox.show();
+
+        // ** To programatically destroy the box, you can do
+        // myBox.destroy();
+
+        // ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box
+        // ..unless the object got variable: bKeepAlive = true 
+        // ..to really destroy that, you need to set: myBox.bKeepAlive = false;
+        // ..and then you can delete it with: myBox.destroy();
+
+        // ** Example of a callback function (using "var" for "hoisting" since declaring after)
+        var myCallbackFuncToRun = function(nRetCode, strInput)
+        {
+            // Example of some code to handle callback
+            
+            if(nRetCode === 1)
+            {
+                // ... user clicked "Yes" button
+            }
+            
+            if(strInput !== '')
+            {
+                // ... user typed something in the input field of promptbox
+            }
+        };
+    });
+});
+//-----------------------------------------------------------------------------------------------------------------
+// ** END: Window load event-listener
+//-----------------------------------------------------------------------------------------------------------------
 </script>
 </head>
 <body>
@@ -447,8 +490,8 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
        
             <p>&nbsp;</p>
             
-            <h2 id="js_example">Example</h2>
-            <div class="codeview">
+            <h2>Example</h2>
+            <div id="js_example" class="codeview">
 <b class="comment">// Javascript ...</b>
 
 <b class="comment">// ** Create a new dialogbox object</b>
@@ -483,7 +526,12 @@ myBox<b class="func">.show()</b>;
 
 <b class="comment">// ...</b>
             </div>
+            <div>
+                <button id="jsExampleRunBtn">Run Example</button>
+            </div>
             
+            <p>&nbsp;</p>
+           
             <div>
                 <h2>Return values</h2>
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
