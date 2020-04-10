@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.565
+// ** Version: 1.567
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -39,6 +39,13 @@ let EasyDialogBox = (function()
     let _btnTextNo     = 'No';      // No
     let _btnTextOk     = 'OK';      // OK
     let _btnTextCancel = 'Cancel';  // Cancel
+
+    // ** Button constants
+    const CLOSE  = 0;
+    const YES    = 1;
+    const NO     = 2;
+    const OK     = 3;
+    const CANCEL = 4;
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
@@ -124,7 +131,7 @@ let EasyDialogBox = (function()
 
     // ** Show the dialog box
     let _show = function(objId)
-    {                        
+    {
         // ** Get object from id
         let obj = _getObjFromId(_boxObj, objId);
 
@@ -151,7 +158,7 @@ let EasyDialogBox = (function()
             match = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
-        // ** Check if element with the 'id' exist in DOM, and that no other dialog is active, and valid dlg types
+        // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg types
         if( dlg && (_isActive === false) && (match === true) )
         {
             // ** Create outer box
@@ -239,7 +246,7 @@ let EasyDialogBox = (function()
 
             // ** Create prompt box (input + OK + Cancel)
             if(dlg.classList.contains('dlg-prompt'))
-            {                
+            {
                 let inputbox = document.createElement('div');
                 inputbox.setAttribute('class', 'dlg-input');
 
@@ -251,7 +258,7 @@ let EasyDialogBox = (function()
                 {
                     message.appendChild(inputbox);
                 }
-                
+
                 let input = document.createElement('input');
                 input.setAttribute('class', 'dlg-input-field');
                 input.setAttribute('type', 'text');
@@ -409,7 +416,7 @@ let EasyDialogBox = (function()
                     obj.destroy();
 
                     // ** Callback, return code 0, since user clicked [X] (close)
-                    obj.callback(0);
+                    obj.callback(CLOSE);
                 });
             }
             // ** END: [X] button click handler
@@ -427,7 +434,7 @@ let EasyDialogBox = (function()
                     obj.destroy();
 
                     // ** Callback, return code 0, since user clicked Close
-                    obj.callback(0);                        
+                    obj.callback(CLOSE);                        
                 });
             }
             // ** END: CLOSE button click handler
@@ -444,7 +451,7 @@ let EasyDialogBox = (function()
                     obj.destroy();
 
                     // ** Callback, return code 0, since user clicked outside box
-                    obj.callback(0);
+                    obj.callback(CLOSE);
                 }
             });
             // ** END: window click outside box click handler
@@ -468,7 +475,7 @@ let EasyDialogBox = (function()
                         obj.destroy();
 
                         // ** Callback, return code 1, since user clicked YES
-                        obj.callback(1);
+                        obj.callback(YES);
                     });
                 }
 
@@ -485,7 +492,7 @@ let EasyDialogBox = (function()
                         obj.destroy();
 
                         // ** Callback, return code 2, since user clicked NO
-                        obj.callback(2);
+                        obj.callback(NO);
                     });
                 }
             }
@@ -510,7 +517,7 @@ let EasyDialogBox = (function()
                         obj.destroy();
 
                         // ** Callback, return code 3, since user clicked OK
-                        obj.callback(3);                            
+                        obj.callback(OK);                            
                     });
                 }
 
@@ -527,7 +534,7 @@ let EasyDialogBox = (function()
                         obj.destroy();
 
                         // ** Callback, return code 4, since user clicked Cancel
-                        obj.callback(4);
+                        obj.callback(CANCEL);
                     });
                 }
             }
@@ -569,7 +576,7 @@ let EasyDialogBox = (function()
             if(dlg.classList.contains('dlg-prompt'))
             {
                 dlg.getElementsByClassName('dlg-input-field')[0].focus();
-            }            
+            }
 
             // ** Return success
             return true;
@@ -721,12 +728,12 @@ let EasyDialogBox = (function()
                 callback : function(a,b)
                 {
                     try
-                    {   
+                    {
                         if(typeof a === 'undefined')
                         {
                             a = this.nRetCode;
                         }
-                        
+
                         if(typeof b === 'undefined')
                         {
                             b = this.strInput;
@@ -785,7 +792,7 @@ let EasyDialogBox = (function()
 
     // ** Initialize
     let _init = function()
-    {        
+    {
         // ** Window load event
         window.addEventListener('load', function LoadWindow()
         {
@@ -794,7 +801,7 @@ let EasyDialogBox = (function()
 
             // ** Create objects and click handler for each element that contain class 'dlg-opener'
             for(let i = 0; i < btns.length; i++)
-            {                    
+            {
                 // ** Get element from DOM
                 let dlg = document.getElementById(btns[i].getAttribute('rel'));
 
