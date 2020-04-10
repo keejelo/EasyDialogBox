@@ -65,6 +65,11 @@ h1, h2, h3, h4, h5, h6
 {
     font-weight:bold;
 }
+.small
+{
+    font-size:10px;
+    color:#999;
+}
 .word 
 {
     color:#0366d6;
@@ -137,6 +142,10 @@ button
     font-weight:normal;
     border:1px #000 solid;
     color:inherit;
+}
+#paramTable thead th
+{
+    text-align:left;
 }
 .returnTable thead th
 {
@@ -365,24 +374,29 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
             <p>
                 <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
                 <table id="paramTable">
-                    <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
-                    <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
-                    <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
-                    <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
-                    <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
-                    <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
-                    <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
-                    <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
-                    <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-                    <tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
-                    <tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
-                    <tr><td>dlg-no-overlay</td><td>Disable background color/translucent overlay.</td></tr>
-                    <tr><td>dlg-no-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
-                    <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
-                    <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
+                    <thead>
+                        <tr><th>Stringvalue</th><th>Description</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
+                        <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
+                        <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
+                        <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
+                        <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
+                        <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
+                        <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
+                        <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
+                        <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
+                        <tr><td>dlg-no-footer</td><td>Dialog without footer.</td></tr>
+                        <tr><td>dlg-no-btns</td><td>Dialog without any buttons.</td></tr>
+                        <tr><td>dlg-no-overlay</td><td>Disable background color/translucent overlay.</td></tr>
+                        <tr><td>dlg-no-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
+                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
+                    </tbody>
                 </table>
             </p>
             
@@ -533,7 +547,9 @@ myBox<b class="func">.destroy()</b>;
         <p>&nbsp;</p>
         <p>&nbsp;</p>
         
+        <p class="small" title="End of Javascript object creation">&lt;- // -- End of Javascript object creation -- // -&gt;</p>
         <hr />
+        <p class="small" title="Beginning of HTML examples">&lt;- // -- Beginning of HTML examples -- // -&gt;</p>
         
         <div id="html_info_heading" class="section">
             <h2 id="html_box">Create dialog box with pre-written HTML</h2>
