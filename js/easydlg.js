@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.568
+// ** Version: 1.570
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -403,7 +403,7 @@ let EasyDialogBox = (function()
             // ** Create event-listeners
             //---------------------------------------------------------------------
 
-            // ** When the user clicks the [X] button, close the dialogbox
+            // ** When the user clicks the [X] button
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
             {
@@ -415,13 +415,13 @@ let EasyDialogBox = (function()
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback, return code 0, since user clicked [X] (close)
+                    // ** Callback, return code: CLOSE
                     obj.callback(CLOSE);
                 });
             }
             // ** END: [X] button click handler
 
-            // ** When the user clicks the CLOSE button, close the dialogbox
+            // ** When the user clicks the CLOSE button
             let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
             if(btnCloseDialog)
             {
@@ -433,13 +433,13 @@ let EasyDialogBox = (function()
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback, return code 0, since user clicked Close
+                    // ** Callback, return code: CLOSE
                     obj.callback(CLOSE);                        
                 });
             }
             // ** END: CLOSE button click handler
 
-            // ** When the user clicks anywhere outside of the dialogbox, close it
+            // ** When the user clicks anywhere outside of the dialogbox
             window.addEventListener('click', function WinCloseClick(evt)
             {
                 if(evt.target == dlg)
@@ -450,7 +450,7 @@ let EasyDialogBox = (function()
                     // ** Close dialogbox, reset values, clean up
                     obj.destroy();
 
-                    // ** Callback, return code 0, since user clicked outside box
+                    // ** Callback, return code: CLOSE
                     obj.callback(CLOSE);
                 }
             });
@@ -474,7 +474,7 @@ let EasyDialogBox = (function()
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback, return code 1, since user clicked YES
+                        // ** Callback, return code: YES
                         obj.callback(YES);
                     });
                 }
@@ -491,7 +491,7 @@ let EasyDialogBox = (function()
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback, return code 2, since user clicked NO
+                        // ** Callback, return code: NO
                         obj.callback(NO);
                     });
                 }
@@ -516,7 +516,7 @@ let EasyDialogBox = (function()
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback, return code 3, since user clicked OK
+                        // ** Callback, return code: OK
                         obj.callback(OK);                            
                     });
                 }
@@ -533,14 +533,14 @@ let EasyDialogBox = (function()
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
 
-                        // ** Callback, return code 4, since user clicked Cancel
+                        // ** Callback, return code: CANCEL
                         obj.callback(CANCEL);
                     });
                 }
             }
             // ** END: OK-CANCEL button click handlers
 
-            // ** When the user types in promptbox, update variable obj.strInput
+            // ** When the user types in promptbox, update variable: obj.strInput
             let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
             if(pBox)
             {
