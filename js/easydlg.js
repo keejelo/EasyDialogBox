@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.570
+// ** Version: 1.571
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -266,7 +266,7 @@ let EasyDialogBox = (function()
                 input.setAttribute('value', obj.strInput);
                 inputbox.appendChild(input);
 
-                // ** Add buttons if not already stated in 'class'
+                // ** Add buttons if not already stated in class
                 dlg.classList.add('dlg-ok-cancel');
             }
 
