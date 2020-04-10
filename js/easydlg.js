@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.576
+// ** Version: 1.577
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -832,19 +832,21 @@ let EasyDialogBox = (function()
     // ** Drag'n'drop object, functions
     let _drag = 
     {
-        init : function(id)
+        move : function(evt)
         {
-            _elDragDropGrabber = document.getElementById(id);
-            _elDragDropGrabber.addEventListener('mousedown', _drag.start);
-            _elDragDropGrabberParent = _elDragDropGrabber.parentElement;
-
-            let body = document.getElementsByTagName('body')[0];
-            if(_elDragDropGrabberParent === body)
-            {
-                _elDragDropGrabberParent = _elDragDropGrabber;
-            }
-
-            _elDragDropGrabberParent.style.position = 'absolute';
+            evt.preventDefault();
+            _elDragDropGrabberParent.posX = _elDragDropGrabberParent.posX2 - evt.clientX;
+            _elDragDropGrabberParent.posY = _elDragDropGrabberParent.posY2 - evt.clientY;
+            _elDragDropGrabberParent.posX2 = evt.clientX;
+            _elDragDropGrabberParent.posY2 = evt.clientY;
+            _elDragDropGrabberParent.style.top = parseInt((_elDragDropGrabberParent.offsetTop) - (_elDragDropGrabberParent.posY)) + 'px';
+            _elDragDropGrabberParent.style.left = parseInt((_elDragDropGrabberParent.offsetLeft) - (_elDragDropGrabberParent.posX)) + 'px';
+        },
+        stop : function()
+        {
+            _elDragDropGrabber.style.cursor = '';
+            document.removeEventListener('mouseup', _drag.stop);
+            document.removeEventListener('mousemove', _drag.move);
         },
         start : function(evt)
         {
@@ -859,22 +861,20 @@ let EasyDialogBox = (function()
                 document.addEventListener('mousemove', _drag.move);
             }
         },
-        stop : function()
+        init : function(id)
         {
-            _elDragDropGrabber.style.cursor = '';
-            document.removeEventListener('mouseup', _drag.stop);
-            document.removeEventListener('mousemove', _drag.move);
-        },
-        move : function(evt)
-        {
-            evt.preventDefault();
-            _elDragDropGrabberParent.posX = _elDragDropGrabberParent.posX2 - evt.clientX;
-            _elDragDropGrabberParent.posY = _elDragDropGrabberParent.posY2 - evt.clientY;
-            _elDragDropGrabberParent.posX2 = evt.clientX;
-            _elDragDropGrabberParent.posY2 = evt.clientY;
-            _elDragDropGrabberParent.style.top = parseInt((_elDragDropGrabberParent.offsetTop) - (_elDragDropGrabberParent.posY)) + 'px';
-            _elDragDropGrabberParent.style.left = parseInt((_elDragDropGrabberParent.offsetLeft) - (_elDragDropGrabberParent.posX)) + 'px';
-        }
+            _elDragDropGrabber = document.getElementById(id);
+            _elDragDropGrabber.addEventListener('mousedown', _drag.start);
+            _elDragDropGrabberParent = _elDragDropGrabber.parentElement;
+
+            let body = document.getElementsByTagName('body')[0];
+            if(_elDragDropGrabberParent === body)
+            {
+                _elDragDropGrabberParent = _elDragDropGrabber;
+            }
+
+            _elDragDropGrabberParent.style.position = 'absolute';
+        }        
     };
 
     //---------------------------------------------------------------------
