@@ -452,21 +452,21 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 <b class="comment">// Javascript ...</b>
 
 <b class="comment">// ** Create a new dialogbox object</b>
-<b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'Hello there!'</b><b class="func">,</b> myCallbackFunc<b class="func">)</b>;
+<b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">,</b> myCallbackFuncToRun<b class="func">)</b>;
 
 <b class="comment">// ** Show the newly created box</b>
 myBox<b class="func">.show()</b>;
 
 <b class="comment">// ** To programatically destroy the box, you can do</b>
-myBox<b class="func">.destroy()</b>;
+<b class="comment">// myBox.destroy();</b>
 
 <b class="comment">// ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box</b>
 <b class="comment">// ..unless the object got variable: bKeepAlive = true </b>
 <b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b>
 <b class="comment">// ..and then you can delete it with: myBox.destroy();</b>
 
-<b class="comment">// ** Example of a callback function (using &quot;var&quot; for &quot;hoisting&quot;)</b>
-<b class="keyword">var</b> myCallbackFunc <b class="equal">=</b> <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
+<b class="comment">// ** Example of a callback function (using &quot;var&quot; for &quot;hoisting&quot; since declaring after)</b>
+<b class="keyword">var</b> myCallbackFuncToRun <b class="equal">=</b> <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b>
 <b class="func">{</b>
     <b class="comment">// Example of some code to handle callback</b>
     
@@ -513,7 +513,7 @@ myBox<b class="func">.destroy()</b>;
                         <tr><td>string</td><td>string</td><td>A string of text</td></tr>
                     </tbody>
                 </table>
-                <p>See the examples in sourcecode for more information on how to use them.</p>
+                <p>See the <a href="#js_example">example above</a> and in sourcecode on how to use them.</p>
                 <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
             </div>
             
