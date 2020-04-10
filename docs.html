@@ -331,14 +331,6 @@ window.addEventListener('load', function()
         // ** Show the newly created box
         myBox.show();
 
-        // ** To programatically destroy the box, you can do
-        // myBox.destroy();
-
-        // ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box
-        // ..unless the object got variable: bKeepAlive = true 
-        // ..to really destroy that, you need to set: myBox.bKeepAlive = false;
-        // ..and then you can delete it with: myBox.destroy();
-
         // ** Example of a callback function (using "var" for "hoisting" since declaring after)
         var myCallbackFuncToRun = function(nRetCode, strInput)
         {
