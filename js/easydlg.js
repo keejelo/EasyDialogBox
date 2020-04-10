@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.571
+// ** Version: 1.572
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -742,12 +742,12 @@ let EasyDialogBox = (function()
                         // ** Check which kind of box and if it has a callback function
                         if(typeof window[fnCallback] === 'function')
                         {
-                            // ** Execute function (pre-written HTML boxes)
+                            // ** Execute function (pre-written HTML boxes(?))
                             window[fnCallback](a,b);
                         }
                         else if(typeof fnCallback === 'function')
                         {
-                            // ** Execute function (script-created boxes)
+                            // ** Execute function (script-created boxes(?))
                             fnCallback(a,b);
                         }
                         else if(fnCallback === false || fnCallback === 0)
@@ -816,10 +816,10 @@ let EasyDialogBox = (function()
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
                 {
-                    obj.show();             // show the dialogbox with the 'id' referenced in 'rel' attribute
-                    this.blur();            // remove focus from button or other opening element
-                    evt.preventDefault();   // i.e. if used in an anchor-link with 'href="#"' we prevent scrolling to top of page
-                    evt.stopPropagation();  // prevent bubbling up to parent elements or capturing down to child elements
+                    obj.show();             // Show the dialogbox with the id referenced in 'rel' attribute
+                    this.blur();            // Remove focus from button or other opening element
+                    evt.preventDefault();   // Prevent scrolling to top of page if i.e. used in an anchor-link 'href="#"'
+                    evt.stopPropagation();  // Prevent bubbling up to parent elements or capturing down to child elements
                 });
             }
         });
