@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.572
+// ** Version: 1.575
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -832,14 +832,20 @@ let EasyDialogBox = (function()
     // ** Drag'n'drop object, functions
     let _drag = 
     {
-        init : function(id)
+        init : function(id) // id of 'grabber'
         {
             _elDragDropGrabber = document.getElementById(id);
             _elDragDropGrabber.addEventListener('mousedown', _drag.start);
-            _elDragDropGrabberParent = document.getElementById(id).parentElement;
+            _elDragDropGrabberParent = _elDragDropGrabber.parentElement;
+
+            let body = document.getElementsByTagName('body')[0];
+            if(_elDragDropGrabberParent === body)
+            {
+                _elDragDropGrabberParent = _elDragDropGrabber;
+            }
+
             _elDragDropGrabberParent.style.position = 'absolute';
         },
-
         start : function(evt)
         {
             // ** Left mouse button triggers moving
@@ -853,14 +859,12 @@ let EasyDialogBox = (function()
                 document.addEventListener('mousemove', _drag.move);
             }
         },
-
         stop : function()
         {
             _elDragDropGrabber.style.cursor = '';
             document.removeEventListener('mouseup', _drag.stop);
             document.removeEventListener('mousemove', _drag.move);
         },
-
         move : function(evt)
         {
             evt.preventDefault();
