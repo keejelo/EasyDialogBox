@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.564
+// ** Version: 1.565
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -165,7 +165,7 @@ let EasyDialogBox = (function()
             heading.setAttribute('class','dlg-heading');
             box.appendChild(heading);
 
-            // ** Create "CloseX"
+            // ** Create [X] close button
             let closeX = document.createElement('span');
             closeX.setAttribute('class','dlg-close-x');
             let closeText = document.createTextNode(' \u00d7 ');
@@ -396,7 +396,7 @@ let EasyDialogBox = (function()
             // ** Create event-listeners
             //---------------------------------------------------------------------
 
-            // ** When the user clicks the X button, close the dialogbox
+            // ** When the user clicks the [X] button, close the dialogbox
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
             {
@@ -412,7 +412,7 @@ let EasyDialogBox = (function()
                     obj.callback(0);
                 });
             }
-            // ** END: X button click handler
+            // ** END: [X] button click handler
 
             // ** When the user clicks the CLOSE button, close the dialogbox
             let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
