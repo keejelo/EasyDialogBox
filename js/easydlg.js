@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.592
+// ** Version: 1.593
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -129,7 +129,7 @@ const EasyDialogBox = (function()
         return false;
     };
     
-    // ** Handle string input
+    // ** Handle string input. Harmful based on the context: &<>"'`,!@$%()=+{}[]
     const _escape = function(str)
     {
         str = str.trim();
