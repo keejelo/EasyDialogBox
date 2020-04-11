@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.577
+// ** Version: 1.579
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -127,6 +127,13 @@ let EasyDialogBox = (function()
         }
 
         return false;
+    };
+    
+    // ** Handle string from input, do some sanitizing
+    let _sanitize = function(str)
+    {
+        str = str.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
+        return str;
     };
 
     // ** Show the dialog box
@@ -546,12 +553,12 @@ let EasyDialogBox = (function()
             {
                 pBox.addEventListener('keyup', function PromptBoxKeyUp()
                 {
-                    obj.strInput = pBox.value.trim();
+                    obj.strInput = _sanitize(pBox.value);
                 });
 
                 pBox.addEventListener('change', function PromptBoxChange()
                 {
-                    obj.strInput = pBox.value.trim();
+                    obj.strInput = _sanitize(pBox.value);
                 });
             }
             // ** END: When the user types in promptbox
@@ -832,21 +839,19 @@ let EasyDialogBox = (function()
     // ** Drag'n'drop object, functions
     let _drag = 
     {
-        move : function(evt)
+        init : function(id)
         {
-            evt.preventDefault();
-            _elDragDropGrabberParent.posX = _elDragDropGrabberParent.posX2 - evt.clientX;
-            _elDragDropGrabberParent.posY = _elDragDropGrabberParent.posY2 - evt.clientY;
-            _elDragDropGrabberParent.posX2 = evt.clientX;
-            _elDragDropGrabberParent.posY2 = evt.clientY;
-            _elDragDropGrabberParent.style.top = parseInt((_elDragDropGrabberParent.offsetTop) - (_elDragDropGrabberParent.posY)) + 'px';
-            _elDragDropGrabberParent.style.left = parseInt((_elDragDropGrabberParent.offsetLeft) - (_elDragDropGrabberParent.posX)) + 'px';
-        },
-        stop : function()
-        {
-            _elDragDropGrabber.style.cursor = '';
-            document.removeEventListener('mouseup', _drag.stop);
-            document.removeEventListener('mousemove', _drag.move);
+            _elDragDropGrabber = document.getElementById(id);
+            _elDragDropGrabber.addEventListener('mousedown', _drag.start);
+            _elDragDropGrabberParent = _elDragDropGrabber.parentElement;
+
+            let body = document.getElementsByTagName('body')[0];
+            if(_elDragDropGrabberParent === body)
+            {
+                _elDragDropGrabberParent = _elDragDropGrabber;
+            }
+
+            _elDragDropGrabberParent.style.position = 'absolute';
         },
         start : function(evt)
         {
@@ -861,20 +866,22 @@ let EasyDialogBox = (function()
                 document.addEventListener('mousemove', _drag.move);
             }
         },
-        init : function(id)
+        stop : function()
         {
-            _elDragDropGrabber = document.getElementById(id);
-            _elDragDropGrabber.addEventListener('mousedown', _drag.start);
-            _elDragDropGrabberParent = _elDragDropGrabber.parentElement;
-
-            let body = document.getElementsByTagName('body')[0];
-            if(_elDragDropGrabberParent === body)
-            {
-                _elDragDropGrabberParent = _elDragDropGrabber;
-            }
-
-            _elDragDropGrabberParent.style.position = 'absolute';
-        }        
+            _elDragDropGrabber.style.cursor = '';
+            document.removeEventListener('mouseup', _drag.stop);
+            document.removeEventListener('mousemove', _drag.move);
+        },
+        move : function(evt)
+        {
+            evt.preventDefault();
+            _elDragDropGrabberParent.posX = _elDragDropGrabberParent.posX2 - evt.clientX;
+            _elDragDropGrabberParent.posY = _elDragDropGrabberParent.posY2 - evt.clientY;
+            _elDragDropGrabberParent.posX2 = evt.clientX;
+            _elDragDropGrabberParent.posY2 = evt.clientY;
+            _elDragDropGrabberParent.style.top = parseInt((_elDragDropGrabberParent.offsetTop) - (_elDragDropGrabberParent.posY)) + 'px';
+            _elDragDropGrabberParent.style.left = parseInt((_elDragDropGrabberParent.offsetLeft) - (_elDragDropGrabberParent.posX)) + 'px';
+        }
     };
 
     //---------------------------------------------------------------------
