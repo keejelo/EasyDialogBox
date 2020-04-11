@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.593
+// ** Version: 1.596
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -129,7 +129,9 @@ const EasyDialogBox = (function()
         return false;
     };
     
-    // ** Handle string input. Harmful based on the context: &<>"'`,!@$%()=+{}[]
+    // ** Harmful based on the context: &<>"'`,!@$%/\()=+{}[]
+    
+    // ** Escape string
     const _escape = function(str)
     {
         str = str.trim();
@@ -139,6 +141,22 @@ const EasyDialogBox = (function()
         str = str.replace(/</g, '&lt;');
         str = str.replace(/>/g, '&gt;');
         return str;
+    };
+    
+    // ** Remove all characters except ones listed
+    const _sanitize = function(str)
+    {
+        str = str.replace(/[^a-zA-Z0-9 ,._-æøåÆØÅ-]/g, ''); 
+        return str;
+    };
+    
+    // ** Encode all characters into hmtl-entities
+    const _htmlEncode = function(str)
+    {
+        return String(str).replace(/[^\w. ]/gi, function(c)
+        {
+            return '&#'+c.charCodeAt(0)+';';
+        });
     };
 
     // ** Show the dialog box
@@ -558,12 +576,16 @@ const EasyDialogBox = (function()
             {
                 pBox.addEventListener('keyup', function PromptBoxKeyUp()
                 {
-                    obj.strInput = _escape(pBox.value);
+                    //obj.strInput = _escape(pBox.value);
+                    //obj.strInput = _htmlEncode(pBox.value);
+                    obj.strInput = _sanitize(pBox.value);
                 });
 
                 pBox.addEventListener('change', function PromptBoxChange()
                 {
-                    obj.strInput = _escape(pBox.value);
+                    //obj.strInput = _escape(pBox.value);
+                    //obj.strInput = _htmlEncode(pBox.value);
+                    obj.strInput = _sanitize(pBox.value);
                 });
             }
             // ** END: When the user types in promptbox
