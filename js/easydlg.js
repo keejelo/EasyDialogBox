@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.591
+// ** Version: 1.592
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -129,8 +129,8 @@ const EasyDialogBox = (function()
         return false;
     };
     
-    // ** Handle string input, try to do some sanitizing
-    const _sanitize = function(str)
+    // ** Handle string input
+    const _escape = function(str)
     {
         str = str.trim();
         str = str.replace(/&/g, '&amp;');
@@ -558,12 +558,12 @@ const EasyDialogBox = (function()
             {
                 pBox.addEventListener('keyup', function PromptBoxKeyUp()
                 {
-                    obj.strInput = _sanitize(pBox.value);
+                    obj.strInput = _escape(pBox.value);
                 });
 
                 pBox.addEventListener('change', function PromptBoxChange()
                 {
-                    obj.strInput = _sanitize(pBox.value);
+                    obj.strInput = _escape(pBox.value);
                 });
             }
             // ** END: When the user types in promptbox
