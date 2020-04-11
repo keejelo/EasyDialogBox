@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.579
+// ** Version: 1.580
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -48,8 +48,8 @@ let EasyDialogBox = (function()
     const CANCEL = 4;
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['on-the-fly','dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok',
-                           'dlg-cancel','dlg-ok-cancel','dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
+    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
+                           'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
@@ -62,7 +62,7 @@ let EasyDialogBox = (function()
     let _isActive = false;
 
     // ** Debug-logger
-    let _log = function(str)
+    const _log = function(str)
     {
         if(DEBUG)
         {
@@ -71,13 +71,13 @@ let EasyDialogBox = (function()
     };
 
     // ** Convert string to decimal
-    let _str2dec = function(str)
+    const _str2dec = function(str)
     {
         return parseInt(str, 10);
     };
 
     // ** Get object from array id
-    let _getObjFromId = function(arr, strId)
+    const _getObjFromId = function(arr, strId)
     {
         for(let i = 0; i < arr.length; i++)
         {
@@ -90,7 +90,7 @@ let EasyDialogBox = (function()
     };
 
     // ** Check if array matches ALL test-values in supplied string/array
-    let _matchAll = function(arr, str, exp, sep)
+    const _matchAll = function(arr, str, exp, sep)
     {
         // ** Params
         // @ arr = array that holds the values we want to match against
@@ -130,14 +130,14 @@ let EasyDialogBox = (function()
     };
     
     // ** Handle string from input, do some sanitizing
-    let _sanitize = function(str)
+    const _sanitize = function(str)
     {
         str = str.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
         return str;
     };
 
     // ** Show the dialog box
-    let _show = function(objId)
+    const _show = function(objId)
     {
         // ** Get object from id
         let obj = _getObjFromId(_boxObj, objId);
@@ -610,7 +610,7 @@ let EasyDialogBox = (function()
     };
 
     // ** Close and destroy the dialog box
-    let _destroy = function(objId)
+    const _destroy = function(objId)
     {
         let success = false; // default
 
@@ -690,7 +690,7 @@ let EasyDialogBox = (function()
     };
 
     // ** Create dialog
-    let _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+    const _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
     {
         let match = _matchAll(_strBoxTypeList, strTypeClass, true);
 
@@ -798,7 +798,7 @@ let EasyDialogBox = (function()
     };
 
     // ** Initialize
-    let _init = function()
+    const _init = function()
     {
         // ** Window load event
         window.addEventListener('load', function LoadWindow()
@@ -837,7 +837,7 @@ let EasyDialogBox = (function()
     let _elDragDropGrabberParent = null;
 
     // ** Drag'n'drop object, functions
-    let _drag = 
+    const _drag = 
     {
         init : function(id)
         {
