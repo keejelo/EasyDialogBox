@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.601
+// ** Version: 1.602
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -89,7 +89,7 @@ const EasyDialogBox = (function()
         return null; // if no object found
     };
 
-    // ** Check if array matches ALL test-values in supplied string/array
+    // ** Check if array matches ALL test-values in supplied string/array. Returns true/false
     const _matchAll = function(arr, str, exp, sep)
     {
         // ** Params
