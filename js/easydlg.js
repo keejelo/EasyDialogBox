@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.600
+// ** Version: 1.601
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -181,15 +181,15 @@ const EasyDialogBox = (function()
         dlg.setAttribute('class', obj.strTypeClass);
         body.appendChild(dlg);
 
-        let match = null;
+        let matched = null;
 
         if(dlg)
         {
-            match = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
+            matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
         // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg types
-        if( dlg && (_isActive === false) && (match === true) )
+        if( dlg && (_isActive === false) && (matched === true) )
         {
             // ** Create outer box
             let box = document.createElement('div');
@@ -615,7 +615,7 @@ const EasyDialogBox = (function()
             // ** Return success
             return true;
         }
-        else if(!match)
+        else if(!matched)
         {
             _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
         }
@@ -719,10 +719,10 @@ const EasyDialogBox = (function()
     // ** Create dialog
     const _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
     {
-        let match = _matchAll(_strBoxTypeList, strTypeClass, true);
+        let matched = _matchAll(_strBoxTypeList, strTypeClass, true);
 
         // ** Check if valid types
-        if(match === true)
+        if(matched === true)
         {
             // ** Check if id is set, if not create a new
             if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
