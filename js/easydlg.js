@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.580
+// ** Version: 1.581
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -27,7 +27,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox Object (module)
 //-----------------------------------------------------------------------------------------------------------------
-let EasyDialogBox = (function()
+const EasyDialogBox = (function()
 {   'use strict';
 
     // ** Debug: true/false (outputs debug-messages to console)
