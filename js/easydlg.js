@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.581
+// ** Version: 1.583
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -31,7 +31,7 @@ const EasyDialogBox = (function()
 {   'use strict';
 
     // ** Debug: true/false (outputs debug-messages to console)
-    let DEBUG = true;
+    const DEBUG = true;
 
     // ** Buttontext (custom your own text if you want)
     let _btnTextClose  = 'Close';   // Close
@@ -40,7 +40,7 @@ const EasyDialogBox = (function()
     let _btnTextOk     = 'OK';      // OK
     let _btnTextCancel = 'Cancel';  // Cancel
 
-    // ** Constants 
+    // ** Button return codes, literals
     const CLOSE  = 0;
     const YES    = 1;
     const NO     = 2;
@@ -48,7 +48,7 @@ const EasyDialogBox = (function()
     const CANCEL = 4;
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
-    let _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
+    const _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
                            'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
