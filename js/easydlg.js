@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.597
+// ** Version: 1.600
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -128,9 +128,17 @@ const EasyDialogBox = (function()
 
         return false;
     };
-    
+
+    // ** Harmful chars based on the context: &<>"'`´,!@$%/\()=+{}[]
+
+    // ** Sanitize string, remove all characters except listed
+    const _sanitize = function(str)
+    {
+        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö-]/gi, '');
+        return str;
+    };
+
     // ** Escape string
-    // ** Harmful based on the context: &<>"'`,!@$%/\()=+{}[]
     const _escape = function(str)
     {
         str = str.trim();
@@ -141,17 +149,8 @@ const EasyDialogBox = (function()
         str = str.replace(/>/g, '&gt;');
         return str;
     };
-    
-    // ** Remove all characters except ones listed
-    // ** Harmful based on the context: &<>"'`,!@$%/\()=+{}[]
-    const _sanitize = function(str)
-    {
-        str = str.replace(/[^a-zA-Z0-9 ,._-æøåÆØÅ-]/g, ''); 
-        return str;
-    };
-    
+
     // ** Encode all characters into html-entities
-    // ** Harmful based on the context: &<>"'`,!@$%/\()=+{}[]
     const _htmlEncode = function(str)
     {
         return String(str).replace(/[^\w. ]/gi, function(c)
@@ -577,16 +576,16 @@ const EasyDialogBox = (function()
             {
                 pBox.addEventListener('keyup', function PromptBoxKeyUp()
                 {
+                    obj.strInput = _sanitize(pBox.value);
                     //obj.strInput = _escape(pBox.value);
                     //obj.strInput = _htmlEncode(pBox.value);
-                    obj.strInput = _sanitize(pBox.value);
                 });
 
                 pBox.addEventListener('change', function PromptBoxChange()
                 {
+                    obj.strInput = _sanitize(pBox.value);
                     //obj.strInput = _escape(pBox.value);
                     //obj.strInput = _htmlEncode(pBox.value);
-                    obj.strInput = _sanitize(pBox.value);
                 });
             }
             // ** END: When the user types in promptbox
