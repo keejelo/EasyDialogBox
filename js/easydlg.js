@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.585
+// ** Version: 1.586
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -133,10 +133,8 @@ const EasyDialogBox = (function()
     const _sanitize = function(str)
     {
         str = str.trim();
-        str = str.replace(/'/g, '\\\'');
-        str = str.replace(/"/g, '\\"');
-        str = str.replace(/</g, '&lt;');
-        str = str.replace(/>/g, '&gt;');
+        str = str.replace(/'/g, '\\\'').replace(/"/g, '\\"');
+        str = str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
         return str;
     };
 
