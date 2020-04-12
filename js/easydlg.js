@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.611
+// ** Version: 1.612
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -202,7 +202,7 @@ const EasyDialogBox = (function()
             // ** Check if position is set, if true then change position, else default
             if(typeof obj.x !== 'undefined' && typeof obj.y !== 'undefined')
             {
-                if( (obj.x && obj.y) && (obj.x !== null && obj.y !== null) )
+                if(obj.x && obj.y)
                 {
                     // ** Warning! Below code can break box-"responsiveness"
                     box.style.top = obj.y + 'px';
@@ -219,7 +219,7 @@ const EasyDialogBox = (function()
             // ** Check if size is set, if true then change size, else default
             if(typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
             {
-                if( (obj.w && obj.h) && (obj.w !== null && obj.h !== null) )
+                if(obj.w && obj.h)
                 {
                     // ** Warning! Below code can break box-"responsiveness"
                     box.style.maxWidth = obj.w + 'px';
