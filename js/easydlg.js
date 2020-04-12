@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.618
+// ** Version: 1.619
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -199,12 +199,17 @@ const EasyDialogBox = (function()
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
 
-            // ** Check if position is set, if true then change position, else default values are used
-            if(obj.x && obj.y)
+            // ** Check if position is set, if true then change position, else default value used
+            if(obj.x)
+            {
+                // ** Warning! Below code can break "responsiveness"
+                box.style.left = _str2dec(obj.x) + 'px';
+            }
+            // ** Check if position is set, if true then change position, else default value used
+            if(obj.y)
             {
                 // ** Warning! Below code can break "responsiveness"
                 box.style.top = _str2dec(obj.y) + 'px';
-                box.style.left = _str2dec(obj.x) + 'px';
                 customPos = true;
             }
             else
@@ -213,14 +218,20 @@ const EasyDialogBox = (function()
             }
             // ** END: Check if position is set
 
-            // ** Check if size is set, if true then change size, else default values are used
-            if(obj.w && obj.h)
+            // ** Check if size is set, if true then change size, else default value used
+            if(obj.w)
             {
                 // ** Warning! Below code can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
-                box.style.height = _str2dec(obj.h) + 'px';
-                customSize = true;
+                //customSize = true;
             }
+            // ** Check if size is set, if true then change size, else default value used
+            if(obj.h)
+            {
+                // ** Warning! Below code can break "responsiveness"
+                box.style.height = _str2dec(obj.h) + 'px';
+                //customSize = true;
+            }            
             // ** END: Check if size is set
             
             // ** Add element to DOM
