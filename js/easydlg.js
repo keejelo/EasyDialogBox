@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.621
+// ** Version: 1.622
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -134,7 +134,7 @@ const EasyDialogBox = (function()
     // ** Sanitize string, remove all characters except listed
     const _sanitize = function(str)
     {
-        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö-]/gi, '');
+        str = str.replace(/[^a-z0-9@£#\s\,._-זרוהצ-]/gi, '');
         return str;
     };
 
@@ -198,7 +198,9 @@ const EasyDialogBox = (function()
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
+            //box.setAttribute('class','dlg-box dlg-center-vert');
 
+            
             // ** Check if position is set, if true then change position, else default value used
             if(obj.x)
             {
@@ -233,6 +235,7 @@ const EasyDialogBox = (function()
                 customSize = true;
             }            
             // ** END: Check if size is set
+            
             
             // ** Add element to DOM
             dlg.appendChild(box);
@@ -432,6 +435,9 @@ const EasyDialogBox = (function()
                 }
             }
             // ** END: Create footer and buttons
+            
+            // ** Show the dialogbox
+            dlg.style.display = 'block';  // must be here or else it causes height: auto
 
             // ** Get height of inner dialogbox
             let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
@@ -442,12 +448,14 @@ const EasyDialogBox = (function()
             if(_str2dec(height) >= window.innerHeight)
             {
                 inDlgBox.classList.remove('dlg-center-vert');
+                _log('Removed class: dlg-center-vert');
             }
             else
             {
                 if(customPos === false)
                 {
                     inDlgBox.classList.add('dlg-center-vert');
+                    _log('Added class: dlg-center-vert');
                 }
             }
 
@@ -660,7 +668,7 @@ const EasyDialogBox = (function()
             }
 
             // ** Show the dialogbox
-            dlg.style.display = 'block';
+            //dlg.style.display = 'block';  // must be moved up, or else causes height: auto
             
             // ** Set focus to input field if promptbox
             if(dlg.classList.contains('dlg-prompt'))
