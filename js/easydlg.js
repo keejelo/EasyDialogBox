@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.606
+// ** Version: 1.607
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -214,7 +214,7 @@ const EasyDialogBox = (function()
             {   
                 box.setAttribute('class','dlg-box dlg-center-vert');
             }
-            // ** END: Check if position is set, if true then change position, else default
+            // ** END: Check if position is set
 
             // ** Check if size is set, if true then change size, else default
             if((typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
@@ -228,7 +228,7 @@ const EasyDialogBox = (function()
                     customSize = true;
                 }
             }
-            // ** END: Check if size is set, if true then change size, else default
+            // ** END: Check if size is set
             
             // ** Add element to DOM
             dlg.appendChild(box);
