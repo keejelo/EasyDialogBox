@@ -31,7 +31,8 @@
 
 /* Dialog box */
 .dlg-box
-{    
+{   
+    display:block;
     margin:0 auto;
     padding:0;
     max-width:600px;
@@ -43,7 +44,6 @@
     /*border-radius:2px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
     border-top:none;
-    position:absolute;
 }
 
 /* Dialog heading */
