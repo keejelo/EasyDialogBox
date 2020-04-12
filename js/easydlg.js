@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.603
+// ** Version: 1.604
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -134,7 +134,7 @@ const EasyDialogBox = (function()
     // ** Sanitize string, remove all characters except listed
     const _sanitize = function(str)
     {
-        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö-]/gi, '');
+        str = str.replace(/[^a-z0-9@£#\s\,._-זרוהצ-]/gi, '');
         return str;
     };
 
@@ -191,9 +191,47 @@ const EasyDialogBox = (function()
         // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg types
         if( dlg && (_isActive === false) && (matched === true) )
         {
+            // ** Flags to indicate custom values
+            let customPos = false;
+            let customSize = false;
+            
             // ** Create outer box
             let box = document.createElement('div');
-            box.setAttribute('class','dlg-box dlg-center-vert');
+            box.setAttribute('class','dlg-box');
+            
+            // ** Check if position is set, if true then change position, else default
+            if(typeof obj.x !== 'undefined' && typeof obj.y !== 'undefined')
+            {
+                if(!obj.x && !obj.y)
+                {
+                    // ** Warning! Below code can break box-"responsiveness"
+                    box.style.top = obj.y + 'px';
+                    box.style.left = obj.x + 'px';
+                    customPos = true;
+                }
+            }
+            else
+            {   
+                box.setAttribute('class','dlg-box dlg-center-vert');
+            }
+            // ** END: Check if position is set, if true then change position, else default
+
+            // ** Check if size is set, if true then change size, else default
+            if((typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
+            )
+            {
+                if(!obj.w && !obj.h)
+                {
+                    // ** Warning! Below code can break box-"responsiveness"
+                    box.style.maxWidth = 'none'; // disable default value
+                    box.style.width = obj.w + 'px';
+                    box.style.height = obj.h + 'px';
+                    customSize = true;
+                }
+            }
+            // ** END: Check if size is set, if true then change size, else default
+            
+            // ** Add element to DOM
             dlg.appendChild(box);
 
             // ** Create heading
@@ -392,7 +430,10 @@ const EasyDialogBox = (function()
             }
             else
             {
-                inDlgBox.classList.add('dlg-center-vert');
+                if(customPos === false)
+                {
+                    inDlgBox.classList.add('dlg-center-vert');
+                }
             }
 
             // ** Creating substitute for scrollbar
@@ -717,7 +758,7 @@ const EasyDialogBox = (function()
     };
 
     // ** Create dialog
-    const _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+    const _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive, x, y, w, h)
     {
         let matched = _matchAll(_strBoxTypeList, strTypeClass, true);
 
@@ -755,6 +796,10 @@ const EasyDialogBox = (function()
                 strTitle : strTitle,
                 strMessage : strMessage,
                 bKeepAlive : bKeepAlive,
+                x : x,
+                y : y,
+                w : w,
+                h : h,
                 strInput : '',
                 nRetCode : -1,
 
