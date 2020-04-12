@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.607
+// ** Version: 1.609
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -199,10 +199,12 @@ const EasyDialogBox = (function()
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
             
+            _log('obj.x: ' + obj.x);
+            
             // ** Check if position is set, if true then change position, else default
             if(typeof obj.x !== 'undefined' && typeof obj.y !== 'undefined')
             {
-                if(!obj.x && !obj.y)
+                if( (!obj.x && !obj.y) && (obj.x !== null && obj.y !== null) )
                 {
                     // ** Warning! Below code can break box-"responsiveness"
                     box.style.top = obj.y + 'px';
@@ -217,10 +219,9 @@ const EasyDialogBox = (function()
             // ** END: Check if position is set
 
             // ** Check if size is set, if true then change size, else default
-            if((typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
-            )
+            if(typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
             {
-                if(!obj.w && !obj.h)
+                if( (!obj.w && !obj.h) && (obj.w !== null && obj.h !== null) )
                 {
                     // ** Warning! Below code can break box-"responsiveness"
                     box.style.maxWidth = obj.w + 'px';
@@ -884,12 +885,16 @@ const EasyDialogBox = (function()
                 let dlg = document.getElementById(btns[i].getAttribute('rel'));
 
                 // ** Create object from DOM element
-                let obj = _create(dlg.getAttribute('id'),      // id
-                                  dlg.getAttribute('class'),   // type
-                                  dlg.getAttribute('title'),   // title
-                                  dlg.innerHTML,               // message
-                                  dlg.getAttribute('name'),    // callback function
-                                  true);                       // do not delete on closing
+                let obj = _create(dlg.getAttribute('id'),       // id
+                                  dlg.getAttribute('class'),    // type
+                                  dlg.getAttribute('title'),    // title
+                                  dlg.innerHTML,                // message
+                                  dlg.getAttribute('name'),     // callback function
+                                  true,                         // do not delete on closing
+                                  dlg.getAttribute('x'),        // horizontal position (using this may fail HTML validation)
+                                  dlg.getAttribute('y'),        // vertical position (using this may fail HTML validation)
+                                  dlg.getAttribute('w'),        // width (using this may fail HTML validation)
+                                  dlg.getAttribute('h'));       // height (using this may fail HTML validation)
 
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
