@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.619
+// ** Version: 1.621
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -230,7 +230,7 @@ const EasyDialogBox = (function()
             {
                 // ** Warning! Below code can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
-                //customSize = true;
+                customSize = true;
             }            
             // ** END: Check if size is set
             
@@ -270,6 +270,12 @@ const EasyDialogBox = (function()
             )
             {
                 message.setAttribute('class','dlg-message dlg-flex-container');
+                
+                // ** If custom height then adjust
+                if(customSize)
+                {
+                    message.style.height = _str2dec(obj.h - 101) + 'px';
+                }                
 
                 // ** Create left box
                 leftbox = document.createElement('div');
@@ -312,6 +318,12 @@ const EasyDialogBox = (function()
             {
                 message.setAttribute('class','dlg-message');
                 message.innerHTML = obj.strMessage;
+                
+                // ** If custom height then adjust
+                if(customSize)
+                {
+                    message.style.height = _str2dec(obj.h - 130) + 'px';
+                }
             }
             box.appendChild(message);
 
