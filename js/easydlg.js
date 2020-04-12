@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.609
+// ** Version: 1.610
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -198,9 +198,7 @@ const EasyDialogBox = (function()
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
-            
-            _log('obj.x: ' + obj.x);
-            
+
             // ** Check if position is set, if true then change position, else default
             if(typeof obj.x !== 'undefined' && typeof obj.y !== 'undefined')
             {
