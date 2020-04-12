@@ -43,6 +43,7 @@
     /*border-radius:2px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
     border-top:none;
+    position:absolute;
 }
 
 /* Dialog heading */
