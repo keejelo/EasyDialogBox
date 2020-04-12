@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.614
+// ** Version: 1.615
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -194,7 +194,7 @@ const EasyDialogBox = (function()
             // ** Flags to indicate custom value usage
             let customPos = false;
             let customSize = false;
-            
+
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
@@ -204,14 +204,14 @@ const EasyDialogBox = (function()
             {
                 if(obj.x && obj.y)
                 {
-                    // ** Warning! Below code can break box-"responsiveness"
+                    // ** Warning! Below code can break "responsiveness"
                     box.style.top = _str2dec(obj.y) + 'px';
                     box.style.left = _str2dec(obj.x) + 'px';
                     customPos = true;
                 }
             }
             else
-            {   
+            {
                 box.setAttribute('class','dlg-box dlg-center-vert');
             }
             // ** END: Check if position is set
@@ -221,7 +221,7 @@ const EasyDialogBox = (function()
             {
                 if(obj.w && obj.h)
                 {
-                    // ** Warning! Below code can break box-"responsiveness"
+                    // ** Warning! Below code can break "responsiveness"
                     box.style.maxWidth = _str2dec(obj.w) + 'px';
                     box.style.height = _str2dec(obj.h) + 'px';
                     customSize = true;
@@ -888,7 +888,7 @@ const EasyDialogBox = (function()
                                   dlg.getAttribute('title'),    // title
                                   dlg.innerHTML,                // message
                                   dlg.getAttribute('name'),     // callback function
-                                  true,                         // do not delete on closing
+                                  true,                         // keep alive after closing
                                   dlg.getAttribute('x'),        // horizontal position (using this may fail HTML validation)
                                   dlg.getAttribute('y'),        // vertical position (using this may fail HTML validation)
                                   dlg.getAttribute('w'),        // width (using this may fail HTML validation)
