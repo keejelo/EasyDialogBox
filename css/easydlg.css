@@ -113,6 +113,8 @@
 .dlg-flex-container
 {
     display:flex;
+    margin:0;
+    padding:0;
 }
 
 .dlg-flexbox-left,
@@ -125,8 +127,7 @@
 {
     width:55px;
     margin:0;
-    padding-top:20px;
-    padding-left:5px;
+    padding:20px 20px 20px 20px;
     /*border:1px solid #f00;*/ /*debug*/
 }
 
@@ -134,7 +135,7 @@
 {
     width:100%;
     margin:0;
-    padding:8px 0 0 5px;
+    padding:8px 20px 0 20px;
     /*border:1px solid #00f;*/ /*debug*/
 }
 
@@ -180,6 +181,7 @@
 .dlg-close-btn
 {
     padding:5px 15px;
+    margin:0;
     margin-left:10px;
 }
 
@@ -188,6 +190,7 @@
 .dlg-ok-btn
 {
     padding:5px 15px;
+    margin:0;
     margin-left:10px;
 }
 
@@ -196,6 +199,7 @@
 .dlg-cancel-btn
 {
     padding:5px 15px;
+    margin:0;
     margin-left:10px;
 }
 
