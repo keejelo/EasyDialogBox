@@ -402,7 +402,7 @@ window.addEventListener('load', function()
 
             <h2>Create dialog</h2>
             <p>
-                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);</code>
+                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive, x, y, w, h);</code>
             </p>
 
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
@@ -448,6 +448,12 @@ window.addEventListener('load', function()
             <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObj.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObj.destroy();</code></p>
+            <p>&nbsp;</p>
+            <p class="bold">Warning! Use of the below options can break box-&quot;responsiveness&quot;!</p>
+            <p>Optional: <code>x</code> = horizontal position of the box, default center in viewport.</p>
+            <p>Optional: <code>y</code> = vertical position of the box, default center in viewport.</p>
+            <p>Optional: <code>w</code> = width of the box, default set to: 600px</p>
+            <p>Optional: <code>h</code> = height of the box, default value is adjusted by content.</p>
 
             <p>&nbsp;</p>
             
@@ -463,6 +469,10 @@ window.addEventListener('load', function()
                     <tr><td>strInput</td><td>string</td></tr>
                     <tr><td>nRetCode</td><td>number</td></tr>
                     <tr><td>bKeepAlive</td><td>boolean</td></tr>
+                    <tr><td>x</td><td>number</td></tr>
+                    <tr><td>y</td><td>number</td></tr>
+                    <tr><td>w</td><td>number</td></tr>
+                    <tr><td>h</td><td>number</td></tr>                    
                     <tr><td>callback</td><td>function</td></tr>
                     <tr><td>show</td><td>function</td></tr>
                     <tr><td>destroy</td><td>function</td></tr>
