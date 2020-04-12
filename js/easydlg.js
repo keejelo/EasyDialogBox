@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.617
+// ** Version: 1.618
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -199,16 +199,13 @@ const EasyDialogBox = (function()
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
 
-            // ** Check if position is set, if true then change position, else default
-            if(typeof obj.x !== 'undefined' && typeof obj.y !== 'undefined')
+            // ** Check if position is set, if true then change position, else default values are used
+            if(obj.x && obj.y)
             {
-                if(obj.x && obj.y)
-                {
-                    // ** Warning! Below code can break "responsiveness"
-                    box.style.top = _str2dec(obj.y) + 'px';
-                    box.style.left = _str2dec(obj.x) + 'px';
-                    customPos = true;
-                }
+                // ** Warning! Below code can break "responsiveness"
+                box.style.top = _str2dec(obj.y) + 'px';
+                box.style.left = _str2dec(obj.x) + 'px';
+                customPos = true;
             }
             else
             {
@@ -216,16 +213,13 @@ const EasyDialogBox = (function()
             }
             // ** END: Check if position is set
 
-            // ** Check if size is set, if true then change size, else default
-            if(typeof obj.w !== 'undefined' && typeof obj.h !== 'undefined')
+            // ** Check if size is set, if true then change size, else default values are used
+            if(obj.w && obj.h)
             {
-                if(obj.w && obj.h)
-                {
-                    // ** Warning! Below code can break "responsiveness"
-                    box.style.maxWidth = _str2dec(obj.w) + 'px';
-                    box.style.height = _str2dec(obj.h) + 'px';
-                    customSize = true;
-                }
+                // ** Warning! Below code can break "responsiveness"
+                box.style.maxWidth = _str2dec(obj.w) + 'px';
+                box.style.height = _str2dec(obj.h) + 'px';
+                customSize = true;
             }
             // ** END: Check if size is set
             
