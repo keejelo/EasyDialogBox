@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.604
+// ** Version: 1.605
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -223,8 +223,8 @@ const EasyDialogBox = (function()
                 if(!obj.w && !obj.h)
                 {
                     // ** Warning! Below code can break box-"responsiveness"
-                    box.style.maxWidth = 'none'; // disable default value
-                    box.style.width = obj.w + 'px';
+                    //box.style.maxWidth = 'none'; // disable default value
+                    box.style.maxWidth = obj.w + 'px';
                     box.style.height = obj.h + 'px';
                     customSize = true;
                 }
@@ -1001,4 +1001,3 @@ const EasyDialogBox = (function()
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Initialize
 //-----------------------------------------------------------------------------------------------------------------
-
