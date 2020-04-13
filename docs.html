@@ -476,7 +476,10 @@ window.addEventListener('load', function()
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObj.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObj.destroy();</code></p>
             <p>&nbsp;</p>
-            <p><span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.</p>
+            <p>
+                <span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
+                <br />A fix has been added to deal with this so it may just work out fine, but at least now you know.
+            </p>
             <p>Optional: <code>x</code> = horizontal position of the box, default: center in viewport.</p>
             <p>Optional: <code>y</code> = vertical position of the box, default: center in viewport.</p>
             <p>Optional: <code>w</code> = width of the box, default: 600px (maxWidth)</p>
