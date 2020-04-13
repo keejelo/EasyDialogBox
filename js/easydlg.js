@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.629
+// ** Version: 1.630
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -198,19 +198,17 @@ const EasyDialogBox = (function()
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('class','dlg-box');
-            //box.setAttribute('class','dlg-box dlg-center-vert');
-
             
             // ** Check if position is set, if true then change position, else default value used
             if(obj.x)
             {
-                // ** Warning! Below code can break "responsiveness"
+                // ** Note! Below code can break "responsiveness"
                 box.style.left = _str2dec(obj.x) + 'px';
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
             {
-                // ** Warning! Below code can break "responsiveness"
+                // ** Note! Below code can break "responsiveness"
                 box.style.top = _str2dec(obj.y) + 'px';
                 customPos = true;
             }
@@ -223,14 +221,14 @@ const EasyDialogBox = (function()
             // ** Check if size is set, if true then change size, else default value used
             if(obj.w)
             {
-                // ** Warning! Below code can break "responsiveness"
+                // ** Note! Below code can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
                 //customSize = true;
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
-                // ** Warning! Below code can break "responsiveness"
+                // ** Note! Below code can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
                 customSize = true;
             }            
@@ -441,8 +439,6 @@ const EasyDialogBox = (function()
                                           // and "getComputedStyle" do not work as we want
 
             // ** Get height of inner dialogbox
-            //let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
-            //let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
             let height = window.getComputedStyle(box, null).getPropertyValue('height');
 
             // ** If height is larger or equal to window height, disable vertical alignment,
