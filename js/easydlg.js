@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.623
+// ** Version: 1.624
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -441,14 +441,15 @@ const EasyDialogBox = (function()
                                           // and "getComputedStyle" do not work as we want
 
             // ** Get height of inner dialogbox
-            let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
-            let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
+            //let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
+            //let height = window.getComputedStyle(inDlgBox, null).getPropertyValue('height');
+            let height = window.getComputedStyle(box, null).getPropertyValue('height');
 
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position at top. Prevents out of view.
             if(_str2dec(height) >= window.innerHeight)
             {
-                inDlgBox.classList.remove('dlg-center-vert');
+                box.classList.remove('dlg-center-vert');
                 _log('DEBUG: Class removed: dlg-center-vert');
                 
                 // ** Try to retain responsiveness by removing custom values
@@ -469,14 +470,14 @@ const EasyDialogBox = (function()
             {
                 if(customPos === false)
                 {
-                    inDlgBox.classList.add('dlg-center-vert');
+                    box.classList.add('dlg-center-vert');
                     _log('DEBUG: Class added: dlg-center-vert');
                 }
             }
 
             // ** Creating substitute for scrollbar
             // ** Get body element
-            let body = document.getElementsByTagName('body')[0];
+            //let body = document.getElementsByTagName('body')[0];
 
             // ** Store the original padding-right value
             _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
