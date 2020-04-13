@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.625
+// ** Version: 1.626
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -949,7 +949,7 @@ const EasyDialogBox = (function()
     {
         init : function(id)
         {
-            _drag.el = document.getElementById(id);
+            _drag.el = {};
             _drag.el.grabber = document.getElementById(id);
             _drag.el.grabber.addEventListener('mousedown', _drag.start);
             _drag.el.grabberParent = _drag.el.grabber.parentElement;
