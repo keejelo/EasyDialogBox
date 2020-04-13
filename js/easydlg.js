@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.634
+// ** Version: 1.636
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -941,7 +941,7 @@ const EasyDialogBox = (function()
         });
     };
 
-    // ** Drag'n'drop object/module
+    // ** Drag'n'drop object module
     const _drag = 
     {
         init : function(id)
@@ -949,7 +949,7 @@ const EasyDialogBox = (function()
             _drag.el = document.getElementById(id);
             _drag.el.grabber = document.getElementById(id + '_heading');
             
-            if(!_drag.el.grabber)
+            if(_drag.el.grabber === null)
             {
                 _drag.el.grabber = _drag.el;
             }
