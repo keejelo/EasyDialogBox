@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.632
+// ** Version: 1.634
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -197,6 +197,7 @@ const EasyDialogBox = (function()
 
             // ** Create outer box
             let box = document.createElement('div');
+            box.setAttribute('id', obj.id + '_1');
             box.setAttribute('class','dlg-box');
             
             // ** Check if position is set, if true then change position, else default value used
@@ -240,7 +241,7 @@ const EasyDialogBox = (function()
 
             // ** Create heading
             let heading = document.createElement('div');
-            heading.setAttribute('id', obj.id + '_heading');
+            heading.setAttribute('id', obj.id + '_1_heading');
             heading.setAttribute('class','dlg-heading');
             box.appendChild(heading);
 
@@ -676,7 +677,7 @@ const EasyDialogBox = (function()
             // ** Make it draggable, unless flag is set
             if(!dlg.classList.contains('dlg-no-drag'))
             {
-                _drag.init(obj.id + '_heading');
+                _drag.init(obj.id + '_1');
             }
 
             // ** Set focus to input field if promptbox
@@ -940,23 +941,21 @@ const EasyDialogBox = (function()
         });
     };
 
-    // ** Drag'n'drop object module
+    // ** Drag'n'drop object/module
     const _drag = 
     {
         init : function(id)
         {
-            _drag.obj = {};
-            _drag.obj.grabber = document.getElementById(id);
-            _drag.obj.grabber.addEventListener('mousedown', _drag.start);
-            _drag.obj.grabberParent = _drag.obj.grabber.parentElement;
-
-            let body = document.getElementsByTagName('body')[0];
-            if(_drag.obj.grabberParent === body)
+            _drag.el = document.getElementById(id);
+            _drag.el.grabber = document.getElementById(id + '_heading');
+            
+            if(!_drag.el.grabber)
             {
-                _drag.obj.grabberParent = _drag.obj.grabber;
+                _drag.el.grabber = _drag.el;
             }
-
-            _drag.obj.grabberParent.style.position = 'absolute';
+            
+            _drag.el.style.position = 'absolute';
+            _drag.el.grabber.addEventListener('mousedown', _drag.start);
         },
         start : function(evt)
         {
@@ -964,28 +963,28 @@ const EasyDialogBox = (function()
             if(evt.button === 0)
             {
                 evt.preventDefault();
-                _drag.obj.grabber.style.cursor = 'move';
-                _drag.obj.posX2 = evt.clientX;
-                _drag.obj.posY2 = evt.clientY;
+                _drag.el.grabber.style.cursor = 'move';
+                _drag.el.posX2 = evt.clientX;
+                _drag.el.posY2 = evt.clientY;
                 document.addEventListener('mouseup', _drag.stop);
                 document.addEventListener('mousemove', _drag.move);
             }
         },
         stop : function()
         {
-            _drag.obj.grabber.style.cursor = '';
+            _drag.el.grabber.style.cursor = '';
             document.removeEventListener('mouseup', _drag.stop);
             document.removeEventListener('mousemove', _drag.move);
         },
         move : function(evt)
         {
             evt.preventDefault();
-            _drag.obj.posX = _drag.obj.posX2 - evt.clientX;
-            _drag.obj.posY = _drag.obj.posY2 - evt.clientY;
-            _drag.obj.posX2 = evt.clientX;
-            _drag.obj.posY2 = evt.clientY;
-            _drag.obj.grabberParent.style.top = parseInt((_drag.obj.grabberParent.offsetTop) - (_drag.obj.posY)) + 'px';
-            _drag.obj.grabberParent.style.left = parseInt((_drag.obj.grabberParent.offsetLeft) - (_drag.obj.posX)) + 'px';
+            _drag.el.posX = _drag.el.posX2 - evt.clientX;
+            _drag.el.posY = _drag.el.posY2 - evt.clientY;
+            _drag.el.posX2 = evt.clientX;
+            _drag.el.posY2 = evt.clientY;
+            _drag.el.style.top = parseInt((_drag.el.offsetTop) - (_drag.el.posY)) + 'px';
+            _drag.el.style.left = parseInt((_drag.el.offsetLeft) - (_drag.el.posX)) + 'px';
         }
     };
 
