@@ -164,6 +164,11 @@ b,i
     font-weight:normal; /* abusing this tag for syntax coloring */
     font-style:normal;  /* abusing this tag for syntax formatting */
 }
+/* this fixes the absolute pos of the container, pushes the code out from beneath */
+b:first-child
+{
+    margin-left:40px;
+}
 .tag
 {
     color:#9ecaf8; /* 0000ff a8742b 00ccff */
@@ -257,6 +262,7 @@ b,i
     margin-left:0;
     margin-right:20px;
     text-align:right;
+    position:absolute;
 }
 /* END: code line numbers */
 
@@ -535,7 +541,7 @@ window.addEventListener('load', function()
 <i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">,</b> myCallbackFuncToRun<b class="func">)</b>;</i>
 <i></i>
 <i><b class="comment">// ** Show the newly created box</b></i>
-<i>myBox<b class="func">.show()</b>;</i>
+<i><b>myBox</b><b class="func">.show()</b>;</i>
 <i></i>
 <i><b class="comment">// ** To programatically destroy the box, you can do</b></i>
 <i><b class="comment">// myBox.destroy();</b>
@@ -751,7 +757,8 @@ window.addEventListener('load', function()
                 <div class="codeview"><i></i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">x</b>=<b class="val">&quot;100&quot;</b> <b class="att">y</b>=<b class="val">&quot;200&quot;</b> <b class="att">w</b>=<b class="val">&quot;500&quot;</b> <b class="att">h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
-<i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
+<i>    <b class="tag">&lt;p&gt;</b>This is a crazy messagebox, it uses many classes at once and also uses the optional parameters for position and size: x,y,w,h<b class="tag">&lt;br /&gt;</b></i>
+<i>    <b>It may fail in responsiveness and validation, but if you want to mix-it-up and have custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i></i>    
@@ -794,7 +801,7 @@ window.addEventListener('load', function()
     
     <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" name="myCallbackFunc" x="100" y="200" w="500" h="400">
         <p>This is a crazy messagebox, it uses many classes at once and also uses the optional parameters for position and size: x,y,w,h<br />
-        It may fail in responsiveness, but if you want to mix-it-up and have custom position and size it is possible.</p>
+        It may fail in responsiveness and validation, but if you want to mix-it-up and have custom position and size it is possible.</p>
     </div>        
     
     <!-- END: HTML pre-written dialog boxes -->
