@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.627
+// ** Version: 1.628
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -134,7 +134,7 @@ const EasyDialogBox = (function()
     // ** Sanitize string, remove all characters except listed
     const _sanitize = function(str)
     {
-        str = str.replace(/[^a-z0-9@£#\s\,._-זרוהצ-]/gi, '');
+        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö-]/gi, '');
         return str;
     };
 
