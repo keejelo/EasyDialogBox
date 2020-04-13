@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.630
+// ** Version: 1.631
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -965,8 +965,8 @@ const EasyDialogBox = (function()
             {
                 evt.preventDefault();
                 _drag.el.grabber.style.cursor = 'move';
-                _drag.el.grabberParent.posX2 = evt.clientX;
-                _drag.el.grabberParent.posY2 = evt.clientY;
+                _drag.el.posX2 = evt.clientX;
+                _drag.el.posY2 = evt.clientY;
                 document.addEventListener('mouseup', _drag.stop);
                 document.addEventListener('mousemove', _drag.move);
             }
@@ -980,12 +980,12 @@ const EasyDialogBox = (function()
         move : function(evt)
         {
             evt.preventDefault();
-            _drag.el.grabberParent.posX = _drag.el.grabberParent.posX2 - evt.clientX;
-            _drag.el.grabberParent.posY = _drag.el.grabberParent.posY2 - evt.clientY;
-            _drag.el.grabberParent.posX2 = evt.clientX;
-            _drag.el.grabberParent.posY2 = evt.clientY;
-            _drag.el.grabberParent.style.top = parseInt((_drag.el.grabberParent.offsetTop) - (_drag.el.grabberParent.posY)) + 'px';
-            _drag.el.grabberParent.style.left = parseInt((_drag.el.grabberParent.offsetLeft) - (_drag.el.grabberParent.posX)) + 'px';
+            _drag.el.posX = _drag.el.posX2 - evt.clientX;
+            _drag.el.posY = _drag.el.posY2 - evt.clientY;
+            _drag.el.posX2 = evt.clientX;
+            _drag.el.posY2 = evt.clientY;
+            _drag.el.grabberParent.style.top = parseInt((_drag.el.grabberParent.offsetTop) - (_drag.el.posY)) + 'px';
+            _drag.el.grabberParent.style.left = parseInt((_drag.el.grabberParent.offsetLeft) - (_drag.el.posX)) + 'px';
         }
     };
 
