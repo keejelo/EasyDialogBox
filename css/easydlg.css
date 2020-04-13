@@ -36,7 +36,7 @@
     margin:0 auto;
     padding:0;
     max-width:600px;
-    overflow:auto; /* Enable scroll if needed */
+    overflow:hidden; /* disable scrolling inside box */
     width:98%; /* 96% */
     background-color:#fefefe;
     font-family:Arial, Helvetica, sans-serif;
@@ -107,6 +107,8 @@
     font-family:inherit;
     font-size:1.4em;
     line-height:1.4em;
+    overflow-x:hidden; /* Hide horizontal scrollbar */
+    overflow-y:auto;   /* Add vertical scrollbar if needed */
 }
 
 /* Flex boxes */
@@ -136,6 +138,8 @@
     width:100%;
     margin:0;
     padding:8px 20px 0 20px;
+    overflow-x:hidden; /* Hide horizontal scrollbar */
+    overflow-y:auto;   /* Add vertical scrollbar if needed */    
     /*border:1px solid #00f;*/ /*debug*/
 }
 
@@ -175,6 +179,7 @@
     border-bottom-right-radius:inherit;
     font-family:inherit;
     font-size:1.3em;
+    overflow:hidden; /* Hide scrollbar */
 }
 
 /* The Close Button */
