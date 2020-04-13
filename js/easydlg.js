@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.631
+// ** Version: 1.632
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -945,18 +945,18 @@ const EasyDialogBox = (function()
     {
         init : function(id)
         {
-            _drag.el = {};
-            _drag.el.grabber = document.getElementById(id);
-            _drag.el.grabber.addEventListener('mousedown', _drag.start);
-            _drag.el.grabberParent = _drag.el.grabber.parentElement;
+            _drag.obj = {};
+            _drag.obj.grabber = document.getElementById(id);
+            _drag.obj.grabber.addEventListener('mousedown', _drag.start);
+            _drag.obj.grabberParent = _drag.obj.grabber.parentElement;
 
             let body = document.getElementsByTagName('body')[0];
-            if(_drag.el.grabberParent === body)
+            if(_drag.obj.grabberParent === body)
             {
-                _drag.el.grabberParent = _drag.el.grabber;
+                _drag.obj.grabberParent = _drag.obj.grabber;
             }
 
-            _drag.el.grabberParent.style.position = 'absolute';
+            _drag.obj.grabberParent.style.position = 'absolute';
         },
         start : function(evt)
         {
@@ -964,28 +964,28 @@ const EasyDialogBox = (function()
             if(evt.button === 0)
             {
                 evt.preventDefault();
-                _drag.el.grabber.style.cursor = 'move';
-                _drag.el.posX2 = evt.clientX;
-                _drag.el.posY2 = evt.clientY;
+                _drag.obj.grabber.style.cursor = 'move';
+                _drag.obj.posX2 = evt.clientX;
+                _drag.obj.posY2 = evt.clientY;
                 document.addEventListener('mouseup', _drag.stop);
                 document.addEventListener('mousemove', _drag.move);
             }
         },
         stop : function()
         {
-            _drag.el.grabber.style.cursor = '';
+            _drag.obj.grabber.style.cursor = '';
             document.removeEventListener('mouseup', _drag.stop);
             document.removeEventListener('mousemove', _drag.move);
         },
         move : function(evt)
         {
             evt.preventDefault();
-            _drag.el.posX = _drag.el.posX2 - evt.clientX;
-            _drag.el.posY = _drag.el.posY2 - evt.clientY;
-            _drag.el.posX2 = evt.clientX;
-            _drag.el.posY2 = evt.clientY;
-            _drag.el.grabberParent.style.top = parseInt((_drag.el.grabberParent.offsetTop) - (_drag.el.posY)) + 'px';
-            _drag.el.grabberParent.style.left = parseInt((_drag.el.grabberParent.offsetLeft) - (_drag.el.posX)) + 'px';
+            _drag.obj.posX = _drag.obj.posX2 - evt.clientX;
+            _drag.obj.posY = _drag.obj.posY2 - evt.clientY;
+            _drag.obj.posX2 = evt.clientX;
+            _drag.obj.posY2 = evt.clientY;
+            _drag.obj.grabberParent.style.top = parseInt((_drag.obj.grabberParent.offsetTop) - (_drag.obj.posY)) + 'px';
+            _drag.obj.grabberParent.style.left = parseInt((_drag.obj.grabberParent.offsetLeft) - (_drag.obj.posX)) + 'px';
         }
     };
 
