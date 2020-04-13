@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.628
+// ** Version: 1.629
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -947,9 +947,9 @@ const EasyDialogBox = (function()
     // ** Drag'n'drop object module
     const _drag = 
     {
-        el : {},
         init : function(id)
         {
+            _drag.el = {};
             _drag.el.grabber = document.getElementById(id);
             _drag.el.grabber.addEventListener('mousedown', _drag.start);
             _drag.el.grabberParent = _drag.el.grabber.parentElement;
