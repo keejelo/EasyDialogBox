@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.622
+// ** Version: 1.623
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -437,7 +437,8 @@ const EasyDialogBox = (function()
             // ** END: Create footer and buttons
             
             // ** Show the dialogbox
-            dlg.style.display = 'block';  // must be here or else it causes height: auto
+            dlg.style.display = 'block';  // must be here or else it causes "height=auto" for other elements
+                                          // and "getComputedStyle" do not work as we want
 
             // ** Get height of inner dialogbox
             let inDlgBox = dlg.getElementsByClassName('dlg-box')[0];
@@ -448,14 +449,28 @@ const EasyDialogBox = (function()
             if(_str2dec(height) >= window.innerHeight)
             {
                 inDlgBox.classList.remove('dlg-center-vert');
-                _log('Removed class: dlg-center-vert');
+                _log('DEBUG: Class removed: dlg-center-vert');
+                
+                // ** Try to retain responsiveness by removing custom values
+                if(customPos)
+                {
+                    box.style.top = '';
+                    box.style.left = '';
+                }
+                // ** Try to retain responsiveness by removing custom values
+                if(customSize)
+                {
+                    box.style.width = '';
+                    box.style.maxWidth = '';
+                    box.style.height = '';
+                }
             }
             else
             {
                 if(customPos === false)
                 {
                     inDlgBox.classList.add('dlg-center-vert');
-                    _log('Added class: dlg-center-vert');
+                    _log('DEBUG: Class added: dlg-center-vert');
                 }
             }
 
@@ -667,9 +682,6 @@ const EasyDialogBox = (function()
                 _drag.init(obj.id + '_heading');
             }
 
-            // ** Show the dialogbox
-            //dlg.style.display = 'block';  // must be moved up, or else causes height: auto
-            
             // ** Set focus to input field if promptbox
             if(dlg.classList.contains('dlg-prompt'))
             {
