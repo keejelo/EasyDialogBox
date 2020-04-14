@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.636
+// ** Version: 1.638
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -205,6 +205,7 @@ const EasyDialogBox = (function()
             {
                 // ** Note! Below code can break "responsiveness"
                 box.style.left = _str2dec(obj.x) + 'px';
+                customPos = true;
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
@@ -224,12 +225,13 @@ const EasyDialogBox = (function()
             {
                 // ** Note! Below code can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
-                //customSize = true;
+                customSize = true;
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
                 // ** Note! Below code can break "responsiveness"
+                //box.style.height = _str2dec(obj.h) + 'px';
                 box.style.height = _str2dec(obj.h) + 'px';
                 customSize = true;
             }            
@@ -441,26 +443,32 @@ const EasyDialogBox = (function()
 
             // ** Get height of inner dialogbox
             let height = window.getComputedStyle(box, null).getPropertyValue('height');
+            let maxHeight = window.getComputedStyle(box, null).getPropertyValue('maxHeight');
+            let width = window.getComputedStyle(box, null).getPropertyValue('width');
+            let maxWidth = window.getComputedStyle(box, null).getPropertyValue('maxWidth');
 
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position at top. Prevents out of view.
-            if(_str2dec(height) >= window.innerHeight)
+            if( (_str2dec(height) + _str2dec(box.style.top) >= window.innerHeight)
+            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) >= window.innerHeight) )
             {
                 box.classList.remove('dlg-center-vert');
                 _log('DEBUG: Class removed: dlg-center-vert');
-                
+           
                 // ** Try to retain responsiveness by removing custom values
                 if(customPos)
                 {
                     box.style.top = '';
                     box.style.left = '';
+                    box.style.margin = '';
                 }
                 // ** Try to retain responsiveness by removing custom values
                 if(customSize)
                 {
                     box.style.width = '';
-                    box.style.maxWidth = '';
+                    box.style.maxWidth = '';                    
                     box.style.height = '';
+                    box.style.maxHeight = '';
                 }
             }
             else
@@ -471,7 +479,40 @@ const EasyDialogBox = (function()
                     _log('DEBUG: Class added: dlg-center-vert');
                 }
             }
-
+            
+            // ** If width is larger or equal to window width, disable horizontal alignment,
+            // ** just position to left. Prevents out of view.
+            if( (_str2dec(width) + _str2dec(box.style.left) >= window.innerWidth)
+            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= window.innerWidth) )
+            {
+                box.classList.remove('dlg-center-vert');
+                //_log('DEBUG: Class removed: dlg-center-vert');
+                
+                // ** Try to retain responsiveness by removing custom values
+                if(customPos)
+                {
+                    box.style.top = '';
+                    box.style.left = '';
+                    box.style.margin = '';
+                }
+                // ** Try to retain responsiveness by removing custom values
+                if(customSize)
+                {
+                    box.style.width = '';
+                    box.style.maxWidth = '';
+                    box.style.height = '';
+                    box.style.maxHeight = '';                    
+                }
+            }
+            else
+            {   
+                /*if(customPos === false)
+                {
+                    box.classList.add('dlg-center-vert');
+                    _log('DEBUG: Class added: dlg-center-vert');
+                }*/
+            }
+            
             // ** Creating substitute for scrollbar
             // ** Get body element
             //let body = document.getElementsByTagName('body')[0];
