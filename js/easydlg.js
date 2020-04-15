@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.646
+// ** Version: 1.647
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -440,7 +440,7 @@ const EasyDialogBox = (function()
             dlg.style.display = 'block';  // Must be here or else it causes "height=auto" for elements,
                                           // and "getComputedStyle" do not work as we want.
 
-            // ** Get height of inner dialogbox
+            // ** Get height and width of inner dialogbox
             let height = window.getComputedStyle(box, null).getPropertyValue('height');
             let maxHeight = window.getComputedStyle(box, null).getPropertyValue('maxHeight');
             let width = window.getComputedStyle(box, null).getPropertyValue('width');
