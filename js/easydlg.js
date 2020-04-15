@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.640
+// ** Version: 1.641
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -473,18 +473,7 @@ const EasyDialogBox = (function()
                     box.style.height = '';
                     box.style.maxHeight = '';
                 }
-            }            
-            /*
-            // ** If height is smaller than window height, add vertical center alignement
-            if( (_str2dec(height) + _str2dec(box.style.top) < window.innerHeight)
-            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) < window.innerHeight) )
-            {
-                if(customPos === false)
-                {
-                    box.classList.add('dlg-center-vert');
-                    _log('DEBUG: Class added: dlg-center-vert');
-                }
-            }*/
+            }
             
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position to left. Prevents out of view.
