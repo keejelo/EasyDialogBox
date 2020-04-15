@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.638
+// ** Version: 1.639
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -449,8 +449,11 @@ const EasyDialogBox = (function()
 
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position at top. Prevents out of view.
-            if( (_str2dec(height) + _str2dec(box.style.top) >= window.innerHeight)
-            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) >= window.innerHeight) )
+            let winHeight = window.innerHeight;
+            if( (_str2dec(height) >= winHeight)
+            ||  (_str2dec(maxHeight) >= winHeight)
+            ||  (_str2dec(height) + _str2dec(box.style.top) >= winHeight)
+            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) >= winHeight) )
             {
                 box.classList.remove('dlg-center-vert');
                 _log('DEBUG: Class removed: dlg-center-vert');
@@ -458,8 +461,8 @@ const EasyDialogBox = (function()
                 // ** Try to retain responsiveness by removing custom values
                 if(customPos)
                 {
-                    box.style.top = '';
-                    box.style.left = '';
+                    box.style.top = '0';
+                    box.style.left = '0';
                     box.style.margin = '';
                 }
                 // ** Try to retain responsiveness by removing custom values
@@ -470,23 +473,27 @@ const EasyDialogBox = (function()
                     box.style.height = '';
                     box.style.maxHeight = '';
                 }
-            }
-            else
+            }            
+            /*
+            // ** If height is smaller than window height, add vertical center alignement
+            if( (_str2dec(height) + _str2dec(box.style.top) < window.innerHeight)
+            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) < window.innerHeight) )
             {
                 if(customPos === false)
                 {
                     box.classList.add('dlg-center-vert');
                     _log('DEBUG: Class added: dlg-center-vert');
                 }
-            }
+            }*/
             
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position to left. Prevents out of view.
-            if( (_str2dec(width) + _str2dec(box.style.left) >= window.innerWidth)
-            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= window.innerWidth) )
+            let winwidth = window.innerWidth;
+            if( (_str2dec(width) + _str2dec(box.style.left) >= winwidth)
+            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= winwidth) )
             {
                 box.classList.remove('dlg-center-vert');
-                //_log('DEBUG: Class removed: dlg-center-vert');
+                _log('DEBUG: Class removed: dlg-center-vert');
                 
                 // ** Try to retain responsiveness by removing custom values
                 if(customPos)
