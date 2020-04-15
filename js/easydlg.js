@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.639
+// ** Version: 1.640
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -488,9 +488,9 @@ const EasyDialogBox = (function()
             
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position to left. Prevents out of view.
-            let winwidth = window.innerWidth;
-            if( (_str2dec(width) + _str2dec(box.style.left) >= winwidth)
-            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= winwidth) )
+            let winWidth = window.innerWidth;
+            if( (_str2dec(width) + _str2dec(box.style.left) >= winWidth)
+            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= winWidth) )
             {
                 box.classList.remove('dlg-center-vert');
                 _log('DEBUG: Class removed: dlg-center-vert');
