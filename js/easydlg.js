@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.641
+// ** Version: 1.642
 // ** Created by: keejelo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -500,18 +500,8 @@ const EasyDialogBox = (function()
                     box.style.maxHeight = '';                    
                 }
             }
-            else
-            {   
-                /*if(customPos === false)
-                {
-                    box.classList.add('dlg-center-vert');
-                    _log('DEBUG: Class added: dlg-center-vert');
-                }*/
-            }
             
             // ** Creating substitute for scrollbar
-            // ** Get body element
-            //let body = document.getElementsByTagName('body')[0];
 
             // ** Store the original padding-right value
             _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
