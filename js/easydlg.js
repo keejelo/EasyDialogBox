@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.642
+// ** Version: 1.645
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -165,7 +165,7 @@ const EasyDialogBox = (function()
         // ** Get object from id
         let obj = _getObjFromId(_boxObj, objId);
 
-        // ** Fix for pre-written HTML boxes, add '_0' to id before getting object
+        // ** Fix for pre-written HTML boxes: add '_0' to id before getting object
         if(obj === null)
         {
             objId += '_0';
@@ -188,7 +188,7 @@ const EasyDialogBox = (function()
             matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
-        // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg types
+        // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
         if( dlg && (_isActive === false) && (matched === true) )
         {
             // ** Flags to indicate custom value usage
@@ -203,14 +203,14 @@ const EasyDialogBox = (function()
             // ** Check if position is set, if true then change position, else default value used
             if(obj.x)
             {
-                // ** Note! Below code can break "responsiveness"
+                // ** Note! Can break "responsiveness"
                 box.style.left = _str2dec(obj.x) + 'px';
                 customPos = true;
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
             {
-                // ** Note! Below code can break "responsiveness"
+                // ** Note! Can break "responsiveness"
                 box.style.top = _str2dec(obj.y) + 'px';
                 customPos = true;
             }
@@ -223,15 +223,14 @@ const EasyDialogBox = (function()
             // ** Check if size is set, if true then change size, else default value used
             if(obj.w)
             {
-                // ** Note! Below code can break "responsiveness"
+                // ** Note! Can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
                 customSize = true;
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
-                // ** Note! Below code can break "responsiveness"
-                //box.style.height = _str2dec(obj.h) + 'px';
+                // ** Note! Can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
                 customSize = true;
             }            
@@ -438,8 +437,8 @@ const EasyDialogBox = (function()
             // ** END: Create footer and buttons
             
             // ** Show the dialogbox
-            dlg.style.display = 'block';  // must be here or else it causes "height=auto" for other elements
-                                          // and "getComputedStyle" do not work as we want
+            dlg.style.display = 'block';  // Must be here or else it causes "height=auto" for elements,
+                                          // and "getComputedStyle" do not work as we want.
 
             // ** Get height of inner dialogbox
             let height = window.getComputedStyle(box, null).getPropertyValue('height');
@@ -448,7 +447,7 @@ const EasyDialogBox = (function()
             let maxWidth = window.getComputedStyle(box, null).getPropertyValue('maxWidth');
 
             // ** If height is larger or equal to window height, disable vertical alignment,
-            // ** just position at top. Prevents out of view.
+            // ** just position: top left. Can prevent out of view.
             let winHeight = window.innerHeight;
             if( (_str2dec(height) >= winHeight)
             ||  (_str2dec(maxHeight) >= winHeight)
@@ -463,7 +462,7 @@ const EasyDialogBox = (function()
                 {
                     box.style.top = '0';
                     box.style.left = '0';
-                    box.style.margin = '';
+                    box.style.margin = '0';
                 }
                 // ** Try to retain responsiveness by removing custom values
                 if(customSize)
@@ -476,7 +475,7 @@ const EasyDialogBox = (function()
             }
             
             // ** If width is larger or equal to window width, disable horizontal alignment,
-            // ** just position to left. Prevents out of view.
+            // ** just position: top left. Can prevent out of view.
             let winWidth = window.innerWidth;
             if( (_str2dec(width) + _str2dec(box.style.left) >= winWidth)
             ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= winWidth) )
@@ -487,9 +486,9 @@ const EasyDialogBox = (function()
                 // ** Try to retain responsiveness by removing custom values
                 if(customPos)
                 {
-                    box.style.top = '';
-                    box.style.left = '';
-                    box.style.margin = '';
+                    box.style.top = '0';
+                    box.style.left = '0';
+                    box.style.margin = '0';
                 }
                 // ** Try to retain responsiveness by removing custom values
                 if(customSize)
@@ -536,6 +535,7 @@ const EasyDialogBox = (function()
             //---------------------------------------------------------------------
             // ** Create event-listeners
             //---------------------------------------------------------------------
+            
 
             // ** When the user clicks the [X] button
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
@@ -1060,4 +1060,3 @@ const EasyDialogBox = (function()
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Initialize
 //-----------------------------------------------------------------------------------------------------------------
-
