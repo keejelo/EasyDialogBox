@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.645
+// ** Version: 1.646
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -536,7 +536,6 @@ const EasyDialogBox = (function()
             // ** Create event-listeners
             //---------------------------------------------------------------------
             
-
             // ** When the user clicks the [X] button
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
