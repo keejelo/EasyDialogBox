@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.659
+// ** Version: 1.660
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -55,8 +55,11 @@ const EasyDialogBox = (function()
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
     let _boxObj = [];
 
-    // ** Variable that stores the original padding-right value of body element
+    // ** Variable that holds the original padding-right value of body element
     let _orgBodyPaddingRight = 0;
+    
+    // ** Variable that holds the scrollbarwidth
+    let _scrollBarWidth = 0;
 
     // ** Flag that indicates if a box is currently in view (is displayed)
     let _isActive = false;
@@ -200,8 +203,8 @@ const EasyDialogBox = (function()
 
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position: left (can prevent out of view)
-            let overlap = 50; // value is used to help width-detection
-            if( (_str2dec(el.offsetWidth + el.offsetLeft + _orgBodyPaddingRight + overlap) >= window.innerWidth) ) // Seem to work OK
+            let overlap = (_scrollBarWidth || 20); // value is used to help width-detection
+            if( (_str2dec(el.offsetWidth + el.offsetLeft + overlap) >= window.innerWidth) ) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.left = '0';
@@ -532,6 +535,9 @@ const EasyDialogBox = (function()
 
             // ** Get width-difference
             let w3 = w2 - w1;
+            
+            // ** Store the scrollbarwidth
+            _scrollBarWidth = w3;
 
             // ** If conditions are true: add both padding-right values, 
             if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
