@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <!-- Sorry for the all-in-one-"franken"-html-page, but it's just to keep it all in one DEMO file -->
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<head>
 <title>EasyDialogBox examples and documentation</title>
-<style type="text/css">
+<style>
 body
 {
     margin:0;
@@ -278,7 +278,7 @@ b:first-child
 <!-- END: Including the necessary files here -->
 
 
-<script type="text/javascript">
+<script>
 //-----------------------------------------------------------------------------------------------------------------
 // ** Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
@@ -447,7 +447,7 @@ window.addEventListener('load', function()
             
             <p><code>id</code> = custom id 'string', if not used then you must set it to <code>null</code> or <code>0</code> (zero)</p>
 
-            <p>
+            <div>
                 <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
                 <table id="paramTable">
                     <thead>
@@ -474,7 +474,7 @@ window.addEventListener('load', function()
                         <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
                     </tbody>
                 </table>
-            </p>
+            </div>
             
             <p>&nbsp;</p>
             
@@ -547,7 +547,7 @@ window.addEventListener('load', function()
 <i><b>myBox</b><b class="func">.show()</b>;</i>
 <i></i>
 <i><b class="comment">// ** To programatically destroy the box, you can do</b></i>
-<i><b class="comment">// myBox.destroy();</b>
+<i><b class="comment">// myBox.destroy();</b></i>
 <i></i>
 <i><b class="comment">// ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box</b></i>
 <i><b class="comment">// ..unless the object got variable: bKeepAlive = true </b></i>
@@ -654,7 +654,7 @@ window.addEventListener('load', function()
             
             <div>
                 <h2>Attribute values</h2>
-                <p>The <code>rel</code> attribute value must contain the <cod>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
+                <p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
                 <p>( Don't have to be a <code>&lt;button&gt;</code>, it can be any element you want to use as an opener. )</p>
                 <p>Add class <code>dlg-opener</code> to the opening element, in this case a <code>&lt;button&gt;</code>, to make it open a box, a click-event-handler will automatically be created for it.</p>
             </div>
@@ -669,7 +669,7 @@ window.addEventListener('load', function()
                 <p>Return value: Close = <span class="ital word">0</span></p>
             
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message, line one<b class="tag">&lt;br /&gt;</b></i>
 <i>       this is line two.<b class="tag">&lt;/p&gt;</b></i>
@@ -686,7 +686,7 @@ window.addEventListener('load', function()
                 <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
@@ -702,7 +702,7 @@ window.addEventListener('load', function()
                 <p>Class <code>dlg-yes-no</code> and <code>dlg-question</code> to display icon.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
@@ -718,7 +718,7 @@ window.addEventListener('load', function()
                 <p>Class <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
@@ -734,7 +734,7 @@ window.addEventListener('load', function()
                 <p>Class <code>dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
@@ -758,10 +758,10 @@ window.addEventListener('load', function()
                     Cancel = <span class="ital word">4</span>
                 </p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">name</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">x</b>=<b class="val">&quot;100&quot;</b> <b class="att">y</b>=<b class="val">&quot;200&quot;</b> <b class="att">w</b>=<b class="val">&quot;500&quot;</b> <b class="att">h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">data-x</b>=<b class="val">&quot;100&quot;</b> <b class="att">data-y</b>=<b class="val">&quot;200&quot;</b> <b class="att">data-w</b>=<b class="val">&quot;500&quot;</b> <b class="att">data-h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<b class="tag">&lt;br /&gt;</b></i>
-<i>    <b>It may not be valid HTML, but if you want to have custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
+<i>    <b>Not recommended, but if you want to have custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i></i>    
@@ -781,30 +781,30 @@ window.addEventListener('load', function()
     
     <!-- HTML pre-written dialog boxes -->
     
-    <div id="myBox" class="dlg" title="Title text" name="myCallbackFunc">
+    <div id="myBox" class="dlg" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message, line one<br />
         this is line two.</p>
     </div>
 
-    <div id="myBoxError" class="dlg dlg-error" title="Title text" name="myCallbackFunc">
+    <div id="myBoxError" class="dlg dlg-error" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>
     
-    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" name="myCallbackFunc">
+    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" data-callback="myCallbackFunc">
         <p>Create a new dialogbox on the fly ?</p>
     </div>
     
-    <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" name="myCallbackFunc">
+    <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>    
     
-    <div id="myPromptBox" class="dlg-prompt" title="Title text" name="myCallbackFunc">
+    <div id="myPromptBox" class="dlg-prompt" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>    
     
-    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" name="myCallbackFunc" x="100" y="200" w="500" h="400">
+    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" data-callback="myCallbackFunc" data-x="100" data-y="200" data-w="500" data-h="400">
         <p>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<br />
-        It may not be valid HTML, but if you want to have custom position and size it is possible.</p>
+        Not recommended, but if you want to have custom position and size it is possible.</p>
     </div>        
     
     <!-- END: HTML pre-written dialog boxes -->
