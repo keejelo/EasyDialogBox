@@ -331,14 +331,14 @@
 }
 
 /* Center dialog box vertical */
-.dlg-center-vert
+/*.dlg-center-vert
 {
     position:absolute;
     top:50%;
     left:50%;
     -ms-transform:translate(-50%, -50%);
     transform:translate(-50%, -50%);
-}
+}*/
 
 /* Disable translucent background, background overlay (no modal) */
 .dlg-no-overlay
