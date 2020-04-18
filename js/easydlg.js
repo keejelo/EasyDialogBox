@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.656
+// ** Version: 1.657
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -158,7 +158,7 @@ const EasyDialogBox = (function()
             return '&#'+c.charCodeAt(0)+';';
         });
     };
-    
+
     // ** Adjust element size and position according to window size
     const _adjustElSizePos = function(id)
     {
@@ -168,7 +168,7 @@ const EasyDialogBox = (function()
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position: top (can prevent out of view)
             if(el.offsetHeight >= window.innerHeight)
-            {           
+            {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.top = '0';
                 el.style.marginTop = '0';
@@ -179,25 +179,25 @@ const EasyDialogBox = (function()
             else
             {
                 if(!el.customPosY)
-                {                
+                {
                     el.style.top = ( (window.innerHeight / 2) - (el.offsetHeight / 2) ) + 'px';
                 }
                 else
                 {
-                    el.style.top = el.customPosY  + 'px';
+                    el.style.top = el.customPosY + 'px';
                 }
-                
+
                 if(el.customHeight)
                 {
                     el.style.height = el.customHeight + 'px';
-                }                
+                }
             }
-            
+
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position: left (can prevent out of view)
             let overlap = 50; // value is used to help width-detection
             if( (_str2dec(el.offsetWidth + el.offsetLeft + _orgBodyPaddingRight + overlap) >= window.innerWidth) ) // Seem to work OK
-            {                
+            {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.left = '0';
                 el.style.marginLeft = '0';
@@ -213,7 +213,7 @@ const EasyDialogBox = (function()
                 }
                 else
                 {
-                    el.style.left = el.customPosX  + 'px';
+                    el.style.left = el.customPosX + 'px';
                 }
                 
                 if(el.customWidth)
@@ -264,13 +264,13 @@ const EasyDialogBox = (function()
             let box = document.createElement('div');
             box.setAttribute('id', obj.id + '_1');
             box.setAttribute('class','dlg-box');
-            
+
             // ** Prepare custom values, default set to: 0
             box.customPosX = 0;
             box.customPosY = 0;
             box.customHeight = 0;
             box.customWidth = 0;
-            
+
             // ** Check if position is set, if true then change position, else default value used
             if(obj.x)
             {
@@ -300,7 +300,7 @@ const EasyDialogBox = (function()
                 // ** Note! Can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
                 box.customHeight = _str2dec(obj.h);
-            }            
+            }
             // ** END: Check if size is set
             
             // ** Add element to DOM
@@ -339,12 +339,12 @@ const EasyDialogBox = (function()
             )
             {
                 message.setAttribute('class','dlg-message dlg-flex-container');
-                
+
                 // ** If custom height then adjust
                 if(box.customHeight)
                 {
                     message.style.height = _str2dec(obj.h - 101) + 'px';
-                }                
+                }
 
                 // ** Create left box
                 leftbox = document.createElement('div');
@@ -501,8 +501,8 @@ const EasyDialogBox = (function()
                 }
             }
             // ** END: Create footer and buttons
-            
-            
+
+
             // ** Creating substitute for scrollbar
 
             // ** Store the original padding-right value
@@ -538,14 +538,14 @@ const EasyDialogBox = (function()
             //---------------------------------------------------------------------
             // ** Create event-listeners
             //---------------------------------------------------------------------
-            
+
             // ** Window resize
             window.addEventListener('resize', function WinResize()
             {
                 _adjustElSizePos(box.id);
             });
             // ** END: Window resize
-            
+
             // ** User clicks the [X] button
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
@@ -724,7 +724,7 @@ const EasyDialogBox = (function()
 
             // ** Show dialogbox
             box.style.visibility = 'visible';
-            
+
             // ** Adjust box size and position according to window size
             _adjustElSizePos(box.id);
 
@@ -990,12 +990,12 @@ const EasyDialogBox = (function()
         {
             _drag.el = document.getElementById(id);
             _drag.el.grabber = document.getElementById(id + '_heading');
-            
+
             if(_drag.el.grabber === null)
             {
                 _drag.el.grabber = _drag.el;
             }
-            
+
             _drag.el.style.position = 'absolute';
             _drag.el.grabber.addEventListener('mousedown', _drag.start);
         },
