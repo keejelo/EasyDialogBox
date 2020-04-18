@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.658
+// ** Version: 1.659
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -175,6 +175,8 @@ const EasyDialogBox = (function()
                 el.style.marginBottom = '0';
                 el.style.height = '';
                 el.style.maxHeight = '';
+                el.style.borderTopWidth = '0';
+                el.style.borderBottomWidth = '0';
             }
             else
             {
@@ -191,6 +193,9 @@ const EasyDialogBox = (function()
                 {
                     el.style.height = el.customHeight + 'px';
                 }
+                
+                el.style.borderTopWidth = '';
+                el.style.borderBottomWidth = '';
             }
 
             // ** If width is larger or equal to window width, disable horizontal alignment,
@@ -204,6 +209,8 @@ const EasyDialogBox = (function()
                 el.style.marginRight = '0';
                 el.style.width = '';
                 el.style.maxWidth = '';
+                el.style.borderLeftWidth = '0';
+                el.style.borderRightWidth = '0';
             }
             else
             {
@@ -220,6 +227,9 @@ const EasyDialogBox = (function()
                 {
                     el.style.maxWidth = el.customWidth + 'px';
                 }
+                
+                el.style.borderLeftWidth = '';
+                el.style.borderRightWidth = '';                
             }
         }
     };
@@ -871,12 +881,12 @@ const EasyDialogBox = (function()
                 strTitle : strTitle,
                 strMessage : strMessage,
                 bKeepAlive : bKeepAlive,
+                strInput : '',
+                nRetCode : -1,
                 x : x,
                 y : y,
                 w : w,
-                h : h,
-                strInput : '',
-                nRetCode : -1,
+                h : h,                
 
                 // ** Callback 
                 callback : function(a,b)
