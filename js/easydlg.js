@@ -976,16 +976,16 @@ const EasyDialogBox = (function()
                 let dlg = document.getElementById(btns[i].getAttribute('rel'));
 
                 // ** Create object from DOM element
-                let obj = _create(dlg.getAttribute('id'),       // id
-                                  dlg.getAttribute('class'),    // type
-                                  dlg.getAttribute('title'),    // title
-                                  dlg.innerHTML,                // message
-                                  dlg.getAttribute('name'),     // callback function
-                                  true,                         // keep alive after closing
-                                  dlg.getAttribute('x'),        // horizontal position (using this may fail HTML validation)
-                                  dlg.getAttribute('y'),        // vertical position (using this may fail HTML validation)
-                                  dlg.getAttribute('w'),        // width (using this may fail HTML validation)
-                                  dlg.getAttribute('h'));       // height (using this may fail HTML validation)
+                let obj = _create(dlg.getAttribute('id'),            // id
+                                  dlg.getAttribute('class'),         // type
+                                  dlg.getAttribute('title'),         // title
+                                  dlg.innerHTML,                     // message
+                                  dlg.getAttribute('data-callback'), // callback function
+                                  true,                              // keep alive after closing
+                                  dlg.getAttribute('data-x'),        // horizontal position
+                                  dlg.getAttribute('data-y'),        // vertical position
+                                  dlg.getAttribute('data-w'),        // width
+                                  dlg.getAttribute('data-h'));       // height
 
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
