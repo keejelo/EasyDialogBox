@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.660
+// ** Version: 1.662
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -170,7 +170,7 @@ const EasyDialogBox = (function()
         {
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position: top (can prevent out of view)
-            if(el.offsetHeight >= window.innerHeight)
+            if( _str2dec(el.offsetHeight + el.customPosY) >= window.innerHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.top = '0';
@@ -204,7 +204,7 @@ const EasyDialogBox = (function()
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position: left (can prevent out of view)
             let overlap = (_scrollBarWidth || 20); // value is used to help width-detection
-            if( (_str2dec(el.offsetWidth + el.offsetLeft + overlap) >= window.innerWidth) ) // Seem to work OK
+            if( _str2dec(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.left = '0';
