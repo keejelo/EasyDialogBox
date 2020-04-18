@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.657
+// ** Version: 1.658
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -716,17 +716,17 @@ const EasyDialogBox = (function()
                 _drag.init(obj.id + '_1');
             }
 
-            // ** Set focus to input field if promptbox
-            if(dlg.classList.contains('dlg-prompt'))
-            {
-                dlg.getElementsByClassName('dlg-input-field')[0].focus();
-            }
-
             // ** Show dialogbox
             box.style.visibility = 'visible';
 
             // ** Adjust box size and position according to window size
             _adjustElSizePos(box.id);
+            
+            // ** Set focus to input field if promptbox
+            if(dlg.classList.contains('dlg-prompt'))
+            {
+                dlg.getElementsByClassName('dlg-input-field')[0].focus();
+            }            
 
             // ** Return success
             return true;
