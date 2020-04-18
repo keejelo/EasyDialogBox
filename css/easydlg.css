@@ -33,7 +33,7 @@
 .dlg-box
 {   
     display:block;
-    margin:0 auto;
+    margin:0;
     padding:0;
     max-width:600px;
     overflow:hidden; /* disable scrolling inside box */
@@ -44,6 +44,7 @@
     /*border-radius:2px; /* rounded corners */
     border:1px solid #3d6da8; /* border */
     border-top:none;
+    visibility:hidden;
 }
 
 /* Dialog heading */
@@ -160,7 +161,7 @@
     font-size:1em;
     
     /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
-    border:1px solid #aaa;
+    /*border:1px solid #aaa;*/
     /* END: Chrome fix */
 }
 
