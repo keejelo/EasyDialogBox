@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.647
+// ** Version: 1.653
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -158,6 +158,105 @@ const EasyDialogBox = (function()
             return '&#'+c.charCodeAt(0)+';';
         });
     };
+    
+    // ** Center element horizontal
+    const _centerX = function(id)
+    {
+        let el = document.getElementById(id);
+        if(el)
+        {
+            el.style.position = 'absolute';
+            el.style.left = ( (window.innerWidth / 2) - (el.offsetWidth / 2) ) + 'px';
+            return true;
+        }
+        else
+        {
+            console.log('centerX(): Error, element not found! id = ' + el);
+            return false;
+        }
+    };
+
+    // ** Center element vertical
+    const _centerY = function(id)
+    {
+        let el = document.getElementById(id);
+        if(el)
+        {
+            el.style.position = 'absolute';
+            el.style.top = ( (window.innerHeight / 2) - (el.offsetHeight / 2) ) + 'px';
+            return true;
+        }
+        else
+        {
+            console.log('centerY(): Error, element not found! id = ' + el);
+            return false;
+        }
+    };
+    
+    // ** Adjust element position according to window size
+    const _adjustBoxPos = function(id)
+    {
+        let el = document.getElementById(id);
+        if(el)
+        {
+            // ** If height is larger or equal to window height, disable vertical alignment,
+            // ** just position: top (can prevent out of view)
+            if(el.offsetHeight >= window.innerHeight)
+            {           
+                // ** Try to retain responsiveness by setting default values 
+                el.style.top = '0';
+                el.style.marginTop = '0';
+                el.style.marginBottom = '0';
+                el.style.height = '';
+                el.style.maxHeight = '';
+            }
+            else
+            {
+                if(!el.customPosY)
+                {                
+                    _centerY(el.id);
+                }
+                else
+                {
+                    el.style.top = el.customPosY  + 'px';
+                }
+                
+                if(el.customHeight)
+                {
+                    el.style.height = el.customHeight + 'px';
+                }                
+            }
+            
+            // ** If width is larger or equal to window width, disable horizontal alignment,
+            // ** just position: left (can prevent out of view)
+            let overlap = 50; // value used to help width-detection
+            if( (parseInt(el.offsetWidth + el.offsetLeft + _orgBodyPaddingRight + overlap) >= window.innerWidth) ) // Seem to work OK
+            {                
+                // ** Try to retain responsiveness by setting default values 
+                el.style.left = '0';
+                el.style.marginLeft = '0';
+                el.style.marginRight = '0';
+                el.style.width = '';
+                el.style.maxWidth = '';
+            }
+            else
+            {
+                if(!el.customPosX)
+                {
+                    _centerX(el.id);
+                }
+                else
+                {
+                    el.style.left = el.customPosX  + 'px';
+                }
+                
+                if(el.customWidth)
+                {
+                    el.style.maxWidth = el.customWidth + 'px';
+                }
+            }
+        }
+    };
 
     // ** Show the dialog box
     const _show = function(objId)
@@ -188,35 +287,37 @@ const EasyDialogBox = (function()
             matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
+        // ** Show the backdrop overlay
+        dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
+                                      // then dynamic values do not work as we want.
+
         // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
         if( dlg && (_isActive === false) && (matched === true) )
         {
-            // ** Flags to indicate custom value usage
-            let customPos = false;
-            let customSize = false;
-
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('id', obj.id + '_1');
             box.setAttribute('class','dlg-box');
+            
+            // ** Prepare custom values, default set to: 0
+            box.customPosX = 0;
+            box.customPosY = 0;
+            box.customHeight = 0;
+            box.customWidth = 0;
             
             // ** Check if position is set, if true then change position, else default value used
             if(obj.x)
             {
                 // ** Note! Can break "responsiveness"
                 box.style.left = _str2dec(obj.x) + 'px';
-                customPos = true;
+                box.customPosX = _str2dec(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
             {
                 // ** Note! Can break "responsiveness"
                 box.style.top = _str2dec(obj.y) + 'px';
-                customPos = true;
-            }
-            else
-            {
-                box.setAttribute('class','dlg-box dlg-center-vert');
+                box.customPosY = _str2dec(obj.y);
             }
             // ** END: Check if position is set
 
@@ -225,17 +326,16 @@ const EasyDialogBox = (function()
             {
                 // ** Note! Can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
-                customSize = true;
+                box.customWidth = _str2dec(obj.w);
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
                 // ** Note! Can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
-                customSize = true;
+                box.customHeight = _str2dec(obj.h);
             }            
             // ** END: Check if size is set
-            
             
             // ** Add element to DOM
             dlg.appendChild(box);
@@ -275,7 +375,7 @@ const EasyDialogBox = (function()
                 message.setAttribute('class','dlg-message dlg-flex-container');
                 
                 // ** If custom height then adjust
-                if(customSize)
+                if(box.customHeight)
                 {
                     message.style.height = _str2dec(obj.h - 101) + 'px';
                 }                
@@ -323,7 +423,7 @@ const EasyDialogBox = (function()
                 message.innerHTML = obj.strMessage;
                 
                 // ** If custom height then adjust
-                if(customSize)
+                if(box.customHeight)
                 {
                     message.style.height = _str2dec(obj.h - 130) + 'px';
                 }
@@ -436,69 +536,6 @@ const EasyDialogBox = (function()
             }
             // ** END: Create footer and buttons
             
-            // ** Show the dialogbox
-            dlg.style.display = 'block';  // Must be here or else it causes "height=auto" for elements,
-                                          // and "getComputedStyle" do not work as we want.
-
-            // ** Get height and width of inner dialogbox
-            let height = window.getComputedStyle(box, null).getPropertyValue('height');
-            let maxHeight = window.getComputedStyle(box, null).getPropertyValue('maxHeight');
-            let width = window.getComputedStyle(box, null).getPropertyValue('width');
-            let maxWidth = window.getComputedStyle(box, null).getPropertyValue('maxWidth');
-
-            // ** If height is larger or equal to window height, disable vertical alignment,
-            // ** just position: top left. Can prevent out of view.
-            let winHeight = window.innerHeight;
-            if( (_str2dec(height) >= winHeight)
-            ||  (_str2dec(maxHeight) >= winHeight)
-            ||  (_str2dec(height) + _str2dec(box.style.top) >= winHeight)
-            ||  (_str2dec(maxHeight) + _str2dec(box.style.top) >= winHeight) )
-            {
-                box.classList.remove('dlg-center-vert');
-                _log('DEBUG: Class removed: dlg-center-vert');
-           
-                // ** Try to retain responsiveness by removing custom values
-                if(customPos)
-                {
-                    box.style.top = '0';
-                    box.style.left = '0';
-                    box.style.margin = '0';
-                }
-                // ** Try to retain responsiveness by removing custom values
-                if(customSize)
-                {
-                    box.style.width = '';
-                    box.style.maxWidth = '';                    
-                    box.style.height = '';
-                    box.style.maxHeight = '';
-                }
-            }
-            
-            // ** If width is larger or equal to window width, disable horizontal alignment,
-            // ** just position: top left. Can prevent out of view.
-            let winWidth = window.innerWidth;
-            if( (_str2dec(width) + _str2dec(box.style.left) >= winWidth)
-            ||  (_str2dec(maxWidth) + _str2dec(box.style.left) >= winWidth) )
-            {
-                box.classList.remove('dlg-center-vert');
-                _log('DEBUG: Class removed: dlg-center-vert');
-                
-                // ** Try to retain responsiveness by removing custom values
-                if(customPos)
-                {
-                    box.style.top = '0';
-                    box.style.left = '0';
-                    box.style.margin = '0';
-                }
-                // ** Try to retain responsiveness by removing custom values
-                if(customSize)
-                {
-                    box.style.width = '';
-                    box.style.maxWidth = '';
-                    box.style.height = '';
-                    box.style.maxHeight = '';                    
-                }
-            }
             
             // ** Creating substitute for scrollbar
 
@@ -536,7 +573,14 @@ const EasyDialogBox = (function()
             // ** Create event-listeners
             //---------------------------------------------------------------------
             
-            // ** When the user clicks the [X] button
+            // ** Window resize
+            window.addEventListener('resize', function WinResize()
+            {
+                _adjustBoxPos(box.id);
+            });
+            // ** END: Window resize
+            
+            // ** User clicks the [X] button
             let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
             if(xCloseDialog)
             {
@@ -554,7 +598,7 @@ const EasyDialogBox = (function()
             }
             // ** END: [X] button click handler
 
-            // ** When the user clicks the CLOSE button
+            // ** User clicks the CLOSE button
             let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
             if(btnCloseDialog)
             {
@@ -711,6 +755,12 @@ const EasyDialogBox = (function()
             {
                 dlg.getElementsByClassName('dlg-input-field')[0].focus();
             }
+
+            // ** Show dialogbox
+            box.style.visibility = 'visible';
+            
+            // ** Adjust box position according to window size
+            _adjustBoxPos(box.id);
 
             // ** Return success
             return true;
