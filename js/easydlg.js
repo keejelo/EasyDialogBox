@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.667
+// ** Version: 1.668
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -70,8 +70,8 @@ const EasyDialogBox = (function()
         }
     };
 
-    // ** Convert string to decimal
-    const _str2dec = function(str)
+    // ** Convert string to integer
+    const _s2i = function(str)
     {
         return parseInt(str, 10);
     };
@@ -167,7 +167,7 @@ const EasyDialogBox = (function()
         {
             // ** If height is larger or equal to window height, disable vertical alignment,
             // ** just position: top (can prevent out of view)
-            if( _str2dec(el.offsetHeight + el.customPosY) >= window.innerHeight)
+            if( _s2i(el.offsetHeight + el.customPosY) >= window.innerHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.top = '0';
@@ -201,7 +201,7 @@ const EasyDialogBox = (function()
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** just position: left (can prevent out of view)
             let overlap = 40; // value is used to help width-detection
-            if( _str2dec(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
+            if( _s2i(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.left = '0';
@@ -284,28 +284,28 @@ const EasyDialogBox = (function()
             // ** Check if position is set, if true (other than 0) then change position, else default value used
             if(obj.x)
             {
-                box.style.left = _str2dec(obj.x) + 'px';
-                box.customPosX = _str2dec(obj.x);
+                box.style.left = _s2i(obj.x) + 'px';
+                box.customPosX = _s2i(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
             {
-                box.style.top = _str2dec(obj.y) + 'px';
-                box.customPosY = _str2dec(obj.y);
+                box.style.top = _s2i(obj.y) + 'px';
+                box.customPosY = _s2i(obj.y);
             }
             // ** END: Check if position is set
 
             // ** Check if size is set, if true then change size, else default value used
             if(obj.w)
             {
-                box.style.maxWidth = _str2dec(obj.w) + 'px';
-                box.customWidth = _str2dec(obj.w);
+                box.style.maxWidth = _s2i(obj.w) + 'px';
+                box.customWidth = _s2i(obj.w);
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
-                box.style.height = _str2dec(obj.h) + 'px';
-                box.customHeight = _str2dec(obj.h);
+                box.style.height = _s2i(obj.h) + 'px';
+                box.customHeight = _s2i(obj.h);
             }
             // ** END: Check if size is set
             
@@ -349,7 +349,7 @@ const EasyDialogBox = (function()
                 // ** If custom height then adjust
                 if(box.customHeight)
                 {
-                    message.style.height = _str2dec(obj.h - 101) + 'px';
+                    message.style.height = _s2i(obj.h - 101) + 'px';
                 }
 
                 // ** Create left box
@@ -397,7 +397,7 @@ const EasyDialogBox = (function()
                 // ** If custom height then adjust
                 if(box.customHeight)
                 {
-                    message.style.height = _str2dec(obj.h - 130) + 'px';
+                    message.style.height = _s2i(obj.h - 130) + 'px';
                 }
             }
             box.appendChild(message);
@@ -515,7 +515,7 @@ const EasyDialogBox = (function()
             _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 
             // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-            _orgBodyPaddingRight = _str2dec(_orgBodyPaddingRight);
+            _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
 
             // ** Get width of body before removing scrollbar
             let w1 = body.offsetWidth;
@@ -532,7 +532,7 @@ const EasyDialogBox = (function()
             // ** If conditions are true: add both padding-right values, 
             if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
             {
-                w3 += _str2dec(_orgBodyPaddingRight);
+                w3 += _s2i(_orgBodyPaddingRight);
             }
 
             // ** Apply width-difference as padding-right to body, substitute for scrollbar,
@@ -766,7 +766,7 @@ const EasyDialogBox = (function()
         // ** Get body element, reset values, restore scrolling
         let body = document.getElementsByTagName('body')[0];
         body.classList.remove('dlg-stop-scrolling');
-        body.setAttribute('style', 'padding-right:' + _str2dec(_orgBodyPaddingRight) + 'px;');
+        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
 
         // ** Get the dlg element
         let dlg = document.getElementById(objId);
@@ -1081,4 +1081,3 @@ const EasyDialogBox = (function()
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Initialize
 //-----------------------------------------------------------------------------------------------------------------
-
