@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.666
+// ** Version: 1.667
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -58,9 +58,6 @@ const EasyDialogBox = (function()
     // ** Variable that holds the original padding-right value of body element
     let _orgBodyPaddingRight = 0;
     
-    // ** Variable that holds the scrollbarwidth
-    let _scrollBarWidth = 0;
-
     // ** Flag that indicates if a box is currently in view (is displayed)
     let _isActive = false;
 
@@ -532,9 +529,6 @@ const EasyDialogBox = (function()
             // ** Get width-difference
             let w3 = w2 - w1;
             
-            // ** Store the width difference (aka scrollbarwidth)
-            _scrollBarWidth = w3;
-
             // ** If conditions are true: add both padding-right values, 
             if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
             {
