@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.663
+// ** Version: 1.664
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -266,7 +266,7 @@ const EasyDialogBox = (function()
             matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
-        // ** Show the backdrop overlay
+        // ** Show the backdrop overlay, and the dialogbox eventually
         dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
                                       // then dynamic values do not work as we want.
 
@@ -284,17 +284,15 @@ const EasyDialogBox = (function()
             box.customHeight = 0;
             box.customWidth = 0;
 
-            // ** Check if position is set, if true then change position, else default value used
+            // ** Check if position is set, if true (other than 0) then change position, else default value used
             if(obj.x)
             {
-                // ** Note! Can break "responsiveness"
                 box.style.left = _str2dec(obj.x) + 'px';
                 box.customPosX = _str2dec(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
             if(obj.y)
             {
-                // ** Note! Can break "responsiveness"
                 box.style.top = _str2dec(obj.y) + 'px';
                 box.customPosY = _str2dec(obj.y);
             }
@@ -303,14 +301,12 @@ const EasyDialogBox = (function()
             // ** Check if size is set, if true then change size, else default value used
             if(obj.w)
             {
-                // ** Note! Can break "responsiveness"
                 box.style.maxWidth = _str2dec(obj.w) + 'px';
                 box.customWidth = _str2dec(obj.w);
             }
             // ** Check if size is set, if true then change size, else default value used
             if(obj.h)
             {
-                // ** Note! Can break "responsiveness"
                 box.style.height = _str2dec(obj.h) + 'px';
                 box.customHeight = _str2dec(obj.h);
             }
@@ -536,7 +532,7 @@ const EasyDialogBox = (function()
             // ** Get width-difference
             let w3 = w2 - w1;
             
-            // ** Store the scrollbarwidth
+            // ** Store the width difference (aka scrollbarwidth)
             _scrollBarWidth = w3;
 
             // ** If conditions are true: add both padding-right values, 
