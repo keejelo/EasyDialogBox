@@ -184,30 +184,13 @@
     overflow:hidden; /* Hide scrollbar */
 }
 
-/* The Close Button */
-.dlg-close-btn
+/* The buttons */
+.dlg-footer button
 {
-    padding:5px 15px;
     margin:0;
     margin-left:10px;
-}
-
-/* The Yes Button */
-.dlg-yes-btn,
-.dlg-ok-btn
-{
-    padding:5px 15px;
-    margin:0;
-    margin-left:10px;
-}
-
-/* The No Button */
-.dlg-no-btn,
-.dlg-cancel-btn
-{
-    padding:5px 15px;
-    margin:0;
-    margin-left:10px;
+    padding:0 15px;
+    height:30px;
 }
 
 /* Dialog icons, pure css, no images, but could be changed to use images instead by using the same classes etc. */
@@ -336,4 +319,3 @@
 {
     background-color:transparent;
 }
-
