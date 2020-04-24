@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.673
+// ** Version: 1.674
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -92,12 +92,13 @@ const EasyDialogBox = (function()
     // ** Check if array matches ALL test-values in supplied string/array. Returns true/false
     const _matchAll = function(arr, str, exp, sep)
     {
-        // ** Params
+        // ** Parameters
         // @ arr = array that holds the values we want to match against
         // @ str = string/array that we want to match with the above array
-        // @ exp = boolean: true = split string into array, using separator, false (or omitted) = do not split, treat string as one value.
-        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes.
-        //         If omitted then a space is used as separator, ' '
+        // @ exp = boolean: true = split string into array, using separator, 
+        //         false (or omitted) = do not split, treat string as one value.
+        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  
+        //         or other character enclosed in single quotes. If omitted then a space is used as separator, ' '
 
         let val = str;
         if(exp === true)
@@ -121,7 +122,8 @@ const EasyDialogBox = (function()
             }
         }
 
-        // ** Ensure that ALL values matched, else return failure. Check if numbers tested equals the numbers of items that passed.
+        // ** Ensure that ALL values matched, else return failure. 
+        //    Check if numbers tested equals the numbers of items that passed.
         if(val.length === passed)
         {
             return true;
@@ -166,7 +168,8 @@ const EasyDialogBox = (function()
         let el = document.getElementById(id);
         if(el)
         {
-            // ** If height is larger or equal to window height, disable vertical alignment, just position: top (try to prevent out of view)
+            // ** If height is larger or equal to window height, disable vertical alignment,
+            //    position to: top (try to prevent out of view)
             if( _s2i(el.offsetHeight + el.customPosY) >= window.innerHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
@@ -199,7 +202,8 @@ const EasyDialogBox = (function()
                 el.style.borderBottomWidth = '';
             }
 
-            // ** If width is larger or equal to window width, disable horizontal alignment, just position: left (try to prevent out of view)
+            // ** If width is larger or equal to window width, disable horizontal alignment,
+            //    position to: left (try to prevent out of view)
             let overlap = 40; // value is used to help width-detection
             if( _s2i(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
             {
@@ -430,7 +434,7 @@ const EasyDialogBox = (function()
             }
 
             // ** Create footer and buttons
-            // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
+            //    If "dlg-no-footer" is specified in class then do not create footer or any buttons
             if(!dlg.classList.contains('dlg-no-footer'))
             {
                 // ** Create footer
@@ -537,7 +541,7 @@ const EasyDialogBox = (function()
             }
 
             // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-            // ** can prevent contentshift if content is centered when scrollbar disappears.
+            //    can prevent contentshift if content is centered when scrollbar disappears.
             body.setAttribute('style','padding-right:' + w3 + 'px;');
             // ** END: Creating substitute for scrollbar
 
