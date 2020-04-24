@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.674
+// ** Version: 1.675
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -123,7 +123,7 @@ const EasyDialogBox = (function()
         }
 
         // ** Ensure that ALL values matched, else return failure. 
-        //    Check if numbers tested equals the numbers of items that passed.
+        // ** Check if numbers tested equals the numbers of items that passed.
         if(val.length === passed)
         {
             return true;
@@ -169,7 +169,7 @@ const EasyDialogBox = (function()
         if(el)
         {
             // ** If height is larger or equal to window height, disable vertical alignment,
-            //    position to: top (try to prevent out of view)
+            // ** position to: top (try to prevent out of view)
             if( _s2i(el.offsetHeight + el.customPosY) >= window.innerHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
@@ -203,7 +203,7 @@ const EasyDialogBox = (function()
             }
 
             // ** If width is larger or equal to window width, disable horizontal alignment,
-            //    position to: left (try to prevent out of view)
+            // ** position to: left (try to prevent out of view)
             let overlap = 40; // value is used to help width-detection
             if( _s2i(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
             {
@@ -434,7 +434,7 @@ const EasyDialogBox = (function()
             }
 
             // ** Create footer and buttons
-            //    If "dlg-no-footer" is specified in class then do not create footer or any buttons
+            // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
             if(!dlg.classList.contains('dlg-no-footer'))
             {
                 // ** Create footer
@@ -541,7 +541,7 @@ const EasyDialogBox = (function()
             }
 
             // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-            //    can prevent contentshift if content is centered when scrollbar disappears.
+            // ** can prevent contentshift if content is centered when scrollbar disappears.
             body.setAttribute('style','padding-right:' + w3 + 'px;');
             // ** END: Creating substitute for scrollbar
 
