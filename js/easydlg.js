@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.671
+// ** Version: 1.673
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -49,8 +49,8 @@ const EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     const _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
-                           'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
-                           'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
+                            'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
+                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
     let _boxObj = [];
@@ -95,8 +95,9 @@ const EasyDialogBox = (function()
         // ** Params
         // @ arr = array that holds the values we want to match against
         // @ str = string/array that we want to match with the above array
-        // @ exp = (boolean) true = split string into array, using separator. false (or omitted) = do not split, treat string as one value.
-        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes
+        // @ exp = boolean: true = split string into array, using separator, false (or omitted) = do not split, treat string as one value.
+        // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  or other character enclosed in single quotes.
+        //         If omitted then a space is used as separator, ' '
 
         let val = str;
         if(exp === true)
@@ -165,8 +166,7 @@ const EasyDialogBox = (function()
         let el = document.getElementById(id);
         if(el)
         {
-            // ** If height is larger or equal to window height, disable vertical alignment,
-            // ** just position: top (can prevent out of view)
+            // ** If height is larger or equal to window height, disable vertical alignment, just position: top (try to prevent out of view)
             if( _s2i(el.offsetHeight + el.customPosY) >= window.innerHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
@@ -178,6 +178,7 @@ const EasyDialogBox = (function()
                 el.style.borderTopWidth = '0';
                 el.style.borderBottomWidth = '0';
             }
+            // ** If window height larger than dialogbox height
             else
             {
                 if(!el.customPosY)
@@ -198,8 +199,7 @@ const EasyDialogBox = (function()
                 el.style.borderBottomWidth = '';
             }
 
-            // ** If width is larger or equal to window width, disable horizontal alignment,
-            // ** just position: left (can prevent out of view)
+            // ** If width is larger or equal to window width, disable horizontal alignment, just position: left (try to prevent out of view)
             let overlap = 40; // value is used to help width-detection
             if( _s2i(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
             {
@@ -212,6 +212,7 @@ const EasyDialogBox = (function()
                 el.style.borderLeftWidth = '0';
                 el.style.borderRightWidth = '0';
             }
+            // ** If window width larger than dialogbox width
             else
             {
                 if(!el.customPosX)
@@ -257,7 +258,7 @@ const EasyDialogBox = (function()
         body.appendChild(dlg);
 
         let matched = null;
-
+        
         if(dlg)
         {
             matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
@@ -281,7 +282,7 @@ const EasyDialogBox = (function()
             box.customHeight = 0;
             box.customWidth = 0;
 
-            // ** Check if position is set, if true (other than 0) then change position, else default value used
+            // ** Check if position is set, if true (bigger than 0) then change position, else default value used
             if(obj.x)
             {
                 box.style.left = _s2i(obj.x) + 'px';
@@ -588,7 +589,7 @@ const EasyDialogBox = (function()
             }
             // ** END: CLOSE button click handler
 
-            // ** When the user clicks anywhere outside of the dialogbox
+            // ** User clicks anywhere outside of the dialogbox
             window.addEventListener('click', function WinCloseClick(evt)
             {
                 if(evt.target == dlg)
@@ -611,7 +612,7 @@ const EasyDialogBox = (function()
             || dlg.classList.contains('dlg-no')
             )
             {
-                // ** When the user clicks the YES button
+                // ** User clicks the YES button
                 let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
                 if(btnYesDialog)
                 {
@@ -628,7 +629,7 @@ const EasyDialogBox = (function()
                     });
                 }
 
-                // ** When the user clicks the NO button
+                // ** User clicks the NO button
                 let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
                 if(btnNoDialog)
                 {
@@ -653,7 +654,7 @@ const EasyDialogBox = (function()
             || dlg.classList.contains('dlg-cancel')
             )
             {
-                // ** When the user clicks the OK button
+                // ** User clicks the OK button
                 let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
                 if(btnOkDialog)
                 {
@@ -670,7 +671,7 @@ const EasyDialogBox = (function()
                     });
                 }
 
-                // ** When the user clicks the Cancel button
+                // ** User clicks the Cancel button
                 let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
                 if(btnCancelDialog)
                 {
@@ -689,7 +690,7 @@ const EasyDialogBox = (function()
             }
             // ** END: OK-CANCEL button click handlers
 
-            // ** When the user types in promptbox, update variable: obj.strInput
+            // ** User types in promptbox, update variable: obj.strInput
             let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
             if(pBox)
             {
@@ -707,7 +708,7 @@ const EasyDialogBox = (function()
                     //obj.strInput = _htmlEncode(pBox.value);
                 });
             }
-            // ** END: When the user types in promptbox
+            // ** END: User types in promptbox
 
             //---------------------------------------------------------------------
             // ** END: Create event-listeners
