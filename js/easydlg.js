@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.675
+// ** Version: 1.676
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -95,7 +95,7 @@ const EasyDialogBox = (function()
         // ** Parameters
         // @ arr = array that holds the values we want to match against
         // @ str = string/array that we want to match with the above array
-        // @ exp = boolean: true = split string into array, using separator, 
+        // @ exp = true = split string into array, using separator,
         //         false (or omitted) = do not split, treat string as one value.
         // @ sep = character that is used as a string splitter, for instance a space ' ' or comma ','  
         //         or other character enclosed in single quotes. If omitted then a space is used as separator, ' '
