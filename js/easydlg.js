@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.677
+// ** Version: 1.678
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -242,517 +242,524 @@ const EasyDialogBox = (function()
     // ** Show the dialog box
     const _show = function(objId)
     {
-        // ** Get object from id
-        let obj = _getObjFromId(_boxObj, objId);
-
-        // ** Fix for pre-written HTML boxes: add '_0' to id before getting object
-        if(obj === null)
+        if(_isActive === false)
         {
-            objId += '_0';
-            obj = _getObjFromId(_boxObj, objId);
-        }
+            // ** Get object from id
+            let obj = _getObjFromId(_boxObj, objId);
 
-        // ** Create parent reference
-        let body = document.getElementsByTagName('body')[0];
-
-        // ** Create box and insert into parent element
-        let dlg = document.createElement('div');
-        dlg.setAttribute('id', obj.id);
-        dlg.setAttribute('class', obj.strTypeClass);
-        body.appendChild(dlg);
-
-        let matched = null;
-        
-        if(dlg)
-        {
-            matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
-        }
-
-        // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
-        if( dlg && (_isActive === false) && (matched === true) )
-        {            
-            // ** Show the backdrop overlay, and the dialogbox eventually
-            dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
-                                          // then dynamic values do not work as we want.
-                                          
-            // ** Create outer box
-            let box = document.createElement('div');
-            box.setAttribute('id', obj.id + '_1');
-            box.setAttribute('class','dlg-box');
-
-            // ** Prepare custom values, default set to: 0
-            box.customPosX = 0;
-            box.customPosY = 0;
-            box.customHeight = 0;
-            box.customWidth = 0;
-
-            // ** Check if position is set, if true (bigger than 0) then change position, else default value used
-            if(obj.x)
+            // ** Fix for pre-written HTML boxes: add '_0' to id before getting object
+            if(obj === null)
             {
-                box.style.left = _s2i(obj.x) + 'px';
-                box.customPosX = _s2i(obj.x);
+                objId += '_0';
+                obj = _getObjFromId(_boxObj, objId);
             }
-            // ** Check if position is set, if true then change position, else default value used
-            if(obj.y)
-            {
-                box.style.top = _s2i(obj.y) + 'px';
-                box.customPosY = _s2i(obj.y);
-            }
-            // ** END: Check if position is set
 
-            // ** Check if size is set, if true then change size, else default value used
-            if(obj.w)
-            {
-                box.style.maxWidth = _s2i(obj.w) + 'px';
-                box.customWidth = _s2i(obj.w);
-            }
-            // ** Check if size is set, if true then change size, else default value used
-            if(obj.h)
-            {
-                box.style.height = _s2i(obj.h) + 'px';
-                box.customHeight = _s2i(obj.h);
-            }
-            // ** END: Check if size is set
+            // ** Create parent reference
+            let body = document.getElementsByTagName('body')[0];
+
+            // ** Create box and insert into parent element
+            let dlg = document.createElement('div');
+            dlg.setAttribute('id', obj.id);
+            dlg.setAttribute('class', obj.strTypeClass);
+            body.appendChild(dlg);
+
+            let matched = null;
             
-            // ** Add element to DOM
-            dlg.appendChild(box);
-
-            // ** Create heading
-            let heading = document.createElement('div');
-            heading.setAttribute('id', obj.id + '_1_heading');
-            heading.setAttribute('class','dlg-heading');
-            box.appendChild(heading);
-
-            // ** Create [X] close button
-            let closeX = document.createElement('span');
-            closeX.setAttribute('class','dlg-close-x');
-            let closeText = document.createTextNode(' \u00d7 ');
-            closeX.appendChild(closeText);
-            heading.appendChild(closeX);
-
-            // ** Create title
-            let titleText = document.createTextNode(obj.strTitle);
-            heading.appendChild(titleText);
-
-            // ** Create message
-            let message = document.createElement('div');
-
-            // ** Prepare reference to inner boxes if needed
-            let leftbox = null;
-            let rightbox = null;
-
-            // ** Check if icon should be displayed
-            if(dlg.classList.contains('dlg-info')
-            || dlg.classList.contains('dlg-question')
-            || dlg.classList.contains('dlg-error')
-            || dlg.classList.contains('dlg-success')
-            || dlg.classList.contains('dlg-exclamation')
-            )
+            if(dlg)
             {
-                message.setAttribute('class','dlg-message dlg-flex-container');
-
-                // ** If custom height then adjust
-                if(box.customHeight)
-                {
-                    message.style.height = _s2i(obj.h - 101) + 'px';
-                }
-
-                // ** Create left box
-                leftbox = document.createElement('div');
-                leftbox.setAttribute('class','dlg-flexbox-left');
-
-                // ** Check which icon to display
-                if(dlg.classList.contains('dlg-info'))
-                {
-                    leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
-                }
-                else if(dlg.classList.contains('dlg-question'))
-                {
-                    leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
-                }
-                else if(dlg.classList.contains('dlg-error'))
-                {
-                    leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
-                }
-                else if(dlg.classList.contains('dlg-success'))
-                {
-                    leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
-                }
-                else if(dlg.classList.contains('dlg-exclamation'))
-                {
-                    leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
-                }
-
-                // ** Insert it into parent div
-                message.appendChild(leftbox);
-
-                // ** Create right box
-                rightbox = document.createElement('div');
-                rightbox.setAttribute('class','dlg-flexbox-right');
-                rightbox.innerHTML = obj.strMessage;
-
-                // ** Insert it into parent div
-                message.appendChild(rightbox);
+                matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
             }
-            else
-            {
-                message.setAttribute('class','dlg-message');
-                message.innerHTML = obj.strMessage;
+
+            // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
+            if( dlg && (matched === true) )
+            {            
+                // ** Show the backdrop overlay, and the dialogbox eventually
+                dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
+                                              // then dynamic values do not work as we want.
+                                              
+                // ** Create outer box
+                let box = document.createElement('div');
+                box.setAttribute('id', obj.id + '_1');
+                box.setAttribute('class','dlg-box');
+
+                // ** Prepare custom values, default set to: 0
+                box.customPosX = 0;
+                box.customPosY = 0;
+                box.customHeight = 0;
+                box.customWidth = 0;
+
+                // ** Check if position is set, if true (bigger than 0) then change position, else default value used
+                if(obj.x)
+                {
+                    box.style.left = _s2i(obj.x) + 'px';
+                    box.customPosX = _s2i(obj.x);
+                }
+                // ** Check if position is set, if true then change position, else default value used
+                if(obj.y)
+                {
+                    box.style.top = _s2i(obj.y) + 'px';
+                    box.customPosY = _s2i(obj.y);
+                }
+                // ** END: Check if position is set
+
+                // ** Check if size is set, if true then change size, else default value used
+                if(obj.w)
+                {
+                    box.style.maxWidth = _s2i(obj.w) + 'px';
+                    box.customWidth = _s2i(obj.w);
+                }
+                // ** Check if size is set, if true then change size, else default value used
+                if(obj.h)
+                {
+                    box.style.height = _s2i(obj.h) + 'px';
+                    box.customHeight = _s2i(obj.h);
+                }
+                // ** END: Check if size is set
                 
-                // ** If custom height then adjust
-                if(box.customHeight)
-                {
-                    message.style.height = _s2i(obj.h - 130) + 'px';
-                }
-            }
-            box.appendChild(message);
+                // ** Add element to DOM
+                dlg.appendChild(box);
 
-            // ** Create prompt box (input + OK + Cancel)
-            if(dlg.classList.contains('dlg-prompt'))
-            {
-                let inputbox = document.createElement('div');
-                inputbox.setAttribute('class', 'dlg-input');
+                // ** Create heading
+                let heading = document.createElement('div');
+                heading.setAttribute('id', obj.id + '_1_heading');
+                heading.setAttribute('class','dlg-heading');
+                box.appendChild(heading);
 
-                if(message.classList.contains('dlg-flex-container'))
+                // ** Create [X] close button
+                let closeX = document.createElement('span');
+                closeX.setAttribute('class','dlg-close-x');
+                let closeText = document.createTextNode(' \u00d7 ');
+                closeX.appendChild(closeText);
+                heading.appendChild(closeX);
+
+                // ** Create title
+                let titleText = document.createTextNode(obj.strTitle);
+                heading.appendChild(titleText);
+
+                // ** Create message
+                let message = document.createElement('div');
+
+                // ** Prepare reference to inner boxes if needed
+                let leftbox = null;
+                let rightbox = null;
+
+                // ** Check if icon should be displayed
+                if(dlg.classList.contains('dlg-info')
+                || dlg.classList.contains('dlg-question')
+                || dlg.classList.contains('dlg-error')
+                || dlg.classList.contains('dlg-success')
+                || dlg.classList.contains('dlg-exclamation')
+                )
                 {
-                    rightbox.appendChild(inputbox);
+                    message.setAttribute('class','dlg-message dlg-flex-container');
+
+                    // ** If custom height then adjust
+                    if(box.customHeight)
+                    {
+                        message.style.height = _s2i(obj.h - 101) + 'px';
+                    }
+
+                    // ** Create left box
+                    leftbox = document.createElement('div');
+                    leftbox.setAttribute('class','dlg-flexbox-left');
+
+                    // ** Check which icon to display
+                    if(dlg.classList.contains('dlg-info'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-question'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-error'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-success'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
+                    }
+                    else if(dlg.classList.contains('dlg-exclamation'))
+                    {
+                        leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
+                    }
+
+                    // ** Insert it into parent div
+                    message.appendChild(leftbox);
+
+                    // ** Create right box
+                    rightbox = document.createElement('div');
+                    rightbox.setAttribute('class','dlg-flexbox-right');
+                    rightbox.innerHTML = obj.strMessage;
+
+                    // ** Insert it into parent div
+                    message.appendChild(rightbox);
                 }
                 else
                 {
-                    message.appendChild(inputbox);
+                    message.setAttribute('class','dlg-message');
+                    message.innerHTML = obj.strMessage;
+                    
+                    // ** If custom height then adjust
+                    if(box.customHeight)
+                    {
+                        message.style.height = _s2i(obj.h - 130) + 'px';
+                    }
                 }
+                box.appendChild(message);
 
-                let input = document.createElement('input');
-                input.setAttribute('class', 'dlg-input-field');
-                input.setAttribute('type', 'text');
-                //obj.strInput = ''; // Remove earlier entered text from input field (optional)
-                input.setAttribute('value', obj.strInput);
-                inputbox.appendChild(input);
-
-                // ** Add buttons if not already stated in class
-                dlg.classList.add('dlg-ok-cancel');
-            }
-
-            // ** Create footer and buttons
-            // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
-            if(!dlg.classList.contains('dlg-no-footer'))
-            {
-                // ** Create footer
-                let footer = document.createElement('div');
-                footer.setAttribute('class','dlg-footer');
-                box.appendChild(footer);
-
-                // ** If "dlg-no-btns" is specified in class then do not make buttons.
-                if(!dlg.classList.contains('dlg-no-btns'))
+                // ** Create prompt box (input + OK + Cancel)
+                if(dlg.classList.contains('dlg-prompt'))
                 {
-                    // ** If "Yes" button is specified in class
-                    if(dlg.classList.contains('dlg-yes')
-                    || dlg.classList.contains('dlg-yes-no')
-                    )
+                    let inputbox = document.createElement('div');
+                    inputbox.setAttribute('class', 'dlg-input');
+
+                    if(message.classList.contains('dlg-flex-container'))
                     {
-                        // ** Create button
-                        let yesBtn = document.createElement('button');
-                        yesBtn.setAttribute('class','dlg-yes-btn');
-                        let yesBtnText = document.createTextNode(_btnTextYes);
-                        yesBtn.appendChild(yesBtnText);
-                        footer.appendChild(yesBtn);
+                        rightbox.appendChild(inputbox);
+                    }
+                    else
+                    {
+                        message.appendChild(inputbox);
                     }
 
-                    // ** If "No" button is specified in class
-                    if(dlg.classList.contains('dlg-no')
-                    || dlg.classList.contains('dlg-yes-no')
-                    )
-                    {
-                        // ** Create button
-                        let noBtn = document.createElement('button');
-                        noBtn.setAttribute('class','dlg-no-btn');
-                        let noBtnText = document.createTextNode(_btnTextNo);
-                        noBtn.appendChild(noBtnText);
-                        footer.appendChild(noBtn);
-                    }
+                    let input = document.createElement('input');
+                    input.setAttribute('class', 'dlg-input-field');
+                    input.setAttribute('type', 'text');
+                    //obj.strInput = ''; // Remove earlier entered text from input field (optional)
+                    input.setAttribute('value', obj.strInput);
+                    inputbox.appendChild(input);
 
-                    // ** If "OK" button is specified in class
-                    if(dlg.classList.contains('dlg-ok')
-                    || dlg.classList.contains('dlg-ok-cancel')
-                    )
-                    {
-                        // ** Create button
-                        let okBtn = document.createElement('button');
-                        okBtn.setAttribute('class','dlg-ok-btn');
-                        let okBtnText = document.createTextNode(_btnTextOk);
-                        okBtn.appendChild(okBtnText);
-                        footer.appendChild(okBtn);
-                    }
+                    // ** Add buttons if not already stated in class
+                    dlg.classList.add('dlg-ok-cancel');
+                }
 
-                    // ** If "Cancel" button is specified in class
-                    if(dlg.classList.contains('dlg-cancel')
-                    || dlg.classList.contains('dlg-ok-cancel')
-                    )
-                    {
-                        // ** Create button
-                        let cancelBtn = document.createElement('button');
-                        cancelBtn.setAttribute('class','dlg-cancel-btn');
-                        let cancelBtnText = document.createTextNode(_btnTextCancel);
-                        cancelBtn.appendChild(cancelBtnText);
-                        footer.appendChild(cancelBtn);
-                    }
+                // ** Create footer and buttons
+                // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
+                if(!dlg.classList.contains('dlg-no-footer'))
+                {
+                    // ** Create footer
+                    let footer = document.createElement('div');
+                    footer.setAttribute('class','dlg-footer');
+                    box.appendChild(footer);
 
-                    // ** If "dlg" or "Close" button is specified in class
-                    if(dlg.classList.contains('dlg')
-                    || dlg.classList.contains('dlg-close')
-                    )
+                    // ** If "dlg-no-btns" is specified in class then do not make buttons.
+                    if(!dlg.classList.contains('dlg-no-btns'))
                     {
-                        // ** Create button
-                        let closeBtn = document.createElement('button');
-                        closeBtn.setAttribute('class','dlg-close-btn');
-                        let closeBtnText = document.createTextNode(_btnTextClose);
-                        closeBtn.appendChild(closeBtnText);
-                        footer.appendChild(closeBtn);
+                        // ** If "Yes" button is specified in class
+                        if(dlg.classList.contains('dlg-yes')
+                        || dlg.classList.contains('dlg-yes-no')
+                        )
+                        {
+                            // ** Create button
+                            let yesBtn = document.createElement('button');
+                            yesBtn.setAttribute('class','dlg-yes-btn');
+                            let yesBtnText = document.createTextNode(_btnTextYes);
+                            yesBtn.appendChild(yesBtnText);
+                            footer.appendChild(yesBtn);
+                        }
+
+                        // ** If "No" button is specified in class
+                        if(dlg.classList.contains('dlg-no')
+                        || dlg.classList.contains('dlg-yes-no')
+                        )
+                        {
+                            // ** Create button
+                            let noBtn = document.createElement('button');
+                            noBtn.setAttribute('class','dlg-no-btn');
+                            let noBtnText = document.createTextNode(_btnTextNo);
+                            noBtn.appendChild(noBtnText);
+                            footer.appendChild(noBtn);
+                        }
+
+                        // ** If "OK" button is specified in class
+                        if(dlg.classList.contains('dlg-ok')
+                        || dlg.classList.contains('dlg-ok-cancel')
+                        )
+                        {
+                            // ** Create button
+                            let okBtn = document.createElement('button');
+                            okBtn.setAttribute('class','dlg-ok-btn');
+                            let okBtnText = document.createTextNode(_btnTextOk);
+                            okBtn.appendChild(okBtnText);
+                            footer.appendChild(okBtn);
+                        }
+
+                        // ** If "Cancel" button is specified in class
+                        if(dlg.classList.contains('dlg-cancel')
+                        || dlg.classList.contains('dlg-ok-cancel')
+                        )
+                        {
+                            // ** Create button
+                            let cancelBtn = document.createElement('button');
+                            cancelBtn.setAttribute('class','dlg-cancel-btn');
+                            let cancelBtnText = document.createTextNode(_btnTextCancel);
+                            cancelBtn.appendChild(cancelBtnText);
+                            footer.appendChild(cancelBtn);
+                        }
+
+                        // ** If "dlg" or "Close" button is specified in class
+                        if(dlg.classList.contains('dlg')
+                        || dlg.classList.contains('dlg-close')
+                        )
+                        {
+                            // ** Create button
+                            let closeBtn = document.createElement('button');
+                            closeBtn.setAttribute('class','dlg-close-btn');
+                            let closeBtnText = document.createTextNode(_btnTextClose);
+                            closeBtn.appendChild(closeBtnText);
+                            footer.appendChild(closeBtn);
+                        }
                     }
                 }
-            }
-            // ** END: Create footer and buttons
+                // ** END: Create footer and buttons
 
 
-            // ** Creating substitute for scrollbar
+                // ** Creating substitute for scrollbar
 
-            // ** Store the original padding-right value
-            _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+                // ** Store the original padding-right value
+                _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 
-            // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-            _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
+                // ** Convert from string to integer (remove 'px' postfix and return value as integer)
+                _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
 
-            // ** Get width of body before removing scrollbar
-            let w1 = body.offsetWidth;
+                // ** Get width of body before removing scrollbar
+                let w1 = body.offsetWidth;
 
-            // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-            body.classList.add('dlg-stop-scrolling');
+                // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
+                body.classList.add('dlg-stop-scrolling');
 
-            // ** Get width of body after removing scrollbar
-            let w2 = body.offsetWidth;
+                // ** Get width of body after removing scrollbar
+                let w2 = body.offsetWidth;
 
-            // ** Get width-difference
-            let w3 = w2 - w1;
-            
-            // ** If conditions are true: add both padding-right values, 
-            if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
-            {
-                w3 += _s2i(_orgBodyPaddingRight);
-            }
+                // ** Get width-difference
+                let w3 = w2 - w1;
+                
+                // ** If conditions are true: add both padding-right values, 
+                if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+                {
+                    w3 += _s2i(_orgBodyPaddingRight);
+                }
 
-            // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-            // ** can prevent contentshift if content is centered when scrollbar disappears.
-            body.setAttribute('style','padding-right:' + w3 + 'px;');
-            // ** END: Creating substitute for scrollbar
+                // ** Apply width-difference as padding-right to body, substitute for scrollbar,
+                // ** can prevent contentshift if content is centered when scrollbar disappears.
+                body.setAttribute('style','padding-right:' + w3 + 'px;');
+                // ** END: Creating substitute for scrollbar
 
 
-            //---------------------------------------------------------------------
-            // ** Create event-listeners
-            //---------------------------------------------------------------------
+                //---------------------------------------------------------------------
+                // ** Create event-listeners
+                //---------------------------------------------------------------------
 
-            // ** Window resize
-            window.addEventListener('resize', function WinResize()
-            {
+                // ** Window resize
+                window.addEventListener('resize', function WinResize()
+                {
+                    _adjustElSizePos(box.id);
+                });
+                // ** END: Window resize
+
+                // ** User clicks the [X] button
+                let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
+                if(xCloseDialog)
+                {
+                    xCloseDialog.addEventListener('click', function XCloseClick()
+                    {
+                        // ** Remove eventlistener
+                        xCloseDialog.removeEventListener('click', XCloseClick);
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+
+                        // ** Callback, return code: CLOSE
+                        obj.callback(CLOSE);
+                    });
+                }
+                // ** END: [X] button click handler
+
+                // ** User clicks the CLOSE button
+                let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
+                if(btnCloseDialog)
+                {
+                    btnCloseDialog.addEventListener('click', function BtnCloseClick()
+                    {
+                        // ** Remove eventlistener
+                        btnCloseDialog.removeEventListener('click', BtnCloseClick);
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+
+                        // ** Callback, return code: CLOSE
+                        obj.callback(CLOSE);                        
+                    });
+                }
+                // ** END: CLOSE button click handler
+
+                // ** User clicks anywhere outside of the dialogbox
+                window.addEventListener('click', function WinCloseClick(evt)
+                {
+                    if(evt.target == dlg)
+                    {
+                        // ** Remove eventlistener
+                        window.removeEventListener('click', WinCloseClick);
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+
+                        // ** Callback, return code: CLOSE
+                        obj.callback(CLOSE);
+                    }
+                });
+                // ** END: window click outside box click handler
+
+                // ** If YES-NO messagebox, create click handler for YES and NO buttons
+                if(dlg.classList.contains('dlg-yes-no')
+                || dlg.classList.contains('dlg-yes')
+                || dlg.classList.contains('dlg-no')
+                )
+                {
+                    // ** User clicks the YES button
+                    let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
+                    if(btnYesDialog)
+                    {
+                        btnYesDialog.addEventListener('click', function BtnYesClick()
+                        {
+                            // ** Remove eventlistener
+                            btnYesDialog.removeEventListener('click', BtnYesClick);
+
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+
+                            // ** Callback, return code: YES
+                            obj.callback(YES);
+                        });
+                    }
+
+                    // ** User clicks the NO button
+                    let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
+                    if(btnNoDialog)
+                    {
+                        btnNoDialog.addEventListener('click', function BtnNoClick()
+                        {
+                            // ** Remove eventlistener
+                            btnNoDialog.removeEventListener('click', BtnNoClick);
+
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+
+                            // ** Callback, return code: NO
+                            obj.callback(NO);
+                        });
+                    }
+                }
+                // ** END: YES-NO button click handlers
+
+                // ** If OK-CANCEL messagebox, create click handler for OK and CANCEL buttons
+                if(dlg.classList.contains('dlg-ok-cancel')
+                || dlg.classList.contains('dlg-ok')
+                || dlg.classList.contains('dlg-cancel')
+                )
+                {
+                    // ** User clicks the OK button
+                    let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
+                    if(btnOkDialog)
+                    {
+                        btnOkDialog.addEventListener('click', function BtnOkClick()
+                        {
+                            // ** Remove eventlistener
+                            btnOkDialog.removeEventListener('click', BtnOkClick);
+
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+
+                            // ** Callback, return code: OK
+                            obj.callback(OK);                            
+                        });
+                    }
+
+                    // ** User clicks the Cancel button
+                    let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
+                    if(btnCancelDialog)
+                    {
+                        btnCancelDialog.addEventListener('click', function BtnCancelClick()
+                        {
+                            // ** Remove eventlistener
+                            btnCancelDialog.removeEventListener('click', BtnCancelClick);
+
+                            // ** Close dialogbox, reset values, clean up
+                            obj.destroy();
+
+                            // ** Callback, return code: CANCEL
+                            obj.callback(CANCEL);
+                        });
+                    }
+                }
+                // ** END: OK-CANCEL button click handlers
+
+                // ** User types in promptbox, update variable: obj.strInput
+                let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                if(pBox)
+                {
+                    pBox.addEventListener('keyup', function PromptBoxKeyUp()
+                    {
+                        obj.strInput = _sanitize(pBox.value);
+                        //obj.strInput = _escape(pBox.value);
+                        //obj.strInput = _htmlEncode(pBox.value);
+                    });
+
+                    pBox.addEventListener('change', function PromptBoxChange()
+                    {
+                        obj.strInput = _sanitize(pBox.value);
+                        //obj.strInput = _escape(pBox.value);
+                        //obj.strInput = _htmlEncode(pBox.value);
+                    });
+                }
+                // ** END: User types in promptbox
+
+                //---------------------------------------------------------------------
+                // ** END: Create event-listeners
+                //---------------------------------------------------------------------
+
+                // ** Set flag to indicate that box is active and is displayed
+                _isActive = true;
+
+                // ** Make it draggable, unless flag is set
+                if(!dlg.classList.contains('dlg-no-drag'))
+                {
+                    _drag.init(obj.id + '_1');
+                }
+
+                // ** Show dialogbox
+                box.style.visibility = 'visible';
+
+                // ** Adjust box size and position according to window size
                 _adjustElSizePos(box.id);
-            });
-            // ** END: Window resize
-
-            // ** User clicks the [X] button
-            let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
-            if(xCloseDialog)
-            {
-                xCloseDialog.addEventListener('click', function XCloseClick()
+                
+                // ** Set focus to input field if promptbox
+                if(dlg.classList.contains('dlg-prompt'))
                 {
-                    // ** Remove eventlistener
-                    xCloseDialog.removeEventListener('click', XCloseClick);
+                    dlg.getElementsByClassName('dlg-input-field')[0].focus();
+                }            
 
-                    // ** Close dialogbox, reset values, clean up
-                    obj.destroy();
-
-                    // ** Callback, return code: CLOSE
-                    obj.callback(CLOSE);
-                });
-            }
-            // ** END: [X] button click handler
-
-            // ** User clicks the CLOSE button
-            let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
-            if(btnCloseDialog)
-            {
-                btnCloseDialog.addEventListener('click', function BtnCloseClick()
-                {
-                    // ** Remove eventlistener
-                    btnCloseDialog.removeEventListener('click', BtnCloseClick);
-
-                    // ** Close dialogbox, reset values, clean up
-                    obj.destroy();
-
-                    // ** Callback, return code: CLOSE
-                    obj.callback(CLOSE);                        
-                });
-            }
-            // ** END: CLOSE button click handler
-
-            // ** User clicks anywhere outside of the dialogbox
-            window.addEventListener('click', function WinCloseClick(evt)
-            {
-                if(evt.target == dlg)
-                {
-                    // ** Remove eventlistener
-                    window.removeEventListener('click', WinCloseClick);
-
-                    // ** Close dialogbox, reset values, clean up
-                    obj.destroy();
-
-                    // ** Callback, return code: CLOSE
-                    obj.callback(CLOSE);
-                }
-            });
-            // ** END: window click outside box click handler
-
-            // ** If YES-NO messagebox, create click handler for YES and NO buttons
-            if(dlg.classList.contains('dlg-yes-no')
-            || dlg.classList.contains('dlg-yes')
-            || dlg.classList.contains('dlg-no')
-            )
-            {
-                // ** User clicks the YES button
-                let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
-                if(btnYesDialog)
-                {
-                    btnYesDialog.addEventListener('click', function BtnYesClick()
-                    {
-                        // ** Remove eventlistener
-                        btnYesDialog.removeEventListener('click', BtnYesClick);
-
-                        // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
-
-                        // ** Callback, return code: YES
-                        obj.callback(YES);
-                    });
-                }
-
-                // ** User clicks the NO button
-                let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
-                if(btnNoDialog)
-                {
-                    btnNoDialog.addEventListener('click', function BtnNoClick()
-                    {
-                        // ** Remove eventlistener
-                        btnNoDialog.removeEventListener('click', BtnNoClick);
-
-                        // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
-
-                        // ** Callback, return code: NO
-                        obj.callback(NO);
-                    });
-                }
-            }
-            // ** END: YES-NO button click handlers
-
-            // ** If OK-CANCEL messagebox, create click handler for OK and CANCEL buttons
-            if(dlg.classList.contains('dlg-ok-cancel')
-            || dlg.classList.contains('dlg-ok')
-            || dlg.classList.contains('dlg-cancel')
-            )
-            {
-                // ** User clicks the OK button
-                let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
-                if(btnOkDialog)
-                {
-                    btnOkDialog.addEventListener('click', function BtnOkClick()
-                    {
-                        // ** Remove eventlistener
-                        btnOkDialog.removeEventListener('click', BtnOkClick);
-
-                        // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
-
-                        // ** Callback, return code: OK
-                        obj.callback(OK);                            
-                    });
-                }
-
-                // ** User clicks the Cancel button
-                let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
-                if(btnCancelDialog)
-                {
-                    btnCancelDialog.addEventListener('click', function BtnCancelClick()
-                    {
-                        // ** Remove eventlistener
-                        btnCancelDialog.removeEventListener('click', BtnCancelClick);
-
-                        // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
-
-                        // ** Callback, return code: CANCEL
-                        obj.callback(CANCEL);
-                    });
-                }
-            }
-            // ** END: OK-CANCEL button click handlers
-
-            // ** User types in promptbox, update variable: obj.strInput
-            let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-            if(pBox)
-            {
-                pBox.addEventListener('keyup', function PromptBoxKeyUp()
-                {
-                    obj.strInput = _sanitize(pBox.value);
-                    //obj.strInput = _escape(pBox.value);
-                    //obj.strInput = _htmlEncode(pBox.value);
-                });
-
-                pBox.addEventListener('change', function PromptBoxChange()
-                {
-                    obj.strInput = _sanitize(pBox.value);
-                    //obj.strInput = _escape(pBox.value);
-                    //obj.strInput = _htmlEncode(pBox.value);
-                });
-            }
-            // ** END: User types in promptbox
-
-            //---------------------------------------------------------------------
-            // ** END: Create event-listeners
-            //---------------------------------------------------------------------
-
-            // ** Set flag to indicate that box is active and is displayed
-            _isActive = true;
-
-            // ** Make it draggable, unless flag is set
-            if(!dlg.classList.contains('dlg-no-drag'))
-            {
-                _drag.init(obj.id + '_1');
-            }
-
-            // ** Show dialogbox
-            box.style.visibility = 'visible';
-
-            // ** Adjust box size and position according to window size
-            _adjustElSizePos(box.id);
-            
-            // ** Set focus to input field if promptbox
-            if(dlg.classList.contains('dlg-prompt'))
-            {
-                dlg.getElementsByClassName('dlg-input-field')[0].focus();
+                // ** Return success
+                return true;
             }            
-
-            // ** Return success
-            return true;
-        }
-        else if(!matched)
-        {
-            _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
+            else if(!matched)
+            {
+                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
+            }
+            else if(!dlg)
+            {
+                _log('DEBUG: show(): Error, element id \'' + objId + '\' do not exist!\nReturned value = ' + dlg);
+            }
+            else
+            {
+                _log('DEBUG: show(): Unknown error!');
+            }
         }
         else if(_isActive)
         {
             _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
-        }
-        else if(!dlg)
-        {
-            _log('DEBUG: show(): Error, element id \'' + objId + '\' do not exist!\nReturned value = ' + dlg);
         }
         else
         {
