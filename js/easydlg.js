@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.676
+// ** Version: 1.677
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -268,13 +268,13 @@ const EasyDialogBox = (function()
             matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
         }
 
-        // ** Show the backdrop overlay, and the dialogbox eventually
-        dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
-                                      // then dynamic values do not work as we want.
-
         // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
         if( dlg && (_isActive === false) && (matched === true) )
-        {
+        {            
+            // ** Show the backdrop overlay, and the dialogbox eventually
+            dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
+                                          // then dynamic values do not work as we want.
+                                          
             // ** Create outer box
             let box = document.createElement('div');
             box.setAttribute('id', obj.id + '_1');
