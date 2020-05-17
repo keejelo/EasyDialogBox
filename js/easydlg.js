@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.678
+// ** Version: 1.679
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -242,6 +242,7 @@ const EasyDialogBox = (function()
     // ** Show the dialog box
     const _show = function(objId)
     {
+        // ** Check that no other dialog is active
         if(_isActive === false)
         {
             // ** Get object from id
@@ -270,7 +271,7 @@ const EasyDialogBox = (function()
                 matched = _matchAll(_strBoxTypeList, obj.strTypeClass, true);
             }
 
-            // ** Check if element with the id exist in DOM, and that no other dialog is active, and valid dlg-types
+            // ** Check if element with the id exist in DOM, and valid dlg-types
             if( dlg && (matched === true) )
             {            
                 // ** Show the backdrop overlay, and the dialogbox eventually
