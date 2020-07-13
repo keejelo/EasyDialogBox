@@ -31,19 +31,19 @@
 
 /* Dialog box */
 .dlg-box
-{   
+{
     display:block;
     margin:0;
     padding:0;
     max-width:600px;
     overflow:hidden; /* disable scrolling inside box */
-    width:100%; /* 96, 98 */
-    background-color:#fefefe;
+    width:100%; /* 96, 98 */    
     font-family:Arial, Helvetica, sans-serif;
     font-size:10px; /*0.8em*/
-    /*border-radius:2px; /* rounded corners */
-    border:1px solid #3d6da8; /* border */
+    background-color:#fefefe; /* bgcolor, change it as you wish */    
+    border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
     border-top:none;
+    /*border-radius:2px; /* rounded corners, if you want */
     visibility:hidden;
 }
 
@@ -53,7 +53,7 @@
     display:block;
     margin:0;
     padding:10px;
-    background-color:#3d6da8; /* background color */
+    background-color:#3d6da8; /* background color, change it as you wish. ".dlg-box" has the same border-color as this */
     color:#fff; /* text color, change it as you wish */
     white-space:nowrap;
     overflow:hidden;
@@ -82,7 +82,6 @@
     margin-right:0;
     padding:5px;
     color:inherit; /*fff*/
-    /*font-size:2.0em;*/
     font-family:inherit;
     font-size:2.0em;
     font-weight:normal;
@@ -161,9 +160,11 @@
     font-family:inherit;
     font-size:1em;
     
+    /* NOT USED AT THE MOMENT */
     /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
     /*border:1px solid #aaa;*/
     /* END: Chrome fix */
+    /* END: NOT USED AT THE MOMENT */
 }
 
 /* Dialog footer */
