@@ -659,6 +659,13 @@ window.addEventListener('load', function()
                 <p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
                 <p>( Don't have to be a <code>&lt;button&gt;</code>, it can be any element you want to use as an opener. )</p>
                 <p>Add class <code>dlg-opener</code> to the opening element, in this case a <code>&lt;button&gt;</code>, to make it open a box, a click-event-handler will automatically be created for it.</p>
+                <p>&nbsp;</p>
+                <p>Optional <code>data-</code> attributes:</p>
+                <p><code>data-callback</code> This attribute can be used if you want to run a callback function when dialogbox is closed (no matter which button was clicked).</p>
+                <p><code>data-x</code>Custom horizontal position of the box, default is center of window.</p>
+                <p><code>data-y</code>Custom vertical position of the box, default is center of window.</p>
+                <p><code>data-w</code>Custom width of the dialogbox, default: 600px (maxWidth)/p>
+                <p><code>data-h</code>Custom height of the box, default: adjusted by content.</p>
             </div>
         
             <p>&nbsp;</p>
