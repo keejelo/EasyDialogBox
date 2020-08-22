@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.686
+// ** Version: 1.687
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -733,22 +733,25 @@ const EasyDialogBox = (function()
                 // ** END: OK-CANCEL button click handlers
 
                 // ** User types in promptbox, update variable: obj.strInput
-                let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-                if(pBox)
+                if(dlg.classList.contains('dlg-prompt'))
                 {
-                    pBox.addEventListener('keyup', function PromptBoxKeyUp()
+                    let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                    if(pBox)
                     {
-                        obj.strInput = _sanitize(pBox.value);
-                        //obj.strInput = _escape(pBox.value);
-                        //obj.strInput = _htmlEncode(pBox.value);
-                    });
+                        pBox.addEventListener('keyup', function PromptBoxKeyUp()
+                        {
+                            obj.strInput = _sanitize(pBox.value);
+                            //obj.strInput = _escape(pBox.value);
+                            //obj.strInput = _htmlEncode(pBox.value);
+                        });
 
-                    pBox.addEventListener('change', function PromptBoxChange()
-                    {
-                        obj.strInput = _sanitize(pBox.value);
-                        //obj.strInput = _escape(pBox.value);
-                        //obj.strInput = _htmlEncode(pBox.value);
-                    });
+                        pBox.addEventListener('change', function PromptBoxChange()
+                        {
+                            obj.strInput = _sanitize(pBox.value);
+                            //obj.strInput = _escape(pBox.value);
+                            //obj.strInput = _htmlEncode(pBox.value);
+                        });
+                    }
                 }
                 // ** END: User types in promptbox
 
@@ -825,15 +828,16 @@ const EasyDialogBox = (function()
             dlg.style.display = 'none';
         }
 
-        /*
-        // DISABLED: Was causing error when Closing, need to investigate
         // ** If promptbox was created, remove eventlisteners
-        let pBox = dlg.getElementsByClassName('dlg-input-field');
-        if(pBox.length !=0)
+        if(dlg)
         {
-            pBox[0].onkeyup = null;
-            pBox[0].onchange = null;
-        }*/
+            let pBox = dlg.getElementsByClassName('dlg-input-field');
+            if(pBox.length !=0)
+            {
+                pBox[0].onkeyup = null;
+                pBox[0].onchange = null;
+            }
+        }
 
         // ** Remove dialogbox, reset values
         if(dlg)
@@ -865,7 +869,7 @@ const EasyDialogBox = (function()
                             success = false;
                             _log('DEBUG: destroy(): Error! obj.bKeepAlive = false | But object NOT deleted from array!');
                         }
-                    }, 1);
+                    }, 10);
                 }
                 else
                 {
