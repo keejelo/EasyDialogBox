@@ -634,7 +634,8 @@ const EasyDialogBox = (function()
                     if(evt.key === 'Escape' 
                     || evt.which === 27 
                     || evt.keyCode === 27 
-                    || evt.code === 'Escape')
+                    || evt.code === 'Escape'
+                    )
                     {
                         // ** Remove eventlistener
                         window.removeEventListener('keyup', EscKeyClose);
