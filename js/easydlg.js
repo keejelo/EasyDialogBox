@@ -828,11 +828,11 @@ const EasyDialogBox = (function()
         /*
         // DISABLED: Was causing error when Closing, need to investigate
         // ** If promptbox was created, remove eventlisteners
-        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
-        if(pBox)
+        let pBox = dlg.getElementsByClassName('dlg-input-field');
+        if(pBox.length !=0)
         {
-            pBox.onkeyup = null;
-            pBox.onchange = null;
+            pBox[0].onkeyup = null;
+            pBox[0].onchange = null;
         }*/
 
         // ** Remove dialogbox, reset values
