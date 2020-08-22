@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.680
+// ** Version: 1.682
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -599,6 +599,9 @@ const EasyDialogBox = (function()
                 // ** User clicks anywhere outside of the dialogbox
                 window.addEventListener('click', function WinCloseClick(evt)
                 {
+                    // ** Get/set event variable
+                    evt = evt || window.event || event;
+
                     if(evt.target == dlg)
                     {
                         // ** Remove eventlistener
@@ -612,6 +615,30 @@ const EasyDialogBox = (function()
                     }
                 });
                 // ** END: window click outside box click handler
+                
+                // ** Close box on ESC-key
+                window.addEventListener('keyup', function EscKeyClose(evt)
+                {	
+                    // ** Get/set event variable
+                    evt = evt || window.event || event;
+
+                    // ** Listen for key (crossbrowser)
+                    if(evt.key === 'Escape' 
+                    || evt.which === 27 
+                    || evt.keyCode === 27 
+                    || evt.code === 'Escape')
+                    {	
+                        // ** Remove eventlistener
+                        window.removeEventListener('keyup', EscKeyClose);
+
+                        // ** Close dialogbox, reset values, clean up
+                        obj.destroy();
+
+                        // ** Callback, return code: CLOSE
+                        obj.callback(CLOSE);
+                    }
+                });
+                // ** END: Close box on ESC-key
 
                 // ** If YES-NO messagebox, create click handler for YES and NO buttons
                 if(dlg.classList.contains('dlg-yes-no')
@@ -994,6 +1021,9 @@ const EasyDialogBox = (function()
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
                 {
+                    // ** Get/set event variable
+                    evt = evt || window.event || event;
+                    
                     obj.show();             // Show the dialogbox with the id referenced in 'rel' attribute
                     this.blur();            // Remove focus from button or other opening element
                     evt.preventDefault();   // Prevent scrolling to top of page if i.e. used in an anchor-link 'href="#"'
@@ -1021,6 +1051,9 @@ const EasyDialogBox = (function()
         },
         start : function(evt)
         {
+            // ** Get/set event variable
+            evt = evt || window.event || event;
+
             // ** Left mouse button triggers moving
             if(evt.button === 0)
             {
@@ -1040,6 +1073,9 @@ const EasyDialogBox = (function()
         },
         move : function(evt)
         {
+            // ** Get/set event variable
+            evt = evt || window.event || event;
+
             evt.preventDefault();
             _drag.el.posX = _drag.el.posX2 - evt.clientX;
             _drag.el.posY = _drag.el.posY2 - evt.clientY;
