@@ -312,7 +312,7 @@ var myCallbackFunc = function(nRetCode, strInput)
         console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
         
         // ** Example: Create a dialog on the fly!
-        let myFlyBox = EasyDialogBox.create(0, 'dlg-yes-no dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
+        let myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
         if(myFlyBox)
         {
             // ** Override the initial callback function that was set 
