@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.683
+// ** Version: 1.685
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -169,8 +169,12 @@ const EasyDialogBox = (function()
         if(el)
         {
             // ** If height is larger or equal to window height, disable vertical alignment,
-            // ** position to: top (try to prevent out of view)
-            if( _s2i(el.offsetHeight + el.customPosY) >= window.innerHeight)
+            // ** position to: top (try to prevent out of view)            
+            let winHeight = window.innerHeight
+            || document.documentElement.clientHeight    
+            || document.body.clientHeight;
+
+            if( _s2i(el.offsetHeight + el.customPosY) >= winHeight)
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.top = '0';
@@ -186,7 +190,7 @@ const EasyDialogBox = (function()
             {
                 if(!el.customPosY)
                 {
-                    el.style.top = ( (window.innerHeight / 2) - (el.offsetHeight / 2) ) + 'px';
+                    el.style.top = ( (winHeight / 2) - (el.offsetHeight / 2) ) + 'px';
                 }
                 else
                 {
@@ -204,8 +208,12 @@ const EasyDialogBox = (function()
 
             // ** If width is larger or equal to window width, disable horizontal alignment,
             // ** position to: left (try to prevent out of view)
+            let winWidth = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
             let overlap = 40; // value is used to help width-detection
-            if( _s2i(el.offsetWidth + el.customPosX + overlap) >= window.innerWidth) // Seem to work OK
+            if( _s2i(el.offsetWidth + el.customPosX + overlap) >= winWidth) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values 
                 el.style.left = '0';
@@ -221,7 +229,7 @@ const EasyDialogBox = (function()
             {
                 if(!el.customPosX)
                 {
-                    el.style.left = ( (window.innerWidth / 2) - (el.offsetWidth / 2) ) + 'px';
+                    el.style.left = ( (winWidth / 2) - (el.offsetWidth / 2) ) + 'px';
                 }
                 else
                 {
