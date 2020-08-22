@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.682
+// ** Version: 1.683
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -627,13 +627,13 @@ const EasyDialogBox = (function()
                     || evt.which === 27 
                     || evt.keyCode === 27 
                     || evt.code === 'Escape')
-                    {	
+                    {
                         // ** Remove eventlistener
                         window.removeEventListener('keyup', EscKeyClose);
-
+                        
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
-
+                        
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
                     }
@@ -817,13 +817,15 @@ const EasyDialogBox = (function()
             dlg.style.display = 'none';
         }
 
+        /*
+        // DISABLED: Was causing error when Closing, need to investigate
         // ** If promptbox was created, remove eventlisteners
-        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];            
+        let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
         if(pBox)
         {
             pBox.onkeyup = null;
             pBox.onchange = null;
-        }
+        }*/
 
         // ** Remove dialogbox, reset values
         if(dlg)
