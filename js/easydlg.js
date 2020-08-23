@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.687
+// ** Version: 1.688
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -645,6 +645,10 @@ const EasyDialogBox = (function()
                         
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        
+                        // ** Prevent bubbling
+                        evt.preventDefault();
+                        evt.stopPropagation();
                     }
                 });
                 // ** END: Close box on ESC-key
