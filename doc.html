@@ -490,8 +490,6 @@ window.addEventListener('load', function()
             <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
             <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObj.bKeepAlive = false;</code></p>
             <p>And then you can delete it with <code>myObj.destroy();</code></p>
-            <p>To check if dialogbox is visible and currently in view, use the flag <code>bVisible</code> , returns either <span class="ital word">true</span> or <span class="ital word">false</span></p>
-            <p>To check if dialogbox exist in DOM use the flag <code>bExistInDOM</code> , returns either <span class="ital word">true</span> or <span class="ital word">false</span></p>
             <p>&nbsp;</p>
             <p>
                 <span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
@@ -501,6 +499,11 @@ window.addEventListener('load', function()
             <p>Optional: <code>y</code> = vertical position of the box, default: center in viewport.</p>
             <p>Optional: <code>w</code> = width of the box, default: 600px (maxWidth)</p>
             <p>Optional: <code>h</code> = height of the box, default: adjusted by content.</p>
+
+            <p>&nbsp;</p>
+            
+            <p>To check if dialogbox is visible and currently in view, use the flag <code>bVisible</code> , returns either <span class="ital word">true</span> or <span class="ital word">false</span></p>
+            <p>To check if dialogbox exist in DOM use the flag <code>bExistInDOM</code> , returns either <span class="ital word">true</span> or <span class="ital word">false</span></p>            
 
             <p>&nbsp;</p>
             
@@ -527,7 +530,7 @@ window.addEventListener('load', function()
                     <tr><td>destroy</td><td>function</td></tr>
                 </tbody>
             </table>
-
+            
             <p>&nbsp;</p>
             
             <h2>Show dialog</h2>
