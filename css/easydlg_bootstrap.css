@@ -1,8 +1,5 @@
 @charset "utf-8";
-/* 
-* CSS File
-* Customized to work with: Bootstrap 4
-*/
+/* CSS File */
 
 
 /* Dialog box types, (controls background and overlay) hidden by default */
@@ -111,7 +108,7 @@
     display:block;
     margin:0;
     margin-bottom:25px;
-    padding:20px 15px 0 15px;
+    padding:14px 15px 0 15px;
     font-family:inherit;
     font-size:1.4em;
     line-height:1.4em;
@@ -143,7 +140,7 @@
 {
     width:100%;
     margin:0;
-    padding:20px 20px 0 20px;
+    padding:22px 20px 0 20px;
     overflow-x:hidden; /* Hide horizontal scrollbar */
     overflow-y:auto;   /* Add vertical scrollbar if needed */    
     /*border:1px solid #00f;*/ /*debug*/
