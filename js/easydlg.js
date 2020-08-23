@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.689
+// ** Version: 1.690
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -1047,9 +1047,6 @@ const EasyDialogBox = (function()
                                   dlg.getAttribute('data-y'),        // vertical position
                                   dlg.getAttribute('data-w'),        // width
                                   dlg.getAttribute('data-h'));       // height
-
-                // ** Pre-written html-box is already in DOM, so we flag it: true
-                obj.bExistInDOM = true;
 
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
