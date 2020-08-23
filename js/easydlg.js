@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.688
+// ** Version: 1.689
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -763,18 +763,21 @@ const EasyDialogBox = (function()
                 //---------------------------------------------------------------------
                 // ** END: Create event-listeners
                 //---------------------------------------------------------------------
-
-                // ** Set flag to indicate that box is active and is displayed
-                _isActive = true;
-
+                
                 // ** Make it draggable, unless flag is set
                 if(!dlg.classList.contains('dlg-no-drag'))
                 {
                     _drag.init(obj.id + '_1');
                 }
 
+                // ** Set flag to indicate that box is active and can be displayed
+                _isActive = true;  // internal module flag
+                
                 // ** Show dialogbox
                 box.style.visibility = 'visible';
+                
+                // ** Set object "visible" flag to: true
+                box.bVisible = true;
 
                 // ** Adjust box size and position according to window size
                 _adjustElSizePos(box.id);
@@ -850,8 +853,14 @@ const EasyDialogBox = (function()
             // ** Remove box from DOM
             dlg.parentNode.removeChild(dlg);
 
-            // ** Get object
+            // ** Get the object stored in the array
             let obj = _getObjFromId(_boxObj, objId);
+            
+            // ** Flag that the box as no longer in DOM
+            obj.bExistInDOM = false;
+            
+            // ** Flag that the box as no longer visible (this can be useful if keeping box alive)
+            obj.bVisible = false;
 
             // ** If box was created, remove it from array, unless "obj.bKeepAlive = true"
             if(!obj.bKeepAlive)
@@ -941,7 +950,9 @@ const EasyDialogBox = (function()
                 x : x,
                 y : y,
                 w : w,
-                h : h,                
+                h : h,
+                bVisible : false,
+                bExistInDOM : false,
 
                 // ** Callback 
                 callback : function(a,b)
@@ -1036,6 +1047,9 @@ const EasyDialogBox = (function()
                                   dlg.getAttribute('data-y'),        // vertical position
                                   dlg.getAttribute('data-w'),        // width
                                   dlg.getAttribute('data-h'));       // height
+
+                // ** Pre-written html-box is already in DOM, so we flag it: true
+                obj.bExistInDOM = true;
 
                 // ** Create click handler for each element
                 btns[i].addEventListener('click', function DlgOpenerClick(evt)
