@@ -1013,11 +1013,11 @@ const EasyDialogBox = (function()
                         }
                         else
                         {
-                            _log('typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
-                            _log('Scope? Possible solution can be to use "hoisting".');
-                            _log('Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
-                            _log('..or declare the callback function before the module "EasyDialogBox" is initialized');
-                            _log('If the dialogbox do not use a callback function, you can ignore the above messages.');
+                            _log('DEBUG: typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
+                            _log('DEBUG: Scope? Possible solution can be to use "hoisting".');
+                            _log('DEBUG: Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
+                            _log('DEBUG: ..or declare the callback function before the module "EasyDialogBox" is initialized');
+                            _log('DEBUG: If the dialogbox do not use a callback function, you can ignore the above messages.');
                         }
                     }
                     catch(err)
