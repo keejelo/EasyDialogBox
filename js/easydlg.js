@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.690
+// ** Version: 1.691
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -582,6 +582,9 @@ const EasyDialogBox = (function()
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+
+                        // ** Run onClose function
+                        obj.onClose();
                     });
                 }
                 // ** END: [X] button click handler
@@ -599,7 +602,10 @@ const EasyDialogBox = (function()
                         obj.destroy();
 
                         // ** Callback, return code: CLOSE
-                        obj.callback(CLOSE);                        
+                        obj.callback(CLOSE);
+
+                        // ** Run onClose function
+                        obj.onClose();
                     });
                 }
                 // ** END: CLOSE button click handler
@@ -620,6 +626,9 @@ const EasyDialogBox = (function()
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+
+                        // ** Run onClose function
+                        obj.onClose();
                     }
                 });
                 // ** END: window click outside box click handler
@@ -645,6 +654,9 @@ const EasyDialogBox = (function()
                         
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        
+                        // ** Run onClose function
+                        obj.onClose();
                         
                         // ** Prevent bubbling
                         evt.preventDefault();
@@ -673,6 +685,9 @@ const EasyDialogBox = (function()
 
                             // ** Callback, return code: YES
                             obj.callback(YES);
+
+                            // ** Run onClose function
+                            obj.onClose();
                         });
                     }
 
@@ -690,6 +705,9 @@ const EasyDialogBox = (function()
 
                             // ** Callback, return code: NO
                             obj.callback(NO);
+                            
+                            // ** Run onClose function
+                            obj.onClose();
                         });
                     }
                 }
@@ -714,7 +732,10 @@ const EasyDialogBox = (function()
                             obj.destroy();
 
                             // ** Callback, return code: OK
-                            obj.callback(OK);                            
+                            obj.callback(OK);
+
+                            // ** Run onClose function
+                            obj.onClose();
                         });
                     }
 
@@ -732,6 +753,9 @@ const EasyDialogBox = (function()
 
                             // ** Callback, return code: CANCEL
                             obj.callback(CANCEL);
+                            
+                            // ** Run onClose function
+                            obj.onClose();
                         });
                     }
                 }
@@ -786,7 +810,10 @@ const EasyDialogBox = (function()
                 if(dlg.classList.contains('dlg-prompt'))
                 {
                     dlg.getElementsByClassName('dlg-input-field')[0].focus();
-                }            
+                }
+                
+                // ** Run onShow function
+                obj.onShow();
 
                 // ** Return success
                 return true;
@@ -1009,10 +1036,31 @@ const EasyDialogBox = (function()
                 destroy : function()
                 {
                     return _destroy(this.id);
+                },
+                
+                // ** onCreate
+                onCreate : function()
+                {
+                    _log('DEBUG: function fired: onCreate()');
+                },
+                
+                // ** onShow
+                onShow : function()
+                {
+                    _log('DEBUG: function fired: onShow()');
+                },
+                
+                // ** onClose
+                onClose : function()
+                {
+                    _log('DEBUG: function fired: onClose()');
                 }
             }
-            _boxObj.push(obj); // add object to array
-            return obj; // return object
+            _boxObj.push(obj);  // add object to array
+            
+            obj.onCreate();  // run onCreate function
+            
+            return obj;  // return object
         }
         else
         {
