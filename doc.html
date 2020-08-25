@@ -528,6 +528,9 @@ window.addEventListener('load', function()
                     <tr><td>callback</td><td>function</td></tr>
                     <tr><td>show</td><td>function</td></tr>
                     <tr><td>destroy</td><td>function</td></tr>
+                    <tr><td>onCreate</td><td>function</td></tr>
+                    <tr><td>onShow</td><td>function</td></tr>
+                    <tr><td>onClose</td><td>function</td></tr>
                 </tbody>
             </table>
             
@@ -548,6 +551,21 @@ window.addEventListener('load', function()
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
        
             <p>&nbsp;</p>
+        
+            <h2>Other functions</h2>
+            <p>
+                <code>myObj.onCreate();</code> fires when dialogbox object is created.
+            </p>
+            <p>
+                <code>myObj.onShow();</code> fires when dialogbox about to be displayed.
+            </p>
+            <p>
+                <code>myObj.onClose();</code> fires when dialogbox closing/being closed.
+            </p>
+            
+       
+            <p>&nbsp;</p>        
+        
             
             <h2 id="js_example">Example</h2>
             <div class="codeview"><i></i>
