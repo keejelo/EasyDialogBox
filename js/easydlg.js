@@ -1041,19 +1041,19 @@ const EasyDialogBox = (function()
                 // ** onCreate
                 onCreate : function()
                 {
-                    _log('DEBUG: Default "onCreate" function fired.\nOverride this by creating your own.');
+                    _log('DEBUG: Default "onCreate" function fired. Override this by creating your own.');
                 },
                 
                 // ** onShow
                 onShow : function()
                 {
-                    _log('DEBUG: Default "onShow" function fired.\nOverride this by creating your own.');
+                    _log('DEBUG: Default "onShow" function fired. Override this by creating your own.');
                 },
                 
                 // ** onClose
                 onClose : function()
                 {
-                    _log('DEBUG: Default "onClose" function fired.\nOverride this by creating your own.');
+                    _log('DEBUG: Default "onClose" function fired. Override this by creating your own.');
                 }
             }
             _boxObj.push(obj);  // add object to array
