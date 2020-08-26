@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.694
+// ** Version: 1.695
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -1041,19 +1041,19 @@ const EasyDialogBox = (function()
                 // ** onCreate
                 onCreate : function()
                 {
-                    _log('DEBUG: Default "onCreate" function fired. Override this by creating your own.');
+                    _log('DEBUG: Default "myObj.onCreate()" function fired. Override this by creating your own.');
                 },
                 
                 // ** onShow
                 onShow : function()
                 {
-                    _log('DEBUG: Default "onShow" function fired. Override this by creating your own.');
+                    _log('DEBUG: Default "myObj.onShow()" function fired. Override this by creating your own.');
                 },
                 
                 // ** onClose
                 onClose : function()
                 {
-                    _log('DEBUG: Default "onClose" function fired. Override this by creating your own.');
+                    _log('DEBUG: Default "myObj.onClose()" function fired. Override this by creating your own.');
                 }
             }
             _boxObj.push(obj);  // add object to array
