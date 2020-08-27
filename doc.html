@@ -579,9 +579,10 @@ window.addEventListener('load', function()
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
 <i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">,</b> myCallbackFuncToRun<b class="func">)</b>;</i>
 <i></i>
+<i><b class="comment">// ** Create a custom onShow function</b></i>
 <i><b>myBox</b><b class="func">.onShow</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
-<i>    <b>console.log('example onShow function fired');</b></i>
+<i>    <b>console.log('Example onShow function fired');</b></i>
 <i><b class="func">};</b></i>
 <i></i>
 <i><b class="comment">// ** Show the newly created box</b></i>
