@@ -367,9 +367,10 @@ window.addEventListener('load', function()
         // ** Create a new dialogbox object
         let myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
         
+        // ** Create a custom onShow function
         myBox.onShow = function()
         {
-            console.log('example onShow function fired');
+            console.log('Example onShow function fired');
         };        
 
         // ** Show the newly created box
