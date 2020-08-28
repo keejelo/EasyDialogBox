@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <!-- Sorry for the all-in-one-"franken"-html-page, but it's just to keep it all in one DEMO file -->
 <html lang="en">
 <head>
@@ -276,7 +276,6 @@ b:first-child
 <script src="js/easydlg.js"></script>
 
 <!-- END: Including the necessary files here -->
-
 
 <script>
 //-----------------------------------------------------------------------------------------------------------------
@@ -561,17 +560,39 @@ window.addEventListener('load', function()
             <h2>Other functions</h2>
             <p>
                 <code>myObj.onCreate();</code> fires when dialogbox object is created.
-            </p>
-            <p>
-                <code>myObj.onShow();</code> fires when dialogbox about to be displayed.
-            </p>
-            <p>
-                <code>myObj.onClose();</code> fires when dialogbox closing/being closed.
+                <p>Usage:</p>
+<div class="codeview"><i><b>myObj.onCreate = function()</b></i>
+<i><b>{</b></i>
+<i>    <b>// ..do something</b></i>
+<i><b>};</b></i>
+</div>
             </p>
             
-       
-            <p>&nbsp;</p>        
-        
+            <p>&nbsp;</p>
+            
+            <p>
+                <code>myObj.onShow();</code> fires when dialogbox is about to be displayed.
+                <p>Usage:</p>
+<div class="codeview"><i><b>myObj.onShow = function()</b></i>
+<i><b>{</b></i>
+<i>    <b>// ..do something</b></i>
+<i><b>};</b></i>
+</div>
+            </p>
+            
+            <p>&nbsp;</p>
+            
+            <p>
+                <code>myObj.onClose();</code> fires when dialogbox is closing/being closed.
+                <p>Usage:</p>
+<div class="codeview"><i><b>myObj.onClose = function()</b></i>
+<i><b>{</b></i>
+<i>    <b>// ..do something</b></i>
+<i><b>};</b></i>
+</div>
+            </p>
+            
+            <p>&nbsp;</p>
             
             <h2 id="js_example">Example</h2>
             <div class="codeview"><i></i>
