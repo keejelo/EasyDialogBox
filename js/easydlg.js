@@ -444,7 +444,6 @@ const EasyDialogBox = (function()
                     if(!dlg.className.indexOf('dlg-ok-cancel') > -1)
                     {
                         dlg.className += ' dlg-ok-cancel';
-                        //dlg.classList.add('dlg-ok-cancel');
                     }
                 }
 
