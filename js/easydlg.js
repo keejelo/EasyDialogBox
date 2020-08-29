@@ -1217,8 +1217,8 @@ var EasyDialogBox = (function()
             }
 
             // ** Create click handler for each element
-            var btnObjects = document.querySelectorAll('.dlg-opener');
-            btnObjects.forEach(function(btn, index)
+            var clkObj = document.querySelectorAll('.dlg-opener');
+            clkObj.forEach(function(btn, index)
             {
                 _attachEventListener(btn, 'click', function DlgOpenerClick(evt)
                 { 
