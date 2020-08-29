@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.704
+// ** Version: 1.707
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -75,6 +75,92 @@ const EasyDialogBox = (function()
     {
         return parseInt(str, 10);
     };
+
+    // ** Add event listener (xbrowser-legacy)
+    var _attachEventListener = function(target, eventType, functionRef, capture)
+    {
+        if(typeof target.addEventListener != 'undefined')
+        {
+            target.addEventListener(eventType, functionRef, capture);
+        }
+        else if(typeof target.attachEvent != 'undefined')
+        {
+            var functionString = eventType + functionRef;
+            target['e' + functionString] = functionRef;
+            target[functionString] = function(event)
+            {
+                if(typeof event == 'undefined')
+                {
+                    event = window.event;
+                }
+                target['e' + functionString](event);
+            };
+            target.attachEvent('on' + eventType, target[functionString]);
+        }
+        else
+        {
+            eventType = 'on' + eventType;
+            if(typeof target[eventType] == 'function')
+            {
+                var oldListener = target[eventType];
+                target[eventType] = function()
+                {
+                    oldListener();
+                    return functionRef();
+                }
+            }
+            else
+            {
+                target[eventType] = functionRef;
+            }
+        }
+    };
+
+    // ** Remove event listener (xbrowser-legacy)
+    var _detachEventListener = function(target, eventType, functionRef, capture)
+    {
+        if(typeof target.removeEventListener != 'undefined')
+        {
+            target.removeEventListener(eventType, functionRef, capture)
+        }
+        else if(typeof target.detachEvent != 'undefined')
+        {
+            var functionString = eventType + functionRef;
+            target.detachEvent('on' + eventType, target[functionString]);
+            target['e' + functionString] = null;
+            target[functionString] = null;
+        }
+        else
+        {
+            target['on' + eventType] = null;
+        }
+    };
+    
+    // ** Stop event from bubbling (xbrowser-legacy)
+    var _stopEvent = function(event)
+    {
+        if(typeof event.stopPropagation != 'undefined')
+        {
+            event.stopPropagation();
+        }
+        else
+        {
+            event.cancelBubble = true;
+        }
+    };
+    
+    // ** Stop default event action (xbrowser-legacy)
+    var _stopDefault = function(event)
+    {
+        if(typeof event.preventDefault != 'undefined')
+        {
+            event.preventDefault();
+        }
+        else
+        {
+            event.returnValue = false;
+        }
+    };    
     
     // ** Check if element has class
     const _hasClass = function(el, thatClass)
@@ -595,20 +681,20 @@ const EasyDialogBox = (function()
                 //---------------------------------------------------------------------
 
                 // ** Window resize
-                window.addEventListener('resize', function WinResize()
+                _attachEventListener(window, 'resize', function WinResize()
                 {
                     _adjustElSizePos(box.id);
-                });
+                }, false);
                 // ** END: Window resize
 
                 // ** User clicks the [X] button
                 let xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
                 if(xCloseDialog)
                 {
-                    xCloseDialog.addEventListener('click', function XCloseClick()
+                    _attachEventListener(xCloseDialog, 'click', function XCloseClick()
                     {
                         // ** Remove eventlistener
-                        xCloseDialog.removeEventListener('click', XCloseClick);
+                        _detachEventListener(xCloseDialog, 'click', XCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
@@ -618,7 +704,7 @@ const EasyDialogBox = (function()
 
                         // ** Run onClose function
                         obj.onClose();
-                    });
+                    }, false);
                 }
                 // ** END: [X] button click handler
 
@@ -626,10 +712,10 @@ const EasyDialogBox = (function()
                 let btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
                 if(btnCloseDialog)
                 {
-                    btnCloseDialog.addEventListener('click', function BtnCloseClick()
+                    _attachEventListener(btnCloseDialog, 'click', function BtnCloseClick()
                     {
                         // ** Remove eventlistener
-                        btnCloseDialog.removeEventListener('click', BtnCloseClick);
+                        _detachEventListener(btnCloseDialog, 'click', BtnCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
@@ -639,12 +725,13 @@ const EasyDialogBox = (function()
 
                         // ** Run onClose function
                         obj.onClose();
-                    });
+                    }, false);
                 }
                 // ** END: CLOSE button click handler
 
                 // ** User clicks anywhere outside of the dialogbox
-                window.addEventListener('click', function WinCloseClick(evt)
+                
+                _attachEventListener(window, 'click', function WinCloseClick(evt)
                 {
                     // ** Get/set event variable
                     evt = evt || window.event || event;
@@ -652,7 +739,7 @@ const EasyDialogBox = (function()
                     if(evt.target == dlg)
                     {
                         // ** Remove eventlistener
-                        window.removeEventListener('click', WinCloseClick);
+                        _detachEventListener(window, 'click', WinCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
@@ -663,11 +750,11 @@ const EasyDialogBox = (function()
                         // ** Run onClose function
                         obj.onClose();
                     }
-                });
+                }, false);
                 // ** END: window click outside box click handler
                 
                 // ** Close box on ESC-key
-                window.addEventListener('keyup', function EscKeyClose(evt)
+                _attachEventListener(window, 'keyup', function EscKeyClose(evt)
                 {	
                     // ** Get/set event variable
                     evt = evt || window.event || event;
@@ -680,7 +767,7 @@ const EasyDialogBox = (function()
                     )
                     {
                         // ** Remove eventlistener
-                        window.removeEventListener('keyup', EscKeyClose);
+                        _detachEventListener(window, 'keyup', EscKeyClose, false);
                         
                         // ** Close dialogbox, reset values, clean up
                         obj.destroy();
@@ -691,11 +778,11 @@ const EasyDialogBox = (function()
                         // ** Run onClose function
                         obj.onClose();
                         
-                        // ** Prevent bubbling
-                        evt.preventDefault();
-                        evt.stopPropagation();
+                        // ** Prevent default event action and bubbling
+                        _stopDefault(evt);
+                        _stopEvent(evt);
                     }
-                });
+                }, false);
                 // ** END: Close box on ESC-key
 
                 // ** If YES-NO messagebox, create click handler for YES and NO buttons
@@ -708,10 +795,10 @@ const EasyDialogBox = (function()
                     let btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
                     if(btnYesDialog)
                     {
-                        btnYesDialog.addEventListener('click', function BtnYesClick()
+                        _attachEventListener(btnYesDialog, 'click', function BtnYesClick()
                         {
                             // ** Remove eventlistener
-                            btnYesDialog.removeEventListener('click', BtnYesClick);
+                            _detachEventListener(btnYesDialog, 'click', BtnYesClick, false);
 
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
@@ -721,17 +808,17 @@ const EasyDialogBox = (function()
 
                             // ** Run onClose function
                             obj.onClose();
-                        });
+                        }, false);
                     }
 
                     // ** User clicks the NO button
                     let btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
                     if(btnNoDialog)
                     {
-                        btnNoDialog.addEventListener('click', function BtnNoClick()
+                        _attachEventListener(btnNoDialog, 'click', function BtnNoClick()
                         {
                             // ** Remove eventlistener
-                            btnNoDialog.removeEventListener('click', BtnNoClick);
+                            _detachEventListener(btnNoDialog, 'click', BtnNoClick, false);
 
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
@@ -741,7 +828,7 @@ const EasyDialogBox = (function()
                             
                             // ** Run onClose function
                             obj.onClose();
-                        });
+                        }, false);
                     }
                 }
                 // ** END: YES-NO button click handlers
@@ -756,10 +843,10 @@ const EasyDialogBox = (function()
                     let btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
                     if(btnOkDialog)
                     {
-                        btnOkDialog.addEventListener('click', function BtnOkClick()
+                        _attachEventListener(btnOkDialog, 'click', function BtnOkClick()
                         {
                             // ** Remove eventlistener
-                            btnOkDialog.removeEventListener('click', BtnOkClick);
+                            _detachEventListener(btnOkDialog, 'click', BtnOkClick, false);
 
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
@@ -769,17 +856,17 @@ const EasyDialogBox = (function()
 
                             // ** Run onClose function
                             obj.onClose();
-                        });
+                        }, false);
                     }
 
                     // ** User clicks the Cancel button
                     let btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
                     if(btnCancelDialog)
                     {
-                        btnCancelDialog.addEventListener('click', function BtnCancelClick()
+                        _attachEventListener(btnCancelDialog, 'click', function BtnCancelClick()
                         {
                             // ** Remove eventlistener
-                            btnCancelDialog.removeEventListener('click', BtnCancelClick);
+                            _detachEventListener(btnCancelDialog, 'click', BtnCancelClick, false);
 
                             // ** Close dialogbox, reset values, clean up
                             obj.destroy();
@@ -789,7 +876,7 @@ const EasyDialogBox = (function()
                             
                             // ** Run onClose function
                             obj.onClose();
-                        });
+                        }, false);
                     }
                 }
                 // ** END: OK-CANCEL button click handlers
@@ -800,19 +887,19 @@ const EasyDialogBox = (function()
                     let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                     if(pBox)
                     {
-                        pBox.addEventListener('keyup', function PromptBoxKeyUp()
+                        _attachEventListener(pBox, 'keyup', function PromptBoxKeyUp()
                         {
                             obj.strInput = _sanitize(pBox.value);
                             //obj.strInput = _escape(pBox.value);
                             //obj.strInput = _htmlEncode(pBox.value);
-                        });
+                        }, false);
 
-                        pBox.addEventListener('change', function PromptBoxChange()
+                        _attachEventListener(pBox, 'change', function PromptBoxChange()
                         {
                             obj.strInput = _sanitize(pBox.value);
                             //obj.strInput = _escape(pBox.value);
                             //obj.strInput = _htmlEncode(pBox.value);
-                        });
+                        }, false);
                     }
                 }
                 // ** END: User types in promptbox
@@ -1106,7 +1193,7 @@ const EasyDialogBox = (function()
     const _init = function()
     {
         // ** Window load event
-        window.addEventListener('load', function LoadWindow()
+        _attachEventListener(window, 'load', function LoadWindow()
         {
             // ** Get all elements with class containing 'dlg-opener'
             let btns = document.getElementsByClassName('dlg-opener');
@@ -1130,18 +1217,18 @@ const EasyDialogBox = (function()
                                   dlg.getAttribute('data-h'));       // height
 
                 // ** Create click handler for each element
-                btns[i].addEventListener('click', function DlgOpenerClick(evt)
+                _attachEventListener(btns[i], 'click', function DlgOpenerClick(evt)
                 {
                     // ** Get/set event variable
                     evt = evt || window.event || event;
                     
                     obj.show();             // Show the dialogbox with the id referenced in 'rel' attribute
                     this.blur();            // Remove focus from button or other opening element
-                    evt.preventDefault();   // Prevent scrolling to top of page if i.e. used in an anchor-link 'href="#"'
-                    evt.stopPropagation();  // Prevent bubbling up to parent elements or capturing down to child elements
-                });
+                    _stopDefault(evt);      // Prevent scrolling to top of page if i.e. used in an anchor-link 'href="#"'
+                    _stopEvent(evt);        // Prevent bubbling up to parent elements or capturing down to child elements
+                }, false);
             }
-        });
+        }, false);
     };
 
     // ** Drag'n'drop object module
@@ -1158,7 +1245,7 @@ const EasyDialogBox = (function()
             }
 
             _drag.el.style.position = 'absolute';
-            _drag.el.grabber.addEventListener('mousedown', _drag.start);
+            _attachEventListener(_drag.el.grabber, 'mousedown', _drag.start, false);
         },
         start : function(evt)
         {
@@ -1168,26 +1255,26 @@ const EasyDialogBox = (function()
             // ** Left mouse button triggers moving
             if(evt.button === 0)
             {
-                evt.preventDefault();
+                _stopDefault(evt);
                 _drag.el.grabber.style.cursor = 'move';
                 _drag.el.posX2 = evt.clientX;
                 _drag.el.posY2 = evt.clientY;
-                document.addEventListener('mouseup', _drag.stop);
-                document.addEventListener('mousemove', _drag.move);
+                _attachEventListener(document, 'mouseup', _drag.stop, false);
+                _attachEventListener(document, 'mousemove', _drag.move, false);
             }
         },
         stop : function()
         {
             _drag.el.grabber.style.cursor = '';
-            document.removeEventListener('mouseup', _drag.stop);
-            document.removeEventListener('mousemove', _drag.move);
+            _detachEventListener(document, 'mouseup', _drag.stop, false);
+            _detachEventListener(document, 'mousemove', _drag.move, false);
         },
         move : function(evt)
         {
             // ** Get/set event variable
             evt = evt || window.event || event;
 
-            evt.preventDefault();
+            _stopDefault(evt);
             _drag.el.posX = _drag.el.posX2 - evt.clientX;
             _drag.el.posY = _drag.el.posY2 - evt.clientY;
             _drag.el.posX2 = evt.clientX;
