@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.701
+// ** Version: 1.703
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -75,7 +75,36 @@ const EasyDialogBox = (function()
     {
         return parseInt(str, 10);
     };
+    
+    // ** Check if element has class
+    const _hasClass = function(el, thatClass)
+    {
+        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(thatClass) > -1 )
+        {
+            return true;
+        }
+        return false;
+    };
+    
+    // ** Add class to element
+    const _addClass = function(el, thatClass)
+    {
+        // ** If class do not exist in element, then add it
+        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(thatClass) === -1 )
+        {
+            el.className += ' ' + thatClass;
+            el.className = el.className.trim();
+        }
+    };
 
+    // ** Remove class from element
+    const _removeClass = function(el, thatClass)
+    {
+        let str = '\\b' + thatClass + '\\b';
+        let rexp = new RegExp(str, 'g');
+        return el.className = el.className.replace(rexp, '');
+    };
+    
     // ** Get object from array id
     const _getObjFromId = function(arr, strId)
     {
@@ -353,11 +382,11 @@ const EasyDialogBox = (function()
                 let rightbox = null;
 
                 // ** Check if icon should be displayed
-                if(dlg.className.indexOf('dlg-info') > -1
-                || dlg.className.indexOf('dlg-question') > -1
-                || dlg.className.indexOf('dlg-error') > -1
-                || dlg.className.indexOf('dlg-success') > -1
-                || dlg.className.indexOf('dlg-exclamation') > -1
+                if(_hasClass(dlg, 'dlg-info')
+                || _hasClass(dlg, 'dlg-question')
+                || _hasClass(dlg, 'dlg-error')
+                || _hasClass(dlg, 'dlg-success')
+                || _hasClass(dlg, 'dlg-exclamation')
                 )
                 {
                     message.setAttribute('class','dlg-message dlg-flex-container');
@@ -373,23 +402,23 @@ const EasyDialogBox = (function()
                     leftbox.setAttribute('class','dlg-flexbox-left');
 
                     // ** Check which icon to display
-                    if(dlg.className.indexOf('dlg-info') > -1)
+                    if(_hasClass(dlg, 'dlg-info'))
                     {
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-info"></div>';
                     }
-                    else if(dlg.className.indexOf('dlg-question') > -1)
+                    else if(_hasClass(dlg, 'dlg-question'))
                     {
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-question"></div>';
                     }
-                    else if(dlg.className.indexOf('dlg-error') > -1)
+                    else if(_hasClass(dlg, 'dlg-error'))
                     {
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-error"></div>';
                     }
-                    else if(dlg.className.indexOf('dlg-success') > -1)
+                    else if(_hasClass(dlg, 'dlg-success'))
                     {
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-success"></div>';
                     }
-                    else if(dlg.className.indexOf('dlg-exclamation') > -1)
+                    else if(_hasClass(dlg, 'dlg-exclamation'))
                     {
                         leftbox.innerHTML = '<div class="dlg-symbol dlg-icon-excl"></div>';
                     }
@@ -419,12 +448,12 @@ const EasyDialogBox = (function()
                 box.appendChild(message);
 
                 // ** Create prompt box (input + OK + Cancel)
-                if(dlg.className.indexOf('dlg-prompt') > -1)
+                if(_hasClass(dlg, 'dlg-prompt'))
                 {
                     let inputbox = document.createElement('div');
                     inputbox.setAttribute('class', 'dlg-input');
 
-                    if(message.className.indexOf('dlg-flex-container') > -1)
+                    if(_hasClass(message, 'dlg-flex-container'))
                     {
                         rightbox.appendChild(inputbox);
                     }
@@ -441,7 +470,7 @@ const EasyDialogBox = (function()
                     inputbox.appendChild(input);
 
                     // ** Add buttons if not already stated in class
-                    if(!dlg.className.indexOf('dlg-ok-cancel') > -1)
+                    if(!_hasClass(dlg, 'dlg-ok-cancel'))
                     {
                         dlg.className += ' dlg-ok-cancel';
                     }
@@ -449,7 +478,7 @@ const EasyDialogBox = (function()
 
                 // ** Create footer and buttons
                 // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
-                if(!dlg.className.indexOf('dlg-no-footer') > -1)
+                if(!_hasClass(dlg, 'dlg-no-footer'))
                 {
                     // ** Create footer
                     let footer = document.createElement('div');
@@ -457,11 +486,11 @@ const EasyDialogBox = (function()
                     box.appendChild(footer);
 
                     // ** If "dlg-no-btns" is specified in class then do not make buttons.
-                    if(!dlg.className.indexOf('dlg-no-btns') > -1)
+                    if(!_hasClass(dlg, 'dlg-no-btns'))
                     {
                         // ** If "Yes" button is specified in class
-                        if(dlg.className.indexOf('dlg-yes') > -1
-                        || dlg.className.indexOf('dlg-yes-no') > -1
+                        if(_hasClass(dlg, 'dlg-yes')
+                        || _hasClass(dlg, 'dlg-yes-no')
                         )
                         {
                             // ** Create button
@@ -473,8 +502,8 @@ const EasyDialogBox = (function()
                         }
 
                         // ** If "No" button is specified in class
-                        if(dlg.className.indexOf('dlg-no') > -1
-                        || dlg.className.indexOf('dlg-yes-no') > -1
+                        if(_hasClass(dlg, 'dlg-no')
+                        || _hasClass(dlg, 'dlg-yes-no')
                         )
                         {
                             // ** Create button
@@ -486,8 +515,8 @@ const EasyDialogBox = (function()
                         }
 
                         // ** If "OK" button is specified in class
-                        if(dlg.className.indexOf('dlg-ok') > -1
-                        || dlg.className.indexOf('dlg-ok-cancel') > -1
+                        if(_hasClass(dlg, 'dlg-ok')
+                        || _hasClass(dlg, 'dlg-ok-cancel')
                         )
                         {
                             // ** Create button
@@ -499,8 +528,8 @@ const EasyDialogBox = (function()
                         }
 
                         // ** If "Cancel" button is specified in class
-                        if(dlg.className.indexOf('dlg-cancel') > -1
-                        || dlg.className.indexOf('dlg-ok-cancel') > -1
+                        if(_hasClass(dlg, 'dlg-cancel')
+                        || _hasClass(dlg, 'dlg-ok-cancel')
                         )
                         {
                             // ** Create button
@@ -512,9 +541,9 @@ const EasyDialogBox = (function()
                         }
 
                         // ** If "dlg" or "Close" button is specified in class
-                        if(dlg.className.indexOf('dlg-close') > -1
-                        || dlg.className.indexOf('dlg ') > -1
-                        || ( dlg.className.indexOf('dlg') > -1 && dlg.className.length === 3 )
+                        if(_hasClass(dlg, 'dlg-close')
+                        || _hasClass(dlg, 'dlg ')
+                        || ( _hasClass(dlg, 'dlg') && dlg.className.length === 3 )
                         )
                         {
                             // ** Create button
@@ -541,7 +570,8 @@ const EasyDialogBox = (function()
                 let w1 = body.offsetWidth;
 
                 // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-                body.className += ' dlg-stop-scrolling';
+                //body.className += ' dlg-stop-scrolling';
+                _addClass(body, 'dlg-stop-scrolling');
 
                 // ** Get width of body after removing scrollbar
                 let w2 = body.offsetWidth;
@@ -670,9 +700,9 @@ const EasyDialogBox = (function()
                 // ** END: Close box on ESC-key
 
                 // ** If YES-NO messagebox, create click handler for YES and NO buttons
-                if(dlg.className.indexOf('dlg-yes-no') > -1
-                || dlg.className.indexOf('dlg-yes') > -1
-                || dlg.className.indexOf('dlg-no') > -1
+                if(_hasClass(dlg, 'dlg-yes-no')
+                || _hasClass(dlg, 'dlg-yes')
+                || _hasClass(dlg, 'dlg-no')
                 )
                 {
                     // ** User clicks the YES button
@@ -718,9 +748,9 @@ const EasyDialogBox = (function()
                 // ** END: YES-NO button click handlers
 
                 // ** If OK-CANCEL messagebox, create click handler for OK and CANCEL buttons
-                if(dlg.className.indexOf('dlg-ok-cancel') > -1
-                || dlg.className.indexOf('dlg-ok') > -1
-                || dlg.className.indexOf('dlg-cancel') > -1
+                if(_hasClass(dlg, 'dlg-ok-cancel')
+                || _hasClass(dlg, 'dlg-ok')
+                || _hasClass(dlg, 'dlg-cancel')
                 )
                 {
                     // ** User clicks the OK button
@@ -766,7 +796,7 @@ const EasyDialogBox = (function()
                 // ** END: OK-CANCEL button click handlers
 
                 // ** User types in promptbox, update variable: obj.strInput
-                if(dlg.className.indexOf('dlg-prompt') > -1)
+                if(_hasClass(dlg, 'dlg-prompt'))
                 {
                     let pBox = dlg.getElementsByClassName('dlg-input-field')[0];
                     if(pBox)
@@ -793,7 +823,7 @@ const EasyDialogBox = (function()
                 //---------------------------------------------------------------------
                 
                 // ** Make it draggable, unless flag is set
-                if(!dlg.className.indexOf('dlg-no-drag') > -1)
+                if(!_hasClass(dlg, 'dlg-no-drag'))
                 {
                     _drag.init(obj.id + '_1');
                 }
@@ -811,7 +841,7 @@ const EasyDialogBox = (function()
                 _adjustElSizePos(box.id);
                 
                 // ** Set focus to input field if promptbox
-                if(dlg.className.indexOf('dlg-prompt') > -1)
+                if(_hasClass(dlg, 'dlg-prompt'))
                 {
                     dlg.getElementsByClassName('dlg-input-field')[0].focus();
                 }
@@ -855,7 +885,8 @@ const EasyDialogBox = (function()
 
         // ** Get body element, reset values, restore scrolling
         let body = document.getElementsByTagName('body')[0];
-        body.className = body.className.replace(/\bdlg-stop-scrolling\b/g,'');
+        //body.className = body.className.replace(/\bdlg-stop-scrolling\b/g, '');
+        _removeClass(body, 'dlg-stop-scrolling');
         body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
 
         // ** Get the dlg element
