@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.703
+// ** Version: 1.704
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
@@ -472,7 +472,7 @@ const EasyDialogBox = (function()
                     // ** Add buttons if not already stated in class
                     if(!_hasClass(dlg, 'dlg-ok-cancel'))
                     {
-                        dlg.className += ' dlg-ok-cancel';
+                        _addClass(dlg, 'dlg-ok-cancel');
                     }
                 }
 
@@ -570,7 +570,6 @@ const EasyDialogBox = (function()
                 let w1 = body.offsetWidth;
 
                 // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-                //body.className += ' dlg-stop-scrolling';
                 _addClass(body, 'dlg-stop-scrolling');
 
                 // ** Get width of body after removing scrollbar
@@ -885,7 +884,6 @@ const EasyDialogBox = (function()
 
         // ** Get body element, reset values, restore scrolling
         let body = document.getElementsByTagName('body')[0];
-        //body.className = body.className.replace(/\bdlg-stop-scrolling\b/g, '');
         _removeClass(body, 'dlg-stop-scrolling');
         body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
 
