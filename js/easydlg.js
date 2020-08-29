@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.710
+// ** Version: 1.712
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -1204,8 +1204,7 @@ var EasyDialogBox = (function()
                 var dlg = document.getElementById(btns[i].getAttribute('rel'));
                 
                 // ** Create object from DOM element
-                // (must use 'let' cannot use 'var', else scoping do not work.. need to find another way if supporting ECMA below version 6)
-                let obj = _create(dlg.getAttribute('id'),            // id
+                var obj = _create(dlg.getAttribute('id'),            // id
                                   dlg.getAttribute('class'),         // type
                                   dlg.getAttribute('title'),         // title
                                   dlg.innerHTML,                     // message
@@ -1215,20 +1214,23 @@ var EasyDialogBox = (function()
                                   dlg.getAttribute('data-y'),        // vertical position
                                   dlg.getAttribute('data-w'),        // width
                                   dlg.getAttribute('data-h'));       // height
+            }
 
-
-                // ** Create click handler for each element                
-                _attachEventListener(btns[i], 'click', function DlgOpenerClick(evt)
-                {
+            // ** Create click handler for each element
+            var btnObjects = document.querySelectorAll('.dlg-opener');
+            btnObjects.forEach(function(btn, index)
+            {
+                _attachEventListener(btn, 'click', function DlgOpenerClick(evt)
+                { 
                     // ** Get/set event variable
                     evt = evt || window.event || event;
                     
-                    obj.show();             // Show the dialogbox with the id referenced in 'rel' attribute
+                    _boxObj[index].show();  // Show the dialogbox with the id referenced in 'rel' attribute
                     this.blur();            // Remove focus from button or other opening element
                     _stopDefault(evt);      // Prevent scrolling to top of page if i.e. used in an anchor-link 'href="#"'
-                    _stopEvent(evt);        // Prevent bubbling up to parent elements or capturing down to child elements
+                    _stopEvent(evt);        // Prevent bubbling up to parent elements or capturing down to child elements                    
                 }, false);
-            }
+            });
         }, false);
     };
 
