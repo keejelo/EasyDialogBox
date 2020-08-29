@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.712  (ECMAScript 5 and above)
+// ** Version: 1.713  (ECMAScript 5 and above)
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
@@ -60,6 +60,12 @@ var EasyDialogBox = (function()
     // ** Flag that indicates if a box is currently in view (is displayed)
     var _isActive = false;
 
+    // ** Fix for IE11 "forEach" lacking support
+    if(window.NodeList && !NodeList.prototype.forEach)
+    {
+        NodeList.prototype.forEach = Array.prototype.forEach;
+    };
+  
     // ** Debug-logger
     var _log = function(str)
     {
@@ -399,7 +405,7 @@ var EasyDialogBox = (function()
                 // ** Show the backdrop overlay, and the dialogbox eventually
                 dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
                                               // then dynamic values do not work as we want.
-                                              
+
                 // ** Create outer box
                 var box = document.createElement('div');
                 box.setAttribute('id', obj.id + '_1');
