@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.707
+// ** Version: 1.708
 // ** Created by: Kee J. Elo
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
