@@ -299,45 +299,6 @@ b:first-child
 //
 //---------------------------------------------------------------------
 
-// ** Add event listener (xbrowser-legacy)
-var attachEventListener = function(target, eventType, functionRef, capture)
-{
-    if(typeof target.addEventListener != 'undefined')
-    {
-        target.addEventListener(eventType, functionRef, capture);
-    }
-    else if(typeof target.attachEvent != 'undefined')
-    {
-        var functionString = eventType + functionRef;
-        target['e' + functionString] = functionRef;
-        target[functionString] = function(event)
-        {
-            if(typeof event == 'undefined')
-            {
-                event = window.event;
-            }
-            target['e' + functionString](event);
-        };
-        target.attachEvent('on' + eventType, target[functionString]);
-    }
-    else
-    {
-        eventType = 'on' + eventType;
-        if(typeof target[eventType] == 'function')
-        {
-            var oldListener = target[eventType];
-            target[eventType] = function()
-            {
-                oldListener();
-                return functionRef();
-            }
-        }
-        else
-        {
-            target[eventType] = functionRef;
-        }
-    }
-};
 
 // ** One example of a callback function
 var myCallbackFunc = function(nRetCode, strInput)
@@ -351,8 +312,7 @@ var myCallbackFunc = function(nRetCode, strInput)
         console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
         
         // ** Example: Create a dialog on the fly!
-        //let myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
-        var myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
+        let myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
         if(myFlyBox)
         {
             // ** Override the initial callback function that was set 
@@ -399,16 +359,13 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 //-----------------------------------------------------------------------------------------------------------------
 // ** Window load event-listener
 //-----------------------------------------------------------------------------------------------------------------
-//window.addEventListener('load', function()
-attachEventListener(window, 'load', function()
+window.addEventListener('load', function()
 {
     // ** Run example from page when button is clicked
-    //document.getElementById('jsExampleRunBtn').addEventListener('click', function()
-    attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
+    document.getElementById('jsExampleRunBtn').addEventListener('click', function()
     {
         // ** Create a new dialogbox object
-        //let myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
-        var myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
+        let myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
         
         // ** Create a custom onShow function
         myBox.onShow = function()
@@ -434,8 +391,8 @@ attachEventListener(window, 'load', function()
                 // ... user typed something in the input field of promptbox
             }
         };
-    }, false);
-}, false);
+    });
+});
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Window load event-listener
 //-----------------------------------------------------------------------------------------------------------------
@@ -504,7 +461,6 @@ attachEventListener(window, 'load', function()
 
             <p>
                 <code>strBoxTypeClass</code> = can be any of the below strings, alone or combined separated by a space.
-                                
                 <table id="paramTable">
                     <thead>
                         <tr><th>Stringvalue</th><th>Description</th></tr>
