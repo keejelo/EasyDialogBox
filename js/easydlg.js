@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.714
+// ** Version: 1.715
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -53,7 +53,7 @@ var EasyDialogBox = (function()
                             'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
                             'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
-    // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback ...
+    // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback etc...
     var _boxObj = [];
 
     // ** Variable that holds the original padding-right value of body element
@@ -201,7 +201,9 @@ var EasyDialogBox = (function()
     {
         var str = '\\b' + classValue + '\\b';
         var rexp = new RegExp(str, 'g');
-        return el.className = el.className.replace(rexp, '');
+        el.className = el.className.replace(rexp, '');
+        el.className = el.className.replace(/^\s+|\s+$/g, '');
+        return el.className;
     };
     
     // ** Get object from array id
