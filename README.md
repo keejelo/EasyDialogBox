@@ -25,5 +25,5 @@ The "classflags" below has had their names changed due to naming ambiguity and b
 "<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
 
-I'm deeply sorry for the problems that this may have caused!
+I'm deeply sorry for the problems that this may cause / have caused!
 
