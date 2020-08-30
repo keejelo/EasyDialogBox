@@ -1,8 +1,10 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.713  (ECMAScript 5 and above)
+// ** Version: 1.713
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
+//
+// ** Comment: ECMAScript 5 and above. Though trying to support old legacy browsers as much as possible.
 //-----------------------------------------------------------------------------------------------------------------
 
 
