@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.720
+// ** Version: 1.721
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -50,7 +50,7 @@ var EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     var _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
-                            'dlg-no-footer','dlg-no-btns','dlg-no-overlay','dlg-no-drag',
+                            'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
                             'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback etc...
@@ -168,7 +168,7 @@ var EasyDialogBox = (function()
             event.returnValue = false;
         }
     };    
-    
+
     // ** Check if element has class
     var _hasClass = function(el, classValue)
     {
@@ -453,22 +453,25 @@ var EasyDialogBox = (function()
                 // ** Add element to DOM
                 dlg.appendChild(box);
 
-                // ** Create heading
-                var heading = document.createElement('div');
-                heading.setAttribute('id', obj.id + '_1_heading');
-                heading.setAttribute('class','dlg-heading');
-                box.appendChild(heading);
+                if(!(_hasClass(dlg, 'dlg-disable-heading')))
+                {
+                    // ** Create heading
+                    var heading = document.createElement('div');
+                    heading.setAttribute('id', obj.id + '_1_heading');
+                    heading.setAttribute('class','dlg-heading');
+                    box.appendChild(heading);
 
-                // ** Create [X] close button
-                var closeX = document.createElement('span');
-                closeX.setAttribute('class','dlg-close-x');
-                var closeText = document.createTextNode(' \u00d7 ');
-                closeX.appendChild(closeText);
-                heading.appendChild(closeX);
+                    // ** Create [X] close button
+                    var closeX = document.createElement('span');
+                    closeX.setAttribute('class','dlg-close-x');
+                    var closeText = document.createTextNode(' \u00d7 ');
+                    closeX.appendChild(closeText);
+                    heading.appendChild(closeX);
 
-                // ** Create title
-                var titleText = document.createTextNode(obj.strTitle);
-                heading.appendChild(titleText);
+                    // ** Create title
+                    var titleText = document.createTextNode(obj.strTitle);
+                    heading.appendChild(titleText);
+                }
 
                 // ** Create message
                 var message = document.createElement('div');
@@ -573,16 +576,16 @@ var EasyDialogBox = (function()
                 }
 
                 // ** Create footer and buttons
-                // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
-                if(!(_hasClass(dlg, 'dlg-no-footer')))
+                // ** If "dlg-disable-footer" is specified in class then do not create footer or any buttons
+                if(!(_hasClass(dlg, 'dlg-disable-footer')))
                 {
                     // ** Create footer
                     var footer = document.createElement('div');
                     footer.setAttribute('class','dlg-footer');
                     box.appendChild(footer);
 
-                    // ** If "dlg-no-btns" is specified in class then do not make buttons.
-                    if(!(_hasClass(dlg, 'dlg-no-btns')))
+                    // ** If "dlg-disable-btns" is specified in class then do not make buttons.
+                    if(!(_hasClass(dlg, 'dlg-disable-btns')))
                     {
                         // ** If "Yes" button is specified in class
                         if(_hasClass(dlg, 'dlg-yes')
@@ -918,7 +921,7 @@ var EasyDialogBox = (function()
                 //---------------------------------------------------------------------
                 
                 // ** Make it draggable, unless flag is set
-                if(!(_hasClass(dlg, 'dlg-no-drag')))
+                if(!(_hasClass(dlg, 'dlg-disable-drag')))
                 {
                     _drag.init(obj.id + '_1');
                 }
