@@ -13,6 +13,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br />
 
 ## Important flagname changes
+<b>From version 1.722 and above:</b>
 
 The "classflags" below has had their names changed due to naming ambiguity and bugs:
 
