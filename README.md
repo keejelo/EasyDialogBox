@@ -14,15 +14,15 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 
 # Important flagname changes:
 
-The "classflags" below has had their names changed due to name ambiguity: 
+The "classflags" below has had their names changed due to naming ambiguity: 
 
-"<b>dlg-no-drag</b>" is now called "dlg-disable-drag"
+"<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"
 
-"dlg-no-btns" is now called "dlg-disable-btns"
+"<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"
 
-"dlg-no-overlay" is now called "dlg-disable-overlay"
+"<b>dlg-no-overlay</b>" is now called "<b>dlg-disable-overlay</b>"
 
-"dlg-no-footer" is now called "dlg-disable-footer"
+"<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
 
 I'm deeply sorry for the problems that this may have caused!
