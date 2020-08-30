@@ -279,6 +279,47 @@ b:first-child
 <!-- END: Including the necessary files here -->
 
 <script>
+
+// ** Add event listener (xbrowser-legacy)
+var attachEventListener = function(target, eventType, functionRef, capture)
+{
+    if(typeof target.addEventListener != 'undefined')
+    {
+        target.addEventListener(eventType, functionRef, capture);
+    }
+    else if(typeof target.attachEvent != 'undefined')
+    {
+        var functionString = eventType + functionRef;
+        target['e' + functionString] = functionRef;
+        target[functionString] = function(event)
+        {
+            if(typeof event == 'undefined')
+            {
+                event = window.event;
+            }
+            target['e' + functionString](event);
+        };
+        target.attachEvent('on' + eventType, target[functionString]);
+    }
+    else
+    {
+        eventType = 'on' + eventType;
+        if(typeof target[eventType] == 'function')
+        {
+            var oldListener = target[eventType];
+            target[eventType] = function()
+            {
+                oldListener();
+                return functionRef();
+            }
+        }
+        else
+        {
+            target[eventType] = functionRef;
+        }
+    }
+};
+    
 //-----------------------------------------------------------------------------------------------------------------
 // ** Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
@@ -312,7 +353,7 @@ var myCallbackFunc = function(nRetCode, strInput)
         console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
         
         // ** Example: Create a dialog on the fly!
-        let myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
+        var myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
         if(myFlyBox)
         {
             // ** Override the initial callback function that was set 
@@ -359,13 +400,15 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 //-----------------------------------------------------------------------------------------------------------------
 // ** Window load event-listener
 //-----------------------------------------------------------------------------------------------------------------
-window.addEventListener('load', function()
+//window.addEventListener('load', function()
+attachEventListener(window, 'load', function()
 {
     // ** Run example from page when button is clicked
-    document.getElementById('jsExampleRunBtn').addEventListener('click', function()
+    //document.getElementById('jsExampleRunBtn').addEventListener('click', function()
+    attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        let myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
+        var myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
         
         // ** Create a custom onShow function
         myBox.onShow = function()
@@ -391,8 +434,8 @@ window.addEventListener('load', function()
                 // ... user typed something in the input field of promptbox
             }
         };
-    });
-});
+    }, false);
+}, false);
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: Window load event-listener
 //-----------------------------------------------------------------------------------------------------------------
@@ -859,7 +902,7 @@ window.addEventListener('load', function()
     </div>
     
     <!-- HTML pre-written dialogboxes, hidden and not visible. Only used as templates for the dynamically created dialogboxes -->
-    
+
     <div id="myBox" class="dlg" title="Title text">
         <p>This is a message, line one<br />
         this is line two.</p>
@@ -868,25 +911,25 @@ window.addEventListener('load', function()
     <div id="myBoxError" class="dlg dlg-error" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>
-    
+
     <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" data-callback="myCallbackFunc">
         <p>Create a new dialogbox on the fly ?</p>
     </div>
-    
+
     <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>    
-    
+
     <div id="myPromptBox" class="dlg-prompt" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
     </div>    
-    
+
     <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info" title="Title text" data-callback="myCallbackFunc" data-x="100" data-y="200" data-w="500" data-h="400">
         <p>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<br />
         If you want custom position and size it is possible.</p>
     </div>        
-    
+
     <!-- END: HTML pre-written dialog boxes -->
-    
+
 </body>
 </html>
