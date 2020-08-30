@@ -12,7 +12,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br />
 <br />
 
-# Important flagname changes:
+# Important flagname changes
 
 The "classflags" below has had their names changed due to naming ambiguity: 
 
