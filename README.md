@@ -9,8 +9,9 @@ Supported by modern browsers using standard HTML, CSS and Javascript.
 
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
 
-#
-#
+\n
+\n
+
 
 # Important flagname changes:
 
