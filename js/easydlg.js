@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.718
+// ** Version: 1.719
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -172,18 +172,13 @@ var EasyDialogBox = (function()
     // ** Check if element has class
     var _hasClass = function(el, classValue)
     {
-        if( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(classValue) > -1 )
-        {
-            return true;
-        }
-        return false;
+        return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
     };
 
     // ** Add class to element
     var _addClass = function(el, classValue)
     {
-        // ** If class do not exist in element, then add it
-        if( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(classValue) === -1 )
+        if(!el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)')))
         {
             if(el.className == '')
             {
@@ -194,19 +189,18 @@ var EasyDialogBox = (function()
                 el.className += ' ' + classValue;
             }
         }
-        return true;
     };
 
     // ** Remove class from element
     var _removeClass = function(el, classValue)
     {
-        var str = '\\b' + classValue + '\\b';
-        var rexp = new RegExp(str, 'g');
-        el.className = el.className.replace(rexp, '');
-        el.className = el.className.replace(/^\s+|\s+$/g, '');
-        return true;
+        if(el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)')))
+        {
+            var reg = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), newClass = el.className.replace(reg, ' ');
+            el.className = newClass.replace(/^\s+|\s+$/g, '');
+        }
     };
-    
+
     // ** Get object from array id
     var _getObjFromId = function(arr, strId)
     {
