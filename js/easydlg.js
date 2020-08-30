@@ -453,6 +453,7 @@ var EasyDialogBox = (function()
                 // ** Add element to DOM
                 dlg.appendChild(box);
 
+                // ** Create heading if disable-flag is NOT set
                 if(!(_hasClass(dlg, 'dlg-disable-heading')))
                 {
                     // ** Create heading
