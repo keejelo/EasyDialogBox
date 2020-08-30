@@ -9,7 +9,7 @@ Supported by modern browsers using standard HTML, CSS and Javascript.
 
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
 
-
+  
 # Important flagname changes:
 
 The "classflags" below has had their names changed due to name ambiguity: 
