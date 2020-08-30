@@ -48,6 +48,8 @@
     border-top:none;
     /*border-radius:2px; /* rounded corners, if you want */
     visibility:hidden;
+    
+    position:absolute; /* this is needed or else "dlg-no-drag" custom position do not work */
 }
 
 /* Dialog heading */
