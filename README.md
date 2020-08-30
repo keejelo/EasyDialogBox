@@ -16,7 +16,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 
 The "classflags" below has had their names changed due to name ambiguity: 
 
-"dlg-no-drag" is now called "dlg-disable-drag"
+"<b>dlg-no-drag</b>" is now called "dlg-disable-drag"
 
 "dlg-no-btns" is now called "dlg-disable-btns"
 
