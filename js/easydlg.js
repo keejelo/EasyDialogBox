@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.722
+// ** Version: 1.723
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -1217,9 +1217,16 @@ var EasyDialogBox = (function()
                 // ** Get element from DOM
                 var dlg = document.getElementById(btns[i].getAttribute('rel'));
                 
+                // ** Clean up className string to avoid error, just in case
+                // ** Replace double whitespace if found
+                var classType = dlg.getAttribute('class').replace(/\s\s+/g, ' ');
+                // ** Remove leading and trailing whitspace
+                classType = classType.replace(/^\s+|\s+$/g, '');
+                
                 // ** Create object from DOM element
                 var obj = _create(dlg.getAttribute('id'),            // id
-                                  dlg.getAttribute('class'),         // type
+                                  //dlg.getAttribute('class'),         // type
+                                  classType,                         // type
                                   dlg.getAttribute('title'),         // title
                                   dlg.innerHTML,                     // message
                                   dlg.getAttribute('data-callback'), // callback function
