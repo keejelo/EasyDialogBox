@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.713
+// ** Version: 1.714
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -170,9 +170,9 @@ var EasyDialogBox = (function()
     };    
     
     // ** Check if element has class
-    var _hasClass = function(el, thatClass)
+    var _hasClass = function(el, classValue)
     {
-        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(thatClass) > -1 )
+        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(classValue) > -1 )
         {
             return true;
         }
@@ -180,20 +180,26 @@ var EasyDialogBox = (function()
     };
     
     // ** Add class to element
-    var _addClass = function(el, thatClass)
+    var _addClass = function(el, classValue)
     {
         // ** If class do not exist in element, then add it
-        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(thatClass) === -1 )
+        if ( (' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(classValue) === -1 )
         {
-            el.className += ' ' + thatClass;
-            el.className = el.className.trim();
+            if(el.className == '')
+            {
+                el.className = classValue;
+            }
+            else
+            {
+                el.className += ' ' + classValue;
+            }
         }
     };
 
     // ** Remove class from element
-    var _removeClass = function(el, thatClass)
+    var _removeClass = function(el, classValue)
     {
-        var str = '\\b' + thatClass + '\\b';
+        var str = '\\b' + classValue + '\\b';
         var rexp = new RegExp(str, 'g');
         return el.className = el.className.replace(rexp, '');
     };
@@ -266,7 +272,7 @@ var EasyDialogBox = (function()
     // ** Escape string
     var _escape = function(str)
     {
-        str = str.trim();
+        str = str.replace(/^\s+|\s+$/g, ''); // trim leading and trailing spaces
         str = str.replace(/&/g, '&amp;');
         str = str.replace(/'/g, '&#39;');
         str = str.replace(/"/g, '&quot;');
@@ -695,7 +701,7 @@ var EasyDialogBox = (function()
                 // ** END: Window resize
 
                 // ** User clicks the [X] button
-                var xCloseDialog = dlg.getElementsByClassName('dlg-close-x')[0];
+                var xCloseDialog = dlg.querySelector('.dlg-close-x');
                 if(xCloseDialog)
                 {
                     _attachEventListener(xCloseDialog, 'click', function XCloseClick()
@@ -716,7 +722,7 @@ var EasyDialogBox = (function()
                 // ** END: [X] button click handler
 
                 // ** User clicks the CLOSE button
-                var btnCloseDialog = dlg.getElementsByClassName('dlg-close-btn')[0];
+                var btnCloseDialog = dlg.querySelector('.dlg-close-btn');
                 if(btnCloseDialog)
                 {
                     _attachEventListener(btnCloseDialog, 'click', function BtnCloseClick()
@@ -737,7 +743,6 @@ var EasyDialogBox = (function()
                 // ** END: CLOSE button click handler
 
                 // ** User clicks anywhere outside of the dialogbox
-                
                 _attachEventListener(window, 'click', function WinCloseClick(evt)
                 {
                     // ** Get/set event variable
@@ -799,7 +804,7 @@ var EasyDialogBox = (function()
                 )
                 {
                     // ** User clicks the YES button
-                    var btnYesDialog = dlg.getElementsByClassName('dlg-yes-btn')[0];
+                    var btnYesDialog = dlg.querySelector('.dlg-yes-btn');
                     if(btnYesDialog)
                     {
                         _attachEventListener(btnYesDialog, 'click', function BtnYesClick()
@@ -819,7 +824,7 @@ var EasyDialogBox = (function()
                     }
 
                     // ** User clicks the NO button
-                    var btnNoDialog = dlg.getElementsByClassName('dlg-no-btn')[0];
+                    var btnNoDialog = dlg.querySelector('.dlg-no-btn');
                     if(btnNoDialog)
                     {
                         _attachEventListener(btnNoDialog, 'click', function BtnNoClick()
@@ -847,7 +852,7 @@ var EasyDialogBox = (function()
                 )
                 {
                     // ** User clicks the OK button
-                    var btnOkDialog = dlg.getElementsByClassName('dlg-ok-btn')[0];
+                    var btnOkDialog = dlg.querySelector('.dlg-ok-btn');
                     if(btnOkDialog)
                     {
                         _attachEventListener(btnOkDialog, 'click', function BtnOkClick()
@@ -867,7 +872,7 @@ var EasyDialogBox = (function()
                     }
 
                     // ** User clicks the Cancel button
-                    var btnCancelDialog = dlg.getElementsByClassName('dlg-cancel-btn')[0];
+                    var btnCancelDialog = dlg.querySelector('.dlg-cancel-btn');
                     if(btnCancelDialog)
                     {
                         _attachEventListener(btnCancelDialog, 'click', function BtnCancelClick()
@@ -891,7 +896,7 @@ var EasyDialogBox = (function()
                 // ** User types in promptbox, update variable: obj.strInput
                 if(_hasClass(dlg, 'dlg-prompt'))
                 {
-                    var pBox = dlg.getElementsByClassName('dlg-input-field')[0];
+                    var pBox = dlg.querySelector('.dlg-input-field');
                     if(pBox)
                     {
                         _attachEventListener(pBox, 'keyup', function PromptBoxKeyUp()
@@ -936,7 +941,7 @@ var EasyDialogBox = (function()
                 // ** Set focus to input field if promptbox
                 if(_hasClass(dlg, 'dlg-prompt'))
                 {
-                    dlg.getElementsByClassName('dlg-input-field')[0].focus();
+                    dlg.querySelector('.dlg-input-field').focus();
                 }
                 
                 // ** Run onShow function
@@ -993,7 +998,7 @@ var EasyDialogBox = (function()
         // ** If promptbox was created, remove eventlisteners
         if(dlg)
         {
-            var pBox = dlg.getElementsByClassName('dlg-input-field');
+            var pBox = dlg.querySelectorAll('.dlg-input-field');
             if(pBox.length !=0)
             {
                 pBox[0].onkeyup = null;
@@ -1203,7 +1208,7 @@ var EasyDialogBox = (function()
         _attachEventListener(window, 'load', function LoadWindow()
         {
             // ** Get all elements with class containing 'dlg-opener'
-            var btns = document.getElementsByClassName('dlg-opener');
+            var btns = document.querySelectorAll('.dlg-opener');
             
             // ** Create objects and click handler for each element that contain class 'dlg-opener'
             for(var i = 0; i < btns.length; i++)
