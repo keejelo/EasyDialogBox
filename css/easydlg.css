@@ -12,8 +12,9 @@
 .dlg-cancel,
 .dlg-ok-cancel,
 .dlg-prompt,
-.dlg-no-footer,
-.dlg-no-btns
+.dlg-disable-header,
+.dlg-disable-footer,
+.dlg-disable-btns
 {
     z-index:60000; /* Put on top */
     margin:0;
@@ -42,11 +43,11 @@
     font-size:10px; /*0.8em*/
     background-color:#fefefe; /* bgcolor, change it as you wish */    
     border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
-    border-top:none;
+    /*border-top:none;*/
     /*border-radius:2px; /* rounded corners, if you want */
     visibility:hidden;
     
-    position:absolute; /* this is needed or else "dlg-no-drag" custom position do not work */
+    position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
 }
 
 /* Dialog heading */
@@ -320,7 +321,7 @@
 }
 
 /* Disable translucent background, background overlay (no modal) */
-.dlg-no-overlay
+.dlg-disable-overlay
 {
     background-color:transparent;
 }
