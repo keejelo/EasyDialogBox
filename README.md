@@ -8,10 +8,10 @@ Supported by modern browsers using standard HTML, CSS and Javascript.
 (ECMAScript 5 and above. Though trying to support old legacy browsers as much as possible.)
 
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
-  
-  
-  
-  
+
+/newline
+/newline
+
 # Important flagname changes:
 
 The "classflags" below has had their names changed due to name ambiguity: 
