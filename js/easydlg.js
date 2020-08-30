@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.715
+// ** Version: 1.716
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -194,6 +194,7 @@ var EasyDialogBox = (function()
                 el.className += ' ' + classValue;
             }
         }
+        return true;
     };
 
     // ** Remove class from element
@@ -203,7 +204,7 @@ var EasyDialogBox = (function()
         var rexp = new RegExp(str, 'g');
         el.className = el.className.replace(rexp, '');
         el.className = el.className.replace(/^\s+|\s+$/g, '');
-        return el.className;
+        return true;
     };
     
     // ** Get object from array id
