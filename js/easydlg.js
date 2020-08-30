@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.719
+// ** Version: 1.720
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -566,7 +566,7 @@ var EasyDialogBox = (function()
                     inputbox.appendChild(input);
 
                     // ** Add buttons if not already stated in class
-                    if(!_hasClass(dlg, 'dlg-ok-cancel'))
+                    if(!(_hasClass(dlg, 'dlg-ok-cancel')))
                     {
                         _addClass(dlg, 'dlg-ok-cancel');
                     }
@@ -574,7 +574,7 @@ var EasyDialogBox = (function()
 
                 // ** Create footer and buttons
                 // ** If "dlg-no-footer" is specified in class then do not create footer or any buttons
-                if(!_hasClass(dlg, 'dlg-no-footer'))
+                if(!(_hasClass(dlg, 'dlg-no-footer')))
                 {
                     // ** Create footer
                     var footer = document.createElement('div');
@@ -582,7 +582,7 @@ var EasyDialogBox = (function()
                     box.appendChild(footer);
 
                     // ** If "dlg-no-btns" is specified in class then do not make buttons.
-                    if(!_hasClass(dlg, 'dlg-no-btns'))
+                    if(!(_hasClass(dlg, 'dlg-no-btns')))
                     {
                         // ** If "Yes" button is specified in class
                         if(_hasClass(dlg, 'dlg-yes')
@@ -918,7 +918,7 @@ var EasyDialogBox = (function()
                 //---------------------------------------------------------------------
                 
                 // ** Make it draggable, unless flag is set
-                if(!_hasClass(dlg, 'dlg-no-drag'))
+                if(!(_hasClass(dlg, 'dlg-no-drag')))
                 {
                     _drag.init(obj.id + '_1');
                 }
