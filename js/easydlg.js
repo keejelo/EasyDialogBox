@@ -178,7 +178,7 @@ var EasyDialogBox = (function()
     // ** Add class to element
     var _addClass = function(el, classValue)
     {
-        if(!el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)')))
+        if(!(_hasClass(el, classValue)))
         {
             if(el.className == '')
             {
@@ -194,7 +194,7 @@ var EasyDialogBox = (function()
     // ** Remove class from element
     var _removeClass = function(el, classValue)
     {
-        if(el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)')))
+        if(_hasClass(el, classValue))
         {
             var reg = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), newClass = el.className.replace(reg, ' ');
             el.className = newClass.replace(/^\s+|\s+$/g, '');
