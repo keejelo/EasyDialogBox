@@ -1,6 +1,5 @@
-/* CSS File */
 @charset "utf-8";
-
+/* CSS File */
 
 
 /* Dialog box types, (controls background and overlay) hidden by default */
@@ -16,13 +15,13 @@
 .dlg-no-footer,
 .dlg-no-btns
 {
+    z-index:60000; /* Put on top */
     margin:0;
     padding:0;
     display:none;
     position:fixed;
     left:0;
-    top:0;    
-    z-index:600000; /* Put on top */
+    top:0;
     width:100%;
     height:100%;
     overflow:auto; /* Enable scroll if needed */
@@ -33,7 +32,6 @@
 /* Dialog box */
 .dlg-box
 {
-    position:absolute;
     display:block;
     margin:0;
     padding:0;
@@ -47,11 +45,14 @@
     border-top:none;
     /*border-radius:2px; /* rounded corners, if you want */
     visibility:hidden;
+    
+    position:absolute; /* this is needed or else "dlg-no-drag" custom position do not work */
 }
 
 /* Dialog heading */
 .dlg-heading
 {
+    z-index:70000;
     display:block;
     margin:0;
     padding:10px;
@@ -70,15 +71,15 @@
 /* Dialog title */
 .dlg-title
 {
+    z-index:70001;
     line-height:20px;
-    z-index:10001;
 }
 
 /* Close X */
 .dlg-close-x
-{    
+{   
+    z-index:70002; 
     float:right;
-    z-index:10002;
     margin:0;
     margin-top:-5px;
     margin-right:0;
@@ -172,6 +173,7 @@
 /* Dialog footer */
 .dlg-footer
 {
+    z-index:70000;
     display:block;
     margin:0;
     margin-top:10px;
