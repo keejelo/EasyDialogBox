@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.723
+// ** Version: 1.725
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -172,7 +172,12 @@ var EasyDialogBox = (function()
     // ** Check if element has class
     var _hasClass = function(el, classValue)
     {
-        return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
+        //return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
+		if((' ' + el.className + ' ').replace(/[\n\t\r]/g, ' ').indexOf(classValue) > -1)
+		{
+            return true;
+        }
+		return false;
     };
 
     // ** Add class to element
