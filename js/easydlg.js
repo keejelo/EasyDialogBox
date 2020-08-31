@@ -4,7 +4,7 @@
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
-// ** Comment: ECMAScript 5 and above. Though trying to support old legacy browsers as much as possible.
+// ** Comment: Trying to use crossbrowser-code, and support old legacy browsers as much as possible.
 //-----------------------------------------------------------------------------------------------------------------
 
 
