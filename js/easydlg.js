@@ -172,11 +172,11 @@ var EasyDialogBox = (function()
     // ** Check if element has class
     var _hasClass = function(el, classValue)
     {
-        //return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
+		//return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
 		if((' ' + el.className + ' ').replace(/[\n\t\r]/g, ' ').indexOf(classValue) > -1)
 		{
-            return true;
-        }
+			return true;
+		}
 		return false;
     };
 
