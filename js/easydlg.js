@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.725
+// ** Version: 1.727
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -172,12 +172,13 @@ var EasyDialogBox = (function()
     // ** Check if element has class
     var _hasClass = function(el, classValue)
     {
+        return el.className.match(new RegExp('(^|\\s)' + classValue + '(\\s|$)'));
         //return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
-        if((' ' + el.className + ' ').replace(/[\n\t\r]/g, ' ').indexOf(classValue) > -1)
+        /*if((' ' + el.className + ' ').replace(/[\n\t\r]/g, ' ').indexOf(' ' + classValue + ' ') > -1)
         {
             return true;
         }
-        return false;
+        return false;*/
     };
 
     // ** Add class to element
@@ -647,8 +648,9 @@ var EasyDialogBox = (function()
 
                         // ** If "dlg" or "Close" button is specified in class
                         if(_hasClass(dlg, 'dlg-close')
-                        || _hasClass(dlg, 'dlg ')
-                        || ( _hasClass(dlg, 'dlg') && dlg.className.length === 3 )
+                        || _hasClass(dlg, 'dlg')
+                        //|| _hasClass(dlg, 'dlg ')
+                        //|| ( _hasClass(dlg, 'dlg') && dlg.className.length === 3 )
                         )
                         {
                             // ** Create button
