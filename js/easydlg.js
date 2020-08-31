@@ -195,7 +195,7 @@ var EasyDialogBox = (function()
             }
         }
     };
-
+ 
     // ** Remove class from element
     var _removeClass = function(el, classValue)
     {
