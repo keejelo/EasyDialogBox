@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.727
+// ** Version: 1.728
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -1215,6 +1215,12 @@ var EasyDialogBox = (function()
         // ** Window load event
         _attachEventListener(window, 'load', function LoadWindow()
         {
+            // ** Inform user if debuginfo console-output is on
+            if(DEBUG)
+            {
+                _log('EasyDialogBox debuginfo console-output is set to: ON\nYou can switch it OFF in the file "easydlg.js" by setting the variable DEBUG = false');
+            }
+            
             // ** Get all elements with class containing 'dlg-opener'
             var btns = document.querySelectorAll('.dlg-opener');
             
