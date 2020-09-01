@@ -4,7 +4,7 @@
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
-// ** Comment: Trying to use crossbrowser-code, and support old legacy browsers as much as possible.
+// ** Comment: Crossbrowser and supporting old legacy browsers as much as possible.
 //-----------------------------------------------------------------------------------------------------------------
 
 
