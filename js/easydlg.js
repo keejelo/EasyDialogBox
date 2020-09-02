@@ -173,7 +173,7 @@ var EasyDialogBox = (function()
     var _hasClass = function(el, classValue)
     {
         var pattern = new RegExp('(^|\\s)' + classValue + '(\\s|$)');
-        return pattern.test(el.className);
+        return pattern.test(el.className);  // boolean
     };
 
     // ** Add class to element
