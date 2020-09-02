@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.728
+// ** Version: 1.729
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -67,7 +67,7 @@ var EasyDialogBox = (function()
     {
         NodeList.prototype.forEach = Array.prototype.forEach;
     };
-  
+
     // ** Debug-logger
     var _log = function(str)
     {
@@ -169,16 +169,11 @@ var EasyDialogBox = (function()
         }
     };    
 
-    // ** Check if element has class
+    // ** Check if element contains specific class
     var _hasClass = function(el, classValue)
     {
-        return el.className.match(new RegExp('(^|\\s)' + classValue + '(\\s|$)'));
-        //return el.className.match(new RegExp('(^|\\b)' + classValue + '(\\b|$)'));
-        /*if((' ' + el.className + ' ').replace(/[\n\t\r]/g, ' ').indexOf(' ' + classValue + ' ') > -1)
-        {
-            return true;
-        }
-        return false;*/
+        var pattern = new RegExp('(^|\\s)' + classValue + '(\\s|$)');
+        return pattern.test(el.className);
     };
 
     // ** Add class to element
@@ -202,8 +197,8 @@ var EasyDialogBox = (function()
     {
         if(_hasClass(el, classValue))
         {
-            var reg = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), newClass = el.className.replace(reg, ' ');
-            el.className = newClass.replace(/^\s+|\s+$/g, '');
+            var pattern = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), str = el.className.replace(pattern, ' ');
+            el.className = str.replace(/^\s+|\s+$/g, ''); // remove leading and trailing whitespace
         }
     };
 
@@ -1218,7 +1213,7 @@ var EasyDialogBox = (function()
             // ** Inform user if debuginfo console-output is on
             if(DEBUG)
             {
-                _log('EasyDialogBox debuginfo console-output is set to: ON\nYou can switch it OFF in the file "easydlg.js" by setting the variable DEBUG = false');
+                _log('EasyDialogBox debug console-output is set to: ON\nYou can switch it OFF in the file "easydlg.js" by setting the variable: DEBUG = false');
             }
             
             // ** Get all elements with class containing 'dlg-opener'
