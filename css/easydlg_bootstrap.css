@@ -126,10 +126,10 @@
 .dlg-flex-container
 {
     /* Legacy crossbrowser */
-    display: -webkit-box;
+    /*display: -webkit-box;
     display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
+    display: -moz-box;*/
+    /*display: -ms-flexbox;*/
     /* END: Legacy crossbrowser */
     
     display:flex;
