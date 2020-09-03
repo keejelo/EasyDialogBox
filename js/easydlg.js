@@ -197,8 +197,8 @@ var EasyDialogBox = (function()
     {
         if(_hasClass(el, classValue))
         {
-            var pattern = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), str = el.className.replace(pattern, ' ');
-            el.className = str.replace(/^\s+|\s+$/g, ''); // remove leading and trailing whitespace
+            var reg = new RegExp('(^|\\s)' + classValue + '(\\s|$)'), newClass = el.className.replace(reg, ' ');
+            el.className = newClass.replace(/^\s+|\s+$/g, ''); // remove leading and trailing whitespace
         }
     };
 
