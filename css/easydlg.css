@@ -113,22 +113,19 @@
 /* Flex boxes */
 .dlg-flex-container
 {
-    /* Legacy crossbrowser */
-    /*display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;*/
-    /*display: -ms-flexbox;*/
-    /* END: Legacy crossbrowser */
-
-    display:flex;    
     margin:0;
     padding:0;
+    display:table;
+    border-collapse:collapse;
+    border:none;
 }
 
 .dlg-flexbox-left,
 .dlg-flexbox-right
 {
     box-sizing:border-box;
+    display:table-cell;
+    border:none;
 }
 
 .dlg-flexbox-left
@@ -143,7 +140,9 @@
 {
     width:100%;
     margin:0;
-    padding:8px 20px 0 20px;
+    padding:8px 20px 0 0;
+    text-align:left;
+    vertical-align:top;
     overflow-x:hidden; /* Hide horizontal scrollbar */
     overflow-y:auto;   /* Add vertical scrollbar if needed */    
     /*border:1px solid #00f;*/ /*debug*/
