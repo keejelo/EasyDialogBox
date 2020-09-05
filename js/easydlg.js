@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.731
+// ** Version: 1.732
 // ** Year: 2020
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -51,7 +51,8 @@ var EasyDialogBox = (function()
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     var _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
                             'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
-                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation'];
+                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation',
+                            'dlg-rounded','dlg-shadow'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback etc...
     var _boxObj = [];
@@ -453,6 +454,16 @@ var EasyDialogBox = (function()
                 
                 // ** Add element to DOM
                 dlg.appendChild(box);
+                
+                // ** Add extra styles if flags are set
+                if(_hasClass(dlg, 'dlg-rounded'))
+                {
+                    _addClass(box, 'dlg-rounded');
+                }                
+                if(_hasClass(dlg, 'dlg-shadow'))
+                {
+                    _addClass(box, 'dlg-shadow');
+                }
 
                 // ** Create heading if disable-flag is NOT set
                 if(!(_hasClass(dlg, 'dlg-disable-heading')))
