@@ -124,15 +124,15 @@
 .dlg-flexbox-right
 {
     box-sizing:border-box;
-    display:table-cell;
-    border:none;
 }
 
 .dlg-flexbox-left
 {
     width:55px;
     margin:0;
-    padding:20px 20px 20px 20px;
+    padding:20px 20px 20px 20px;    
+    display:table-cell;
+    border:none;
     /*border:1px solid #f00;*/ /*debug*/
 }
 
@@ -141,6 +141,8 @@
     width:100%;
     margin:0;
     padding:8px 20px 0 0;
+    display:table-cell;
+    border:none;    
     text-align:left;
     vertical-align:top;
     overflow-x:hidden; /* Hide horizontal scrollbar */
