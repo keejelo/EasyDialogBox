@@ -14,10 +14,7 @@
 .dlg-ok,
 .dlg-cancel,
 .dlg-ok-cancel,
-.dlg-prompt,
-.dlg-disable-heading,
-.dlg-disable-footer,
-.dlg-disable-btns
+.dlg-prompt
 {
     z-index:60000; /* Put on top */
     margin:0;
