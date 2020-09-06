@@ -524,18 +524,27 @@ attachEventListener(window, 'load', function()
                         <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
                         <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
                         <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-                        <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
-                        <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
-                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer.</td></tr>
-                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay.</td></tr>
-                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
-                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-rounded</td><td>Add rounded corners to box. Cannot be used alone.</td></tr>
-                        <tr><td>dlg-shadow</td><td>Add shadow behind box. Cannot be used alone.</td></tr>                        
+                        
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        
+                        <tr><td>dlg-disable-heading</td><td>Dialog without heading. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-disable-footer</td><td>Dialog without footer. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading. (Cannot be used alone)</td></tr>
+
+                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box. (Cannot be used alone)</td></tr>
+
+                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                        <tr><td>dlg-rounded</td><td>Add rounded corners to box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-shadow</td><td>Add shadow behind box. (Cannot be used alone)</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -877,7 +886,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">You can have several types at the same time if you want! Mix and match as you like! Crazy but possible!</h3>
-                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-shadow dlg-rounded</code> (<a href="#paramTable">read more on classes</a>)</p>
+                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-disable-overlay dlg-shadow dlg-rounded</code> (<a href="#paramTable">read more on classes</a>)</p>
                 <p>
                     Return value:
                     input = <span class="ital word">string</span>, 
@@ -888,7 +897,7 @@ attachEventListener(window, 'load', function()
                     Cancel = <span class="ital word">4</span>
                 </p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-shadow dlg-rounded&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">data-x</b>=<b class="val">&quot;100&quot;</b> <b class="att">data-y</b>=<b class="val">&quot;200&quot;</b> <b class="att">data-w</b>=<b class="val">&quot;500&quot;</b> <b class="att">data-h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-disable-overlay dlg-shadow dlg-rounded&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">data-x</b>=<b class="val">&quot;100&quot;</b> <b class="att">data-y</b>=<b class="val">&quot;200&quot;</b> <b class="att">data-w</b>=<b class="val">&quot;500&quot;</b> <b class="att">data-h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<b class="tag">&lt;br /&gt;</b></i>
 <i>    <b>If you want custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
@@ -932,7 +941,7 @@ attachEventListener(window, 'load', function()
         <p>This is a message</p>
     </div>    
 
-    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-shadow dlg-rounded" title="Title text" data-callback="myCallbackFunc" data-x="100" data-y="200" data-w="500" data-h="400">
+    <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-drag dlg-disable-overlay dlg-shadow dlg-rounded" title="Title text" data-callback="myCallbackFunc" data-x="100" data-y="200" data-w="500" data-h="400">
         <p>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<br />
         If you want custom position and size it is possible.</p>
     </div>        
