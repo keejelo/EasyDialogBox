@@ -231,7 +231,7 @@ b:first-child
     margin-bottom:10px;
     width:98%;
     /*max-width:940px;*/
-    padding:0 0 10px 0;
+    padding:0;
     overflow:scroll;
     white-space:pre;
     font-family:Consolas, "Droid Sans Mono", "Courier New", monospace;
@@ -239,17 +239,21 @@ b:first-child
     line-height:normal;
     background-color:#3a3e4c;
     color:#fff;
-    border:1px #666b7a solid;
+    border:2px #666b7a solid;
     border-left-width:6px;
 }
 /* code line numbers */
 .codeview:before
 {
     counter-reset:listing;
+    margin:0;
+    padding:0;
 }
 .codeview i
 {
     counter-increment:listing;
+    margin:0;
+    padding:0;    
 }
 .codeview i::before
 {
@@ -259,8 +263,10 @@ b:first-child
     display:inline-block;
     width:30px;
     padding-left:0;
+    padding-bottom:0;
     margin-left:0;
     margin-right:20px;
+    margin-bottom:0;
     text-align:right;
     position:absolute;
 }
