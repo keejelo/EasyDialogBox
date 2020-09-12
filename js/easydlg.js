@@ -50,9 +50,9 @@ var EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     var _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
-                            'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
-                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation',
-                            'dlg-rounded','dlg-shadow'];
+                           'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
+                           'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation',
+                           'dlg-rounded','dlg-shadow'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback etc...
     var _boxObj = [];
