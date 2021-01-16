@@ -1,7 +1,8 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 // ** Version: 1.732
-// ** Year: 2020
+// ** Author: Keejelo
+// ** Year: 2020, 2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
 // ** Comment: Crossbrowser. Legacy browser support as much as possible.
