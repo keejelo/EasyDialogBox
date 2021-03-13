@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link type="text/css" rel="stylesheet" href="css/easydlg.css" />
+<script src="js/easydlg_1733a.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+// ** Window load handler
+window.addEventListener('load', function()
+{
+    // ** Create a new dialogbox object
+    let myBox = EasyDialogBox.create(0, 'dlg', 'My title',
+    '<p><input id="myText" class="myFormData" type="text" value="hello" /></p>' + 
+    '<p><button id="hideBtn">Hide me</button></p>' + 
+    '<p><button id="delBtn">Delete me</button></p>'
+    );
+    
+       
+    // ** onShow 
+    myBox.onShow = function()
+    {    
+        // ** Button click handler
+        var hideBtn = document.getElementById('hideBtn');
+        hideBtn.addEventListener('click', function()
+        {
+            myBox.hide();
+        });        
+        
+        var delBtn = document.getElementById('delBtn');
+        delBtn.addEventListener('click', function()
+        {
+            myBox.destroy();
+        });                                
+    };
+
+    
+    // ** Button click handler
+    var btn = document.getElementById('myBtn');
+    btn.addEventListener('click', function()
+    {
+        var exist = myBox.show();
+        
+        if(exist)
+        {
+            var el = myBox.el('#myText');
+            console.log(el.value + ' ( value is retrieved by using element id: var el = myBox.el(\'#myText\'); )');
+            
+            myBox.el('.myFormData');
+            console.log(el.value + ' ( value is retrieved by using element class: var el = myBox.el(\'.myFormData\'); )');
+            
+            myBox.el('input')[0];
+            console.log(el.value + ' ( value is retrieved by using element index: var el = myBox.el(\'input[0]\'); )');
+        }
+
+    });
+    
+       
+    // ** Button click handler
+    var myNewBtn = document.getElementById('myNewBtn');
+    myNewBtn.addEventListener('click', function()
+    {
+        myBox = EasyDialogBox.create('mybox', 'dlg', 'My title',
+        '<p><input id="myText" class="myFormData" type="text" value="hello" /></p>' + 
+        '<p><button id="hideBtn">Hide me</button></p>' +
+        '<p><button id="delBtn">Delete me</button></p>'
+        );
+        
+        // ** onShow 
+        myBox.onShow = function()
+        {            
+            // ** Button click handler
+            var hideBtn = document.getElementById('hideBtn');
+            hideBtn.addEventListener('click', function()
+            {
+                myBox.hide();
+            });        
+            
+            var delBtn = document.getElementById('delBtn');
+            delBtn.addEventListener('click', function()
+            {
+                myBox.destroy();
+            });                    
+        };
+    });
+});
+
+</script>
+</head>
+<body>
+    <button id="myNewBtn">Create new dialogbox</button>
+    <br><br><br>
+    <button id="myBtn">Show</button>
+    
+    <pre>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    testing scrollbar-visibility and placment
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </pre>
+</body>
+</html>
