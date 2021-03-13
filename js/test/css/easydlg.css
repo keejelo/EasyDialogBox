@@ -1,0 +1,345 @@
+@charset "utf-8";
+/* CSS File */
+
+
+/* Dialog box types, (controls background and overlay) hidden by default */
+.dlg,
+.dlg-close,
+.dlg-yes,
+.dlg-no,
+.dlg-yes-no,
+.dlg-ok,
+.dlg-cancel,
+.dlg-ok-cancel,
+.dlg-prompt
+{
+    z-index:60000; /* Put on top */
+    margin:0;
+    padding:0;
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:auto; /* Enable scroll if needed */
+    background-color:#000; /* Fallback */
+    background-color:rgba(0,0,0,0.2); /* Translucent overlay */
+}
+
+/* Dialog box */
+.dlg-box
+{
+    display:block;
+    margin:0;
+    padding:0;
+    max-width:600px;
+    overflow:hidden; /* disable scrolling inside box */
+    width:100%; /* 96, 98 */    
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:10px; /*0.8em*/
+    background-color:#fefefe; /* bgcolor, change it as you wish */    
+    border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
+    visibility:hidden;
+    
+    position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
+}
+
+/* Dialog heading */
+.dlg-heading
+{
+    z-index:70000;
+    display:block;
+    margin:0;
+    padding:10px;
+    background-color:#3d6da8; /* background color, change it as you wish. ".dlg-box" has the same border-color as this */
+    color:#fff; /* text color, change it as you wish */
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    border:none;
+    height:19px;
+    line-height:19px;
+    font-family:inherit;
+    font-size:1.4em;
+}
+
+/* Dialog title */
+.dlg-title
+{
+    z-index:70001;
+    line-height:20px;
+}
+
+/* Close X */
+.dlg-close-x
+{   
+    z-index:70002; 
+    float:right;
+    margin:0;
+    margin-top:-5px;
+    margin-right:0;
+    padding:5px;
+    color:inherit; /*fff*/
+    font-family:inherit;
+    font-size:2.0em;
+    font-weight:normal;
+    background-color:inherit;
+    line-height:20px;
+}
+
+.dlg-close-x:hover,
+.dlg-close-x:focus
+{
+    color:#000;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+/* Dialog message */
+.dlg-message
+{
+    display:block;
+    margin:0;
+    margin-bottom:25px;
+    padding:0 15px 0 15px;
+    font-family:inherit;
+    font-size:1.4em;
+    line-height:1.4em;
+    overflow-x:hidden; /* Hide horizontal scrollbar */
+    overflow-y:auto;   /* Add vertical scrollbar if needed */
+}
+
+/* Flex boxes */
+.dlg-flex-container
+{
+    margin:0;
+    padding:0;
+    display:table;
+    border-collapse:collapse;
+    border:none;
+}
+
+.dlg-flexbox-left,
+.dlg-flexbox-right
+{
+    box-sizing:border-box;
+}
+
+.dlg-flexbox-left
+{
+    width:55px;
+    margin:0;
+    padding:20px 20px 20px 20px;    
+    display:table-cell;
+    border:none;
+    /*border:1px solid #f00;*/ /*debug*/
+}
+
+.dlg-flexbox-right
+{
+    width:100%;
+    margin:0;
+    padding:8px 20px 0 0;
+    display:table-cell;
+    border:none;    
+    text-align:left;
+    vertical-align:top;
+    overflow-x:hidden; /* Hide horizontal scrollbar */
+    overflow-y:auto;   /* Add vertical scrollbar if needed */    
+    /*border:1px solid #00f;*/ /*debug*/
+}
+
+/* Dialog input */
+.dlg-input
+{
+    margin:0;
+}
+
+/* Dialog input-field */
+.dlg-input-field
+{
+    margin:0;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding:5px;
+    width:98%;
+    font-family:inherit;
+    font-size:1em;
+    
+    /* NOT USED AT THE MOMENT */
+    /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
+    /*border:1px solid #aaa;*/
+    /* END: Chrome fix */
+    /* END: NOT USED AT THE MOMENT */
+}
+
+/* Dialog footer */
+.dlg-footer
+{
+    z-index:70000;
+    display:block;
+    margin:0;
+    margin-top:10px;
+    padding:10px;
+    height:30px;
+    background-color:#f0f0f0;
+    border-top:1px solid #e5e5e5;
+    text-align:right;
+    border-bottom-left-radius:inherit;
+    border-bottom-right-radius:inherit;
+    font-family:inherit;
+    font-size:1.3em;
+    overflow:hidden; /* Hide scrollbar */
+}
+
+/* The buttons */
+.dlg-footer button
+{
+    margin:0;
+    margin-left:10px;
+    padding:0 15px;
+    height:30px;
+}
+
+/* Dialog icons, pure css, no images, but could be changed to use images instead by using the same classes etc. */
+.dlg-symbol
+{
+    font-size:24px;
+    font-family:"Courier new", Courier, monospace;
+    border-radius:50%;
+    padding:0;
+    font-weight:bold;
+    color:#fff;
+    height:35px;
+    width:35px;
+    display:inline-block;
+    text-align:center;
+    line-height:34px;
+}
+
+.dlg-icon-info
+{
+    background-color:#3d6da8;
+    line-height:37px;
+    box-shadow:0 0 0 1px #254164;
+}
+
+.dlg-icon-question
+{
+    background-color:#3d6da8;
+    line-height:37px;
+    box-shadow:0 0 0 1px #254164;
+}
+
+.dlg-icon-error 
+{ 
+    background:#e64943;
+    font-family:Consolas, monospace;
+    line-height:37px;
+    box-shadow:0 0 0 1px #852622;
+}
+
+.dlg-icon-success
+{
+    background:#67b66e;
+    font-size:17px;
+    line-height:37px;
+    box-shadow:0 0 0 1px #407145;
+}
+
+.dlg-icon-excl
+{ 
+    color:#000;
+    border-radius:0;
+    width:0;
+    height:0;
+    line-height:37px;
+    border-left:18px solid transparent;
+    border-right:18px solid transparent;
+    border-bottom:32px solid #b29534;
+}
+
+.dlg-icon-info:before,
+.dlg-icon-info::before
+{
+    content:'i';
+}
+
+.dlg-icon-question:before,
+.dlg-icon-question::before
+{
+    content:'?';
+    margin-left:-1px;
+}
+
+.dlg-icon-error:before,
+.dlg-icon-error::before
+{
+    /* light */
+    content:'\002715';
+    
+    /*heavy*/
+    /*content:'\002716';*/
+}
+
+.dlg-icon-success:before,
+.dlg-icon-success::before
+{
+    content:'\002713';
+}
+
+.dlg-icon-excl:before,
+.dlg-icon-excl::before
+{
+    content:'';
+    border-radius:0;
+    width:0;
+    height:0;
+    border-left:16px solid transparent;
+    border-right:16px solid transparent;
+    border-bottom:30px solid #ffd54b;
+    position:relative;
+    top:-31px;
+    left:-16px;    
+}
+
+.dlg-icon-excl:after,
+.dlg-icon-excl::after
+{
+    content:'!';
+    width:0;
+    height:0;
+    margin-left:-39px;
+    position:relative;
+    top:2px;
+    line-height:37px;
+}
+
+/* Stop scrolling, used to stop scrolling of background page content (body) when dialogbox is in view */
+.dlg-stop-scrolling
+{
+    height:100%;
+    overflow:hidden;
+}
+
+/* Disable translucent background, background overlay (no modal) */
+.dlg-disable-overlay
+{
+    background-color:transparent;
+}
+
+/* Rounded corners */
+.dlg-rounded
+{
+    border-radius:5px;
+}
+
+/* Shadow */
+.dlg-shadow
+{
+    -webkit-box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
+    box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
+}
+
