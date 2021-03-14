@@ -16,11 +16,11 @@ The new in this version is:
 
 - There is also an added feature to get elements inside the dialogbox by using these shorthand methods:
 
-   var myEL = myObj.el('#HtmlElementWithSomeID');     // returns a HTML element that contains that ID
+  myObj.el('#HtmlElementWithID');     // returns a HTML element that contains that ID
    
-   var myEL = myObj.el('.HtmlElementWithSomeClass');  // returns an indexed HTMLCollection (as normal)
+  myObj.el('.HtmlElementWithClass');  // returns an indexed HTMLCollection (as normal)
    
-   var myEL = myObj.el('SomeHtmlElement');            // returns an indexed HTMLCollection (as normal)
+  myObj.el('SomeHtmlElement');        // returns an indexed HTMLCollection (as normal)
    
 ..basically shorthands for .getElementById() and .querySelectorAll()
 
