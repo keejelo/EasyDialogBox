@@ -50,9 +50,9 @@ var EasyDialogBox = (function()
 
     // ** Dialogbox types and flags, can be used separately or in combination separated by a space
     var _strBoxTypeList = ['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel',
-                            'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
-                            'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation',
-                            'dlg-rounded','dlg-shadow'];
+                           'dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag',
+                           'dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation',
+                           'dlg-rounded','dlg-shadow'];
 
     // ** Array that holds all created boxobjects, so we can refer to them later if we need to, i.e. callback etc...
     var _boxObj = [];
@@ -203,7 +203,7 @@ var EasyDialogBox = (function()
         }
     };
 
-    // ** Get object from array id
+    // ** Get object from array by using id
     var _getObjFromId = function(arr, strId)
     {
         for(var i = 0; i < arr.length; i++)
@@ -386,6 +386,40 @@ var EasyDialogBox = (function()
             return document.getElementById(objId).querySelectorAll(str);
         }
     };
+    
+    // ** Create substitute for scrollbar, hides scrollbar, retains window padding
+    var _scrollBarFix = function()
+    {
+        var body = document.getElementsByTagName('body')[0];
+        
+        // ** Store the original padding-right value
+        _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+
+        // ** Convert from string to integer (remove 'px' postfix and return value as integer)
+        _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
+
+        // ** Get width of body before removing scrollbar
+        var w1 = body.offsetWidth;
+
+        // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
+        _addClass(body, 'dlg-stop-scrolling');
+
+        // ** Get width of body after removing scrollbar
+        var w2 = body.offsetWidth;
+
+        // ** Get width-difference
+        var w3 = w2 - w1;
+        
+        // ** If conditions are true: add both padding-right values, 
+        if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+        {
+            w3 += _s2i(_orgBodyPaddingRight);
+        }
+
+        // ** Apply width-difference as padding-right to body, substitute for scrollbar,
+        // ** can prevent contentshift if content is centered when scrollbar disappears.
+        body.setAttribute('style','padding-right:' + w3 + 'px;');
+    };
 
     // ** Show the dialog box
     var _show = function(objId)
@@ -402,36 +436,8 @@ var EasyDialogBox = (function()
         // ** Check if box already exist in case it is hidden, we want to show that instead of creating a new
         if(existingObj !== null && existingObj.bHidden === true)
         {
-            // ** BEGIN: Creating substitute for scrollbar
-            var body = document.getElementsByTagName('body')[0];
-            // ** Store the original padding-right value
-            _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
-
-            // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-            _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
-
-            // ** Get width of body before removing scrollbar
-            var w1 = body.offsetWidth;
-
-            // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-            _addClass(body, 'dlg-stop-scrolling');
-
-            // ** Get width of body after removing scrollbar
-            var w2 = body.offsetWidth;
-
-            // ** Get width-difference
-            var w3 = w2 - w1;
-            
-            // ** If conditions are true: add both padding-right values, 
-            if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
-            {
-                w3 += _s2i(_orgBodyPaddingRight);
-            }
-
-            // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-            // ** can prevent contentshift if content is centered when scrollbar disappears.
-            body.setAttribute('style','padding-right:' + w3 + 'px;');
-            // ** END: Creating substitute for scrollbar
+            // ** Hide scrollbar
+            _scrollBarFix();
             
             // ** Show the hidden dialogbox
             document.getElementById(objId).style.display = 'block';
@@ -741,36 +747,9 @@ var EasyDialogBox = (function()
                 }
                 // ** END: Create footer and buttons
 
-
-                // ** BEGIN: Creating substitute for scrollbar
-                // ** Store the original padding-right value
-                _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
-
-                // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-                _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
-
-                // ** Get width of body before removing scrollbar
-                var w1 = body.offsetWidth;
-
-                // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-                _addClass(body, 'dlg-stop-scrolling');
-
-                // ** Get width of body after removing scrollbar
-                var w2 = body.offsetWidth;
-
-                // ** Get width-difference
-                var w3 = w2 - w1;
                 
-                // ** If conditions are true: add both padding-right values, 
-                if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
-                {
-                    w3 += _s2i(_orgBodyPaddingRight);
-                }
-
-                // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-                // ** can prevent contentshift if content is centered when scrollbar disappears.
-                body.setAttribute('style','padding-right:' + w3 + 'px;');
-                // ** END: Creating substitute for scrollbar
+                // ** Hide scrollbar
+                _scrollBarFix();
 
 
                 //---------------------------------------------------------------------
