@@ -1,4 +1,4 @@
-EasyDialogBox version 1733b (BETA) for testing
+EasyDialogBox version 1733b (BETA) for testing (will eventually be released if no errors or bugs are detected)
 
 The new in this version is:
 
