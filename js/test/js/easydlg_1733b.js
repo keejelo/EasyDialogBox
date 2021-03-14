@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.733b (0003) (BETA test version)
+// ** Version: 1.733b (0004) (BETA test version)
 // ** Year: 2020-2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -439,16 +439,16 @@ var EasyDialogBox = (function()
             // ** Hide scrollbar
             _scrollBarFix();
             
-            var hiddenElement = document.getElementById(objId);
+            var hiddenDlg = document.getElementById(objId);
             
             // ** Make it draggable, unless flag is set
-            if(!(_hasClass(hiddenElement, 'dlg-disable-drag')))
+            if(!(_hasClass(hiddenDlg, 'dlg-disable-drag')))
             {
                 _drag.init(existingObj.id + '_1');
             }
                 
             // ** Show the hidden dialogbox
-            hiddenElement.style.display = 'block';
+            hiddenDlg.style.display = 'block';
             document.getElementById(objId + '_1').style.visibility = 'visible';
             
             existingObj.bVisible = true;
