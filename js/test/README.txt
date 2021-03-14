@@ -15,11 +15,11 @@ The new in this version is:
 
 - There is also an added feature to get elements inside the dialogbox by using these shorthand methods:
 
-  myObj.el('#someID');     // returns the HTML element containing the ID
+  myObj.el('#someID');     // using # (hash), returns the HTML element containing the ID
    
-  myObj.el('.someClass');  // returns an indexed HTMLCollection ([i] as normal)
+  myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
    
   myObj.el('SomeElement'); // returns an indexed HTMLCollection ([i] as normal)
    
-..basically shorthands for .getElementById() and .querySelectorAll()
+..similar to .getElementById() and .querySelectorAll()
 
