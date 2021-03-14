@@ -1,4 +1,4 @@
-Update: fixed some errors in alpha version, alpha now has become beta version.
+Update: fixed some errors in alpha version, alpha has now become beta version.
 
 This is a test of EasyDialogBox version 1733 beta
 
