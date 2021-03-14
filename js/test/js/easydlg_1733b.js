@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.733b (0004) (BETA test version)
+// ** Version: 1.733b (0005) (BETA test version)
 // ** Year: 2020-2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -1103,7 +1103,7 @@ var EasyDialogBox = (function()
     // ** Close and destroy the dialog box
     var _destroy = function(objId)
     {
-        var success = false; // default
+        var success = false; // default false
 
         // ** Get body element, reset values, restore scrolling
         var body = document.getElementsByTagName('body')[0];
@@ -1145,9 +1145,9 @@ var EasyDialogBox = (function()
             // ** Flag that the box as no longer visible (this can be useful if keeping box alive)
             obj.bVisible = false;
 
-            // ** We override objects internal variable, since we added "hide" function as default,
+            // ** We override the objects internal variable, since we added "hide" function as default,
             //    destroy will ALWAYS delete dialogbox from memory and DOM.
-            //    The variable "bKeepAlive" may be removed eventually if not used
+            //    The variable "bKeepAlive" may be removed eventually if not used.
             obj.bKeepAlive = false;
 
             // ** If box was created, remove it from array, unless "obj.bKeepAlive = true"
@@ -1188,7 +1188,7 @@ var EasyDialogBox = (function()
         }
 
         // ** Reset flag 
-        _isActive = false;
+        //_isActive = false;  // disabled for now
 
         // ** Return result
         return success;
