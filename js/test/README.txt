@@ -5,7 +5,7 @@ This is a test of EasyDialogBox version 1733 beta
 The new in this version is:
 
 - Created a "hide" method that can hide dialogbox: myObj.hide();
-  (It will still exist in DOM, but hidden)
+  It will still exist in DOM, but hidden with css (display:none; and visibility:hidden;)
   This method also fires: myObj.onHide()
 
 
