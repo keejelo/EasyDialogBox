@@ -1,16 +1,25 @@
-This is a test of EasyDialogBox version 1733 alpha.
+Update: fixed some errors in alpha version, and now has become beta version.
+
+This is a test of EasyDialogBox version 1733 beta
 
 The new in this version is:
 
-- Dialogboxes now hides in DOM when clicking "Close" etc., they are not destroyed until user executes the "destroy" function themselves: myObj.destroy();
+- Created a "hide" method that can hide dialogbox: myObj.hide();
+  this method also fires: myObj.onHide()
+
+
+- Dialogboxes now hides in DOM when closing the box by clicking "Close", "X", pressing "ESC" key.
+  All dialogboxs will be kept alive by default, they are only destroyed when the user executes the 
+  "destroy" function: myObj.destroy();
+    
 
 - There is also an added feature to get elements inside the dialogbox by using these shorthand methods:
 
-   myObj.el('#HtmlElementWithSomeID')
+   var myEL = myObj.el('#HtmlElementWithSomeID');
    
-   myObj.el('.HtmlElementWithSomeClass')
+   var myEL = myObj.el('.HtmlElementWithSomeClass');
    
-   myObj.el('SomeHtmlElement')
+   var myEL = myObj.el('SomeHtmlElement');
    
-..basically shorthands for getElementById() and querySelectorAll()
+..basically shorthands for .getElementById() and .querySelectorAll()
 
