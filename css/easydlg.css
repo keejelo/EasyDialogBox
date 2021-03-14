@@ -220,16 +220,16 @@
 
 .dlg-icon-info
 {
-    background-color:#3d6da8;
+    background-color:#0077d7; /*3d6da8*/
     line-height:37px;
-    box-shadow:0 0 0 1px #254164;
+    box-shadow:0 0 0 1px #004d8b; /*254164*/
 }
 
 .dlg-icon-question
 {
-    background-color:#3d6da8;
+    background-color:#0077d7; /*3d6da8*/
     line-height:37px;
-    box-shadow:0 0 0 1px #254164;
+    box-shadow:0 0 0 1px #004d8b; /*254164*/
 }
 
 .dlg-icon-error 
@@ -342,41 +342,4 @@
     -moz-box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
     box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
 }
-
-/* Color "themes" (heading background-color, border-color and text-color) */
-.dlg-color-gray
-{   
-    background-color:#999;
-    border:1px solid #999;
-    color:#fff;
-}
-
-.dlg-color-black
-{
-    background-color:#000;
-    border:1px solid #000;
-    color:#fff;
-}
-
-.dlg-color-green
-{
-    background-color:#4caf50;
-    border:1px solid #4caf50;
-    color:#fff;
-}
-
-.dlg-color-red
-{
-    background-color:#cc0000;
-    border:1px solid #cc0000;
-    color:#fff;
-}
-
-.dlg-color-orange
-{
-    background-color:#cc6600;
-    border:1px solid #cc6600;
-    color:#fff;
-}
-
 

@@ -238,17 +238,17 @@
 }
 
 .dlg-icon-info
-{
-    background-color:#3d6da8;
+{    
+    background-color:#0077d7; /*3d6da8*/
     line-height:37px;
-    box-shadow:0 0 0 1px #254164;
+    box-shadow:0 0 0 1px #004d8b; /*254164*/    
 }
 
 .dlg-icon-question
 {
-    background-color:#3d6da8;
+    background-color:#0077d7; /*3d6da8*/
     line-height:37px;
-    box-shadow:0 0 0 1px #254164;
+    box-shadow:0 0 0 1px #004d8b; /*254164*/
 }
 
 .dlg-icon-error 
