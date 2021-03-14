@@ -1,5 +1,10 @@
 EasyDialogBox version 1733b (BETA) for testing (will eventually be released if no errors or bugs are detected)
 
+Filename: "easydlg_1733b.js"
+
+https://github.com/keejelo/EasyDialogBox/blob/master/js/test/js/easydlg_1733b.js
+
+
 The new in this version is:
 
 - Created a "hide" method that can hide dialogbox: myObj.hide();
@@ -24,7 +29,4 @@ The new in this version is:
 ..similar to .getElementById() and .querySelectorAll()
 
 
-Filename: "easydlg_1733b.js"
-
-https://github.com/keejelo/EasyDialogBox/blob/master/js/test/js/easydlg_1733b.js
 
