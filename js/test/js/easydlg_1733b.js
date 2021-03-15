@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.733b (0011) (BETA test version)
+// ** Version: 1.733b (0014) (BETA test version)
 // ** Year: 2020-2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -61,7 +61,7 @@ var EasyDialogBox = (function()
     var _orgBodyPaddingRight = 0;
     
     // ** Flag that indicates if a box is currently in view (is displayed)
-    var _isActive = false;
+    //var _isActive = false;
 
     // ** Add "forEach" support to IE(9-11)
     if(window.NodeList && !NodeList.prototype.forEach)
@@ -388,7 +388,7 @@ var EasyDialogBox = (function()
         else
         {
             return document.getElementById(objId).querySelectorAll(str);
-        }
+        };
     };
     
     // ** Hide scrollbar, retaining padding
@@ -438,7 +438,7 @@ var EasyDialogBox = (function()
         }
         
         // ** Check if box already exist in case it is hidden, we want to show that instead of creating a new
-        if(existingObj !== null && existingObj.bHidden === true)
+        if(existingObj !== null && existingObj.bHidden == true)
         {
             // ** Hide scrollbar
             _scrollBarFix();
@@ -450,13 +450,12 @@ var EasyDialogBox = (function()
             {
                 _drag.init(existingObj.id + '_1');
             }
-                
+
             // ** Show the hidden dialogbox
             hiddenDlg.style.display = 'block';
             document.getElementById(objId + '_1').style.visibility = 'visible';
             
             existingObj.bVisible = true;
-            _isActive = true;
             
             existingObj.onShow();
             return true;
@@ -466,8 +465,20 @@ var EasyDialogBox = (function()
         // ** Since box is not hidden then we build a new one and show it
         //-----------------------------------------------------------------------
         
-        // ** Check that no other dialog is active
-        if(_isActive === false)
+        // ** Check if any dialog is currently visible
+        var bVisible = false;
+        
+        for(var i = 0; i < _boxObj.length; i++)
+        {
+            if(_boxObj[i].bVisible == true)
+            {
+                bVisible = true;
+                break;
+            }
+        }
+        
+        // ** Proceed if no dialog is visible
+        if(bVisible == false)
         {
             // ** Get object from id
             var obj = _getObjFromId(_boxObj, objId);
@@ -1018,8 +1029,8 @@ var EasyDialogBox = (function()
                 }
 
                 // ** Set flag to indicate that box is active and can be displayed
-                _isActive = true;  // internal module flag
-                
+                //_isActive = true;  // internal module flag
+                                
                 // ** Show dialogbox
                 box.style.visibility = 'visible';
                 
@@ -1073,7 +1084,7 @@ var EasyDialogBox = (function()
     {
         var dlg = document.getElementById(objId);
         var box = document.getElementById(objId + '_1');
-                
+
         // ** Hide the box
         if(dlg && box)
         {
@@ -1082,7 +1093,7 @@ var EasyDialogBox = (function()
         }
         
         // ** Set flag to false, indicates that no dialogbox is currently "active" (visible)
-        _isActive = false;
+        //_isActive = false;
         
         // ** Get the object stored in the array
         var obj = _getObjFromId(_boxObj, objId);
@@ -1133,7 +1144,7 @@ var EasyDialogBox = (function()
                 pBox[0].onchange = null;
             }
         }
-        
+
         // ** Remove dialogbox, reset values
         if(dlg)
         {
@@ -1192,7 +1203,7 @@ var EasyDialogBox = (function()
         }
 
         // ** Reset flag 
-        //_isActive = false;  // disabled for now
+        //_isActive = false;  // disabled here for now
 
         // ** Return result
         return success;
@@ -1239,7 +1250,6 @@ var EasyDialogBox = (function()
             // ** Create object
             var obj =
             {
-                // ** Properties
                 id : strId,
                 strTypeClass : strTypeClass,
                 strTitle : strTitle,
