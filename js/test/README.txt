@@ -16,8 +16,8 @@ The new in this version is:
   All dialogboxs will be kept alive by default, they are only destroyed when the user executes the 
   "destroy" function: myObj.destroy();
   The user is now responsible to delete and destroy the dialogbox objects.
-  By specifying an ID when creating a box, the boxes are reused when hiding and showing, instead of
-  a new box being created each time the box is hidden and shown.
+  By specifying an ID when creating a box, the existing box are reused when hiding and showing, instead of
+  a new box being created each time the box is hidden and shown and filling up the DOM.
   (The variable "bKeepAlive" will be obsolete, and may be removed in future versions)
 
 
