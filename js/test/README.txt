@@ -18,8 +18,10 @@ The new in this version is:
   (The variable "bKeepAlive" will be obsolete, and may be removed in future versions)
 
 
-- There is also an added feature to get elements inside the dialogbox by using these shorthand methods:
+- There is also an added feature to get elements inside and the dialogbox by using these shorthand methods:
 
+  myObj.el();              // using () blank, returns the HTML dialog element itself
+  
   myObj.el('#someID');     // using # (hash), returns the HTML element containing the ID
    
   myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
