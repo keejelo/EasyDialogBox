@@ -12,8 +12,10 @@ The new in this version is:
   This method also fires: myObj.onHide()
   
 - Dialogboxes now hides in DOM when closing the box by clicking "Close", "X", pressing "ESC" key.
+  (The hide function is being used to do this)
   All dialogboxs will be kept alive by default, they are only destroyed when the user executes the 
   "destroy" function: myObj.destroy();
+  The user is now responsible to delete and destroy the dialogbox objects.
   (The variable "bKeepAlive" will be obsolete, and may be removed in future versions)
 
 
