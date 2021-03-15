@@ -31,7 +31,7 @@ The new in this version is:
 
   myObj.el();              // using () blank, returns the dialog HTML element itself
   
-  myObj.el('#someID');     // using # (hash), returns the HTML element containing the ID
+  myObj.el('#someID');     // using # (hash), returns the HTML element containing the specified ID
    
   myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
    
