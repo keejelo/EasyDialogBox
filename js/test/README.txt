@@ -30,3 +30,4 @@ The new in this version is:
 
 
 
+( Will also try to add a way to get dialogbox elements as "object.element" )
