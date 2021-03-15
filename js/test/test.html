@@ -54,10 +54,10 @@ window.addEventListener('load', function()
             el = myBox.el('#myText');
             console.log(el.value + ' ( value is retrieved by using element id: var el = myBox.el(\'#myText\'); )');
             
-            myBox.el('.myFormData');
-            console.log(el.value + ' ( value is retrieved by using element class: var el = myBox.el(\'.myFormData\'); )');
+            el = myBox.el('.myFormData');
+            console.log(el[0].value + ' ( value is retrieved by using element class: var el = myBox.el(\'.myFormData\'); )');
             
-            myBox.el('input')[0];
+            el = myBox.el('input')[0];
             console.log(el.value + ' ( value is retrieved by using element index: var el = myBox.el(\'input[0]\'); )');
         }
 
