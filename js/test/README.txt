@@ -31,4 +31,3 @@ The new in this version is:
 ..similar to .getElementById() and .querySelectorAll()
 
 
-( I will also try to add a way to get dialogbox elements in some way like "object.element" )
