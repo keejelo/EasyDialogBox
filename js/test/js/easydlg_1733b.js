@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.733b (0005) (BETA test version)
+// ** Version: 1.733b (0006) (BETA test version)
 // ** Year: 2020-2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
