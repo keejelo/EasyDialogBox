@@ -381,8 +381,7 @@ var EasyDialogBox = (function()
         {
             return document.getElementById(objId);  // return the object element itself
         }
-        
-        if(str.indexOf('#') != -1)
+        else if(str.indexOf('#') != -1)
         {
             return document.getElementById(str.replace('#',''));
         }
