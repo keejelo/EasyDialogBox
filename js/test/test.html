@@ -8,7 +8,7 @@
     
 <!-- THIS IS JUST A TEST PAGE TO TEST SOME NEW THINGS IN THE BETA VERSION -->
     
-    
+
 <script type="text/javascript">
 
 // ** Window load handler
@@ -48,7 +48,10 @@ window.addEventListener('load', function()
         
         if(exist)
         {
-            var el = myBox.el('#myText');
+            var el = myBox.el();
+            console.log(el.id + ' ( element is retrieved by using: var el = myBox.el(); )');
+            
+            el = myBox.el('#myText');
             console.log(el.value + ' ( value is retrieved by using element id: var el = myBox.el(\'#myText\'); )');
             
             myBox.el('.myFormData');
