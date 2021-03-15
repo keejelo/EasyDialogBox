@@ -20,13 +20,13 @@ The new in this version is:
 
 - There is also an added feature to get elements inside and the dialogbox by using these shorthand methods:
 
-  myObj.el();              // using () blank, returns the HTML dialog element itself
+  myObj.el();              // using () blank, returns the dialog HTML element itself
   
   myObj.el('#someID');     // using # (hash), returns the HTML element containing the ID
    
   myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
    
-  myObj.el('SomeElement'); // returns an indexed HTMLCollection ([i] as normal)
+  myObj.el('someElement'); // returns an indexed HTMLCollection ([i] as normal)
    
 ..similar to .getElementById() and .querySelectorAll()
 
