@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
-// ** Version: 1.733b (0006) (BETA test version)
+// ** Version: 1.733b (0007) (BETA test version)
 // ** Year: 2020-2021
 // ** GitHub: https://github.com/keejelo/EasyDialogBox
 //
@@ -377,9 +377,9 @@ var EasyDialogBox = (function()
     // ** Shorthand for getting elements inside dialog, or just get by Id
     var _el = function(objId, str)
     {
-        if(str === undefined)
+        if(str === undefined || str == '' || str == 0)
         {
-            return document.getElementById(objId);  // return the object element itself
+            return document.getElementById(objId + '_1');
         }
         else if(str.indexOf('#') != -1)
         {
