@@ -27,8 +27,7 @@ The new in this version is:
 
 
 
-- There is also an added feature to get elements inside and the dialogbox element itself
-  by using these shorthand methods:
+- Also added a way to get elements inside and the dialogbox element itself, using these shorthand methods:
 
   myObj.el();              // using () blank, returns the dialog HTML element itself
   
