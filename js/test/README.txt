@@ -10,8 +10,8 @@ The new in this version is:
 - Created a "hide" method that can hide dialogbox: myObj.hide();
   It will still exist in DOM, but hidden with css (display:none; and visibility:hidden;)
   This method also fires: myObj.onHide()
-
-
+  
+  
 - Dialogboxes now hides in DOM when closing the box by clicking "Close", "X", pressing "ESC" key.
   All dialogboxs will be kept alive by default, they are only destroyed when the user executes the 
   "destroy" function: myObj.destroy();
@@ -29,5 +29,4 @@ The new in this version is:
 ..similar to .getElementById() and .querySelectorAll()
 
 
-
-( Will also try to add a way to get dialogbox elements as "object.element" )
+( I will also try to add a way to get dialogbox elements in some way like "object.element" )
