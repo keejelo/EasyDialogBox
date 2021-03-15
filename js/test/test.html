@@ -49,16 +49,16 @@ window.addEventListener('load', function()
         if(exist)
         {
             var el = myBox.el();
-            console.log(el.id + ' ( element is retrieved by using: var el = myBox.el(); )');
+            console.log(el.id + ' | element is retrieved by using: var el = myBox.el();');
             
             el = myBox.el('#myText');
-            console.log(el.value + ' ( value is retrieved by using element id: var el = myBox.el(\'#myText\'); )');
+            console.log(el.value + ' | value is retrieved by using element id: var el = myBox.el(\'#myText\');');
             
             el = myBox.el('.myFormData');
-            console.log(el[0].value + ' ( value is retrieved by using element class: var el = myBox.el(\'.myFormData\'); )');
+            console.log(el[0].value + ' | value is retrieved by using element class: var el = myBox.el(\'.myFormData\');');
             
             el = myBox.el('input')[0];
-            console.log(el.value + ' ( value is retrieved by using element index: var el = myBox.el(\'input[0]\'); )');
+            console.log(el.value + ' | value is retrieved by using element index: var el = myBox.el(\'input[0]\');');
         }
 
     });
