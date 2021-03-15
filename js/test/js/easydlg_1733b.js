@@ -377,6 +377,11 @@ var EasyDialogBox = (function()
     // ** Shorthand for getting elements inside dialog, or just get by Id
     var _el = function(objId, str)
     {
+        if(str === undefined)
+        {
+            return document.getElementById(objId);  // return the object element itself
+        }
+        
         if(str.indexOf('#') != -1)
         {
             return document.getElementById(str.replace('#',''));
