@@ -45,5 +45,5 @@ Since this is moving towards having more stuff in DOM:
 I'll also try to change the create function so that when creating objects it also creates the DOM element at the same time, not just only in memory.
 As it is now the DOM element only gets created the first time the show function is executed.
 After the change the show function will only show the already existing DOM element.
-See if I can make it work without too much hassle :)
+Hope I can make it work without too much hassle :)
 
