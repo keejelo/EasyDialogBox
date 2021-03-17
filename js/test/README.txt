@@ -7,9 +7,12 @@ https://github.com/keejelo/EasyDialogBox/blob/master/js/test/js/easydlg_1733b.js
 
 The new in this version is:
 
-- Created a "hide" method that can hide dialogbox: myObj.hide();
+- Dialogboxes are now created in DOM and memory with the "create" function, hidden in DOM.
+
+
+- Created a "hide" function that can hide dialogbox: myObj.hide();
   It will still exist in DOM, but hidden (with css).
-  This method also fires: myObj.onHide()
+  This function also fires: myObj.onHide();
 
 
 - Dialogboxes now hides in DOM when closing the box by clicking "Close", "X", pressing "ESC" key,
@@ -21,7 +24,7 @@ The new in this version is:
   
   By specifying an ID when creating a box, the existing box are reused when hiding and showing, instead of
   a new box being created each time the box is hidden and shown and filling up the DOM, and leak memory
-  if not destroyed.
+  if not destroyed.  
   
   (The variable "bKeepAlive" will be obsolete, and mostly be removed in future versions)
 
