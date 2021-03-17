@@ -1097,10 +1097,10 @@ var EasyDialogBox = (function()
                 _log('DEBUG: show(): Unknown error!');
             }
         }
-        else if(_isActive)
-        {
-            _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
-        }
+        //else if(_isActive)
+        //{
+        //    _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
+        //}
         else
         {
             _log('DEBUG: show(): Unknown error!');
