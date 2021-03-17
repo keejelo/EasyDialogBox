@@ -7,9 +7,10 @@ https://github.com/keejelo/EasyDialogBox/blob/master/js/test/js/easydlg_1733b.js
 
 The new in this version is:
 
--> Dialogboxes are now created in DOM and memory with the "create" function, hidden in DOM.
+-> Dialogboxes are now created in DOM and memory at once with the "EasyDialogBox.create()" function.
+   (Before dialogbox was only created in memory, and the DOM element was created with "obj.show()" )
 
--> Created a "hide" function that can hide the dialogbox by doing: myObj.hide();
+-> Added a "hide" function that hides the dialogbox when doing: myObj.hide();
    It will still exist in DOM, but hidden (with css).
    This function also fires: myObj.onHide();
 
@@ -27,7 +28,7 @@ The new in this version is:
    (The variable "bKeepAlive" will be obsolete, and mostly be removed in future versions)
 
 
--> Created a way to get elements inside and the dialogbox element itself, using these shorthand methods:
+-> Added a way to get elements inside and the dialogbox element itself, using these shorthand methods:
 
    myObj.el();              // using () blank, returns the dialog HTML element itself
   
