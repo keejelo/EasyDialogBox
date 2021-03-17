@@ -9,11 +9,9 @@ The new in this version is:
 
 - Dialogboxes are now created in DOM and memory with the "create" function, hidden in DOM.
 
-
 - Created a "hide" function that can hide dialogbox: myObj.hide();
   It will still exist in DOM, but hidden (with css).
   This function also fires: myObj.onHide();
-
 
 - Dialogboxes now hides in DOM when closing the box by clicking "Close", "X", pressing "ESC" key,
   they are NOT destroyed from DOM and memory like the previous versions was.
@@ -29,7 +27,7 @@ The new in this version is:
   (The variable "bKeepAlive" will be obsolete, and mostly be removed in future versions)
 
 
-- Also added a way to get elements inside and the dialogbox element itself, using these shorthand methods:
+- Created a way to get elements inside and the dialogbox element itself, using these shorthand methods:
 
   myObj.el();              // using () blank, returns the dialog HTML element itself
   
