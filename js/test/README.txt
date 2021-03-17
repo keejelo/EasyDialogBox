@@ -9,7 +9,7 @@ The new in this version is:
 
 -> Dialogboxes are now created in DOM and memory with the "create" function, hidden in DOM.
 
--> Created a "hide" function that can hide dialogbox: myObj.hide();
+-> Created a "hide" function that can hide the dialogbox by doing: myObj.hide();
    It will still exist in DOM, but hidden (with css).
    This function also fires: myObj.onHide();
 
