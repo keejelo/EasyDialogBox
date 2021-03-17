@@ -43,4 +43,8 @@ The new in this version is:
 
 Update:
 I'm now working on improving all of this, will update.
+Running tests now..
+
+
+
 
