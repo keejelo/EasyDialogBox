@@ -259,12 +259,12 @@ var EasyDialogBox = (function()
         return false;
     };
 
-    // ** Harmful chars based on the context: &<>"'`´,!@$%/\()=+{}[]
+    // ** Harmful chars based on the context: &<>"'`Â´,!@$%/\()=+{}[]
 
     // ** Sanitize string, remove all characters except listed
     var _sanitize = function(str)
     {
-        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö-]/gi, '');
+        str = str.replace(/[^a-z0-9@Â£#\s\,._-Ã¦Ã¸Ã¥Ã¤Ã¶-]/gi, '');
         return str;
     };
 
