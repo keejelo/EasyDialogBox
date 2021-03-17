@@ -20,7 +20,8 @@ The new in this version is:
   The user is now responsible to delete and destroy the dialogbox objects to prevent DOM-fill and memory leaks.
   
   By specifying an ID when creating a box, the existing box are reused when hiding and showing, instead of
-  a new box being created each time the box is hidden and shown and filling up the DOM.
+  a new box being created each time the box is hidden and shown and filling up the DOM, and leak memory
+  if not destroyed.
   
   (The variable "bKeepAlive" will be obsolete, and mostly be removed in future versions)
 
