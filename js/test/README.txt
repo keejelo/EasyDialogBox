@@ -30,12 +30,14 @@ The new in this version is:
   myObj.el();              // using () blank, returns the dialog HTML element itself
   
   myObj.el('#someID');     // using # (hash), returns the HTML element containing the specified ID
+                           // ..somewhat similar to .getElementById()
    
   myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
-   
+  
   myObj.el('someElement'); // returns an indexed HTMLCollection ([i] as normal)
+  
+  ..similar to .querySelectorAll()
    
-..similar to .getElementById() and .querySelectorAll()
 
 
 Update:
