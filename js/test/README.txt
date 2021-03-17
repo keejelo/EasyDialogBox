@@ -30,7 +30,7 @@ The new in this version is:
 
 -> Added a way to get elements inside and the dialogbox element itself, using these shorthand methods:
 
-   myObj.element;           // returns the dialogbox HTML element itself
+   myObj.element;           // the dialogbox HTML element itself
    
    myObj.el();              // using () blank, returns the dialogbox HTML element itself
   
