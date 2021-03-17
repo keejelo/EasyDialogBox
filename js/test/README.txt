@@ -40,4 +40,6 @@ The new in this version is:
 ..similar to .getElementById() and .querySelectorAll()
 
 
+Update:
+I'm now working on improving all of this, will update.
 
