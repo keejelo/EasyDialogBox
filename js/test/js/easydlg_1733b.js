@@ -1131,7 +1131,7 @@ var EasyDialogBox = (function()
             
         // ** Set hidden flags
         obj.bHidden = true;
-        obj.bExistInDOM = true;
+        //obj.bExistInDOM = true;
         obj.bVisible = false;
         
         // ** Get body element, reset values, restore scrolling
