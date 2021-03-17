@@ -1,13 +1,13 @@
 /****************************************************************************************************************
-* EasyDialogBox     : BETA test version
+* EasyDialogBox      : BETA test version
 *
-* Version: 1.733b   : Build: 0021
+* Version: 1.733b    : Build: 0021
 *
-* Year: 2020 - 2021
+* Year: 2020-2021
 *
 * GitHub: https://github.com/keejelo/EasyDialogBox
 *
-* Comment: Crossbrowser. Legacy browser support as much as possible.
+* Comment: Crossbrowser and legacy browser support as much as possible.
 ****************************************************************************************************************/
 
 
