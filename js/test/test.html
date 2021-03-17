@@ -21,6 +21,7 @@ window.addEventListener('load', function()
     '<p><button id="delBtn">Delete me</button></p>'
     );
     
+    console.log(myBox.element);
        
     // ** onShow 
     myBox.onShow = function()
@@ -36,7 +37,9 @@ window.addEventListener('load', function()
         delBtn.addEventListener('click', function()
         {
             myBox.destroy();
-        });                                
+        });
+        
+        console.log('executed: myBox.onShow(); id:' + myBox.id);
     };
 
     
@@ -47,7 +50,7 @@ window.addEventListener('load', function()
         var exist = myBox.show();
         
         if(exist)
-        {            
+        {   
             var el = myBox.el();
             console.log(el.id + ' | Dialogbox element itself is retrieved by using: var el = myBox.el();');
             
@@ -88,7 +91,9 @@ window.addEventListener('load', function()
             delBtn.addEventListener('click', function()
             {
                 myBox.destroy();
-            });                    
+            });
+            
+            console.log('executed: myBox.onShow(); id:' + myBox.id);
         };
     });
 });
