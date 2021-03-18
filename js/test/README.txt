@@ -10,12 +10,12 @@ New in this version:
 ---------------------------------------------------------------------------------------------------------
 
 -> Dialogboxes are now created in DOM and memory at once with the "EasyDialogBox.create()" function.
-   (Before dialogbox was only created in memory, and the DOM element was created with "obj.show()" )
+   ( Before dialogbox was only created in memory, and the DOM element was created with "obj.show()" )
 
 ---------------------------------------------------------------------------------------------------------
 
 -> Added a "hide" function that hides the dialogbox when doing: myObj.hide();
-   It will still exist in DOM, but hidden (with css).
+   It will still exist in DOM, but hidden with css.
    This function also fires: myObj.onHide();
 
 ---------------------------------------------------------------------------------------------------------
