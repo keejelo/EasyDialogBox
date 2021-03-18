@@ -449,7 +449,6 @@ var EasyDialogBox = (function()
             _scrollBarFix();
             
             var hiddenDlg = document.getElementById(existingObj.id);
-            var hiddenBox = document.getElementById(existingObj.id + '_1');
             
             // ** Make it draggable, unless flag is set
             if(!(_hasClass(hiddenDlg, 'dlg-disable-drag')))
