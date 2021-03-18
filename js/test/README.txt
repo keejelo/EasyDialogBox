@@ -25,7 +25,8 @@ New in this version:
   
    All dialogboxs will be kept alive by default, they are only destroyed when the user executes the 
    "destroy" function: myObj.destroy();
-   The user is now responsible to delete and destroy the dialogbox objects to prevent DOM-fill and memory leaks.
+   
+   The user is now responsible for deleting and destroying the dialogbox objects to prevent DOM-fill and memory leaks.
   
    By specifying an ID when creating a box, the existing box are reused when hiding and showing, instead of
    a new box being created each time the box is hidden and shown and filling up the DOM, and leak memory
