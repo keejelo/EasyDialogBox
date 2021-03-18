@@ -1,7 +1,7 @@
 /****************************************************************************************************************
 * EasyDialogBox - BETA test version
-* Created by: keejelo
 * Version: 1.733b, build: 0027
+* Created by: keejelo
 * Year: 2020-2021
 *
 * GitHub: https://github.com/keejelo/EasyDialogBox
