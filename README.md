@@ -12,6 +12,8 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br />
 <b>Currently testing new version: 1.733b (BETA)</b>
 <br>
+Read more about the new features and changes:
+<br>
 https://github.com/keejelo/EasyDialogBox/tree/master/js/test
 <br />
 <br />
