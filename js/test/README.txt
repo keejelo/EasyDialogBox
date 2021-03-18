@@ -6,7 +6,7 @@ https://github.com/keejelo/EasyDialogBox/blob/master/js/test/js/easydlg_1733b.js
 
 
 ---------------------------------------------------------------------------------------------------------
-The new in this version is:
+New in this version:
 ---------------------------------------------------------------------------------------------------------
 
 -> Dialogboxes are now created in DOM and memory at once with the "EasyDialogBox.create()" function.
