@@ -37,15 +37,15 @@ New in this version:
 
 -> Added ways to get the dialogbox element itself and the elements inside, using these shorthand methods:
 
-   myObj.element;           // returns the dialogbox HTML element itself
+   myObj.el;               // returns the dialogbox HTML element itself
    
-   myObj.el();              // using () blank, returns the dialogbox HTML element itself
+   myObj.$();              // using () blank, returns the dialogbox HTML element itself
   
-   myObj.el('#someID');     // using # (hash), returns the HTML element containing the specified ID
+   myObj.$('#someID');     // using # (hash), returns the HTML element containing the specified ID
    
-   myObj.el('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
+   myObj.$('.someClass');  // using . (dot), returns an indexed HTMLCollection ([i] as normal)
   
-   myObj.el('someElement'); // returns an indexed HTMLCollection ([i] as normal)
+   myObj.$('someElement'); // returns an indexed HTMLCollection ([i] as normal)
   
    ..similar to .getElementById() and .querySelectorAll()
    
