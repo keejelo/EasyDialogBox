@@ -416,32 +416,32 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        var myBox = EasyDialogBox.create(null, 'dlg dlg-success', 'My title', '<p>Hello there!</p>', myCallbackFuncToRun);
-        
+        let myBox = EasyDialogBox.create('someId', 'dlg-yes-no', 'My title', '<p>Hello there!</p>');
+
         // ** Create a custom onShow function
         myBox.onShow = function()
         {
             console.log('Example onShow function fired');
-        };        
+        };
 
-        // ** Show the newly created box
-        myBox.show();
-
-        // ** Example of a callback function (using "var" for "hoisting" since declaring after)
-        var myCallbackFuncToRun = function(nRetCode, strInput)
+        // ** Create a custom onClose function
+        myBox.onClose = function()
         {
             // Example of some code to handle callback
             
-            if(nRetCode === 1)
+            if(myBox.nRetCode === 1)
             {
-                // ... user clicked "Yes" button
+                // ... user clicked "Close" button
+
+                // ** Destroy the box
+                myBox.destroy();
             }
             
-            if(strInput !== '')
-            {
-                // ... user typed something in the input field of promptbox
-            }
+            console.log('Example onClose function fired');
         };
+
+        // ** Show the newly created box
+        myBox.show();
     }, false);
 }, false);
 //-----------------------------------------------------------------------------------------------------------------
@@ -457,7 +457,7 @@ attachEventListener(window, 'load', function()
             <p>Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
             <p>Lightweight. Responsive. Plain vanilla Javascript, no libraries.</p>
             <p>Using standard HTML, CSS and Javascript.<br/>
-            Crossbrowser. Legacy browser support as much as possible.</p>
+            Crossbrowser, legacy browser support as much as possible.</p>
             <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>
         </div>
         
@@ -502,7 +502,7 @@ attachEventListener(window, 'load', function()
 
             <h2>Create dialog</h2>
             <p>
-                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, bKeepAlive, x, y, w, h);</code>
+                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
             </p>
 
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
@@ -556,11 +556,10 @@ attachEventListener(window, 'load', function()
             
             <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
             <p><code>strMessage</code> = message, can be html or just plain text.</p>
-            <p>Optional: <code>fnCallback</code> = callback function that executes when box closes.</p>
-            <p>Optional: <code>bKeepAlive</code> = boolean, if <span class="ital word">true</span> the object will NOT be destroyed in <code>destroy()</code> function. If not set, then it's automatically set to <span class="ital word">false</span></p>
-            <p>To delete it you need to manually set the flag to <span class="ital word">false</span> with <code>myObj.bKeepAlive = false;</code></p>
-            <p>And then you can delete it with <code>myObj.destroy();</code></p>
+            <p>Optional: <code>fnCallback</code> = callback function that executes when box closes (or you can just use <code>myObj.onClose();</code> instead)</p>
+            
             <p>&nbsp;</p>
+            
             <p>
                 <span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
                 <br />A fix has been added to deal with this issue, so it may just work out fine, but at least now you know.
@@ -588,7 +587,6 @@ attachEventListener(window, 'load', function()
                     <tr><td>strMessage</td><td>string</td></tr>
                     <tr><td>strInput</td><td>string</td></tr>
                     <tr><td>nRetCode</td><td>number</td></tr>
-                    <tr><td>bKeepAlive</td><td>boolean</td></tr>
                     <tr><td>bVisible</td><td>boolean</td></tr>
                     <tr><td>bExistInDOM</td><td>boolean</td></tr>
                     <tr><td>x</td><td>number</td></tr>
@@ -597,10 +595,15 @@ attachEventListener(window, 'load', function()
                     <tr><td>h</td><td>number</td></tr>  
                     <tr><td>callback</td><td>function</td></tr>
                     <tr><td>show</td><td>function</td></tr>
+                    <tr><td>hide</td><td>function</td></tr>
                     <tr><td>destroy</td><td>function</td></tr>
                     <tr><td>onCreate</td><td>function</td></tr>
                     <tr><td>onShow</td><td>function</td></tr>
+                    <tr><td>onHide</td><td>function</td></tr>
+                    <tr><td>onDestroy</td><td>function</td></tr>
                     <tr><td>onClose</td><td>function</td></tr>
+                    <tr><td>$</td><td>function</td></tr>
+                    <tr><td>el</td><td>element, reference to dialogbox element itself</td></tr>
                 </tbody>
             </table>
             
@@ -614,13 +617,38 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
             
-            <h2>Close dialog</h2>
+            <h2>Hide dialog (close)</h2>
+            <p>
+                <code>myObj.hide();</code>
+            </p>
+            <p>Return value = <span class="ital word">none</span></p>
+            <p>(Pressing the keyboard escape-key <code>Esc</code> also fires this function)</p>
+            
+            <p>&nbsp;</p>
+            
+            <h2>Destroy dialog</h2>
             <p>
                 <code>myObj.destroy();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
-            <p>(Pressing the keyboard escape-key <code>Esc</code> also fires this function)</p>
-       
+
+            <p>&nbsp;</p>
+
+            <h2>Get the dialogbox HTML element itself</h2>
+            <p>
+                <code>myObj.el;</code>
+            </p>
+            <p>Return value = <span class="ital word">HTMLElement</span></p>
+
+            <p>&nbsp;</p>
+
+            <h2>Get HTML element inside the dialogbox</h2>
+            <p>There are multiple ways to do this, all which are similar to <code>.getElementById()</code> and <code>.querySelectorAll()</code></p>
+            <p><code>myObj.$();</code> using () blank, returns the dialogbox HTML element itself.</p>
+            <p><code>myObj.$('#someId');</code> using # (hash), returns the HTML element containing the specified ID.</p>
+            <p><code>myObj.$('.someClass');</code> using . (dot), returns an indexed HTMLCollection ([i] as normal)</p>
+            <p><code>myObj.$('someElement');</code> returns an indexed HTMLCollection ([i] as normal)</p>
+            
             <p>&nbsp;</p>
         
             <h2>Object event-functions</h2>
@@ -653,6 +681,20 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             
             <div>
+                <code>myObj.onHide();</code> fires when dialogbox is being hidden.
+                <p>Usage:</p>
+<div class="codeview"><i></i>
+<i><b>myObj</b><b class="func">.onHide</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
+<i><b class="func">{</b></i>
+<i>    <b class="comment">// .. do something here ..</b></i>
+<i><b class="func">};</b></i>
+<i></i>
+</div>
+            </div>
+            
+            <p>&nbsp;</p>
+            
+            <div>
                 <code>myObj.onClose();</code> fires when dialogbox is closing.
                 <p>Usage:</p>
 <div class="codeview"><i></i>                
@@ -666,12 +708,26 @@ attachEventListener(window, 'load', function()
             
             <p>&nbsp;</p>
             
-            <h2 id="js_example">Example</h2>
+            <div>
+                <code>myObj.onDestroy();</code> fires when dialogbox is being destroyed.
+                <p>Usage:</p>
+<div class="codeview"><i></i>                
+<i><b>myObj</b><b class="func">.onDestroy</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
+<i><b class="func">{</b></i>
+<i>    <b class="comment">// .. do something here ..</b></i>
+<i><b class="func">};</b></i>
+<i></i>
+</div>
+            </div>
+            
+            <p>&nbsp;</p>
+            
+            <h2 id="js_example">Simple example</h2>
             <div class="codeview"><i></i>
 <i><b class="comment">// Javascript ...</b></i>
 <i></i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
-<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg dlg-success'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">,</b> myCallbackFuncToRun<b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;')</b>;</i>
 <i></i>
 <i><b class="comment">// ** Create a custom onShow function</b></i>
 <i><b>myBox</b><b class="func">.onShow</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -679,32 +735,24 @@ attachEventListener(window, 'load', function()
 <i>    <b>console.log('Example onShow function fired');</b></i>
 <i><b class="func">};</b></i>
 <i></i>
-<i><b class="comment">// ** Show the newly created box</b></i>
-<i><b>myBox</b><b class="func">.show()</b>;</i>
-<i></i>
-<i><b class="comment">// ** To programatically destroy the box, you can do</b></i>
-<i><b class="comment">// myBox.destroy();</b></i>
-<i></i>
-<i><b class="comment">// ..but the box will be destroyed automatically by itself when you click the buttons etc. in the box</b></i>
-<i><b class="comment">// ..unless the object got variable: bKeepAlive = true </b></i>
-<i><b class="comment">// ..to really destroy that, you need to set: myBox.bKeepAlive = false;</b></i>
-<i><b class="comment">// ..and then you can delete it with: myBox.destroy();</b></i>
-<i></i>
-<i><b class="comment">// ** Example of a callback function (using &quot;var&quot; for &quot;hoisting&quot; since declaring after)</b></i>
-<i><b class="keyword">var</b> myCallbackFuncToRun <b class="equal">=</b> <b class="keyword">function</b><b class="func">(</b>nRetCode<b class="func">,</b> strInput<b class="func">)</b></i>
+<i><b class="comment">// ** Create a custom onClose function</b></i>
+<i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
 <i>    <b class="comment">// Example of some code to handle callback</b></i>
 <i></i>    
-<i>    <b class="keyword">if</b><b class="func">(</b>nRetCode <b class="equal">===</b> <b class="num">1</b><b class="func">)</b></i>
+<i>    <b class="keyword">if</b><b class="func">(</b>myBox.nRetCode <b class="equal">===</b> <b class="num">1</b><b class="func">)</b></i>
 <i>    <b class="func">{</b></i>
 <i>        <b class="comment">// ... user clicked &quot;Yes&quot; button</b></i>
+<i></i>
+<i>        <b class="comment">// ** Destroy the box</b></i>
+<i>        <b>myBox</b><b class="func">.destroy()</b>;</i>
 <i>    <b class="func">}</b></i>
-<i></i>    
-<i>    <b class="keyword">if</b><b class="func">(</b>strInput <b class="equal">!==</b> <b class="param">''</b><b class="func">)</b></i>
-<i>    <b class="func">{</b></i>
-<i>        <b class="comment">// ... user typed something in the input field of promptbox</b></i>
-<i>    <b class="func">}</b></i>
+<i></i>
+<i>    <b>console.log('Example onClose function fired');</b></i>
 <i><b class="func">}</b>;</i>
+<i></i>
+<i><b class="comment">// ** Show the newly created box</b></i>
+<i><b>myBox</b><b class="func">.show()</b>;</i>
 <i></i>
 <i><b class="comment">// ...</b></i>
 <i></i>     </div>
@@ -717,7 +765,7 @@ attachEventListener(window, 'load', function()
             <div>
                 <h2>Return values</h2>
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
-                <p>These are intended to be used in the <code>object.callback()</code> function for further processing.</p>
+                <p>These are intended to be used in the <code>object.callback()</code> or <code>object.onClose()</code> function for further processing.</p>
                 <table class="returnTable">
                     <thead>
                         <tr><th colspan="3"><code>object.nRetCode</code></th></tr>
@@ -740,11 +788,9 @@ attachEventListener(window, 'load', function()
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>string</td><td>string</td><td>A string of text</td></tr>
+                        <tr><td>string</td><td>string</td><td>A string of text entered in the <code>&lt;input&gt;</code> element when using class <code>dlg-prompt</code></td></tr>
                     </tbody>
                 </table>
-                <p>See the <a href="#js_example">example above</a> and in sourcecode on how to use them.</p>
-                <p>(Enable DevTools console in your browser (F12) to see some messages from the examples appear..)</p>
             </div>
             
             <p>&nbsp;</p>
@@ -829,7 +875,7 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
                 <div class="codeview"><i></i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i></i>    
@@ -920,7 +966,7 @@ attachEventListener(window, 'load', function()
         <div>
             <h2>fini</h2>
         </div>
-        <div class="small_note">keejelo, 2020.</div>
+        <div class="small_note">keejelo, 2020-2021.</div>
     </div>
     
     <!-- HTML pre-written dialogboxes, hidden and not visible. Only used as templates for the dynamically created dialogboxes -->
@@ -930,7 +976,7 @@ attachEventListener(window, 'load', function()
         this is line two.</p>
     </div>
 
-    <div id="myBoxError" class="dlg dlg-error" title="Title text" data-callback="myCallbackFunc">
+    <div id="myBoxError" class="dlg dlg-error" title="Title text">
         <p>This is a message</p>
     </div>
 
