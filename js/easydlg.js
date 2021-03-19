@@ -1,6 +1,6 @@
 /****************************************************************************************************************
-* EasyDialogBox - BETA test version
-* Version: 1.733b, build: 0031
+* EasyDialogBox
+* Version: 1.735
 * Created by: keejelo
 * Year: 2020-2021
 *
