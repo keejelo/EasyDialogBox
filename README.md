@@ -12,7 +12,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br />
 <b>New version released: 1.735</b>
 <br/ >
-See https://keejelo.github.io/EasyDialogBox/changelog.txt for important changes
+See changelog for important changes: https://keejelo.github.io/EasyDialogBox/changelog.txt
 <br />
 
 ## Important changes
