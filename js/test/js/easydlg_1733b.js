@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox - BETA test version
-* Version: 1.733b, build: 0030
+* Version: 1.733b, build: 0031
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -1376,8 +1376,7 @@ var EasyDialogBox = (function()
                 _log('DEBUG: create(): new object created and added to DOM');
                 
                 // ** Return object
-                return obj;                
-                
+                return obj;
             }            
             else if(!matched)
             {
@@ -1431,12 +1430,10 @@ var EasyDialogBox = (function()
                 
                 // ** Create object from DOM element
                 var obj = _create(dlg.getAttribute('id'),            // id
-                                  //dlg.getAttribute('class'),       // type
                                   classType,                         // type
                                   dlg.getAttribute('title'),         // title
                                   dlg.innerHTML,                     // message
                                   dlg.getAttribute('data-callback'), // callback function
-                                  //true,                              // keep alive after closing
                                   dlg.getAttribute('data-x'),        // horizontal position
                                   dlg.getAttribute('data-y'),        // vertical position
                                   dlg.getAttribute('data-w'),        // width
