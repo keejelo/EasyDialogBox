@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox - BETA test version
-* Version: 1.733b, build: 0031
+* Version: 1.733b, build: 0032
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -775,11 +775,6 @@ var EasyDialogBox = (function()
                 },                
                 
                 // ** Shorthand for getting element
-                //el : function(str)
-                //{
-                //    return _getEl(this.id, str);
-                //},
-                
                 $ : function(str)
                 {
                     return _getEl(this.id, str);
