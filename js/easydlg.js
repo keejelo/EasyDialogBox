@@ -1,12 +1,13 @@
-//-----------------------------------------------------------------------------------------------------------------
-// ** EasyDialogBox
-// ** Version: 1.732
-// ** Author: Keejelo
-// ** Year: 2020, 2021
-// ** GitHub: https://github.com/keejelo/EasyDialogBox
-//
-// ** Comment: Crossbrowser. Legacy browser support as much as possible.
-//-----------------------------------------------------------------------------------------------------------------
+/****************************************************************************************************************
+* EasyDialogBox
+* Version: 1.735
+* Created by: keejelo
+* Year: 2020-2021
+*
+* GitHub: https://github.com/keejelo/EasyDialogBox
+*
+* Comment: Crossbrowser, legacy browser support as much as possible.
+****************************************************************************************************************/
 
 
 //---------------------------------------------------------------------
@@ -61,8 +62,11 @@ var EasyDialogBox = (function()
     // ** Variable that holds the original padding-right value of body element
     var _orgBodyPaddingRight = 0;
     
+    // ** Flag that indicates if window was resized
+    var _bResized = false;    
+    
     // ** Flag that indicates if a box is currently in view (is displayed)
-    var _isActive = false;
+    //var _isActive = false;
 
     // ** Add "forEach" support to IE(9-11)
     if(window.NodeList && !NodeList.prototype.forEach)
@@ -204,7 +208,7 @@ var EasyDialogBox = (function()
         }
     };
 
-    // ** Get object from array id
+    // ** Get object from array by using id
     var _getObjFromId = function(arr, strId)
     {
         for(var i = 0; i < arr.length; i++)
@@ -374,21 +378,423 @@ var EasyDialogBox = (function()
             }
         }
     };
+    
+    // ** Shorthand for getting elements inside and the dialog element itself
+    var _getEl = function(objId, str)
+    {
+        if(str === undefined || typeof str === 'undefined' || str === '' || str === 0 || str === null)
+        {
+            return document.getElementById(objId + '_1');
+        }
+        else if(str.indexOf('#') != -1)
+        {
+            return document.getElementById(str.replace('#',''));
+        }
+        else
+        {
+            return document.getElementById(objId).querySelectorAll(str);
+        };
+    };
+    
+    // ** Hide scrollbar, retaining padding
+    var _scrollBarFix = function()
+    {
+        var body = document.getElementsByTagName('body')[0];
+        
+        // ** Store the original padding-right value
+        _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+
+        // ** Convert from string to integer (remove 'px' postfix and return value as integer)
+        _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
+
+        // ** Get width of body before removing scrollbar
+        var w1 = body.offsetWidth;
+
+        // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
+        _addClass(body, 'dlg-stop-scrolling');
+
+        // ** Get width of body after removing scrollbar
+        var w2 = body.offsetWidth;
+
+        // ** Get width-difference
+        var w3 = w2 - w1;
+        
+        // ** If conditions are true: add both padding-right values, 
+        if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+        {
+            w3 += _s2i(_orgBodyPaddingRight);
+        }
+
+        // ** Apply width-difference as padding-right to body, substitute for scrollbar,
+        // ** can prevent contentshift if content is centered when scrollbar disappears.
+        body.setAttribute('style','padding-right:' + w3 + 'px;');
+    };
 
     // ** Show the dialog box
     var _show = function(objId)
     {
-        // ** Check that no other dialog is active
-        if(_isActive === false)
+        // ** Check if box exist
+        var obj = _getObjFromId(_boxObj, objId);
+        
+        if(obj === null)
         {
-            // ** Get object from id
+            _log('DEBUG: show(): error, object do not exist!');
+            return false;
+        }
+        
+        // ** Check if box already exist in case it is hidden, we want to show that instead of creating a new
+        if(obj !== null && obj.bHidden == true)
+        {
+            // ** Hide scrollbar
+            _scrollBarFix();
+            
+            // ** Get element
+            var hiddenDlg = document.getElementById(obj.id);
+            
+            // ** Make it draggable, unless flag is set
+            if(!(_hasClass(hiddenDlg, 'dlg-disable-drag')))
+            {
+                _drag.init(obj.id + '_1');
+            }
+            
+            // ** Show the hidden dialogbox
+            hiddenDlg.style.display = 'block';
+            document.getElementById(obj.id + '_1').style.visibility = 'visible';
+            obj.bVisible = true;
+            obj.onShow();
+            
+            // ** Center box in viewport
+            if(_bResized)
+            {
+                _adjustElSizePos(obj.id + '_1');
+            }
+            
+            _log('DEBUG: show(): executed');
+            
+            return true;
+        }
+        
+        // ** Return fail
+        return false;
+    };
+    
+    // ** Hide dialog box
+    var _hide = function(objId, bDoNotExecuteOnHide)
+    {
+        var dlg = document.getElementById(objId);
+        var box = document.getElementById(objId + '_1');
+
+        // ** Hide the box
+        if(dlg && box)
+        {
+            dlg.style.display = 'none';
+            box.style.visibility = 'hidden';
+        }
+        
+        // ** Set flag to false, indicates that no dialogbox is currently "active" (visible)
+        //_isActive = false;  // will probably be removed, not using it
+        
+        // ** Get the object stored in the array
+        var obj = _getObjFromId(_boxObj, objId);
+
+        // ** Set hidden flags
+        obj.bHidden = true;
+        obj.bVisible = false;
+        
+        // ** Get body element, reset values, restore scrolling
+        var body = document.getElementsByTagName('body')[0];
+        _removeClass(body, 'dlg-stop-scrolling');
+        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');        
+        
+        // ** Update position (if moved/custom pos)
+        if(obj.x !== null)
+        {
+            obj.x = parseInt(box.style.left, 10);
+        }        
+        if(obj.y !== null)
+        {
+            obj.y = parseInt(box.style.top, 10);
+        }        
+        
+        // ** Run onHide function if flag is NOT false
+        if(bDoNotExecuteOnHide === undefined || typeof bDoNotExecuteOnHide == 'undefined' || bDoNotExecuteOnHide == false)
+        {
+            obj.onHide();
+        }
+
+        // ** Reset flag
+        _bResized = false;
+    };
+
+    // ** Close and destroy the dialog box
+    var _destroy = function(objId)
+    {
+        var success = false; // default false
+
+        // ** Get body element, reset values, restore scrolling
+        var body = document.getElementsByTagName('body')[0];
+        _removeClass(body, 'dlg-stop-scrolling');
+        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
+        
+        // ** Get the dlg element
+        var dlg = document.getElementById(objId);
+
+        // ** Hide the box
+        if(dlg)
+        {
+            dlg.style.display = 'none';
+        }
+
+        // ** If promptbox was created, remove eventlisteners
+        if(dlg)
+        {
+            var pBox = dlg.querySelectorAll('.dlg-input-field');
+            if(pBox.length !=0)
+            {
+                pBox[0].onkeyup = null;
+                pBox[0].onchange = null;
+            }
+        }
+
+        // ** Remove dialogbox, reset values
+        if(dlg)
+        {
+            // ** Remove box from DOM
+            dlg.parentNode.removeChild(dlg);
+
+            // ** Get the object stored in the array
             var obj = _getObjFromId(_boxObj, objId);
+            
+            // ** Run onDestroy function
+            obj.onDestroy();
+            
+            // ** Flag that the box as no longer in DOM
+            obj.bExistInDOM = false;
+            
+            // ** Flag that the box as no longer visible (this can be useful if keeping box alive)
+            obj.bVisible = false;
+
+            // ** We override the objects internal variable, since we added "hide" function as default,
+            //    destroy will ALWAYS delete dialogbox from memory and DOM.
+            //    The variable "bKeepAlive" may be removed eventually if not used.
+            obj.bKeepAlive = false;
+
+            // ** If box was created, remove it from array, unless "obj.bKeepAlive = true"
+            if(!obj.bKeepAlive)
+            {
+                // ** Remove object from array
+                var index = _boxObj.indexOf(obj);
+                if(index > -1)
+                {
+                    setTimeout(function()
+                    {
+                        var wasDeleted = _boxObj.splice(index, 1);
+
+                        if(wasDeleted.length === 1)
+                        {
+                            success = true;
+                            _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
+                        }
+                        else
+                        {
+                            success = false;
+                            _log('DEBUG: destroy(): Error! obj.bKeepAlive = false | But object NOT deleted from array!');
+                        }
+                    }, 10);
+                }
+                else
+                {
+                    _log('DEBUG: destroy(): Error, object not found in array!');
+                    success = false;
+                }
+            }
+            // ** If bKeepAlive is true, then do not remove object
+            else if(obj.bKeepAlive)
+            {
+                _log('DEBUG: destroy(): obj.bKeepAlive = true | Object not deleted from array');
+                success = false;
+            }
+        }
+
+        // ** Reset flag 
+        //_isActive = false;  // disabled here for now
+
+        // ** Return result
+        return success;
+    };
+
+    // ** Create dialogbox
+    var _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h)
+    {
+        // ** Check if object already exist, if so return that object instead of creating a new
+        var existingObj = _getObjFromId(_boxObj, strId + '_0');
+        if(existingObj)
+        {
+            _log('DEBUG: create(): new object not created! An object with same ID already exist! Existing object returned');
+            return existingObj;
+        }
+        
+        var matched = _matchAll(_strBoxTypeList, strTypeClass, true);
+
+        // ** Check if valid types
+        if(matched === true)
+        {
+            // ** Check if id is set, if not create a new
+            if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
+            {
+                // ** Create a unique string for the 'id'
+                strId = Math.random().toString(36).substr(2,9);
+            }
+
+            // ** Add token to object id (so we dont mix up id's)
+            strId += '_0';
+
+            // ** Check if value is set, if not set it to: false
+            if(typeof fnCallback === 'undefined')
+            {
+                fnCallback = false;
+            }
+
+            // ** Check if flag is set, if not set it to default
+            //if(typeof bKeepAlive === 'undefined')
+            //{
+            //    bKeepAlive = true;  // default was changed to "true" from "false", due to implementation of hide function
+            //}
+
+            // ** Create object
+            var obj =
+            {
+                // ** Properties
+                id : strId,
+                strTypeClass : strTypeClass,
+                strTitle : strTitle,
+                strMessage : strMessage,
+                bKeepAlive : true,
+                strInput : '',
+                nRetCode : -1,
+                x : x,
+                y : y,
+                w : w,
+                h : h,
+                bVisible : false,
+                bExistInDOM : false,
+                bHidden : false,
+                el : null,
+
+                // ** Callback 
+                callback : function(a,b)
+                {
+                    try
+                    {
+                        if(typeof a === 'undefined')
+                        {
+                            a = this.nRetCode;
+                        }
+
+                        if(typeof b === 'undefined')
+                        {
+                            b = this.strInput;
+                        }
+
+                        // ** Check which kind of box and if it has a callback function
+                        if(typeof window[fnCallback] === 'function')
+                        {
+                            // ** Execute function (pre-written HTML boxes(?))
+                            window[fnCallback](a,b);
+                        }
+                        else if(typeof fnCallback === 'function')
+                        {
+                            // ** Execute function (script-created boxes(?))
+                            fnCallback(a,b);
+                        }
+                        else if(fnCallback === false || fnCallback === 0)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            _log('\n\nDEBUG: typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
+                            _log('       Scope? Possible solution can be to use "hoisting".');
+                            _log('       Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
+                            _log('       ..or declare the callback function before the module "EasyDialogBox" is initialized');
+                            _log('       If the dialogbox do not use a callback function, you can ignore the above messages.\n\n');
+                        }
+                    }
+                    catch(err)
+                    {
+                        _log('CALLBACK: Error! ' + err);
+                    }
+                },
+
+                // ** Show
+                show : function()
+                {
+                    return _show(this.id);
+                },
+                
+                // ** Hide
+                hide : function(bDoNotExecuteOnHide)
+                {
+                    return _hide(this.id, bDoNotExecuteOnHide);
+                },                
+
+                // ** Destroy
+                destroy : function()
+                {
+                    return _destroy(this.id);
+                },
+                
+                // ** onCreate
+                onCreate : function()
+                {
+                    _log('DEBUG: Default "obj.onCreate()" function fired. Override this by creating your own.');
+                },
+                
+                // ** onShow
+                onShow : function()
+                {
+                    _log('DEBUG: Default "obj.onShow()" function fired. Override this by creating your own.');
+                },
+                
+                // ** onHide
+                onHide : function()
+                {
+                    _log('DEBUG: Default "obj.onHide()" function fired. Override this by creating your own.');
+                },
+                
+                // ** onClose
+                onClose : function()
+                {
+                    _log('DEBUG: Default "obj.onClose()" function fired. Override this by creating your own.');
+                },
+                
+                // ** onDestroy
+                onDestroy : function()
+                {
+                    _log('DEBUG: Default "obj.onDestroy()" function fired. Override this by creating your own.');
+                },                
+                
+                // ** Shorthand for getting element
+                $ : function(str)
+                {
+                    return _getEl(this.id, str);
+                }                
+            }
+            _boxObj.push(obj);  // add object to array
+            
+            
+            //---------------------------------------------------------------------
+            // ** Create DOM element
+            //---------------------------------------------------------------------
+        
+            // ** Get object from id, reuse same variable
+            obj = _getObjFromId(_boxObj, strId);
 
             // ** Fix for pre-written HTML boxes: add '_0' to id before getting object
             if(obj === null)
             {
-                objId += '_0';
-                obj = _getObjFromId(_boxObj, objId);
+                strId += '_0';
+                obj = _getObjFromId(_boxObj, strId);                
             }
 
             // ** Create parent reference
@@ -400,7 +806,8 @@ var EasyDialogBox = (function()
             dlg.setAttribute('class', obj.strTypeClass);
             body.appendChild(dlg);
 
-            var matched = null;
+            // ** Reset value
+            matched = null;
             
             if(dlg)
             {
@@ -409,16 +816,16 @@ var EasyDialogBox = (function()
 
             // ** Check if element with the id exist in DOM, and valid dlg-types
             if( dlg && (matched === true) )
-            {            
+            {   
                 // ** Show the backdrop overlay, and the dialogbox eventually
                 dlg.style.display = 'block';  // Must be here or else can cause elements size and pos not detected,
-                                              // then dynamic values do not work as we want.
+                                              // then dynamic values and position do not work as we want.
 
-                // ** Create outer box
+                // ** Create outer box (the dialogbox itself)
                 var box = document.createElement('div');
                 box.setAttribute('id', obj.id + '_1');
                 box.setAttribute('class','dlg-box');
-
+                
                 // ** Prepare custom values, default set to: 0
                 box.customPosX = 0;
                 box.customPosY = 0;
@@ -455,6 +862,7 @@ var EasyDialogBox = (function()
                 
                 // ** Add element to DOM
                 dlg.appendChild(box);
+                
                 
                 // ** Add extra styles if flags are set
                 if(_hasClass(dlg, 'dlg-rounded'))
@@ -672,38 +1080,6 @@ var EasyDialogBox = (function()
                 // ** END: Create footer and buttons
 
 
-                // ** Creating substitute for scrollbar
-
-                // ** Store the original padding-right value
-                _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
-
-                // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-                _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
-
-                // ** Get width of body before removing scrollbar
-                var w1 = body.offsetWidth;
-
-                // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-                _addClass(body, 'dlg-stop-scrolling');
-
-                // ** Get width of body after removing scrollbar
-                var w2 = body.offsetWidth;
-
-                // ** Get width-difference
-                var w3 = w2 - w1;
-                
-                // ** If conditions are true: add both padding-right values, 
-                if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
-                {
-                    w3 += _s2i(_orgBodyPaddingRight);
-                }
-
-                // ** Apply width-difference as padding-right to body, substitute for scrollbar,
-                // ** can prevent contentshift if content is centered when scrollbar disappears.
-                body.setAttribute('style','padding-right:' + w3 + 'px;');
-                // ** END: Creating substitute for scrollbar
-
-
                 //---------------------------------------------------------------------
                 // ** Create event-listeners
                 //---------------------------------------------------------------------
@@ -711,7 +1087,12 @@ var EasyDialogBox = (function()
                 // ** Window resize
                 _attachEventListener(window, 'resize', function WinResize()
                 {
-                    _adjustElSizePos(box.id);
+                    _bResized = true;
+                    
+                    if(obj.bVisible)
+                    {
+                        _adjustElSizePos(obj.id + '_1');
+                    }
                 }, false);
                 // ** END: Window resize
 
@@ -722,13 +1103,16 @@ var EasyDialogBox = (function()
                     _attachEventListener(xCloseDialog, 'click', function XCloseClick()
                     {
                         // ** Remove eventlistener
-                        _detachEventListener(xCloseDialog, 'click', XCloseClick, false);
+                        // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                        //_detachEventListener(xCloseDialog, 'click', XCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
+                        //obj.destroy();  // changed from "destroy" to "hiding", keep the dialogbox in DOM
+                        obj.hide(true);
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        obj.nRetCode = CLOSE;
 
                         // ** Run onClose function
                         obj.onClose();
@@ -743,13 +1127,16 @@ var EasyDialogBox = (function()
                     _attachEventListener(btnCloseDialog, 'click', function BtnCloseClick()
                     {
                         // ** Remove eventlistener
-                        _detachEventListener(btnCloseDialog, 'click', BtnCloseClick, false);
+                        // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                        //_detachEventListener(btnCloseDialog, 'click', BtnCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
+                        //obj.destroy();  // changed from "destroy" to "hiding", keep the dialogbox in DOM
+                        obj.hide(true);
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        obj.nRetCode = CLOSE;
 
                         // ** Run onClose function
                         obj.onClose();
@@ -765,14 +1152,17 @@ var EasyDialogBox = (function()
 
                     if(evt.target == dlg)
                     {
-                        // ** Remove eventlistener
-                        _detachEventListener(window, 'click', WinCloseClick, false);
+                        // ** Remove eventlistener 
+                        // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                        //_detachEventListener(window, 'click', WinCloseClick, false);
 
                         // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
+                        //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                        obj.hide(true);
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        obj.nRetCode = CLOSE;
 
                         // ** Run onClose function
                         obj.onClose();
@@ -794,13 +1184,16 @@ var EasyDialogBox = (function()
                     )
                     {
                         // ** Remove eventlistener
-                        _detachEventListener(window, 'keyup', EscKeyClose, false);
+                        // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                        //_detachEventListener(window, 'keyup', EscKeyClose, false);
                         
                         // ** Close dialogbox, reset values, clean up
-                        obj.destroy();
+                        //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                        obj.hide(true);                        
                         
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
+                        obj.nRetCode = CLOSE;
                         
                         // ** Run onClose function
                         obj.onClose();
@@ -825,13 +1218,16 @@ var EasyDialogBox = (function()
                         _attachEventListener(btnYesDialog, 'click', function BtnYesClick()
                         {
                             // ** Remove eventlistener
-                            _detachEventListener(btnYesDialog, 'click', BtnYesClick, false);
+                            // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                            //_detachEventListener(btnYesDialog, 'click', BtnYesClick, false);
 
                             // ** Close dialogbox, reset values, clean up
-                            obj.destroy();
+                            //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                            obj.hide(true);
 
                             // ** Callback, return code: YES
                             obj.callback(YES);
+                            obj.nRetCode = YES;
 
                             // ** Run onClose function
                             obj.onClose();
@@ -845,13 +1241,16 @@ var EasyDialogBox = (function()
                         _attachEventListener(btnNoDialog, 'click', function BtnNoClick()
                         {
                             // ** Remove eventlistener
-                            _detachEventListener(btnNoDialog, 'click', BtnNoClick, false);
+                            // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                            //_detachEventListener(btnNoDialog, 'click', BtnNoClick, false);
 
                             // ** Close dialogbox, reset values, clean up
-                            obj.destroy();
+                            //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                            obj.hide(true);
 
                             // ** Callback, return code: NO
                             obj.callback(NO);
+                            obj.nRetCode = NO;
                             
                             // ** Run onClose function
                             obj.onClose();
@@ -873,13 +1272,16 @@ var EasyDialogBox = (function()
                         _attachEventListener(btnOkDialog, 'click', function BtnOkClick()
                         {
                             // ** Remove eventlistener
-                            _detachEventListener(btnOkDialog, 'click', BtnOkClick, false);
+                            // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                            //_detachEventListener(btnOkDialog, 'click', BtnOkClick, false);
 
                             // ** Close dialogbox, reset values, clean up
-                            obj.destroy();
+                            //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                            obj.hide(true);
 
                             // ** Callback, return code: OK
                             obj.callback(OK);
+                            obj.nRetCode = OK;
 
                             // ** Run onClose function
                             obj.onClose();
@@ -893,13 +1295,16 @@ var EasyDialogBox = (function()
                         _attachEventListener(btnCancelDialog, 'click', function BtnCancelClick()
                         {
                             // ** Remove eventlistener
-                            _detachEventListener(btnCancelDialog, 'click', BtnCancelClick, false);
+                            // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                            //_detachEventListener(btnCancelDialog, 'click', BtnCancelClick, false);
 
                             // ** Close dialogbox, reset values, clean up
-                            obj.destroy();
+                            //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                            obj.hide(true);
 
                             // ** Callback, return code: CANCEL
                             obj.callback(CANCEL);
+                            obj.nRetCode = CANCEL;
                             
                             // ** Run onClose function
                             obj.onClose();
@@ -935,20 +1340,12 @@ var EasyDialogBox = (function()
                 // ** END: Create event-listeners
                 //---------------------------------------------------------------------
                 
+
                 // ** Make it draggable, unless flag is set
                 if(!(_hasClass(dlg, 'dlg-disable-drag')))
                 {
-                    _drag.init(obj.id + '_1');
+                    _drag.init(box.id);
                 }
-
-                // ** Set flag to indicate that box is active and can be displayed
-                _isActive = true;  // internal module flag
-                
-                // ** Show dialogbox
-                box.style.visibility = 'visible';
-                
-                // ** Set object "visible" flag to: true
-                box.bVisible = true;
 
                 // ** Adjust box size and position according to window size
                 _adjustElSizePos(box.id);
@@ -958,256 +1355,39 @@ var EasyDialogBox = (function()
                 {
                     dlg.querySelector('.dlg-input-field').focus();
                 }
-                
-                // ** Run onShow function
-                obj.onShow();
 
-                // ** Return success
-                return true;
+                // ** Object has been created, set flag to true
+                obj.bExistInDOM = true;
+                
+                // ** Set reference to dialogbox element itself
+                obj.element = document.getElementById(box.id);
+                
+                // ** First run keep hidden, only create, do not show
+                obj.hide(true);  // true = skips execution of "obj.onHide()" function
+
+                // ** Run onCreate function
+                obj.onCreate();
+                
+                _log('DEBUG: create(): new object created and added to DOM');
+                
+                // ** Return object
+                return obj;
             }            
             else if(!matched)
             {
-                _log('DEBUG: show(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
+                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
             }
             else if(!dlg)
             {
-                _log('DEBUG: show(): Error, element id \'' + objId + '\' do not exist!\nReturned value = ' + dlg);
+                _log('DEBUG: create(): Error, element id \'' + strId + '\' do not exist!\nReturned value = ' + dlg);
             }
             else
             {
-                _log('DEBUG: show(): Unknown error!');
+                _log('DEBUG: create(): Unknown error!');
             }
-        }
-        else if(_isActive)
-        {
-            _log('DEBUG: show(): Error, a box is already in view! Can only show one dialogbox at a time!');
-        }
-        else
-        {
-            _log('DEBUG: show(): Unknown error!');
-        }
-
-        // ** Return failure
-        return false;
-    };
-
-    // ** Close and destroy the dialog box
-    var _destroy = function(objId)
-    {
-        var success = false; // default
-
-        // ** Get body element, reset values, restore scrolling
-        var body = document.getElementsByTagName('body')[0];
-        _removeClass(body, 'dlg-stop-scrolling');
-        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
-
-        // ** Get the dlg element
-        var dlg = document.getElementById(objId);
-
-        // ** Hide the box
-        if(dlg)
-        {
-            dlg.style.display = 'none';
-        }
-
-        // ** If promptbox was created, remove eventlisteners
-        if(dlg)
-        {
-            var pBox = dlg.querySelectorAll('.dlg-input-field');
-            if(pBox.length !=0)
-            {
-                pBox[0].onkeyup = null;
-                pBox[0].onchange = null;
-            }
-        }
-
-        // ** Remove dialogbox, reset values
-        if(dlg)
-        {
-            // ** Remove box from DOM
-            dlg.parentNode.removeChild(dlg);
-
-            // ** Get the object stored in the array
-            var obj = _getObjFromId(_boxObj, objId);
-            
-            // ** Flag that the box as no longer in DOM
-            obj.bExistInDOM = false;
-            
-            // ** Flag that the box as no longer visible (this can be useful if keeping box alive)
-            obj.bVisible = false;
-
-            // ** If box was created, remove it from array, unless "obj.bKeepAlive = true"
-            if(!obj.bKeepAlive)
-            {
-                // ** Remove object from array
-                var index = _boxObj.indexOf(obj);
-                if(index > -1)
-                {
-                    setTimeout(function()
-                    {
-                        var wasDeleted = _boxObj.splice(index, 1);
-
-                        if(wasDeleted.length === 1)
-                        {
-                            success = true;
-                            _log('DEBUG: destroy(): obj.bKeepAlive = false | Object deleted from array');
-                        }
-                        else
-                        {
-                            success = false;
-                            _log('DEBUG: destroy(): Error! obj.bKeepAlive = false | But object NOT deleted from array!');
-                        }
-                    }, 10);
-                }
-                else
-                {
-                    _log('DEBUG: destroy(): Error, object not found in array!');
-                    success = false;
-                }
-            }
-            // ** If bKeepAlive is true, then do not remove object
-            else if(obj.bKeepAlive)
-            {
-                _log('DEBUG: destroy(): obj.bKeepAlive = true | Object not deleted from array');
-                success = false;
-            }
-        }
-
-        // ** Reset flag 
-        _isActive = false;
-
-        // ** Return result
-        return success;
-    };
-
-    // ** Create dialog
-    var _create = function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive, x, y, w, h)
-    {
-        var matched = _matchAll(_strBoxTypeList, strTypeClass, true);
-
-        // ** Check if valid types
-        if(matched === true)
-        {
-            // ** Check if id is set, if not create a new
-            if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
-            {
-                // ** Create a unique string for the 'id'
-                strId = Math.random().toString(36).substr(2,9);
-            }
-
-            // ** Add token to object id (so we dont mix up id's)
-            strId += '_0';
-
-            // ** Check if value is set, if not set it to: false
-            if(typeof fnCallback === 'undefined')
-            {
-                fnCallback = false;
-            }
-
-            // ** Check if flag is set, if not set it to: false
-            if(typeof bKeepAlive === 'undefined')
-            {
-                bKeepAlive = false;
-            }
-
-            // ** Create object
-            var obj =
-            {
-                // ** Properties
-                id : strId,
-                strTypeClass : strTypeClass,
-                strTitle : strTitle,
-                strMessage : strMessage,
-                bKeepAlive : bKeepAlive,
-                strInput : '',
-                nRetCode : -1,
-                x : x,
-                y : y,
-                w : w,
-                h : h,
-                bVisible : false,
-                bExistInDOM : false,
-
-                // ** Callback 
-                callback : function(a,b)
-                {
-                    try
-                    {
-                        if(typeof a === 'undefined')
-                        {
-                            a = this.nRetCode;
-                        }
-
-                        if(typeof b === 'undefined')
-                        {
-                            b = this.strInput;
-                        }
-
-                        // ** Check which kind of box and if it has a callback function
-                        if(typeof window[fnCallback] === 'function')
-                        {
-                            // ** Execute function (pre-written HTML boxes(?))
-                            window[fnCallback](a,b);
-                        }
-                        else if(typeof fnCallback === 'function')
-                        {
-                            // ** Execute function (script-created boxes(?))
-                            fnCallback(a,b);
-                        }
-                        else if(fnCallback === false || fnCallback === 0)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            _log('\n\nDEBUG: typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
-                            _log('       Scope? Possible solution can be to use "hoisting".');
-                            _log('       Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
-                            _log('       ..or declare the callback function before the module "EasyDialogBox" is initialized');
-                            _log('       If the dialogbox do not use a callback function, you can ignore the above messages.\n\n');
-                        }
-                    }
-                    catch(err)
-                    {
-                        _log('CALLBACK: Error! ' + err);
-                    }
-                },
-
-                // ** Show
-                show : function()
-                {
-                    return _show(this.id);
-                },
-
-                // ** Destroy
-                destroy : function()
-                {
-                    return _destroy(this.id);
-                },
-                
-                // ** onCreate
-                onCreate : function()
-                {
-                    _log('DEBUG: Default "obj.onCreate()" function fired. Override this by creating your own.');
-                },
-                
-                // ** onShow
-                onShow : function()
-                {
-                    _log('DEBUG: Default "obj.onShow()" function fired. Override this by creating your own.');
-                },
-                
-                // ** onClose
-                onClose : function()
-                {
-                    _log('DEBUG: Default "obj.onClose()" function fired. Override this by creating your own.');
-                }
-            }
-            _boxObj.push(obj);  // add object to array
-            
-            obj.onCreate();  // run onCreate function
-            
-            return obj;  // return object
+            //---------------------------------------------------------------------
+            // ** END: Create DOM element
+            //---------------------------------------------------------------------            
         }
         else
         {
@@ -1245,12 +1425,10 @@ var EasyDialogBox = (function()
                 
                 // ** Create object from DOM element
                 var obj = _create(dlg.getAttribute('id'),            // id
-                                  //dlg.getAttribute('class'),         // type
                                   classType,                         // type
                                   dlg.getAttribute('title'),         // title
                                   dlg.innerHTML,                     // message
                                   dlg.getAttribute('data-callback'), // callback function
-                                  true,                              // keep alive after closing
                                   dlg.getAttribute('data-x'),        // horizontal position
                                   dlg.getAttribute('data-y'),        // vertical position
                                   dlg.getAttribute('data-w'),        // width
@@ -1334,9 +1512,9 @@ var EasyDialogBox = (function()
     return { //<-- bracket need to be on same line, else it just returns: undefined
 
         // ** Create dialog
-        create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive)
+        create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h)
         {
-            return _create(strId, strTypeClass, strTitle, strMessage, fnCallback, bKeepAlive);
+            return _create(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);
         },
 
         // ** Get all objects
