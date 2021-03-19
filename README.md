@@ -17,7 +17,7 @@ See changelog for important changes: https://keejelo.github.io/EasyDialogBox/cha
 <br />
 <br />
 
-<b>Changes from version 1.722 and above:</b>
+<b>Important changes from version 1.722 and above:</b>
 
 The "classflags" below has had their names changed due to naming ambiguity causing bugs:
 
