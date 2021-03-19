@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------------
-New in version: 1.735
+Version 1.735, changes and new things:
 ---------------------------------------------------------------------------------------------------------
 
 -> Dialogboxes are now created in DOM and memory at once with the "EasyDialogBox.create()" function.
@@ -46,7 +46,7 @@ New in version: 1.735
 
 
 ---------------------------------------------------------------------------------------------------------
-Important changes from version 1.722 and above:
+Version 1.722 and above, important changes:
 ---------------------------------------------------------------------------------------------------------
 
 The "classflags" below has had their names changed due to naming ambiguity causing bugs:
