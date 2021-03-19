@@ -2,7 +2,7 @@
 
 Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.
 
-Lightweight. Responsive. Plain vanilla Javascript, no libraries.
+Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
 
 Using standard HTML, CSS and Javascript.  
 Crossbrowser, legacy browser support as much as possible.
