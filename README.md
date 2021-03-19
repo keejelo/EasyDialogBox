@@ -14,9 +14,10 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br/ >
 See changelog for important changes: https://keejelo.github.io/EasyDialogBox/changelog.txt
 <br />
+<br />
+<br />
 
-## Important changes
-<b>From version 1.722 and above:</b>
+<b>Changes from version 1.722 and above:</b>
 
 The "classflags" below has had their names changed due to naming ambiguity causing bugs:
 
