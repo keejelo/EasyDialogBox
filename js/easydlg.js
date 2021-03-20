@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.9
+* Version: 1.735.10
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -388,21 +388,23 @@ var EasyDialogBox = (function()
         }
         else if(str.indexOf('#') != -1)
         {
+            // ** Clean string before working with it, trim leading and trailing spaces
+            str = str.replace(/^\s+|\s+$/g, '');
+            
             if(str.indexOf(' ') != -1)
-            {                                               // The below assumes that string starts with hash '#'
-                var idPart = str.split(' ')[0];             // Get first part of string before first space ' '
-                idPart = idPart.replace('#', '');           // Get the id name without hash '#'
-                str = str.replace('#' + idPart + ' ', '');  // Get second half of string by removing '#idPart '
-                str = str.replace(/^\s+|\s+$/g, '');        // Trim string of leading and trailing spaces
+            {                                         // The below assumes that string starts with hash '#'
+                var idPart = str.split(' ')[0];       // Get first part of string before first space ' '
+                str = str.replace(idPart, '');        // Get second half of string by removing '#idPart'
+                str = str.replace(/^\s+|\s+$/g, '');  // Trim string of leading and trailing spaces
                 
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(document.getElementById(idPart))
+                if(document.querySelector(idPart))
                 {
-                    return document.getElementById(idPart).querySelectorAll(str);
+                    return document.querySelector(idPart).querySelectorAll(str);
                 }
-                else if(document.getElementById(idPart + '_0_1'))
+                else if(document.querySelector(idPart + '_0_1'))
                 {
-                    return document.getElementById(idPart + '_0_1').querySelectorAll(str);
+                    return document.querySelector(idPart + '_0_1').querySelectorAll(str);
                 }
                 
                 _log('DEBUG: _getEl(): element cannot be found, return: null');
@@ -410,7 +412,7 @@ var EasyDialogBox = (function()
             }
             else
             {
-                return document.getElementById(str.replace('#',''));
+                return document.querySelector(str);
             }
         }
         else
