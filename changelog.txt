@@ -51,7 +51,7 @@ Version 1.735, changes and new things:
   
    myObj.$('someElement'); // returns an indexed HTMLCollection ([i] as normal)
   
-   ..similar to .getElementById() and .querySelectorAll()
+   ..similar to .querySelectorAll()
    
 ---------------------------------------------------------------------------------------------------------
 
