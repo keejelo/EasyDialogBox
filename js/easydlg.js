@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.10
+* Version: 1.735.12
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -88,6 +88,12 @@ var EasyDialogBox = (function()
     {
         return parseInt(str, 10);
     };
+    
+    // ** Trim leading and trailing space
+    var _trim = function(str)
+    {
+        return str.replace(/^\s+|\s+$/g, '');
+    };    
 
     // ** Add event listener (xbrowser-legacy)
     var _attachEventListener = function(target, eventType, functionRef, capture)
@@ -293,7 +299,7 @@ var EasyDialogBox = (function()
             return '&#'+c.charCodeAt(0)+';';
         });
     };
-
+    
     // ** Adjust element size and position according to window size
     var _adjustElSizePos = function(id)
     {
@@ -389,13 +395,13 @@ var EasyDialogBox = (function()
         else if(str.indexOf('#') != -1)
         {
             // ** Clean string before working with it, trim leading and trailing spaces
-            str = str.replace(/^\s+|\s+$/g, '');
+            str = _trim(str);
             
             if(str.indexOf(' ') != -1)
-            {                                         // The below assumes that string starts with hash '#'
-                var idPart = str.split(' ')[0];       // Get first part of string before first space ' '
-                str = str.replace(idPart, '');        // Get second half of string by removing '#idPart'
-                str = str.replace(/^\s+|\s+$/g, '');  // Trim string of leading and trailing spaces
+            {                                     // The below assumes that string starts with hash '#'
+                var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
+                str = str.replace(idPart, '');    // Get second half of string by removing '#idPart'
+                str = _trim(str);                 // Trim string of leading and trailing spaces
                 
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
                 if(document.querySelector(idPart))
