@@ -3,9 +3,7 @@
 * Version: 1.735.12
 * Created by: keejelo
 * Year: 2020-2021
-*
 * GitHub: https://github.com/keejelo/EasyDialogBox
-*
 * Comment: Crossbrowser, legacy browser support as much as possible.
 ****************************************************************************************************************/
 
