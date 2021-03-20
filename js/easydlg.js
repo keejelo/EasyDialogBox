@@ -391,11 +391,10 @@ var EasyDialogBox = (function()
             if(str.indexOf(' ') != -1)
             {
                 var idPart = str.split(' ')[0];
-                idPart = idPart.replace('#','');
+                idPart = idPart.replace('#', '');
                 
                 var removePart = str.split(' ', 1);
                 str = str.replace(removePart, '');
-                
                 str = str.replace(/^\s+|\s+$/g, ''); // trim leading and trailing spaces
                 
                 return document.getElementById(idPart + '_0_1').querySelectorAll(str);
