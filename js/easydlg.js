@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735
+* Version: 1.735.4
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -388,7 +388,22 @@ var EasyDialogBox = (function()
         }
         else if(str.indexOf('#') != -1)
         {
-            return document.getElementById(str.replace('#',''));
+            if(str.indexOf(' ') != -1)
+            {
+                var idPart = str.split(' ')[0];
+                idPart = idPart.replace('#','');
+                
+                var removePart = str.split(' ', 1);
+                str = str.replace(removePart, '');
+                
+                str = str.replace(/^\s+|\s+$/g, ''); // trim leading and trailing spaces
+                
+                return document.getElementById(idPart + '_0_1').querySelectorAll(str);
+            }
+            else
+            {
+                return document.getElementById(str.replace('#',''));
+            }
         }
         else
         {
