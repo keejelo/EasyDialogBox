@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.8
+* Version: 1.735.9
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -395,10 +395,8 @@ var EasyDialogBox = (function()
                 str = str.replace('#' + idPart + ' ', '');  // Get second half of string by removing '#idPart '
                 str = str.replace(/^\s+|\s+$/g, '');        // Trim string of leading and trailing spaces
                 
-                var match = document.getElementById(idPart);
-                
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(match)
+                if(document.getElementById(idPart))
                 {
                     return document.getElementById(idPart).querySelectorAll(str);
                 }
