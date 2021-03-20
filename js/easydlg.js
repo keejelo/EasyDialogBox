@@ -389,7 +389,7 @@ var EasyDialogBox = (function()
         else if(str.indexOf('#') != -1)
         {
             if(str.indexOf(' ') != -1)
-            {                                               // All this assumes that string starts with hash '#'
+            {                                               // The below assumes that string starts with hash '#'
                 var idPart = str.split(' ')[0];             // Get first part of string before first space ' '
                 idPart = idPart.replace('#', '');           // Get the id name without hash '#'
                 str = str.replace('#' + idPart + ' ', '');  // Get second half of string by removing '#idPart '
