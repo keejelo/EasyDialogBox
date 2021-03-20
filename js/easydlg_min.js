@@ -1,5 +1,5 @@
 /*
-* EasyDialogBox, version: 1.735.12 - minified, created by: keejelo, year: 2020-2021
+* EasyDialogBox, version: 1.735.12 (minified), created by: keejelo, year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
 * Comment: Crossbrowser, legacy browser support as much as possible.
 */
