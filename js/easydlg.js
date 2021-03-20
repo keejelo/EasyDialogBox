@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.7
+* Version: 1.735.8
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -397,17 +397,17 @@ var EasyDialogBox = (function()
                 
                 var match = document.getElementById(idPart);
                 
-                // ** If match is not found, try matching dialogbox itself
+                // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
                 if(match)
                 {
                     return document.getElementById(idPart).querySelectorAll(str);
                 }
-                else
+                else if(document.getElementById(idPart + '_0_1'))
                 {
                     return document.getElementById(idPart + '_0_1').querySelectorAll(str);
                 }
                 
-                _log('DEBUG: _getEl(): var match = document.getElementById(idPart); return: null');
+                _log('DEBUG: _getEl(): element cannot be found, return: null');
                 return null;
             }
             else
