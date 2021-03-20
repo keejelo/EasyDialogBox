@@ -2,7 +2,6 @@
 Version 1.735.12, live file in repository, minor update:
 ---------------------------------------------------------------------------------------------------------
 Improved errorchecking.
-Added internal trim string function that removes leading and trailing spaces from string.
 
 
 ---------------------------------------------------------------------------------------------------------
