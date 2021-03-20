@@ -4,7 +4,7 @@
 * Comment: Crossbrowser, legacy browser support as much as possible.
 */
 var EasyDialogBox=(function()
-{'use strict';var DEBUG=true;var _btnTextClose='Close';var _btnTextYes='Yes';var _btnTextNo='No';var _btnTextOk='OK';var _btnTextCancel='Cancel';var CLOSE=0;var YES=1;var NO=2;var OK=3;var CANCEL=4;var _strBoxTypeList=['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag','dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation','dlg-rounded','dlg-shadow'];var _boxObj=[];var _orgBodyPaddingRight=0;var _bResized=false;if(window.NodeList&&!NodeList.prototype.forEach)
+{'use strict';var DEBUG=false;var _btnTextClose='Close';var _btnTextYes='Yes';var _btnTextNo='No';var _btnTextOk='OK';var _btnTextCancel='Cancel';var CLOSE=0;var YES=1;var NO=2;var OK=3;var CANCEL=4;var _strBoxTypeList=['dlg','dlg-close','dlg-prompt','dlg-yes','dlg-no','dlg-yes-no','dlg-ok','dlg-cancel','dlg-ok-cancel','dlg-disable-heading','dlg-disable-footer','dlg-disable-btns','dlg-disable-overlay','dlg-disable-drag','dlg-info','dlg-question','dlg-error','dlg-success','dlg-exclamation','dlg-rounded','dlg-shadow'];var _boxObj=[];var _orgBodyPaddingRight=0;var _bResized=false;if(window.NodeList&&!NodeList.prototype.forEach)
 {NodeList.prototype.forEach=Array.prototype.forEach;};var _log=function(str)
 {if(DEBUG)
 {return console.log(str);}};var _s2i=function(str)
