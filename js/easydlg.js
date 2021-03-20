@@ -392,7 +392,7 @@ var EasyDialogBox = (function()
             {
                 var idPart = str.split(' ')[0];             // Get first part of string before first space ' '
                 idPart = idPart.replace('#', '');           // Get the id name without hash '#'
-                str = str.replace('#' + idPart + ' ', '');  // Get seconds half of string by removing '#idPart '
+                str = str.replace('#' + idPart + ' ', '');  // Get second half of string by removing '#idPart '
                 str = str.replace(/^\s+|\s+$/g, '');        // Trim string of leading and trailing spaces
                 
                 return document.getElementById(idPart + '_0_1').querySelectorAll(str);
