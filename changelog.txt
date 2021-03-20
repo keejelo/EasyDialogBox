@@ -4,7 +4,7 @@ Version 1.735.4, minor update:
 
 Updated the "myObj.$()" function.
 Even better element selection, in addition to the already existing ways, you can now do:
-"myBox.$('#myDlgBox p input.myFormData')[0];"
+myBox.$('#myDlgBox p input.myFormData')[0];
 if you wanted to.
 
 
