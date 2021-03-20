@@ -1,6 +1,6 @@
 /****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.4
+* Version: 1.735.5
 * Created by: keejelo
 * Year: 2020-2021
 *
@@ -390,12 +390,10 @@ var EasyDialogBox = (function()
         {
             if(str.indexOf(' ') != -1)
             {
-                var idPart = str.split(' ')[0];
-                idPart = idPart.replace('#', '');
-                
-                var removePart = str.split(' ', 1);
-                str = str.replace(removePart, '');
-                str = str.replace(/^\s+|\s+$/g, ''); // trim leading and trailing spaces
+                var idPart = str.split(' ')[0];             // Get first part of string before first space ' '
+                idPart = idPart.replace('#', '');           // Get the id name without hash '#'
+                str = str.replace('#' + idPart + ' ', '');  // Get seconds half of string by removing '#idPart '
+                str = str.replace(/^\s+|\s+$/g, '');        // Trim string of leading and trailing spaces
                 
                 return document.getElementById(idPart + '_0_1').querySelectorAll(str);
             }
