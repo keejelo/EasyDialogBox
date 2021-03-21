@@ -11,7 +11,11 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 
 <br />
 <b>New version released: 1.735.12</b>
-<br/ >
+<br />
+Important change: 
+<br /><br />
+Removed parameter "bKeepAlive" from fucntion: EasyDialogBox.create(...);
+<br/ ><br />
 See changelog for important changes: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 <br />
 <br />
