@@ -16,7 +16,7 @@ Important change:
 <br /><br />
 <b>Removed parameter "bKeepAlive" from function: <code>EasyDialogBox.create(...);</code></b>
 <br/ ><br />
-Usage is now: <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
+<b>Usage is now: <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code></b>
 <br/ ><br />
 See changelog for other important changes: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 <br />
