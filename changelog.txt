@@ -1,17 +1,14 @@
 ---------------------------------------------------------------------------------------------------------
-Version 1.735.12, minor update:
+Version 1.735.12:
 ---------------------------------------------------------------------------------------------------------
-Removed parameter "bKeepAlive" from function: EasyDialogBox.create(...);
-
-Usage is now: let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);
-
-Improved errorchecking.
+- Removed parameter "bKeepAlive" from function: EasyDialogBox.create(...);
+  Usage is now: let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);
+- Improved errorchecking.
 
 
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.9, minor update:
 ---------------------------------------------------------------------------------------------------------
-
 Added more errorchecking when using function to get elements:
 myObj.$(...);
 
@@ -19,7 +16,6 @@ myObj.$(...);
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.4, minor update:
 ---------------------------------------------------------------------------------------------------------
-
 Updated the "myObj.$()" function.
 Even better element selection, in addition to the already existing ways, you can now do:
 
