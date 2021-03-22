@@ -1,11 +1,12 @@
-/****************************************************************************************************************
+/********************************************************************
 * EasyDialogBox
-* Version: 1.735.12
+* Version: 1.735.14
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
 * Comment: Crossbrowser, legacy browser support as much as possible.
-****************************************************************************************************************/
+********************************************************************/
+
 
 //---------------------------------------------------------------------
 // ** EasyDialogBox object return values
@@ -22,6 +23,7 @@
 //  object.strInput = string
 //
 //---------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox Object (module)
@@ -400,11 +402,11 @@ var EasyDialogBox = (function()
                 str = _trim(str);                 // Trim string of leading and trailing spaces
                 
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(document.querySelector(idPart))
+                if(document.querySelector(idPart).querySelectorAll(str).length !=0)
                 {
                     return document.querySelector(idPart).querySelectorAll(str);
                 }
-                else if(document.querySelector(idPart + '_0_1'))
+                else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length !=0)
                 {
                     return document.querySelector(idPart + '_0_1').querySelectorAll(str);
                 }
@@ -423,7 +425,7 @@ var EasyDialogBox = (function()
         };
     };
     
-    // ** Hide scrollbar, retaining padding
+    // ** Hide scrollbar while retaining padding
     var _scrollBarFix = function()
     {
         var body = document.getElementsByTagName('body')[0];
