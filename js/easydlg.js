@@ -1,6 +1,6 @@
 /********************************************************************
 * EasyDialogBox
-* Version: 1.735.14
+* Version: 1.735.15
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -410,9 +410,6 @@ var EasyDialogBox = (function()
                 {
                     return document.querySelector(idPart + '_0_1').querySelectorAll(str);
                 }
-                
-                _log('DEBUG: _getEl(): element cannot be found, return: null');
-                return null;
             }
             else
             {
@@ -424,6 +421,7 @@ var EasyDialogBox = (function()
             return document.getElementById(objId).querySelectorAll(str);
         };
         
+        _log('DEBUG: _getEl(): element ' + str + ' cannot be found, return: null');
         return null;
     };
     
