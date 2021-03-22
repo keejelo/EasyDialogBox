@@ -16,8 +16,10 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br /><br />
 <b>Removed parameter "bKeepAlive" from function: <code>EasyDialogBox.create(...);</code></b>
 <br/ ><br />
-<b>Usage is now (full syntax):<br/>
+<b>Usage is now:<br/>
 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code></b>
+<br />
+(if using the full syntax)
 <br/ ><br />
 See changelog for other important changes: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 <br />
