@@ -423,6 +423,8 @@ var EasyDialogBox = (function()
         {
             return document.getElementById(objId).querySelectorAll(str);
         };
+        
+        return null;
     };
     
     // ** Hide scrollbar while retaining padding
