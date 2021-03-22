@@ -17,9 +17,11 @@ myObj.$(...);
 Version 1.735.4, minor update:
 ---------------------------------------------------------------------------------------------------------
 Updated the "myObj.$()" function.
+
+Experimental:
 Improved element selection, in addition to the already existing ways, you can now do:
 myBox.$('#someID p input.myFormData')[0];
-
+I am working on this
 
 ---------------------------------------------------------------------------------------------------------
 Version 1.735, changes and new things:
