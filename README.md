@@ -10,7 +10,7 @@ Crossbrowser, legacy browser support as much as possible.
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
 
 <br />
-<b>New version released: 1.735.12</b>
+<b>New version released: 1.735.14</b>
 <br />
 <b>Important changes:</b>
 <br /><br />
