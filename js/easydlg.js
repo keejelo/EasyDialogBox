@@ -394,7 +394,7 @@ var EasyDialogBox = (function()
             // ** Clean string before working with it, trim leading and trailing spaces
             str = _trim(str);
             
-            if(str.indexOf(' ') != -1)
+            if(str.indexOf(' ') != -1 || str.indexOf(',') != -1)
             {                                     // The below assumes that string starts with hash '#'
                 var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
                 str = str.replace(idPart, '');    // Get second half of string by removing '#idPart'
