@@ -408,10 +408,13 @@ var EasyDialogBox = (function()
                     {
                         return document.querySelector(idPart).querySelectorAll(str);
                     }
-                    else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length > 0)
+                }
+                else if(document.querySelector(idPart + '_0_1'))
+                {
+                    if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length > 0)
                     {
                         return document.querySelector(idPart + '_0_1').querySelectorAll(str);
-                    }
+                    }                    
                 }
             }
             else
