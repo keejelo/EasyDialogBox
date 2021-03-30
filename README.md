@@ -10,6 +10,10 @@ Crossbrowser, legacy browser support as much as possible.
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
 
 <br />
+
+Changelog: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
+
+<br />
 <b>New version released: 1.735</b>
 <br />
 <b>Important changes:</b>
@@ -21,7 +25,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br />
 (if using the full syntax)
 <br/ ><br />
-See changelog for other important changes: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
+See changelog for other important changes.
 <br />
 <br />
 <br />
