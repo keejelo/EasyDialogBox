@@ -744,8 +744,6 @@ var EasyDialogBox = (function()
                 bHidden : false,
                 el : null,
 
-
-
                 // ** Show
                 show : function()
                 {
