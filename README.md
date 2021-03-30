@@ -21,7 +21,7 @@ Changelog: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 <b>Usage is now:<br />
 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code></b>
 <br />
-(if using the full syntax)
+
 <br /><br />
 See changelog for other important changes.
 <br />
