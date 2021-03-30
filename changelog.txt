@@ -3,7 +3,7 @@ Version 1.735.16:
 ---------------------------------------------------------------------------------------------------------
 Fixed some errors in function: show()
 The dialogbox did not display custom position and size correctly.
-Should work now.
+Seem to work as expectied now..
 
 
 ---------------------------------------------------------------------------------------------------------
@@ -32,10 +32,9 @@ Version 1.735.4, minor update:
 ---------------------------------------------------------------------------------------------------------
 Updated the "myObj.$()" function.
 
-Experimental:
 Improved element selection, in addition to the already existing ways, you can now do:
 myBox.$('#someID p input.myFormData');
-I am working on this
+
 
 ---------------------------------------------------------------------------------------------------------
 Version 1.735, changes and new things:
