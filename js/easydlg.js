@@ -347,7 +347,7 @@ var EasyDialogBox = (function()
             || document.documentElement.clientWidth
             || document.body.clientWidth;
 
-            var overlap = 40; // value is used to help width-detection
+            var overlap = 40; // 40, value is used to help width-detection
             if( _s2i(el.offsetWidth + el.customPosX + overlap) >= winWidth) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values 
@@ -516,6 +516,7 @@ var EasyDialogBox = (function()
             if(obj.h)
             {
                 box.style.height = _s2i(obj.h) + 'px';
+                //box.style.maxHeight = _s2i(obj.h) + 'px';
                 box.customHeight = _s2i(obj.h);
             }
             // ** END: Check if size is set
@@ -743,50 +744,7 @@ var EasyDialogBox = (function()
                 bHidden : false,
                 el : null,
 
-                // ** Callback 
-                callback : function(a,b)
-                {
-                    try
-                    {
-                        if(typeof a === 'undefined')
-                        {
-                            a = this.nRetCode;
-                        }
 
-                        if(typeof b === 'undefined')
-                        {
-                            b = this.strInput;
-                        }
-
-                        // ** Check which kind of box and if it has a callback function
-                        if(typeof window[fnCallback] === 'function')
-                        {
-                            // ** Execute function (pre-written HTML boxes(?))
-                            window[fnCallback](a,b);
-                        }
-                        else if(typeof fnCallback === 'function')
-                        {
-                            // ** Execute function (script-created boxes(?))
-                            fnCallback(a,b);
-                        }
-                        else if(fnCallback === false || fnCallback === 0)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            _log('\n\nDEBUG: typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
-                            _log('       Scope? Possible solution can be to use "hoisting".');
-                            _log('       Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
-                            _log('       ..or declare the callback function before the module "EasyDialogBox" is initialized');
-                            _log('       If the dialogbox do not use a callback function, you can ignore the above messages.\n\n');
-                        }
-                    }
-                    catch(err)
-                    {
-                        _log('CALLBACK: Error! ' + err);
-                    }
-                },
 
                 // ** Show
                 show : function()
@@ -840,6 +798,51 @@ var EasyDialogBox = (function()
                 $ : function(str)
                 {
                     return _getEl(this.id, str);
+                },
+                
+                // ** Callback 
+                callback : function(a,b)
+                {
+                    try
+                    {
+                        if(typeof a === 'undefined')
+                        {
+                            a = this.nRetCode;
+                        }
+
+                        if(typeof b === 'undefined')
+                        {
+                            b = this.strInput;
+                        }
+
+                        // ** Check which kind of box and if it has a callback function
+                        if(typeof window[fnCallback] === 'function')
+                        {
+                            // ** Execute function (pre-written HTML boxes(?))
+                            window[fnCallback](a,b);
+                        }
+                        else if(typeof fnCallback === 'function')
+                        {
+                            // ** Execute function (script-created boxes(?))
+                            fnCallback(a,b);
+                        }
+                        else if(fnCallback === false || fnCallback === 0)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            _log('\n\nDEBUG: typeof fnCallback = ' + typeof fnCallback + ' and not a function.');
+                            _log('       Scope? Possible solution can be to use "hoisting".');
+                            _log('       Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
+                            _log('       ..or declare the callback function before the module "EasyDialogBox" is initialized');
+                            _log('       If the dialogbox do not use a callback function, you can ignore the above messages.\n\n');
+                        }
+                    }
+                    catch(err)
+                    {
+                        _log('CALLBACK: Error! ' + err);
+                    }
                 }                
             }
             _boxObj.push(obj);  // add object to array
@@ -1245,24 +1248,27 @@ var EasyDialogBox = (function()
                     || evt.code === 'Escape'
                     )
                     {
-                        // ** Remove eventlistener
-                        // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
-                        //_detachEventListener(window, 'keyup', EscKeyClose, false);
-                        
-                        // ** Close dialogbox, reset values, clean up
-                        //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                        obj.hide(true);                        
-                        
-                        // ** Callback, return code: CLOSE
-                        obj.callback(CLOSE);
-                        obj.nRetCode = CLOSE;
-                        
-                        // ** Run onClose function
-                        obj.onClose();
-                        
-                        // ** Prevent default event action and bubbling
-                        _stopEvent(evt);
-                        _stopDefault(evt);
+                        if(obj.bVisible)
+                        {
+                            // ** Remove eventlistener
+                            // ** Disabled for now, keeping eventlisteners since we "hide" not "destroy"
+                            //_detachEventListener(window, 'keyup', EscKeyClose, false);
+                            
+                            // ** Close dialogbox, reset values, clean up
+                            //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
+                            obj.hide(true);                        
+                            
+                            // ** Callback, return code: CLOSE
+                            obj.callback(CLOSE);
+                            obj.nRetCode = CLOSE;
+                            
+                            // ** Run onClose function
+                            obj.onClose();
+                            
+                            // ** Prevent default event action and bubbling
+                            _stopEvent(evt);
+                            _stopDefault(evt);
+                        }
                     }
                 }, false);
                 // ** END: Close box on ESC-key
