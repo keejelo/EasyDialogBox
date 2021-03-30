@@ -8,7 +8,7 @@ Using standard HTML, CSS and Javascript.
 Crossbrowser, legacy browser support as much as possible.
 
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
-<br />
+<br /><br />
 Changelog: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 
 <br />
