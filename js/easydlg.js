@@ -402,13 +402,16 @@ var EasyDialogBox = (function()
                 str = _trim(str);                 // Trim string of leading and trailing spaces (again)
 
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(document.querySelector(idPart).querySelectorAll(str).length > 0)
+                if(document.querySelector(idPart))
                 {
-                    return document.querySelector(idPart).querySelectorAll(str);
-                }
-                else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length > 0)
-                {
-                    return document.querySelector(idPart + '_0_1').querySelectorAll(str);
+                    if(document.querySelector(idPart).querySelectorAll(str).length > 0)
+                    {
+                        return document.querySelector(idPart).querySelectorAll(str);
+                    }
+                    else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length > 0)
+                    {
+                        return document.querySelector(idPart + '_0_1').querySelectorAll(str);
+                    }
                 }
             }
             else
