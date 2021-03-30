@@ -11,8 +11,7 @@ Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.htm
 <br /><br />
 Changelog: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 
-<br />
-<br />
+<br /><br />
 <b>New version released: 1.735</b>
 <br /><br />
 <b>Important changes:</b>
