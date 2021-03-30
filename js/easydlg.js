@@ -522,7 +522,6 @@ var EasyDialogBox = (function()
             // ** END: Check if size is set
             
             box.style.visibility = 'visible';
-            
             obj.bVisible = true;
             obj.onShow();
             
