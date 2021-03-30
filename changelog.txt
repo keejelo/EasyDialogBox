@@ -3,7 +3,7 @@ Version 1.735.16:
 ---------------------------------------------------------------------------------------------------------
 Fixed some errors in function: show()
 The dialogbox did not display custom position and size correctly.
-Seem to work ok now (?)
+Forgot to add a piece of code. Seem to work ok now.
 
 
 ---------------------------------------------------------------------------------------------------------
