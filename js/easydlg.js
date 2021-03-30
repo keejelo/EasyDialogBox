@@ -1,6 +1,6 @@
 /**********************************************************************
 * EasyDialogBox
-* Version: 1.735.15
+* Version: 1.735.16
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -375,13 +375,13 @@ var EasyDialogBox = (function()
                 {
                     el.style.maxWidth = el.customWidth + 'px';
                 }
-                
+
                 el.style.borderLeftWidth = '';
-                el.style.borderRightWidth = '';                
+                el.style.borderRightWidth = '';
             }
         }
     };
-    
+
     // ** Shorthand for getting elements inside and the dialog element itself
     var _getEl = function(objId, str)
     {
@@ -389,23 +389,24 @@ var EasyDialogBox = (function()
         {
             return document.getElementById(objId + '_1');
         }
-        else if(str.indexOf('#') != -1)
+
+        // ** Clean string before working with it, trim leading and trailing spaces
+        str = _trim(str);
+
+        if(str.indexOf('#') != -1)
         {
-            // ** Clean string before working with it, trim leading and trailing spaces
-            str = _trim(str);
-            
             if(str.indexOf(' ') != -1 || str.indexOf(',') != -1)
             {                                     // The below assumes that string starts with hash '#'
                 var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
                 str = str.replace(idPart, '');    // Get second half of string by removing '#idPart'
-                str = _trim(str);                 // Trim string of leading and trailing spaces
-                
+                str = _trim(str);                 // Trim string of leading and trailing spaces (again)
+
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(document.querySelector(idPart).querySelectorAll(str).length !=0)
+                if(document.querySelector(idPart).querySelectorAll(str).length > 0)
                 {
                     return document.querySelector(idPart).querySelectorAll(str);
                 }
-                else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length !=0)
+                else if(document.querySelector(idPart + '_0_1').querySelectorAll(str).length > 0)
                 {
                     return document.querySelector(idPart + '_0_1').querySelectorAll(str);
                 }
@@ -423,12 +424,12 @@ var EasyDialogBox = (function()
         _log('DEBUG: _getEl(): element ' + str + ' cannot be found, return: null');
         return null;
     };
-    
+
     // ** Hide scrollbar while retaining padding
     var _scrollBarFix = function()
     {
         var body = document.getElementsByTagName('body')[0];
-        
+
         // ** Store the original padding-right value
         _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 
@@ -476,7 +477,7 @@ var EasyDialogBox = (function()
             // ** Hide scrollbar
             _scrollBarFix();
             
-            // ** Get element
+            // ** Get elements
             var hiddenDlg = document.getElementById(obj.id);
             
             // ** Make it draggable, unless flag is set
@@ -485,9 +486,42 @@ var EasyDialogBox = (function()
                 _drag.init(obj.id + '_1');
             }
             
-            // ** Show the hidden dialogbox
+            // ** Show the hidden dialog (surface)
             hiddenDlg.style.display = 'block';
-            document.getElementById(obj.id + '_1').style.visibility = 'visible';
+            
+            // ** Get the dialogbox itself
+            var box = document.getElementById(obj.id + '_1');
+            
+            // ** Check if position is set, if true (bigger than 0) then change position, else default value used
+            if(obj.x)
+            {
+                box.style.left = _s2i(obj.x) + 'px';
+                box.customPosX = _s2i(obj.x);
+            }
+            // ** Check if position is set, if true then change position, else default value used
+            if(obj.y)
+            {
+                box.style.top = _s2i(obj.y) + 'px';
+                box.customPosY = _s2i(obj.y);
+            }
+            // ** END: Check if position is set
+            
+            // ** Check if size is set, if true then change size, else default value used
+            if(obj.w)
+            {
+                box.style.maxWidth = _s2i(obj.w) + 'px';
+                box.customWidth = _s2i(obj.w);
+            }
+            // ** Check if size is set, if true then change size, else default value used
+            if(obj.h)
+            {
+                box.style.height = _s2i(obj.h) + 'px';
+                box.customHeight = _s2i(obj.h);
+            }
+            // ** END: Check if size is set
+            
+            box.style.visibility = 'visible';
+            
             obj.bVisible = true;
             obj.onShow();
             
