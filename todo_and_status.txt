@@ -1,4 +1,4 @@
-Current issues:
+Current issue:
 
 -- Custom position not working correctly, need to check it out..
    Working on it.
