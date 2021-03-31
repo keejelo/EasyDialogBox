@@ -1,1 +1,1 @@
-Obsolete files kept here for historical reference
+Obsolete files are kept here for historical reference
