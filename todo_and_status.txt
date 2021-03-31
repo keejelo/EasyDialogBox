@@ -1,9 +1,9 @@
-Current issue:
+Current issues:
 
--- Custom position not working correctly, need to check it out..
-   Working on it.
-   Relased an update, version 1.735.18, seem to fix it (?)
-   Testing..
+--> Custom position not working correctly, need to check it out..
+    Working on it.
+    Relased an update, version 1.735.18, seem to fix it (?)
+    Testing..
 
 
 
