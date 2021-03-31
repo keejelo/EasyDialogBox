@@ -1,0 +1,2 @@
+Current issues:
+-- Custom position not working correctly, need to check it out..
