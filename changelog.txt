@@ -1,10 +1,16 @@
 ---------------------------------------------------------------------------------------------------------
+Version 1.735.18 (repos):
+---------------------------------------------------------------------------------------------------------
+The dialogbox did not display custom position correctly
+Seem to have fixed it, need to test it more.
+
+
+---------------------------------------------------------------------------------------------------------
 Version 1.735.16:
 ---------------------------------------------------------------------------------------------------------
 Fixed some errors in function: show()
 The dialogbox did not display custom position and size correctly.
 Forgot to add a piece of code. Seem to work ok(?) now. (update: still issue with position)
-
 
 
 ---------------------------------------------------------------------------------------------------------
