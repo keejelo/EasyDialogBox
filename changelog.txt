@@ -5,7 +5,9 @@ Fixed some bugs/errors:
 
 1. Custom height does now display correctly with and without "dlg-icon" class usage.
 
-2. There was a bug when creating dialog without 'id', the random generated id sometimes was created with a number as the first character, causing error and when selecting elements in the internal functions. Now fixed by always adding the letter 'a' in front of the random generated id string. (I found this by accident when I was "brute forcing" dailogbox creation, spamming the function, hehe. Guess it makes sence since JS/CSS dont like id and class names starting with a number character)
+2. There was a bug when creating dialog without 'id', the random generated id sometimes was created with a 
+number as the first character, causing error and when selecting elements in the internal functions.
+Now fixed by always adding the letter 'a' in front of the random generated id string.
 
 
 ---------------------------------------------------------------------------------------------------------
