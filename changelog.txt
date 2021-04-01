@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------------
-Version 1.735.20 (repo):
+Version 1.735.20:
 ---------------------------------------------------------------------------------------------------------
-Made dialogbox borders visible when dialogbox goes into "responsiveness" mode, think it looks better.
+Visual improvement, made dialogbox borders visible when dialogbox goes into "responsiveness" mode,
+looks better. Before it looked like borders was missing, looked like something buggy.
 
 
 ---------------------------------------------------------------------------------------------------------
