@@ -4,6 +4,7 @@ Current issues:
     Working on it.
     Relased an update, version 1.735.18, seem to fix it (?)
     Testing..
+    Reported to work ok after testing. Issue maybe gone.
 
 
 
