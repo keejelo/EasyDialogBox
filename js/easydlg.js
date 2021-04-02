@@ -1489,10 +1489,7 @@ var EasyDialogBox = (function()
 
                 // ** Object has been created, set flag to true
                 obj.bExistInDOM = true;
-                
-                // ** Set reference to dialogbox element itself
-                //obj.element = document.getElementById(box.id);
-                
+                                
                 // ** First run keep hidden, only create, do not show, do not run "onHide" func
                 obj.hide('doNotExecuteOnHide');  // <-- skips execution of "obj.onHide()" function
 
