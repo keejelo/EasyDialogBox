@@ -280,6 +280,7 @@ b:first-child
 
 <script src="js/easydlg.js"></script>
 
+
 <!-- END: Including the necessary files here -->
 
 <script>
@@ -612,6 +613,8 @@ attachEventListener(window, 'load', function()
                     <tr><td>onClose</td><td>function</td></tr>
                     <tr><td>$</td><td>function</td></tr>
                     <tr><td>el</td><td>element, reference to dialogbox element itself</td></tr>
+                    <tr><td>colorBorder</td><td>string color value</td></tr>
+                    <tr><td>colorHeading</td><td>string color value</td></tr>
                 </tbody>
             </table>
             
@@ -659,6 +662,15 @@ attachEventListener(window, 'load', function()
             <p>You can also mix it up e.g.:</p>
             <p><code>myBox.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myBox.$('#someID p input.myFormData')[0];</code> returns the first HTMLElement in a HTMLCollection indexed <code>[0]</code></p>
+            
+            <p>&nbsp;</p>
+            
+            <h2>Change colors</h2>
+            <p>You can change colors of the dialogs border and heading.</p>
+            <p>For instance you can do:</p>
+            <p><code>myBox.colorBorder = '#ff0000';</code> , to change border color to red</p>
+            <p><code>myBox.colorHeading = '#ff0000';</code> , to change heading backgroundcolor to red</p>
+            <p>Any hex color value will work, even rgb format colors should work, or for that matter any CSS color.</p>
             
             <p>&nbsp;</p>
         
