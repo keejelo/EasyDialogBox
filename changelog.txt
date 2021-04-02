@@ -1,8 +1,15 @@
 ---------------------------------------------------------------------------------------------------------
+Version 1.735.22 (repo):
+---------------------------------------------------------------------------------------------------------
+Started cleaning up a little, due to major rewrite of making boxes more DOM present.
+(Being careful not to break stuff)
+
+
+---------------------------------------------------------------------------------------------------------
 Version 1.735.20:
 ---------------------------------------------------------------------------------------------------------
 Visual improvement, made dialogbox borders visible when dialogbox goes into "responsiveness" mode,
-looks better. Before it looked like borders was missing, looked like something buggy.
+looks better. Before it looked like something was wrong and buggy.
 
 
 ---------------------------------------------------------------------------------------------------------
