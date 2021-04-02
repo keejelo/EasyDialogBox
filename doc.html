@@ -660,19 +660,19 @@ attachEventListener(window, 'load', function()
             <p><code>myObj.$('.someClass');</code> using . (dot), returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('someElement');</code> returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
             <p>You can also mix it up e.g.:</p>
-            <p><code>myBox.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
-            <p><code>myBox.$('#someID p input.myFormData')[0];</code> returns the first HTMLElement in a HTMLCollection indexed <code>[0]</code></p>
+            <p><code>myObj.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('#someID p input.myFormData')[0];</code> returns the first HTMLElement in a HTMLCollection indexed <code>[0]</code></p>
             
             <p>&nbsp;</p>
             
             <h2>Change colors</h2>
             <p>You can change colors of the dialogs border and heading, to have some basic UI-theming without editing the CSS file or other custom stuff.</p>
             <p>For instance you can do:</p>
-            <p><code>myBox.colorBorder = '#ff0000';</code> , to change border color to red</p>
-            <p><code>myBox.colorHeading = '#ff0000';</code> , to change heading backgroundcolor to red</p>
+            <p><code>myObj.colorBorder = '#ff0000';</code> , to change border color to red</p>
+            <p><code>myObj.colorHeading = '#ff0000';</code> , to change heading backgroundcolor to red</p>
             <p>Any hex color value will work, even rgb format colors should work, or for that matter any CSS color.</p>
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
-            <p>For instance from <code>myBox.colorBorder = '#ff0000';</code> to this <code>myBox.colorBorder = '';</code> , to return color back to default.</p>
+            <p>For instance from <code>myObj.colorBorder = '#ff0000';</code> to this <code>myObj.colorBorder = '';</code> , to return color back to default.</p>
             
             <p>&nbsp;</p>
         
