@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------------
+Version 1.735.24:
+---------------------------------------------------------------------------------------------------------
+Undid the changes that was done in version 1.735.20; dialogbox borders are now removed again when
+dialogbox is going into responsive-mode. Leave it like this until a better solution is created.
+
+
+---------------------------------------------------------------------------------------------------------
 Version 1.735.23:
 ---------------------------------------------------------------------------------------------------------
 Added a simple way to change color of border + heading background color, just to have some basic UI-style
