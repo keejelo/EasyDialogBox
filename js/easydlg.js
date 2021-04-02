@@ -484,7 +484,7 @@ var EasyDialogBox = (function()
             return false;
         }
         
-        // ** Check if box already exist in case it is hidden, we want to show that instead of creating a new
+        // ** Check if box exist and is hidden
         if(obj !== null && obj.bHidden == true)
         {
             // ** Hide scrollbar
