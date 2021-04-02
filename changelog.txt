@@ -1,5 +1,16 @@
 ---------------------------------------------------------------------------------------------------------
-Version 1.735.22 (repo):
+Version 1.735.23 (repo):
+---------------------------------------------------------------------------------------------------------
+Added a simple way to change color of border + heading background color, just to have some basic ui-theming support.
+Instead of editing the css file if user only want to change a little color.
+Any hex color value will work.
+You can now do this to change colors for border and heading, e.g. to red:
+myBox.colorBorder = '#ff0000';
+myBox.colorHeading = '#ff0000';
+
+
+---------------------------------------------------------------------------------------------------------
+Version 1.735.22:
 ---------------------------------------------------------------------------------------------------------
 Started cleaning up a little, due to major rewrite of making boxes more DOM present.
 (Being careful not to break stuff)
