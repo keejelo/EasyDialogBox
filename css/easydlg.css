@@ -91,7 +91,7 @@
 .dlg-close-x:hover,
 .dlg-close-x:focus
 {
-    color:#000;
+    color:#666;
     text-decoration:none;
     cursor:pointer;
 }
