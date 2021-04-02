@@ -9,7 +9,7 @@ Crossbrowser, legacy browser support as much as possible.
 
 Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
 <br /><br />
-Changelog: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
+<a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">Changelog</a>
 
 
 <br /><br />
