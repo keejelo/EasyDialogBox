@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------------
-Version 1.735.23 (repo):
+Version 1.735.23:
 ---------------------------------------------------------------------------------------------------------
 Added a simple way to change color of border + heading background color, just to have some basic ui-theming support.
 Instead of editing the css file if user only want to change a little color.
