@@ -475,14 +475,14 @@ var EasyDialogBox = (function()
     // ** Show the dialog box
     var _show = function(objId)
     {
-        // ** Check if box exist
+        // ** Get object
         var obj = _getObjFromId(_boxObj, objId);
         
-        if(obj === null)
-        {
-            _log('DEBUG: show(): error, object do not exist!');
-            return false;
-        }
+        //if(obj === null)
+        //{
+        //    _log('DEBUG: show(): error, object do not exist!');
+        //    return false;
+        //}
         
         // ** Check if box exist and is hidden
         if(obj !== null && obj.bHidden == true)
@@ -590,8 +590,9 @@ var EasyDialogBox = (function()
             
             return true;
         }
-        
+
         // ** Return fail
+        _log('DEBUG: show(): error, object do not exist!');
         return false;
     };
     
