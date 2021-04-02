@@ -12,7 +12,8 @@ myBox.colorHeading = '#ff0000';
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.22:
 ---------------------------------------------------------------------------------------------------------
-Started cleaning up a little, due to major rewrite of making boxes more DOM present.
+Started cleaning up a little, due to major rewrite of making dialogboxes more DOM present, living their
+whole lifecycle in DOM.
 (Being careful not to break stuff)
 
 
