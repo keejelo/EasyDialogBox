@@ -63,7 +63,7 @@ var EasyDialogBox = (function()
     var _bResized = false;    
     
     // ** Flag that indicates if a box is currently in view (is displayed)
-    //var _isActive = false;
+    //var _isActive = false;  // <-- disabled for now, not using it
 
     // ** Add "forEach" support to IE(9-11)
     if(window.NodeList && !NodeList.prototype.forEach)
