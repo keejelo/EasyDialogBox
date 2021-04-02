@@ -1,1 +1,1 @@
-
+- Add a simple way to change color of border + heading background color, just to have some basic ui-theming possibilities.
