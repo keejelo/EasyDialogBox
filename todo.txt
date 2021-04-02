@@ -1,5 +1,5 @@
 TODO: 
 
 - Add a simple way to change color of border + heading background color, just to have some basic ui-theming possibilities.
-
+  Instead of editing the css file if user only want to change a little color.
 
