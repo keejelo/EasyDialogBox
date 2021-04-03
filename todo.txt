@@ -1,6 +1,6 @@
 
 TODO:
-- Improve responsive-mode. It works good now, but it can be even better.
+- Improve responsive-mode. It works ok now, but it can be even better.
 
 
 
