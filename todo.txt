@@ -1,1 +1,2 @@
-
+TODO:
+- Make responsive-mode better.
