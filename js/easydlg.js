@@ -270,37 +270,6 @@ var EasyDialogBox = (function()
     };
     // ** END: Check if array matches ALL test-values in supplied string/array. Returns true/false
 
-
-    // ** Harmful chars based on the context: &<>"'`´,!@$%/\()=+{}[]
-
-    // ** Sanitize string, remove all characters except listed
-    var _sanitize = function(str)
-    {
-        str = str.replace(/[^a-z0-9@£#\s\,._-æøåäö]/gi, '');
-        return str;
-    };
-
-    // ** Escape string
-    var _escape = function(str)
-    {
-        str = str.replace(/^\s+|\s+$/g, ''); // trim leading and trailing spaces
-        str = str.replace(/&/g, '&amp;');
-        str = str.replace(/'/g, '&#39;');
-        str = str.replace(/"/g, '&quot;');
-        str = str.replace(/</g, '&lt;');
-        str = str.replace(/>/g, '&gt;');
-        return str;
-    };
-
-    // ** Encode all characters into html-entities
-    var _htmlEncode = function(str)
-    {
-        return String(str).replace(/[^\w.\s+]/gi, function(c)
-        {
-            return '&#' + c.charCodeAt(0) + ';';
-        });
-    };
-
     // ** Adjust element size and position according to window size
     var _adjustElSizePos = function(id)
     {
@@ -971,7 +940,7 @@ var EasyDialogBox = (function()
                 box.setAttribute('class','dlg-box');
 
 
-                // ** Need to have this here (used br pre-written HTML boxes)
+                // ** Need to have this here (used by pre-written HTML boxes)
                 // ** Prepare custom values, default set to: 0
                 box.customPosX = 0;
                 box.customPosY = 0;
@@ -1476,16 +1445,12 @@ var EasyDialogBox = (function()
                     {
                         _attachEventListener(pBox, 'keyup', function PromptBoxKeyUp()
                         {
-                            obj.strInput = _sanitize(pBox.value);
-                            //obj.strInput = _escape(pBox.value);
-                            //obj.strInput = _htmlEncode(pBox.value);
+                            obj.strInput = pBox.value;
                         }, false);
 
                         _attachEventListener(pBox, 'change', function PromptBoxChange()
                         {
-                            obj.strInput = _sanitize(pBox.value);
-                            //obj.strInput = _escape(pBox.value);
-                            //obj.strInput = _htmlEncode(pBox.value);
+                            obj.strInput = pBox.value;
                         }, false);
                     }
                 }
