@@ -373,10 +373,11 @@ var EasyDialogBox = (function()
         // ** Clean string before working with it, trim leading and trailing spaces
         str = _trim(str);
 
-        if(str.indexOf('#') != -1)
+        if(str.indexOf('#') !== -1)
         {
-            if(str.indexOf(' ') != -1 || str.indexOf(',') != -1 || str.indexOf('>') != -1 || str.indexOf(':') != -1)
-            {                                     // The below assumes that string starts with hash '#'
+            if(str.indexOf(' ') !== -1 || str.indexOf(',') !== -1 || str.indexOf('>') !== -1 || str.indexOf(':') !== -1)
+            {
+                // The below assumes that string starts with hash '#' and that spaces are used to separate each selector item
                 var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
                 str = str.replace(idPart, '');    // Get second half of string by removing '#idPart'
                 str = _trim(str);                 // Trim string of leading and trailing spaces (again)
