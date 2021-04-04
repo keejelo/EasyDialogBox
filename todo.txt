@@ -1,6 +1,5 @@
 
 TODO:
-
 - Improve responsive-mode. It works ok now, but it can be even better.
 - Improve function for selecting elements within dialogbox.
 
