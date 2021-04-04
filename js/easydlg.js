@@ -377,7 +377,7 @@ var EasyDialogBox = (function()
         if(str.indexOf('#') !== -1)
         {
             // ** If string contains ' ' (space) or multiple selector-chars
-            if( str.indexOf(' ') !== -1 || str.indexOf(',') !== -1 || str.indexOf('>') !== -1)
+            if(str.indexOf(' ') !== -1 || str.indexOf(',') !== -1 || str.indexOf('>') !== -1)
             {
                 // The below assumes that string starts with hash '#' and that spaces are used to separate each selector item
                 var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
