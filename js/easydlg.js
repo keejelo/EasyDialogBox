@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.30
+* Version: 1.735.31
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -392,7 +392,7 @@ var EasyDialogBox = (function()
                 var aa = document.querySelectorAll(idPart + ' ' + str);
                 var bb = document.querySelectorAll(idPart + '_0_1 ' + str);
 
-                // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
+                // ** Check if element exist. If match is not found, try matching dialogbox itself
                 if(a)
                 {
                     if(aa.length > 0)
@@ -413,9 +413,18 @@ var EasyDialogBox = (function()
                 return document.querySelector(str);
             }
         }
+        // ** Else if string do NOT contain '#' (hash), search for elements inside dialogbox
         else
         {
-            return document.getElementById(objId).querySelectorAll(str);
+            var c = document.getElementById(objId);
+            if(c)
+            {
+                var cc = c.querySelectorAll(str)
+                if(cc)
+                {
+                    return cc;
+                }
+            }
         };
 
         _log('DEBUG: _getEl(): ' + str + ' cannot be found, return: null');
