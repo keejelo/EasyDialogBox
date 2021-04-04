@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.29
+* Version: 1.735.30
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -373,31 +373,38 @@ var EasyDialogBox = (function()
         // ** Clean string before working with it, trim leading and trailing spaces
         str = _trim(str);
 
+        // ** If string contains '#' (hash)
         if(str.indexOf('#') !== -1)
         {
-            if(str.indexOf(' ') !== -1)
+            // ** If string contains ' ' (space) or multiple selector-chars
+            if( str.indexOf(' ') !== -1 || str.indexOf(',') !== -1 || str.indexOf('>') !== -1)
             {
                 // The below assumes that string starts with hash '#' and that spaces are used to separate each selector item
                 var idPart = str.split(' ')[0];   // Get first part of string before first space ' '
                 str = str.replace(idPart, '');    // Get second half of string by removing '#idPart'
-                str = _trim(str);                 // Trim string of leading and trailing spaces (again)
+                idPart = idPart.replace(',', ''); // Remove char from string (if present)
+                idPart = idPart.replace('>', ''); // Remove char from string (if present)
+                idPart = idPart.replace(':', ''); // Remove char from string (if present)
+                str = _trim(str);                 // Trim string of leading and trailing spaces (again, just in case)
 
-                var el = document.querySelector(idPart);
-                var box = document.querySelector(idPart + '_0_1');
+                var a  = document.querySelector(idPart);
+                var b  = document.querySelector(idPart + '_0_1');
+                var aa = document.querySelectorAll(idPart + ' ' + str);
+                var bb = document.querySelectorAll(idPart + '_0_1 ' + str);
 
                 // ** Check if element exist. If match is not found, try matching dialogbox itself, else return: null
-                if(el)
+                if(a)
                 {
-                    if(el.querySelectorAll(str).length > 0)
+                    if(aa.length > 0)
                     {
-                        return el.querySelectorAll(str);
+                        return aa;
                     }
                 }
-                else if(box)
+                else if(b)
                 {
-                    if(box.querySelectorAll(str).length > 0)
+                    if(bb.length > 0)
                     {
-                        return box.querySelectorAll(str);
+                        return bb;
                     }
                 }
             }
@@ -411,7 +418,7 @@ var EasyDialogBox = (function()
             return document.getElementById(objId).querySelectorAll(str);
         };
 
-        _log('DEBUG: _getEl(): element ' + str + ' cannot be found, return: null');
+        _log('DEBUG: _getEl(): ' + str + ' cannot be found, return: null');
         return null;
     };
     // ** END: Shorthand for getting elements inside and the dialog element itself
