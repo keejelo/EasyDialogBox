@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.33
+* Version: 1.735.34
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -94,17 +94,17 @@ var EasyDialogBox = (function()
     // ** Add event listener (xbrowser-legacy)
     var _attachEventListener = function(target, eventType, functionRef, capture)
     {
-        if(typeof target.addEventListener != 'undefined')
+        if(typeof target.addEventListener !== 'undefined')
         {
             target.addEventListener(eventType, functionRef, capture);
         }
-        else if(typeof target.attachEvent != 'undefined')
+        else if(typeof target.attachEvent !== 'undefined')
         {
             var functionString = eventType + functionRef;
             target['e' + functionString] = functionRef;
             target[functionString] = function(event)
             {
-                if(typeof event == 'undefined')
+                if(typeof event === 'undefined')
                 {
                     event = window.event;
                 }
@@ -115,7 +115,7 @@ var EasyDialogBox = (function()
         else
         {
             eventType = 'on' + eventType;
-            if(typeof target[eventType] == 'function')
+            if(typeof target[eventType] === 'function')
             {
                 var oldListener = target[eventType];
                 target[eventType] = function()
@@ -135,11 +135,11 @@ var EasyDialogBox = (function()
     // ** Remove event listener (xbrowser-legacy)
     var _detachEventListener = function(target, eventType, functionRef, capture)
     {
-        if(typeof target.removeEventListener != 'undefined')
+        if(typeof target.removeEventListener !== 'undefined')
         {
             target.removeEventListener(eventType, functionRef, capture);
         }
-        else if(typeof target.detachEvent != 'undefined')
+        else if(typeof target.detachEvent !== 'undefined')
         {
             var functionString = eventType + functionRef;
             target.detachEvent('on' + eventType, target[functionString]);
@@ -155,7 +155,7 @@ var EasyDialogBox = (function()
     // ** Stop event from bubbling (xbrowser-legacy)
     var _stopEvent = function(event)
     {
-        if(typeof event.stopPropagation != 'undefined')
+        if(typeof event.stopPropagation !== 'undefined')
         {
             event.stopPropagation();
         }
@@ -168,7 +168,7 @@ var EasyDialogBox = (function()
     // ** Stop default event action (xbrowser-legacy)
     var _stopDefault = function(event)
     {
-        if(typeof event.preventDefault != 'undefined')
+        if(typeof event.preventDefault !== 'undefined')
         {
             event.preventDefault();
         }
@@ -817,7 +817,7 @@ var EasyDialogBox = (function()
                     }
                     catch(err)
                     {
-                        _log('CALLBACK: Error: ' + err);
+                        _log('DEBUG: fnCallback(): error: ' + err);
                     }
                 },
 
@@ -1479,15 +1479,15 @@ var EasyDialogBox = (function()
             }
             else if(!matched)
             {
-                _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
+                _log('DEBUG: create(): error, dialogbox type not defined or not a valid type: ' + obj.strTypeClass);
             }
             else if(!dlg)
             {
-                _log('DEBUG: create(): Error, element id \'' + strId + '\' do not exist.\nReturned value = ' + dlg);
+                _log('DEBUG: create(): error, element id \'' + strId + '\' do not exist.\nReturned value = ' + dlg);
             }
             else
             {
-                _log('DEBUG: create(): Unknown error');
+                _log('DEBUG: create(): unknown error');
             }
             //---------------------------------------------------------------------
             // ** END: Create DOM element
@@ -1495,7 +1495,7 @@ var EasyDialogBox = (function()
         }
         else
         {
-            _log('DEBUG: create(): Error, dialogbox type not defined or not a valid type: ' + strTypeClass);
+            _log('DEBUG: create(): error, dialogbox type not defined or not a valid type: ' + strTypeClass);
         }
         return null; // return failure
     };
