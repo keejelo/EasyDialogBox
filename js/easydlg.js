@@ -1626,7 +1626,7 @@ var EasyDialogBox = (function()
             return _create(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);
         },
 
-        // ** Get all objects
+        // ** Get all objects in objectarray (memory)
         getAll : function()
         {
             return _boxObj;
@@ -1638,7 +1638,7 @@ var EasyDialogBox = (function()
             return _getObjFromId(_boxObj, id);
         },
 
-        // Init module
+        // ** Init module
         init : function()
         {
             return _init();
