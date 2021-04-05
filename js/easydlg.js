@@ -64,9 +64,6 @@ var EasyDialogBox = (function()
     // ** Flag that indicates if window was resized
     var _bResized = false;
 
-    // ** Flag that indicates if a box is currently in view (is displayed)
-    //var _isActive = false;  // <-- disabled for now, not using it, probably be removed.
-
     // ** Add "forEach" support to IE(9-11)
     if(window.NodeList && !NodeList.prototype.forEach)
     {
@@ -611,9 +608,6 @@ var EasyDialogBox = (function()
             dlg.style.display = 'none';
             box.style.visibility = 'hidden';
         }
-
-        // ** Set flag to false, indicates that no dialogbox is currently "active" (visible)
-        //_isActive = false;  // will probably be removed, not using it
 
         // ** Get the object stored in the array
         var obj = _getObjFromId(_boxObj, objId);
