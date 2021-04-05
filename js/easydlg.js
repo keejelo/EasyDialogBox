@@ -471,7 +471,7 @@ var EasyDialogBox = (function()
 
         //if(obj === null)
         //{
-        //    _log('DEBUG: show(): error, object do not exist!');
+        //    _log('DEBUG: show(): error, object do not exist');
         //    return false;
         //}
 
@@ -591,7 +591,7 @@ var EasyDialogBox = (function()
         }
 
         // ** Return fail
-        _log('DEBUG: show(): error, object do not exist!');
+        _log('DEBUG: show(): error, object do not exist');
         return false;
     };
     // ** END: Show dialog box
@@ -665,7 +665,7 @@ var EasyDialogBox = (function()
         if(dlg)
         {
             var pBox = dlg.querySelectorAll('.dlg-input-field');
-            if(pBox.length !=0)
+            if(pBox.length > 0)
             {
                 pBox[0].onkeyup = null;
                 pBox[0].onchange = null;
@@ -706,13 +706,13 @@ var EasyDialogBox = (function()
                     else
                     {
                         success = false;
-                        _log('DEBUG: destroy(): Error! object NOT deleted from object array!');
+                        _log('DEBUG: destroy(): Error, object NOT deleted from object array');
                     }
                 }, 10);
             }
             else
             {
-                _log('DEBUG: destroy(): Error, object not found in array!');
+                _log('DEBUG: destroy(): Error, object not found in array');
                 success = false;
             }
         }
@@ -729,7 +729,7 @@ var EasyDialogBox = (function()
         var existingObj = _getObjFromId(_boxObj, strId + '_0');
         if(existingObj)
         {
-            _log('DEBUG: create(): new object not created! An object with same ID already exist! Existing object returned');
+            _log('DEBUG: create(): new object not created. An object with same ID already exist. Existing object returned');
             return existingObj;
         }
 
@@ -817,7 +817,7 @@ var EasyDialogBox = (function()
                     }
                     catch(err)
                     {
-                        _log('CALLBACK: Error! ' + err);
+                        _log('CALLBACK: Error: ' + err);
                     }
                 },
 
@@ -1247,7 +1247,7 @@ var EasyDialogBox = (function()
                 // ** END: CLOSE button click handler
 
                 // ** User clicks anywhere outside of the dialogbox
-                if(!_hasClass(dlg, 'dlg-disable-clickout'))
+                if(!(_hasClass(dlg, 'dlg-disable-clickout')))
                 {
                     _attachEventListener(window, 'click', function WinCloseClick(evt)
                     {
@@ -1483,11 +1483,11 @@ var EasyDialogBox = (function()
             }
             else if(!dlg)
             {
-                _log('DEBUG: create(): Error, element id \'' + strId + '\' do not exist!\nReturned value = ' + dlg);
+                _log('DEBUG: create(): Error, element id \'' + strId + '\' do not exist.\nReturned value = ' + dlg);
             }
             else
             {
-                _log('DEBUG: create(): Unknown error!');
+                _log('DEBUG: create(): Unknown error');
             }
             //---------------------------------------------------------------------
             // ** END: Create DOM element
@@ -1618,7 +1618,7 @@ var EasyDialogBox = (function()
     //---------------------------------------------------------------------
     // ** Public methods
     //---------------------------------------------------------------------
-    return { //<-- IMPORTANT! Bracket need to be on same line as "return", else it just returns 'undefined'
+    return { //<-- IMPORTANT: Bracket need to be on same line as "return", else it just returns 'undefined'
 
         // ** Create dialog
         create : function(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h)
