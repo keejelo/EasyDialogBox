@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.36:
 ---------------------------------------------------------------------------------------------------------
-Fixed a bug where object did not return its own element.
+Fixed an error/bug where object did not return its own element.
 A line of code had mistakenly been commented out.
 Should work now.
 
