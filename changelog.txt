@@ -2,11 +2,9 @@
 Version 1.735.36:
 ---------------------------------------------------------------------------------------------------------
 Fixed a bug where object did not return its own element.
+A line of code had mistakenly been commented out.
 Should work now.
-This line of code was commented out by mistake:
-// ** Set reference to object itself
-obj.el = document.getElementById(box.id);
- 
+
 
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.35:
