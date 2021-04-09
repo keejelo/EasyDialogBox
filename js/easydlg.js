@@ -632,11 +632,11 @@ var EasyDialogBox = (function()
         //    Pre-written HTML boxes depends on this to remember position, if custom pos is set
         if(obj.x !== null)
         {
-            obj.x = parseInt(box.style.left, 10);
+            obj.x = _s2i(box.style.left);
         }
         if(obj.y !== null)
         {
-            obj.y = parseInt(box.style.top, 10);
+            obj.y = _s2i(box.style.top);
         }
 
 
