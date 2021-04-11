@@ -290,7 +290,7 @@ var EasyDialogBox = (function()
                 //el.style.height = '';       // <-- keep disabled, was making box height flicker in size
                 //el.style.maxHeight = '';    // <-- keep disabled, was making box height flicker in size
 
-                // ** Disable borders top and bottom
+                // ** Remove borders top and bottom
                 el.style.borderTopWidth = '0';
                 el.style.borderBottomWidth = '0';
 
@@ -335,7 +335,7 @@ var EasyDialogBox = (function()
                 //el.style.width = '';       // <-- keep disabled, was making box width flicker in size
                 //el.style.maxWidth = '';    // <-- keep disabled, was making box width flicker in size
 
-                // ** Remove borders left and right
+                // ** Remove borders left and right (helps to prevent horizontal scrollbar)
                 el.style.borderLeftWidth = '0';
                 el.style.borderRightWidth = '0';
 
@@ -500,17 +500,19 @@ var EasyDialogBox = (function()
                 _drag.init(obj.id + '_1');
             }
 
-            // ** Show the hidden dialog (surface)
+            // ** Show the hidden dialog (overlay and boxsurface)
             dlg.style.display = 'block';
 
             // ** Get the dialogbox itself
             var box = document.getElementById(obj.id + '_1');
 
             // ** Prepare custom values, default set to: 0
+
             box.customPosX = 0;
             box.customPosY = 0;
             box.customHeight = 0;
             box.customWidth = 0;
+
 
             //_adjustElSizePos(obj.id + '_1');  // <-- not needed it seems
             //_log('obj.x:' + obj.x)
@@ -569,7 +571,7 @@ var EasyDialogBox = (function()
             }
             // ** END: If custom height then adjust
 
-            // ** Custom color
+            // ** Custom color (basic ui-theming)
             if(obj.colorBorder)
             {
                 box.style.borderColor = obj.colorBorder;
@@ -631,7 +633,6 @@ var EasyDialogBox = (function()
         _removeClass(body, 'dlg-stop-scrolling');
         body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
 
-
         // ** Update position (if moved/custom pos)
         // ** ALL dialogboxes depends on this to remember last position
         if(obj.x !== null)
@@ -643,7 +644,6 @@ var EasyDialogBox = (function()
             obj.y = _s2i(box.style.top);
         }
         // ** END: Update position (if moved/custom pos)
-
 
         // ** Run onHide function if param string do NOT match
         if(param !== 'doNotExecuteOnHide')
@@ -1668,7 +1668,6 @@ var EasyDialogBox = (function()
 //-----------------------------------------------------------------------------------------------------------------
 // ** END: EasyDialogBox Object (module)
 //-----------------------------------------------------------------------------------------------------------------
-
 
 //-----------------------------------------------------------------------------------------------------------------
 // ** Initialize
