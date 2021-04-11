@@ -27,7 +27,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox Object (module)
 //-----------------------------------------------------------------------------------------------------------------
-var EasyDialogBox = (function(strId, strTypeClass, strTitle, strMessage, fnCallback, x, y, w, h)
+var EasyDialogBox = (function()
 {   'use strict';
 
     // ** Debug: true/false (outputs debug-messages to console)
