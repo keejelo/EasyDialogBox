@@ -16,7 +16,7 @@ body
     background-color:#f1f1f1;
     line-height:26px;
 }
-#page 
+#page
 {
     margin:0 auto;
     max-width:1200px;
@@ -40,11 +40,11 @@ h1, h2, h3, h4, h5, h6
     font-weight:400;
     margin-left:0;
     padding-left:0;
-}    
+}
 #main_heading
 {
     padding:15px;
-    background-color:#fff;    
+    background-color:#fff;
     border:1px solid #000;
 }
 .examples
@@ -75,7 +75,7 @@ sup,.small
     font-size:10px;
     color:#999;
 }
-.word 
+.word
 {
     color:#0366d6;
 }
@@ -194,7 +194,7 @@ b:first-child
     text-decoration:none;
     border-bottom:1px dotted #99f1e0;
 }
-.comment 
+.comment
 {
     color:#d2eba7;
 }
@@ -258,7 +258,7 @@ b:first-child
 {
     counter-increment:listing;
     margin:0;
-    padding:0;    
+    padding:0;
 }
 .codeview i::before
 {
@@ -333,7 +333,7 @@ var attachEventListener = function(target, eventType, functionRef, capture)
 // ** END: Add event listener (xbrowser-legacy)
 //-----------------------------------------------------------------------------------------------------------------
 
-    
+
 //-----------------------------------------------------------------------------------------------------------------
 // ** Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
@@ -361,25 +361,25 @@ var myCallbackFunc = function(nRetCode, strInput)
     if(nRetCode === 0)
     {
         console.log('CALLBACK: User clicked "Close" button, outside box or [X], returncode = ' + nRetCode);
-    }    
+    }
     else if(nRetCode === 1)
     {
         console.log('CALLBACK: User clicked "Yes" button, returncode = ' + nRetCode);
-        
+
         // ** Example: Create a dialog on the fly!
         var myFlyBox = EasyDialogBox.create(0, 'dlg dlg-success', 'Testing on the fly dialog', '<p>Hello on the fly!</p>', myOtherCallbackFunc);
         if(myFlyBox)
         {
-            // ** Override the initial callback function that was set 
-            
+            // ** Override the initial callback function that was set
+
             /*myFlyBox.callback = function()
             {
                 console.log('Hello this is a callback override! :-)');
             }*/
-            
+
             // ** Show the new box
             myFlyBox.show();
-        }        
+        }
     }
     else if(nRetCode === 2)
     {
@@ -393,13 +393,13 @@ var myCallbackFunc = function(nRetCode, strInput)
     {
         console.log('CALLBACK: User clicked "Cancel" button, returncode = ' + nRetCode);
     }
-    
+
     // ** Check if any text was typed in input
     if(strInput)
     {
         console.log('CALLBACK: User typed in inputfield, returnvalue = ' + strInput);
     }
-    
+
 };
 
 // ** Another regular function used as callback
@@ -434,7 +434,7 @@ attachEventListener(window, 'load', function()
         myBox.onClose = function()
         {
             // Example of some code to handle callback
-            
+
             if(myBox.nRetCode === 1)
             {
                 // ... user clicked "Close" button
@@ -442,7 +442,7 @@ attachEventListener(window, 'load', function()
                 // ** Destroy the box
                 myBox.destroy();
             }
-            
+
             console.log('Example onClose function fired');
         };
 
@@ -457,7 +457,7 @@ attachEventListener(window, 'load', function()
 </head>
 <body>
     <div id="page">
-    
+
         <div id="main_heading">
             <h1>EasyDialogBox</h1>
             <p>Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
@@ -466,15 +466,15 @@ attachEventListener(window, 'load', function()
             Crossbrowser, legacy browser support as much as possible.</p>
             <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>
         </div>
-        
+
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        
+
         <div>
             <h2>HOW TO ?</h2>
             <p>Include the CSS and Javascript files between <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code> as you would normally do in a HTML file.</p>
         </div>
-        
+
         <div class="codeview"><i><b class="tag">&lt;!DOCTYPE html&gt;</b></i>
 <i><b class="tag">&lt;html&gt;</b></i>
 <i><b class="tag">&lt;head&gt;</b></i>
@@ -499,11 +499,11 @@ attachEventListener(window, 'load', function()
             <p>After that the public functions are available.</p>
 
             <p>&nbsp;</p>
-            
+
             <div>
                 <h1>Public functions:</h1>
             </div>
-            
+
             <p>&nbsp;</p>
 
             <h2>Create dialog</h2>
@@ -514,12 +514,12 @@ attachEventListener(window, 'load', function()
             <p>
                 Minimum syntax:<br />
                 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage);</code>
-            </p>            
+            </p>
 
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
 
             <p class="bold">Parameters:</p>
-            
+
             <p><code>id</code> = custom id 'string' , if not used then you must set it to <code>null</code> or <code>0</code> (zero)</p>
 
             <div>
@@ -542,7 +542,7 @@ attachEventListener(window, 'load', function()
                     </tbody>
                     <thead>
                         <tr><th>Optional flags <sup>[<a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a>]</sup></th><th>Description</th></tr>
-                    </thead>                    
+                    </thead>
                     <tbody>
                         <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
                         <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
@@ -568,15 +568,15 @@ attachEventListener(window, 'load', function()
                 </table>
                 <p class="small" id="opt_flags">1. must be used in combination with a dialogtype, separated by a space.</p>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
             <p><code>strMessage</code> = message, can be html or just plain text.</p>
             <p>Optional: <code>fnCallback</code> = callback function that executes when box closes (or you can just use <code>myObj.onClose()</code> function instead)</p>
             <p>(If using full syntax, but not using the <code>fnCallback</code> parameter, then use <code>0</code> (zero) as its substitute)</p>
             <p>&nbsp;</p>
-            
+
             <p>
                 <span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
                 <br />A fix has been added to deal with this issue, so it may just work out fine, but at least now you know.
@@ -587,13 +587,13 @@ attachEventListener(window, 'load', function()
             <p>Optional: <code>h</code> = height of the box, default: adjusted by content.</p>
 
             <p>&nbsp;</p>
-            
+
             <p>To check if dialogbox is visible and currently in view, use the flag <code>bVisible</code> , is either <span class="ital word">true</span> or <span class="ital word">false</span></p>
             <p>To check if dialogbox exist in DOM use the flag <code>bExistInDOM</code> , is either <span class="ital word">true</span> or <span class="ital word">false</span></p>
             <p>To check if the dialogbox has been hidden, use the flag <code>bHidden</code> , is either <span class="ital word">true</span> or <span class="ital word">false</span></p>
 
             <p>&nbsp;</p>
-            
+
             <table id="objTable">
                 <thead>
                     <tr><th colspan="2">Properties of a created object (all are readable and writable)</th></tr>
@@ -611,7 +611,7 @@ attachEventListener(window, 'load', function()
                     <tr><td>x</td><td>number</td></tr>
                     <tr><td>y</td><td>number</td></tr>
                     <tr><td>w</td><td>number</td></tr>
-                    <tr><td>h</td><td>number</td></tr>  
+                    <tr><td>h</td><td>number</td></tr>
                     <tr><td>callback</td><td>function</td></tr>
                     <tr><td>show</td><td>function</td></tr>
                     <tr><td>hide</td><td>function</td></tr>
@@ -627,9 +627,9 @@ attachEventListener(window, 'load', function()
                     <tr><td>colorHeading</td><td>string color value</td></tr>
                 </tbody>
             </table>
-            
+
             <p>&nbsp;</p>
-            
+
             <h2>Show dialog</h2>
             <p>
                 <code>myObj.show();</code>
@@ -637,16 +637,16 @@ attachEventListener(window, 'load', function()
             <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
 
             <p>&nbsp;</p>
-            
+
             <h2>Hide dialog (close)</h2>
             <p>
                 <code>myObj.hide();</code>
             </p>
             <p>Return value = <span class="ital word">none</span></p>
             <p>(Pressing the keyboard escape-key <code>Esc</code> also fires this function)</p>
-            
+
             <p>&nbsp;</p>
-            
+
             <h2>Destroy dialog</h2>
             <p>
                 <code>myObj.destroy();</code>
@@ -672,9 +672,9 @@ attachEventListener(window, 'load', function()
             <p>You can also mix it up e.g.:</p>
             <p><code>myObj.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection ([i] as normal), or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('#someID p input.myFormData')[0];</code> returns the first HTMLElement in a HTMLCollection indexed <code>[0]</code></p>
-            
+
             <p>&nbsp;</p>
-            
+
             <h2>Change colors</h2>
             <p>You can change colors of the dialogs border and heading, to have some basic UI-theming without editing the CSS file or other custom stuff.</p>
             <p>For instance you can do:</p>
@@ -683,14 +683,15 @@ attachEventListener(window, 'load', function()
             <p>Any hex color value will work, even rgb format colors should work, or for that matter any CSS color.</p>
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
             <p>For instance from <code>myObj.colorBorder = '#ff0000';</code> to this <code>myObj.colorBorder = '';</code> , to return color back to default.</p>
-            
+
             <p>&nbsp;</p>
-        
+
             <h2>Object event-functions</h2>
             <div>
                 <p>
                     <code>myObj.onCreate();</code> fires when dialogbox object is created.
                 </p>
+                <p>You can write your own function if you want to do something when the event occurs:</p>                
 <div class="codeview"><i></i>
 <i><b>myObj</b><b class="func">.onCreate</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -699,13 +700,14 @@ attachEventListener(window, 'load', function()
 <i></i>
 </div>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <div>
                 <p>
                     <code>myObj.onShow();</code> fires when dialogbox is about to be displayed.
                 </p>
+                <p>You can write your own function if you want to do something when the event occurs:</p>                
 <div class="codeview"><i></i>
 <i><b>myObj</b><b class="func">.onShow</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -714,13 +716,14 @@ attachEventListener(window, 'load', function()
 <i></i>
 </div>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <div>
                 <p>
                     <code>myObj.onHide();</code> fires when dialogbox is being hidden.
                 </p>
+                <p>You can write your own function if you want to do something when the event occurs:</p>                
 <div class="codeview"><i></i>
 <i><b>myObj</b><b class="func">.onHide</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -729,14 +732,15 @@ attachEventListener(window, 'load', function()
 <i></i>
 </div>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <div>
                 <p>
                     <code>myObj.onClose();</code> fires when dialogbox is closing.
                 </p>
-<div class="codeview"><i></i>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>                
+<div class="codeview"><i></i>
 <i><b>myObj</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
 <i>    <b class="comment">// .. do something here ..</b></i>
@@ -744,14 +748,15 @@ attachEventListener(window, 'load', function()
 <i></i>
 </div>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <div>
                 <p>
                     <code>myObj.onDestroy();</code> fires when dialogbox is being destroyed.
                 </p>
-<div class="codeview"><i></i>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>
+<div class="codeview"><i></i>
 <i><b>myObj</b><b class="func">.onDestroy</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
 <i>    <b class="comment">// .. do something here ..</b></i>
@@ -759,9 +764,9 @@ attachEventListener(window, 'load', function()
 <i></i>
 </div>
             </div>
-            
+
             <p>&nbsp;</p>
-            
+
             <h2 id="js_example">Simple example</h2>
             <div class="codeview"><i></i>
 <i><b class="comment">// Javascript ...</b></i>
@@ -779,7 +784,7 @@ attachEventListener(window, 'load', function()
 <i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
 <i>    <b class="comment">// Example of some code to handle callback</b></i>
-<i></i>    
+<i></i>
 <i>    <b class="keyword">if</b><b class="func">(</b>myBox.nRetCode <b class="equal">===</b> <b class="num">1</b><b class="func">)</b></i>
 <i>    <b class="func">{</b></i>
 <i>        <b class="comment">// ... user clicked &quot;Yes&quot; button</b></i>
@@ -799,16 +804,16 @@ attachEventListener(window, 'load', function()
             <div>
                 <button id="jsExampleRunBtn">Run example</button>
             </div>
-            
+
             <p>&nbsp;</p>
-           
+
             <div>
                 <h2>Return values</h2>
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
-                <p>These are intended to be used in the <code>object.callback()</code> or <code>object.onClose()</code> function for further processing.</p>
+                <p>These are intended to be used in the <code>myObj.callback()</code> or <code>myObj.onClose()</code> function for further processing.</p>
                 <table class="returnTable">
                     <thead>
-                        <tr><th colspan="3"><code>object.nRetCode</code></th></tr>
+                        <tr><th colspan="3"><code>myObj.nRetCode</code></th></tr>
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
@@ -819,12 +824,12 @@ attachEventListener(window, 'load', function()
                         <tr><td>4</td><td>number</td><td>&quot;Cancel&quot; button clicked</td></tr>
                     </tbody>
                 </table>
-                
+
                 <p>&nbsp;</p>
-                
+
                 <table class="returnTable">
                     <thead>
-                        <tr><th colspan="3"><code>object.strInput</code></th></tr>
+                        <tr><th colspan="3"><code>myObj.strInput</code></th></tr>
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
@@ -832,10 +837,10 @@ attachEventListener(window, 'load', function()
                     </tbody>
                 </table>
             </div>
-            
+
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            
+
             <div>
                 <h2>Get dialog object based on its id</h2>
                 <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
@@ -846,7 +851,7 @@ attachEventListener(window, 'load', function()
             </div>
 
             <p>&nbsp;</p>
-            
+
             <div>
                 <h2>Get all dialog objects</h2>
                 <p>Get all dialogbox objects that is currently stored in the object-array.</p>
@@ -854,26 +859,26 @@ attachEventListener(window, 'load', function()
                     <code>let myArray = EasyDialogBox.getAll();</code>
                 </p>
                 <p>Return value = <span class="ital word">array</span></p>
-            </div>            
-            
-            <p>&nbsp;</p>           
-            
+            </div>
+
+            <p>&nbsp;</p>
+
         </div>
-        
+
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-        
+
         <p class="small_note" title="End of Javascript object creation">// End of Javascript object creation</p>
         <hr />
         <p class="small_note" title="Beginning of HTML examples">// Beginning of HTML examples</p>
-        
+
         <div id="html_info_heading" class="section">
             <h2 id="html_box">Create dialog box with pre-written HTML</h2>
             <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
             <p>If you just want to display a simple messagebox with some info, then you only have to write HTML.</p>
-            
+
             <p>&nbsp;</p>
-            
+
             <div>
                 <h2>Attribute values</h2>
                 <p>The <code>rel</code> attribute value must contain the <code>id</code> of the box that the <code>&lt;button&gt;</code> is going to open.</p>
@@ -887,16 +892,16 @@ attachEventListener(window, 'load', function()
                 <p><code>data-w</code> Custom width of the dialogbox, default: 600px (maxWidth)</p>
                 <p><code>data-h</code> Custom height of the box, default: adjusted by content.</p>
             </div>
-        
+
             <p>&nbsp;</p>
-            
+
             <h2>Examples</h2>
-            
-            <div class="examples">    
+
+            <div class="examples">
                 <h3 class="headings">The default box, with 'Close' button</h3>
                 <p>Class <code>dlg</code> or <code>dlg-close</code></p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
-            
+
                 <div class="codeview"><i></i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
@@ -904,12 +909,12 @@ attachEventListener(window, 'load', function()
 <i>    <b>this is line two.</b><b class="tag">&lt;/p&gt;</b></i>
 <i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myBox" class="dlg-opener">Open</button></p>
             </div>
-            
+
             <div class="examples">
                 <h3 class="headings">A default &quot;error box&quot;</h3>
                 <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
@@ -918,14 +923,14 @@ attachEventListener(window, 'load', function()
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
-<i></i>   
+<i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
             </div>
-            
+
             <div class="examples">
                 <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
                 <p>Class <code>dlg-yes-no</code> and <code>dlg-question</code> to display icon.</p>
@@ -934,14 +939,14 @@ attachEventListener(window, 'load', function()
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
             </div>
-            
+
             <div class="examples">
                 <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
                 <p>Class <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
@@ -950,14 +955,14 @@ attachEventListener(window, 'load', function()
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
             </div>
-            
+
             <div class="examples">
                 <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
                 <p>Class <code>dlg-prompt</code></p>
@@ -966,9 +971,9 @@ attachEventListener(window, 'load', function()
 <i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
@@ -979,10 +984,10 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded</code> (<a href="#paramTable">read more on classes</a>)</p>
                 <p>
                     Return value:
-                    input = <span class="ital word">string</span>, 
-                    Close = <span class="ital word">0</span>, 
+                    input = <span class="ital word">string</span>,
+                    Close = <span class="ital word">0</span>,
                     Yes = <span class="ital word">1</span>,
-                    No = <span class="ital word">2</span>, 
+                    No = <span class="ital word">2</span>,
                     OK = <span class="ital word">3</span>,
                     Cancel = <span class="ital word">4</span>
                 </p>
@@ -991,14 +996,14 @@ attachEventListener(window, 'load', function()
 <i></i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<b class="tag">&lt;br /&gt;</b></i>
 <i>    <b>If you want custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;/div&gt;</b></i>
-<i></i>    
+<i></i>
 <i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i></i>         </div>
                 <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
             </div>
-        </div>        
+        </div>
 
         <p>&nbsp;</p>
         <p>&nbsp;</p>
@@ -1008,7 +1013,7 @@ attachEventListener(window, 'load', function()
         </div>
         <div class="small_note">keejelo, 2020-2021.</div>
     </div>
-    
+
     <!-- HTML pre-written dialogboxes, hidden and not visible. Only used as templates for the dynamically created dialogboxes -->
 
     <div id="myBox" class="dlg" title="Title text">
@@ -1026,16 +1031,16 @@ attachEventListener(window, 'load', function()
 
     <div id="myBoxOkCancel" class="dlg-ok-cancel dlg-exclamation" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
-    </div>    
+    </div>
 
     <div id="myPromptBox" class="dlg-prompt" title="Title text" data-callback="myCallbackFunc">
         <p>This is a message</p>
-    </div>    
+    </div>
 
     <div id="myCrazyBox" class="dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded" title="Title text" data-callback="myCallbackFunc" data-x="100" data-y="200" data-w="500" data-h="400">
         <p>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<br />
         If you want custom position and size it is possible.</p>
-    </div>        
+    </div>
 
     <!-- END: HTML pre-written dialog boxes -->
 
