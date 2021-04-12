@@ -66,6 +66,10 @@ h1, h2, h3, h4, h5, h6
 {
     font-weight:bold;
 }
+sup,.small
+{
+    font-size:11px;
+}
 .small_note
 {
     font-size:10px;
@@ -537,28 +541,29 @@ attachEventListener(window, 'load', function()
                         
                         <tr><td colspan="2">&nbsp;</td></tr>
                         
-                        <tr><td>dlg-disable-heading</td><td>Dialog without heading. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-footer</td><td>Dialog without footer. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-esc</td><td>Disable the Esc-key to close the box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-disable-heading</td><td>Dialog without heading. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-footer</td><td>Dialog without footer. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-esc</td><td>Disable the Esc-key to close the box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it. <sup>[1]</sup></td></tr>
 
                         <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box. <sup>[1]</sup></td></tr>
 
                         <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-rounded</td><td>Add rounded corners to box. (Cannot be used alone)</td></tr>
-                        <tr><td>dlg-shadow</td><td>Add shadow behind box. (Cannot be used alone)</td></tr>
+                        <tr><td>dlg-rounded</td><td>Add rounded corners to box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-shadow</td><td>Add shadow behind box. <sup>[1]</sup></td></tr>
                     </tbody>
                 </table>
+                <p class="small">1. Must be used in combination with a dialogtype and cannot be used alone.</p>
             </div>
             
             <p>&nbsp;</p>
