@@ -526,7 +526,7 @@ attachEventListener(window, 'load', function()
                 <code>strBoxTypeClass</code> = can be any of the below strings, by itself or combined with others separated by a space.
                 <table id="paramTable">
                     <thead>
-                        <tr><th>Stringvalue</th><th>Description</th></tr>
+                        <tr><th>Dialog type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
@@ -538,32 +538,35 @@ attachEventListener(window, 'load', function()
                         <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
                         <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
                         <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-                        
                         <tr><td colspan="2">&nbsp;</td></tr>
-                        
-                        <tr><td>dlg-disable-heading</td><td>Dialog without heading. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-footer</td><td>Dialog without footer. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-esc</td><td>Disable the Esc-key to close the box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it. <sup>[1]</sup></td></tr>
-
-                        <tr><td colspan="2">&nbsp;</td></tr>
-
-                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box. <sup>[1]</sup></td></tr>
+                    </tbody>
+                    <thead>
+                        <tr><th>Extra types <sup>(1)</sup></th><th>Description</th></tr>
+                    </thead>                    
+                    <tbody>
+                        <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
+                        <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
+                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer.</td></tr>
+                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay.</td></tr>
+                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
+                        <tr><td>dlg-disable-esc</td><td>Disable the Esc-key to close the box.</td></tr>
+                        <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it.</td></tr>
 
                         <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-rounded</td><td>Add rounded corners to box. <sup>[1]</sup></td></tr>
-                        <tr><td>dlg-shadow</td><td>Add shadow behind box. <sup>[1]</sup></td></tr>
+                        <tr><td>dlg-info</td><td>Display information ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-question</td><td>Display question ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-error</td><td>Display error ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-success</td><td>Display success ICON on the left inside box.</td></tr>
+                        <tr><td>dlg-exclamation</td><td>Display exclamation ICON on the left inside box.</td></tr>
+
+                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                        <tr><td>dlg-rounded</td><td>Add rounded corners to box.</td></tr>
+                        <tr><td>dlg-shadow</td><td>Add shadow behind box.</td></tr>
                     </tbody>
                 </table>
-                <p class="small">1. Cannot be used alone, must be used in combination with a dialogtype.</p>
+                <p class="small">1. Extra types, cannot be used alone, must be used in combination with a dialogtype.</p>
             </div>
             
             <p>&nbsp;</p>
