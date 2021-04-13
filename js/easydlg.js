@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.41
+* Version: 1.735.42
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -1005,8 +1005,9 @@ var EasyDialogBox = (function()
                     // ** Create [X] close button
                     var closeX = document.createElement('span');
                     closeX.setAttribute('class','dlg-close-x');
-                    var closeText = document.createTextNode(' \u00D7 ');
-                    closeX.appendChild(closeText);
+                    //var closeText = document.createTextNode(' \u00D7 '); // u00D7 = unicode X
+                    //closeX.appendChild(closeText);
+                    closeX.innerHTML = '&#215;'; // using HTML entity instead, maybe no need for unicode meta-charset ?
                     heading.appendChild(closeX);
 
                     // ** Create title (here because of z-index)
