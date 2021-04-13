@@ -1,9 +1,9 @@
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.42 (repository):
 ---------------------------------------------------------------------------------------------------------
-Updated inner function that creates the dialog close [X]:
-Using HTML entity instead, maybe avoid the need to specify unicode charset (?)
-closeX.innerHTML = ' &#215; '; 
+- Updated inner function that creates the dialog close [X] (top right).
+  Using HTML entity instead of unicode, maybe avoid the need to specify unicode charset for javascript ?
+- Added a minified version of the sourcefile "easydlg.js" --> "easydlg.min.js" (17 kB)
 
 
 ---------------------------------------------------------------------------------------------------------
