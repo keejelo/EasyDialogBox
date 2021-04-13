@@ -3,6 +3,7 @@ Version 1.735.42 (repository):
 ---------------------------------------------------------------------------------------------------------
 - Updated inner function that creates the dialog close [X] (top right).
   Using HTML entity instead of unicode, maybe avoid the need to specify unicode charset for javascript ?
+  
 - Added a minified version of the sourcefile "easydlg.js" --> "easydlg.min.js" (17 kB)
 
 
