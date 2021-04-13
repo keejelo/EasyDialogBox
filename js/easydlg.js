@@ -1007,7 +1007,7 @@ var EasyDialogBox = (function()
                     closeX.setAttribute('class','dlg-close-x');
                     //var closeText = document.createTextNode(' \u00D7 '); // u00D7 = unicode X
                     //closeX.appendChild(closeText);
-                    closeX.innerHTML = '&#215;'; // using HTML entity instead, maybe avoid the need to specify unicode charset ?
+                    closeX.innerHTML = ' &#215; '; // using HTML entity instead, maybe avoid the need to specify unicode charset ?
                     heading.appendChild(closeX);
 
                     // ** Create title (here because of z-index)
