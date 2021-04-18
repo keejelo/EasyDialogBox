@@ -7,21 +7,22 @@
 * Comment: Crossbrowser, legacy browser support as much as possible.
 ******************************************************************************************************************/
 
-//---------------------------------------------------------------------
-// ** EasyDialogBox object return values
-//---------------------------------------------------------------------
-//
-// object.nRetCode:
-//
-//  0 = "Close" button, outside box or [X] clicked
-//  1 = "Yes" button clicked
-//  2 = "No" button clicked
-//  3 = "OK" button clicked
-//  4 = "Cancel" button clicked
-//
-//  object.strInput = string
-//
-//---------------------------------------------------------------------
+
+//--------------------------------------------------//
+// ** EasyDialogBox object return values            //
+//--------------------------------------------------//
+//                                                  //
+// object.nRetCode:                                 //
+//                                                  //
+//  0 = "Close" button, outside box or [X] clicked  //
+//  1 = "Yes" button clicked                        //
+//  2 = "No" button clicked                         //
+//  3 = "OK" button clicked                         //
+//  4 = "Cancel" button clicked                     //
+//                                                  //
+//  object.strInput = string                        //
+//                                                  //
+//--------------------------------------------------//
 
 
 //-----------------------------------------------------------------------------------------------------------------
