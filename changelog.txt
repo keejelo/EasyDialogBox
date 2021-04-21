@@ -5,7 +5,7 @@ Version 1.735.42 (repository):
   Using HTML entity instead of unicode, maybe avoid the need to specify unicode charset for javascript ?
   <script src="js/easydlg.js" charset="utf-8"></script>  <--- charset utf-8 not needed ?
   
-- Added a minified version of the sourcefile "easydlg.js" --> "easydlg.min.js" (14 kB)
+- Added a minified version of the sourcefile "easydlg.js" --> "easydlg.min.js" (17 kB)
 
 
 ---------------------------------------------------------------------------------------------------------
