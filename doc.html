@@ -425,11 +425,11 @@ attachEventListener(window, 'load', function()
 
         // ** Delete dialogbox on close
         myBox.onClose = myBox.destroy;
-        
+
         // ** Show the newly created box
         myBox.show();
     }, false);
-    
+
     // ** Run example from page when button is clicked
     //document.getElementById('jsExampleRunBtn').addEventListener('click', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
@@ -665,6 +665,13 @@ attachEventListener(window, 'load', function()
                 <code>myObj.destroy();</code>
             </p>
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
+            <p>
+                All dialogboxs will be kept alive by default, they are only destroyed when the user executes the &quot;destroy&quot; function.<br />
+                The user is responsible for deleting/destroying the dialogbox objects to prevent DOM-fill and memory leaks.
+            </p>
+            <p>
+                Tip: By specifying an ID when creating a box, the existing box are reused when hiding and showing, instead of a new box being created each time the box is hidden and shown, filling up the DOM and leak memory if not destroyed.
+            </p>
 
             <p>&nbsp;</p>
 
@@ -704,7 +711,7 @@ attachEventListener(window, 'load', function()
                 <p>
                     <code>myObj.onCreate();</code> fires when dialogbox object is created.
                 </p>
-                <p>You can write your own function if you want to do something when the event occurs:</p>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onCreate</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -720,7 +727,7 @@ attachEventListener(window, 'load', function()
                 <p>
                     <code>myObj.onShow();</code> fires when dialogbox is about to be displayed.
                 </p>
-                <p>You can write your own function if you want to do something when the event occurs:</p>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onShow</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -736,7 +743,7 @@ attachEventListener(window, 'load', function()
                 <p>
                     <code>myObj.onHide();</code> fires when dialogbox is being hidden.
                 </p>
-                <p>You can write your own function if you want to do something when the event occurs:</p>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onHide</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -752,7 +759,7 @@ attachEventListener(window, 'load', function()
                 <p>
                     <code>myObj.onClose();</code> fires when dialogbox is closing.
                 </p>
-                <p>You can write your own function if you want to do something when the event occurs:</p>                
+                <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
@@ -799,7 +806,7 @@ attachEventListener(window, 'load', function()
             <div>
                 <button id="jsSimpleExampleRunBtn">Run example</button>
             </div>
-            
+
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
