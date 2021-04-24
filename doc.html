@@ -421,7 +421,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsSimpleExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        let myBox = EasyDialogBox.create('someId', 'dlg', 'My title', '<p>Hello there!</p>');
+        let myBox = EasyDialogBox.create('someId1', 'dlg', 'My title', '<p>Hello there!</p>');
 
         // ** Delete dialogbox on close
         myBox.onClose = myBox.destroy;
@@ -435,7 +435,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        let myBox = EasyDialogBox.create('someId', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Delete the box on close?</p>');
+        let myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Delete the box on close?</p>');
 
         // ** Create a custom onShow function
         myBox.onShow = function()
