@@ -7,7 +7,7 @@ Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
 Using standard HTML, CSS and Javascript.  
 Crossbrowser, legacy browser support as much as possible.
 
-Documentation and live examples: https://keejelo.github.io/EasyDialogBox/doc.html
+<b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
 <br /><br />
 Info about updates and changes are logged here: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">changelog.txt</a>
 
