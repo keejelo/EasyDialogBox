@@ -7,7 +7,7 @@ Crossbrowser, legacy browser support as much as possible. Using standard HTML, C
 
 <b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
 
-Info about updates and changes are logged here: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">changelog.txt</a>
+<b>Changelog</b>: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt</a>
 
 
 <br /><br />
