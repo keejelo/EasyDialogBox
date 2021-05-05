@@ -1,5 +1,7 @@
 # EasyDialogBox
 
+<b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
+
 Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.
 
 Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
@@ -7,8 +9,6 @@ Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
 Using standard HTML, CSS and Javascript.  
 Crossbrowser, legacy browser support as much as possible.
 
-<b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
-<br /><br />
 Info about updates and changes are logged here: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">changelog.txt</a>
 
 
