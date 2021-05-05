@@ -6,8 +6,7 @@ Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, 
 
 Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
 
-Using standard HTML, CSS and Javascript.  
-Crossbrowser, legacy browser support as much as possible.
+Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript.
 
 Info about updates and changes are logged here: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">changelog.txt</a>
 
