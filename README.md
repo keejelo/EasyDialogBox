@@ -1,5 +1,5 @@
 # EasyDialogBox
-Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.
+<b>Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</b>
 
 <b>Plain vanilla Javascript, no libraries. Customizable. Lightweight. Responsive.</b>
 
