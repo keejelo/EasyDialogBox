@@ -1,7 +1,7 @@
 # EasyDialogBox
 Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.
 
-Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.
+Plain vanilla Javascript, no libraries. Lightweight. Customizable. Responsive.
 
 Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript.
 
