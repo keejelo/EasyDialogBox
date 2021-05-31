@@ -5,8 +5,7 @@
 - Customizable
 - Lightweight 
 - Responsive
-
-<b>Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript.</b>
+- Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript.
 
 <b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
 
