@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.43:
 ---------------------------------------------------------------------------------------------------------
-Added a fix for the "obj.onCreate" function, it was not firing when defining it as a custom function.
-It now works, runs async after "create" function.
+Added a fix for the "obj.onCreate" function, it was not firing when defined as a custom function.
+It now works, but runs async after "create" function.
 Testing it now..
 
 
