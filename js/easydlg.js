@@ -1525,21 +1525,6 @@ var EasyDialogBox = (function()
     };
     // ** END: Create dialogbox and insert it into DOM
 
-
-    // ** Helper-function for onCreate, execute obj.onCreate after object creation
-    var _onCreateHelper = function(obj)
-    {
-        setTimeout(function()
-        {
-             obj.onCreate();
-             
-            _log('DEBUG: _onCreateHelper(): executed');
-
-        }, 100);
-    };
-    // ** END: onCreateHelper, execute obj.onCreate after object creation
-
-
     // ** Initialize, this "activates" the pre-written HTML box openers
     var _init = function()
     {
