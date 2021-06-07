@@ -13,7 +13,7 @@
 
 
 <br /><br />
-<b>New major version released: 1.735</b>
+<b>New version released: 1.735</b>
 <br /><br />
 <b>Important changes:</b>
 <br />
