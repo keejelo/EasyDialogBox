@@ -364,6 +364,12 @@ var EasyDialogBox = (function()
                 el.style.borderRightWidth = '';
             }
         }
+        
+        // ** TODO:
+        //    If custom position and dlg-disable-drag is set,
+        //    then set dialog back to its custom pos if window
+        //    is larger than dialog after being resized,
+        //    and not just position it in center of window.        
     };
     // ** END: Adjust element size and position according to window size
 
