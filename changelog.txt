@@ -74,7 +74,7 @@ Version 1.735.24:
 Undid the changes that was done in version 1.735.20 "visual improvement":
 Changed back to removing borders when dialogbox is going into responsive-mode.
 With borders it was making the horizontal scrollbar appear, and we dont that.
-Leave it like this until a better solution is created.
+Leave it like this until a better solution is found.
 
 
 ---------------------------------------------------------------------------------------------------------
