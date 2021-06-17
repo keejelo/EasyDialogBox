@@ -6,11 +6,11 @@
 - Lightweight 
 - Responsive
 - Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (ES5).
-
+<br /><br /><br />
 <b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
 <br /><br /><br />
 <b>Changelog</b>: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt</a>
-<br /><br /><br />
+<br /><br />
 
 <br /><br />
 <b>New version released: 1.735</b>
