@@ -461,7 +461,10 @@ attachEventListener(window, 'load', function()
             {
                 // ... user clicked "No" button
                 console.log('"No" button was clicked');
-            }            
+            }
+
+            // ** Delete dialogbox on close (clean up)
+            myBox.destroy();
 
             console.log('Example onClose function fired');
         };
@@ -839,6 +842,9 @@ attachEventListener(window, 'load', function()
 <i>        <b class="comment">// ... user clicked &quot;No&quot; button</b></i>
 <i>        <b>console.log('&quot;No&quot; button was clicked');</b></i>
 <i>    <b class="func">}</b></i>
+<i>&nbsp;</i>
+<i>    <b class="comment">// ** Delete dialogbox on close (clean up)</b></i>
+<i>    <b>myBox</b><b class="func">.destroy()</b>;</i>
 <i>&nbsp;</i>
 <i>    <b>console.log('Example onClose function fired');</b></i>
 <i><b class="func">}</b>;</i>
