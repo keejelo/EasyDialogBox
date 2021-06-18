@@ -711,10 +711,10 @@ attachEventListener(window, 'load', function()
             <p>There are multiple ways to do this, all which are similar to <code>.querySelectorAll()</code></p>
             <p><code>myObj.$();</code> using () blank, returns the dialogbox HTML element itself.</p>
             <p><code>myObj.$('#someId');</code> using # (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
-            <p><code>myObj.$('.someClass');</code> using . (dot), returns an indexed NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
-            <p><code>myObj.$('someElement');</code> returns an indexed NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('.someClass');</code> using . (dot), returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('someElement');</code> returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p>You can also mix it up e.g.:</p>
-            <p><code>myObj.$('#someID p input.myFormData');</code> returns an indexed NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('#someID p input.myFormData')[0];</code> returns the first HTMLElement in a NodeList indexed <code>[0]</code></p>
 
             <p>&nbsp;</p>
