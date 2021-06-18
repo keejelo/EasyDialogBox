@@ -709,9 +709,9 @@ attachEventListener(window, 'load', function()
 
             <h2>Get HTML element inside the dialogbox etc.</h2>
             <p>There are multiple ways to do this, all which are similar to <code>.querySelectorAll()</code></p>
-            <p><code>myObj.$();</code> using () blank, returns the dialogbox HTML element itself.</p>
-            <p><code>myObj.$('#someId');</code> using # (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
-            <p><code>myObj.$('.someClass');</code> using . (dot), returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself.</p>
+            <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('.someClass');</code> using <span class="bold">.</span> (dot), returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('someElement');</code> returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p>You can also mix it up e.g.:</p>
             <p><code>myObj.$('#someID p input.myFormData');</code> returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
