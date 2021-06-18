@@ -427,7 +427,7 @@ attachEventListener(window, 'load', function()
         // ** Create a new dialogbox object
         let myBox = EasyDialogBox.create('someId1', 'dlg', 'My title', '<p>Hello there!</p>');
 
-        // ** Delete dialogbox on close
+        // ** Delete dialogbox on close (clean up)
         myBox.onClose = myBox.destroy;
 
         // ** Show the newly created box
@@ -439,7 +439,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        let myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Delete the box on close?</p>');
+        let myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Click Yes or No button!</p>');
 
         // ** Create a custom onShow function
         myBox.onShow = function()
@@ -450,15 +450,18 @@ attachEventListener(window, 'load', function()
         // ** Create a custom onClose function
         myBox.onClose = function()
         {
-            // Example of some code to handle callback
+            // ** Handle user button click
 
             if(myBox.nRetCode === 1)
             {
-                // ... user clicked "Close" button
-
-                // ** Destroy the box
-                myBox.destroy();
+                // ... user clicked "Yes" button
+                console.log('"Yes" button was clicked');
             }
+            else if(myBox.nRetCode === 2)
+            {
+                // ... user clicked "No" button
+                console.log('"No" button was clicked');
+            }            
 
             console.log('Example onClose function fired');
         };
@@ -799,7 +802,7 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
 <i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Delete dialogbox on close</b></i>
+<i><b class="comment">// ** Delete dialogbox on close (clean up)</b></i>
 <i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b>myBox</b><b class="func">.destroy</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Show the newly created box</b></i>
@@ -819,19 +822,22 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
-<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;br /&gt;Delete the box on close?&lt;/p&gt;'</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;br /&gt;Click Yes or No button!&lt;/p&gt;'</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a custom onClose function</b></i>
 <i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
-<i>    <b class="comment">// Example of some code to handle callback</b></i>
+<i>    <b class="comment">// ** Handle user button click</b></i>
 <i>&nbsp;</i>
 <i>    <b class="keyword">if</b><b class="func">(</b>myBox<b class="prop">.nRetCode</b> <b class="equal">===</b> <b class="num">1</b><b class="func">)</b></i>
 <i>    <b class="func">{</b></i>
 <i>        <b class="comment">// ... user clicked &quot;Yes&quot; button</b></i>
-<i>&nbsp;</i>
-<i>        <b class="comment">// ** Destroy the box</b></i>
-<i>        <b>myBox</b><b class="func">.destroy()</b>;</i>
+<i>        <b>console.log('&quot;Yes&quot; button was clicked');</b></i>
+<i>    <b class="func">}</b></i>
+<i>    <b class="keyword">else if</b><b class="func">(</b>myBox<b class="prop">.nRetCode</b> <b class="equal">===</b> <b class="num">2</b><b class="func">)</b></i>
+<i>    <b class="func">{</b></i>
+<i>        <b class="comment">// ... user clicked &quot;No&quot; button</b></i>
+<i>        <b>console.log('&quot;No&quot; button was clicked');</b></i>
 <i>    <b class="func">}</b></i>
 <i>&nbsp;</i>
 <i>    <b>console.log('Example onClose function fired');</b></i>
