@@ -542,7 +542,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2>Create dialog</h2>
-            
+
             <p>
                 Minimum syntax:<br />
                 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage);</code>
@@ -552,9 +552,9 @@ attachEventListener(window, 'load', function()
                 Full syntax:<br />
                 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
             </p>
-                        
+
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
-            
+
             <p>&nbsp;</p>
 
             <p class="bold">Parameters:</p>
@@ -632,44 +632,47 @@ attachEventListener(window, 'load', function()
             <p>To check if the dialogbox has been hidden, use the flag <code>bHidden</code> , is either <span class="ital word">true</span> or <span class="ital word">false</span></p>
 
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
+            <h2>Properties of a created object</h2>
             <table id="objTable">
                 <thead>
-                    <tr><th colspan="2">Properties of a created object (all are readable and writable)</th></tr>
+                    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>id</td><td>string, null or 0 (zero)</td></tr>
-                    <tr><td>strTypeClass</td><td>string</td></tr>
-                    <tr><td>strTitle</td><td>string</td></tr>
-                    <tr><td>strMessage</td><td>string</td></tr>
-                    <tr><td>strInput</td><td>string</td></tr>
-                    <tr><td>nRetCode</td><td>number</td></tr>
-                    <tr><td>bVisible</td><td>boolean</td></tr>
-                    <tr><td>bExistInDOM</td><td>boolean</td></tr>
-                    <tr><td>bHidden</td><td>boolean</td></tr>
-                    <tr><td>x</td><td>number</td></tr>
-                    <tr><td>y</td><td>number</td></tr>
-                    <tr><td>w</td><td>number</td></tr>
-                    <tr><td>h</td><td>number</td></tr>
-                    <tr><td>callback</td><td>function that fires when dialog is closed</td></tr>
-                    <tr><td>show</td><td>function that shows dialog</td></tr>
-                    <tr><td>hide</td><td>function that hides dialog</td></tr>
-                    <tr><td>destroy</td><td>function that destroys dialog</td></tr>
-                    <tr><td>onCreate</td><td>function that fires when dialog is created</td></tr>
-                    <tr><td>onShow</td><td>function that fires when dialog is shown</td></tr>
-                    <tr><td>onHide</td><td>function that fires when dialog is hidden/closed</td></tr>
-                    <tr><td>onDestroy</td><td>function that fires when dialog is destroyed</td></tr>
-                    <tr><td>onClose</td><td>function that fires when dialog is closed</td></tr>
-                    <tr><td>$</td><td>function to get elements inside dialog</td></tr>
-                    <tr><td>el</td><td>element, reference to dialogbox element itself</td></tr>
-                    <tr><td>colorBorder</td><td>function to set dialog border color</td></tr>
-                    <tr><td>colorHeading</td><td>function to set dialog heading backgroundcolor</td></tr>
+                    <tr><td>id</td><td>string</td><td>dialogbox ID</td></tr>
+                    <tr><td>strTypeClass</td><td>string</td><td>dialogbox type</td></tr>
+                    <tr><td>strTitle</td><td>string</td><td>dialogbox heading title</td></tr>
+                    <tr><td>strMessage</td><td>string</td><td>dialogbox contents</td></tr>
+                    <tr><td>x</td><td>number</td><td>dialogbox horizontal position</td></tr>
+                    <tr><td>y</td><td>number</td><td>dialogbox vertical position</td></tr>
+                    <tr><td>w</td><td>number</td><td>dialogbox width</td></tr>
+                    <tr><td>h</td><td>number</td><td>dialogbox height</td></tr>
+                    <tr><td>callback()</td><td>function</td><td>custom function that fires when dialog is closed</td></tr>
+                    <tr><td><a href="#dialog_returnValues">strInput</a></td><td>string</td><td>return value</td></tr>
+                    <tr><td><a href="#dialog_returnValues">nRetCode</a></td><td>number</td><td>return value</td></tr>
+                    <tr><td>bVisible</td><td>boolean</td><td>variable that indicates if dialog is visible</td></tr>
+                    <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
+                    <tr><td>bHidden</td><td>boolean</td><td>variable that indicates if dialog has been hidden</td></tr>                    
+                    <tr><td><a href="#dialog_show">show()</a></td><td>function</td><td>shows dialog</td></tr>
+                    <tr><td><a href="#dialog_hide">hide()</a></td><td>function</td><td>hides dialog</td></tr>
+                    <tr><td><a href="#dialog_destroy">destroy()</a></td><td>function </td><td>destroys dialog</td></tr>
+                    <tr><td><a href="#dialog_onCreate">onCreate()</a></td><td>function</td><td>fires when dialog is created</td></tr>
+                    <tr><td><a href="#dialog_onShow">onShow()</a></td><td>function</td><td>fires when dialog is shown</td></tr>
+                    <tr><td><a href="#dialog_onHide">onHide()</a></td><td>function</td><td>fires when dialog is hidden/closed</td></tr>
+                    <tr><td><a href="#dialog_onClose">onClose()</a></td><td>function</td><td>fires when dialog is closed</td></tr>
+                    <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>function</td><td>fires when dialog is destroyed</td></tr>
+                    <tr><td><a href="#dialog_el">el</a></td><td>element</td><td>reference to dialogbox element itself</td></tr>
+                    <tr><td><a href="#dialog_getEl">$()</a></td><td>function</td><td>get elements inside dialog</td></tr>
+                    <tr><td><a href="#dialog_color">colorBorder()</a></td><td>function</td><td>set dialog border color</td></tr>
+                    <tr><td><a href="#dialog_color">colorHeading()</a></td><td>function</td><td>set dialog heading backgroundcolor</td></tr>
                 </tbody>
             </table>
 
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
-            <h2>Show dialog</h2>
+            <h2 id="dialog_show">Show dialog</h2>
             <p>
                 <code>myObj.show();</code>
             </p>
@@ -677,7 +680,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Hide dialog (close)</h2>
+            <h2 id="dialog_hide">Hide dialog (close)</h2>
             <p>
                 <code>myObj.hide();</code>
             </p>
@@ -686,7 +689,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Destroy dialog</h2>
+            <h2 id="dialog_destroy">Destroy dialog</h2>
             <p>
                 <code>myObj.destroy();</code>
             </p>
@@ -704,7 +707,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Get the dialogbox HTML element itself</h2>
+            <h2 id="dialog_el">Get the dialogbox HTML element itself</h2>
             <p>
                 <code>myObj.el;</code>
             </p>
@@ -712,7 +715,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Get HTML element inside the dialogbox etc.</h2>
+            <h2 id="dialog_getEl">Get HTML element inside the dialogbox etc.</h2>
             <p>There are multiple ways to do this, all which are similar to <code>.querySelectorAll()</code></p>
             <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself.</p>
             <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
@@ -724,7 +727,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Change colors</h2>
+            <h2  id="dialog_color">Change colors</h2>
             <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom stuff.</p>
             <p><code>myObj.colorBorder('#ff0000');</code> , to set the border color to red.</p>
             <p><code>myObj.colorHeading('#ff0000');</code> , to set the heading backgroundcolor to red.</p>
@@ -736,7 +739,8 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2>Object event-functions/methods</h2>
-            <div>
+            <div id="dialog_onCreate">
+                <p>&nbsp;</p>
                 <p>
                     <code>myObj.onCreate();</code> fires when dialogbox object is created.
                 </p>
@@ -752,7 +756,8 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <div>
+            <div id="dialog_onShow">
+                <p>&nbsp;</p>
                 <p>
                     <code>myObj.onShow();</code> fires when dialogbox is about to be displayed.
                 </p>
@@ -768,7 +773,8 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <div>
+            <div id="dialog_onHide">
+                <p>&nbsp;</p>
                 <p>
                     <code>myObj.onHide();</code> fires when dialogbox is being hidden.
                 </p>
@@ -784,7 +790,8 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <div>
+            <div id="dialog_onClose">
+                <p>&nbsp;</p>
                 <p>
                     <code>myObj.onClose();</code> fires when dialogbox is closing.
                 </p>
@@ -800,7 +807,8 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <div>
+            <div id="dialog_onDestroy">
+                <p>&nbsp;</p>
                 <p>
                     <code>myObj.onDestroy();</code> fires when dialogbox is being destroyed.
                 </p>
@@ -880,7 +888,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <div>
-                <h2>Return values</h2>
+                <h2 id="dialog_returnValues">Return values</h2>
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
                 <p>These are intended to be used in the <code>myObj.callback()</code> or <code>myObj.onClose()</code> function for further processing.</p>
                 <table class="returnTable">
