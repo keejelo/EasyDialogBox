@@ -646,19 +646,19 @@ attachEventListener(window, 'load', function()
                     <tr><td>y</td><td>number</td></tr>
                     <tr><td>w</td><td>number</td></tr>
                     <tr><td>h</td><td>number</td></tr>
-                    <tr><td>callback</td><td>function</td></tr>
-                    <tr><td>show</td><td>function</td></tr>
-                    <tr><td>hide</td><td>function</td></tr>
-                    <tr><td>destroy</td><td>function</td></tr>
-                    <tr><td>onCreate</td><td>function</td></tr>
-                    <tr><td>onShow</td><td>function</td></tr>
-                    <tr><td>onHide</td><td>function</td></tr>
-                    <tr><td>onDestroy</td><td>function</td></tr>
-                    <tr><td>onClose</td><td>function</td></tr>
-                    <tr><td>$</td><td>function</td></tr>
+                    <tr><td>callback</td><td>function that fires when dialog is closed</td></tr>
+                    <tr><td>show</td><td>function that shows dialog</td></tr>
+                    <tr><td>hide</td><td>function that hides dialog</td></tr>
+                    <tr><td>destroy</td><td>function that destroys dialog</td></tr>
+                    <tr><td>onCreate</td><td>function that fires when dialog is created</td></tr>
+                    <tr><td>onShow</td><td>function that fires when dialog is shown</td></tr>
+                    <tr><td>onHide</td><td>function that fires when dialog is hidden/closed</td></tr>
+                    <tr><td>onDestroy</td><td>function that fires when dialog is destroyed</td></tr>
+                    <tr><td>onClose</td><td>function that fires when dialog is closed</td></tr>
+                    <tr><td>$</td><td>function to get elements inside dialog</td></tr>
                     <tr><td>el</td><td>element, reference to dialogbox element itself</td></tr>
-                    <tr><td>colorBorder</td><td>string color value</td></tr>
-                    <tr><td>colorHeading</td><td>string color value</td></tr>
+                    <tr><td>colorBorder</td><td>function to set dialog border color</td></tr>
+                    <tr><td>colorHeading</td><td>function to set dialog heading backgroundcolor</td></tr>
                 </tbody>
             </table>
 
@@ -719,15 +719,13 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2>Custom color</h2>
+            <h2>Change colors</h2>
             <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom stuff.</p>
-            <p>For instance you can do:</p>
-            <p><code>myObj.colorBorder = '#ff0000';</code> to set border color to red.</p>
-            <p><code>myObj.colorHeading = '#ff0000';</code> to set heading backgroundcolor to red.</p>
+            <p><code>myObj.colorBorder('#ff0000');</code> , to set the border color to red.</p>
+            <p><code>myObj.colorHeading('#ff0000');</code> , to set the heading backgroundcolor to red.</p>
             <p>Any CSS color value will work.</p>
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
-            <p>For instance from <code>myObj.colorBorder = '#ff0000';</code> to this <code>myObj.colorBorder = '';</code> , to return color back to default.</p>
-            <p>..or just do your own custom stuff in the CSS file or by setting the style through Javascript.</p>
+            <p>For instance from <code>myObj.colorBorder('#ff0000');</code> to this <code>myObj.colorBorder('');</code> , to return color back to default defined in CSS file.</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
