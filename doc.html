@@ -94,13 +94,28 @@ code
 {
     font-family:Consolas, "Droid Sans Mono", "Courier New", monospace;
     font-size:inherit;
-    font-weight:normal;
     color:#000;
     background-color:#ddd;
     padding:.2em .5em;
     border:1px solid #666;
     border-radius:3px;
     font-weight:bold;
+}
+kbd
+{
+    display:inline-block;
+    padding:.2em .5em;
+    font-family:Consolas, "Droid Sans Mono", "Courier New", monospace;
+    font-size:inherit;
+    line-height:24px;
+    font-weight:bold;
+    color:#24292e;
+    vertical-align:middle;
+    background-color:#fafbfc;
+    border-bottom-color:#d1d5da;
+    border:1px solid #d1d5da;
+    border-radius:6px;
+    box-shadow:inset 0 -1px 0 #d1d5da;
 }
 button
 {
@@ -685,7 +700,7 @@ attachEventListener(window, 'load', function()
                 <code>myObj.hide();</code>
             </p>
             <p>Return value = <span class="ital word">none</span></p>
-            <p>(Pressing the keyboard escape-key <code class="keyb">Esc</code> also fires this function)</p>
+            <p>(Pressing the keyboard escape-key <kbd>Esc</kbd> also fires this function)</p>
 
             <p>&nbsp;</p>
 
