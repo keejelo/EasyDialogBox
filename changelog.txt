@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.44:
 ---------------------------------------------------------------------------------------------------------
-Updated/added functions to change dialog bordercolor and heading backgroundcolor.
+- Updated/added functions to change dialog bordercolor and heading backgroundcolor.
+- Updated the documentation and examples.
 
 
 ---------------------------------------------------------------------------------------------------------
