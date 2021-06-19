@@ -536,22 +536,26 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <div>
-                <h1>Public functions</h1>
+                <h1>Public functions and methods</h1>
             </div>
 
             <p>&nbsp;</p>
 
             <h2>Create dialog</h2>
-            <p>
-                Full syntax:<br />
-                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
-            </p>
+            
             <p>
                 Minimum syntax:<br />
                 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage);</code>
             </p>
 
+            <p>
+                Full syntax:<br />
+                <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
+            </p>
+                        
             <p>Return value = <span class="ital word">object</span>, or <span class="ital word">null</span> if could not be created.</p>
+            
+            <p>&nbsp;</p>
 
             <p class="bold">Parameters:</p>
 
@@ -609,11 +613,11 @@ attachEventListener(window, 'load', function()
             <p><code>strTitle</code> = title text of the box, text only recommended, but can contain html.</p>
             <p><code>strMessage</code> = message, can be html or just plain text.</p>
             <p>Optional: <code>fnCallback</code> = callback function that executes when box closes (or you can just use <code>myObj.onClose()</code> function instead)</p>
-            <p>(If using full syntax, but not using the <code>fnCallback</code> parameter, then use <code>0</code> (zero) as its substitute)</p>
+            <p>(If using full syntax, but not using the <code>fnCallback</code> parameter, then use a <code>0</code> (zero) or <code>false</code> in its place instead)</p>
             <p>&nbsp;</p>
 
             <p>
-                <span class="bold">Note:</span> Use of the optional parameters <code>x,y,w,h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
+                <span class="bold">Note:</span> Use of the optional parameters <code>x, y, w, h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
                 <br />A fix has been added to deal with this issue, so it may just work out fine, but at least now you know.
             </p>
             <p>Optional: <code>x</code> = horizontal position of the box, default: center in viewport.</p>
