@@ -720,10 +720,14 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2>Custom color</h2>
-            <p>You can set the colors of the dialogs border and heading for some basic UI-theming.</p>
-            <p>Example:</p>
-            <p><code>myObj.colorBorder = '#ff0000';</code> , to set border color to red.</p>
-            <p><code>myObj.colorHeading = '#ff0000';</code> , to set heading backgroundcolor to red.</p>
+            <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom stuff.</p>
+            <p>For instance you can do:</p>
+            <p><code>myObj.colorBorder = '#ff0000';</code> to set border color to red.</p>
+            <p><code>myObj.colorHeading = '#ff0000';</code> to set heading backgroundcolor to red.</p>
+            <p>Any CSS color value will work.</p>
+            <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
+            <p>For instance from <code>myObj.colorBorder = '#ff0000';</code> to this <code>myObj.colorBorder = '';</code> , to return color back to default.</p>
+            <p>..or just do your own custom stuff in the CSS file or by setting the style through Javascript.</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
