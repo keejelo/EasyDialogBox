@@ -10,7 +10,7 @@
 <br />
 <b>Documentation and live examples</b>: https://keejelo.github.io/EasyDialogBox/doc.html
 <br /><br />
-<b>Changelog</b>: <a href="https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt">https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt</a>
+<b>Changelog</b>: https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 
 
 <br /><br />
