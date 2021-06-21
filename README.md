@@ -8,9 +8,9 @@
 - Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (ES5).
 
 <br />
-<b>Documentation on how to use, and live examples</b>:<br />
+<h3>Documentation and live examples</h3>
 https://keejelo.github.io/EasyDialogBox/doc.html
-<br /><br />
+<br /><br /><br />
 <b>Changelog</b>:<br />
 https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 
