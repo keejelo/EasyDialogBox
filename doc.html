@@ -90,6 +90,24 @@ code
     border:1px solid #ddd;
     border-radius:3px;
 }
+.codeGray
+{
+    display:inline-block;
+    margin:0;
+    width:98%;
+    /*max-width:940px;*/
+    padding:0;
+    overflow:scroll;
+    white-space:pre;
+    font-family:Consolas, "Droid Sans Mono", "Courier New", monospace;
+    font-size:inherit;
+    line-height:normal;
+    background-color:#f3f4f4;
+    color:#000;    
+    padding:.2em .5em;
+    border:1px solid #ddd;
+    border-radius:3px;    
+}
 kbd
 {
     display:inline-block;
@@ -180,7 +198,6 @@ hr.end_begin
     border:none;
     border-top:4px dashed #ccc;
 }
-
 /* syntax coloring */
 b,i
 {
@@ -702,6 +719,19 @@ attachEventListener(window, 'load', function()
             <p>
                 It's good practice to destroy a dialogbox when it's not going to be used again, and no longer needs to exist in DOM.
             <p>
+            <p>
+                The simplest way to do this is in the <code>myObj.onClose()</code> function:
+            </p>
+            <p>
+                Like this <code>myObj.onClose = myObj.destroy;</code> if nothing else is going on in the "onClose" function, or something like below:
+<div class="codeview"><i>&nbsp;</i>
+<i><b>myObj</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
+<i><b class="func">{</b></i>
+<i>    <b>myObj</b><b class="func">.destroy</b><b class="func">()</b>;</i>
+<i><b class="func">};</b></i>
+<i>&nbsp;</i>
+</div>
+            </p>
 
             <p>&nbsp;</p>
 
