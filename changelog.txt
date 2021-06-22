@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------------
+Version 1.735.45:
+---------------------------------------------------------------------------------------------------------
+Fixed a bug in the internal function "scrollBarFix" that could cause the padding to decrease if running
+the function several times. This is now corrected.
+
+
+---------------------------------------------------------------------------------------------------------
 Version 1.735.44:
 ---------------------------------------------------------------------------------------------------------
 - Updated/added functions to change dialog bordercolor and heading backgroundcolor.
