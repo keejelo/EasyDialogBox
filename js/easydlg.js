@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.44
+* Version: 1.735.45
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -448,6 +448,12 @@ var EasyDialogBox = (function()
     {
         // ** Get body element
         var body = document.querySelector('body');
+
+        // ** If already has class this means it's already applied, then just return back
+        if(_hasClass(body, 'dlg-stop-scrolling'))
+        {
+            return;
+        }
 
         // ** Store the original padding-right value
         _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
