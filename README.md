@@ -27,7 +27,7 @@ Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.cre
 <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
 <br />
 <br />
-See changelog for other important changes.
+See changelog for other changes.
 <br />
 <br />
 <br />
