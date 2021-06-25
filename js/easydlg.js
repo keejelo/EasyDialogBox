@@ -12,7 +12,8 @@
 // ** EasyDialogBox Object (module)
 //-----------------------------------------------------------------------------------------------------------------
 var EasyDialogBox = (function()
-{   'use strict';
+{
+    'use strict';
 
     // ** Debug: true/false (outputs debug-messages to console)
     var DEBUG = true;
