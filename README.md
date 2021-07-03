@@ -16,9 +16,7 @@ https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
 
 
 <br /><br />
-<b>New version released: 1.735</b>
-<br /><br />
-<b>Important changes:</b>
+<b>Important changes in version 1.735 and above:</b>
 <br />
 Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
 <br /><br />
