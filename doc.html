@@ -103,10 +103,10 @@ code
     font-size:inherit;
     line-height:normal;
     background-color:#f3f4f4;
-    color:#000;    
+    color:#000;
     padding:.2em .5em;
     border:1px solid #ddd;
-    border-radius:3px;    
+    border-radius:3px;
 }
 kbd
 {
@@ -659,7 +659,7 @@ attachEventListener(window, 'load', function()
                     <tr><td>strTypeClass</td><td>string</td><td>dialogbox type</td></tr>
                     <tr><td>strTitle</td><td>string</td><td>dialogbox heading title</td></tr>
                     <tr><td>strMessage</td><td>string</td><td>dialogbox contents (text and HTML)</td></tr>
-                    <tr><td>callback()</td><td>function/method</td><td>custom function that fires when dialog is closed (works the same way as onClose)</td></tr>
+                    <tr><td>callback()</td><td>method</td><td>custom function that fires when dialog is closed (works the same way as onClose)</td></tr>
                     <tr><td>x</td><td>number</td><td>dialogbox horizontal position</td></tr>
                     <tr><td>y</td><td>number</td><td>dialogbox vertical position</td></tr>
                     <tr><td>w</td><td>number</td><td>dialogbox width</td></tr>
@@ -669,18 +669,22 @@ attachEventListener(window, 'load', function()
                     <tr><td>bVisible</td><td>boolean</td><td>variable that indicates if dialog is visible</td></tr>
                     <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
                     <tr><td>bHidden</td><td>boolean</td><td>variable that indicates if dialog has been hidden</td></tr>
-                    <tr><td><a href="#dialog_show">show()</a></td><td>function/method</td><td>shows dialog</td></tr>
-                    <tr><td><a href="#dialog_hide">hide()</a></td><td>function/method</td><td>hides dialog</td></tr>
-                    <tr><td><a href="#dialog_destroy">destroy()</a></td><td>function/method</td><td>destroys dialog</td></tr>
-                    <tr><td><a href="#dialog_onCreate">onCreate()</a></td><td>function/method</td><td>fires when dialog is created</td></tr>
-                    <tr><td><a href="#dialog_onShow">onShow()</a></td><td>function/method</td><td>fires when dialog is shown</td></tr>
-                    <tr><td><a href="#dialog_onHide">onHide()</a></td><td>function/method</td><td>fires when dialog is hidden/closed</td></tr>
-                    <tr><td><a href="#dialog_onClose">onClose()</a></td><td>function/method</td><td>fires when dialog is closed</td></tr>
-                    <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>function/method</td><td>fires when dialog is destroyed</td></tr>
+                    <tr><td><a href="#dialog_show">show()</a></td><td>method</td><td>shows dialog</td></tr>
+                    <tr><td><a href="#dialog_hide">hide()</a></td><td>method</td><td>hides dialog</td></tr>
+                    <tr><td><a href="#dialog_destroy">destroy()</a></td><td>method</td><td>destroys dialog</td></tr>
+                    <tr><td><a href="#dialog_onCreate">onCreate()</a></td><td>method</td><td>fires when dialog is created</td></tr>
+                    <tr><td><a href="#dialog_onShow">onShow()</a></td><td>method</td><td>fires when dialog is shown</td></tr>
+                    <tr><td><a href="#dialog_onHide">onHide()</a></td><td>method</td><td>fires when dialog is hidden/closed</td></tr>
+                    <tr><td><a href="#dialog_onClose">onClose()</a></td><td>method</td><td>fires when dialog is closed</td></tr>
+                    <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>method</td><td>fires when dialog is destroyed</td></tr>
                     <tr><td><a href="#dialog_el">el</a></td><td>element</td><td>reference to dialogbox element itself</td></tr>
-                    <tr><td><a href="#dialog_getEl">$()</a></td><td>function/method</td><td>get elements inside dialog</td></tr>
-                    <tr><td><a href="#dialog_color">colorBorder()</a></td><td>function/method</td><td>set dialog bordercolor</td></tr>
-                    <tr><td><a href="#dialog_color">colorHeading()</a></td><td>function/method</td><td>set dialog heading backgroundcolor</td></tr>
+                    <tr><td><a href="#dialog_getEl">$()</a></td><td>method</td><td>get elements inside dialog</td></tr>
+                    <tr><td><a href="#dialog_width">width()</a></td><td>method</td><td>change dialogbox width (px)</td></tr>
+                    <tr><td><a href="#dialog_height">height()</a></td><td>method</td><td>change dialogbox height (px)</td></tr>
+                    <tr><td><a href="#dialog_xpos">xPos()</a></td><td>method</td><td>change dialogbox X position (pixels from left)</td></tr>
+                    <tr><td><a href="#dialog_ypos">yPos()</a></td><td>method</td><td>change dialogbox Y position (pixels from top)</td></tr>
+                    <tr><td><a href="#dialog_color">colorBorder()</a></td><td>method</td><td>set dialog bordercolor</td></tr>
+                    <tr><td><a href="#dialog_color">colorHeading()</a></td><td>method</td><td>set dialog heading backgroundcolor</td></tr>
                 </tbody>
             </table>
 
@@ -756,7 +760,31 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2  id="dialog_color">Change colors</h2>
+            <h2 id="dialog_width">Change dialog width</h2>
+            <code>myObj.width(number);</code>
+            <p>Where number is a pixel value</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="dialog_height">Change dialog height</h2>
+            <code>myObj.height(number);</code>
+            <p>Where number is a pixel value</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="dialog_xpos">Change dialog X position</h2>
+            <code>myObj.xPos(number);</code>
+            <p>Where number is a pixel value</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="dialog_ypos">Change dialog Y position</h2>
+            <code>myObj.yPos(number);</code>
+            <p>Where number is a pixel value</p>
+
+            <p>&nbsp;</p>
+
+            <h2 id="dialog_color">Change colors</h2>
             <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom stuff.</p>
             <p><code>myObj.colorBorder('#ff0000');</code> , to set the border color to red.</p>
             <p><code>myObj.colorHeading('#ff0000');</code> , to set the heading backgroundcolor to red.</p>
@@ -767,7 +795,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-            <h2>Object event-functions/methods</h2>
+            <h2>Object event-methods</h2>
             <div id="dialog_onCreate">
                 <p>&nbsp;</p>
                 <p>
