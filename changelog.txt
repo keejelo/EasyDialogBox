@@ -1,6 +1,15 @@
 ---------------------------------------------------------------------------------------------------------
 Version 1.735.45:
 ---------------------------------------------------------------------------------------------------------
+Added four methods for adjusting the dialogbox size and position:
+.width()
+.height()
+.xPos()
+.yPos()
+
+---------------------------------------------------------------------------------------------------------
+Version 1.735.45:
+---------------------------------------------------------------------------------------------------------
 Fixed a bug in the internal function "scrollBarFix" that could cause the padding to increase if running
 the function several times when already enabled. This is now corrected.
 
