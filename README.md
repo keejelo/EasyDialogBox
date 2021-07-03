@@ -3,7 +3,7 @@
 
 - Plain vanilla Javascript, no libraries needed.
 - Customizable
-- <a href="https://github.com/keejelo/EasyDialogBox/blob/master/js/minified/easydlg.min.js" title="Minified version, small size">Lightweight</a>
+- <a href="https://github.com/keejelo/EasyDialogBox/blob/master/js/minified/easydlg.min.js" title="Minified version, smaller size">Lightweight</a>
 - Responsive
 - Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (ES5).
 
