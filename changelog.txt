@@ -150,4 +150,3 @@ The "classflags" below has had their names changed due to naming ambiguity causi
 "dlg-no-btns" is now called "dlg-disable-btns"
 "dlg-no-overlay" is now called "dlg-disable-overlay"
 "dlg-no-footer" is now called "dlg-disable-footer"
-
