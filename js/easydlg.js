@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.47
+* Version: 1.735.48
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -907,6 +907,7 @@ var EasyDialogBox = (function()
                     var h = 115;
 
                     // ** If icon is used, set a different height value
+                    var dlg = _getEl(this.id);
                     if(_hasClass(dlg, 'dlg-info')
                     || _hasClass(dlg, 'dlg-question')
                     || _hasClass(dlg, 'dlg-error')
