@@ -9,7 +9,7 @@
 
 <br />
 <h3>Documentation and live examples</h3>
-https://keejelo.github.io/EasyDialogBox/DOC.html
+https://keejelo.github.io/EasyDialogBox/doc.html
 <br /><br /><br />
 <b>Changelog</b>:<br />
 https://github.com/keejelo/EasyDialogBox/blob/master/changelog.txt
