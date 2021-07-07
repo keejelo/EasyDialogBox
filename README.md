@@ -2,7 +2,7 @@
 <b>Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</b>
 
 - Plain vanilla Javascript, no libraries needed.
-- Customizable, custom HTML content and edit the CSS to style it as you want.
+- Customizable, custom HTML content and edit CSS to style it as you want.
 - <a href="https://github.com/keejelo/EasyDialogBox/blob/master/js/easydlg.min.js" title="Minified version, smaller size">Lightweight</a>
 - Responsive
 - Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (ES5).
