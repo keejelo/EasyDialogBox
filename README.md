@@ -7,7 +7,7 @@
 - Responsive
 - Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (ES5).
 
-<h3>Documentation, how to use and live examples</h3>
+<h3>Documentation, how to use, live examples</h3>
 https://keejelo.github.io/EasyDialogBox/documentation.html
 <br /><br /><br />
 <b>Important changes from version 1.735 and above:</b>
