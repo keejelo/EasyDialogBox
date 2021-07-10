@@ -764,8 +764,11 @@ attachEventListener(window, 'load', function()
                 The simplest way to do this is in the <code>myObj.onClose()</code> function:
             </p>
             <p>
-                Like this <code>myObj.onClose = myObj.destroy;</code> if nothing else is going on in the "onClose" function.<br /><br />
+                Like this <code>myObj.onClose = myObj.destroy;</code> if nothing else is going on in the "onClose" function.
+            </p>
+            <p>
                 But if you need to do other stuff in that function also, then you can do something like below:
+            </p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
