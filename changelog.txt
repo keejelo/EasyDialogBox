@@ -1,9 +1,13 @@
+# 1.735.49:
+- Fixed a bug in method "myObj.center()"
+- Made some methods returning the object itself so they can be cascaded,
+  and used for example like this: myObj.width(500).height(300).show();
+
 # 1.735.48:
-Fixed an error in method "myObj.height()"
+Fixed a bug in method "myObj.height()"
 
 # 1.735.47:
-Added a method to center the dialogbox in window.
-myObj.center()
+Added a method to center the dialogbox in window: "myObj.center()"
 
 # 1.735.46:
 Added four methods for adjusting the dialogbox size and position:
