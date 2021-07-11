@@ -679,7 +679,7 @@ attachEventListener(window, 'load', function()
             <p><code>h</code> = initial height of the box, default: adjusted by content.</p>
             <p>
                 <span class="bold">Note:</span> Use of the optional parameters <code>x, y, w, h</code> can possibly break &quot;<a href="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
-                <br />A fix has been added to deal with this issue, so it may just work out fine, but at least now you know.
+                <br />(A fix has been added to deal with this issue, so it may just work out fine, but at least now you know.)
             </p>
 
             <p>&nbsp;</p>
@@ -732,7 +732,7 @@ attachEventListener(window, 'load', function()
             <p>
                 <code>myObj.show();</code>
             </p>
-            <p>Return value = <span class="ital word">true</span> if the box could be shown, <span class="ital word">false</span> if not.</p>
+            <p>Return value = the <span class="ital word">object</span> itself if the box could be shown, <span class="ital word">false</span> if not.</p>
 
             <p>&nbsp;</p>
 
@@ -740,7 +740,7 @@ attachEventListener(window, 'load', function()
             <p>
                 <code>myObj.hide();</code>
             </p>
-            <p>Return value = <span class="ital word">none</span></p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
             <p>(Pressing the keyboard escape-key <kbd>Esc</kbd> also fires this function)</p>
 
             <p>&nbsp;</p>
@@ -806,29 +806,34 @@ attachEventListener(window, 'load', function()
             <h2 id="dialog_width">Change dialog width</h2>
             <code>myObj.width(value);</code>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.width(400);</code></p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
 
             <h2 id="dialog_height">Change dialog height</h2>
             <code>myObj.height(value);</code>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.height(600);</code></p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
 
             <h2 id="dialog_xpos">Change dialog X position</h2>
             <code>myObj.xPos(value);</code>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.xPos(200);</code></p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
 
             <h2 id="dialog_ypos">Change dialog Y position</h2>
             <code>myObj.yPos(value);</code>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.yPos(300);</code></p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
 
             <h2 id="dialog_center">Position dialog in center of window/viewport</h2>
             <code>myObj.center();</code>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
 
@@ -839,6 +844,7 @@ attachEventListener(window, 'load', function()
             <p>Any CSS color value will work.</p>
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
             <p>For instance from <code>myObj.colorBorder('#ff0000');</code> to this <code>myObj.colorBorder('');</code> , to return color back to default defined in CSS file.</p>
+            <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
