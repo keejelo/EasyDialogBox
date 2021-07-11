@@ -1,6 +1,6 @@
 # 1.735.49:
 - Fixed a bug in method "myObj.center()"
-- Made some methods returning the object itself so they can be cascaded,
+- Made some methods returning the object itself so they can be cascaded/chained,
   and used for example like this: myObj.width(500).height(300).show();
 
 # 1.735.48:
