@@ -586,7 +586,7 @@ var EasyDialogBox = (function()
             _log('DEBUG: show(): executed');
 
             //return true;
-            
+
             // ** Return object
             return obj;
         }
@@ -642,7 +642,7 @@ var EasyDialogBox = (function()
 
         // ** Reset sizing flag
         _bResized = false;  // <-- do we need this variable?
-        
+
         // ** Return object
         return obj;
     };
@@ -1708,7 +1708,7 @@ var EasyDialogBox = (function()
         }
     };
     // ** END: Drag'n'drop object module
-    
+
     //---------------------------------------------------------------------
     // ** Public methods
     //---------------------------------------------------------------------
