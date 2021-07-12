@@ -1,5 +1,5 @@
 # 1.735.52:
-- Changed drag'n'drop reactivation eventcode that switches between dialogboxes from 'click' to 'mouseenter',
+- Changed drag'n'drop reactivation eventcode (that switches between dialogboxes) from 'click' to 'mouseenter',
   when using several dialogboxes at the same time.
   Tested working in Win10 with latest Chrome, Firefox, Edge and IE9-11
 
