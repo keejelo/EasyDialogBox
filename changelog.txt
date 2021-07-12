@@ -1,5 +1,6 @@
 # 1.735.51:
 - Now possible to use several dialogboxes at the same time when using "dlg-disable-overlay".
+  Tested working in latest Chrome, Firefox and IE9-11
 
 # 1.735.50:
 - Did some cleaning
