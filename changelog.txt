@@ -1,3 +1,6 @@
+# 1.735.50:
+Did some cleaning
+
 # 1.735.49:
 - Fixed a bug in method "myObj.center()"
 - Made some methods returning the object itself so they can be cascaded/chained,
