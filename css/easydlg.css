@@ -41,8 +41,8 @@
     background-color:#fefefe; /* bgcolor, change it as you wish */    
     border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
     visibility:hidden;
-    
     position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
+    pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */
 }
 
 /* Dialog heading */
@@ -327,6 +327,7 @@
 .dlg-disable-overlay
 {
     background-color:transparent;
+    pointer-events:none; /* force layer to pass-through click events */
 }
 
 /* Rounded corners */
