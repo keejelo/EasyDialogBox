@@ -1,5 +1,8 @@
+# 1.735.51:
+- Made it possible to use several dialogboxes at the same time when using "dlg-disable-overlay".
+
 # 1.735.50:
-Did some cleaning
+- Did some cleaning
 
 # 1.735.49:
 - Fixed a bug in method "myObj.center()"
@@ -7,21 +10,21 @@ Did some cleaning
   and used for example like this: myObj.width(500).height(300).show();
 
 # 1.735.48:
-Fixed a bug in method "myObj.height()"
+- Fixed a bug in method "myObj.height()"
 
 # 1.735.47:
-Added a method to center the dialogbox in window: "myObj.center()"
+- Added a method to center the dialogbox in window: "myObj.center()"
 
 # 1.735.46:
-Added four methods for adjusting the dialogbox size and position:
-myObj.width()
-myObj.height()
-myObj.xPos()
-myObj.yPos()
+- Added four methods for adjusting the dialogbox size and position:
+  myObj.width()
+  myObj.height()
+  myObj.xPos()
+  myObj.yPos()
 
 # 1.735.45:
-Fixed a bug in the internal function "scrollBarFix" that could cause the padding to increase if running
-the function several times when already enabled. This is now corrected.
+- Fixed a bug in the internal function "scrollBarFix" that could cause the padding to increase if running
+  the function several times when already enabled. This is now corrected.
 
 # 1.735.44:
 - Updated/added functions to change dialog bordercolor and heading backgroundcolor.
@@ -39,7 +42,7 @@ It now works, but runs async after "create" function, since the object must firs
 - Added a minified version of the sourcefile "easydlg.js" --> "easydlg.min.js" (12 kB) for production use.
 
 # 1.735.41:
-Minor cleanup.
+- Minor cleanup.
 
 # 1.735.36/.37:
 Fixed an error/bug where object did not return its own element.
