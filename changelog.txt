@@ -1,4 +1,5 @@
 # 1.735.52:
+- Changed eventcode for switching between dialogboxes from 'click' to 'mouseenter'
 
 # 1.735.51:
 - Now possible to use several dialogboxes at the same time when using "dlg-disable-overlay" (best used together with "dlg-disable-clickout")
