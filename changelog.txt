@@ -1,5 +1,5 @@
 # 1.735.51:
-- Made it possible to use several dialogboxes at the same time when using "dlg-disable-overlay".
+- Now possible to use several dialogboxes at the same time when using "dlg-disable-overlay".
 
 # 1.735.50:
 - Did some cleaning
