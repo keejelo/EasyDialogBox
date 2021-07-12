@@ -49,7 +49,7 @@ var EasyDialogBox = (function()
     // ** Flag that indicates if window was resized
     var _bResized = false;
 
-    // ** Add "forEach" support to IE9-11
+    // ** Add "nodeList.forEach" support to IE9-11
     if(window.NodeList && !NodeList.prototype.forEach)
     {
         NodeList.prototype.forEach = Array.prototype.forEach;
