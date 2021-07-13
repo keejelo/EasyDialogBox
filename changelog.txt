@@ -1,11 +1,18 @@
+# 1.735.53/54:
+- Improved zindexing when using multiple dialogs, brings dialog to top when clicked on, corrects zindex order.
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE11
+  (IE9-10 does not support multiple dialogs yet, but everything else works as before)
+
 # 1.735.52:
 - Changed drag'n'drop reactivation eventcode (that switches between dialogboxes) from 'click' to 'mouseenter',
   when using several dialogboxes at the same time.
-  Tested working in Win10 with latest Chrome, Firefox, Edge and IE9-11
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE11
+  (IE9-10 does not support multiple dialogs yet, but everything else works as before)
 
 # 1.735.51:
 - Now possible to use several dialogboxes at the same time when using "dlg-disable-overlay" (best used together with "dlg-disable-clickout")
-  Tested working in Win10 with latest Chrome, Firefox, Edge and IE9-11
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE11
+  (IE9-10 does not support multiple dialogs yet, but everything else works as before)
 
 # 1.735.50:
 - Did some cleaning
