@@ -1,7 +1,7 @@
 
 # 1.735.55:
 - Added a string fixer that corrects "dlg" class strings if containing several spaces, important that they 
-  are separated by one space only.
+  are separated by one space only. This fixes these errors, should they occur.
 
 # 1.735.53/54:
 - Improved zindexing when using multiple dialogs, brings dialog to top when clicked on, corrects zindex order.
