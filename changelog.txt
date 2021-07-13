@@ -1,3 +1,8 @@
+
+# 1.735.55:
+- Added a string fixer that corrects "dlg" class strings if containing several spaces, important that they 
+  are separated by one space only.
+
 # 1.735.53/54:
 - Improved zindexing when using multiple dialogs, brings dialog to top when clicked on, corrects zindex order.
   Tested working in Win10 with latest Chrome, Firefox, Edge and IE11
