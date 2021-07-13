@@ -24,6 +24,13 @@ body
     background-color:#fff;
     border:1px solid #ddd;
 }
+h1, h2, h3, h4, h5, h6
+{
+    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
+    font-weight:400;
+    margin-left:0;
+    padding-left:0;
+}
 h1
 {
     font-size:42px;
@@ -34,18 +41,19 @@ h2
     padding-bottom:10px;
     border-bottom:1px solid #eaecef;
 }
-h1, h2, h3, h4, h5, h6
-{
-    font-family:"Segoe UI", Arial, Helvetica, sans-serif;
-    font-weight:400;
-    margin-left:0;
-    padding-left:0;
-}
 #main_heading
 {
     padding:15px;
-    background-color:#fff;
+    background-color:#2e70b0; /*666b7a; /* 3a3e4c 0769ad */
     border:1px solid #000;
+    color:#fff;
+    font-style:italic;
+}
+#sub_heading
+{
+    padding:15px;
+    border:1px solid #000;
+    border-top:none;
 }
 .examples
 {
@@ -214,7 +222,7 @@ a
     text-decoration:none;
     border-bottom:1px dotted #000;
 }
-#main_heading a
+#sub_heading a
 {
     color:#0366d6;
     text-decoration:none;
@@ -295,18 +303,16 @@ b:first-child
 /* codeview */
 .codeview
 {
-    display:inline-block;
+    display:block;
     margin:0;
     margin-bottom:10px;
-    width:98%;
-    /*max-width:940px;*/
     padding:0;
     overflow:scroll;
     white-space:pre;
     font-family:Consolas, "Droid Sans Mono", "Courier New", monospace;
     font-size:inherit;
     line-height:normal;
-    background-color:#3a3e4c;
+    background-color:#3a3e4c; /* 3a3e4c */
     color:#fff;
     border:2px #666b7a solid;
     border-left-width:6px;
@@ -543,11 +549,13 @@ attachEventListener(window, 'load', function()
 
         <div id="main_heading">
             <h1>EasyDialogBox</h1>
+        </div>
+        <div id="sub_heading">
             <p>Easy to use HTML-CSS-Javascript dialog box, messagebox, alert, confirm, prompt, with optional icons.</p>
             <p>Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.</p>
             <p>Using standard HTML, CSS and Javascript (ES5).<br/>
             Crossbrowser, legacy browser support as much as possible.</p>
-            <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>
+            <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>        
         </div>
 
         <p>&nbsp;</p>
