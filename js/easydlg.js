@@ -1079,14 +1079,16 @@ var EasyDialogBox = (function()
                 dlg.appendChild(box);
 
 
-                // ** Add extra styles if flags are set
+                // ** Add extra styles if flags are set, and remove from parent
                 if(_hasClass(dlg, 'dlg-rounded'))
                 {
                     _addClass(box, 'dlg-rounded');
+                    _removeClass(dlg, 'dlg-rounded');
                 }
                 if(_hasClass(dlg, 'dlg-shadow'))
                 {
                     _addClass(box, 'dlg-shadow');
+                    _removeClass(dlg, 'dlg-shadow');
                 }
 
                 // ** Create heading if disable-flag is NOT set
