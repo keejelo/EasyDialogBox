@@ -367,17 +367,17 @@ b:first-child
 //-----------------------------------------------------------------------------------------------------------------
 var attachEventListener = function(target, eventType, functionRef, capture)
 {
-    if(typeof target.addEventListener != 'undefined')
+    if(typeof target.addEventListener !== 'undefined')
     {
         target.addEventListener(eventType, functionRef, capture);
     }
-    else if(typeof target.attachEvent != 'undefined')
+    else if(typeof target.attachEvent !== 'undefined')
     {
         var functionString = eventType + functionRef;
         target['e' + functionString] = functionRef;
         target[functionString] = function(event)
         {
-            if(typeof event == 'undefined')
+            if(typeof event === 'undefined')
             {
                 event = window.event;
             }
@@ -388,7 +388,7 @@ var attachEventListener = function(target, eventType, functionRef, capture)
     else
     {
         eventType = 'on' + eventType;
-        if(typeof target[eventType] == 'function')
+        if(typeof target[eventType] === 'function')
         {
             var oldListener = target[eventType];
             target[eventType] = function()
@@ -495,7 +495,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsSimpleExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        var myBox = EasyDialogBox.create('someId1', 'dlg', 'My title', '<p>Hello there!</p>');
+        var myBox = EasyDialogBox.create('someId1', 'dlg dlg-rounded', 'My title', '<p>Hello there!</p>');
 
         // ** Delete dialogbox on close (clean up)
         myBox.onClose = myBox.destroy;
@@ -954,7 +954,7 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
-<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg dlg-rounded'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Show the newly created box</b></i>
 <i><b>myBox</b><b class="func">.show()</b>;</i>
