@@ -323,7 +323,9 @@
 }
 
 /* Disable translucent background, background overlay (no modal) */
-.dlg-disable-overlay
+.dlg-disable-overlay,
+.dlg-nomodal,
+.dlg-multi
 {
     background-color:transparent;
     pointer-events:none; /* force layer to pass-through click events */
