@@ -59,8 +59,7 @@ h2
 {
     margin-top:50px;
     padding:15px;
-    background-color:#f5f9fa;
-    border:1px solid #eaf2f4;
+    border-bottom:1px solid #ccc;
 }
 .section
 {
@@ -232,6 +231,11 @@ hr.end_begin
 {
     border:none;
     border-top:4px dashed #ccc;
+}
+hr
+{
+    border:none;
+    border-top:1px solid #ccc;
 }
 /* syntax coloring */
 b,i
@@ -555,7 +559,7 @@ attachEventListener(window, 'load', function()
             <p>Lightweight. Customizable. Responsive. Plain vanilla Javascript, no libraries.</p>
             <p>Using standard HTML, CSS and Javascript (ES5).<br/>
             Crossbrowser, legacy browser support as much as possible.</p>
-            <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>        
+            <p><a href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>
         </div>
 
         <p>&nbsp;</p>
@@ -1008,9 +1012,11 @@ attachEventListener(window, 'load', function()
                 <h2 id="dialog_returnValues">Return values</h2>
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
                 <p>These are intended to be used in the <code>myObj.callback()</code> or <code>myObj.onClose()</code> function for further processing.</p>
+
+                <p><code>myObj.nRetCode</code></p>
+
                 <table class="returnTable">
                     <thead>
-                        <tr><th colspan="3"><code>myObj.nRetCode</code></th></tr>
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
@@ -1024,9 +1030,10 @@ attachEventListener(window, 'load', function()
 
                 <p>&nbsp;</p>
 
+                <p><code>myObj.strInput</code></p>
+
                 <table class="returnTable">
                     <thead>
-                        <tr><th colspan="3"><code>myObj.strInput</code></th></tr>
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
