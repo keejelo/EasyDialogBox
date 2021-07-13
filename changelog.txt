@@ -1,3 +1,5 @@
+# 1.735.56:
+- Minor cleanup after previous version.
 
 # 1.735.55:
 - Added a string fixer that corrects "dlg" class strings if containing several spaces, important that they 
