@@ -37,14 +37,14 @@
     padding:0;
     max-width:600px;
     overflow:hidden; /* disable scrolling inside box */
-    width:100%; /* 96, 98 */    
+    width:100%; /* 96, 98 */
     font-family:Arial, Helvetica, sans-serif;
     font-size:10px; /*0.8em*/
-    background-color:#fefefe; /* bgcolor, change it as you wish */    
+    background-color:#fefefe; /* bgcolor, change it as you wish */
     border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
     visibility:hidden;
     position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
-    pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */    
+    pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */
 }
 
 /* Dialog heading */
@@ -79,8 +79,8 @@
 
 /* Close X */
 .dlg-close-x
-{   
-    z-index:70002; 
+{
+    z-index:70002;
     float:right;
     margin:0;
     margin-top:-5px;
@@ -118,12 +118,12 @@
 
 /* Flex boxes */
 .dlg-flex-container
-{    
+{
     margin:0;
     padding:0;
     display:table;
     border-collapse:collapse;
-    border:none;    
+    border:none;
 }
 
 .dlg-flexbox-left,
@@ -138,12 +138,12 @@
     margin:0;
     padding:20px 20px 20px 20px;
     display:table-cell;
-    border:none;    
+    border:none;
     /*border:1px solid #f00;*/ /*debug*/
-    
+
     /* Fix for: Bootstrap 4 */
     box-sizing:border-box;
-    /* END: Fix for: Bootstrap 4 */    
+    /* END: Fix for: Bootstrap 4 */
 }
 
 .dlg-flexbox-right
@@ -152,16 +152,16 @@
     margin:0;
     padding:20px 20px 0 0;
     display:table-cell;
-    border:none;    
+    border:none;
     text-align:left;
     vertical-align:top;
     overflow-x:hidden; /* Hide horizontal scrollbar */
-    overflow-y:auto;   /* Add vertical scrollbar if needed */    
+    overflow-y:auto;   /* Add vertical scrollbar if needed */
     /*border:1px solid #00f;*/ /*debug*/
-    
+
     /* Fix for: Bootstrap 4 */
     box-sizing:content-box;
-    /* END: Fix for: Bootstrap 4 */        
+    /* END: Fix for: Bootstrap 4 */
 }
 
 /* Dialog input */
@@ -180,7 +180,7 @@
     width:98%;
     font-family:inherit;
     font-size:1em;
-    
+
     /* NOT USED AT THE MOMENT */
     /* Chrome fix for the graphical glitch caused by element being rendered on a sub-pixel by: transform: translate(-50%, -50%); */
     /*border:1px solid #aaa;*/
@@ -237,10 +237,10 @@
 }
 
 .dlg-icon-info
-{    
+{
     background-color:#0077d7; /*3d6da8*/
     line-height:37px;
-    box-shadow:0 0 0 1px #004d8b; /*254164*/    
+    box-shadow:0 0 0 1px #004d8b; /*254164*/
 }
 
 .dlg-icon-question
@@ -250,8 +250,8 @@
     box-shadow:0 0 0 1px #004d8b; /*254164*/
 }
 
-.dlg-icon-error 
-{ 
+.dlg-icon-error
+{
     background:#e64943;
     font-family:Consolas, monospace;
     line-height:37px;
@@ -267,7 +267,7 @@
 }
 
 .dlg-icon-excl
-{ 
+{
     color:#000;
     border-radius:0;
     width:0;
@@ -296,7 +296,7 @@
 {
     /* light */
     content:'\002715';
-    
+
     /*heavy*/
     /*content:'\002716';*/
 }
@@ -319,7 +319,7 @@
     border-bottom:30px solid #ffd54b;
     position:relative;
     top:-31px;
-    left:-16px;    
+    left:-16px;
 }
 
 .dlg-icon-excl:after,
@@ -342,10 +342,12 @@
 }
 
 /* Disable translucent background, background overlay (no modal) */
-.dlg-disable-overlay
+.dlg-disable-overlay,
+.dlg-nomodal,
+.dlg-multi
 {
     background-color:transparent;
-    pointer-events:none; /* force layer to pass-through click events */    
+    pointer-events:none; /* force layer to pass-through click events */
 }
 
 /* Rounded corners */
@@ -361,5 +363,4 @@
     -moz-box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
     box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
 }
-
 
