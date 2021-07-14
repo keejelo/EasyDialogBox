@@ -189,12 +189,14 @@ button
     font-weight:normal;
     color:inherit;
 }
-#objTable tbody td+td
+#objTable tbody td+td,
+.returnTable tbody td+td
 {
     font-style:italic;
     color:#0366d6;
 }
-#objTable tbody td+td+td
+#objTable tbody td+td+td,
+.returnTable tbody td+td+td
 {
     font-style:normal;
     color:inherit;
@@ -646,10 +648,21 @@ attachEventListener(window, 'load', function()
                         <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
                         <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
                         <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer.</td></tr>
-                        <tr><td>dlg-disable-overlay</td><td>Disable background color/translucent overlay.</td></tr>
                         <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
                         <tr><td>dlg-disable-esc</td><td>Disable Esc-key so it won't close the box.</td></tr>
                         <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it.</td></tr>
+                        <tr><td>dlg-disable-overlay</td><td>Disable translucent overlay/background color.</td></tr>
+
+                        <tr><td colspan="2">&nbsp;</td></tr>
+
+                        <tr><td>dlg-nomodal</td><td>Same as <code>dlg-disable-overlay</code></td></tr>
+                        <tr>
+                            <td>dlg-multi</td>
+                            <td>
+                                For using mulitple dialogboxes at once, same as using all these together:<br />
+                                <code>dlg-disable-overlay</code> , <code>dlg-disable-esc</code> and <code>dlg-disable-clickout</code>
+                            </td>
+                        </tr>
 
                         <tr><td colspan="2">&nbsp;</td></tr>
 
@@ -1013,6 +1026,8 @@ attachEventListener(window, 'load', function()
                 <p>Variables: <code>nRetCode</code> and <code>strInput</code>
                 <p>These are intended to be used in the <code>myObj.callback()</code> or <code>myObj.onClose()</code> function for further processing.</p>
 
+                <p>&nbsp;</p>
+
                 <p><code>myObj.nRetCode</code></p>
 
                 <table class="returnTable">
@@ -1020,7 +1035,7 @@ attachEventListener(window, 'load', function()
                         <tr><th>Value</th><th>Type</th><th>Description</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>0</td><td>number</td><td>&quot;Close&quot; button, outside box or [X] clicked</td></tr>
+                        <tr><td>0</td><td>number</td><td>&quot;Close&quot; button, clicked outside box, clicked [X] or pressed ESC-key</td></tr>
                         <tr><td>1</td><td>number</td><td>&quot;Yes&quot; button clicked</td></tr>
                         <tr><td>2</td><td>number</td><td>&quot;No&quot; button clicked</td></tr>
                         <tr><td>3</td><td>number</td><td>&quot;OK&quot; button clicked</td></tr>
