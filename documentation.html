@@ -589,7 +589,7 @@ attachEventListener(window, 'load', function()
 
         <div>
             <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue">pre-written HTML.</a></p>
-            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying multiple boxes at the same time is also possible.</p>
+            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#flag_multi" title="see flag">multiple boxes</a> at the same time is also possible.</p>
         </div>
 
         <div id="code_info_heading" class="section">
@@ -662,10 +662,10 @@ attachEventListener(window, 'load', function()
 
                         <tr><td>dlg-nomodal</td><td>Same as <code>dlg-disable-overlay</code></td></tr>
                         <tr>
-                            <td>dlg-multi</td>
+                            <td id="flag_multi">dlg-multi</td>
                             <td>
-                                For using multiple dialogboxes at once, same as using the flags below together:<br />
-                                <code>dlg-disable-overlay</code> , <code>dlg-disable-esc</code> and <code>dlg-disable-clickout</code>
+                                Makes it possible and easier to use multiple dialogboxes at the same time.<br />Shorthand that combines the flags below:<br />
+                                <code>dlg-disable-overlay</code>, <code>dlg-disable-esc</code> and <code>dlg-disable-clickout</code>
                             </td>
                         </tr>
 
