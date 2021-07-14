@@ -1,5 +1,6 @@
 # 1.735.57:
 - Added flags "dlg-nomodal" and "dlg-multi", also updated the documentation for these.
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE9-11.
 
 # 1.735.56:
 - Minor cleanup after previous version.
