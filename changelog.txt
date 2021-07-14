@@ -1,3 +1,6 @@
+# 1.735.57:
+- Added flags "dlg-nomodal" and "dlg-multi", also updated the documentation for these.
+
 # 1.735.56:
 - Minor cleanup after previous version.
 
