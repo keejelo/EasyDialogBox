@@ -1,3 +1,8 @@
+# 1.735.59:
+- Updated documentation with more examples.
+- Updated method "obj.hide()" with optional delay and optional skipping of "obj.hide()" method.
+- Minor cleanup
+
 # 1.735.57:
 - Added flags "dlg-nomodal" and "dlg-multi", also updated the documentation for these.
   Tested working in Win10 with latest Chrome, Firefox, Edge and IE9-11.
