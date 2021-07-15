@@ -603,13 +603,11 @@ attachEventListener(window, 'load', function()
     {
         // ** Create two dialogboxes, give them some color and open them
         var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around like a window!</p>', false, 100, 100);
-        myBox1.colorHeading('#009955');
-        myBox1.colorBorder('#009955');
+        myBox1.colorHeading('#009955').colorBorder('#009955');
         myBox1.show();
 
         var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around like a window!</p>', false, 180, 180);
-        myBox2.colorHeading('#005599');
-        myBox2.colorBorder('#005599');
+        myBox2.colorHeading('#005599').colorBorder('#005599');
         myBox2.show();
     }, false);
     // ** END: Run example with multiple dialogboxes
@@ -1168,13 +1166,11 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create two dialogboxes, give them some color and open them</b></i>
 <i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">, false, 100, 100)</b>;</i>
-<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b></b>;</i>
-<i><b>myBox1</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b></b>;</i>
+<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b>;</i>
 <i><b>myBox1</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">, false, 180, 180)</b>;</i>
-<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b></b>;</i>
-<i><b>myBox2</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b></b>;</i>
+<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b>;</i>
 <i><b>myBox2</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
