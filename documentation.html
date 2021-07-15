@@ -598,6 +598,23 @@ attachEventListener(window, 'load', function()
     }, false);
     // ** END: jsExampleRunBtn
 
+    // ** Run example with multiple dialogboxes
+    attachEventListener(document.getElementById('jsExampleMultiRunBtn'), 'click', function()
+    {
+        // ** Create two dialogboxes, give them some color and open them
+        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around like a window!</p>', false, 100, 100);
+        myBox1.colorHeading('#009955');
+        myBox1.colorBorder('#009955');
+        myBox1.show();
+
+        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around like a window!</p>', false, 180, 180);
+        myBox2.colorHeading('#005599');
+        myBox2.colorBorder('#005599');
+        myBox2.show();
+    }, false);
+    // ** END: Run example with multiple dialogboxes
+
+
     // ** Scroll to top button
     var scrollTopBtn = document.getElementById('scrollTopBtn');
     var scrollTopFunc = function()
@@ -666,8 +683,8 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i> </div>
 
         <div>
-            <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue">pre-written HTML.</a></p>
-            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#flag_multi" title="see flag">multiple boxes</a> at the same time is also possible.</p>
+            <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue" title="Go to example">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue">pre-written HTML.</a></p>
+            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible.</p>
         </div>
 
         <div id="code_info_heading" class="section">
@@ -1138,6 +1155,31 @@ attachEventListener(window, 'load', function()
                         <tr><td>string</td><td>string</td><td>A string of text entered in the <code>&lt;input&gt;</code> element when using class <code>dlg-prompt</code></td></tr>
                     </tbody>
                 </table>
+            </div>
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <h2 id="js_example_multi">Example with multiple dialogboxes</h2>
+            <p>Create two dialogs and then show them, also adding some color to them.</p>
+            <div class="codeview"><i>&nbsp;</i>
+<i><b class="comment">// Javascript ...</b></i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Create two dialogboxes, give them some color and open them</b></i>
+<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">, false, 100, 100)</b>;</i>
+<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b></b>;</i>
+<i><b>myBox1</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b></b>;</i>
+<i><b>myBox1</b><b class="func">.show()</b>;</i>
+<i>&nbsp;</i>
+<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">, false, 180, 180)</b>;</i>
+<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b></b>;</i>
+<i><b>myBox2</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b></b>;</i>
+<i><b>myBox2</b><b class="func">.show()</b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ...</b></i>
+<i>&nbsp;</i>     </div>
+            <div>
+                <button id="jsExampleMultiRunBtn">Run example</button>
             </div>
 
             <p>&nbsp;</p>
