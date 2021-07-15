@@ -100,6 +100,10 @@ sup,.small
     text-align:center;
     width:50px;
 }
+.center
+{
+    text-align:center;
+}
 .word
 {
     color:#0366d6;
@@ -545,7 +549,9 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 //window.addEventListener('load', function()
 attachEventListener(window, 'load', function()
 {
+    //---------------------------------------------------------------------------------------
     // ** Run simple example from page when button is clicked
+    //---------------------------------------------------------------------------------------
     attachEventListener(document.getElementById('jsSimpleExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
@@ -557,9 +563,14 @@ attachEventListener(window, 'load', function()
         // ** Show the newly created box
         myBox.show();
     }, false);
+    //---------------------------------------------------------------------------------------
+    // ** END: Run simple example from page when button is clicked
+    //---------------------------------------------------------------------------------------
 
-    // ** Run example from page when button is clicked
-    //document.getElementById('jsExampleRunBtn').addEventListener('click', function()
+
+    //---------------------------------------------------------------------------------------
+    // ** Run example Yes/No from page when button is clicked
+    //---------------------------------------------------------------------------------------
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
@@ -596,9 +607,14 @@ attachEventListener(window, 'load', function()
         // ** Show the newly created box
         myBox.show();
     }, false);
+    //---------------------------------------------------------------------------------------
     // ** END: jsExampleRunBtn
+    //---------------------------------------------------------------------------------------
 
+
+    //---------------------------------------------------------------------------------------
     // ** Run example with multiple dialogboxes
+    //---------------------------------------------------------------------------------------
     attachEventListener(document.getElementById('jsExampleMultiRunBtn'), 'click', function()
     {
         // ** Create two dialogboxes, give them some color and open them
@@ -608,10 +624,33 @@ attachEventListener(window, 'load', function()
         var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around like a window!</p>', false, 180, 180);
         myBox2.colorHeading('#005599').colorBorder('#005599').show();
     }, false);
+    //---------------------------------------------------------------------------------------
     // ** END: Run example with multiple dialogboxes
+    //---------------------------------------------------------------------------------------
 
 
+    //---------------------------------------------------------------------------------------
+    // ** Run example toast
+    //---------------------------------------------------------------------------------------
+    attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
+    {
+        // ** Create a preset string that we can use for toastboxes
+        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay';
+        var strToast = '<p class="center bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
+
+        // ** Create a new box
+        var myToast1 = EasyDialogBox.create('toast1', preToast, 0, strToast, false, 0, 20, 500, 50);
+        myToast1.el.style.backgroundColor = '#f1f8ff';
+        myToast1.colorBorder('#c8e1ff').show().hide(3000);
+    }, false);
+    //---------------------------------------------------------------------------------------
+    // ** END: Run example toast
+    //---------------------------------------------------------------------------------------
+
+
+    //---------------------------------------------------------------------------------------
     // ** Scroll to top button
+    //---------------------------------------------------------------------------------------
     var scrollTopBtn = document.getElementById('scrollTopBtn');
     var scrollTopFunc = function()
     {
@@ -632,7 +671,9 @@ attachEventListener(window, 'load', function()
     {
         scrollTopFunc();
     }, false);
+    //---------------------------------------------------------------------------------------
     // ** END: Scroll to top button
+    //---------------------------------------------------------------------------------------
 
 
 // ** END: window load
@@ -679,8 +720,8 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i> </div>
 
         <div>
-            <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue" title="Go to example">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue">pre-written HTML.</a></p>
-            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible.</p>
+            <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue" title="Go to examples">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue" title="..read more and see examples">pre-written HTML.</a></p>
+            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible, or how about a <a class="bold blue" href="#js_example_toast" title="Go to example">Toast!</a></p>
         </div>
 
         <div id="code_info_heading" class="section">
@@ -856,14 +897,19 @@ attachEventListener(window, 'load', function()
             <p>Return value = the <span class="ital word">object</span> itself if the box could be shown, <span class="ital word">false</span> if not.</p>
 
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
             <h2 id="dialog_hide">Hide dialog (close)</h2>
-            <p>
-                <code>myObj.hide();</code>
-            </p>
+            <p>Default use is without any parameters: <code>myObj.hide();</code>, use this if you just want to hide right away without any more fuzz.</p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
             <p>(Pressing the keyboard escape-key <kbd>Esc</kbd> also fires this function)</p>
+            <p class="bold">Optional parameters:</p>
+            <p>Else you can use it with paramters like this: <code>myObj.hide(nSec, bSkip);</code></p>
+            <p><code>nSec</code> is a value in milliseconds of type <span class="ital word">number</span>, to delay the hiding/closing of the dialogbox.</p>
+            <p><code>bSkip</code> is a value of type <span class="ital word">boolean</span>, to skip execution of the objects </code>onHide</code> function.<br/>
+            Only skips if value is <span class="ital word">true boolean</span>, else it executes as normal which is also default.</p>
 
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
 
             <h2 id="dialog_destroy">Destroy dialog</h2>
@@ -901,6 +947,7 @@ attachEventListener(window, 'load', function()
 </div>
             </p>
 
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
@@ -1163,10 +1210,10 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create two dialogboxes, give them some color and open them</b></i>
-<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="param">false</b><b class="func">,</b> <b class="param">100</b><b class="func">,</b> <b class="param">100</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
 <i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="param">false</b><b class="func">,</b> <b class="param">180</b><b class="func">,</b> <b class="param">180</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
 <i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
@@ -1175,6 +1222,32 @@ attachEventListener(window, 'load', function()
                 <button id="jsExampleMultiRunBtn">Run example</button>
             </div>
 
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+
+            <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
+            <p>Creating a &quot;toast&quot;-like box, show it and hide it after 3 seconds.</p>
+            <div class="codeview"><i>&nbsp;</i>
+<i><b class="comment">// Javascript ...</b></i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Create a preset class string that we can use for toastboxes, and some HTML content to display</b></i>
+<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b></i>;
+<i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center bold&quot;&gt;TOASTY! --- This will close 3 seconds after it's displayed!&lt;/p&gt;'</b></i>;
+<i>&nbsp;</i>
+<i><b class="comment">// ** Create a new toastbox, show it, then hide it after 3 secs.</b></i>
+<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'toast1'</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">,</b> <b class="num">50</b><b class="func">)</b>;</i>
+<i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#f1f8ff'</b>;</i>
+<i><b>myToast</b><b class="func">.colorBorder(</b><b class="param">'#c8e1ff'</b><b class="func">).show().hide(</b><b class="num">3000</b><b class="func">)</b></b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ...</b></i>
+<i>&nbsp;</i>     </div>
+            <div>
+                <button id="jsExampleToastRunBtn">Run example</button>
+            </div>
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
@@ -1204,6 +1277,7 @@ attachEventListener(window, 'load', function()
 
         <p>&nbsp;</p>
         <p>&nbsp;</p>
+
 
         <p class="small_note" title="End of Javascript object creation">// End of Javascript object creation</p>
         <hr class="end_begin" />
