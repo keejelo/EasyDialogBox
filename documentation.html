@@ -23,6 +23,7 @@ body
     padding:20px;
     background-color:#fff;
     border:1px solid #ddd;
+    border-radius:3px;
 }
 h1, h2, h3, h4, h5, h6
 {
@@ -46,6 +47,7 @@ h2
     padding:15px;
     background-color:#3d6da8; /*2e70b0 666b7a 3a3e4c 0769ad */
     border:1px solid #000;
+    border-radius:3px 3px 0 0;
 }
 #main_heading h1
 {
@@ -58,6 +60,7 @@ h2
     padding:15px;
     border:1px solid #000;
     border-top:none;
+    border-radius:0 0 3px 3px;
 }
 .examples
 {
@@ -337,6 +340,7 @@ b:first-child
     color:#fff;
     border:2px #ddd solid; /* 666b7a */
     border-left-width:6px;
+    border-radius:3px;
 }
 /* code line numbers */
 .codeview:before
@@ -594,7 +598,7 @@ attachEventListener(window, 'load', function()
     }, false);
     // ** END: jsExampleRunBtn
 
-    // ** Scroll to top button 
+    // ** Scroll to top button
     // ** Get element
     var scrollTopBtn = document.getElementById('scrollTopBtn');
     var scrollTopFunc = function()
@@ -615,7 +619,7 @@ attachEventListener(window, 'load', function()
     {
         scrollTopFunc();
     }, false);
-    // ** END: Scroll to top button 
+    // ** END: Scroll to top button
 
 
 // ** END: window load
@@ -653,11 +657,11 @@ attachEventListener(window, 'load', function()
         <div class="codeview"><i><b class="tag">&lt;!DOCTYPE html&gt;</b></i>
 <i><b class="tag">&lt;html&gt;</b></i>
 <i><b class="tag">&lt;head&gt;</b></i>
-<i><b class="tag">&lt;meta</b> <b class="att">charset</b>=<b class="val">&quot;utf-8&quot;</b> <b class="tag">/&gt;</b></i>
+<i><b class="tag">&lt;meta</b> <b class="att">charset</b><b class="equal">=</b><b class="val">&quot;utf-8&quot;</b> <b class="tag">/&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;link</b> <b class="att">type</b>=<b class="val">&quot;text/css&quot;</b> <b class="att">rel</b>=<b class="val">&quot;stylesheet&quot;</b> <b class="att">href</b>=<b class="val">&quot;<a href="css/easydlg.css" title="source">css/easydlg.css</a>&quot;</b> <b class="tag">/&gt;</b></i>
+<i><b class="tag">&lt;link</b> <b class="att">type</b><b class="equal">=</b><b class="val">&quot;text/css&quot;</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;stylesheet&quot;</b> <b class="att">href</b><b class="equal">=</b><b class="val">&quot;<a href="css/easydlg.css" title="source">css/easydlg.css</a>&quot;</b> <b class="tag">/&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;script</b> <b class="att">src</b>=<b class="val">&quot;<a href="js/easydlg.js" title="source">js/easydlg.js</a>&quot;</b> <b class="att">charset</b>=<b class="val">&quot;utf-8&quot;</b><b class="tag">&gt;&lt;/script&gt;</b></i>
+<i><b class="tag">&lt;script</b> <b class="att">src</b><b class="equal">=</b><b class="val">&quot;<a href="js/easydlg.js" title="source">js/easydlg.js</a>&quot;</b> <b class="att">charset</b><b class="equal">=</b><b class="val">&quot;utf-8&quot;</b><b class="tag">&gt;&lt;/script&gt;</b></i>
 <i>&nbsp;</i>
 <i>&nbsp;</i> </div>
 
@@ -1201,14 +1205,14 @@ attachEventListener(window, 'load', function()
                 <p>Return value: Close = <span class="ital word">0</span></p>
 
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message, line one<b class="tag">&lt;br /&gt;</b></i>
 <i>    <b>this is line two.</b><b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myBox" class="dlg-opener">Open</button></p>
             </div>
@@ -1218,13 +1222,13 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myBoxError" class="dlg-opener">Open</button></p>
             </div>
@@ -1234,13 +1238,13 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg-yes-no</code> and <code>dlg-question</code> to display icon.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myBoxYesNo" class="dlg-opener">Open</button></p>
             </div>
@@ -1250,13 +1254,13 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myBoxOkCancel" class="dlg-opener">Open</button></p>
             </div>
@@ -1266,13 +1270,13 @@ attachEventListener(window, 'load', function()
                 <p>Class <code>dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a message<b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myPromptBox" class="dlg-opener">Open</button></p>
             </div>
@@ -1290,14 +1294,14 @@ attachEventListener(window, 'load', function()
                     Cancel = <span class="ital word">4</span>
                 </p>
                 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded&quot;</b> <b class="att">title</b>=<b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b>=<b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">data-x</b>=<b class="val">&quot;100&quot;</b> <b class="att">data-y</b>=<b class="val">&quot;200&quot;</b> <b class="att">data-w</b>=<b class="val">&quot;500&quot;</b> <b class="att">data-h</b>=<b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b> <b class="att">data-x</b><b class="equal">=</b><b class="val">&quot;100&quot;</b> <b class="att">data-y</b><b class="equal">=</b><b class="val">&quot;200&quot;</b> <b class="att">data-w</b><b class="equal">=</b><b class="val">&quot;500&quot;</b> <b class="att">data-h</b><b class="equal">=</b><b class="val">&quot;400&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>This is a crazy messagebox, it uses several classes at once and also uses the optional parameters for position and size: x,y,w,h<b class="tag">&lt;br /&gt;</b></i>
 <i>    <b>If you want custom position and size it is possible.</b><b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
 <i><b class="tag">&lt;/div&gt;</b></i>
 <i>&nbsp;</i>
-<i><b class="tag">&lt;button</b> <b class="att">rel</b>=<b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b>=<b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
+<i><b class="tag">&lt;button</b> <b class="att">rel</b><b class="equal">=</b><b class="val">&quot;myCrazyBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-opener&quot;</b><b class="tag">&gt;</b>Open<b class="tag">&lt;/button&gt;</b></i>
 <i>&nbsp;</i>         </div>
                 <p><button rel="myCrazyBox" class="dlg-opener">Open</button></p>
             </div>
