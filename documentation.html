@@ -410,14 +410,14 @@ b:first-child
 
 </style>
 
-<!-- Including the necessary files here -->
+<!-- Including the necessary files here CSS and JS -->
 
 <link type="text/css" rel="stylesheet" href="css/easydlg.css" />
 
 <script src="js/easydlg.js"></script>
 
 
-<!-- END: Including the necessary files here -->
+<!-- END: Including the necessary files here CSS and JS -->
 
 <script>
 //-----------------------------------------------------------------------------------------------------------------
@@ -486,8 +486,9 @@ var attachEventListener = function(target, eventType, functionRef, capture)
 //
 //---------------------------------------------------------------------
 
-
-// ** One example of a callback function
+//---------------------------------------------------------------------------------------
+// ** Example of a callback function
+//---------------------------------------------------------------------------------------
 var myCallbackFunc = function(nRetCode, strInput)
 {
     if(nRetCode === 0)
@@ -534,7 +535,9 @@ var myCallbackFunc = function(nRetCode, strInput)
 
 };
 
+//---------------------------------------------------------------------------------------
 // ** Another regular function used as callback
+//---------------------------------------------------------------------------------------
 var myOtherCallbackFunc = function(nRetCode, strInput)
 {
     console.log('Hello from myOtherCallbackFunc: nRetCode = ' + nRetCode + ', strInput = ' + strInput);
@@ -543,10 +546,10 @@ var myOtherCallbackFunc = function(nRetCode, strInput)
 // ** END: Callback Examples
 //-----------------------------------------------------------------------------------------------------------------
 
+
 //-----------------------------------------------------------------------------------------------------------------
 // ** Window load event-listener
 //-----------------------------------------------------------------------------------------------------------------
-//window.addEventListener('load', function()
 attachEventListener(window, 'load', function()
 {
     //---------------------------------------------------------------------------------------
@@ -1443,7 +1446,7 @@ attachEventListener(window, 'load', function()
 
     </div>
 
-    <!-- HTML pre-written dialogboxes, hidden and not visible. Only used as templates for the dynamically created dialogboxes -->
+    <!-- HTML pre-written dialogbox examples, hidden and not visible. Only used as templates for the dynamically created dialogboxes -->
 
     <div id="myBox" class="dlg" title="Title text">
         <p>This is a message, line one<br />
