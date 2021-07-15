@@ -1,6 +1,6 @@
 /*****************************************************************************************************************
 * EasyDialogBox
-* Version: 1.735.57
+* Version: 1.735.58
 * Created by: keejelo
 * Year: 2020-2021
 * GitHub: https://github.com/keejelo/EasyDialogBox
@@ -43,7 +43,7 @@ var EasyDialogBox = (function()
 
     // ** Variable that holds the original padding-right value of body element,
     //    used to prevent content shift when scrollbar hides/shows.
-    var _orgBodyPaddingRight = 0;
+    var _bodyPadRt = 0;
 
     // ** Flag that indicates if window was resized
     var _bResized = false;
@@ -457,10 +457,10 @@ var EasyDialogBox = (function()
         }
 
         // ** Store the original padding-right value
-        _orgBodyPaddingRight = window.getComputedStyle(body, null).getPropertyValue('padding-right');
+        _bodyPadRt = window.getComputedStyle(body, null).getPropertyValue('padding-right');
 
         // ** Convert from string to integer (remove 'px' postfix and return value as integer)
-        _orgBodyPaddingRight = _s2i(_orgBodyPaddingRight);
+        _bodyPadRt = _s2i(_bodyPadRt);
 
         // ** Get width of body before removing scrollbar
         var w1 = body.offsetWidth;
@@ -475,9 +475,9 @@ var EasyDialogBox = (function()
         var w3 = w2 - w1;
 
         // ** If conditions are true: add both padding-right values,
-        if(typeof _orgBodyPaddingRight === 'number' && _orgBodyPaddingRight > 0)
+        if(typeof _bodyPadRt === 'number' && _bodyPadRt > 0)
         {
-            w3 += _s2i(_orgBodyPaddingRight);
+            w3 += _s2i(_bodyPadRt);
         }
 
         // ** Apply width-difference as padding-right to body, substitute for scrollbar,
@@ -615,7 +615,7 @@ var EasyDialogBox = (function()
     // ** END: Show dialog box
 
     // ** Hide dialog box
-    var _hide = function(objId, param)
+    var _hide = function(objId, bSkip)
     {
         var dlg = document.getElementById(objId);
         var box = document.getElementById(objId + '_1');
@@ -637,7 +637,7 @@ var EasyDialogBox = (function()
         // ** Get body element, reset values, restore scrolling
         var body = document.querySelector('body');
         _removeClass(body, 'dlg-stop-scrolling');
-        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
+        body.setAttribute('style', 'padding-right:' + _s2i(_bodyPadRt) + 'px;');
 
         // ** Update position (if moved/custom pos)
         // ** ALL dialogboxes depends on this to remember last position
@@ -651,8 +651,8 @@ var EasyDialogBox = (function()
         }
         // ** END: Update position (if moved/custom pos)
 
-        // ** Run onHide function if param string do NOT match
-        if(param !== 'doNotExecuteOnHide')
+        // ** Run onHide function if "bSkip" is false
+        if(bSkip === false)
         {
             obj.onHide();
         }
@@ -673,7 +673,7 @@ var EasyDialogBox = (function()
         // ** Get body element, reset values, restore scrolling
         var body = document.querySelector('body');
         _removeClass(body, 'dlg-stop-scrolling');
-        body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPaddingRight) + 'px;');
+        body.setAttribute('style', 'padding-right:' + _s2i(_bodyPadRt) + 'px;');
 
         // ** Get the dlg element
         var dlg = document.getElementById(objId);
@@ -770,7 +770,7 @@ var EasyDialogBox = (function()
             if(strId === '' || typeof strId === 'undefined' || strId === null || strId === 0)
             {
                 // ** Create a unique string for the 'id'
-                strId = 'a'; // start with letter, else selector is not valid, throws error, was causing bug.
+                strId = 'a'; // start with letter, else selector is not valid CSS/JS, was causing bug/error.
                 strId += Math.random().toString(36).substr(2,9);
             }
 
@@ -854,9 +854,9 @@ var EasyDialogBox = (function()
                 },
 
                 // ** Hide
-                hide : function(param)
+                hide : function(bSkip)
                 {
-                    return _hide(this.id, param);
+                    return _hide(this.id, bSkip);
                 },
 
                 // ** Destroy
@@ -1318,7 +1318,7 @@ var EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         //obj.destroy();  // changed from "destroy" to "hiding", keep the dialogbox in DOM
-                        obj.hide('doNotExecuteOnHide');
+                        obj.hide(true);  // true = do not run obj.onHide()
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
@@ -1342,7 +1342,7 @@ var EasyDialogBox = (function()
 
                         // ** Close dialogbox, reset values, clean up
                         //obj.destroy();  // changed from "destroy" to "hiding", keep the dialogbox in DOM
-                        obj.hide('doNotExecuteOnHide');
+                        obj.hide(true);  // true = do not run obj.onHide()
 
                         // ** Callback, return code: CLOSE
                         obj.callback(CLOSE);
@@ -1370,7 +1370,7 @@ var EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                            obj.hide('doNotExecuteOnHide');
+                            obj.hide(true);  // true = do not run obj.onHide()
 
                             // ** Callback, return code: CLOSE
                             obj.callback(CLOSE);
@@ -1406,7 +1406,7 @@ var EasyDialogBox = (function()
 
                                 // ** Close dialogbox, reset values, clean up
                                 //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                                obj.hide('doNotExecuteOnHide');
+                                obj.hide(true);  // true = do not run obj.onHide()
 
                                 // ** Callback, return code: CLOSE
                                 obj.callback(CLOSE);
@@ -1442,7 +1442,7 @@ var EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                            obj.hide('doNotExecuteOnHide');
+                            obj.hide(true);  // true = do not run obj.onHide()
 
                             // ** Callback, return code: YES
                             obj.callback(YES);
@@ -1465,7 +1465,7 @@ var EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                            obj.hide('doNotExecuteOnHide');
+                            obj.hide(true);  // true = do not run obj.onHide()
 
                             // ** Callback, return code: NO
                             obj.callback(NO);
@@ -1496,7 +1496,7 @@ var EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                            obj.hide('doNotExecuteOnHide');
+                            obj.hide(true);  // true = do not run obj.onHide()
 
                             // ** Callback, return code: OK
                             obj.callback(OK);
@@ -1519,7 +1519,7 @@ var EasyDialogBox = (function()
 
                             // ** Close dialogbox, reset values, clean up
                             //obj.destroy();  // Changed from "destroy" to "hiding", keep the dialogbox in DOM
-                            obj.hide('doNotExecuteOnHide');
+                            obj.hide(true);  // true = do not run obj.onHide()
 
                             // ** Callback, return code: CANCEL
                             obj.callback(CANCEL);
@@ -1587,7 +1587,7 @@ var EasyDialogBox = (function()
                 obj.bExistInDOM = true;
 
                 // ** First run keep hidden, only create, do not show, do not run "onHide" func
-                obj.hide('doNotExecuteOnHide');  // <-- skips execution of "obj.onHide()" function
+                obj.hide(true);  // true = do not run obj.onHide()
 
                 // ** Set reference to object itself
                 obj.el = document.getElementById(obj.id + '_1');
