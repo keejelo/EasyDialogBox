@@ -599,12 +599,12 @@ attachEventListener(window, 'load', function()
     // ** END: jsExampleRunBtn
 
     // ** Scroll to top button
-    // ** Get element
     var scrollTopBtn = document.getElementById('scrollTopBtn');
     var scrollTopFunc = function()
     {
         var minVal = 100;
-        if(document.getElementsByTagName('body')[0].scrollTop > minVal || document.documentElement.scrollTop > minVal)
+        if(document.body.scrollTop > minVal
+        || document.documentElement.scrollTop > minVal)
         {
             scrollTopBtn.style.display = 'block';
         }
@@ -614,7 +614,7 @@ attachEventListener(window, 'load', function()
         }
     };
 
-    // ** When the user scrolls down 20px from the top of the document, show the button
+    // ** Scroll event listener
     attachEventListener(window, 'scroll', function()
     {
         scrollTopFunc();
