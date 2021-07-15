@@ -1,5 +1,5 @@
 
-- Add more examples in documentation
+- Add more examples in documentation (have added some new)
 - Maybe add optional resize-ability to dialogbox
 - Improve "responsive-mode", works ok now, but can possibly be better
 
