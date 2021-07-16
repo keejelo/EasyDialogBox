@@ -2,6 +2,8 @@
 - Updated documentation with more examples.
 - Updated method "obj.hide()" with optional delay and optional skipping of "obj.hide()" method.
 - Minor cleanup
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE11.
+  (IE9/10 + "dlg-nomodal" + "dlg-multi": Only partial support due to CSS "pointer-events:none" not available in these browser versions.)
 
 # 1.735.57:
 - Added flags "dlg-nomodal" and "dlg-multi", also updated the documentation for these.
