@@ -81,6 +81,10 @@ h2
 {
     font-weight:bold;
 }
+.medium
+{
+    font-size:16px;
+}
 .bulb
 {
     cursor:help;
@@ -640,7 +644,7 @@ attachEventListener(window, 'load', function()
     {
         // ** Create a preset string that we can use for toastboxes
         var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay';
-        var strToast = '<p class="center bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
+        var strToast = '<p class="center medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
 
         // ** Create a new box
         var myToast = EasyDialogBox.create(0, preToast, 0, strToast, false, 0, 20, 500);
@@ -1247,7 +1251,7 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a preset class string that we can use for toastboxes, and some HTML content to display</b></i>
 <i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b>;</i>
-<i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center bold&quot;&gt;TOASTY! --- This will close 3 seconds after it's displayed!&lt;/p&gt;'</b>;</i>
+<i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, show it, then hide it after 3 secs.</b></i>
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
