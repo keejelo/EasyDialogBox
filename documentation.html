@@ -643,10 +643,10 @@ attachEventListener(window, 'load', function()
         var strToast = '<p class="center bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
 
         // ** Create a new box
-        var myToast1 = EasyDialogBox.create('toast1', preToast, 0, strToast, false, 0, 20, 500);
-        myToast1.el.style.backgroundColor = '#f1f8ff';
-        myToast1.colorBorder('#c8e1ff').show().hide(3000);
-        myToast1.onHide = myToast1.destroy;
+        var myToast = EasyDialogBox.create(0, preToast, 0, strToast, false, 0, 20, 500);
+        myToast.el.style.backgroundColor = '#f1f8ff';
+        myToast.colorBorder('#c8e1ff').show().hide(3000);
+        myToast.onHide = myToast.destroy;
     }, false);
     //---------------------------------------------------------------------------------------
     // ** END: Run example toast
@@ -1249,7 +1249,7 @@ attachEventListener(window, 'load', function()
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center bold&quot;&gt;TOASTY! --- This will close 3 seconds after it's displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, show it, then hide it after 3 secs.</b></i>
-<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'toast1'</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#f1f8ff'</b>;</i>
 <i><b>myToast</b><b class="func">.colorBorder(</b><b class="param">'#c8e1ff'</b><b class="func">).show().hide(</b><b class="num">3000</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
