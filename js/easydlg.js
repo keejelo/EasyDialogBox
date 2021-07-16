@@ -579,7 +579,7 @@ var EasyDialogBox = (function()
                 || _hasClass(dlg, 'dlg-exclamation')
                 )
                 {
-                    h = 115;
+                    h = 100;
                 }*/
 
                 // ** Adjust custom height
