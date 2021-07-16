@@ -1,3 +1,11 @@
+# 1.735.60:
+- Moved some height adjustments from method ".show()" and ".height()" to CSS instead of dynamically setting it in JS code.
+  Updated the CSS files with the new changes:
+  -- Removed: "margin-bottom:25px" from class ".dlg-message"
+  -- Changed: "margin-top:10px" to "margin-top:25px" in class ".dlg-footer"
+  Tested working in Win10 with latest Chrome, Firefox, Edge and IE11.
+  (IE9/10 + "dlg-nomodal" + "dlg-multi": Only partial support due to CSS "pointer-events:none" not available in these browser versions.)
+
 # 1.735.59:
 - Updated documentation with more examples.
 - Updated method "obj.hide()" with optional delay and optional skipping of "obj.hide()" method.
