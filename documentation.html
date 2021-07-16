@@ -24,6 +24,7 @@ body
     background-color:#fff;
     border:1px solid #ddd;
     border-radius:3px;
+
 }
 h1, h2, h3, h4, h5, h6
 {
@@ -645,6 +646,7 @@ attachEventListener(window, 'load', function()
         var myToast1 = EasyDialogBox.create('toast1', preToast, 0, strToast, false, 0, 20, 500, 50);
         myToast1.el.style.backgroundColor = '#f1f8ff';
         myToast1.colorBorder('#c8e1ff').show().hide(3000);
+        myToast1.onHide = myToast1.destroy;
     }, false);
     //---------------------------------------------------------------------------------------
     // ** END: Run example toast
@@ -1238,7 +1240,7 @@ attachEventListener(window, 'load', function()
 
 
             <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
-            <p>Creating a &quot;toast&quot;-like notification box, show it and hide it after 3 seconds.</p>
+            <p>With a little creativity you can make a &quot;toast&quot;-like notification box, show it and hide it after 3 seconds.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
@@ -1251,6 +1253,7 @@ attachEventListener(window, 'load', function()
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'toast1'</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">,</b> <b class="num">50</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#f1f8ff'</b>;</i>
 <i><b>myToast</b><b class="func">.colorBorder(</b><b class="param">'#c8e1ff'</b><b class="func">).show().hide(</b><b class="num">3000</b><b class="func">)</b>;</i>
+<i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
 <i>&nbsp;</i>
