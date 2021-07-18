@@ -1,3 +1,7 @@
+# 1.735.61:
+- Improved dragging when using multiple dialogboxes, now drag-function is locked to the box that is currently being dragged,
+  never looses focus on that box, until it is dropped.
+
 # 1.735.60:
 - Moved some height adjustments from method ".show()" and ".height()" to CSS instead of dynamically setting it in JS code.
   Updated the CSS files with the new changes:
