@@ -1753,8 +1753,6 @@ var EasyDialogBox = (function()
         },
         move : function(e)
         {
-            _drag.a = true
-
             // ** Get/set event variable
             e = e || window.event;
 
