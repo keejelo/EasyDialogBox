@@ -626,11 +626,15 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleMultiRunBtn'), 'click', function()
     {
         // ** Create two dialogboxes, give them some color and open them
-        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around like a window!</p>', false, 100, 100);
-        myBox1.colorHeading('#009955').colorBorder('#009955').show();
+        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p>', false, 100, 100);
+        myBox1.colorHeading('#bb0000').colorBorder('#bb0000').show();
 
-        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around like a window!</p>', false, 180, 180);
-        myBox2.colorHeading('#005599').colorBorder('#005599').show();
+        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around!</p>', false, 180, 180);
+        myBox2.colorHeading('#009955').colorBorder('#009955').show();
+
+        var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 3', '<p>This is box 3, drag and drop it around!</p>', false, 260, 260);
+        myBox3.colorHeading('#005599').colorBorder('#005599').show();
+
     }, false);
     //---------------------------------------------------------------------------------------
     // ** END: Run example with multiple dialogboxes
@@ -732,7 +736,7 @@ attachEventListener(window, 'load', function()
 
         <div>
             <p class="bold">Then it can be used like the <a href="#js_example" class="bold blue" title="Go to examples">examples below</a>. Boxes can also be created with <a href="#html_box" class="bold blue" title="..read more and see examples">pre-written HTML.</a></p>
-            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#flag_nomodal" title="Go to optional flags">optional flags</a>.<br />Displaying <a class="blue" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible, or how about a <a class="bold blue" href="#js_example_toast" title="Go to example">Toast!</a></p>
+            <p class="bold">All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue" href="#paramTable" title="Go to optional flags and dialogtypes">optional flags</a>.<br />Displaying <a class="blue" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible, or how about a <a class="bold blue" href="#js_example_toast" title="Go to example">Toast!</a></p>
         </div>
 
         <div id="code_info_heading" class="section">
@@ -790,7 +794,7 @@ attachEventListener(window, 'load', function()
                         <tr><td colspan="2">&nbsp;</td></tr>
                     </tbody>
                     <thead>
-                        <tr><th id="flag_nomodal">Optional flags <sup>[<a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a>]</sup></th><th>Description</th></tr>
+                        <tr><th>Optional flags <sup>[<a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a>]</sup></th><th>Description</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
@@ -1116,7 +1120,36 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-            <h2 id="js_example">Simple example</h2>
+            <div>
+                <h2>Get dialog object based on its id</h2>
+                <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
+                <p>
+                    <code>let myObj = EasyDialogBox.getById(id);</code>
+                </p>
+                <p>Return value = <span class="ital word">object</span> or <span class="ital word">null</span> if could not be found.</p>
+            </div>
+
+            <p>&nbsp;</p>
+
+            <div>
+                <h2>Get all dialog objects</h2>
+                <p>Get all dialogbox objects that is currently stored in the object-array.</p>
+                <p>
+                    <code>let myArray = EasyDialogBox.getAll();</code>
+                </p>
+                <p>Return value = <span class="ital word">array</span></p>
+            </div>
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            
+            <h1 id="js_example">Examples</h1>
+            
+            <p>&nbsp;</p>
+
+            <h2>Simple example</h2>
             <p>Create a dialog and then show it.</p>
 
 <div class="codeview"><i>&nbsp;</i>
@@ -1220,18 +1253,21 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="js_example_multi">Example with multiple dialogboxes</h2>
-            <p>Create two dialogs and then show them, also adding some color to them.</p>
+            <p>Create three dialogs and then show them, also giving them some color.</p>
             <p>Used class flag <code>dlg-multi</code> to make it easier to display multiple boxes at the same time. Also chaining the object method execution.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Create two dialogboxes, give them some color and open them</b></i>
-<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
-<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i><b class="comment">// ** Create three dialogboxes, give them some color and open them</b></i>
+<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
+<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around like a window!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
-<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
+<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i>&nbsp;</i>
+<i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
+<i><b>myBox3</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
 <i>&nbsp;</i>
@@ -1269,30 +1305,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
 
-            <div>
-                <h2>Get dialog object based on its id</h2>
-                <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
-                <p>
-                    <code>let myObj = EasyDialogBox.getById(id);</code>
-                </p>
-                <p>Return value = <span class="ital word">object</span> or <span class="ital word">null</span> if could not be found.</p>
-            </div>
-
-            <p>&nbsp;</p>
-
-            <div>
-                <h2>Get all dialog objects</h2>
-                <p>Get all dialogbox objects that is currently stored in the object-array.</p>
-                <p>
-                    <code>let myArray = EasyDialogBox.getAll();</code>
-                </p>
-                <p>Return value = <span class="ital word">array</span></p>
-            </div>
-
-            <p>&nbsp;</p>
 
         </div>
 
