@@ -416,6 +416,7 @@ b:first-child
 }
 /* END: scroll to top button */
 
+
 </style>
 
 <!-- Including the necessary files here CSS and JS -->
@@ -650,10 +651,10 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
         var strToast = '<p class="center medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay';
+        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay';
         var myToast = EasyDialogBox.create(0, preToast, 0, strToast, false, 0, 20, 500);
-        myToast.el.style.backgroundColor = '#f1f8ff';
-        myToast.el.style.borderColor = '#c8e1ff';
+        myToast.el.style.backgroundColor = '#cce8f4';
+        myToast.el.style.borderColor = '#a2b8c4';
         myToast.onHide = myToast.destroy;
         myToast.show().hide(3000);
     }, false);
@@ -1293,12 +1294,12 @@ attachEventListener(window, 'load', function()
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a preset class string that we can use for toastboxes</b></i>
-<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b>;</i>
+<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
-<i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#f1f8ff'</b>;</i>
-<i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#c8e1ff'</b>;</i>
+<i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#cce8f4'</b>;</i>
+<i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#a2b8c4'</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
 <i><b>myToast</b><b class="func">.show().hide(</b><b class="num">3000</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
