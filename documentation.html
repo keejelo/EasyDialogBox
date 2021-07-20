@@ -9,7 +9,7 @@
 body
 {
     margin:0;
-    padding:10px;
+    padding:0;
     padding-bottom:200px;
     font-family:Arial, Helvetica, sans-serif;
     font-size:16px;
@@ -19,6 +19,7 @@ body
 #page
 {
     margin:0 auto;
+    margin-top:20px;
     max-width:1200px;
     padding:20px;
     background-color:#fff;
@@ -648,11 +649,8 @@ attachEventListener(window, 'load', function()
     //---------------------------------------------------------------------------------------
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
-        // ** Create a preset string that we can use for toastboxes
-        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay';
         var strToast = '<p class="center medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-
-        // ** Create a new box
+        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay';
         var myToast = EasyDialogBox.create(0, preToast, 0, strToast, false, 0, 20, 500);
         myToast.el.style.backgroundColor = '#f1f8ff';
         myToast.el.style.borderColor = '#c8e1ff';
@@ -1291,11 +1289,11 @@ attachEventListener(window, 'load', function()
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Create a preset class string that we can use for toastboxes</b></i>
-<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b>;</i>
-<i>&nbsp;</i>
 <i><b class="comment">// ** Create some HTML content to be displayed</b></i>
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Create a preset class string that we can use for toastboxes</b></i>
+<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
