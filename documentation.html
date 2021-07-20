@@ -387,7 +387,7 @@ b:first-child
     display:none;
     position:fixed;
     bottom:20px;
-    right:30px;
+    right:20px;
     z-index:100;
     border:none;
     outline:none;
@@ -405,7 +405,9 @@ b:first-child
     font-weight:bold;
     color:#fff;
     border:none;
-    vertical-align:middle;
+    vertical-align:baseline;
+    position:relative;
+    top:1px;
 }
 #scrollTopBtn:hover
 {
@@ -627,13 +629,13 @@ attachEventListener(window, 'load', function()
     {
         // ** Create two dialogboxes, give them some color and open them
         var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p>', false, 100, 100);
-        myBox1.colorHeading('#bb0000').colorBorder('#bb0000').show();
+        myBox1.color('#bb0000').show();
 
         var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around!</p>', false, 180, 180);
-        myBox2.colorHeading('#009955').colorBorder('#009955').show();
+        myBox2.color('#009955').show();
 
         var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 3', '<p>This is box 3, drag and drop it around!</p>', false, 260, 260);
-        myBox3.colorHeading('#005599').colorBorder('#005599').show();
+        myBox3.color('#005599').show();
 
     }, false);
     //---------------------------------------------------------------------------------------
@@ -899,6 +901,7 @@ attachEventListener(window, 'load', function()
                     <tr><td><a href="#dialog_center">center()</a></td><td>method</td><td>position dialogbox in center of window/viewport</td></tr>
                     <tr><td><a href="#dialog_color">colorBorder()</a></td><td>method</td><td>set dialog bordercolor</td></tr>
                     <tr><td><a href="#dialog_color">colorHeading()</a></td><td>method</td><td>set dialog heading backgroundcolor</td></tr>
+                    <tr><td><a href="#dialog_color">color()</a></td><td>method</td><td>shorthand, set both heading and border same color</td></tr>
                 </tbody>
             </table>
 
@@ -1022,9 +1025,11 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_color">Change colors</h2>
-            <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom stuff.</p>
-            <p><code>myObj.colorBorder('#ff0000');</code> , to set the border color to red.</p>
-            <p><code>myObj.colorHeading('#ff0000');</code> , to set the heading backgroundcolor to red.</p>
+            <p>You can set the colors of the dialogs border and heading for some basic UI-theming without editing the CSS file or other custom CSS stuff.</p>
+            <p><code>myObj.color('#990000');</code> , to set both the heading and border color to same color.</p>
+            <p>Or you can set them individually like below:</p>
+            <p><code>myObj.colorBorder('#990000');</code> , to set the border color to one color.</p>
+            <p><code>myObj.colorHeading('#005599');</code> , to set the heading backgroundcolor to another color.</p>
             <p>Any CSS color value will work.</p>
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
             <p>For instance from <code>myObj.colorBorder('#ff0000');</code> to this <code>myObj.colorBorder('');</code> , to return color back to default defined in CSS file.</p>
@@ -1145,9 +1150,9 @@ attachEventListener(window, 'load', function()
             <hr class="end_begin" />
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            
+
             <h1 id="js_example">Examples</h1>
-            
+
             <p>&nbsp;</p>
 
             <h2>Simple example</h2>
@@ -1262,13 +1267,13 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create three dialogboxes, give them some color and open them</b></i>
 <i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
-<i><b>myBox1</b><b class="func">.colorHeading(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i><b>myBox1</b><b class="func">.color(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
-<i><b>myBox2</b><b class="func">.colorHeading(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i><b>myBox2</b><b class="func">.color(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
-<i><b>myBox3</b><b class="func">.colorHeading(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.colorBorder(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
+<i><b>myBox3</b><b class="func">.color(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
 <i>&nbsp;</i>
@@ -1286,11 +1291,13 @@ attachEventListener(window, 'load', function()
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Create a preset class string that we can use for toastboxes, and some HTML content to be displayed</b></i>
+<i><b class="comment">// ** Create a preset class string that we can use for toastboxes</b></i>
 <i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-rounded dlg-disable-drag dlg-disable-overlay'</b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Create some HTML content to be displayed</b></i>
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;center medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Create a new toastbox, show it, then hide it after 3 secs.</b></i>
+<i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#f1f8ff'</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#c8e1ff'</b>;</i>
