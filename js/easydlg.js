@@ -15,7 +15,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** Debug: true/false (outputs debug-messages to console)
-    var DEBUG = true;
+    var DEBUG = false;
 
     // ** Buttontext (custom your own text if you want)
     var _btnTextClose  = 'Close';   // Close
