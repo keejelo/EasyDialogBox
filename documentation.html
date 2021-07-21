@@ -11,9 +11,9 @@ body
     margin:0;
     padding:0;
     padding-bottom:200px;
+    background-color:#f1f1f1;
     font-family:Arial, Helvetica, sans-serif;
     font-size:16px;
-    background-color:#f1f1f1;
     line-height:26px;
 }
 #page
@@ -267,7 +267,7 @@ hr
     border:none;
     border-top:1px solid #ccc;
 }
-/* syntax coloring */
+/* syntax coloring ************************************************/
 b,i
 {
     font-weight:normal; /* abusing this tag for syntax coloring */
@@ -334,7 +334,7 @@ b:first-child
 }
 /* END: syntax coloring */
 
-/* codeview */
+/* codeview *************************************************/
 .codeview
 {
     display:block;
@@ -348,11 +348,10 @@ b:first-child
     line-height:normal;
     background-color:#222; /* 3a3e4c */
     color:#fff;
-    border:2px #ddd solid; /* 666b7a */
-    border-left-width:6px;
+    border:1px #ddd solid; /* 666b7a */
     border-radius:3px;
 }
-/* code line numbers */
+/* code line numbers ****************************************/
 .codeview:before
 {
     counter-reset:listing;
@@ -372,7 +371,8 @@ b:first-child
     content:counter(listing) ". ";
     display:inline-block;
     width:30px;
-    padding-left:0;
+    padding:0;
+    padding-left:2px;
     padding-bottom:0;
     margin-left:0;
     margin-right:20px;
@@ -380,9 +380,9 @@ b:first-child
     text-align:right;
     position:absolute;
 }
-/* END: code line numbers */
+/* END: code line numbers ************************************/
 
-/* scroll to top button */
+/* scroll to top button **************************************/
 #scrollTopBtn
 {
     display:none;
@@ -414,8 +414,7 @@ b:first-child
 {
     background-color:rgba(0,0,0,.4);
 }
-/* END: scroll to top button */
-
+/* END: scroll to top button ***********************************/
 
 </style>
 
