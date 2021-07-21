@@ -651,8 +651,8 @@ attachEventListener(window, 'load', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
         var myToast = EasyDialogBox.create(0, 'dlg-toast', 0, strToast, false, 0, 20, 500);
-        myToast.el.style.backgroundColor = '#cce8f4';
-        myToast.el.style.borderColor = '#a2b8c4';
+        myToast.el.style.backgroundColor = '#ddeaff';
+        myToast.el.style.borderColor = '#0072b3';
         myToast.onHide = myToast.destroy;
         myToast.show().hide(3000);
     }, false);
@@ -1300,8 +1300,8 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
 <i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> <b class="param">'dlg-toast'</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
-<i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#cce8f4'</b>;</i>
-<i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#a2b8c4'</b>;</i>
+<i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#ddeaff'</b>;</i>
+<i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#0072b3'</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
 <i><b>myToast</b><b class="func">.show().hide(</b><b class="num">3000</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
@@ -1315,12 +1315,10 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-
         </div>
 
         <p>&nbsp;</p>
         <p>&nbsp;</p>
-
 
         <p class="small_note" title="End of Javascript object creation and examples">// End of Javascript object creation and examples</p>
         <hr class="end_begin" />
