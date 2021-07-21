@@ -650,8 +650,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-        var preToast = 'dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay';
-        var myToast = EasyDialogBox.create(0, preToast, 0, strToast, false, 0, 20, 500);
+        var myToast = EasyDialogBox.create(0, 'dlg-toast', 0, strToast, false, 0, 20, 500);
         myToast.el.style.backgroundColor = '#cce8f4';
         myToast.el.style.borderColor = '#a2b8c4';
         myToast.onHide = myToast.destroy;
@@ -791,10 +790,15 @@ attachEventListener(window, 'load', function()
                         <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
                         <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
                         <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
+                        <tr><td>dlg-toast</td>
+                            <td>
+                                Toast dialogbox, shorthand that combines the flags below:<br />
+                                <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code>
+                            </td></tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
                     </tbody>
                     <thead>
-                        <tr><th>Optional flags <sup>[<a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a>]</sup></th><th>Description</th></tr>
+                        <tr><th>Optional flags <sup><a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a></sup></th><th>Description</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
@@ -812,7 +816,7 @@ attachEventListener(window, 'load', function()
                             <td id="flag_multi">dlg-multi</td>
                             <td>
                                 Makes it possible and easier to use multiple dialogboxes at the same time.<br />Shorthand that combines the flags below:<br />
-                                <code>dlg-disable-overlay</code>, <code>dlg-disable-esc</code> and <code>dlg-disable-clickout</code>
+                                <code>dlg-disable-overlay dlg-disable-esc dlg-disable-clickout</code>
                             </td>
                         </tr>
 
@@ -1284,7 +1288,9 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
-            <p>With a little creativity you can make a &quot;toast&quot; notification box, show it and hide it after 3 seconds.<br />Also chaining the object methods <code>.show()</code> and <code>.hide()</code></p>
+            <p>You can also make &quot;toast&quot; notification boxes by using the flag <code>dlg-toast</code></p>
+            <p>Which is really a shorthand for the combined flags: <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code></p>
+            <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code></p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
@@ -1292,11 +1298,8 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// ** Create some HTML content to be displayed</b></i>
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
-<i><b class="comment">// ** Create a preset class string that we can use for toastboxes</b></i>
-<i><b class="keyword">let</b> preToast <b class="equal">=</b> <b class="param">'dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay'</b>;</i>
-<i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
-<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> preToast<b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="num">0</b><b class="func">,</b> <b class="param">'dlg-toast'</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#cce8f4'</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#a2b8c4'</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
