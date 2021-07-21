@@ -1,3 +1,7 @@
+# 1.735.64:
+- Added a shorthand "dlg-toast" for creating toasts easier.
+- Updated the documentation.
+
 # 1.735.63:
 - Updated code so that [X] close button still appear when using class "dlg-disable-heading", it's more user friendly to have a closebutton.
   It is still positioned in rightmost upper corner.
