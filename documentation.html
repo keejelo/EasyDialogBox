@@ -126,7 +126,9 @@ code
     font-weight:normal;
     color:#000000;
     background-color:#f3f4f4;
-    padding:.2em .5em;
+    padding:.1em;
+    padding-left:.2em;
+    padding-right:.2em;
     border:1px solid #eee;
     border-radius:3px;
 }
@@ -743,8 +745,7 @@ attachEventListener(window, 'load', function()
             <p>
                 <code>EasyDialogBox</code>
             </p>
-            <p>As long as the script-file is included as above then the module will be initialized automatically when page loads.<br />
-            After that all the public functions are available.</p>
+            <p>As long as the script-file is included as above then the module will be initialized automatically when page loads, after that all the public functions are available.</p>
 
             <p>&nbsp;</p>
 
@@ -1290,9 +1291,9 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
-            <p>You can also make &quot;toast&quot; notification boxes by using the flag <code>dlg-toast</code>, and using <code>dlg-fade</code> to make it fade in/out.</p>
-            <p>Which is really a shorthand for the combined flags: <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code></p>
-            <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code></p>
+            <p>You can also make &quot;toast&quot; notification boxes by using the flag <code>dlg-toast</code>,<br />
+            which is really a shorthand for the combined flags: <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code></p>
+            <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br />Using <code>dlg-fade</code> to make it fade in/out.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
