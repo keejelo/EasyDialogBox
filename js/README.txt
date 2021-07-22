@@ -1,4 +1,4 @@
-Current version: 1.735.64
+Current version: 1.735.65
 
 Latest updated version of the file "easydlg.js" is kept here in this folder.
 
