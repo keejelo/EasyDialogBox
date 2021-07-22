@@ -1,5 +1,5 @@
 # 1.735.65:
-- Added optional fading when showing dialogs, and when using timed hiding.
+- Added optional fadein when showing dialogs, and fadeout when using timed hiding.
 - Updated the documentation.
 
 # 1.735.64:
