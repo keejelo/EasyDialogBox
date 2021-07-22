@@ -1389,10 +1389,10 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
-                <p>Class <code>dlg-yes-no</code> and <code>dlg-question</code> to display icon.</p>
+                <p>Class <code>dlg-yes-no</code>, <code>dlg-question</code> to display icon, <code>dlg-fade</code> to fade it in.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
 <div class="codeview"><i>&nbsp;</i>
-<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-yes-no dlg-question&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
+<i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-yes-no dlg-question dlg-fade&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
 <i>&nbsp;</i>
 <i>    <b class="tag">&lt;p&gt;</b>Create a new dialogbox on the fly ?<b class="tag">&lt;/p&gt;</b></i>
 <i>&nbsp;</i>
@@ -1440,7 +1440,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">You can have several types at the same time if you want! Mix and match as you like! Crazy but possible!</h3>
-                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded</code> (<a href="#paramTable">read more on classes</a>)</p>
+                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded dlg-fade</code> (<a href="#paramTable">read more on classes</a>)</p>
                 <p>
                     Return value:
                     input = <span class="ital word">string</span>,
@@ -1488,7 +1488,7 @@ attachEventListener(window, 'load', function()
         <p>This is a message</p>
     </div>
 
-    <div id="myBoxYesNo" class="dlg-yes-no dlg-question" title="Title text" data-callback="myCallbackFunc">
+    <div id="myBoxYesNo" class="dlg-yes-no dlg-question dlg-fade" title="Title text" data-callback="myCallbackFunc">
         <p>Create a new dialogbox on the fly ?</p>
     </div>
 
