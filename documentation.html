@@ -949,13 +949,13 @@ attachEventListener(window, 'load', function()
                 It's good practice to destroy a dialogbox when it's not going to be used again and no longer needs to exist in DOM.
             <p>
             <p>
-                The simplest way to do this is in the <code>myObj.onClose()</code> function:
+                The simplest way to do this is in the functions <code>myObj.onClose()</code> or <code>myObj.onHide()</code>.
             </p>
             <p>
                 Like this <code>myObj.onClose = myObj.destroy;</code> if nothing else is going on in the "onClose" function.
             </p>
             <p>
-                But if you need to do other stuff in that function also, then you can do something like below:
+                If you need to do other stuff in that function also, then you can do something like below:
             </p>
 
             <div>
