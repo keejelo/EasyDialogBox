@@ -1,3 +1,6 @@
+# 1.735.66:
+- Optimized code for "click" eventlistener on openers when using pre-written HTML. Got rid of relevant code that was not needed anymore due to this.
+
 # 1.735.65:
 - Added optional fadein when showing dialogs, and fadeout when using timed hiding.
 - Updated the documentation.
