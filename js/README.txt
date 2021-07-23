@@ -5,7 +5,7 @@
 # Medium compressed version:
   The file "easydlg.med.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
   and then minified with JSMin, which just removes comments, whitespace and most linebreaks.
-  * Most features supported by IE8.
+  * Most features supported by IE8 (no errors during testing).
 
 # Minified version, optimized:
   The file "easydlg.min.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
