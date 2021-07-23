@@ -1,5 +1,5 @@
 # 1.735.67:
-- Improved crossbrowser and legacy-browser support.
+- Improved legacy-browser support.
 
 # 1.735.66:
 - Optimized code for "click" eventlistener on openers when using pre-written HTML. Got rid of relevant code that was not needed anymore due to this.
