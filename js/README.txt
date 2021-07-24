@@ -1,15 +1,17 @@
-### Current version: 1.735.67
+### Current version: 1.735.68
   Latest updated version of the file "easydlg.js" is kept here in this folder.
   Previous versions of the file are moved into the "history" folder.
 
-# Medium compressed version:
+# Medium optimized version:
   The file "easydlg.med.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
   and then minified with JSMin, which just removes comments, whitespace and most linebreaks.
-  * Most features supported by IE8 (no errors during testing).
+  * Should work in both old and modern browsers since all code is still intact, including legacy code.
+  * Only basic features supported in IE8 (no errors during emulated testing, features just ignored).
 
-# Minified version, optimized:
+# Minified version, maximum optimization:
   The file "easydlg.min.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
   and then minified with https://closure-compiler.appspot.com/home
   using the default "simple" optimization.
-  * Not supported by IE8.
+  * Intended for browsers that support the ECMAScript 5 standard
+  * Not supported by IE8 and old legacy browsers.
 
