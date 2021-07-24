@@ -12,6 +12,6 @@
   The file "easydlg.min.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
   and then minified with https://closure-compiler.appspot.com/home
   using the default "simple" optimization.
-  * Intended for browsers that support the ECMAScript 5 standard
+  * Intended for browsers that support the ECMAScript 5 standard (released in 2009)
   * Not supported by IE8 and old legacy browsers.
 
