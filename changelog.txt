@@ -1,3 +1,7 @@
+# 1.735.68:
+- Improved legacy-browser support and minor cleanup.
+- Added more info about versions in repo: js/readme.txt
+
 # 1.735.67:
 - Improved legacy-browser support.
 
