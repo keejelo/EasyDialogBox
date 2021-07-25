@@ -865,12 +865,12 @@ attachEventListener(window, 'load', function()
                     <tr><td>strTypeClass</td><td>string</td><td>dialogbox type</td></tr>
                     <tr><td>strTitle</td><td>string</td><td>dialogbox heading title</td></tr>
                     <tr><td>strMessage</td><td>string</td><td>dialogbox contents (text and HTML)</td></tr>
-                    <tr><td>callback()</td><td>method</td><td>custom function that fires when dialog is closed (works the same way as onClose)</td></tr>
+                    <tr><td>callback()</td><td>method</td><td>custom function that fires when dialog is closed (works the same way as onClose/onHide)</td></tr>
                     <tr><td>x</td><td>number</td><td>dialogbox horizontal position</td></tr>
                     <tr><td>y</td><td>number</td><td>dialogbox vertical position</td></tr>
                     <tr><td>w</td><td>number</td><td>dialogbox width</td></tr>
                     <tr><td>h</td><td>number</td><td>dialogbox height</td></tr>
-                    <tr><td><a href="#dialog_returnValues">strInput</a></td><td>string</td><td>returned string value from user input when using class &quot;dlg-prompt&quot;</td></tr>
+                    <tr><td><a href="#dialog_returnValues">strInput</a></td><td>string</td><td>returned string value from user input when using <code>dlg-prompt</code></td></tr>
                     <tr><td><a href="#dialog_returnValues">nRetCode</a></td><td>number</td><td>returns the value of the dialog-button the user clicked</td></tr>
                     <tr><td>bVisible</td><td>boolean</td><td>variable that indicates if dialog is visible</td></tr>
                     <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
@@ -913,7 +913,7 @@ attachEventListener(window, 'load', function()
             <h2 id="dialog_hide">Hide dialog (close)</h2>
             <p>Default use is without any parameters: <code>myObj.hide();</code>, use this if you just want to hide right away without any more fuzz.</p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
-            <p>(Pressing the keyboard escape-key <kbd>Esc</kbd> also fires this function)</p>
+            <p>(Pressing the keyboard escape-key <kbd title="Escape keyboard key">Esc</kbd> also fires this function)</p>
             <p class="bold">Optional parameters:</p>
             <p>Else you can use it with paramters like this: <code>myObj.hide(msec, skip);</code></p>
             <p><code>msec</code> is a value in milliseconds of type <span class="ital word">number</span>, to delay the hiding/closing of the dialogbox. Stores the timeout ID in variable <code>myObj.nTimeId</code></p>
@@ -1010,8 +1010,9 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <h2 id="dialog_center">Position dialog in center of window/viewport</h2>
+            <h2 id="dialog_center">Center dialog in window</h2>
             <code>myObj.center();</code>
+            <p>Positions the dialog in horizontal and vertical center of window or viewport.</p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
