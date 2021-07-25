@@ -862,7 +862,7 @@ attachEventListener(window, 'load', function()
                     <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
                     <tr><td>bHidden</td><td>boolean</td><td>variable that indicates if dialog has been hidden</td></tr>
                     <tr><td>bFade</td><td>boolean</td><td>variable that indicates if dialog should fade. Using <code>dlg-fade</code> sets this to <span class="ital word">true</span></td></tr>
-                    <tr><td>nTimeId</td><td>number</td><td>variable that holds the timeout ID when using timed hiding</td></tr>
+                    <tr><td>nTimeId</td><td>number</td><td>variable that holds the timeout ID when using <a href="#dialog_hide">timed hiding</a></td></tr>
                     <tr><td><a href="#dialog_show">show()</a></td><td>method</td><td>shows dialog</td></tr>
                     <tr><td><a href="#dialog_hide">hide()</a></td><td>method</td><td>hides dialog</td></tr>
                     <tr><td><a href="#dialog_destroy">destroy()</a></td><td>method</td><td>destroys dialog</td></tr>
@@ -914,7 +914,7 @@ attachEventListener(window, 'load', function()
             </p>
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
             <p>
-                All dialogboxes will be kept alive by default, they are only destroyed when the user executes the &quot;destroy&quot; function.<br />
+                All dialogboxes will be kept in the DOM by default once created, they are only removed from the DOM when the user executes the &quot;destroy&quot; function.<br />
                 The user is responsible for deleting/destroying the dialogbox objects to prevent DOM-fill and &quot;memory leaks&quot;.
             </p>
             <p>
