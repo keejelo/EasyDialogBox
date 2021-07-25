@@ -6,6 +6,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>EasyDialogBox - Examples and documentation</title>
 <style>
+/* page classes ***********************************************/
+.examples
+{
+    margin-top:50px;
+    padding:15px;
+    border-bottom:1px solid #ccc;
+}
+.section
+{
+    margin-top:100px;
+}
+.ital
+{
+    font-style:italic;
+}
+.bold
+{
+    font-weight:bold;
+}
+.medium
+{
+    font-size:16px;
+}
+.bulb
+{
+    cursor:help;
+}
+.small
+{
+    font-size:11px;
+}
+.small_note
+{
+    font-size:12px;
+    color:#999;
+}
+.right_side
+{
+    margin-left:auto;
+    margin-right:0;
+    text-align:center;
+    width:50px;
+}
+.center
+{
+    text-align:center;
+}
+.word
+{
+    color:#0366d6;
+}
+.blue
+{
+    color:#0366d6;
+    border-color:#0366d6;
+}
+.codeGray
+{
+    display:inline-block;
+    margin:0;
+    width:98%;
+    /*max-width:940px;*/
+    padding:0;
+    overflow:scroll;
+    white-space:pre;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:inherit;
+    line-height:normal;
+    background-color:#f3f4f4;
+    color:#000;
+    padding:.2em .5em;
+    border:1px solid #ddd;
+    border-radius:3px;
+}
+.end_begin
+{
+    border:none;
+    border-top:4px dashed #ccc;
+}
+/* END: page classes */
+
+/* page elements **********************************************/
 body
 {
     margin:0;
@@ -25,7 +107,6 @@ body
     background-color:#fff;
     border:1px solid #ddd;
     border-radius:3px;
-
 }
 h1, h2, h3, h4, h5, h6
 {
@@ -64,61 +145,6 @@ h2
     border-top:none;
     border-radius:0 0 3px 3px;
 }
-.examples
-{
-    margin-top:50px;
-    padding:15px;
-    border-bottom:1px solid #ccc;
-}
-.section
-{
-    margin-top:100px;
-}
-.ital
-{
-    font-style:italic;
-}
-.bold
-{
-    font-weight:bold;
-}
-.medium
-{
-    font-size:16px;
-}
-.bulb
-{
-    cursor:help;
-}
-sup,.small
-{
-    font-size:11px;
-}
-.small_note
-{
-    font-size:12px;
-    color:#999;
-}
-.right_side
-{
-    margin-left:auto;
-    margin-right:0;
-    text-align:center;
-    width:50px;
-}
-.center
-{
-    text-align:center;
-}
-.word
-{
-    color:#0366d6;
-}
-.blue
-{
-    color:#0366d6;
-    border-color:#0366d6;
-}
 code
 {
     font-family:Consolas, "Courier New", monospace;
@@ -128,24 +154,6 @@ code
     background-color:#f3f4f4;
     padding:0 2px 1px 2px;
     border:1px solid #eee;
-    border-radius:3px;
-}
-.codeGray
-{
-    display:inline-block;
-    margin:0;
-    width:98%;
-    /*max-width:940px;*/
-    padding:0;
-    overflow:scroll;
-    white-space:pre;
-    font-family:Consolas, "Courier New", monospace;
-    font-size:inherit;
-    line-height:normal;
-    background-color:#f3f4f4;
-    color:#000;
-    padding:.2em .5em;
-    border:1px solid #ddd;
     border-radius:3px;
 }
 kbd
@@ -181,18 +189,31 @@ button
     font-family:inherit;
     font-size:inherit;
 }
+a
+{
+    color:#000;
+    text-decoration:none;
+    border-bottom:1px dotted #000;
+}
+hr
+{
+    border:none;
+    border-top:1px solid #ccc;
+}
+
+/* table elements *********************************************/
 table
 {
     border-collapse:collapse;
-    background-color:#fcfcfc; /*f9fafb*/
+    background-color:#fdfdfd; /* f9fafb fcfcfc */
     margin-top:20px;
 }
 table th
 {
-    background-color:#ddeaff; /* f1f8ff; /* e9eef1; */
+    background-color:#ddeaff; /* f1f8ff e9eef1 */
     border:1px #c8e1ff solid; /* d4dde4 c8e1ff */
     padding:5px;
-    text-align:left;    
+    text-align:left;
 }
 table td
 {
@@ -228,23 +249,57 @@ table td+td
 {
     text-align:left;
 }
-a
+/* END: page and table elements */
+
+/* codeview ***************************************************/
+.codeview
 {
-    color:#000;
-    text-decoration:none;
-    border-bottom:1px dotted #000;
+    display:block;
+    margin:0;
+    margin-bottom:10px;
+    padding:0;
+    overflow:scroll;
+    white-space:pre;
+    font-family:Consolas, "Courier New", monospace;
+    font-size:inherit;
+    line-height:normal;
+    background-color:#222; /* 3a3e4c */
+    color:#fff;
+    border:4px #ddd solid; /* 666b7a */
+    border-radius:3px;
 }
-hr.end_begin
+/* code line numbers ******************************************/
+.codeview:before
 {
-    border:none;
-    border-top:4px dashed #ccc;
+    counter-reset:listing;
+    margin:0;
+    padding:0;
 }
-hr
+.codeview i
 {
-    border:none;
-    border-top:1px solid #ccc;
+    counter-increment:listing;
+    margin:0;
+    padding:0;
 }
-/* syntax coloring ************************************************/
+.codeview i::before
+{
+    color:#ccc; /* 9fa7be */
+    background-color:#666; /* 666b7a */
+    content:counter(listing) ". ";
+    display:inline-block;
+    width:30px;
+    padding:0;
+    padding-left:2px;
+    padding-bottom:0;
+    margin-left:0;
+    margin-right:20px;
+    margin-bottom:0;
+    text-align:right;
+    position:absolute;
+}
+/* END: code line numbers */
+
+/* codeview syntax coloring ***********************************/
 b,i
 {
     font-weight:normal; /* abusing this tag for syntax coloring */
@@ -309,57 +364,9 @@ b:first-child
 {
     color:#aaddff;
 }
-/* END: syntax coloring */
+/* END: codeview syntax coloring */
 
-/* codeview *************************************************/
-.codeview
-{
-    display:block;
-    margin:0;
-    margin-bottom:10px;
-    padding:0;
-    overflow:scroll;
-    white-space:pre;
-    font-family:Consolas, "Courier New", monospace;
-    font-size:inherit;
-    line-height:normal;
-    background-color:#222; /* 3a3e4c */
-    color:#fff;
-    border:4px #ddd solid; /* 666b7a */
-    border-radius:3px;
-}
-/* code line numbers ****************************************/
-.codeview:before
-{
-    counter-reset:listing;
-    margin:0;
-    padding:0;
-}
-.codeview i
-{
-    counter-increment:listing;
-    margin:0;
-    padding:0;
-}
-.codeview i::before
-{
-    color:#ccc; /* 9fa7be */
-    background-color:#666; /* 666b7a */
-    content:counter(listing) ". ";
-    display:inline-block;
-    width:30px;
-    padding:0;
-    padding-left:2px;
-    padding-bottom:0;
-    margin-left:0;
-    margin-right:20px;
-    margin-bottom:0;
-    text-align:right;
-    position:absolute;
-}
-/* END: code line numbers ************************************/
-
-/* scroll to top button **************************************/
+/* scroll to top button ***************************************/
 #scrollTopBtn
 {
     display:none;
@@ -391,8 +398,7 @@ b:first-child
 {
     background-color:rgba(0,0,0,.4);
 }
-/* END: scroll to top button ***********************************/
-
+/* END: scroll to top button */
 </style>
 
 <!-- Including the necessary files here CSS and JS -->
@@ -400,7 +406,6 @@ b:first-child
 <link type="text/css" rel="stylesheet" href="css/easydlg.css" />
 
 <script src="js/easydlg.js"></script>
-
 
 <!-- END: Including the necessary files here CSS and JS -->
 
@@ -773,7 +778,7 @@ attachEventListener(window, 'load', function()
                             </td></tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
                     </tbody>
-                        <tr><th>Optional flags <sup><a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a></sup></th><th>Description</th></tr>
+                        <tr><th>Optional flags <sup class="small"><a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a></sup></th><th>Description</th></tr>
                     <tbody>
                         <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
                         <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
