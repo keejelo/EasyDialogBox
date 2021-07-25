@@ -7,7 +7,7 @@
    and then reduced with https://closure-compiler.appspot.com/home
    using the "whitespace only" optimization, which just removes comments, whitespace and linebreaks.
    --> Should work in both old and modern browsers since all code is still intact, including legacy code.
-   --> Only basic features supported in IE8 (no errors during emulated testing, features just ignored).
+   --> Only basic features supported in IE8 (no errors during emulated testing, drag'n'drop and multi-dialog switching features just ignored).
 
 ## Minified version, maximum optimization, smallest filesize:
    The file "easydlg.min.js" is created from "easydlg.js" by first setting its inside variable: DEBUG = false
