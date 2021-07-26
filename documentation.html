@@ -787,7 +787,7 @@ attachEventListener(window, 'load', function()
                         <tr><td>dlg-toast</td>
                             <td>
                                 Toast dialogbox, shorthand that combines the flags below:<br />
-                                <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code>
+                                <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code>
                             </td></tr>
                         <tr><td colspan="2">&nbsp;</td></tr>
                     </tbody>
@@ -808,7 +808,7 @@ attachEventListener(window, 'load', function()
                             <td id="flag_multi">dlg-multi</td>
                             <td>
                                 Makes it possible and easier to use multiple dialogboxes at the same time.<br />Shorthand that combines the flags below:<br />
-                                <code>dlg-disable-overlay dlg-disable-esc dlg-disable-clickout</code>
+                                <code>dlg-disable-overlay</code> <code>dlg-disable-esc</code> <code>dlg-disable-clickout</code>
                             </td>
                         </tr>
 
@@ -1284,7 +1284,7 @@ attachEventListener(window, 'load', function()
 
             <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
             <p>You can also make &quot;toast&quot; notification boxes by using the flag <code>dlg-toast</code>,<br />
-            which is really a shorthand for the combined flags: <code>dlg dlg-disable-heading dlg-disable-footer dlg-disable-drag dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
+            which is really a shorthand for the combined flags: <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
             <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br>Since I did not give it an ID (just <code>0</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.</p>
 
 <div class="codeview"><i>&nbsp;</i>
@@ -1346,7 +1346,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">The default box, with 'Close' button</h3>
-                <p>Class <code>dlg</code> or <code>dlg-close</code></p>
+                <p>Class: <code>dlg</code> or <code>dlg-close</code></p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
 
 <div class="codeview"><i>&nbsp;</i>
@@ -1365,7 +1365,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">A default &quot;error box&quot;</h3>
-                <p>Class <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
+                <p>Classes: <code>dlg</code> and <code>dlg-error</code> to display icon.</p>
                 <p>Return value: Close = <span class="ital word">0</span></p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxError&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg dlg-error&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b><b class="tag">&gt;</b></i>
@@ -1382,7 +1382,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">A box with 'Yes' and 'No' buttons</h3>
-                <p>Class <code>dlg-yes-no</code>, <code>dlg-question</code> to display icon, <code>dlg-fade</code> to fade it in.</p>
+                <p>Classes: <code>dlg-yes-no</code>, <code>dlg-question</code> to display icon, and <code>dlg-fade</code> to fade it in.</p>
                 <p>Return value: Yes = <span class="ital word">1</span>, No = <span class="ital word">2</span></p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxYesNo&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-yes-no dlg-question dlg-fade&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
@@ -1399,7 +1399,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">A box with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
+                <p>Classes: <code>dlg-ok-cancel</code> and <code>dlg-exclamation</code> to display icon.</p>
                 <p>Return value: OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myBoxOkCancel&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-ok-cancel dlg-exclamation&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
@@ -1416,7 +1416,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">A default promptbox with 'OK' and 'Cancel' buttons</h3>
-                <p>Class <code>dlg-prompt</code></p>
+                <p>Class: <code>dlg-prompt</code></p>
                 <p>Return value: input = <span class="ital word">string</span>, OK = <span class="ital word">3</span>, Cancel = <span class="ital word">4</span></p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="tag">&lt;div</b> <b class="att">id</b><b class="equal">=</b><b class="val">&quot;myPromptBox&quot;</b> <b class="att">class</b><b class="equal">=</b><b class="val">&quot;dlg-prompt&quot;</b> <b class="att">title</b><b class="equal">=</b><b class="val">&quot;Title text&quot;</b> <b class="att">data-callback</b><b class="equal">=</b><b class="val">&quot;myCallbackFunc&quot;</b><b class="tag">&gt;</b></i>
@@ -1433,7 +1433,7 @@ attachEventListener(window, 'load', function()
 
             <div class="examples">
                 <h3 class="headings">You can have several types at the same time if you want! Mix and match as you like! Crazy but possible!</h3>
-                <p>Class <code>dlg-prompt dlg-close dlg-yes-no dlg-ok-cancel dlg-info dlg-disable-overlay dlg-shadow dlg-rounded dlg-fade</code> (<a href="#paramTable">read more on classes</a>)</p>
+                <p>Classes: <code>dlg-prompt</code> <code>dlg-close</code> <code>dlg-yes-no</code> <code>dlg-ok-cancel</code> <code>dlg-info</code> <code>dlg-disable-overlay</code> <code>dlg-shadow</code> <code>dlg-rounded</code> <code>dlg-fade</code><br />(<a href="#paramTable">read more on classes</a>)</p>
                 <p>
                     Return value:
                     input = <span class="ital word">string</span>,
