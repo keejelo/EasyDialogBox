@@ -736,9 +736,7 @@ attachEventListener(window, 'load', function()
 
         <div id="code_info_heading" class="section">
             <h2>The base module (object)</h2>
-            <p>
-                <code class="large bold">&nbsp;EasyDialogBox&nbsp;</code>
-            </p>
+            <p><code class="large bold">&nbsp;EasyDialogBox&nbsp;</code></p>
             <p>As long as the script-file is included as above then the module will be initialized automatically when page loads, after that all the public functions are available.</p>
 
             <p>&nbsp;</p>
@@ -910,9 +908,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_show">Show dialog</h2>
-            <p>
-                <code>myObj.show();</code>
-            </p>
+            <p><code>myObj.show();</code></p>
             <p>Return value = the <span class="ital word">object</span> itself if the box could be shown, <span class="ital word">false</span> if not.</p>
 
             <p>&nbsp;</p>
@@ -931,9 +927,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_destroy">Destroy dialog</h2>
-            <p>
-                <code>myObj.destroy();</code>
-            </p>
+            <p><code>myObj.destroy();</code></p>
             <p>Return value = <span class="ital word">true</span> if object was deleted, <span class="ital word">false</span> if not.</p>
             <p>
                 All dialogboxes will be kept in the DOM by default once created, they are only removed from the DOM when the user executes the &quot;destroy&quot; function.<br />
@@ -971,9 +965,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_el">Get the dialogbox HTML element itself</h2>
-            <p>
-                <code>myObj.el;</code>
-            </p>
+            <p><code>myObj.el;</code></p>
             <p>Return value = <span class="ital word">HTMLElement</span></p>
 
             <p>&nbsp;</p>
@@ -981,7 +973,7 @@ attachEventListener(window, 'load', function()
 
             <h2 id="dialog_getEl">Get HTML element inside the dialogbox etc.</h2>
             <p>There are multiple ways to do this, all which are similar to <code>.querySelectorAll()</code></p>
-            <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself.</p>
+            <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself, same as <code>myObj.el;</code></p>
             <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('.someClass');</code> using <span class="bold">.</span> (dot), returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('someElement');</code> returns an indexed HTMLCollection, or <span class="ital word">null</span> if none exist in DOM.</p>
@@ -993,7 +985,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_width">Change dialog width</h2>
-            <code>myObj.width(value);</code>
+            <p><code>myObj.width(value);</code></p>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.width(400);</code></p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
@@ -1001,7 +993,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_height">Change dialog height</h2>
-            <code>myObj.height(value);</code>
+            <p><code>myObj.height(value);</code></p>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.height(600);</code></p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
@@ -1009,7 +1001,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_xpos">Change dialog X position</h2>
-            <code>myObj.xPos(value);</code>
+            <p><code>myObj.xPos(value);</code></p>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.xPos(200);</code></p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
@@ -1017,7 +1009,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_ypos">Change dialog Y position</h2>
-            <code>myObj.yPos(value);</code>
+            <p><code>myObj.yPos(value);</code></p>
             <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.yPos(300);</code></p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
@@ -1025,7 +1017,7 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="dialog_center">Center dialog in window</h2>
-            <code>myObj.center();</code>
+            <p><code>myObj.center();</code></p>
             <p>Positions the dialog in horizontal and vertical center of window or viewport.</p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
 
@@ -1049,9 +1041,7 @@ attachEventListener(window, 'load', function()
             <h2>Object event-methods</h2>
             <div id="dialog_onCreate">
                 <p>&nbsp;</p>
-                <p>
-                    <code>myObj.onCreate();</code> fires when dialogbox object is created.
-                </p>
+                <p><code>myObj.onCreate();</code> fires when dialogbox object is created.</p>
                 <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onCreate</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1066,9 +1056,7 @@ attachEventListener(window, 'load', function()
 
             <div id="dialog_onShow">
                 <p>&nbsp;</p>
-                <p>
-                    <code>myObj.onShow();</code> fires when dialogbox is about to be displayed.
-                </p>
+                <p><code>myObj.onShow();</code> fires when dialogbox is about to be displayed.</p>
                 <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onShow</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1083,9 +1071,7 @@ attachEventListener(window, 'load', function()
 
             <div id="dialog_onHide">
                 <p>&nbsp;</p>
-                <p>
-                    <code>myObj.onHide();</code> fires when dialogbox is being hidden.
-                </p>
+                <p><code>myObj.onHide();</code> fires when dialogbox is being hidden.</p>
                 <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onHide</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1117,9 +1103,7 @@ attachEventListener(window, 'load', function()
 
             <div id="dialog_onDestroy">
                 <p>&nbsp;</p>
-                <p>
-                    <code>myObj.onDestroy();</code> fires when dialogbox is being destroyed.
-                </p>
+                <p><code>myObj.onDestroy();</code> fires when dialogbox is being destroyed.</p>
                 <p>You can write your own function if you want to do something when the event occurs:</p>
 <div class="codeview"><i>&nbsp;</i>
 <i><b>myObj</b><b class="func">.onDestroy</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1132,24 +1116,24 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
             <div>
                 <h2>Get dialog object based on its id</h2>
                 <p>Get object from id, can be used to get object from a pre-written HTML box or other created dialog objects by searching for its 'id' in the array of objects.</p>
-                <p>
-                    <code>let myObj = EasyDialogBox.getById(id);</code>
-                </p>
+                <p><code>let myObj = EasyDialogBox.getById(id);</code></p>
                 <p>Return value = <span class="ital word">object</span> or <span class="ital word">null</span> if could not be found.</p>
             </div>
 
+            <p>&nbsp;</p>
             <p>&nbsp;</p>
 
             <div>
                 <h2>Get all dialog objects</h2>
                 <p>Get all dialogbox objects that is currently stored in the object-array.</p>
-                <p>
-                    <code>let myArray = EasyDialogBox.getAll();</code>
-                </p>
+                <p><code>let myArray = EasyDialogBox.getAll();</code></p>
                 <p>Return value = <span class="ital word">array</span></p>
             </div>
 
