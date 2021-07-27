@@ -403,6 +403,34 @@ b:first-child
     background-color:rgba(0,0,0,.4);
 }
 /* END: scroll to top button */
+
+/* print ******************************************************/
+@media print
+{
+*
+{
+    background-color:#fff !important;
+    color:#000 !important;
+    border-color:#ccc !important;
+}
+#page,
+#main_heading,
+#sub_heading,
+a
+{
+    border:none !important;
+}
+.codeview i::before
+{
+    background-color:#fff !important;
+    color:#999 !important;
+}
+#scrollTopBtn
+{
+    display:none !important;
+}
+}
+/* END: print */
 </style>
 
 <!-- Including the necessary files here CSS and JS -->
