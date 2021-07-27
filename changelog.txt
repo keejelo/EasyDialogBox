@@ -1,3 +1,6 @@
+# 1.735.69:
+- Improved legacy-browser code, now works even better in older browsers (even minified fileversion works in IE8 (emulated))
+
 # 1.735.68:
 - Improved legacy-browser support and minor cleanup.
 - Added more info about versions in repo: js/readme.txt
