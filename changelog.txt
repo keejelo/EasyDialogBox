@@ -1,5 +1,8 @@
 # 1.735.69:
 - Improved legacy-browser code, now works even better in older browsers (even minified fileversion works in IE8 (emulated))
+  Tested working on WIn10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
+  -> Note about IE 8-9-10 emulated: only partial support for "dlg-multi" - cannot switch between multiple dialogs, 
+     can only drag and drop the top one, but all other features seem to work ok, no errors discovered during testing.
 
 # 1.735.68:
 - Improved legacy-browser support and minor cleanup.
