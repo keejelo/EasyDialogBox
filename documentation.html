@@ -789,61 +789,56 @@ attachEventListener(window, 'load', function()
             <div>
                 <code>strBoxTypeClass</code> = can be any of the below strings, by itself or combined with others separated by a space.
                 <table id="paramTable">
-                    <thead>
-                        <tr><th>Dialogtype</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
-                        <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
-                        <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
-                        <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
-                        <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
-                        <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
-                        <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
-                        <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
-                        <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
-                        <tr><td>dlg-toast</td>
-                            <td>
-                                Toast dialogbox, shorthand that combines the flags below:<br />
-                                <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code>
-                            </td></tr>
-                        <tr><td colspan="2">&nbsp;</td></tr>
-                    </tbody>
-                        <tr><th>Optional flags <sup class="small"><a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a></sup></th><th>Description</th></tr>
-                    <tbody>
-                        <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
-                        <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
-                        <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer.</td></tr>
-                        <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
-                        <tr><td>dlg-disable-esc</td><td>Disable Esc-key so it won't close the box.</td></tr>
-                        <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it.</td></tr>
-                        <tr><td>dlg-disable-overlay</td><td>Disable translucent overlay/background color.</td></tr>
+                    <tr><th>Dialogtype</th><th>Description</th></tr>
+                    <tr><td>dlg</td><td>Default dialog with Close button.</td></tr>
+                    <tr><td>dlg-close</td><td>Dialog with Close button, add Close button to dialog.</td></tr>
+                    <tr><td>dlg-prompt</td><td>Dialog with an inputfield, OK + Cancel buttons.</td></tr>
+                    <tr><td>dlg-yes</td><td>Dialog with Yes button, add Yes button to dialog.</td></tr>
+                    <tr><td>dlg-no</td><td>Dialog with No button, add No button to dialog.</td></tr>
+                    <tr><td>dlg-yes-no</td><td>Dialog with Yes + No buttons, add Yes + No buttons to dialog.</td></tr>
+                    <tr><td>dlg-ok</td><td>Dialog with OK button, add OK button to dialog.</td></tr>
+                    <tr><td>dlg-cancel</td><td>Dialog with Cancel button, add Cancel button to dialog.</td></tr>
+                    <tr><td>dlg-ok-cancel</td><td>Dialog with OK + Cancel buttons, add OK + Cancel buttons to dialog.</td></tr>
+                    <tr><td>dlg-toast</td>
+                        <td>
+                            Toast dialogbox, shorthand that combines the flags below:<br />
+                            <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code>
+                        </td></tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    
+                    <tr><th>Optional flags <sup class="small"><a href="#opt_flags" title="Must be used in combination with a dialogtype, separated by a space">1</a></sup></th><th>Description</th></tr>
+                    <tr><td>dlg-disable-heading</td><td>Dialog without heading.</td></tr>
+                    <tr><td>dlg-disable-footer</td><td>Dialog without footer.</td></tr>
+                    <tr><td>dlg-disable-btns</td><td>Dialog without any buttons in the footer.</td></tr>
+                    <tr><td>dlg-disable-drag</td><td>Disable drag'n'drop, dialogbox cannot be moved by dragging its heading.</td></tr>
+                    <tr><td>dlg-disable-esc</td><td>Disable Esc-key so it won't close the box.</td></tr>
+                    <tr><td>dlg-disable-clickout</td><td>Disable the ability to click outside the box to close it.</td></tr>
+                    <tr><td>dlg-disable-overlay</td><td>Disable translucent overlay/background color.</td></tr>
 
-                        <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-nomodal</td><td>Same as <code>dlg-disable-overlay</code></td></tr>
-                        <tr>
-                            <td id="flag_multi">dlg-multi</td>
-                            <td>
-                                Makes it possible and easier to use multiple dialogboxes at the same time.<br />Shorthand that combines the flags below:<br />
-                                <code>dlg-disable-overlay</code> <code>dlg-disable-esc</code> <code>dlg-disable-clickout</code>
-                            </td>
-                        </tr>
+                    <tr><td>dlg-nomodal</td><td>Same as <code>dlg-disable-overlay</code></td></tr>
+                    <tr>
+                        <td id="flag_multi">dlg-multi</td>
+                        <td>
+                            Makes it possible and easier to use multiple dialogboxes at the same time.<br />Shorthand that combines the flags below:<br />
+                            <code>dlg-disable-overlay</code> <code>dlg-disable-esc</code> <code>dlg-disable-clickout</code>
+                        </td>
+                    </tr>
 
-                        <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-info</td><td>Display information icon on the left inside box.</td></tr>
-                        <tr><td>dlg-question</td><td>Display question icon on the left inside box.</td></tr>
-                        <tr><td>dlg-error</td><td>Display error icon on the left inside box.</td></tr>
-                        <tr><td>dlg-success</td><td>Display success icon on the left inside box.</td></tr>
-                        <tr><td>dlg-exclamation</td><td>Display exclamation icon on the left inside box.</td></tr>
+                    <tr><td>dlg-info</td><td>Display information icon on the left inside box.</td></tr>
+                    <tr><td>dlg-question</td><td>Display question icon on the left inside box.</td></tr>
+                    <tr><td>dlg-error</td><td>Display error icon on the left inside box.</td></tr>
+                    <tr><td>dlg-success</td><td>Display success icon on the left inside box.</td></tr>
+                    <tr><td>dlg-exclamation</td><td>Display exclamation icon on the left inside box.</td></tr>
 
-                        <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
 
-                        <tr><td>dlg-rounded</td><td>Add rounded corners to box.</td></tr>
-                        <tr><td>dlg-shadow</td><td>Add shadow behind box.</td></tr>
-                        <tr><td>dlg-fade</td><td>Dialogbox fades in when shown, not when closed. Fades out only when used in timed hiding <code>myObj.hide(msec);</code></td></tr>
-                    </tbody>
+                    <tr><td>dlg-rounded</td><td>Add rounded corners to box.</td></tr>
+                    <tr><td>dlg-shadow</td><td>Add shadow behind box.</td></tr>
+                    <tr><td>dlg-fade</td><td>Dialogbox fades in when shown, not when closed. Fades out only when used in timed hiding <code>myObj.hide(msec);</code></td></tr>
                 </table>
                 <p class="small" id="opt_flags">1. must be used in combination with a dialogtype, separated by a space.</p>
             </div>
@@ -879,45 +874,41 @@ attachEventListener(window, 'load', function()
 
             <h2>Properties of a created object</h2>
             <table id="objTable">
-                <thead>
-                    <tr><th>Name</th><th>Type</th><th>Description</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>id</td><td>string</td><td>dialogbox ID</td></tr>
-                    <tr><td>strTypeClass</td><td>string</td><td>dialogbox type</td></tr>
-                    <tr><td>strTitle</td><td>string</td><td>dialogbox heading title</td></tr>
-                    <tr><td>strMessage</td><td>string</td><td>dialogbox contents (text and HTML)</td></tr>
-                    <tr><td>callback()</td><td>method</td><td>custom function that fires when dialog is closed (works the same way as onClose/onHide)</td></tr>
-                    <tr><td>x</td><td>number</td><td>dialogbox horizontal position</td></tr>
-                    <tr><td>y</td><td>number</td><td>dialogbox vertical position</td></tr>
-                    <tr><td>w</td><td>number</td><td>dialogbox width</td></tr>
-                    <tr><td>h</td><td>number</td><td>dialogbox height</td></tr>
-                    <tr><td><a href="#dialog_returnValues">strInput</a></td><td>string</td><td>returned string value from user input when using <code>dlg-prompt</code></td></tr>
-                    <tr><td><a href="#dialog_returnValues">nRetCode</a></td><td>number</td><td>returns the value of the dialog-button the user clicked</td></tr>
-                    <tr><td>bVisible</td><td>boolean</td><td>variable that indicates if dialog is visible</td></tr>
-                    <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
-                    <tr><td>bHidden</td><td>boolean</td><td>variable that indicates if dialog has been hidden</td></tr>
-                    <tr><td>bFade</td><td>boolean</td><td>variable that indicates if dialog should fade. Using <code>dlg-fade</code> sets this to <span class="ital word">true</span></td></tr>
-                    <tr><td>nTimeId</td><td>number</td><td>variable that holds the timeout ID when using <a href="#dialog_hide">timed hiding</a></td></tr>
-                    <tr><td><a href="#dialog_show">show()</a></td><td>method</td><td>shows dialog</td></tr>
-                    <tr><td><a href="#dialog_hide">hide()</a></td><td>method</td><td>hides dialog</td></tr>
-                    <tr><td><a href="#dialog_destroy">destroy()</a></td><td>method</td><td>destroys dialog</td></tr>
-                    <tr><td><a href="#dialog_onCreate">onCreate()</a></td><td>method</td><td>fires when dialog is created</td></tr>
-                    <tr><td><a href="#dialog_onShow">onShow()</a></td><td>method</td><td>fires when dialog is shown</td></tr>
-                    <tr><td><a href="#dialog_onHide">onHide()</a></td><td>method</td><td>fires when dialog is hidden/closed</td></tr>
-                    <tr><td><a href="#dialog_onClose">onClose()</a></td><td>method</td><td>fires when dialog is closed</td></tr>
-                    <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>method</td><td>fires when dialog is destroyed</td></tr>
-                    <tr><td><a href="#dialog_el">el</a></td><td>element</td><td>reference to dialogbox element itself</td></tr>
-                    <tr><td><a href="#dialog_getEl">$()</a></td><td>method</td><td>get elements inside dialog</td></tr>
-                    <tr><td><a href="#dialog_width">width()</a></td><td>method</td><td>change dialogbox width (px)</td></tr>
-                    <tr><td><a href="#dialog_height">height()</a></td><td>method</td><td>change dialogbox height (px)</td></tr>
-                    <tr><td><a href="#dialog_xpos">xPos()</a></td><td>method</td><td>change dialogbox X position (pixels from left)</td></tr>
-                    <tr><td><a href="#dialog_ypos">yPos()</a></td><td>method</td><td>change dialogbox Y position (pixels from top)</td></tr>
-                    <tr><td><a href="#dialog_center">center()</a></td><td>method</td><td>position dialogbox in center of window/viewport</td></tr>
-                    <tr><td><a href="#dialog_color">colorBorder()</a></td><td>method</td><td>set dialog bordercolor</td></tr>
-                    <tr><td><a href="#dialog_color">colorHeading()</a></td><td>method</td><td>set dialog heading backgroundcolor</td></tr>
-                    <tr><td><a href="#dialog_color">color()</a></td><td>method</td><td>shorthand, set both heading and border same color</td></tr>
-                </tbody>
+                <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+                <tr><td>id</td><td>string</td><td>dialogbox ID</td></tr>
+                <tr><td>strTypeClass</td><td>string</td><td>dialogbox type</td></tr>
+                <tr><td>strTitle</td><td>string</td><td>dialogbox heading title</td></tr>
+                <tr><td>strMessage</td><td>string</td><td>dialogbox contents (text and HTML)</td></tr>
+                <tr><td>callback()</td><td>method</td><td>custom function that fires when dialog is closed (works the same way as onClose/onHide)</td></tr>
+                <tr><td>x</td><td>number</td><td>dialogbox horizontal position</td></tr>
+                <tr><td>y</td><td>number</td><td>dialogbox vertical position</td></tr>
+                <tr><td>w</td><td>number</td><td>dialogbox width</td></tr>
+                <tr><td>h</td><td>number</td><td>dialogbox height</td></tr>
+                <tr><td><a href="#dialog_returnValues">strInput</a></td><td>string</td><td>returned string value from user input when using <code>dlg-prompt</code></td></tr>
+                <tr><td><a href="#dialog_returnValues">nRetCode</a></td><td>number</td><td>returns the value of the dialog-button the user clicked</td></tr>
+                <tr><td>bVisible</td><td>boolean</td><td>variable that indicates if dialog is visible</td></tr>
+                <tr><td>bExistInDOM</td><td>boolean</td><td>variable that indicates if dialog exist in DOM</td></tr>
+                <tr><td>bHidden</td><td>boolean</td><td>variable that indicates if dialog has been hidden</td></tr>
+                <tr><td>bFade</td><td>boolean</td><td>variable that indicates if dialog should fade. Using <code>dlg-fade</code> sets this to <span class="ital word">true</span></td></tr>
+                <tr><td>nTimeId</td><td>number</td><td>variable that holds the timeout ID when using <a href="#dialog_hide">timed hiding</a></td></tr>
+                <tr><td><a href="#dialog_show">show()</a></td><td>method</td><td>shows dialog</td></tr>
+                <tr><td><a href="#dialog_hide">hide()</a></td><td>method</td><td>hides dialog</td></tr>
+                <tr><td><a href="#dialog_destroy">destroy()</a></td><td>method</td><td>destroys dialog</td></tr>
+                <tr><td><a href="#dialog_onCreate">onCreate()</a></td><td>method</td><td>fires when dialog is created</td></tr>
+                <tr><td><a href="#dialog_onShow">onShow()</a></td><td>method</td><td>fires when dialog is shown</td></tr>
+                <tr><td><a href="#dialog_onHide">onHide()</a></td><td>method</td><td>fires when dialog is hidden/closed</td></tr>
+                <tr><td><a href="#dialog_onClose">onClose()</a></td><td>method</td><td>fires when dialog is closed</td></tr>
+                <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>method</td><td>fires when dialog is destroyed</td></tr>
+                <tr><td><a href="#dialog_el">el</a></td><td>element</td><td>reference to dialogbox element itself</td></tr>
+                <tr><td><a href="#dialog_getEl">$()</a></td><td>method</td><td>get elements inside dialog</td></tr>
+                <tr><td><a href="#dialog_width">width()</a></td><td>method</td><td>change dialogbox width (px)</td></tr>
+                <tr><td><a href="#dialog_height">height()</a></td><td>method</td><td>change dialogbox height (px)</td></tr>
+                <tr><td><a href="#dialog_xpos">xPos()</a></td><td>method</td><td>change dialogbox X position (pixels from left)</td></tr>
+                <tr><td><a href="#dialog_ypos">yPos()</a></td><td>method</td><td>change dialogbox Y position (pixels from top)</td></tr>
+                <tr><td><a href="#dialog_center">center()</a></td><td>method</td><td>position dialogbox in center of window/viewport</td></tr>
+                <tr><td><a href="#dialog_color">colorBorder()</a></td><td>method</td><td>set dialog bordercolor</td></tr>
+                <tr><td><a href="#dialog_color">colorHeading()</a></td><td>method</td><td>set dialog heading backgroundcolor</td></tr>
+                <tr><td><a href="#dialog_color">color()</a></td><td>method</td><td>shorthand, set both heading and border same color</td></tr>
             </table>
 
             <p>&nbsp;</p>
@@ -1239,16 +1230,12 @@ attachEventListener(window, 'load', function()
                 <p><code>myObj.nRetCode</code></p>
 
                 <table class="returnTable">
-                    <thead>
-                        <tr><th>Value</th><th>Type</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>0</td><td>number</td><td>&quot;Close&quot; button, clicked outside box, clicked [X] or pressed ESC-key</td></tr>
-                        <tr><td>1</td><td>number</td><td>&quot;Yes&quot; button clicked</td></tr>
-                        <tr><td>2</td><td>number</td><td>&quot;No&quot; button clicked</td></tr>
-                        <tr><td>3</td><td>number</td><td>&quot;OK&quot; button clicked</td></tr>
-                        <tr><td>4</td><td>number</td><td>&quot;Cancel&quot; button clicked</td></tr>
-                    </tbody>
+                    <tr><th>Value</th><th>Type</th><th>Description</th></tr>
+                    <tr><td>0</td><td>number</td><td>&quot;Close&quot; button, clicked outside box, clicked [X] or pressed ESC-key</td></tr>
+                    <tr><td>1</td><td>number</td><td>&quot;Yes&quot; button clicked</td></tr>
+                    <tr><td>2</td><td>number</td><td>&quot;No&quot; button clicked</td></tr>
+                    <tr><td>3</td><td>number</td><td>&quot;OK&quot; button clicked</td></tr>
+                    <tr><td>4</td><td>number</td><td>&quot;Cancel&quot; button clicked</td></tr>
                 </table>
 
                 <p>&nbsp;</p>
@@ -1256,12 +1243,8 @@ attachEventListener(window, 'load', function()
                 <p><code>myObj.strInput</code></p>
 
                 <table class="returnTable">
-                    <thead>
-                        <tr><th>Value</th><th>Type</th><th>Description</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>string</td><td>string</td><td>A string of text entered in the <code>&lt;input&gt;</code> element when using class <code>dlg-prompt</code></td></tr>
-                    </tbody>
+                    <tr><th>Value</th><th>Type</th><th>Description</th></tr>
+                    <tr><td>string</td><td>string</td><td>A string of text entered in the <code>&lt;input&gt;</code> element when using class <code>dlg-prompt</code></td></tr>
                 </table>
             </div>
 
