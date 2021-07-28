@@ -35,24 +35,24 @@
 }
 .small_note
 {
-    font-size:12px;
+    font-size:0.75em;
     color:#999;
 }
 .small
 {
-    font-size:11px;
+    font-size:0.75em;
 }
 .medium
 {
-    font-size:16px;
+    font-size:1.15em;
 }
 .large
 {
-    font-size:20px;
+    font-size:1.3em;
 }
 .xlarge
 {
-    font-size:30px;
+    font-size:2.5em;
 }
 .right_side
 {
@@ -115,6 +115,7 @@ body
     color:#000;
     line-height:26px;
 }
+
 #page
 {
     margin:0 auto;
@@ -134,11 +135,11 @@ h1, h2, h3, h4, h5, h6
 }
 h1
 {
-    font-size:42px;
+    font-size:2.6em;
 }
 h2
 {
-    font-size:32px;
+    font-size:2.0em;
     padding-bottom:10px;
     border-bottom:1px solid #eaecef;
 }
@@ -151,7 +152,7 @@ h2
 }
 #main_heading h1
 {
-    font-size:42px;
+    font-size:2.7em;
     color:#fff;
     font-style:italic;
 }
@@ -371,6 +372,8 @@ b:first-child
 /* scroll to top button ***************************************/
 #scrollTopBtn
 {
+    margin:0;
+    padding:0;
     display:none;
     position:fixed;
     bottom:20px;
@@ -387,15 +390,17 @@ b:first-child
 #scrollTopBtn a
 {
     display:inline-block;
-    padding:12px 17px;
+    margin:0;
+    padding:0;
     font-family:Verdana, Arial, Helvetica, sans-serif;
-    font-size:20px;
+    font-size:1.2em;
     font-weight:bold;
     color:#fff;
     vertical-align:baseline;
     border:none;
     position:relative;
     top:1px;
+    padding:0.7em 0.95em;
 }
 #scrollTopBtn:hover
 {
@@ -409,11 +414,15 @@ b:first-child
 {
 *
 {
-    background-color:#fff !important;
-    border-color:#ccc !important;
+    background-color:transparent !important;
+    border-color:#ddd !important;
     border-width:1px !important;
     border-radius:0 !important;
     color:#000 !important;
+}
+body
+{
+    font-size:12px;
 }
 #page,
 #main_heading,
@@ -424,13 +433,16 @@ a
 }
 .codeview
 {
+    font-size:11px;
     border-width:1px;
+    overflow:hidden;
 }
 .codeview i::before
 {
-    background-color:#fff !important;
+    background-color:transparent !important;
     color:#999 !important;
 }
+button,
 #scrollTopBtn
 {
     display:none !important;
