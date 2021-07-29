@@ -6,24 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>EasyDialogBox - Examples and documentation</title>
 <style>
-/* page classes ***********************************************/
-.examples
-{
-    margin-top:50px;
-    padding:15px;
-    border-bottom:1px solid #ccc;
-}
-.examples:last-of-type
-{
-    border:none;
-}
-.headings
-{
-}
-.section
-{
-    margin-top:100px;
-}
+/* general page classes ***************************************/
 .ital
 {
     font-style:italic;
@@ -31,11 +14,6 @@
 .bold
 {
     font-weight:bold;
-}
-.small_note
-{
-    font-size:0.75em;
-    color:#999;
 }
 .small
 {
@@ -91,7 +69,7 @@
     border:1px solid #ddd;
     border-radius:3px;
 }
-.bulb
+.help
 {
     cursor:help;
 }
@@ -100,7 +78,29 @@
     border:none;
     border-top:4px dashed #ccc;
 }
-/* END: page classes */
+.examples
+{
+    margin-top:50px;
+    padding:15px 0;
+    border-bottom:1px solid #ccc;
+}
+.examples:last-of-type
+{
+    border:none;
+}
+.section
+{
+    margin-top:100px;
+}
+.headings
+{
+}
+.small_note
+{
+    font-size:0.75em;
+    color:#999;
+}
+/* END: general page classes */
 
 /* page elements **********************************************/
 body
@@ -410,41 +410,45 @@ b:first-child
 /* print ******************************************************/
 @media print
 {
-*
-{
-    background-color:transparent !important;
-    border-color:#ddd !important;
-    border-width:1px !important;
-    border-radius:0 !important;
-    color:#000 !important;
-}
-body
-{
-    font-size:12px;
-}
-#page,
-#main_heading,
-#sub_heading,
-a
-{
-    border:none !important;
-}
-.codeview
-{
-    font-size:11px;
-    border-width:1px;
-    overflow:hidden;
-}
-.codeview i::before
-{
-    background-color:transparent !important;
-    color:#999 !important;
-}
-button,
-#scrollTopBtn
-{
-    display:none !important;
-}
+    *
+    {
+        background-color:transparent !important;
+        border-color:#ddd !important;
+        border-width:1px !important;
+        border-radius:0 !important;
+        color:#000 !important;
+    }
+    body
+    {
+        margin:0;
+        padding:0;
+        font-size:12px;
+        line-height:22px;
+    }
+    #page,
+    #main_heading,
+    #sub_heading,
+    a
+    {
+        border:none !important;
+    }
+    .codeview
+    {
+        font-size:11px;
+        border-width:1px;
+        overflow:visible;
+        white-space:pre-wrap;
+    }
+    .codeview i::before
+    {
+        background-color:transparent !important;
+        color:#999 !important;
+    }
+    button,
+    #scrollTopBtn
+    {
+        display:none !important;
+    }
 }
 /* END: print */
 </style>
@@ -765,7 +769,7 @@ attachEventListener(window, 'load', function()
 
         <div>
             <p>Then it can be used like the <a href="#js_example" class="blue bold" title="Go to examples">examples below</a>. Boxes can also be created with <a href="#html_box" class="blue bold" title="..read more and see examples">pre-written HTML.</a></p>
-            <p>All dialogboxes are <span class="ital bulb" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue bold" href="#paramTable" title="Go to optional flags and dialogtypes">optional flags</a>.<br />Displaying <a class="blue bold" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible, or how about a <a class="blue bold" href="#js_example_toast" title="Go to example">Toast!</a></p>
+            <p>All dialogboxes are <span class="ital help" title="Displayed in front with a semi transparent background overlay">modal</span> by default, but this can be changed among other things, by using <a class="blue bold" href="#paramTable" title="Go to optional flags and dialogtypes">optional flags</a>.<br />Displaying <a class="blue bold" href="#js_example_multi" title="Go to example">multiple boxes</a> at the same time is also possible, or how about a <a class="blue bold" href="#js_example_toast" title="Go to example">Toast!</a></p>
         </div>
 
         <div id="code_info_heading" class="section">
