@@ -1,3 +1,10 @@
+# 1.735.69.1:
+- Updated the documentation.
+- No changes made in the javascript sourcefiles "easydlg.js" and "easydlg.min.js", they are the same as in previous release.
+- Fixed some minor "bug" in the files "easydlg.css" and "easydlg_bootstrap.css" :
+  --> Set "overflow:hidden;" when using flags "dlg-disable-overlay", "dlg-nomodal" and "dlg-multi".
+      (Although this breaks responsiveness a little, think it works ok for now)
+
 # 1.735.69:
 - Improved legacy-browser code, now works even better in older browsers (even minified fileversion works in IE8 (emulated))
   Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
