@@ -5,7 +5,7 @@
 - Customizable
 - <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified versions, smaller sizes">Lightweight</a>
 - Responsive
-- Crossbrowser, legacy browser support as much as possible. Using standard HTML, CSS and Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>).
+- Crossbrowser, legacy browser support as much as possible. Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
 
 <h3>Documentation, how to use and live examples:</h3>
 <h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/documentation.html</h3>
