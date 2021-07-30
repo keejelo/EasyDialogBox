@@ -1306,7 +1306,10 @@ attachEventListener(window, 'load', function()
             <h2 id="js_example_toast">&quot;Toast&quot; example</h2>
             <p>You can also make &quot;toast&quot; notification boxes by using the flag <code>dlg-toast</code>,<br />
             which is really a shorthand for the combined flags: <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
-            <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br>Since I did not give it an ID (just <code>null</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.</p>
+            <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br />
+            Since I did not give it an ID (just <code>null</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.<br />
+            The other two <code>null</code>s are for the title and callback function, we don't need to use them here so just set them to <code>null</code><br />
+            The rest is position, x=0 means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
