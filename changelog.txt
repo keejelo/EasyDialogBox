@@ -1,3 +1,11 @@
+# 1.735.70:
+- Cleaned up the code a little: removed variable "myObj.bHidden" since it ended up doing the same as "myObj.bVisible", no reason to have two that does the same.
+- Improved module init code, now it executes on its own, do not need to make it run with outer function anymore: "EasyDialogBox.init();"
+- Updated the documentation.
+  Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
+  -> Note about IE 8-9-10 emulated: only partial support for "dlg-multi" - cannot switch between multiple dialogs and can only drag and drop the top one,
+     due to use of CSS pointer-events, but all other features seem to work ok, no errors discovered during testing.
+
 # 1.735.69.1:
 - Updated the documentation.
 - No changes made in the javascript sourcefiles "easydlg.js" and "easydlg.min.js", they are the same as in previous release.
