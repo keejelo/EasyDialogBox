@@ -3,7 +3,7 @@
 - No changes made in the javascript sourcefiles "easydlg.js" and "easydlg.min.js", they are the same as in previous release.
 - Fixed some minor "bug" in the files "easydlg.css" and "easydlg_bootstrap.css" :
   --> Set "overflow:hidden;" when using flags "dlg-disable-overlay", "dlg-nomodal" and "dlg-multi".
-      Although this breaks responsiveness a little, think it works ok for now, since these flags are intended for use on bigger screens.
+      Although this breaks responsiveness a little, think it works ok for now, since when these flags are used the dialog is part of the overall page.
 
 # 1.735.69:
 - Improved legacy-browser code, now works even better in older browsers (even minified fileversion works in IE8 (emulated))
