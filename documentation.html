@@ -1307,7 +1307,7 @@ attachEventListener(window, 'load', function()
             which is really a shorthand for the combined flags: <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
             <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br />
             Since not giving it an ID (just <code>null</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.<br />
-            The other two <code>null</code>s are for the title and callback function, we don't need to use them here so just set them to <code>null</code><br />
+            The other two <code>null</code>s are for the title and callback function, we don't need to use them here so just set them to <code>null</code> (any false will do)<br />
             The rest is position, x=0 means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
 
 <div class="codeview"><i>&nbsp;</i>
