@@ -49,12 +49,9 @@ var EasyDialogBox = (function()
     // ** Debug-logger
     var _log = function(s)
     {
-        if(DEBUG)
+        if(DEBUG && window.console.log)
         {
-            if(window.console.log)
-            {
-                return window.console.log(s);
-            }
+            return window.console.log(s);
         }
     };
 
