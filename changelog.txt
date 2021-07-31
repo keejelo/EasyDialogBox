@@ -1,3 +1,6 @@
+# 1.735.71:
+- Fixed a minor bug where method "myObj.$(...)" didn't always return null if element not found. Now it's fixed.
+
 # 1.735.70:
 - Cleaned up the code a little: removed variable "myObj.bHidden" since it ended up doing the same as "myObj.bVisible", no reason to have two that does the same.
 - Improved module init code, now it executes on its own, do not need to make it run with outer function anymore: "EasyDialogBox.init();"
