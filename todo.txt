@@ -2,5 +2,5 @@
 - Improve "responsive-mode", works ok now, but can possibly be better
 - Maybe add more examples in documentation
 - Maybe add optional resize-ability to dialogbox
-- Maybe add ability to add custom buttons to footer, for example somthing like: myObj.addButton('MyButton', fnClick);
+- Maybe add ability to add custom buttons to footer, for example somthing like: myObj.addButton(btnText, fnClick);
 
