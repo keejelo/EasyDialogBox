@@ -933,6 +933,7 @@ attachEventListener(window, 'load', function()
                 <tr><td><a href="#dialog_color">colorBorder()</a></td><td>method</td><td>set dialog bordercolor</td></tr>
                 <tr><td><a href="#dialog_color">colorHeading()</a></td><td>method</td><td>set dialog heading backgroundcolor</td></tr>
                 <tr><td><a href="#dialog_color">color()</a></td><td>method</td><td>shorthand, set both heading and border same color</td></tr>
+                <tr><td><a href="#dialog_addbutton">addButton()</a></td><td>method</td><td>add custom button to dialog footer</td></tr>
             </table>
 
             <p>&nbsp;</p>
@@ -1067,6 +1068,18 @@ attachEventListener(window, 'load', function()
             <p>To remove the custom color and go back to default you can just change the custom color value to an empty string <code>''</code></p>
             <p>For instance from <code>myObj.colorBorder('#ff0000');</code> to this <code>myObj.colorBorder('');</code> , to return color back to default defined in CSS file.</p>
             <p>Return value = the <span class="ital word">object</span> itself</p>
+
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <h2 id="dialog_addbutton">Add custom button to footer</h2>
+            <p>You can add you own custom buttons to the footer of the dialog with this method.</p>
+            <p>Syntax: <code>myObj.addButton(buttonText, fnClick, nInsertIndex);</code></p>
+            <p>Where <code>buttonText</code> is of type <span class="ital word">string</span>, the text that you want to display on the button.</p>
+            <p><code>fnClick</code> is of type <span class="ital word">function</span>, the click event function for the button.</p>
+            <p><code>nInsertIndex</code> is of type <span class="ital word">number</span>, index of where you want to insert the button among the rest of the buttons.<br />
+            <code>0</code> = insert in front on the left side. If omitted/not specified then the button is just appended last on the right side.</p>
+            <p>Return value = the button <span class="ital word">HTMLElement</span> itself</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
