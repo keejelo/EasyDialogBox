@@ -1,6 +1,9 @@
 # 1.735.72:
 - Added method to add custom buttons to footer.
 - Updated the documentation.
+  Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
+  -> Note about IE 8-9-10 emulated: only partial support for "dlg-multi" - cannot switch between multiple dialogs and can only drag and drop the top one,
+     due to use of CSS pointer-events, but all other features seem to work ok, no errors discovered during testing.
 
 # 1.735.71:
 - Fixed a minor bug where method "myObj.$(...)" didn't always return null if element not found. Now it's fixed.
