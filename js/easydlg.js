@@ -1683,7 +1683,7 @@ var EasyDialogBox = (function()
                 {
                     obj.onCreate();
                     _log('DEBUG: obj.onCreate(): executed (async)');
-                }, 100);
+                }, 10);
 
                 _log('DEBUG: create(): new object created and added to DOM');
 
