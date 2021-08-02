@@ -262,8 +262,6 @@ table td+td
     margin:0;
     margin-bottom:10px;
     padding:0;
-    overflow:scroll;
-    white-space:pre;
     font-family:Consolas, "Courier New", monospace;
     font-size:inherit;
     line-height:normal;
@@ -271,6 +269,8 @@ table td+td
     color:#fff;
     border:4px #ddd solid;
     border-radius:3px;
+    overflow:scroll;
+    white-space:pre;    
 }
 /* Code line numbers ******************************************/
 .codeview:before
@@ -380,7 +380,6 @@ b:first-child
     right:20px;
     z-index:100;
     border:none;
-    outline:none;
     background-color:#bbb; /* fallback */
     background-color:rgba(100,100,100,.3);
     color:#fff;
@@ -1074,10 +1073,10 @@ attachEventListener(window, 'load', function()
 
             <h2 id="dialog_addbutton">Add custom button to footer</h2>
             <p>With this method you can add your own custom buttons to the footer of the dialog.</p>
-            <p>Syntax: <code>myObj.addButton(buttonText, fnClick, nInsertIndex);</code></p>
+            <p>Syntax: <code>myObj.addButton(buttonText, fnClick, nPos);</code></p>
             <p>Where <code>buttonText</code> is of type <span class="ital word">string</span>, the text that you want to display on the button.</p>
             <p><code>fnClick</code> is of type <span class="ital word">function</span>, the click-event function for the button. Can either be a reference to a function or a function written inline.</p>
-            <p><code>nInsertIndex</code> is of type <span class="ital word">number</span>, index of where you want to insert the button among the rest of the buttons.<br />
+            <p><code>nPos</code> is of type <span class="ital word">number</span>, and is the index position of where you want to insert the button among the rest of the buttons.<br />
             If set to <code>0</code> then it's inserted as the first button on the left side, if set to <code>1</code> then it's inserted as the second button from the left side, <code>2</code> as third button etc.<br />
             If omitted/not specified then the button is just appended last on the right side.</p>
             <p>Return value = the button <span class="ital word">HTMLElement</span> itself</p>
