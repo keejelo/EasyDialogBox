@@ -1078,7 +1078,8 @@ attachEventListener(window, 'load', function()
             <p>Where <code>buttonText</code> is of type <span class="ital word">string</span>, the text that you want to display on the button.</p>
             <p><code>fnClick</code> is of type <span class="ital word">function</span>, the click event function for the button. Can either be a reference to a function or just a function written inline.</p>
             <p><code>nInsertIndex</code> is of type <span class="ital word">number</span>, index of where you want to insert the button among the rest of the buttons.<br />
-            <code>0</code> = insert in front on the left side. If omitted/not specified then the button is just appended last on the right side.</p>
+            If set to <code>0</code> then it's inserted as the first button on the left side, if set to <code>1</code> then it's inserted as the second button from the left side, <code>2</code> as third button etc.<br />
+            If omitted/not specified then the button is just appended last on the right side.</p>
             <p>Return value = the button <span class="ital word">HTMLElement</span> itself</p>
 
             <p>&nbsp;</p>
