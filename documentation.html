@@ -863,7 +863,7 @@ attachEventListener(window, 'load', function()
 
                     <tr><td>dlg-rounded</td><td>Add rounded corners to box.</td></tr>
                     <tr><td>dlg-shadow</td><td>Add shadow behind box.</td></tr>
-                    <tr><td>dlg-fade</td><td>Dialogbox fades in when shown, not when closed. Fades out only when used in timed hiding <code>myObj.hide(msec);</code></td></tr>
+                    <tr><td>dlg-fade</td><td>Dialogbox fades in when shown, not when closed, only fades out if used with <a href="#dialog_hide">timed hiding</a></td></tr>
                 </table>
                 <p class="small" id="opt_flags">1. must be used in combination with a dialogtype, separated by a space.</p>
             </div>
@@ -953,7 +953,7 @@ attachEventListener(window, 'load', function()
             <p>Return value = the <span class="ital word">object</span> itself</p>
             <p>(Pressing the keyboard escape-key <kbd title="Escape keyboard key">Esc</kbd> also fires this function)</p>
             <p class="bold">Optional parameters:</p>
-            <p>Else you can use it with paramters like this: <code>myObj.hide(msec, skip);</code></p>
+            <p>Else you can use it with paramters like this: <code>myObj.hide(msec);</code> or this <code>myObj.hide(msec, skip);</code> if using both.</p>
             <p><code>msec</code> is a value in milliseconds of type <span class="ital word">number</span>, to delay the hiding/closing of the dialogbox.<br />The timeout ID is stored in variable <code>myObj.nTimeId</code> so it can be used with <code>clearTimeout(nTimeId);</code> or some other custom codestuff.</p>
             <p><code>skip</code> is a value of type <span class="ital word">boolean</span>, to skip execution of the objects <code>.onHide()</code> function. Only skips if value is <span class="ital word">true boolean</span>, using <code>true</code>, else it executes as normal which is also default.</p>
 
