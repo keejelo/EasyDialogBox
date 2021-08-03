@@ -2,13 +2,13 @@
 - Added method to add custom buttons to footer.
 - Updated the documentation.
   Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
-  -> Note about IE 8-9-10 emulated: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
+  -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
      no errors discovered during testing.
 
 # 1.735.71:
 - Fixed a minor bug where method "myObj.$(...)" didn't always return null if element not found. Now it's fixed.
   Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
-  -> Note about IE 8-9-10 emulated: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
+  -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
      no errors discovered during testing.
 
 # 1.735.70:
@@ -16,7 +16,7 @@
 - Improved module init code, now it executes on its own, do not need to make it run with outer function anymore: "EasyDialogBox.init();"
 - Updated the documentation.
   Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
-  -> Note about IE 8-9-10 emulated: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
+  -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
      no errors discovered during testing.
      
 # 1.735.69.1:
@@ -30,7 +30,7 @@
 # 1.735.69:
 - Improved legacy-browser code, now works even better in older browsers (even minified fileversion works in IE8 (emulated))
   Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
-  -> Note about IE 8-9-10 emulated: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
+  -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
      no errors discovered during testing.
 
 # 1.735.68:
