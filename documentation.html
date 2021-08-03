@@ -622,6 +622,9 @@ attachEventListener(window, 'load', function()
         // ** Create a new dialogbox object
         var myBox = EasyDialogBox.create('someId1', 'dlg', 'My title', '<p>Hello there!</p>');
 
+        // ** Clean up after closing
+        myBox.onClose = myBox.destroy;
+        
         // ** Show the newly created box
         myBox.show();
     }, false);
@@ -1217,6 +1220,9 @@ attachEventListener(window, 'load', function()
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
 <i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;'</b><b class="func">)</b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Clean up after closing</b></i>
+<i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b>myBox</b><b class="func">.destroy</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Show the newly created box</b></i>
 <i><b>myBox</b><b class="func">.show()</b>;</i>
