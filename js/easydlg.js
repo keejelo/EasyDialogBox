@@ -330,7 +330,7 @@ var EasyDialogBox = (function()
             // ** Get window width (xbrowser)
             var winWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 
-            var overlap = 40; // 40, value is used to help width-detection
+            var overlap = 30; // default: 30 (was 40), value used to help width-detection to trigger responsive-mode
             if( _s2i(el.offsetWidth + el.customPosX + overlap) >= winWidth ) // Seem to work OK
             {
                 // ** Try to retain responsiveness by setting default values
