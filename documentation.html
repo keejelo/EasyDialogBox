@@ -380,35 +380,36 @@ b:first-child
 /* Scroll to top button ***************************************/
 #scrollTopBtn
 {
+    display:none;
     margin:0;
     padding:0;
-    display:none;
+    width:50px;
+    height:50px;
     position:fixed;
     bottom:20px;
     right:20px;
-    z-index:100;
-    border:none;
     background-color:#bbb; /* fallback */
     background-color:rgba(100,100,100,.3);
     color:#fff;
     cursor:pointer;
+    border:none;
     border-radius:50%; /* circle */
-    width:50px;
-    height:50px;
     text-align:center;
+    z-index:100;
 }
 #scrollTopBtn a
 {
     display:inline-block;
     margin:0;
     padding:0;
+    position:relative;
+    top:15px;
     font-family:Verdana, Arial, Helvetica, sans-serif;
     font-size:1.8em;
     font-weight:bold;
     color:#fff;
+    text-decoration:none;
     border:none;
-    position:relative;
-    top:15px;
 }
 #scrollTopBtn:hover
 {
@@ -1035,8 +1036,8 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-            <h2 id="dialog_getEl">Get HTML element inside the dialogbox etc.</h2>
-            <p>There are multiple ways to do this, all which are similar to <code>.querySelectorAll()</code></p>
+            <h2 id="dialog_getEl">Get HTML elements inside the dialogbox</h2>
+            <p>There are multiple ways to do this, all which are similar to <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" title="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">querySelectorAll()</a></code></p>
             <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself, same as <code>myObj.el;</code></p>
             <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('.someClass');</code> using <span class="bold">.</span> (dot), returns a NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
@@ -1044,7 +1045,8 @@ attachEventListener(window, 'load', function()
             <p>You can also mix it up e.g.:</p>
             <p><code>myObj.$('#someID p input.myFormData');</code> returns a NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('#someID p input.myFormData')[0];</code> returns the first HTML element in a NodeList indexed <code>[0]</code></p>
-
+            <p><span class="bold">NOTE</span>: In all instances you can check against <span class="ital word">null</span> to see if any elements was found.</p>
+            
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
