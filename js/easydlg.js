@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.74
+// Version: 1.74.1
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** Debug: true/false (output debug-messages to console)
-    var DEBUG = false;
+    var DEBUG = true;
 
     // ** Display message to inform that module is started
     var _name = 'EasyDialogBox';
@@ -394,29 +394,13 @@ var EasyDialogBox = (function()
         // ** Trim leading and trailing spaces
         str = _trim(str);
 
-        // ** If string contains '#' (hash)
-        if(str.indexOf('#') !== -1)
+        // ** If string contains '#' (hash), and NOT any multiple selectors
+        if( str.indexOf('#') !== -1 && (str.indexOf(' ') === -1 || str.indexOf(',') === -1
+        || str.indexOf('>') === -1 || str.indexOf('+') === -1 || str.indexOf(':') === -1 || str.indexOf('[') === -1) )
         {
-            // ** If string contains space or multiple selectors
-            if(str.indexOf(' ') !== -1 || str.indexOf(',') !== -1 || str.indexOf('>') !== -1
-            || str.indexOf('+') !== -1 || str.indexOf(':') !== -1 || str.indexOf('[') !== -1)
-            {
-                if(box)
-                {
-                    var q = box.querySelectorAll(str);
-                    if(q.length)
-                    {
-                        return q;
-                    }
-                }
-            }
-            // ** If string contains '#' (hash) but do NOT contain space or multiple selector-chars, must be single element
-            else
-            {
-                return box.querySelector(str);
-            }
+            return box.querySelector(str);
         }
-        // ** Else if string do NOT contain '#' (hash), must be several elements
+        // ** Else must be several elements query
         else
         {
             if(box)
