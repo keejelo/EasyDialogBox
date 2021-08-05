@@ -391,7 +391,6 @@ b:first-child
     background-color:#bbb; /* fallback */
     background-color:rgba(100,100,100,.3);
     color:#fff;
-    cursor:pointer;
     border:none;
     border-radius:50%; /* circle */
     text-align:center;
@@ -402,8 +401,7 @@ b:first-child
     display:inline-block;
     margin:0;
     padding:0;
-    position:relative;
-    top:15px;
+    line-height:50px;
     font-family:Verdana, Arial, Helvetica, sans-serif;
     font-size:1.8em;
     font-weight:bold;
@@ -429,8 +427,8 @@ b:first-child
     }
     #page
     {
-        padding:4px;
         margin:0;
+        padding:4px;
     }
     #scrollTopBtn a
     {
@@ -490,7 +488,7 @@ b:first-child
 
 <link type="text/css" rel="stylesheet" href="css/easydlg.css" />
 
-<script src="js/easydlg.js"></script>
+<script src="js/easydlg.min.js"></script>
 
 <!-- END: Including the necessary files here CSS and JS -->
 
@@ -1046,7 +1044,7 @@ attachEventListener(window, 'load', function()
             <p><code>myObj.$('#someID p input.myFormData');</code> returns a NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('#someID p input.myFormData')[0];</code> returns the first HTML element in a NodeList indexed <code>[0]</code></p>
             <p><span class="bold">NOTE</span>: In all instances you can check against <span class="ital word">null</span> to see if any elements was found.</p>
-            
+
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
@@ -1537,7 +1535,7 @@ attachEventListener(window, 'load', function()
             <h2 class="ital">fini</h2>
         </div>
         <div class="small_note">keejelo, 2020-2021.</div>
-        <div id="scrollTopBtn" title="Go to top"><a href="#">^</a></div>
+        <div id="scrollTopBtn"><a href="#" title="Go to top">&nbsp;^&nbsp;</a></div>
 
     </div>
 
