@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** Debug: true/false (output debug-messages to console)
-    var DEBUG = true;
+    var DEBUG = false;
 
     // ** Display message to inform that module is started
     var _name = 'EasyDialogBox';
