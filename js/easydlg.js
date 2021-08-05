@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.74.1
+// Version: 1.74.2
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** Debug: true/false (output debug-messages to console)
-    var DEBUG = false;
+    var DEBUG = true;
 
     // ** Display message to inform that module is started
     var _name = 'EasyDialogBox';
@@ -395,8 +395,9 @@ var EasyDialogBox = (function()
         str = _trim(str);
 
         // ** If string contains '#' (hash), and NOT any multiple selectors
-        if( str.indexOf('#') !== -1 && (str.indexOf(' ') === -1 || str.indexOf(',') === -1
-        || str.indexOf('>') === -1 || str.indexOf('+') === -1 || str.indexOf(':') === -1 || str.indexOf('[') === -1) )
+        if( str.indexOf('#') !== -1 && str.indexOf(' ') === -1 && str.indexOf(',') === -1
+        && str.indexOf('>') === -1 && str.indexOf('+') === -1 && str.indexOf(':') === -1
+        && str.indexOf('[') === -1 )
         {
             return box.querySelector(str);
         }
@@ -1727,14 +1728,14 @@ var EasyDialogBox = (function()
                                       dlg.getAttribute('data-h'));       // height
 
                     // ** Create event listeners for openers
-                   _attachEventListener(opnr[i], 'click', function DlgOpenerClick(/* e */)
+                   _attachEventListener(opnr[i], 'click', function DlgOpenerClick(e)
                     {
-                        //e = e || window.event;  // Get/set event variable
+                        e = e || window.event;  // Get/set event variable
                         obj.show();               // Show the dialogbox with the id referenced in 'rel' attribute
                         this.blur();              // Remove focus from clicked button or other opening element
-                        //_stopDefault(e);        // Prevent scrolling to top of page if i.e. used in an anchor-link href="#"
-                        //_stopEvent(e);          // Prevent bubbling up to parent elements or capturing down to child elements
-                        //return false;           // Try to prevent any default navigation action that we don't want
+                        //_stopEvent(e);          // Prevent bubbling up to parent elements or capturing down to child elements                        
+                        _stopDefault(e);          // Prevent scrolling to top of page if i.e. used in an anchor-link href="#"
+                        return false;             // Try to prevent any default navigation action that we don't want
                     }, false);
                 }());
             } // ** END: for
