@@ -1,8 +1,11 @@
+# 1.74.3:
+- Cleanup after simplifying method "_getEl()"
+
 # 1.74.2:
-- Fixed minor error in earlier simplified method "myObj.$()", changed logical "||" to logical "&&" in IF
+- Fixed minor error in earlier simplified method "_getEl()", changed logical "||" to logical "&&" in IF
 
 # 1.74:
-- Cleaned up and simplified the method "myObj.$()", still works in the same way, just didn't need to be so complicated. Also more predictable and stable queryresults.
+- Cleaned up and simplified the method "_getEl()", still works in the same way, just didn't need to be so complicated. Also more predictable and stable queryresults.
 - Updated the documentation.
   --> Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
 
