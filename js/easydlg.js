@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.74.2
+// Version: 1.74.3
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -394,12 +394,10 @@ var EasyDialogBox = (function()
         // ** Trim leading and trailing spaces
         str = _trim(str);
 
-        // ** If string contains '#' (hash), and NOT any multiple selectors
-        if( str.indexOf('#') !== -1 && str.indexOf(' ') === -1 && str.indexOf(',') === -1
-        && str.indexOf('>') === -1 && str.indexOf('+') === -1 && str.indexOf(':') === -1
-        && str.indexOf('[') === -1 )
+        // ** If string contains '#' (hash), and NOT any multiple selector chars
+        if( str.indexOf('#') !== -1 && str.match(/[\s+>,+:[]/g) === null )
         {
-            return box.querySelector(str);
+            return box.querySelector(str);  // return ONE single element
         }
         // ** Else must be several elements query
         else
@@ -1733,7 +1731,7 @@ var EasyDialogBox = (function()
                         e = e || window.event;  // Get/set event variable
                         obj.show();               // Show the dialogbox with the id referenced in 'rel' attribute
                         this.blur();              // Remove focus from clicked button or other opening element
-                        //_stopEvent(e);          // Prevent bubbling up to parent elements or capturing down to child elements                        
+                        //_stopEvent(e);          // Prevent bubbling up to parent elements or capturing down to child elements
                         _stopDefault(e);          // Prevent scrolling to top of page if i.e. used in an anchor-link href="#"
                         return false;             // Try to prevent any default navigation action that we don't want
                     }, false);
