@@ -1,5 +1,5 @@
 # 1.74.2:
-- Fixed minor mistake/error in earlier simplified method "myObj.$()", should now be correct.
+- Fixed minor error in earlier simplified method "myObj.$()", changed logical "||" to logical "&&" in IF
 
 # 1.74:
 - Cleaned up and simplified the method "myObj.$()", still works in the same way, just didn't need to be so complicated. Also more predictable and stable queryresults.
