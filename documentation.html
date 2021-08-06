@@ -1019,7 +1019,7 @@ attachEventListener(window, 'load', function()
             <h2 id="dialog_getEl">Get HTML elements inside the dialogbox</h2>
             <p>There are multiple ways to do this, all which are similar to <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll" title="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll">querySelectorAll()</a></code></p>
             <p><code>myObj.$();</code> using <span class="bold">()</span> blank, returns the dialogbox HTML element itself, same as <code>myObj.el;</code></p>
-            <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns the HTML element containing the specified ID, or <span class="ital word">null</span> if none exist in DOM.</p>
+            <p><code>myObj.$('#someId');</code> using <span class="bold">#</span> (hash), returns a <span class="ital">single</span> HTML element containing the specified ID, using <code>querySelector()</code>, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('.someClass');</code> using <span class="bold">.</span> (period), returns a NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p><code>myObj.$('someElement');</code> returns a NodeList, or <span class="ital word">null</span> if none exist in DOM.</p>
             <p>You can also mix it up e.g.:</p>
