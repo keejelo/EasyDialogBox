@@ -166,13 +166,14 @@ var EasyDialogBox = (function()
     // ** Stop default event action (xbrowser-legacy)
     var _stopDefault = function(e)
     {
+        if(typeof e.returnValue !== 'undefined')
+        {
+            e.returnValue = false;
+        }
+
         if(typeof e.preventDefault !== 'undefined')
         {
             e.preventDefault();
-        }
-        else
-        {
-            e.returnValue = false;
         }
     };
 
