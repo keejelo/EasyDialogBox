@@ -8,7 +8,7 @@
 - Crossbrowser, legacy browser support as much as possible. Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
 
 <h3>Documentation, how to use and live examples:</h3>
-<h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/documentation.html</h3>
+<h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/Documentation.html</h3>
 <br /><br /><br />
 <b>Important changes from version 1.735 and above:</b>
 
