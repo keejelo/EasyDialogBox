@@ -1,5 +1,5 @@
 
-- Add optional resize-ability to dialogbox (working on this)
+- Add optional resize-ability to dialogbox (working on this now)
 - Improve "responsive-mode", works ok now, but can possibly be better
 - Add more examples in documentation
 
