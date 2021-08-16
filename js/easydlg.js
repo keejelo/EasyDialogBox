@@ -572,13 +572,13 @@ var EasyDialogBox = (function()
             var box = document.getElementById(obj.id + '_1');
 
             // ** Check if position is set, if true then change position, else default value used
-            if(typeof obj.x === 'number')
+            if(obj.x)
             {
                 box.style.left = _s2i(obj.x) + 'px';
                 obj.customPosX = _s2i(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
-            if(typeof obj.y === 'number')
+            if(obj.y)
             {
                 box.style.top = _s2i(obj.y) + 'px';
                 obj.customPosY = _s2i(obj.y);
@@ -586,13 +586,13 @@ var EasyDialogBox = (function()
             // ** END: Check if position is set
 
             // ** Check if size is set, if true then change size, else default value used
-            if(typeof obj.w === 'number' && obj.w >= 0)
+            if(obj.w)
             {
                 box.style.maxWidth = _s2i(obj.w) + 'px';
                 obj.customWidth = _s2i(obj.w);
             }
             // ** Check if size is set, set custom
-            if(typeof obj.h === 'number' && obj.h >= 0)
+            if(obj.h)
             {
                 //box.style.height = _s2i(obj.h) + 'px';    // DISABLED, only set custom
                 //box.style.maxHeight = _s2i(obj.h) + 'px'; // DISABLED, only set custom
@@ -602,7 +602,7 @@ var EasyDialogBox = (function()
             // ** END: Check if size is set
 
             // ** If custom height then adjust
-            if(obj.customHeight >= 0)
+            if(obj.customHeight)
             {
                 // ** Set total message height start
                 var msgHeight = _s2i(obj.h);
@@ -682,24 +682,24 @@ var EasyDialogBox = (function()
         var obj = _getObjById(objId);
 
         // ** Save position - ALL dialogboxes depends on this to remember last position
-        if(typeof obj.x === 'number')
+        if(obj.x)
         {
             obj.x = _s2i(box.style.left);
             obj.customPosX = obj.x;
         }
-        if(typeof obj.y === 'number')
+        if(obj.y)
         {
             obj.y = _s2i(box.style.top);
             obj.customPosY = obj.y;
         }
 
         // ** Save current size
-        if(typeof obj.w === 'number' && obj.w >= 0)
+        if(obj.w)
         {
             obj.width(box.style.maxWidth);
             obj.customWidth = _s2i(box.style.maxWidth);
         }
-        if(typeof obj.h === 'number' && obj.h >= 0)
+        if(obj.h)
         {
             obj.height(box.style.height);
             obj.customHeight = _s2i(box.style.height);
@@ -908,10 +908,10 @@ var EasyDialogBox = (function()
                 strTypeClass : strTypeClass,
                 strTitle : strTitle,
                 strMessage : strMessage,
-                x : _s2i(x),
-                y : _s2i(y),
-                w : _s2i(w),
-                h : _s2i(h),
+                x : x,
+                y : y,
+                w : w,
+                h : h,
                 strInput : '',
                 nRetCode : -1,
                 bVisible : false,
@@ -1210,13 +1210,13 @@ var EasyDialogBox = (function()
                 //    And check for "value > -1" in below "if else" instead of "true/false"
 
                 // ** Check if position is set, if true then change position, else default css value used
-                if(typeof obj.x === 'number')
+                if(obj.x)
                 {
                     box.style.left = _s2i(obj.x) + 'px';
                     obj.customPosX = _s2i(obj.x);
                 }
                 // ** Check if position is set, if true then change position, else default css value used
-                if(typeof obj.y === 'number')
+                if(obj.y)
                 {
                     box.style.top = _s2i(obj.y) + 'px';
                     obj.customPosY = _s2i(obj.y);
@@ -1224,13 +1224,13 @@ var EasyDialogBox = (function()
                 // ** END: Check if position is set
 
                 // ** Check if size is set, if true then change size, else default css value used
-                if(typeof obj.w === 'number' && obj.w >= 0)
+                if(obj.w)
                 {
                     box.style.maxWidth = _s2i(obj.w) + 'px';
                     obj.customWidth = _s2i(obj.w);
                 }
                 // ** Check if size is set, if true then change size, else default css value used
-                if(typeof obj.h === 'number' && obj.h >= 0)
+                if(obj.h)
                 {
                     box.style.height = _s2i(obj.h) + 'px';
                     obj.customHeight = _s2i(obj.h);
