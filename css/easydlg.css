@@ -21,7 +21,7 @@
     top:0;
     width:100%;
     height:100%;
-    overflow:auto; /* Enable scroll if needed */
+    overflow:auto; /* Enable scroll if needed, triggers in responsivemode */
     background-color:#000; /* Fallback if not support trans. overlay */
     background-color:rgba(0,0,0,0.2); /* Translucent overlay */
 }
@@ -33,15 +33,15 @@
     margin:0;
     padding:0;
     max-width:600px;
-    overflow:hidden; /* disable scrolling inside box */
-    width:100%; /* 96, 98 */
+    overflow:hidden; /* Disable scrolling inside box, instead set scroll on inside elements */
+    width:100%; /* 96%, 98% */
     font-family:Arial, Helvetica, sans-serif;
     font-size:10px; /* 0.8em */
-    background-color:#fefefe; /* bgcolor, change it as you wish */
-    border:1px solid #3d6da8; /* border, change it as you wish. ".dlg-heading" has the same background-color as this */
+    background-color:#fefefe; /* bgcolor */
+    border:1px solid #3d6da8; /* ".dlg-heading" has the same background-color as this */
     visibility:hidden;
-    position:absolute;   /* this is needed or else "dlg-disable-drag" custom position do not work */
-    pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */
+    position:absolute; /* This is needed or else "dlg-disable-drag" custom position do not work */
+    pointer-events:auto; /* Makes dialog clickable when parent (overlay) is disabled */
 }
 
 /* Dialog heading */
@@ -51,23 +51,24 @@
     display:block;
     margin:0;
     padding:10px;
-    background-color:#3d6da8; /* background color, change it as you wish. ".dlg-box" has the same border-color as this */
-    color:#fff; /* text color, change it as you wish */
+    background-color:#3d6da8; /* ".dlg-box" has the same border-color as this */
+    color:#fff; /* text color */
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
     border:none;
+    border-width:0; /* must have a pixel value, used for calcs */
     height:19px;
     line-height:19px;
     font-family:inherit;
     font-size:1.4em;
+    /*border:1px solid #ff00ff; /* DEBUG */
 }
 
 /* Dialog title */
 .dlg-title
 {
     z-index:80001;
-    line-height:20px;
 }
 
 /* Close X */
@@ -79,12 +80,14 @@
     margin-top:-5px;
     margin-right:0;
     padding:5px;
+    /*height:39px;*/
+    /*line-height:19px;*/
     color:inherit;
-    font-family:inherit;
-    font-size:2.0em;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:2em; /* 2em */
     font-weight:normal;
     background-color:inherit;
-    line-height:20px;
+    /*border:1px solid #00ffff; /* DEBUG */
 }
 
 .dlg-close-x:hover,
@@ -100,13 +103,28 @@
 {
     display:block;
     margin:0;
-    /*margin-bottom:25px;*//* disabled */
-    padding:0 15px 0 15px;
+    /*padding:0 15px;*/
+    padding:15px;
     font-family:inherit;
     font-size:1.4em;
     line-height:1.4em;
     overflow-x:hidden; /* Hide horizontal scrollbar */
-    overflow-y:auto;   /* Add vertical scrollbar if needed */
+    overflow-y:auto; /* Add vertical scrollbar if needed */
+    border:none;
+    border-width:0; /* must have a pixel value, used for calcs */
+    /*border:1px solid #ff0000; /* DEBUG */
+}
+
+/* P elements inside message */
+.dlg-message p:first-child
+{
+    margin-top:0;
+    padding-top:0;
+}
+.dlg-message p:last-child
+{
+    margin-bottom:0;
+    padding-bottom:0;
 }
 
 /* Flex boxes */
@@ -114,9 +132,11 @@
 {
     margin:0;
     padding:0;
-    display:table;
-    border-collapse:collapse;
+    /*display:table; /* not needed */
+    /*border-collapse:collapse; /* not needed */
     border:none;
+    border-width:0; /* must have a pixel value, used for calcs */    
+    /*border:1px solid #ff0000; /* DEBUG */
 }
 
 .dlg-flexbox-left,
@@ -129,24 +149,25 @@
 {
     width:55px;
     margin:0;
-    padding:20px 20px 20px 20px;
+    padding:20px;
     display:table-cell;
     border:none;
-    /*border:1px solid #f00; /* debug */
+    box-sizing:border-box; /* existing sizing */
+    /*border:1px solid #00ff00; /* DEBUG */
 }
 
 .dlg-flexbox-right
 {
     width:100%;
     margin:0;
-    padding:8px 20px 0 0;
+    padding:20px 20px 0 0;
     display:table-cell;
     border:none;
     text-align:left;
     vertical-align:top;
     overflow-x:hidden; /* Hide horizontal scrollbar */
-    overflow-y:auto;   /* Add vertical scrollbar if needed */
-    /*border:1px solid #00f; /* debug */
+    overflow-y:auto; /* Add vertical scrollbar if needed */
+    /*border:1px solid #0000ff; /* DEBUG */
 }
 
 /* Dialog input */
@@ -173,17 +194,26 @@
     z-index:80000;
     display:block;
     margin:0;
-    margin-top:25px; /* 10px */
     padding:10px;
-    height:30px;
+    height:30px; /* 54+2 needed when dialogbox top and bottom borders (1px each) are removed in responsemode */
     background-color:#f0f0f0;
+    border:none;
+    border-width:0; /* must have a pixel value, used for calcs */
     border-top:1px solid #e5e5e5;
-    text-align:right;
     border-bottom-left-radius:inherit;
     border-bottom-right-radius:inherit;
+    text-align:right;
     font-family:inherit;
     font-size:1.3em;
-    overflow:hidden; /* Hide scrollbar */
+    overflow:hidden; /* Hide content, scrollbar */
+    /*border:1px solid #00ff00; /* DEBUG */
+}
+
+/* Extra padding that appear when dialogbox has a resize-handle, to give it some extra space */
+.dlg-footer-extra-padding
+{
+    padding-right:15px;
+    padding-bottom:15px;
 }
 
 /* The buttons */
@@ -195,7 +225,7 @@
     height:30px;
 }
 
-/* Dialog icons, pure css, no images, but could be changed to use images instead by using the same classes etc. */
+/* Dialog icons, pure css, no images used, but could be changed to use images instead by using the same classes etc. */
 .dlg-symbol
 {
     font-size:24px;
@@ -213,16 +243,16 @@
 
 .dlg-icon-info
 {
-    background-color:#0077d7; /*3d6da8*/
+    background-color:#0077d7;
     line-height:37px;
-    box-shadow:0 0 0 1px #004d8b; /*254164*/
+    box-shadow:0 0 0 1px #004d8b;
 }
 
 .dlg-icon-question
 {
-    background-color:#0077d7; /*3d6da8*/
+    background-color:#0077d7;
     line-height:37px;
-    box-shadow:0 0 0 1px #004d8b; /*254164*/
+    box-shadow:0 0 0 1px #004d8b;
 }
 
 .dlg-icon-error
@@ -309,7 +339,7 @@
     line-height:37px;
 }
 
-/* Stop scrolling, used to stop scrolling of background page content (body) when dialogbox is in view */
+/* Stop scrolling of background page content (body) when dialogbox is in view */
 .dlg-stop-scrolling
 {
     height:100%;
@@ -323,7 +353,7 @@
 {
     background-color:transparent;
     pointer-events:none; /* Force layer to pass-through click events */
-    overflow:hidden;     /* Disable scrolling, although this kills responsiveness */
+    overflow:hidden; /* Disable scrolling, although this kills responsiveness to some degree */
 }
 
 /* Rounded corners */
@@ -339,3 +369,62 @@
     -moz-box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
     box-shadow:1px 2px 10px 0px rgba(0,0,0,0.5);
 }
+
+/* Resize handle */
+.dlg-rh
+{
+    margin:0;
+    padding:0;
+    width:20px;
+    height:20px;
+    background-color:transparent;
+    position:absolute;
+    bottom:0;
+    right:0;
+    cursor:nw-resize;
+    /*border:1px solid #ff0000; /* DEBUG */
+}
+
+/* Resize handle dots */
+.dlg-rd1,
+.dlg-rd2,
+.dlg-rd3,
+.dlg-rd4,
+.dlg-rd5,
+.dlg-rd6
+{
+    background-color:#999;
+    margin:0;
+    padding:0;
+    width:2px;
+    height:2px;
+    position:absolute;
+    border:none;
+    border-right:1px solid #fafafa;  /* "shadow" */
+    border-bottom:1px solid #fafafa; /* "shadow" */
+}
+
+/* Standard positions, dots closer together */
+/* Top dot */
+.dlg-rd1 { right:2px; bottom:8px; }
+
+/* Middle dots */
+.dlg-rd2 { right:5px; bottom:5px; }
+.dlg-rd3 { right:2px; bottom:5px; }
+
+/* Bottom dots */
+.dlg-rd4 { right:8px; bottom:2px; }
+.dlg-rd5 { right:5px; bottom:2px; }
+.dlg-rd6 { right:2px; bottom:2px; }
+
+/* Alternative positions, more space for "shadow" */
+/*
+.dlg-rd1 { right:2px; bottom:10px; }
+.dlg-rd2 { right:6px; bottom:6px; }
+.dlg-rd3 { right:2px; bottom:6px; }
+.dlg-rd4 { right:10px; bottom:2px; }
+.dlg-rd5 { right:6px; bottom:2px; }
+.dlg-rd6 { right:2px; bottom:2px; }
+*/
+
+
