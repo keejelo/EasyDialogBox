@@ -1,3 +1,4 @@
 
-If using Bootstrap, use the file "easydlg_bootstrap.css" instead of "easydlg.css"
+CSS file for Bootstrap will be added after testing
+
 
