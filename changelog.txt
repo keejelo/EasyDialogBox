@@ -1,3 +1,7 @@
+# 1.8 (alpha test version):
+- Now dialogboxes can be resized by using the flag "dlg-resize"
+- Rewrote inner box calculations, cleaned up a lot of code.
+
 # 1.74.3:
 - Cleanup after simplifying method "_getEl()"
 
