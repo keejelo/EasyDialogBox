@@ -379,13 +379,7 @@ b:first-child
     padding:0;
     width:100%;
     height:100%;
-    line-height:55px;
-    font-family:Verdana, Roboto-Black, "Arial Black", Arial, Helvetica, sans-serif;
-    font-size:1.8em;
-    font-weight:bold;
-    color:#fff;
     text-decoration:none;
-    text-align:center;
     background-color:#bbb; /* fallback */
     background-color:rgba(100,100,100,.3);
     border:none;
@@ -396,6 +390,25 @@ b:first-child
     background-color:#666; /* fallback */
     background-color:rgba(50,50,50,.4);
 }
+#d1,#d2,#d3,#d4,#d5,#d6,#d7
+{
+    margin:0;
+    padding:0;
+    display:inline-block;
+    position:absolute;
+    background-color:#fff;
+    font-size:0;
+    width:3px;
+    height:6px;
+}
+#d1 { top:21px; left:15px; }
+#d2 { top:18px; left:18px; }
+#d3 { top:15px; left:21px; }
+#d4 { top:13px; left:24px; }
+#d5 { top:15px; left:27px; }
+#d6 { top:18px; left:30px; }
+#d7 { top:21px; left:33px; }
+
 /* END: Scroll to top button */
 
 /* Small screen ***********************************************/
@@ -411,10 +424,6 @@ b:first-child
     {
         margin:0;
         padding:4px;
-    }
-    #scrollTopBtn a
-    {
-        font-size:1.9em;
     }
 }
 /* END: Small screen */
@@ -676,13 +685,13 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleMultiRunBtn'), 'click', function()
     {
         // ** Create two dialogboxes, give them some color and open them
-        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p>', false, 100, 100);
+        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p><p>This box is NOT resizable!</p>', false, 100, 100);
         myBox1.color('#bb0000').show();
 
-        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 2', '<p>This is box 2, drag and drop it around!</p>', false, 180, 180);
+        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 2', '<p>This is box 2, drag and drop it around!</p><p>This box is also resizable!</p>', false, 180, 180);
         myBox2.color('#009955').show();
 
-        var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 3', '<p>This is box 3, drag and drop it around!</p>', false, 260, 260);
+        var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 3', '<p>This is box 3, drag and drop it around!</p><p>This box is also resizable!</p>', false, 260, 260);
         myBox3.color('#005599').show();
 
     }, false);
@@ -754,7 +763,7 @@ attachEventListener(window, 'load', function()
         </div>
         <div id="sub_heading" class="bold">
             <p>Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast, optional icons.</p>
-            <p>Plain vanilla Javascript, no libraries. Customizable. Responsive. Lightweight.</p>
+            <p>Plain vanilla Javascript, no libraries. Customizable. Responsive. Lightweight. Draggable. Resizable.</p>
             <p>Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="ECMAScript 5">ES5</a>), HTML and CSS.<br/>
             Crossbrowser, legacy browser support as much as possible.</p>
             <p><a class="blue" href="https://github.com/keejelo/EasyDialogBox" title="Go to github repository">https://github.com/keejelo/EasyDialogBox</a></p>
@@ -861,6 +870,7 @@ attachEventListener(window, 'load', function()
                             <span class="small help" title="Internet Explorer 8/9/10 - to switch between dialogs you have to click on some text or visible element">Note: IE 8/9/10 - to switch between dialogs you have to click on some text or visible element.</span>
                         </td>
                     </tr>
+                    <tr><td>dlg-resize</td><td>Makes the dialogbox resizable, adds a small resize-handle on the bottom-right side.</td></tr>
 
                     <tr><td colspan="2">&nbsp;</td></tr>
 
@@ -936,8 +946,8 @@ attachEventListener(window, 'load', function()
                 <tr><td><a href="#dialog_onDestroy">onDestroy()</a></td><td>method</td><td>fires when dialog is destroyed</td></tr>
                 <tr><td><a href="#dialog_el">el</a></td><td>element</td><td>reference to dialogbox element itself</td></tr>
                 <tr><td><a href="#dialog_getEl">$()</a></td><td>method</td><td>get elements inside dialog</td></tr>
-                <tr><td><a href="#dialog_width">width()</a></td><td>method</td><td>change dialogbox width (px)</td></tr>
-                <tr><td><a href="#dialog_height">height()</a></td><td>method</td><td>change dialogbox height (px)</td></tr>
+                <tr><td><a href="#dialog_width">width()</a></td><td>method</td><td>set dialogbox width (px)</td></tr>
+                <tr><td><a href="#dialog_height">height()</a></td><td>method</td><td>set dialogbox height (px)</td></tr>
                 <tr><td><a href="#dialog_xpos">xPos()</a></td><td>method</td><td>change dialogbox X position (pixels from left)</td></tr>
                 <tr><td><a href="#dialog_ypos">yPos()</a></td><td>method</td><td>change dialogbox Y position (pixels from top)</td></tr>
                 <tr><td><a href="#dialog_center">center()</a></td><td>method</td><td>position dialogbox in center of window/viewport</td></tr>
@@ -1030,18 +1040,18 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-            <h2 id="dialog_width">Change dialog width</h2>
+            <h2 id="dialog_width">Set dialog width</h2>
             <p><code>myObj.width(value);</code></p>
-            <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.width(400);</code></p>
-            <p>Return value = the <span class="ital word">object</span> itself</p>
+            <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.width(400);</code><br />
+            Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
 
-            <h2 id="dialog_height">Change dialog height</h2>
+            <h2 id="dialog_height">Set dialog height</h2>
             <p><code>myObj.height(value);</code></p>
-            <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.height(600);</code></p>
-            <p>Return value = the <span class="ital word">object</span> itself</p>
+            <p>Where value is a pixel value of type <span class="ital word">number</span>, e.g. <code>myObj.height(600);</code><br />
+            Return value = the <span class="ital word">object</span> itself</p>
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -1301,20 +1311,21 @@ attachEventListener(window, 'load', function()
             <p>&nbsp;</p>
 
             <h2 id="js_example_multi">Example with multiple dialogboxes</h2>
-            <p>Create three dialogs and then show them, also giving them some color.</p>
-            <p>Used class flag <code>dlg-multi</code> to make it easier to display multiple boxes at the same time. Also chaining the object method execution.</p>
+            <p>Create three resizable dialogs and then show them, also giving them some color.</p>
+            <p>Used class flag <code>dlg-multi</code> to make it easier to display multiple boxes at the same time, and <code>dlg-resize</code> to make 2 of the boxes resizable.<br />
+            Also chaining the object method execution.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create three dialogboxes, give them some color and open them</b></i>
-<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is NOT resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
 <i><b>myBox1</b><b class="func">.color(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
 <i><b>myBox2</b><b class="func">.color(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
 <i><b>myBox3</b><b class="func">.color(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
@@ -1513,7 +1524,17 @@ attachEventListener(window, 'load', function()
             <h2 class="ital">fini</h2>
         </div>
         <div class="small_note">keejelo, 2020-2021.</div>
-        <div id="scrollTopBtn"><a href="#" title="Go to top">^</a></div>
+        <div id="scrollTopBtn">
+            <a href="#" title="Go to top">
+                <span id="d1">&nbsp;</span>
+                <span id="d2">&nbsp;</span>
+                <span id="d3">&nbsp;</span>
+                <span id="d4">&nbsp;</span>
+                <span id="d5">&nbsp;</span>
+                <span id="d6">&nbsp;</span>
+                <span id="d7">&nbsp;</span>
+            </a>
+        </div>
 
     </div>
 
