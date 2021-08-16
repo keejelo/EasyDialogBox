@@ -1,6 +1,4 @@
-
-- Add optional resize-ability to dialogbox (working on this now)
-- Improve "responsive-mode", works ok now, but can possibly be better
+- Version 1.8 (alpha), more testing is needed in different browsers, with and without Bootstrap.
 - Maybe add more examples in documentation
 
 
