@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.8 (a)
+// Version: 1.8a
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -52,7 +52,7 @@ var EasyDialogBox = (function()
     var _orgBodyPadRight = 0;
 
     // ** Convert string to integer (decimal base)
-    var _s2i = function(s) { return parseInt(s,10); };
+    var _s2i = function(s){ var n = parseInt(s,10); if(isNaN(n)){ n = 0; } return n; };
 
     // ** Trim leading and trailing whitespace
     var _trim = function(s) { return s.replace(/^\s+|\s+$/g,''); };
@@ -533,6 +533,57 @@ var EasyDialogBox = (function()
         return null;
     };
 
+    // ** Calculate message height
+    var _calcHeight = function(el,obj)
+    {
+        // ** Set total message height start
+        var msgHeight = _s2i(obj.h);
+
+        // ** If heading is NOT disabled
+        if( !(_hasClass(el, 'dlg-disable-heading')) )
+        {
+            var head = _getEl(obj.id, '#' + obj.id + ' .dlg-heading');
+            if(head)
+            {
+                head = head[0];
+                msgHeight -= _s2i(_getStyle(head, 'height')) +
+                _s2i(_getStyle(head, 'paddingTop')) +
+                _s2i(_getStyle(head, 'paddingBottom')) +
+                _s2i(_getStyle(head, 'borderTopWidth')) +
+                _s2i(_getStyle(head, 'borderBottomWidth'));
+            }
+        }
+
+        // ** If footer is NOT disabled
+        if( !(_hasClass(el, 'dlg-disable-footer')) )
+        {
+            var foot = _getEl(obj.id, '#' + obj.id + ' .dlg-footer');
+            if(foot)
+            {
+                foot = foot[0];
+                msgHeight -= _s2i(_getStyle(foot, 'height')) +
+                _s2i(_getStyle(foot, 'paddingTop')) +
+                _s2i(_getStyle(foot, 'paddingBottom')) +
+                _s2i(_getStyle(foot, 'borderTopWidth')) +
+                _s2i(_getStyle(foot, 'borderBottomWidth'));
+            }
+        }
+
+        // ** Get message element, adjust custom height
+        var msg = _getEl(obj.id, '.dlg-message');
+        if(msg)
+        {
+            msg = msg[0];
+            msgHeight -= _s2i(_getStyle(msg, 'paddingTop')) +
+            _s2i(_getStyle(msg, 'paddingBottom')) +
+            _s2i(_getStyle(msg, 'borderTopWidth')) +
+            _s2i(_getStyle(msg, 'borderBottomWidth'));
+            msg.style.height = _s2i(msgHeight) + 'px';
+            msg.style.maxHeight = _s2i(msgHeight) + 'px';
+        }
+    };
+    // ** END: Calculate message height
+
     // ** Show dialog box
     var _show = function(objId)
     {
@@ -572,13 +623,13 @@ var EasyDialogBox = (function()
             var box = document.getElementById(obj.id + '_1');
 
             // ** Check if position is set, if true then change position, else default value used
-            if(obj.x)
+            if(typeof obj.x === 'number' || typeof obj.x === 'string')
             {
                 box.style.left = _s2i(obj.x) + 'px';
                 obj.customPosX = _s2i(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
-            if(obj.y)
+            if(typeof obj.y === 'number' || typeof obj.y === 'string')
             {
                 box.style.top = _s2i(obj.y) + 'px';
                 obj.customPosY = _s2i(obj.y);
@@ -586,13 +637,13 @@ var EasyDialogBox = (function()
             // ** END: Check if position is set
 
             // ** Check if size is set, if true then change size, else default value used
-            if(obj.w)
+            if(typeof obj.w === 'number' || typeof obj.w === 'string')
             {
                 box.style.maxWidth = _s2i(obj.w) + 'px';
                 obj.customWidth = _s2i(obj.w);
             }
             // ** Check if size is set, set custom
-            if(obj.h)
+            if(typeof obj.h === 'number' || typeof obj.h === 'string')
             {
                 //box.style.height = _s2i(obj.h) + 'px';    // DISABLED, only set custom
                 //box.style.maxHeight = _s2i(obj.h) + 'px'; // DISABLED, only set custom
@@ -602,55 +653,10 @@ var EasyDialogBox = (function()
             // ** END: Check if size is set
 
             // ** If custom height then adjust
-            if(obj.customHeight)
+            if(typeof obj.customHeight === 'number')
             {
-                // ** Set total message height start
-                var msgHeight = _s2i(obj.h);
-
-                // ** If heading is NOT disabled
-                if( !(_hasClass(obj.el, 'dlg-disable-heading')) )
-                {
-                    var head = _getEl(obj.id, '#' + obj.id + ' .dlg-heading');
-                    if(head)
-                    {
-                        head = head[0];
-                        msgHeight -= _s2i(_getStyle(head, 'height')) +
-                        _s2i(_getStyle(head, 'paddingTop')) +
-                        _s2i(_getStyle(head, 'paddingBottom')) +
-                        _s2i(_getStyle(head, 'borderTopWidth')) +
-                        _s2i(_getStyle(head, 'borderBottomWidth'));
-                    }
-                }
-
-                // ** If footer is NOT disabled
-                if( !(_hasClass(obj.el, 'dlg-disable-footer')) )
-                {
-                    var foot = _getEl(obj.id, '#' + obj.id + ' .dlg-footer');
-                    if(foot)
-                    {
-                        foot = foot[0];
-                        msgHeight -= _s2i(_getStyle(foot, 'height')) +
-                        _s2i(_getStyle(foot, 'paddingTop')) +
-                        _s2i(_getStyle(foot, 'paddingBottom')) +
-                        _s2i(_getStyle(foot, 'borderTopWidth')) +
-                        _s2i(_getStyle(foot, 'borderBottomWidth'));
-                    }
-                }
-
-                // ** Get message element, adjust custom height
-                var msg = _getEl(obj.id, '.dlg-message');
-                if(msg)
-                {
-                    msg = msg[0];
-                    msgHeight -= _s2i(_getStyle(msg, 'paddingTop')) +
-                    _s2i(_getStyle(msg, 'paddingBottom')) +
-                    _s2i(_getStyle(msg, 'borderTopWidth')) +
-                    _s2i(_getStyle(msg, 'borderBottomWidth'));
-                    msg.style.height = _s2i(msgHeight) + 'px';
-                    msg.style.maxHeight = _s2i(msgHeight) + 'px';
-                }
+                _calcHeight(obj.el,obj);
             }
-            // ** END: If custom height then adjust
 
             // ** Show the dialog box itself, set flag, run on-func
             box.style.visibility = 'visible';
@@ -681,25 +687,25 @@ var EasyDialogBox = (function()
         // ** Get the object stored in the array
         var obj = _getObjById(objId);
 
-        // ** Save position - ALL dialogboxes depends on this to remember last position
-        if(obj.x)
+        // ** Save position - preHTML dialogboxes depends on this to remember last position
+        if(typeof obj.x === 'number')
         {
             obj.x = _s2i(box.style.left);
             obj.customPosX = obj.x;
         }
-        if(obj.y)
+        if(typeof obj.y === 'number')
         {
             obj.y = _s2i(box.style.top);
             obj.customPosY = obj.y;
         }
 
         // ** Save current size
-        if(obj.w)
+        if(typeof obj.w === 'number')
         {
             obj.width(box.style.maxWidth);
             obj.customWidth = _s2i(box.style.maxWidth);
         }
-        if(obj.h)
+        if(typeof obj.h === 'number')
         {
             obj.height(box.style.height);
             obj.customHeight = _s2i(box.style.height);
@@ -1070,56 +1076,9 @@ var EasyDialogBox = (function()
                 {
                     var el = _getEl(this.id);
                     this.h = _s2i(n);
-
                     _getEl(this.id).style.height = this.h + 'px';
                     _getEl(this.id).style.maxHeight = this.h + 'px';
-
-                    // ** Set total message height (this.h - (heading + footer))
-                    var msgHeight = this.h;
-
-                    // ** If heading is NOT disabled
-                    if( !(_hasClass(el.parentNode, 'dlg-disable-heading')) )
-                    {
-                        var head = _getEl(this.id, '#' + this.id + ' .dlg-heading');
-                        if(head)
-                        {
-                            head = head[0];
-                            msgHeight -= _s2i(_getStyle(head, 'height')) +
-                            _s2i(_getStyle(head, 'paddingTop')) +
-                            _s2i(_getStyle(head, 'paddingBottom')) +
-                            _s2i(_getStyle(head, 'borderTopWidth')) +
-                            _s2i(_getStyle(head, 'borderBottomWidth'));
-                        }
-                    }
-
-                    // ** If footer is NOT disabled
-                    if( !(_hasClass(el.parentNode, 'dlg-disable-footer')) )
-                    {
-                        var foot = _getEl(this.id, '#' + this.id + ' .dlg-footer');
-                        if(foot)
-                        {
-                            foot = foot[0];
-                            msgHeight -= _s2i(_getStyle(foot, 'height')) +
-                            _s2i(_getStyle(foot, 'paddingTop')) +
-                            _s2i(_getStyle(foot, 'paddingBottom')) +
-                            _s2i(_getStyle(foot, 'borderTopWidth')) +
-                            _s2i(_getStyle(foot, 'borderBottomWidth'));
-                        }
-                    }
-
-                    // ** Get message element, adjust custom height
-                    var msg = _getEl(this.id, '.dlg-message');
-                    if(msg)
-                    {
-                        msg = msg[0];
-                        msgHeight -= _s2i(_getStyle(msg, 'paddingTop')) +
-                        _s2i(_getStyle(msg, 'paddingBottom')) +
-                        _s2i(_getStyle(msg, 'borderTopWidth')) +
-                        _s2i(_getStyle(msg, 'borderBottomWidth'));
-                        msg.style.height = _s2i(msgHeight) + 'px';
-                        msg.style.maxHeight = _s2i(msgHeight) + 'px';
-                    }
-
+                    _calcHeight(el.parentNode, this);
                     return this;
                 },
 
@@ -1198,44 +1157,6 @@ var EasyDialogBox = (function()
                 var box = document.createElement('div');
                 box.setAttribute('id', obj.id + '_1');
                 box.setAttribute('class','dlg-box');
-
-                // ** Set custom values default: 0
-                obj.customPosX = 0;
-                obj.customPosY = 0;
-                obj.customHeight = 0;
-                obj.customWidth = 0;
-
-                // ** Maybe change above default values to: -1
-                //    so user can set box to x=0,y=0 instead of x=1,y=1 to specify upper left position
-                //    And check for "value > -1" in below "if else" instead of "true/false"
-
-                // ** Check if position is set, if true then change position, else default css value used
-                if(obj.x)
-                {
-                    box.style.left = _s2i(obj.x) + 'px';
-                    obj.customPosX = _s2i(obj.x);
-                }
-                // ** Check if position is set, if true then change position, else default css value used
-                if(obj.y)
-                {
-                    box.style.top = _s2i(obj.y) + 'px';
-                    obj.customPosY = _s2i(obj.y);
-                }
-                // ** END: Check if position is set
-
-                // ** Check if size is set, if true then change size, else default css value used
-                if(obj.w)
-                {
-                    box.style.maxWidth = _s2i(obj.w) + 'px';
-                    obj.customWidth = _s2i(obj.w);
-                }
-                // ** Check if size is set, if true then change size, else default css value used
-                if(obj.h)
-                {
-                    box.style.height = _s2i(obj.h) + 'px';
-                    obj.customHeight = _s2i(obj.h);
-                }
-                // ** END: Check if size is set
 
                 // ** Add element to DOM
                 dlg.appendChild(box);
