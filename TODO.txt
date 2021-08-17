@@ -4,4 +4,4 @@
 
 
 
-( Try to keep filesize low and not bloat it )
+( Trying to keep filesize low and not feature bloat it )
