@@ -80,8 +80,6 @@
     margin-top:-5px;
     margin-right:0;
     padding:5px;
-    /*height:39px;*/
-    /*line-height:19px;*/
     color:inherit;
     font-family:Arial, Helvetica, sans-serif;
     font-size:2em; /* 2em */
@@ -126,7 +124,6 @@
     margin-bottom:0;
     padding-bottom:0;
 }
-
 /* Flex boxes */
 .dlg-flex-container
 {
@@ -135,7 +132,7 @@
     /*display:table; /* not needed */
     /*border-collapse:collapse; /* not needed */
     border:none;
-    border-width:0; /* must have a pixel value, used for calcs */    
+    border-width:0; /* must have a pixel value, used for calcs */
     /*border:1px solid #ff0000; /* DEBUG */
 }
 
@@ -152,7 +149,6 @@
     padding:20px;
     display:table-cell;
     border:none;
-    box-sizing:border-box; /* existing sizing */
     /*border:1px solid #00ff00; /* DEBUG */
 }
 
@@ -195,7 +191,7 @@
     display:block;
     margin:0;
     padding:10px;
-    height:30px; /* 54+2 needed when dialogbox top and bottom borders (1px each) are removed in responsemode */
+    height:30px;
     background-color:#f0f0f0;
     border:none;
     border-width:0; /* must have a pixel value, used for calcs */
