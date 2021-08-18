@@ -51,8 +51,12 @@ var EasyDialogBox = (function()
     // ** Prevent content shift when scrollbar hides/shows, if centered body content.
     var _orgBodyPadRight = 0;
 
+    // ** Get body element
+    var _body = function() { return document.querySelector('body'); }
+
     // ** Convert string to integer (decimal base)
-    var _s2i = function(s){ var n = parseInt(s,10); if(isNaN(n)){ n = 0; } return n; };
+    //var _s2i = function(s){ return parseInt(s,10); };
+    var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { n = 0; } return n; };
 
     // ** Trim leading and trailing whitespace
     var _trim = function(s) { return s.replace(/^\s+|\s+$/g,''); };
@@ -79,22 +83,22 @@ var EasyDialogBox = (function()
     {
         if(typeof target.addEventListener !== 'undefined')
         {
-            target.addEventListener(eventType, functionRef, capture || false);
+            target.addEventListener(eventType, functionRef, capture);
         }
         else if(typeof target.attachEvent !== 'undefined')
         {
             var functionString = eventType + functionRef;
             target['e' + functionString] = functionRef;
-            target[functionString] = function(event)
+            target[functionString] = function(evt)
             {
-                event = event || window.event;
+                evt = evt || window.event;
                 try
                 {
-                    target['e' + functionString](event);
+                    target['e' + functionString](evt);
                 }
                 catch(err)
                 {
-                    //_log('DEBUG: Error: Object does not support this property or method (can happen in IE8)');
+                    //_log('DEBUG: Error: Object does not support this property or method (can happen in IE8, other browsers?)');
                 }
             };
             target.attachEvent('on' + eventType, target[functionString]);
@@ -155,22 +159,21 @@ var EasyDialogBox = (function()
     // ** Stop default event action (xbrowser-legacy)
     var _stopDefault = function(e)
     {
-        if(typeof e.returnValue !== 'undefined')
-        {
-            e.returnValue = false;
-        }
-
         if(typeof e.preventDefault !== 'undefined')
         {
             e.preventDefault();
         }
+        if(typeof e.returnValue !== 'undefined')
+        {
+            e.returnValue = false;
+        }
     };
 
     // ** Get window width
-    var _winWidth = function() { return window.innerWidth || document.documentElement.clientWidth || document.querySelector('body').clientWidth; }
+    var _winWidth = function() { return window.innerWidth || document.documentElement.clientWidth || _body().clientWidth; }
 
     // ** Get window height
-    var _winHeight = function() { return window.innerHeight || document.documentElement.clientHeight || document.querySelector('body').clientHeight; }
+    var _winHeight = function() { return window.innerHeight || document.documentElement.clientHeight || _body().clientHeight; }
 
     // ** Get computed style (xbrowser-legacy)
     // @prop = need to be in quotes and 'camelCase'
@@ -235,14 +238,14 @@ var EasyDialogBox = (function()
         // @exp = true = split string into array, using separator,
         //         false (or omitted) = do not split, treat string as one value.
         // @sep = character that is used as a string splitter, for instance a space ' ' or comma ','
-        //         or other character enclosed in single quotes. If omitted then a space is used as separator, ' '
+        //         or other character enclosed in single quotes. If omitted then a space ' ' is used as the default separator
 
         var val = str;
         if(exp === true)
         {
             if(typeof sep === 'undefined')
             {
-                sep = ' '; // default: space
+                sep = ' '; // space is default separator
             }
             val = str.split(sep);
         }
@@ -269,7 +272,7 @@ var EasyDialogBox = (function()
     };
     // ** END: Check if array matches ALL test-values
 
-    // ** Adjust element size and position according to window size (responsive)
+    // ** Adjust element size and position according to window size (responsive-mode)
     var _adjustElSizePos = function(id)
     {
         var el = document.getElementById(id);
@@ -448,25 +451,23 @@ var EasyDialogBox = (function()
     // ** Hide scrollbar while retaining padding, prevent body content shift
     var _scrollbarHide = function()
     {
-        var body = document.querySelector('body');
-
         // ** Prevent function from running if already applied
-        if( !(_hasClass(body, 'dlg-stop-scrolling')) )
+        if( !(_hasClass(_body(), 'dlg-stop-scrolling')) )
         {
             // ** Store the original padding-right value
-            _orgBodyPadRight = _getStyle(body, 'paddingRight');
+            _orgBodyPadRight = _getStyle(_body(), 'paddingRight');
 
             // ** Convert from string to integer (remove 'px' postfix and return value as integer)
             _orgBodyPadRight = _s2i(_orgBodyPadRight);
 
             // ** Get width of body before removing scrollbar
-            var w1 = body.offsetWidth;
+            var w1 = _body().offsetWidth;
 
             // ** Stop scrolling of background content (body) when dialogbox is in view, removes scrollbar
-            _addClass(body, 'dlg-stop-scrolling');
+            _addClass(_body(), 'dlg-stop-scrolling');
 
             // ** Get width of body after removing scrollbar
-            var w2 = body.offsetWidth;
+            var w2 = _body().offsetWidth;
 
             // ** Get width-difference (scrollbarwidth?)
             var w3 = w2 - w1;
@@ -479,7 +480,7 @@ var EasyDialogBox = (function()
 
             // ** Apply width-difference as padding-right to body, substitute for scrollbar,
             //    can prevent contentshift if content is centered when scrollbar disappears.
-            body.setAttribute('style','padding-right:' + w3 + 'px;');
+            _body().setAttribute('style','padding-right:' + w3 + 'px;');
         }
     };
     // ** END: Hide scrollbar while retaining padding
@@ -487,13 +488,13 @@ var EasyDialogBox = (function()
     // ** Restore and show scrollbar
     var _scrollbarShow = function()
     {
-        var body = document.querySelector('body');
+        //var body = document.querySelector('body');
 
         // ** Reset and enable scrollbar if flag is set true
-        if(_hasClass(body, 'dlg-stop-scrolling'))
+        if(_hasClass(_body(), 'dlg-stop-scrolling'))
         {
-            _removeClass(body, 'dlg-stop-scrolling');
-            body.setAttribute('style', 'padding-right:' + _s2i(_orgBodyPadRight) + 'px;');
+            _removeClass(_body(), 'dlg-stop-scrolling');
+            _body().setAttribute('style', 'padding-right:' + _s2i(_orgBodyPadRight) + 'px;');
         }
     };
     // ** END: Restore and show scrollbar
@@ -536,6 +537,9 @@ var EasyDialogBox = (function()
     // ** Calculate message height
     var _calcHeight = function(el,obj)
     {
+        //_getEl(obj.id).style.height = _s2i(obj.h) + 'px';    // not needed ?
+        //_getEl(obj.id).style.maxHeight = _s2i(obj.h) + 'px'; // not needed ?
+
         // ** Set total message height start
         var msgHeight = _s2i(obj.h);
 
@@ -657,7 +661,7 @@ var EasyDialogBox = (function()
             // ** If custom height then adjust
             if(obj.customHeight)
             {
-                _calcHeight(obj.el,obj);
+                _calcHeight(obj.el, obj);
             }
             // ** END: If custom height then adjust
 
@@ -929,6 +933,10 @@ var EasyDialogBox = (function()
                 bResize : false,
                 nTimeId : null,
                 el : null,
+                customPosX : null,
+                customPosY : null,
+                customWidth : null,
+                customHeight : null,
 
                 // ** Callback
                 callback : function(a,b)
@@ -1079,9 +1087,7 @@ var EasyDialogBox = (function()
                 {
                     var el = _getEl(this.id);
                     this.h = _s2i(n);
-                    _getEl(this.id).style.height = this.h + 'px';
-                    _getEl(this.id).style.maxHeight = this.h + 'px';
-                    _calcHeight(el.parentNode,this);
+                    _calcHeight(el.parentNode, this);
                     return this;
                 },
 
@@ -1138,7 +1144,7 @@ var EasyDialogBox = (function()
             var dlg = document.createElement('div');
             dlg.setAttribute('id', obj.id);
             dlg.setAttribute('class', obj.strTypeClass);
-            document.querySelector('body').appendChild(dlg);
+            _body().appendChild(dlg);
 
             // ** If type 'dlg-toast' then add flags
             if(_hasClass(dlg, 'dlg-toast'))
@@ -1161,44 +1167,6 @@ var EasyDialogBox = (function()
                 box.setAttribute('id', obj.id + '_1');
                 box.setAttribute('class','dlg-box');
                 dlg.appendChild(box);
-
-                // ** Set custom default values
-                obj.customPosX = null;
-                obj.customPosY = null;
-                obj.customHeight = null;
-                obj.customWidth = null;
-
-                /*
-                // ** Check if position is set, if true then change position, else default css value used
-                if(typeof obj.x === 'number' || typeof obj.x === 'string')
-                //if(obj.x)
-                {
-                    box.style.left = _s2i(obj.x) + 'px';
-                    obj.customPosX = _s2i(obj.x);
-                }
-                // ** Check if position is set, if true then change position, else default css value used
-                if(typeof obj.x === 'number' || typeof obj.x === 'string')
-                //if(obj.y)
-                {
-                    box.style.top = _s2i(obj.y) + 'px';
-                    obj.customPosY = _s2i(obj.y);
-                }
-                // ** END: Check if position is set
-
-                // ** Check if size is set, if true then change size, else default css value used
-                if(obj.w)
-                {
-                    box.style.maxWidth = _s2i(obj.w) + 'px';
-                    obj.customWidth = _s2i(obj.w);
-                }
-                // ** Check if size is set, if true then change size, else default css value used
-                if(obj.h)
-                {
-                    box.style.height = _s2i(obj.h) + 'px';
-                    obj.customHeight = _s2i(obj.h);
-                }
-                // ** END: Check if size is set
-                */
 
                 // ** Add extra styles if flags are set, and remove from parent
                 if(_hasClass(dlg, 'dlg-rounded'))
@@ -1226,7 +1194,7 @@ var EasyDialogBox = (function()
                     closeX.setAttribute('class','dlg-close-x');
                     //var closeText = document.createTextNode('\u00D7'); // u00D7 = unicode X
                     //closeX.appendChild(closeText);
-                    closeX.innerHTML = '&#215;'; // using HTML entity instead, maybe avoid the need to specify unicode charset for javascript ?
+                    closeX.innerHTML = '&#215;'; // using HTML entity instead, avoid the need to specify unicode charset for javascript ?
                     heading.appendChild(closeX);
 
                     // ** Create title (here because of z-index)
