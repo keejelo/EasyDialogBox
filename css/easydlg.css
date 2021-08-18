@@ -401,14 +401,9 @@
 }
 
 /* Standard positions, dots closer together */
-/* Top dot */
 .dlg-rd1 { right:2px; bottom:8px; }
-
-/* Middle dots */
 .dlg-rd2 { right:5px; bottom:5px; }
 .dlg-rd3 { right:2px; bottom:5px; }
-
-/* Bottom dots */
 .dlg-rd4 { right:8px; bottom:2px; }
 .dlg-rd5 { right:5px; bottom:2px; }
 .dlg-rd6 { right:2px; bottom:2px; }
