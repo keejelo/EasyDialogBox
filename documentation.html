@@ -900,13 +900,12 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <p><code>x</code> = initial horizontal position of the box, default: center in viewport.</p>
-            <p><code>y</code> = initial vertical position of the box, default: center in viewport.</p>
-            <p><code>w</code> = initial width of the box, default: 600px</p>
-            <p><code>h</code> = initial height of the box, default: adjusted by content.</p>
+            <p><code>x</code> = initial horizontal position of the box. If not used then you can set it to <code>null</code> and it defaults to horizontal center in viewport.</p>
+            <p><code>y</code> = initial vertical position of the box. If not used then you can set it to <code>null</code> and it defaults to vertical center in viewport.</p>
+            <p><code>w</code> = initial width of the box. If not used then you can set it to <code>null</code> and it defaults to 600px as defined in the css-file.</p>
+            <p><code>h</code> = initial height of the box. If not used then you can set it to <code>null</code> and the height is adjusted by content.</p>
             <p>
-                <span class="bold">Note:</span> Use of <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code> can possibly break the dialogbox &quot;<a href="https://www.google.com/search?q=responsive+web+design" title="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot; to some extent,
-                especially in combination with these flags: <code>dlg-nomodal</code>, <code>dlg-multi</code> and <code>dlg-disable-overlay</code>
+                <span class="bold">Note:</span> Use of <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code> can possibly break the dialogbox &quot;<a href="https://www.google.com/search?q=responsive+web+design" title="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
             </p>
 
             <p>&nbsp;</p>
