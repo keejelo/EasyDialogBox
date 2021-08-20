@@ -706,7 +706,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, 0, 20, 500);
+        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, null, 20, 500);
         myToast.el.style.backgroundColor = '#ddeaff';
         myToast.el.style.borderColor = '#0072b3';
         myToast.onHide = myToast.destroy;
@@ -1343,8 +1343,8 @@ attachEventListener(window, 'load', function()
             which is really a shorthand for the combined flags: <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
             <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br />
             Since not giving it an ID (just <code>null</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.<br />
-            The other two <code>null</code>s are for the title and callback function, we don't need to use them here so just set them to <code>null</code> (any false will do)<br />
-            The rest is position, x=0 means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
+            The second <code>null</code> is for the title, the third <code>null</code> for callback function, we don't need to use them here so just set them to <code>null</code> (any false will do)<br />
+            Also using a <code>null</code> for the X position which means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
@@ -1353,7 +1353,7 @@ attachEventListener(window, 'load', function()
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
-<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg-toast dlg-fade'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg-toast dlg-fade'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#ddeaff'</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#0072b3'</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
