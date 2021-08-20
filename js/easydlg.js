@@ -83,7 +83,7 @@ var EasyDialogBox = (function()
     {
         if(typeof target.addEventListener !== 'undefined')
         {
-            target.addEventListener(eventType, functionRef, capture);
+            target.addEventListener(eventType, functionRef, capture || false);
         }
         else if(typeof target.attachEvent !== 'undefined')
         {
