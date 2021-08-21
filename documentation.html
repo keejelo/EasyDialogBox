@@ -706,7 +706,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, 0, 20, 500);
+        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, null, 20, 500);
         myToast.el.style.backgroundColor = '#ddeaff';
         myToast.el.style.borderColor = '#0072b3';
         myToast.onHide = myToast.destroy;
