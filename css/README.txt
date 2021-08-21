@@ -1,4 +1,5 @@
 
-If using Bootstrap then use the file "easydlg_bootstrap.css" instead of "easydlg.css"
+Made changes to the file "easydlg.css" so it should also work with Bootstrap 4
+Tests did not show any strange css-behaviour.
 
 
