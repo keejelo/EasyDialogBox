@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.8 (alpha)
+// Version: 1.8 (beta)
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -536,6 +536,9 @@ var EasyDialogBox = (function()
     // ** Calculate message height
     var _calcHeight = function(el,obj)
     {
+        //_getEl(obj.id).style.height = _s2i(obj.h) + 'px';
+        //_getEl(obj.id).style.maxHeight = _s2i(obj.h) + 'px';
+
         // ** Set total message height start
         var msgHeight = _s2i(obj.h);
 
@@ -1072,7 +1075,7 @@ var EasyDialogBox = (function()
                 // ** Set width
                 width : function(n)
                 {
-                    this.w = _s2i(n);
+                    this.w = this.customWidth = _s2i(n);
                     //_getEl(this.id).style.width = this.w + 'px';  // DISABLED: breaks "responsiveness" (triggers horizontal scroll)
                     _getEl(this.id).style.maxWidth = this.w + 'px';
                     return this;
@@ -1082,7 +1085,7 @@ var EasyDialogBox = (function()
                 height : function(n)
                 {
                     var el = _getEl(this.id);
-                    this.h = _s2i(n);
+                    this.h = this.customHeight = _s2i(n);
                     _getEl(this.id).style.height = _s2i(this.h) + 'px';
                     _getEl(this.id).style.maxHeight = _s2i(this.h) + 'px';
                     _calcHeight(el.parentNode, this);
@@ -1092,7 +1095,7 @@ var EasyDialogBox = (function()
                 // ** Set position X (left)
                 xPos : function(n)
                 {
-                    this.x = _s2i(n);
+                    this.x = this.customPosX = _s2i(n);
                     _getEl(this.id).style.left = this.x + 'px';
                     return this;
                 },
@@ -1100,7 +1103,7 @@ var EasyDialogBox = (function()
                 // ** Set position Y (top)
                 yPos : function(n)
                 {
-                    this.y = _s2i(n);
+                    this.y = this.customPosY = _s2i(n);
                     _getEl(this.id).style.top = this.y + 'px';
                     return this;
                 },
