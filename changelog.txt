@@ -1,6 +1,6 @@
 # 1.8 (beta test version):
 - Testing it now, will be released as stable soon.
-- Same css file "easydlg.css" can be used if using "Bootstrap"
+- Same css file "easydlg.css" can be used if using "Bootstrap" 4 and 5, tests did not show any strange css behaviour.
 
 # 1.8 (alpha test version):
 - Now dialogboxes can be resized by using the flag "dlg-resize"
