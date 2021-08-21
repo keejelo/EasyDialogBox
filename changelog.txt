@@ -1,3 +1,7 @@
+# 1.8 (beta test version):
+- Testing it now, will be released as stable soon.
+- Same css file "easydlg.css" can be used if using "Bootstrap"
+
 # 1.8 (alpha test version):
 - Now dialogboxes can be resized by using the flag "dlg-resize"
 - Rewrote inner box calculations, had to include some errorchecks, cleaned up code
