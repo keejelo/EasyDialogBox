@@ -55,7 +55,6 @@ var EasyDialogBox = (function()
     var _body = function() { return document.querySelector('body'); }
 
     // ** Convert string to integer (decimal base)
-    //var _s2i = function(s){ return parseInt(s,10); };
     var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { n = 0; } return n; };
 
     // ** Trim leading and trailing whitespace
@@ -83,7 +82,7 @@ var EasyDialogBox = (function()
     {
         if(typeof target.addEventListener !== 'undefined')
         {
-            target.addEventListener(eventType, functionRef, capture || false);
+            target.addEventListener(eventType, functionRef, capture);
         }
         else if(typeof target.attachEvent !== 'undefined')
         {
@@ -98,7 +97,7 @@ var EasyDialogBox = (function()
                 }
                 catch(err)
                 {
-                    //_log('DEBUG: Error: Object does not support this property or method (can happen in IE8, other browsers?)');
+                    //_log('DEBUG: ' + target.nodeName + ' ' + eventType + ' | Error: Object does not support this property or method (can happen in IE8, other browsers?)');
                 }
             };
             target.attachEvent('on' + eventType, target[functionString]);
@@ -537,9 +536,6 @@ var EasyDialogBox = (function()
     // ** Calculate message height
     var _calcHeight = function(el,obj)
     {
-        //_getEl(obj.id).style.height = _s2i(obj.h) + 'px';    // not needed ?
-        //_getEl(obj.id).style.maxHeight = _s2i(obj.h) + 'px'; // not needed ?
-
         // ** Set total message height start
         var msgHeight = _s2i(obj.h);
 
@@ -578,9 +574,9 @@ var EasyDialogBox = (function()
         if(msg)
         {
             msg = msg[0];
-            msgHeight -= _s2i(_getStyle(msg, 'paddingTop')) +
+            msgHeight -= _s2i(_getStyle(msg, 'borderTopWidth')) +
+            _s2i(_getStyle(msg, 'paddingTop')) +
             _s2i(_getStyle(msg, 'paddingBottom')) +
-            _s2i(_getStyle(msg, 'borderTopWidth')) +
             _s2i(_getStyle(msg, 'borderBottomWidth'));
             msg.style.height = _s2i(msgHeight) + 'px';
             msg.style.maxHeight = _s2i(msgHeight) + 'px';
@@ -970,7 +966,7 @@ var EasyDialogBox = (function()
                         }
                         else
                         {
-                            _log('\n\nDEBUG: If the dialogbox do not use a callback function, you can ignore the below message:');
+                            _log('\n\nDEBUG: If the dialogbox does not have a callback function, you can ignore the below message:');
                             _log('       typeof fnCallback = "' + typeof fnCallback + '" and not a function.');
                             _log('       Scope? Possible solution can be to use "hoisting".');
                             _log('       Try to use "var callbackFuncName = function(a,b){}" instead of "let callbackFuncName = function(a,b){}"');
@@ -1087,6 +1083,8 @@ var EasyDialogBox = (function()
                 {
                     var el = _getEl(this.id);
                     this.h = _s2i(n);
+                    _getEl(this.id).style.height = _s2i(this.h) + 'px';
+                    _getEl(this.id).style.maxHeight = _s2i(this.h) + 'px';
                     _calcHeight(el.parentNode, this);
                     return this;
                 },
@@ -1785,6 +1783,7 @@ var EasyDialogBox = (function()
 
         // ** Display ready message
         if(window.console.log) { window.console.log(_name + ' ready'); }
+        return i; // number of objects parsed through for loop
     };
     // ** END: Initialize the HTML box openers
 
