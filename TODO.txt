@@ -1,7 +1,5 @@
 
-- Version 1.8 (alpha), more testing is needed in different browsers, with and without Bootstrap.
-- Testing
+- Version 1.8 (beta), more testing is needed in different browsers, with and without Bootstrap.
 
 
 
-( Trying to keep filesize low and not feature bloat it )
