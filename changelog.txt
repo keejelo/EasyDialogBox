@@ -3,6 +3,9 @@
 - Rewrote inner box calculations, had to include some errorchecks, cleaned up code
 - Improved responsivemode
 - Same css file "easydlg.css" can be used if using "Bootstrap" 4 and 5, tests did not show any strange css behaviour.
+- Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
+  -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
+     no errors discovered during testing.
 
 # 1.8 (beta test version):
 - Testing it now, will be released as stable soon.
