@@ -46,6 +46,10 @@
 {
     text-align:center;
 }
+.padding
+{
+    padding:15px 0 !important;
+}
 .word
 {
     color:#0366d6;
@@ -475,13 +479,13 @@ b:first-child
 /* END: Print */
 </style>
 
-<!-- Including the necessary files here CSS and JS -->
+<!-- Including the necessary files here -->
 
 <link type="text/css" rel="stylesheet" href="css/easydlg.css" />
 
 <script src="js/easydlg.js"></script>
 
-<!-- END: Including the necessary files here CSS and JS -->
+<!-- END: Including the necessary files here -->
 
 <script>
 //-----------------------------------------------------------------------------------------------------------------
@@ -641,7 +645,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Click Yes or No button!</p>');
+        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!</p><p>Click Yes or No button!</p>');
 
         // ** Create a custom onShow function
         myBox.onShow = function()
@@ -706,7 +710,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleToastRunBtn'), 'click', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
-        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, null, 20, 500);
+        var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, 0, 20, 500);
         myToast.el.style.backgroundColor = '#ddeaff';
         myToast.el.style.borderColor = '#0072b3';
         myToast.onHide = myToast.destroy;
@@ -797,9 +801,15 @@ attachEventListener(window, 'load', function()
         <div id="code_info_heading" class="section">
             <h2>The base module (object)</h2>
             <p><code class="large bold">&nbsp;EasyDialogBox&nbsp;</code></p>
-            <p>As long as the script-file is included as above then the module will be initialized automatically when page loads, after that all the functions and methods are available.</p>
+            <p>As long as the script-file is included as above then the module will be initialized automatically when page loads, after that all the public functions are available.</p>
 
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <div>
+                <h1>Public functions and methods</h1>
+            </div>
+
             <p>&nbsp;</p>
 
             <h2>Create dialog</h2>
@@ -900,12 +910,13 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
 
-            <p><code>x</code> = initial horizontal position of the box. If not used then you can set it to <code>null</code> and it defaults to horizontal center in viewport.</p>
-            <p><code>y</code> = initial vertical position of the box. If not used then you can set it to <code>null</code> and it defaults to vertical center in viewport.</p>
-            <p><code>w</code> = initial width of the box. If not used then you can set it to <code>null</code> and it defaults to 600px as defined in the css-file.</p>
-            <p><code>h</code> = initial height of the box. If not used then you can set it to <code>null</code> and the height is adjusted by content.</p>
+            <p><code>x</code> = initial horizontal position of the box, default: center in viewport.</p>
+            <p><code>y</code> = initial vertical position of the box, default: center in viewport.</p>
+            <p><code>w</code> = initial width of the box, default: 600px</p>
+            <p><code>h</code> = initial height of the box, default: adjusted by content.</p>
             <p>
-                <span class="bold">Note:</span> Use of <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code> can possibly break the dialogbox &quot;<a href="https://www.google.com/search?q=responsive+web+design" title="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot;.
+                <span class="bold">Note:</span> Use of <code>x</code>, <code>y</code>, <code>w</code>, <code>h</code> can possibly break the dialogbox &quot;<a href="https://www.google.com/search?q=responsive+web+design" title="https://www.google.com/search?q=responsive+web+design" target="_blank">responsiveness</a>&quot; to some extent,
+                especially in combination with these flags: <code>dlg-nomodal</code>, <code>dlg-multi</code> and <code>dlg-disable-overlay</code>
             </p>
 
             <p>&nbsp;</p>
@@ -1198,6 +1209,17 @@ attachEventListener(window, 'load', function()
                 <p><code>let myArray = EasyDialogBox.getAll();</code></p>
                 <p>Return value = <span class="ital word">array</span></p>
             </div>
+            
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <div>
+                <h2>Initialize all pre-written HTML dialogbox-objects</h2>
+                <p>This is automatically done once when the script is loaded the first time. But in case there was more HTML content added later on and you need to invoke it again, you can.<br />
+                It will sweep up all the boxes and activate their &quot;click-openers&quot;.</p>
+                <p><code>EasyDialogBox.init();</code></p>
+                <p>Return value = <span class="ital word">number</span> of pre-written HTML dialogboxes parsed.</p>
+            </div>            
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -1240,7 +1262,7 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
-<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;br /&gt;Click Yes or No button!&lt;/p&gt;'</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;p&gt;&lt;/p&gt;Click Yes or No button!&lt;/p&gt;'</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a custom onClose function</b></i>
 <i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1336,8 +1358,8 @@ attachEventListener(window, 'load', function()
             which is really a shorthand for the combined flags: <code>dlg</code> <code>dlg-disable-heading</code> <code>dlg-disable-footer</code> <code>dlg-disable-drag</code> <code>dlg-disable-overlay</code><br />Using <code>dlg-fade</code> to make it fade in/out.</p>
             <p>This example creates a toast, shows it and hides it after 3 seconds. Also chaining the object methods <code>.show()</code> and <code>.hide()</code>.<br />
             Since not giving it an ID (just <code>null</code>), I'm choosing to destroy it after hiding to clean up the DOM and memory.<br />
-            The second <code>null</code> is for the title, the third <code>null</code> for callback function, we don't need to use them here so just set them to <code>null</code> (any false will do)<br />
-            Also using a <code>null</code> for the X position which means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
+            The other two <code>null</code>s are for the title and callback function, we don't need to use them here so just set them to <code>null</code> (any false will do)<br />
+            The rest is position, x=0 means center horizontally, y=20 pixels down vertically, and width=500 pixels, height not set so it adjusts according to content.</p>
 
 <div class="codeview"><i>&nbsp;</i>
 <i><b class="comment">// Javascript ...</b></i>
@@ -1346,7 +1368,7 @@ attachEventListener(window, 'load', function()
 <i><b class="keyword">let</b> strToast <b class="equal">=</b> <b class="param">'&lt;p class=&quot;medium bold&quot;&gt;TOASTY! --- This will close 3 seconds after it\'s displayed!&lt;/p&gt;'</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new toastbox, give it some styling, show it, then hide it after 3 secs.</b></i>
-<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg-toast dlg-fade'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myToast <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="keyword">null</b><b class="func">,</b> <b class="param">'dlg-toast dlg-fade'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> strToast<b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">0</b><b class="func">,</b> <b class="num">20</b><b class="func">,</b> <b class="num">500</b><b class="func">)</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.backgroundColor</b> <b class="equal">=</b> <b class="param">'#ddeaff'</b>;</i>
 <i><b>myToast</b><b class="func">.el.style.borderColor</b> <b class="equal">=</b> <b class="param">'#0072b3'</b>;</i>
 <i><b>myToast</b><b class="func">.onHide</b> <b class="equal">=</b> <b>myToast</b><b class="func">.destroy</b>;</i>
