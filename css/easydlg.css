@@ -62,6 +62,7 @@
     line-height:19px;
     font-family:inherit;
     font-size:1.4em;
+    box-sizing:content-box; /* Fix for Bootstrap 4 */
     /*border:1px solid #ff00ff; /* DEBUG */
 }
 
@@ -101,8 +102,8 @@
 {
     display:block;
     margin:0;
-    /*padding:0 15px;*/
-    padding:15px;
+    /*padding:15px;*/
+    padding:0 15px;   /* fixes height padding calc issue */
     font-family:inherit;
     font-size:1.4em;
     line-height:1.4em;
@@ -114,16 +115,20 @@
 }
 
 /* P elements inside message */
+.dlg-message div:first-child,
 .dlg-message p:first-child
 {
     margin-top:0;
-    padding-top:0;
+    padding-top:15px;
 }
+
+.dlg-message div:last-child,
 .dlg-message p:last-child
 {
     margin-bottom:0;
-    padding-bottom:0;
+    padding-bottom:15px;
 }
+
 /* Flex boxes */
 .dlg-flex-container
 {
@@ -136,12 +141,6 @@
     /*border:1px solid #ff0000; /* DEBUG */
 }
 
-.dlg-flexbox-left,
-.dlg-flexbox-right
-{
-    box-sizing:border-box;
-}
-
 .dlg-flexbox-left
 {
     width:55px;
@@ -149,20 +148,30 @@
     padding:20px;
     display:table-cell;
     border:none;
+    box-sizing:border-box; /* Fix for Bootstrap 4 */
     /*border:1px solid #00ff00; /* DEBUG */
+}
+
+.dlg-flexbox-left div:first-child,
+.dlg-flexbox-left div:last-child
+{
+    padding:0;
+    margin:0;
 }
 
 .dlg-flexbox-right
 {
     width:100%;
     margin:0;
-    padding:20px 20px 0 0;
+    /*padding:20px 20px 0 0;*/
+    padding:0 20px 0 0;
     display:table-cell;
     border:none;
     text-align:left;
     vertical-align:top;
     overflow-x:hidden; /* Hide horizontal scrollbar */
     overflow-y:auto; /* Add vertical scrollbar if needed */
+    box-sizing:content-box; /* Fix for Bootstrap 4 */
     /*border:1px solid #0000ff; /* DEBUG */
 }
 
@@ -177,11 +186,12 @@
 {
     margin:0;
     margin-top:5px;
-    margin-bottom:5px;
+    margin-bottom:10px;
     padding:5px;
-    width:98%;
+    width:100%;
     font-family:inherit;
     font-size:1em;
+    box-sizing:border-box;
 }
 
 /* Dialog footer */
@@ -202,6 +212,7 @@
     font-family:inherit;
     font-size:1.3em;
     overflow:hidden; /* Hide content, scrollbar */
+    box-sizing:content-box; /* Fix for Bootstrap 4 */
     /*border:1px solid #00ff00; /* DEBUG */
 }
 
@@ -369,6 +380,8 @@
 /* Resize handle */
 .dlg-rh
 {
+    z-index:80001;
+    display:inline-block;
     margin:0;
     padding:0;
     width:20px;
@@ -398,6 +411,7 @@
     border:none;
     border-right:1px solid #fafafa;  /* "shadow" */
     border-bottom:1px solid #fafafa; /* "shadow" */
+    box-sizing:content-box; /* Fix for Bootstrap 4 */
 }
 
 /* Standard positions, dots closer together */
@@ -417,5 +431,3 @@
 .dlg-rd5 { right:6px; bottom:2px; }
 .dlg-rd6 { right:2px; bottom:2px; }
 */
-
-
