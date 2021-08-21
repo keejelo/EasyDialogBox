@@ -646,7 +646,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<br />Click Yes or No button!</p>');
+        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<p></p>Click Yes or No button!</p>');
 
         // ** Create a custom onShow function
         myBox.onShow = function()
@@ -690,13 +690,13 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleMultiRunBtn'), 'click', function()
     {
         // ** Create two dialogboxes, give them some color and open them
-        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p><p>This box is NOT resizable!</p>', false, 100, 100);
+        var myBox1 = EasyDialogBox.create('box1', 'dlg dlg-multi dlg-rounded dlg-shadow', 'Box 1', '<p>This is box 1, drag and drop it around!</p><p>This box is NOT resizable!</p>', null, 100, 100);
         myBox1.color('#bb0000').show();
 
-        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 2', '<p>This is box 2, drag and drop it around!</p><p>This box is also resizable!</p>', false, 180, 180);
+        var myBox2 = EasyDialogBox.create('box2', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 2', '<p>This is box 2, drag and drop it around!</p><p>This box is also resizable!</p>', null, 180, 180);
         myBox2.color('#009955').show();
 
-        var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 3', '<p>This is box 3, drag and drop it around!</p><p>This box is also resizable!</p>', false, 260, 260);
+        var myBox3 = EasyDialogBox.create('box3', 'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize', 'Box 3', '<p>This is box 3, drag and drop it around!</p><p>This box is also resizable!</p>', null, 260, 260);
         myBox3.color('#005599').show();
 
     }, false);
@@ -1115,6 +1115,7 @@ attachEventListener(window, 'load', function()
 
             <p>&nbsp;</p>
             <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
             <h2>Object event-methods</h2>
             <div id="dialog_onCreate">
@@ -1267,7 +1268,7 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a new dialogbox object</b></i>
-<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;br /&gt;Click Yes or No button!&lt;/p&gt;'</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'someId'</b><b class="func">,</b> <b class="param">'dlg-yes-no'</b><b class="func">,</b> <b class="param">'My title'</b><b class="func">,</b> <b class="param">'&lt;p&gt;Hello there!&lt;/p&gt;&lt;p&gt;Click Yes or No button!&lt;/p&gt;'</b><b class="func">)</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create a custom onClose function</b></i>
 <i><b>myBox</b><b class="func">.onClose</b> <b class="equal">=</b> <b class="keyword">function</b><b class="func">()</b></i>
@@ -1339,13 +1340,13 @@ attachEventListener(window, 'load', function()
 <i><b class="comment">// Javascript ...</b></i>
 <i>&nbsp;</i>
 <i><b class="comment">// ** Create three dialogboxes, give them some color and open them</b></i>
-<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is NOT resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox1 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box1'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow'</b><b class="func">,</b> <b class="param">'Box 1'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 1, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is NOT resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">100</b><b class="func">,</b> <b class="num">100</b><b class="func">)</b>;</i>
 <i><b>myBox1</b><b class="func">.color(</b><b class="param">'#aa0000'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox2 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box2'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 2'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 2, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">180</b><b class="func">,</b> <b class="num">180</b><b class="func">)</b>;</i>
 <i><b>myBox2</b><b class="func">.color(</b><b class="param">'#009955'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
-<i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">false</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
+<i><b class="keyword">let</b> myBox3 <b class="equal">=</b> <b class="obj">EasyDialogBox</b><b class="func">.create</b><b class="func">(</b><b class="param">'box3'</b><b class="func">,</b> <b class="param">'dlg dlg-multi dlg-rounded dlg-shadow dlg-resize'</b><b class="func">,</b> <b class="param">'Box 3'</b><b class="func">,</b> <b class="param">'&lt;p&gt;This is box 3, drag and drop it around!&lt;/p&gt;&lt;p&gt;This box is also resizable!&lt;/p&gt;'</b><b class="func">,</b> <b class="keyword">null</b><b class="func">,</b> <b class="num">260</b><b class="func">,</b> <b class="num">260</b><b class="func">)</b>;</i>
 <i><b>myBox3</b><b class="func">.color(</b><b class="param">'#005599'</b><b class="func">)</b><b class="func">.show()</b>;</i>
 <i>&nbsp;</i>
 <i><b class="comment">// ...</b></i>
