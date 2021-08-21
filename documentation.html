@@ -1100,12 +1100,16 @@ attachEventListener(window, 'load', function()
             If set to <code>0</code> then it's inserted as the first button on the left side, if set to <code>1</code> then it's inserted as the second button from the left side, <code>2</code> as third button etc.<br />
             If omitted/not specified then the button is just appended last on the right side.</p>
             <p>Return value = the button <span class="ital word">HTMLElement</span> itself</p>
-            <p class="bold">Example: <span class="font-weight-normal">add a custom button to the footer, as first button on the left (index 0)</span></p>
 <div class="codeview"><i>&nbsp;</i>
-<i><b>myObj</b><b class="func">.addButton(</b><b class="param">'My new button'</b><b class="func">,</b> <b class="keyword">function</b><b class="func">()</b></i>
+<i><b class="comment">// ** Example, add a custom button to the footer, as first button on the left (index 0)</b></i>
+<i><b class="keyword">let</b> myBtn <b class="equal">=</b> <b>myObj</b><b class="func">.addButton(</b><b class="param">'My new button'</b><b class="func">,</b> <b class="keyword">function</b><b class="func">()</b></i>
 <i><b class="func">{</b></i>
 <i>    <b>console</b><b class="func">.log(</b><b class="param">'My new button was clicked'</b><b class="func">)</b>;</i>
 <i><b class="func">},</b> <b class="num">0</b><b class="func">)</b>;</i>
+<i>&nbsp;</i>
+<i><b class="comment">// ** Set the new buttons' font to bold (or do something with myBtn)</b></i>
+<i><b>myBtn</b><b class="func">.style.fontWeight</b> <b class="equal">=</b> <b class="param">'bold'</b>;</i>
+<i>&nbsp;</i>
 <i>&nbsp;</i>
 </div>
 
