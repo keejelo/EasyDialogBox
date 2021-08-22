@@ -2,7 +2,7 @@
 - Corrected a rule in the css-file, changed combinator from: "element child" to "element > child" for more accurate targeting.
 - Also fixed a minor error in documentation.
 
-# 1.8 (release):
+# 1.8:
 - Now dialogboxes can be resized by using the flag "dlg-resize"
 - Rewrote inner box calculations, had to include some errorchecks, cleaned up code
 - Improved responsivemode
@@ -10,15 +10,6 @@
 - Tested working on Win10, in latest versions of browsers: Chrome, Firefox, Edge, Opera, IE11 (+8-9-10 emulated)
   -> Note about IE 8-9-10: when using "dlg-multi" you have to click on some text or visible element to switch between dialogs, 
      no errors discovered during testing.
-
-# 1.8 (beta test version):
-- Testing it now, will be released as stable soon.
-- Same css file "easydlg.css" can be used if using "Bootstrap" 4 and 5, tests did not show any strange css behaviour.
-
-# 1.8 (alpha test version):
-- Now dialogboxes can be resized by using the flag "dlg-resize"
-- Rewrote inner box calculations, had to include some errorchecks, cleaned up code
-- Improved responsivemode
 
 # 1.74.3:
 - Cleanup after simplifying method "_getEl()"
