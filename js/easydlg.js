@@ -332,8 +332,7 @@ var EasyDialogBox = (function()
                 // ** Check if multiple boxes
                 if( _hasClass(el.parentNode, 'dlg-multi') || _hasClass(el.parentNode, 'dlg-disable-overlay') || _hasClass(el.parentNode, 'dlg-nomodal') )
                 {
-                    //_scrollbarShow();
-                    _scrollbarShow(el,obj);
+                    _scrollbarShow(el.parentNode,obj);
                     el.parentNode.style.overflow = 'hidden';
                     if(window.PointerEvent) { el.parentNode.style.pointerEvents = 'none'; }
                 }
