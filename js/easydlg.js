@@ -332,7 +332,7 @@ var EasyDialogBox = (function()
                 // ** Check if multiple boxes
                 if( _hasClass(el.parentNode, 'dlg-multi') || _hasClass(el.parentNode, 'dlg-disable-overlay') || _hasClass(el.parentNode, 'dlg-nomodal') )
                 {
-                    _scrollbarShow(el.parentNode,obj);
+                    _scrollbarShow();
                     el.parentNode.style.overflow = 'hidden';
                     if(window.PointerEvent) { el.parentNode.style.pointerEvents = 'none'; }
                 }
@@ -481,22 +481,25 @@ var EasyDialogBox = (function()
     // ** Restore and show scrollbar
     var _scrollbarShow = function(el,obj)
     {
-        // ** Check if multiple boxes are visible before restoring body scrollbar
-        if( _hasClass(el, 'dlg-multi') || _hasClass(el, 'dlg-disable-overlay') || _hasClass(el, 'dlg-nomodal') )
+        if(el && obj)
         {
-            var multi = 0;
-            for(var i = 0; i < _boxObj.length;i++)
+            // ** Check if multiple boxes are visible before restoring body scrollbar
+            if( _hasClass(el, 'dlg-multi') || _hasClass(el, 'dlg-disable-overlay') || _hasClass(el, 'dlg-nomodal') )
             {
-                if(_boxObj[i].bVisible && _boxObj[i].id !== obj.id)
+                var multi = 0;
+                for(var i = 0; i < _boxObj.length;i++)
                 {
-                    multi++;
+                    if(_boxObj[i].bVisible && _boxObj[i].id !== obj.id)
+                    {
+                        multi++;
+                    }
                 }
-            }
 
-            // ** No boxes are visible then restore body scrollbar
-            if(multi !== 0)
-            {
-                return false;
+                // ** No boxes are visible then restore body scrollbar
+                if(multi !== 0)
+                {
+                    return false;
+                }
             }
         }
 
