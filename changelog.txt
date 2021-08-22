@@ -1,6 +1,6 @@
 # 1.8.0.2 (repos):
 - Made changes so that if a modal dialog is displayed (dialog with trans.overlay), then no other dialog can be displayed on top of that again.
-  An internal variable "_bModalActive" is monitored to check this.
+  An internal variable "_bModalActive" is monitored to check this, and a debug console message is displayed addressing that.
 
 # 1.8.0.1:
 - Corrected a rule in the css-file, changed combinator from: "element child" to "element > child" for more accurate targeting.
