@@ -186,7 +186,7 @@
 
 /* Last DIV and P elements inside message container right */
 .dlg-flexbox-right > div:last-child,
-.dlg-flexbox-right > p:last-child,
+.dlg-flexbox-right > p:last-child
 {
     margin-bottom:0;
     padding-bottom:15px;
