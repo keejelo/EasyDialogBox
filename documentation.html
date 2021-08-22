@@ -650,7 +650,7 @@ attachEventListener(window, 'load', function()
     attachEventListener(document.getElementById('jsExampleRunBtn'), 'click', function()
     {
         // ** Create a new dialogbox object
-        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!<p></p>Click Yes or No button!</p>');
+        var myBox = EasyDialogBox.create('someId2', 'dlg-yes-no', 'My title', '<p>Hello there!</p><p>Click Yes or No button!</p>');
 
         // ** Create a custom onShow function
         myBox.onShow = function()
