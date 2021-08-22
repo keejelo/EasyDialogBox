@@ -85,7 +85,7 @@ var EasyDialogBox = (function()
     {
         if(typeof target.addEventListener !== 'undefined')
         {
-            target.addEventListener(eventType, functionRef, capture);
+            target.addEventListener(eventType, functionRef, capture || false);
         }
         else if(typeof target.attachEvent !== 'undefined')
         {
@@ -512,7 +512,7 @@ var EasyDialogBox = (function()
     // ** END: Restore and show scrollbar
 
     // ** Fade in/out element
-    var _fade = function(el, dir, spd, fn)
+    var _fade = function(el, dir, fn, spd)
     {
         var n;
         (dir) ? n = 10 : n = 0;
@@ -549,9 +549,6 @@ var EasyDialogBox = (function()
     // ** Calculate message height
     var _calcHeight = function(el,obj)
     {
-        //_getEl(obj.id).style.height = _s2i(obj.h) + 'px';
-        //_getEl(obj.id).style.maxHeight = _s2i(obj.h) + 'px';
-
         // ** Set total message height start
         var msgHeight = _s2i(obj.h);
 
@@ -606,7 +603,7 @@ var EasyDialogBox = (function()
         // ** If modal is already displayed then return false
         if(_bModalActive)
         {
-            _log('DEBUG: Dialog not displayed, since a modal dialog is currently active.');
+            _log('DEBUG: show(): Dialog could not be displayed! Another dialog (modal) is currently active!');
             return false;
         };
 
@@ -648,14 +645,12 @@ var EasyDialogBox = (function()
 
             // ** Check if position is set, if true then change position, else default value used
             if(typeof obj.x === 'number' || typeof obj.x === 'string')
-            //if(obj.x)
             {
                 box.style.left = _s2i(obj.x) + 'px';
                 obj.customPosX = _s2i(obj.x);
             }
             // ** Check if position is set, if true then change position, else default value used
             if(typeof obj.y === 'number' || typeof obj.y === 'string')
-            //if(obj.y)
             {
                 box.style.top = _s2i(obj.y) + 'px';
                 obj.customPosY = _s2i(obj.y);
@@ -752,7 +747,7 @@ var EasyDialogBox = (function()
             // ** Run "onHide" and fade out
             else if(bSkip !== true && obj.bFade)
             {
-                _fade(dlg, true, 0, function()
+                _fade(dlg, true, function()
                 {
                     dlg.style.display = 'none';
                     box.style.visibility = 'hidden';
@@ -1679,9 +1674,6 @@ var EasyDialogBox = (function()
                 // ** END: Create event-listeners
                 //---------------------------------------------------------------------
 
-                // ** Adjust box size and position according to window size
-                //_adjustElSizePos(box.id);  // DISABLED - this was making box position problems here
-
                 // ** Set focus to input field if promptbox
                 if(_hasClass(dlg, 'dlg-prompt'))
                 {
@@ -1690,11 +1682,6 @@ var EasyDialogBox = (function()
 
                 // ** Object has been created, set flag to true
                 obj.bExistInDOM = true;
-
-                // DISABLED - dont need to do this anymore
-                // ** First run keep hidden, only create, do not show, do not run "onHide" func
-                //obj.hide(0,true);  // true = do not run obj.onHide()
-                // END: DISABLED - dont need to do this anymore
 
                 // ** Set reference to object itself
                 obj.el = document.getElementById(obj.id + '_1');
@@ -1918,7 +1905,7 @@ var EasyDialogBox = (function()
     // ** END: Window load event
 
     //---------------------------------------------------------------------
-    // ** Public methods
+    // ** Public
     //---------------------------------------------------------------------
     return { //<-- IMPORTANT: Bracket need to be on same line as "return", else it just returns 'undefined'
 
@@ -1947,7 +1934,7 @@ var EasyDialogBox = (function()
         }
     };
     //---------------------------------------------------------------------
-    // ** END: Public methods
+    // ** END: Public
     //---------------------------------------------------------------------
 })();
 //-----------------------------------------------------------------------------------------------------------------
