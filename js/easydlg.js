@@ -481,6 +481,7 @@ var EasyDialogBox = (function()
     // ** Restore and show scrollbar
     var _scrollbarShow = function(el,obj)
     {
+        // ** If both params are set then go ahead
         if(el && obj)
         {
             // ** Check if multiple boxes are visible before restoring body scrollbar
