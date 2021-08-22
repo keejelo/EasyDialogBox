@@ -1,5 +1,5 @@
 # 1.8.0.2:
-- Made changes so that if a modal dialog is displayed (dialog with trans.overlay), then no other dialog can be displayed on top of that.
+- Made changes in the "show()" function so that if a modal dialog is already displayed (dialog with trans.overlay), then no other dialog can be displayed on top of that.
   An internal variable "_bModalActive" is used to monitor this, and a console debug message is displayed.
 
 # 1.8.0.1:
