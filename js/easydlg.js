@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.8
+// Version: 1.8.0.2
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** DEBUG: false/true (output messages to console)
-    var DEBUG = false;
+    var DEBUG = true;
 
     // ** Used in console messages
     var _name = 'EasyDialogBox';
@@ -51,10 +51,13 @@ var EasyDialogBox = (function()
     // ** Prevent content shift when scrollbar hides/shows, if centered body content.
     var _orgBodyPadRight = 0;
 
+    // ** Flag that indicates if a modal dialog is currently active (prevents other dialogs being displayed)
+    var _bModalActive = false;
+
     // ** Get body element
     var _body = function() { return document.querySelector('body'); }
 
-    // ** Convert string to integer (decimal base)
+    // ** Convert string to integer (decimal base), "failsafe": if all fails return zero
     var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { n = 0; } return n; };
 
     // ** Trim leading and trailing whitespace
@@ -68,10 +71,10 @@ var EasyDialogBox = (function()
             var len = this.length >>> 0;
             var from = Number(arguments[1]) || 0;
             from = (from < 0) ? Math.ceil(from) : Math.floor(from);
-            if(from < 0) {from += len;}
+            if(from < 0) { from += len; }
             for(; from < len; from++)
             {
-                if(from in this && this[from] === elt) {return from;}
+                if(from in this && this[from] === elt) { return from; }
             }
             return -1;
         };
@@ -263,10 +266,7 @@ var EasyDialogBox = (function()
 
         // ** Ensure that ALL values matched, else return failure.
         //    Total items tested equal the number of items passed
-        if(val.length === passed)
-        {
-            return true;
-        }
+        if(val.length === passed) { return true; }
         return false;
     };
     // ** END: Check if array matches ALL test-values
@@ -332,7 +332,8 @@ var EasyDialogBox = (function()
                 // ** Check if multiple boxes
                 if( _hasClass(el.parentNode, 'dlg-multi') || _hasClass(el.parentNode, 'dlg-disable-overlay') || _hasClass(el.parentNode, 'dlg-nomodal') )
                 {
-                    _scrollbarShow();
+                    //_scrollbarShow();
+                    _scrollbarShow(el.parentNode,obj);
                     el.parentNode.style.overflow = 'hidden';
                     if(window.PointerEvent) { el.parentNode.style.pointerEvents = 'none'; }
                 }
@@ -401,10 +402,7 @@ var EasyDialogBox = (function()
         var box = document.getElementById(objId + '_1');
 
         // ** If not specified return box element itself
-        if(!str)
-        {
-            return box;
-        }
+        if(!str) { return box; }
 
         // ** Trim leading and trailing spaces
         str = _trim(str);
@@ -420,10 +418,7 @@ var EasyDialogBox = (function()
             if(box)
             {
                 var q = box.querySelectorAll(str);
-                if(q.length)
-                {
-                    return q;
-                }
+                if(q.length) { return q; }
             }
         };
 
@@ -485,9 +480,26 @@ var EasyDialogBox = (function()
     // ** END: Hide scrollbar while retaining padding
 
     // ** Restore and show scrollbar
-    var _scrollbarShow = function()
+    var _scrollbarShow = function(el,obj)
     {
-        //var body = document.querySelector('body');
+        // ** Check if multiple boxes are visible before restoring body scrollbar
+        if( _hasClass(el, 'dlg-multi') || _hasClass(el, 'dlg-disable-overlay') || _hasClass(el, 'dlg-nomodal') )
+        {
+            var multi = 0;
+            for(var i = 0; i < _boxObj.length;i++)
+            {
+                if(_boxObj[i].bVisible && _boxObj[i].id !== obj.id)
+                {
+                    multi++;
+                }
+            }
+
+            // ** No boxes are visible then restore body scrollbar
+            if(multi !== 0)
+            {
+                return false;
+            }
+        }
 
         // ** Reset and enable scrollbar if flag is set true
         if(_hasClass(_body(), 'dlg-stop-scrolling'))
@@ -495,6 +507,7 @@ var EasyDialogBox = (function()
             _removeClass(_body(), 'dlg-stop-scrolling');
             _body().setAttribute('style', 'padding-right:' + _s2i(_orgBodyPadRight) + 'px;');
         }
+        return true;
     };
     // ** END: Restore and show scrollbar
 
@@ -590,6 +603,13 @@ var EasyDialogBox = (function()
     // ** Show dialog box
     var _show = function(objId)
     {
+        // ** If modal is already displayed then return false
+        if(_bModalActive)
+        {
+            _log('DEBUG: Dialog not displayed, since a modal dialog is currently active.');
+            return false;
+        };
+
         // ** Get object
         var obj = _getObjById(objId);
 
@@ -599,10 +619,11 @@ var EasyDialogBox = (function()
             // ** Get element (dialog surface overlay)
             var dlg = document.getElementById(obj.id);
 
-            // ** Hide scrollbar (if element does not contain classes)
+            // ** Hide scrollbar (if element does not contain classes) (is modal dialog)
             if( !(_hasClass(dlg, 'dlg-disable-overlay')) && !(_hasClass(dlg, 'dlg-nomodal')) && !(_hasClass(dlg, 'dlg-multi')) )
             {
                 _scrollbarHide();
+                _bModalActive = true; // set modal flag true
             }
 
             // ** Make it draggable, unless flag is set
@@ -754,27 +775,13 @@ var EasyDialogBox = (function()
             }
         }
 
-        // ** Check if multiple boxes are visible before restoring body scrollbar
-        if( _hasClass(dlg, 'dlg-multi') || _hasClass(dlg, 'dlg-disable-overlay') || _hasClass(dlg, 'dlg-nomodal') )
-        {
-            var multi = 0;
-            for(var i = 0; i < _boxObj.length;i++)
-            {
-                if(_boxObj[i].bVisible && _boxObj[i].id !== obj.id)
-                {
-                    multi++;
-                }
-            }
+        // ** Restore body scrollbar
+        _scrollbarShow(dlg,obj);
 
-            // ** No boxes are visible then restore body scrollbar
-            if(multi === 0)
-            {
-                _scrollbarShow();
-            }
-        }
-        else
+        // ** Reset flag if modal
+        if( !(_hasClass(dlg, 'dlg-disable-overlay')) && !(_hasClass(dlg, 'dlg-nomodal')) && !(_hasClass(dlg, 'dlg-multi')) )
         {
-            _scrollbarShow();
+            _bModalActive = false;
         }
 
         // ** Return object
@@ -799,27 +806,13 @@ var EasyDialogBox = (function()
             // ** Hide it visually (if not already)
             dlg.style.display = 'none';
 
-            // ** Check if multiple boxes are visible before restoring body scrollbar
-            if( _hasClass(dlg, 'dlg-multi') || _hasClass(dlg, 'dlg-disable-overlay') || _hasClass(dlg, 'dlg-nomodal') )
-            {
-                var multi = 0;
-                for(var i = 0; i < _boxObj.length;i++)
-                {
-                    if(_boxObj[i].bVisible && _boxObj[i].id !== obj.id)
-                    {
-                        multi++;
-                    }
-                }
+            // ** Restore body scrollbar
+            _scrollbarShow(dlg,obj);
 
-                // ** No boxes are visible then restore body scrollbar
-                if(multi === 0)
-                {
-                    _scrollbarShow();
-                }
-            }
-            else
+            // ** Reset flag if modal
+            if( !(_hasClass(dlg, 'dlg-disable-overlay')) && !(_hasClass(dlg, 'dlg-nomodal')) && !(_hasClass(dlg, 'dlg-multi')) )
             {
-                _scrollbarShow();
+                _bModalActive = false;
             }
 
             // ** Run onDestroy function
