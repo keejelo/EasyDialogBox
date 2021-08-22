@@ -496,7 +496,7 @@ var EasyDialogBox = (function()
                     }
                 }
 
-                // ** No boxes are visible then restore body scrollbar
+                // ** Other boxes are still visible so do NOT restore body scrollbar
                 if(multi !== 0)
                 {
                     return false;
