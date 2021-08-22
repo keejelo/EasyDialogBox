@@ -398,26 +398,6 @@ b:first-child
     background-color:#666; /* fallback */
     background-color:rgba(50,50,50,.4);
 }
-#d1,#d2,#d3,#d4,#d5,#d6,#d7
-{
-    margin:0;
-    padding:0;
-    /*display:inline-block;*/
-    display:none;
-    position:absolute;
-    background-color:#fff;
-    font-size:0;
-    width:1px;
-    height:1px;
-}
-#d1 { top:21px; left:15px; }
-#d2 { top:18px; left:18px; }
-#d3 { top:15px; left:21px; }
-#d4 { top:13px; left:24px; }
-#d5 { top:15px; left:27px; }
-#d6 { top:18px; left:30px; }
-#d7 { top:21px; left:33px; }
-
 /* END: Scroll to top button */
 
 /* Small screen ***********************************************/
@@ -716,10 +696,10 @@ attachEventListener(window, 'load', function()
     {
         var strToast = '<p class="medium bold">TOASTY! --- This will close 3 seconds after it\'s displayed!</p>';
         var myToast = EasyDialogBox.create(null, 'dlg-toast dlg-fade', null, strToast, null, null, 20, 500);
-        myToast.el.style.backgroundColor = '#ddeaff';
-        myToast.el.style.borderColor = '#0072b3';
-        myToast.onHide = myToast.destroy;
-        myToast.show().hide(3000);
+            myToast.el.style.backgroundColor = '#ddeaff';
+            myToast.el.style.borderColor = '#0072b3';
+            myToast.onHide = myToast.destroy;
+            myToast.show().hide(3000);
     }, false);
     //---------------------------------------------------------------------------------------
     // ** END: Run example toast
@@ -1551,15 +1531,7 @@ attachEventListener(window, 'load', function()
         </div>
         <div class="small_note">keejelo, 2020-2021.</div>
         <div id="scrollTopBtn">
-            <a href="#" title="Go to top">
-                <span id="d1">&nbsp;</span>
-                <span id="d2">&nbsp;</span>
-                <span id="d3">&nbsp;</span>
-                <span id="d4">&nbsp;</span>
-                <span id="d5">&nbsp;</span>
-                <span id="d6">&nbsp;</span>
-                <span id="d7">&nbsp;</span>
-            </a>
+            <a href="#" title="Go to top">&nbsp;</a>
         </div>
 
     </div>
