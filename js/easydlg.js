@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** DEBUG: false/true (output messages to console)
-    var DEBUG = false;
+    var DEBUG = true;
 
     // ** Used in console messages
     var _name = 'EasyDialogBox';
@@ -333,7 +333,7 @@ var EasyDialogBox = (function()
                 if( _hasClass(el.parentNode, 'dlg-multi') || _hasClass(el.parentNode, 'dlg-disable-overlay') || _hasClass(el.parentNode, 'dlg-nomodal') )
                 {
                     //_scrollbarShow();
-                    _scrollbarShow(el.parentNode,obj);
+                    _scrollbarShow(el,obj);
                     el.parentNode.style.overflow = 'hidden';
                     if(window.PointerEvent) { el.parentNode.style.pointerEvents = 'none'; }
                 }
