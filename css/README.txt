@@ -1,6 +1,6 @@
 
-The file "easydlg.css" should also work along with Bootstrap 4 and 5 css-file without any problems.
-It was just a matter of setting the "box-sizing" rule on some elements, no need for a separates css-file.
+Now only one css-file, no need for a separates css-file anymore when using Bootstrap 4 and 5.
+It was only a matter of setting the "box-sizing" rule on some elements, this is now included in the css-file "easydlg.css".
 Tests did not show any strange css-behaviour.
 
 
