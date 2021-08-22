@@ -12,7 +12,7 @@
 .dlg-ok-cancel,
 .dlg-prompt
 {
-    z-index:60000; /* Put on top */
+    z-index:60000; /* bring to top */
     margin:0;
     padding:0;
     display:none;
@@ -21,9 +21,9 @@
     top:0;
     width:100%;
     height:100%;
-    overflow:auto; /* Enable scroll if needed, triggers in responsivemode */
-    background-color:#000; /* Fallback if not support trans. overlay */
-    background-color:rgba(0,0,0,0.2); /* Translucent overlay */
+    overflow:auto; /* enable scroll if needed, triggers in responsivemode */
+    background-color:#000; /* fallback if not support trans. overlay */
+    background-color:rgba(0,0,0,0.2); /* translucent overlay */
 }
 
 /* Dialog box */
@@ -33,15 +33,15 @@
     margin:0;
     padding:0;
     max-width:600px;
-    overflow:hidden; /* Disable scrolling inside box, instead set scroll on inside elements */
+    overflow:hidden; /* disable scrolling inside box, instead set scroll on inside elements */
     width:100%; /* 96%, 98% */
     font-family:Arial, Helvetica, sans-serif;
     font-size:10px; /* 0.8em */
     background-color:#fefefe; /* bgcolor */
     border:1px solid #3d6da8; /* ".dlg-heading" has the same background-color as this */
     visibility:hidden;
-    position:absolute; /* This is needed or else "dlg-disable-drag" custom position do not work */
-    pointer-events:auto; /* Makes dialog clickable when parent (overlay) is disabled */
+    position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
+    pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */
 }
 
 /* Dialog heading */
@@ -62,7 +62,7 @@
     line-height:19px;
     font-family:inherit;
     font-size:1.4em;
-    box-sizing:content-box; /* Fix for Bootstrap 4 */
+    box-sizing:content-box; /* fix for Bootstrap */
     /*border:1px solid #ff00ff; /* DEBUG */
 }
 
@@ -97,33 +97,34 @@
     cursor:pointer;
 }
 
-/* Dialog message */
+/* Dialog message container */
 .dlg-message
 {
     display:block;
     margin:0;
     /*padding:15px;*/
-    padding:0 15px;   /* fixes height padding calc issue */
+    padding:0 15px; /* fixes height padding calc issue */
     font-family:inherit;
     font-size:1.4em;
     line-height:1.4em;
-    overflow-x:hidden; /* Hide horizontal scrollbar */
-    overflow-y:auto; /* Add vertical scrollbar if needed */
+    overflow-x:hidden; /* hide horizontal scrollbar */
+    overflow-y:auto; /* add vertical scrollbar if needed */
     border:none;
     border-width:0; /* must have a pixel value, used for calcs */
     /*border:1px solid #ff0000; /* DEBUG */
 }
 
-/* P elements inside message */
-.dlg-message div:first-child,
-.dlg-message p:first-child
+/* First DIV and P elements inside message container */
+.dlg-message > div:first-child,
+.dlg-message > p:first-child
 {
     margin-top:0;
     padding-top:15px;
 }
 
-.dlg-message div:last-child,
-.dlg-message p:last-child
+/* Last DIV and P elements inside message container */
+.dlg-message > div:last-child,
+.dlg-message > p:last-child
 {
     margin-bottom:0;
     padding-bottom:15px;
@@ -148,7 +149,7 @@
     padding:20px;
     display:table-cell;
     border:none;
-    box-sizing:border-box; /* Fix for Bootstrap 4 */
+    box-sizing:border-box; /* fix for Bootstrap */
     /*border:1px solid #00ff00; /* DEBUG */
 }
 
@@ -169,10 +170,26 @@
     border:none;
     text-align:left;
     vertical-align:top;
-    overflow-x:hidden; /* Hide horizontal scrollbar */
-    overflow-y:auto; /* Add vertical scrollbar if needed */
-    box-sizing:content-box; /* Fix for Bootstrap 4 */
+    overflow-x:hidden; /* hide horizontal scrollbar */
+    overflow-y:auto; /* add vertical scrollbar if needed */
+    box-sizing:content-box; /* fix for Bootstrap */
     /*border:1px solid #0000ff; /* DEBUG */
+}
+
+/* First DIV and P elements inside message container right */
+.dlg-flexbox-right > div:first-child,
+.dlg-flexbox-right > p:first-child
+{
+    margin-top:0;
+    padding-top:15px;
+}
+
+/* Last DIV and P elements inside message container right */
+.dlg-flexbox-right > div:last-child,
+.dlg-flexbox-right > p:last-child,
+{
+    margin-bottom:0;
+    padding-bottom:15px;
 }
 
 /* Dialog input */
@@ -211,8 +228,8 @@
     text-align:right;
     font-family:inherit;
     font-size:1.3em;
-    overflow:hidden; /* Hide content, scrollbar */
-    box-sizing:content-box; /* Fix for Bootstrap 4 */
+    overflow:hidden; /* hide content, scrollbar */
+    box-sizing:content-box; /* fix for Bootstrap */
     /*border:1px solid #00ff00; /* DEBUG */
 }
 
@@ -359,8 +376,8 @@
 .dlg-multi
 {
     background-color:transparent;
-    pointer-events:none; /* Force layer to pass-through click events */
-    overflow:hidden; /* Disable scrolling, although this kills responsiveness to some degree */
+    pointer-events:none; /* force layer to pass-through click events */
+    overflow:hidden; /* disable scrolling */
 }
 
 /* Rounded corners */
@@ -411,7 +428,7 @@
     border:none;
     border-right:1px solid #fafafa;  /* "shadow" */
     border-bottom:1px solid #fafafa; /* "shadow" */
-    box-sizing:content-box; /* Fix for Bootstrap 4 */
+    box-sizing:content-box; /* fix for Bootstrap */
 }
 
 /* Standard positions, dots closer together */
