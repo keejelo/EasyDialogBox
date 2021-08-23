@@ -47,4 +47,4 @@ Although web dialogboxes have gotten a bad rep. in the web-world, I still think 
 <br />
 
 # Thanks
-Thanks to @ray73864 for testing and feedback when used alongside Bootstrap.
+Thanks to ray73864 for testing and feedback when used alongside Bootstrap.
