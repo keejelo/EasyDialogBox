@@ -36,3 +36,15 @@ The "classflags" below has had their names changed due to naming ambiguity causi
 
 "<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
+<br />
+<br />
+
+# About
+I started this when I needed a multipurpose dialogbox for my own projects.
+Although web dialogboxes have gotten a bad rep. in the web-world, I still think they have their use, when used correctly and in the right settings.
+
+<br />
+<br />
+
+# Thanks
+Thanks to ray73864 for testing and feedback when used alongside Bootstrap.
