@@ -41,7 +41,7 @@ The "classflags" below has had their names changed due to naming ambiguity causi
 
 # About
 I started this when I needed a multipurpose dialogbox for my own projects.<br />
-Although dialogboxes have gotten a bad rep. in the web-world, I still think they have their use, when used correctly and in the right settings.
+Although dialogboxes has got a bad rep. in the web-world, I still think they have their use when used correctly and in the right settings.
 
 <br />
 <br />
