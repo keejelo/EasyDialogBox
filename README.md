@@ -9,9 +9,12 @@
 
 <h3>Documentation, how to use and live examples:</h3>
 <h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/documentation.html</h3>
-<br /><br /><br />
 
-<b>Important changes from version 1.735 and above:</b>
+<br />
+<br />
+
+# Important changes
+<b>Version 1.735 and above:</b>
 
 Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
 <br /><br />
@@ -23,9 +26,8 @@ Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.cre
 See changelog for other changes.
 <br />
 <br />
-<br />
 
-<b>Important changes from version 1.722 and above:</b>
+<b>Version 1.722 and above:</b>
 
 The "classflags" below has had their names changed due to naming ambiguity causing bugs:
 
