@@ -13,7 +13,7 @@
 <br />
 <br />
 
-# Important changes
+## Important changes
 <b>Version 1.735 and above:</b>
 
 Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
@@ -40,12 +40,12 @@ The "classflags" below has had their names changed due to naming ambiguity causi
 <br />
 <br />
 
-# About
+## About
 I started this when I needed a multipurpose dialogbox for my own projects. If anyone else finds this useful that's great.<br />
 Although dialogboxes has got a bad rep. in the web-world, I still think they have their use when used correctly and in the right settings.
 
 <br />
 <br />
 
-# Thanks
+## Thanks
 Thanks to <b>@ray73864</b> for testing, and feedback when used alongside Bootstrap.
