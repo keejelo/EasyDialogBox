@@ -44,7 +44,7 @@ The "classflags" below has had their names changed due to naming ambiguity causi
 <br />
 <br />
 
-## About
+## Motivation
 I started this when I needed a multipurpose dialogbox for my own projects, if anyone else finds this useful that's great.<br />
 Although dialogboxes has got a bad rep. in the web-world, I still think they have their use when used correctly and in the right settings.
 
@@ -58,4 +58,4 @@ Thanks to @ray73864 for testing and feedback.
 <br />
 
 ## License
-MIT (c) keejelo
+MIT &copy; keejelo
