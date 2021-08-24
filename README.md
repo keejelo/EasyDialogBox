@@ -1,6 +1,8 @@
 # EasyDialogBox
 <b>Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast.</b>
 
+<br />
+
 ## Features
 - Plain vanilla Javascript, no libraries needed.
 - Customizable
