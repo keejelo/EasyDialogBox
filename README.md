@@ -49,7 +49,7 @@ Although dialogboxes has got a "bad rap" in the web-world, I still think they ha
 <br />
 
 ## Credits
-Thanks to @ray73864 for testing and feedback.
+Thanks to ray73864 for testing and feedback.
 
 <br />
 
