@@ -18,22 +18,17 @@
 <br />
 
 ## Important changes
-- <b>Version 1.735 and above:</b>
-
-  Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
+- <b>Version 1.735 and above:</b> Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
   <br /><br />
   <b>Usage is now:</b>
-  <br />
   <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
   
   <br />
-  <br />
   
-- <b>Version 1.722 and above:</b>
-  The "classflags" below has had their names changed due to naming ambiguity causing bugs:
-  "<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"
-  "<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"
-  "<b>dlg-no-overlay</b>" is now called "<b>dlg-disable-overlay</b>"
+- <b>Version 1.722 and above:</b> The "classflags" below has had their names changed due to naming ambiguity causing bugs:<br />
+  "<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"<br />
+  "<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"<br />
+  "<b>dlg-no-overlay</b>" is now called "<b>dlg-disable-overlay</b>"<br />
   "<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
 <br />
