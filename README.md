@@ -19,8 +19,9 @@
 
 ## Important changes
 - <b>Version 1.735 and above:</b> Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
-  <br /><br />
+  <br />
   <b>Usage is now:</b>
+  <br />
   <code>let myObj = EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
   
   <br />
