@@ -9,8 +9,7 @@ Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast.
 - Draggable
 - Resizable
 - Responsive
-- Crossbrowser, legacy browser support as much as possible. 
-- Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
+- Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS. Crossbrowser, trying to support legacy browsers as much as possible. 
 - <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified version, smaller size">Lightweight</a>
 
 <br />
