@@ -9,7 +9,8 @@
 - Draggable
 - Resizable
 - Responsive
-- Crossbrowser, legacy browser support as much as possible. Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
+- Crossbrowser, legacy browser support as much as possible. 
+- Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
 - <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified version, smaller size">Lightweight</a>
 
 <br />
