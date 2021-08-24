@@ -7,7 +7,11 @@
 - Responsive
 - Crossbrowser, legacy browser support as much as possible. Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS.
 
-<h3>Documentation, how to use and live examples:</h3>
+<br />
+<br />
+
+## How to use?
+### Documentation, live examples:
 <h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/documentation.html</h3>
 
 <br />
@@ -47,5 +51,11 @@ Although dialogboxes has got a bad rep. in the web-world, I still think they hav
 <br />
 <br />
 
-## Thanks
+## Credits
 Thanks to @ray73864 for testing and feedback.
+
+<br />
+<br />
+
+## License
+MIT (c) keejelo
