@@ -25,10 +25,14 @@
   
   <br />
   
-- <b>Version 1.722 and above:</b> The "classflags" below has had their names changed due to naming ambiguity causing bugs:<br />
-  "<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"<br />
-  "<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"<br />
-  "<b>dlg-no-overlay</b>" is now called "<b>dlg-disable-overlay</b>"<br />
+- <b>Version 1.722 and above:</b> The "classflags" below has had their names changed due to naming ambiguity causing bugs:
+
+  "<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"
+  
+  "<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"
+  
+  "<b>dlg-no-overlay</b>" is now called "<b>dlg-disable-overlay</b>"
+  
   "<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
 <br />
