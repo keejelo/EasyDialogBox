@@ -13,13 +13,11 @@
 - <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified version, smaller size">Lightweight</a>
 
 <br />
-<br />
 
 ## How to use?
 ### Documentation, live examples:
 <h3>&#10140;&nbsp; https://keejelo.github.io/EasyDialogBox/documentation.html</h3>
 
-<br />
 <br />
 
 ## Important changes
@@ -43,19 +41,16 @@
   "<b>dlg-no-footer</b>" is now called "<b>dlg-disable-footer</b>"
 
 <br />
-<br />
 
 ## Motivation
 I started this when I needed a multipurpose dialogbox for my own projects, if anyone else finds this useful that's great.<br />
 Although dialogboxes has got a bad rep. in the web-world, I still think they have their use when used correctly and in the right settings.
 
 <br />
-<br />
 
 ## Credits
 Thanks to @ray73864 for testing and feedback.
 
-<br />
 <br />
 
 ## License
