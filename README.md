@@ -43,9 +43,9 @@ Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast.
 <br />
 
 ## Motivation
-I started this when I needed a multipurpose dialogbox for my own projects. Not wanting to be dependant on any libraries I wrote my own dialogbox module.<br />
-Although dialogboxes has got a "bad rap" in the web-world, I still think they have their use when used correctly and in the right settings.<br />
-If anyone else finds this useful that's great.
+I started this when I needed a multipurpose dialogbox for my own projects. Not wanting to be dependant on any libraries I wrote my own dialogbox module. If anyone else finds this useful that's great.<br /><br />
+Although dialogboxes has got a "bad rap" in the web-world, I still think they have their use when used correctly and in the right settings.
+
 
 <br />
 
