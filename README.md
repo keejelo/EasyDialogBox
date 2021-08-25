@@ -54,4 +54,4 @@ Thanks to ray73864 for testing and feedback.
 <br />
 
 ## License
-MIT &copy; keejelo
+MIT © keejelo
