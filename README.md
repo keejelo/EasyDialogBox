@@ -15,8 +15,8 @@ Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast.
 <br />
 
 ## How to use?
-### Documentation, live examples:
-### https://keejelo.github.io/EasyDialogBox/documentation.html
+Documentation, live examples:
+https://keejelo.github.io/EasyDialogBox/documentation.html
 
 <br />
 
