@@ -24,7 +24,7 @@ https://keejelo.github.io/EasyDialogBox/documentation.html
 - <b>Version 1.735 and above:</b><br />
   Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
   <br />
-  Usage is now:<br />
+  Syntax is now:<br />
   <code>EasyDialogBox.create(id, strBoxTypeClass, strTitle, strMessage, fnCallback, x, y, w, h);</code>
   
   <br />
