@@ -1,5 +1,6 @@
 # 1.8.0.3:
 - Minor optimization, duplicated code was turned into one common function.
+- Fixed a bug that saved wrong dialog height on closing, now it should work as excpected.
 
 # 1.8.0.2:
 - Made changes in the "show()" function so that if a modal dialog is already displayed (dialog with trans.overlay), then no other dialog can be displayed on top of that.
