@@ -248,17 +248,18 @@
 /* Dialog icons, pure css, no images used, but could be changed to use images instead by using the same classes etc. */
 .dlg-symbol
 {
-    font-size:24px;
-    font-family:"Courier new", Courier, monospace;
-    border-radius:50%;
+    margin:0;
     padding:0;
-    font-weight:bold;
-    color:#fff;
+    display:inline-block;
     height:35px;
     width:35px;
-    display:inline-block;
+    font-size:24px;
+    font-family:"Courier new", Courier, monospace;
+    font-weight:bold;
+    color:#fff;
     text-align:center;
     line-height:34px;
+    border-radius:50%;
 }
 
 .dlg-icon-info
@@ -268,8 +269,8 @@
     box-shadow:0 0 0 1px #004d8b;
 }
 
-.dlg-icon-info:before,
-.dlg-icon-info::before
+.dlg-icon-info::before,
+.dlg-icon-info:before
 {
     content:'i';
 }
@@ -281,8 +282,8 @@
     box-shadow:0 0 0 1px #004d8b;
 }
 
-.dlg-icon-question:before,
-.dlg-icon-question::before
+.dlg-icon-question::before,
+.dlg-icon-question:before
 {
     content:'?';
     margin-left:-1px;
@@ -296,13 +297,13 @@
     box-shadow:0 0 0 1px #852622;
 }
 
-.dlg-icon-error:before,
-.dlg-icon-error::before
+.dlg-icon-error::before,
+.dlg-icon-error:before
 {
-    /* light */
+    /* light x */
     content:'\002715';
 
-    /*heavy*/
+    /* heavy x */
     /*content:'\002716';*/
 }
 
@@ -314,8 +315,8 @@
     box-shadow:0 0 0 1px #407145;
 }
 
-.dlg-icon-success:before,
-.dlg-icon-success::before
+.dlg-icon-success::before,
+.dlg-icon-success:before
 {
     content:'\002713';
 }
@@ -332,8 +333,8 @@
     border-bottom:32px solid #b29534;
 }
 
-.dlg-icon-excl:before,
-.dlg-icon-excl::before
+.dlg-icon-excl::before,
+.dlg-icon-excl:before
 {
     content:'';
     border-radius:0;
@@ -347,8 +348,8 @@
     left:-16px;
 }
 
-.dlg-icon-excl:after,
-.dlg-icon-excl::after
+.dlg-icon-excl::after,
+.dlg-icon-excl:after
 {
     content:'!';
     width:0;
