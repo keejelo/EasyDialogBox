@@ -268,11 +268,24 @@
     box-shadow:0 0 0 1px #004d8b;
 }
 
+.dlg-icon-info:before,
+.dlg-icon-info::before
+{
+    content:'i';
+}
+
 .dlg-icon-question
 {
     background-color:#0077d7;
     line-height:37px;
     box-shadow:0 0 0 1px #004d8b;
+}
+
+.dlg-icon-question:before,
+.dlg-icon-question::before
+{
+    content:'?';
+    margin-left:-1px;
 }
 
 .dlg-icon-error
@@ -281,39 +294,6 @@
     font-family:Consolas, monospace;
     line-height:37px;
     box-shadow:0 0 0 1px #852622;
-}
-
-.dlg-icon-success
-{
-    background:#67b66e;
-    font-size:17px;
-    line-height:37px;
-    box-shadow:0 0 0 1px #407145;
-}
-
-.dlg-icon-excl
-{
-    color:#000;
-    border-radius:0;
-    width:0;
-    height:0;
-    line-height:37px;
-    border-left:18px solid transparent;
-    border-right:18px solid transparent;
-    border-bottom:32px solid #b29534;
-}
-
-.dlg-icon-info:before,
-.dlg-icon-info::before
-{
-    content:'i';
-}
-
-.dlg-icon-question:before,
-.dlg-icon-question::before
-{
-    content:'?';
-    margin-left:-1px;
 }
 
 .dlg-icon-error:before,
@@ -326,10 +306,30 @@
     /*content:'\002716';*/
 }
 
+.dlg-icon-success
+{
+    background:#67b66e;
+    font-size:17px;
+    line-height:37px;
+    box-shadow:0 0 0 1px #407145;
+}
+
 .dlg-icon-success:before,
 .dlg-icon-success::before
 {
     content:'\002713';
+}
+
+.dlg-icon-excl
+{
+    color:#000;
+    border-radius:0;
+    width:0;
+    height:0;
+    line-height:37px;
+    border-left:18px solid transparent;
+    border-right:18px solid transparent;
+    border-bottom:32px solid #b29534;
 }
 
 .dlg-icon-excl:before,
