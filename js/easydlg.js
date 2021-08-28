@@ -723,25 +723,22 @@ var EasyDialogBox = (function()
         // ** Save position - preHTML dialogboxes depends on this to remember last position
         if(obj.x)
         {
-            obj.x = _s2i(box.style.left);
-            obj.customPosX = obj.x;
+            obj.xPos(obj.x);
         }
         if(obj.y)
         {
-            obj.y = _s2i(box.style.top);
-            obj.customPosY = obj.y;
+            obj.yPos(obj.y);
         }
 
         // ** Save current size
         if(obj.w)
         {
-            obj.width(box.style.maxWidth);
-            obj.customWidth = _s2i(box.style.maxWidth);
+            obj.width(obj.w);
         }
+
         if(obj.h)
         {
-            obj.height(box.style.height);
-            obj.customHeight = _s2i(box.style.height);
+            obj.height(obj.h);
         }
 
         // ** Hide the overlay/fade out, run "onHide"
