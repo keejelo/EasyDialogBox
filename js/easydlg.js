@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.8.0.4
+// Version: 1.8.0.5
 // Created by: keejelo
 // Year: 2020-2021
 // GitHub: https://github.com/keejelo/EasyDialogBox
@@ -1781,11 +1781,8 @@ var EasyDialogBox = (function()
             {
                 _drag.el = document.getElementById(id);
                 if(_drag.el === null) { return false; }
-
                 _drag.el.handle = document.getElementById(id + '_heading');
-
                 if(_drag.el.handle === null) { _drag.el.handle = _drag.el; }
-
                 _drag.el.style.position = 'absolute';
                 _attachEventListener(_drag.el.handle, 'mousedown', _drag.start);
             }
@@ -1826,13 +1823,11 @@ var EasyDialogBox = (function()
             _drag.el.posY = _drag.el.posY2 - e.clientY;
             _drag.el.posX2 = e.clientX;
             _drag.el.posY2 = e.clientY;
-            _drag.el.style.top = parseInt( (_drag.el.offsetTop) - (_drag.el.posY), 10) + 'px';
-            _drag.el.style.left = parseInt( (_drag.el.offsetLeft) - (_drag.el.posX), 10) + 'px';
+            _drag.el.style.top = _s2i(_drag.el.offsetTop - _drag.el.posY) + 'px';
+            _drag.el.style.left = _s2i(_drag.el.offsetLeft - _drag.el.posX) + 'px';
             var obj = _getObjById(_drag.el.id.split('_1')[0]);
             obj.yPos(_s2i(_drag.el.style.top));
             obj.xPos(_s2i(_drag.el.style.left));
-            obj.customPosY = _s2i(_drag.el.style.top);
-            obj.customPosX = _s2i(_drag.el.style.left);
             _stopDefault(e);
             return false;
         }
@@ -1887,12 +1882,12 @@ var EasyDialogBox = (function()
             if(_resize.width + e.clientX - _resize.posX > 100)
             {
                 // ** We set "maxWidth" instead of "width" in this case
-                _resize.el.style.maxWidth = parseInt( (_resize.width + e.clientX - _resize.posX), 10) + 'px';
+                _resize.el.style.maxWidth = _s2i(_resize.width + e.clientX - _resize.posX) + 'px';
                 obj.width(_resize.el.style.maxWidth);
             }
             if(_resize.height + e.clientY - _resize.posY > 37)
             {
-                _resize.el.style.height = parseInt( (_resize.height + e.clientY - _resize.posY), 10) + 'px';
+                _resize.el.style.height = _s2i(_resize.height + e.clientY - _resize.posY) + 'px';
                 obj.height(_resize.el.style.height);
             }
             _stopDefault(e);
