@@ -1,3 +1,6 @@
+# 1.8.0.5:
+- Minor optimization, another duplicated code was turned into one common function.
+
 # 1.8.0.4:
 - A minimum pixelsize of width (100) and height (37) was set for resizing dialogbox, so it doesn't disappear completely.
 
