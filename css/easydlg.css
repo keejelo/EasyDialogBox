@@ -286,7 +286,6 @@
 .dlg-icon-question:before
 {
     content:'?';
-    margin-left:-1px;
 }
 
 .dlg-icon-error
