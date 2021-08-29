@@ -1,5 +1,5 @@
 # 1.8.0.4:
-- Did set a minimum pixelsize of width (100) and height (37) for resizing dialogbox, so it doesn't disappear completely.
+- A minimum pixelsize of width (100) and height (37) was set for resizing dialogbox, so it doesn't disappear completely.
 
 # 1.8.0.3:
 - Minor optimization, duplicated code was turned into one common function.
