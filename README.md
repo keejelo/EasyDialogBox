@@ -21,7 +21,7 @@ https://keejelo.github.io/EasyDialogBox/documentation.html
 <br />
 
 ## Important changes
-- <b>Version 1.735 and above:</b><br />
+- <b>Version 1.7.3.5 and above:</b><br />
   Removed parameter <code>bKeepAlive</code> from function: <code>EasyDialogBox.create(...);</code>
   <br />
   Syntax is now:<br />
@@ -29,7 +29,7 @@ https://keejelo.github.io/EasyDialogBox/documentation.html
   
   <br />
   
-- <b>Version 1.722 and above:</b><br />
+- <b>Version 1.7.2.2 and above:</b><br />
   The "classflags" below has had their names changed due to naming ambiguity causing bugs:
   - "<b>dlg-no-drag</b>" is now called "<b>dlg-disable-drag</b>"
   - "<b>dlg-no-btns</b>" is now called "<b>dlg-disable-btns</b>"
