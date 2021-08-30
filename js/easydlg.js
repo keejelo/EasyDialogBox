@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------------------------------------
 // ** EasyDialogBox
 //-----------------------------------------------------------------------------------------------------------------
-// Version: 1.8.0.5
+// Version: 1.8.0.6
 // Created by: keejelo
 // Year: 2020-2021
 // Web: github.com/keejelo/EasyDialogBox
@@ -60,7 +60,7 @@ var EasyDialogBox = (function()
     // ** Convert string to integer (decimal base), "failsafe": if all fails return zero
     var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { _log('DEBUG: _s2i(' + s + ') | Error:' + n); n = 0; } return n; };
 
-    // ** Trim leading and trailing whitespace (also multiline)
+    // ** Trim leading and trailing whitespace
     var _trim = function(s) { return s.replace(/^\s+|\s+$/g,''); };
 
     // ** Add "Array.indexOf" support if not exist (IE8)
@@ -85,7 +85,7 @@ var EasyDialogBox = (function()
     {
         if(typeof target.addEventListener !== 'undefined')
         {
-            target.addEventListener(eventType, functionRef, capture || false);
+            target.addEventListener(eventType, functionRef, capture);
         }
         else if(typeof target.attachEvent !== 'undefined')
         {
@@ -130,7 +130,7 @@ var EasyDialogBox = (function()
     {
         if(typeof target.removeEventListener !== 'undefined')
         {
-            target.removeEventListener(eventType, functionRef, capture || false);
+            target.removeEventListener(eventType, functionRef, capture);
         }
         else if(typeof target.detachEvent !== 'undefined')
         {
@@ -1797,8 +1797,8 @@ var EasyDialogBox = (function()
                 var targ = _target(e);
 
                 // ** If "dlg-disable-heading", only start drag if click is NOT on these elements
-                if(targ.tagName.toUpperCase() !== 'INPUT' && targ.tagName.toUpperCase() !== 'TEXTAREA'
-                && targ.tagName.toUpperCase() !== 'BUTTON' && targ.tagName.toUpperCase() !== 'SELECT')
+                if(targ.tagName.toLowerCase() !== 'input' && targ.tagName.toLowerCase() !== 'textarea'
+                && targ.tagName.toLowerCase() !== 'button' && targ.tagName.toLowerCase() !== 'select')
                 {
                     _drag.el.handle.style.cursor = 'move';
                     _drag.el.posX2 = e.clientX;
