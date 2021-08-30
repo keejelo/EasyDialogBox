@@ -424,8 +424,8 @@
     height:2px;
     position:absolute;
     border:none;
-    border-right:1px solid #fafafa;  /* "shadow" */
-    border-bottom:1px solid #fafafa; /* "shadow" */
+    /*border-right:1px solid #fafafa;  /* "shadow" */
+    /*border-bottom:1px solid #fafafa; /* "shadow" */
     box-sizing:content-box; /* fix for Bootstrap */
 }
 
