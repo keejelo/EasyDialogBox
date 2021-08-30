@@ -61,7 +61,7 @@ var EasyDialogBox = (function()
     var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { _log('DEBUG: _s2i(' + s + ') | Error:' + n); n = 0; } return n; };
 
     // ** Trim leading and trailing whitespace (also multiline)
-    var _trim = function(s) { return s.replace(/^\s+|\s+$/gm,''); };
+    var _trim = function(s) { return s.replace(/^\s+|\s+$/g,''); };
 
     // ** Add "Array.indexOf" support if not exist (IE8)
     if(!Array.prototype.indexOf)
