@@ -4,7 +4,7 @@
 // Version: 1.8.0.5
 // Created by: keejelo
 // Year: 2020-2021
-// GitHub: https://github.com/keejelo/EasyDialogBox
+// Web: github.com/keejelo/EasyDialogBox
 // Comment: Crossbrowser, legacy-browser support as much as possible.
 //-----------------------------------------------------------------------------------------------------------------
 var EasyDialogBox = (function()
