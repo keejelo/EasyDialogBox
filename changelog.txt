@@ -1,3 +1,6 @@
+# 1.8.0.7:
+- Minimum resize width and height can now be edited/adjusted from the css-file, these values are read by js-file when resizing the dialogbox.
+
 # 1.8.0.5:
 - Minor optimization, another duplicated code was turned into one common function.
 
