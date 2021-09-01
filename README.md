@@ -1,5 +1,5 @@
 # EasyDialogBox
-Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast, and whatever you want to create...
+Easy to use Javascript dialog box, messagebox, alert, confirm, prompt, toast, or whatever you want to create!
 
 <br />
 
