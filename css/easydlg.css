@@ -33,13 +33,15 @@
     margin:0;
     padding:0;
     max-width:600px;
-    overflow:hidden; /* disable scrolling inside box, instead set scroll on inside elements */
     width:100%;
+    min-width:100px; /* minimum resize value */
+    min-height:36px; /* minimum resize value */
     font-family:Arial, Helvetica, sans-serif;
     font-size:10px;
     background-color:#fff;
     border:1px solid #3d6da8; /* ".dlg-heading" has the same background-color as this */
     visibility:hidden;
+    overflow:hidden; /* disable scrolling inside box, instead set scroll on inside elements */
     position:absolute; /* this is needed or else "dlg-disable-drag" custom position do not work */
     pointer-events:auto; /* makes dialog clickable when parent (overlay) is disabled */
 }
