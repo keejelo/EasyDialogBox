@@ -1858,8 +1858,8 @@ var EasyDialogBox = (function()
         start : function(e)
         {
             e = e || window.event;
-            _resize.minWidth = _s2i(_getStyle(_resize.el, 'minWidth')) || 100;  // if undefined then default: 100
-            _resize.minHeight = _s2i(_getStyle(_resize.el, 'minHeight')) || 36; // if undefined then default: 36
+            _resize.minWidth = _s2i(_getStyle(_resize.el, 'minWidth')) || 100;  // if false then default: 100
+            _resize.minHeight = _s2i(_getStyle(_resize.el, 'minHeight')) || 36; // if false then default: 36
             _log(_resize.minHeight);
             _resize.posX = e.clientX;
             _resize.posY = e.clientY;
