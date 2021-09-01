@@ -55,7 +55,7 @@ var EasyDialogBox = (function()
     var _bModalActive = false;
 
     // ** Get body element
-    var _body = function() { return document.querySelector('body'); }
+    var _body = function() { return document.querySelector('body'); };
 
     // ** Convert string to integer (decimal base), "failsafe": if all fails return zero
     var _s2i = function(s) { var n = parseInt(s,10); if(!isFinite(n)) { _log('DEBUG: _s2i(' + s + ') | Error:' + n); n = 0; } return n; };
@@ -415,7 +415,7 @@ var EasyDialogBox = (function()
         str = _trim(str);
 
         // ** If string contains '#' (hash), and NOT any multiple selector chars
-        if( str.indexOf('#') !== -1 && str.match(/[\s+>,+:[]/g) === null )
+        if( str.indexOf('#') !== -1 && str.match(/[\s+>,+:\[]/g) === null )
         {
             return box.querySelector(str);  // return ONE single element
         }
