@@ -12,7 +12,7 @@ var EasyDialogBox = (function()
     'use strict';
 
     // ** DEBUG: false/true (output messages to console)
-    var DEBUG = false;
+    var DEBUG = true;
 
     // ** Used in console messages
     var _name = 'EasyDialogBox';
