@@ -45,7 +45,7 @@ var EasyDialogBox = (function()
                            'dlg-info|dlg-question|dlg-error|dlg-success|dlg-exclamation|' +
                            'dlg-rounded|dlg-shadow').split('|');
 
-    // ** Array that holds all created boxobjects, so we can get to them later if we need to, delete them etc.
+    // ** Array that holds all created box-objects, so we can get to them later if we need to, delete them etc.
     var _boxObj = [];
 
     // ** Prevent content shift when scrollbar hides/shows, if centered body content.
@@ -1756,7 +1756,7 @@ var EasyDialogBox = (function()
                 // ** Create event listeners for openers
                 _attachEventListener(opnr[i], 'click', function DlgOpenerClick(e)
                 {
-                    e = e || window.event;  // Get/set event variable
+                    e = e || window.event;  // Get event object
                     obj.show();             // Show the dialogbox with the id referenced in 'rel' attribute
                     this.blur();            // Remove focus from clicked button or other opening element
                     //_stopEvent(e);        // Prevent bubbling up to parent elements or capturing down to child elements
