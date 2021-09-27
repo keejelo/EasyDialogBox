@@ -41,7 +41,7 @@ https://keejelo.github.io/EasyDialogBox/documentation.html
 <br />
 
 ## Motivation
-I started this when I needed a multipurpose dialogbox for my own projects. Not wanting to be dependant on any libraries I wrote this dialogbox module using only plain Javascript. If anyone else finds this useful that's great.<br /><br />
+I started this when I needed a multipurpose dialogbox for my own projects. Not wanting to be dependant on any libraries, I wrote this dialogbox module using only plain Javascript. If anyone else finds this useful that's great.<br /><br />
 Although dialogboxes has got a "bad rap" in the web-world, I still think they have their use when used correctly and in the right settings.
 
 <br />
