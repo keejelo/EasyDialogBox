@@ -20,9 +20,15 @@ Easily create a messagebox, alert, confirm, prompt, toast, or whatever you want 
 Documentation, live examples:
 https://keejelo.github.io/EasyDialogBox/documentation.html
 
-Simple example usage:
-<code>let myBox = EasyDialogBox.create('myId', 'dlg', 'My title', '&lt;p&gt;Hello world!&lt;/p&gt;');</code>
-<code>myBox.show();</code>
+Simple example:
+<pre>let myBox = EasyDialogBox.create('myId', 'dlg', 'My title', '&lt;p&gt;Hello there!&lt;/p&gt;');
+myBox.show();</pre>
+
+Produces this:
+<img src="example.png" alt="example.png" />
+
+
+Go to more examples: https://keejelo.github.io/EasyDialogBox/documentation.html#js_example
 
 <br />
 
