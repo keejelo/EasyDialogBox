@@ -26,7 +26,7 @@ myBox.show();</pre>
 
 Produces this:
 
-<img src="example.png" alt="example.png" />
+<img src="example.png" alt="example.png" title="example.png" />
 
 
 Go to more examples: https://keejelo.github.io/EasyDialogBox/documentation.html#js_example
