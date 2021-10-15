@@ -24,9 +24,8 @@ Simple example:
 <pre>let myBox = EasyDialogBox.create('myId', 'dlg', 'My title', '&lt;p&gt;Hello there!&lt;/p&gt;');
 myBox.show();</pre>
 
-Produces this:
+Produces this:</br>
 <img src="example.png" alt="example.png" />
-
 
 Go to more examples: https://keejelo.github.io/EasyDialogBox/documentation.html#js_example
 
