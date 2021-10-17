@@ -22,7 +22,7 @@ https://keejelo.github.io/EasyDialogBox/documentation.html
 
 <br />
 
-Below shows a very basic and simple example to create and show a dialogbox:
+Below shows a very basic and simple example of how to create and show a dialogbox:
 <pre>let myBox = EasyDialogBox.create('myId', 'dlg', 'My title', '&lt;p&gt;Hello there!&lt;/p&gt;');
 myBox.show();</pre>
 
