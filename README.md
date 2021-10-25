@@ -29,8 +29,8 @@ myBox.show();</pre>
 Produces this:
 
 <img src="example.png" alt="example.png" />
-
-<br />
+<i>This is the default style, but it can of course be customized as you wish with optional flags, and even further with css.</i>
+<br /><br />
 
 See more examples: https://keejelo.github.io/EasyDialogBox/documentation.html#js_example
 
