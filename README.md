@@ -11,8 +11,8 @@ Easily create a messagebox, alert, confirm, prompt, toast, or whatever you want 
 - Draggable
 - Resizable
 - Responsive
-- Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5">ES5</a>), HTML and CSS. Crossbrowser, trying to support legacy browsers as much as possible. 
-- <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified version, smaller size">Lightweight</a>
+- Using standard Javascript (<a href="https://www.google.com/search?q=ecmascript+5" title="https://www.google.com/search?q=ecmascript+5" target="_blank">ES5</a>), HTML and CSS. Crossbrowser, trying to support legacy browsers as much as possible. 
+- <a href="https://github.com/keejelo/EasyDialogBox/tree/master/js" title="Minified version, smaller size" target="_blank">Lightweight</a>
 
 <br />
 
@@ -29,8 +29,8 @@ myBox.show();</pre>
 Produces this:
 
 <img src="example.png" alt="example.png" />
-This is the default style, but it can of course be customized as you wish with <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#paramTable">optional flags</a>, and even further with css.<br />
-Adding your own <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#dialog_addbutton">custom buttons</a> is also possible.
+This is the default style, but it can of course be customized as you wish with <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#paramTable" target="_blank">optional flags</a>, and even further with css.<br />
+Adding your own <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#dialog_addbutton" target="_blank">custom buttons</a> is also possible.
 <br /><br />
 
 See more examples: https://keejelo.github.io/EasyDialogBox/documentation.html#js_example
