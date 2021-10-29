@@ -29,7 +29,7 @@ myBox.show();</pre>
 Produces this:
 
 <img src="example.png" alt="example.png" />
-This is the default style, but it can of course be customized as you wish with <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#paramTable">optional flags</a>, <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#dialog_color">colors</a>, and even further with editing the css-file <a href="https://github.com/keejelo/EasyDialogBox/blob/master/css/easydlg.css">"easydlg.css"</a>.<br />
+This is the default style, but it can of course be customized as you wish with <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#paramTable">optional flags</a>, <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#dialog_color">colors</a>, and even further with editing the <a href="https://github.com/keejelo/EasyDialogBox/blob/master/css/easydlg.css">css-file</a>.<br />
 The content can be anything you want, Html, plain text.<br />
 Adding your own <a href="https://keejelo.github.io/EasyDialogBox/documentation.html#dialog_addbutton">custom buttons</a> to the footer is also possible.
 <br /><br /><br />
