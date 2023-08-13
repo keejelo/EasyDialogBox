@@ -1,5 +1,5 @@
 # 1.8.0.9:
-- This only affects the pre-written HTML dialogs:
+- This only affects the PRE-WRITTEN HTML dialogs:
   Decided to remove original dialogbox written in HTML after dynamic creation, to avoid having two identical dialog boxes and content, due to ID 
   conflict and HTML elements ID's not being unique.
   This can be done better, maybe replace dialog ID back to what it was instead of having appending "_0" to it, 
