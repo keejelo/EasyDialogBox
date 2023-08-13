@@ -3,7 +3,7 @@
   The pre-written dialogboxes are now removed from DOM after it has been processed dynamically by the script (_init),
   to avoid having two identical dialog boxes and content, due to ID conflicts resulting in HTML elements ID's not being unique.
   TODO: possible solution maybe to replace dialog ID back after dyn. creation to the original instead of having appending "_0" to it.
-  Now an ID like "myDialogBox" becomes "myDialogBox_0", can be confusing for the user, need to look into it.
+  Now an ID like "myDialogBox" becomes "myDialogBox_0", can be confusing for the user. Need to look into it.
   
 # 1.8.0.8:
 - Minor update. Updated some comments and other minor fixes.
