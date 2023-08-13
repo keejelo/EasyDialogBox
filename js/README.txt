@@ -1,4 +1,4 @@
-# Current version: 1.8.0.8
+# Current version: 1.8.0.9
   Latest updated version of the file "easydlg.js" is kept here in this folder.
   Previous versions of the file are moved into the "history" folder.
 
