@@ -2,7 +2,7 @@
 <!-- Sorry for the all-in-one-"franken"-html-page, but it's just to keep it all in one DEMO file -->
 <html lang="en">
 <head>
-<meta charset="utf-8" />
+<meta charset="UTF-8" />
 <meta name="robots" content="index, follow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>EasyDialogBox - Examples and documentation</title>
@@ -1384,10 +1384,11 @@ attachEventListener(window, 'load', function()
             <h2 id="html_box">Create dialog box with pre-written HTML</h2>
             <p>Create dialogboxes with HTML, no need to write any Javascript code unless you need <code>callback()</code> for button clicks etc.</p>
             <p>If you just want to display a simple messagebox with some info, then you only have to write HTML.</p>
-            <p class="bold">IMPORTANT!</p>
-            <p>Dialogboxes created this way gets a token (<code>_0</code>) attached to their ID's.</p>
-            <p>Example: <code>myDialogBox</code> becomes <code>myDialogBox_0</code></p>
-            <p>So if you later want to get the element remember to do: <code>document.getElementById('myDialogBox_0');</code></p>
+            <p></p>
+            <p><span class="bold">IMPORTANT!</span><br />
+            Dialogboxes created this way gets a token (<code>_0</code>) attached to their ID's.<br />
+            Example: <code>myDialogBox</code> becomes <code>myDialogBox_0</code><br />
+            So if you later want to get the element remember to do: <code>document.getElementById('myDialogBox_0');</code></p>
 
             <p>&nbsp;</p>
 
