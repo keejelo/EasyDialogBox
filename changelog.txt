@@ -1,3 +1,6 @@
+# 1.8.0.10:
+- Fixed issue with element ID's, as decribed in 1.8.0.9, now dialogbox ID's do not add "_0" token, element ID stays the same.
+
 # 1.8.0.9:
 - This only affects the PRE-WRITTEN HTML dialogs:
   The pre-written dialogboxes are now removed from DOM after they have been processed dynamically by the script (_init),
